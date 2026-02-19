@@ -4,7 +4,7 @@ export type ClientOptions = {
     baseUrl: 'https://api.unipile.com' | (string & {});
 };
 
-export type GetV2ByAccountIdChatsData = {
+export type GetChatsListData = {
     body?: never;
     path: {
         /**
@@ -44,7 +44,7 @@ export type GetV2ByAccountIdChatsData = {
     url: '/v2/{account_id}/chats';
 };
 
-export type GetV2ByAccountIdChatsResponses = {
+export type GetChatsListResponses = {
     /**
      * Default Response
      */
@@ -154,7 +154,7 @@ export type GetV2ByAccountIdChatsResponses = {
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -221,7 +221,7 @@ export type GetV2ByAccountIdChatsResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -277,9 +277,9 @@ export type GetV2ByAccountIdChatsResponses = {
     };
 };
 
-export type GetV2ByAccountIdChatsResponse = GetV2ByAccountIdChatsResponses[keyof GetV2ByAccountIdChatsResponses];
+export type GetChatsListResponse = GetChatsListResponses[keyof GetChatsListResponses];
 
-export type GetV2ByAccountIdInboxesData = {
+export type GetInboxesListData = {
     body?: never;
     path: {
         /**
@@ -291,7 +291,7 @@ export type GetV2ByAccountIdInboxesData = {
     url: '/v2/{account_id}/inboxes';
 };
 
-export type GetV2ByAccountIdInboxesResponses = {
+export type GetInboxesListResponses = {
     /**
      * Default Response
      */
@@ -322,9 +322,9 @@ export type GetV2ByAccountIdInboxesResponses = {
     };
 };
 
-export type GetV2ByAccountIdInboxesResponse = GetV2ByAccountIdInboxesResponses[keyof GetV2ByAccountIdInboxesResponses];
+export type GetInboxesListResponse = GetInboxesListResponses[keyof GetInboxesListResponses];
 
-export type GetV2ByAccountIdInboxesByInboxIdChatsData = {
+export type GetInboxChatsListData = {
     body?: never;
     path: {
         /**
@@ -368,7 +368,7 @@ export type GetV2ByAccountIdInboxesByInboxIdChatsData = {
     url: '/v2/{account_id}/inboxes/{inbox_id}/chats';
 };
 
-export type GetV2ByAccountIdInboxesByInboxIdChatsResponses = {
+export type GetInboxChatsListResponses = {
     /**
      * Default Response
      */
@@ -478,7 +478,7 @@ export type GetV2ByAccountIdInboxesByInboxIdChatsResponses = {
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -545,7 +545,7 @@ export type GetV2ByAccountIdInboxesByInboxIdChatsResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -601,9 +601,9 @@ export type GetV2ByAccountIdInboxesByInboxIdChatsResponses = {
     };
 };
 
-export type GetV2ByAccountIdInboxesByInboxIdChatsResponse = GetV2ByAccountIdInboxesByInboxIdChatsResponses[keyof GetV2ByAccountIdInboxesByInboxIdChatsResponses];
+export type GetInboxChatsListResponse = GetInboxChatsListResponses[keyof GetInboxChatsListResponses];
 
-export type GetV2ByAccountIdChatsByChatIdData = {
+export type GetChatData = {
     body?: never;
     path: {
         /**
@@ -619,7 +619,7 @@ export type GetV2ByAccountIdChatsByChatIdData = {
     url: '/v2/{account_id}/chats/{chat_id}';
 };
 
-export type GetV2ByAccountIdChatsByChatIdResponses = {
+export type GetChatResponses = {
     /**
      * Default Response
      */
@@ -728,7 +728,7 @@ export type GetV2ByAccountIdChatsByChatIdResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -795,7 +795,7 @@ export type GetV2ByAccountIdChatsByChatIdResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -842,9 +842,9 @@ export type GetV2ByAccountIdChatsByChatIdResponses = {
     };
 };
 
-export type GetV2ByAccountIdChatsByChatIdResponse = GetV2ByAccountIdChatsByChatIdResponses[keyof GetV2ByAccountIdChatsByChatIdResponses];
+export type GetChatResponse = GetChatResponses[keyof GetChatResponses];
 
-export type PatchV2ByAccountIdChatsByChatIdData = {
+export type UpdateChatData = {
     body?: {
         /**
          * A custom name for the chat. Some providers allow custom names only on groups.
@@ -873,7 +873,7 @@ export type PatchV2ByAccountIdChatsByChatIdData = {
     url: '/v2/{account_id}/chats/{chat_id}';
 };
 
-export type PatchV2ByAccountIdChatsByChatIdResponses = {
+export type UpdateChatResponses = {
     /**
      * Default Response
      */
@@ -982,7 +982,7 @@ export type PatchV2ByAccountIdChatsByChatIdResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -1049,7 +1049,7 @@ export type PatchV2ByAccountIdChatsByChatIdResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -1096,9 +1096,9 @@ export type PatchV2ByAccountIdChatsByChatIdResponses = {
     };
 };
 
-export type PatchV2ByAccountIdChatsByChatIdResponse = PatchV2ByAccountIdChatsByChatIdResponses[keyof PatchV2ByAccountIdChatsByChatIdResponses];
+export type UpdateChatResponse = UpdateChatResponses[keyof UpdateChatResponses];
 
-export type PostV2ByAccountIdChatsSendData = {
+export type StartChatData = {
     body: {
         /**
          * The textual content of the first message to be sent in the chat. It's recommended not to use HTML or Markdown. Use empty string to start a chat without a message (if supported by the provider).
@@ -1311,7 +1311,7 @@ export type PostV2ByAccountIdChatsSendData = {
     url: '/v2/{account_id}/chats/send';
 };
 
-export type PostV2ByAccountIdChatsSendResponses = {
+export type StartChatResponses = {
     /**
      * Default Response
      */
@@ -1328,9 +1328,9 @@ export type PostV2ByAccountIdChatsSendResponses = {
     };
 };
 
-export type PostV2ByAccountIdChatsSendResponse = PostV2ByAccountIdChatsSendResponses[keyof PostV2ByAccountIdChatsSendResponses];
+export type StartChatResponse = StartChatResponses[keyof StartChatResponses];
 
-export type PostV2ByAccountIdInboxesByInboxIdChatsSendData = {
+export type StartChatFromInboxData = {
     body: {
         /**
          * The textual content of the first message to be sent in the chat. It's recommended not to use HTML or Markdown. Use empty string to start a chat without a message (if supported by the provider).
@@ -1547,7 +1547,7 @@ export type PostV2ByAccountIdInboxesByInboxIdChatsSendData = {
     url: '/v2/{account_id}/inboxes/{inbox_id}/chats/send';
 };
 
-export type PostV2ByAccountIdInboxesByInboxIdChatsSendResponses = {
+export type StartChatFromInboxResponses = {
     /**
      * Default Response
      */
@@ -1564,9 +1564,9 @@ export type PostV2ByAccountIdInboxesByInboxIdChatsSendResponses = {
     };
 };
 
-export type PostV2ByAccountIdInboxesByInboxIdChatsSendResponse = PostV2ByAccountIdInboxesByInboxIdChatsSendResponses[keyof PostV2ByAccountIdInboxesByInboxIdChatsSendResponses];
+export type StartChatFromInboxResponse = StartChatFromInboxResponses[keyof StartChatFromInboxResponses];
 
-export type GetV2ByAccountIdChatsByChatIdMessagesData = {
+export type GetMessagesListData = {
     body?: never;
     path: {
         /**
@@ -1607,7 +1607,7 @@ export type GetV2ByAccountIdChatsByChatIdMessagesData = {
     url: '/v2/{account_id}/chats/{chat_id}/messages';
 };
 
-export type GetV2ByAccountIdChatsByChatIdMessagesResponses = {
+export type GetMessagesListResponses = {
     /**
      * Default Response
      */
@@ -1930,7 +1930,7 @@ export type GetV2ByAccountIdChatsByChatIdMessagesResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -2414,7 +2414,7 @@ export type GetV2ByAccountIdChatsByChatIdMessagesResponses = {
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -2675,7 +2675,7 @@ export type GetV2ByAccountIdChatsByChatIdMessagesResponses = {
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -2721,9 +2721,9 @@ export type GetV2ByAccountIdChatsByChatIdMessagesResponses = {
     };
 };
 
-export type GetV2ByAccountIdChatsByChatIdMessagesResponse = GetV2ByAccountIdChatsByChatIdMessagesResponses[keyof GetV2ByAccountIdChatsByChatIdMessagesResponses];
+export type GetMessagesListResponse = GetMessagesListResponses[keyof GetMessagesListResponses];
 
-export type DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdData = {
+export type DeleteMessageData = {
     body?: never;
     path: {
         /**
@@ -2743,16 +2743,16 @@ export type DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdData = {
     url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}';
 };
 
-export type DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdResponses = {
+export type DeleteMessageResponses = {
     /**
      * Default Response
      */
     204: void;
 };
 
-export type DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdResponse = DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdResponses[keyof DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdResponses];
+export type DeleteMessageResponse = DeleteMessageResponses[keyof DeleteMessageResponses];
 
-export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdData = {
+export type GetMessageData = {
     body?: never;
     path: {
         /**
@@ -2772,7 +2772,7 @@ export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdData = {
     url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}';
 };
 
-export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdResponses = {
+export type GetMessageResponses = {
     /**
      * Default Response
      */
@@ -3094,7 +3094,7 @@ export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -3578,7 +3578,7 @@ export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -3839,7 +3839,7 @@ export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -3876,9 +3876,9 @@ export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdResponses = {
     };
 };
 
-export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdResponse = GetV2ByAccountIdChatsByChatIdMessagesByMessageIdResponses[keyof GetV2ByAccountIdChatsByChatIdMessagesByMessageIdResponses];
+export type GetMessageResponse = GetMessageResponses[keyof GetMessageResponses];
 
-export type PostV2ByAccountIdChatsByChatIdMessagesSendData = {
+export type SendMessageData = {
     body: {
         /**
          * The textual content of first message to be sent. It's recommended not to use HTML or Markdown.
@@ -3939,7 +3939,7 @@ export type PostV2ByAccountIdChatsByChatIdMessagesSendData = {
     url: '/v2/{account_id}/chats/{chat_id}/messages/send';
 };
 
-export type PostV2ByAccountIdChatsByChatIdMessagesSendResponses = {
+export type SendMessageResponses = {
     /**
      * Default Response
      */
@@ -3952,9 +3952,9 @@ export type PostV2ByAccountIdChatsByChatIdMessagesSendResponses = {
     };
 };
 
-export type PostV2ByAccountIdChatsByChatIdMessagesSendResponse = PostV2ByAccountIdChatsByChatIdMessagesSendResponses[keyof PostV2ByAccountIdChatsByChatIdMessagesSendResponses];
+export type SendMessageResponse = SendMessageResponses[keyof SendMessageResponses];
 
-export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdForwardData = {
+export type ForwardMessageData = {
     body: {
         /**
          * The ID of the Chat to forward the message to.
@@ -3983,7 +3983,7 @@ export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdForwardData = {
     url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/forward';
 };
 
-export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdForwardResponses = {
+export type ForwardMessageResponses = {
     /**
      * Default Response
      */
@@ -4000,9 +4000,9 @@ export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdForwardResponses = 
     };
 };
 
-export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdForwardResponse = PostV2ByAccountIdChatsByChatIdMessagesByMessageIdForwardResponses[keyof PostV2ByAccountIdChatsByChatIdMessagesByMessageIdForwardResponses];
+export type ForwardMessageResponse = ForwardMessageResponses[keyof ForwardMessageResponses];
 
-export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdModifyData = {
+export type ModifyMessageData = {
     body: {
         /**
          * The new textual content of the message. It's recommended not to use HTML or Markdown.
@@ -4027,7 +4027,7 @@ export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdModifyData = {
     url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/modify';
 };
 
-export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdModifyResponses = {
+export type ModifyMessageResponses = {
     /**
      * Default Response
      */
@@ -4349,7 +4349,7 @@ export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdModifyResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -4833,7 +4833,7 @@ export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdModifyResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -5094,7 +5094,7 @@ export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdModifyResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -5131,9 +5131,9 @@ export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdModifyResponses = {
     };
 };
 
-export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdModifyResponse = PostV2ByAccountIdChatsByChatIdMessagesByMessageIdModifyResponses[keyof PostV2ByAccountIdChatsByChatIdMessagesByMessageIdModifyResponses];
+export type ModifyMessageResponse = ModifyMessageResponses[keyof ModifyMessageResponses];
 
-export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReadData = {
+export type ReadMessageData = {
     body?: never;
     path: {
         /**
@@ -5153,7 +5153,7 @@ export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReadData = {
     url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/read';
 };
 
-export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReadResponses = {
+export type ReadMessageResponses = {
     /**
      * Default Response
      */
@@ -5162,9 +5162,9 @@ export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReadResponses = {
     };
 };
 
-export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReadResponse = PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReadResponses[keyof PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReadResponses];
+export type ReadMessageResponse = ReadMessageResponses[keyof ReadMessageResponses];
 
-export type GetV2ByAccountIdChatsByChatIdParticipantsData = {
+export type GetParticipantsListData = {
     body?: never;
     path: {
         /**
@@ -5193,7 +5193,7 @@ export type GetV2ByAccountIdChatsByChatIdParticipantsData = {
     url: '/v2/{account_id}/chats/{chat_id}/participants';
 };
 
-export type GetV2ByAccountIdChatsByChatIdParticipantsResponses = {
+export type GetParticipantsListResponses = {
     /**
      * Default Response
      */
@@ -5210,7 +5210,7 @@ export type GetV2ByAccountIdChatsByChatIdParticipantsResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -5261,9 +5261,9 @@ export type GetV2ByAccountIdChatsByChatIdParticipantsResponses = {
     };
 };
 
-export type GetV2ByAccountIdChatsByChatIdParticipantsResponse = GetV2ByAccountIdChatsByChatIdParticipantsResponses[keyof GetV2ByAccountIdChatsByChatIdParticipantsResponses];
+export type GetParticipantsListResponse = GetParticipantsListResponses[keyof GetParticipantsListResponses];
 
-export type PostV2ByAccountIdChatsByChatIdParticipantsData = {
+export type AddParticipantData = {
     body: {
         /**
          * The ID of the User to add as participant.
@@ -5284,7 +5284,7 @@ export type PostV2ByAccountIdChatsByChatIdParticipantsData = {
     url: '/v2/{account_id}/chats/{chat_id}/participants';
 };
 
-export type PostV2ByAccountIdChatsByChatIdParticipantsResponses = {
+export type AddParticipantResponses = {
     /**
      * Default Response
      */
@@ -5293,9 +5293,9 @@ export type PostV2ByAccountIdChatsByChatIdParticipantsResponses = {
     };
 };
 
-export type PostV2ByAccountIdChatsByChatIdParticipantsResponse = PostV2ByAccountIdChatsByChatIdParticipantsResponses[keyof PostV2ByAccountIdChatsByChatIdParticipantsResponses];
+export type AddParticipantResponse = AddParticipantResponses[keyof AddParticipantResponses];
 
-export type DeleteV2ByAccountIdChatsByChatIdParticipantsByUserIdData = {
+export type RemoveParticipantData = {
     body?: never;
     path: {
         /**
@@ -5315,7 +5315,7 @@ export type DeleteV2ByAccountIdChatsByChatIdParticipantsByUserIdData = {
     url: '/v2/{account_id}/chats/{chat_id}/participants/{user_id}';
 };
 
-export type DeleteV2ByAccountIdChatsByChatIdParticipantsByUserIdResponses = {
+export type RemoveParticipantResponses = {
     /**
      * Default Response
      */
@@ -5324,9 +5324,9 @@ export type DeleteV2ByAccountIdChatsByChatIdParticipantsByUserIdResponses = {
     };
 };
 
-export type DeleteV2ByAccountIdChatsByChatIdParticipantsByUserIdResponse = DeleteV2ByAccountIdChatsByChatIdParticipantsByUserIdResponses[keyof DeleteV2ByAccountIdChatsByChatIdParticipantsByUserIdResponses];
+export type RemoveParticipantResponse = RemoveParticipantResponses[keyof RemoveParticipantResponses];
 
-export type DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsData = {
+export type RemoveMessageReactionData = {
     body: {
         /**
          * The emoji unicode to be removed.
@@ -5351,7 +5351,7 @@ export type DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsData = {
     url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/reactions';
 };
 
-export type DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses = {
+export type RemoveMessageReactionResponses = {
     /**
      * Default Response
      */
@@ -5360,9 +5360,9 @@ export type DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponse
     };
 };
 
-export type DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponse = DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses[keyof DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses];
+export type RemoveMessageReactionResponse = RemoveMessageReactionResponses[keyof RemoveMessageReactionResponses];
 
-export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsData = {
+export type GetMessageReactionsListData = {
     body?: never;
     path: {
         /**
@@ -5395,7 +5395,7 @@ export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsData = {
     url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/reactions';
 };
 
-export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses = {
+export type GetMessageReactionsListResponses = {
     /**
      * Default Response
      */
@@ -5416,7 +5416,7 @@ export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses =
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -5463,9 +5463,9 @@ export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses =
     };
 };
 
-export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponse = GetV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses[keyof GetV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses];
+export type GetMessageReactionsListResponse = GetMessageReactionsListResponses[keyof GetMessageReactionsListResponses];
 
-export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsData = {
+export type AddMessageReactionData = {
     body: {
         /**
          * The emoji unicode.
@@ -5490,7 +5490,7 @@ export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsData = {
     url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/reactions';
 };
 
-export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses = {
+export type AddMessageReactionResponses = {
     /**
      * Default Response
      */
@@ -5499,9 +5499,9 @@ export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses 
     };
 };
 
-export type PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponse = PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses[keyof PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses];
+export type AddMessageReactionResponse = AddMessageReactionResponses[keyof AddMessageReactionResponses];
 
-export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdAttachmentsByAttachmentIdData = {
+export type GetAttachmentData = {
     body?: never;
     path: {
         /**
@@ -5525,14 +5525,14 @@ export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdAttachmentsByAttachm
     url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/attachments/{attachment_id}';
 };
 
-export type GetV2ByAccountIdChatsByChatIdMessagesByMessageIdAttachmentsByAttachmentIdResponses = {
+export type GetAttachmentResponses = {
     /**
      * Default Response
      */
     200: unknown;
 };
 
-export type PostV2ByAccountIdPresenceData = {
+export type SetPresenceData = {
     body: {
         /**
          * The presence of the user.
@@ -5550,7 +5550,7 @@ export type PostV2ByAccountIdPresenceData = {
     url: '/v2/{account_id}/presence';
 };
 
-export type PostV2ByAccountIdPresenceResponses = {
+export type SetPresenceResponses = {
     /**
      * Default Response
      */
@@ -5559,9 +5559,9 @@ export type PostV2ByAccountIdPresenceResponses = {
     };
 };
 
-export type PostV2ByAccountIdPresenceResponse = PostV2ByAccountIdPresenceResponses[keyof PostV2ByAccountIdPresenceResponses];
+export type SetPresenceResponse = SetPresenceResponses[keyof SetPresenceResponses];
 
-export type PostV2ByAccountIdChatsByChatIdComposingData = {
+export type SetComposingStatusData = {
     body?: never;
     path: {
         /**
@@ -5584,7 +5584,7 @@ export type PostV2ByAccountIdChatsByChatIdComposingData = {
     url: '/v2/{account_id}/chats/{chat_id}/composing';
 };
 
-export type PostV2ByAccountIdChatsByChatIdComposingResponses = {
+export type SetComposingStatusResponses = {
     /**
      * Default Response
      */
@@ -5593,9 +5593,9 @@ export type PostV2ByAccountIdChatsByChatIdComposingResponses = {
     };
 };
 
-export type PostV2ByAccountIdChatsByChatIdComposingResponse = PostV2ByAccountIdChatsByChatIdComposingResponses[keyof PostV2ByAccountIdChatsByChatIdComposingResponses];
+export type SetComposingStatusResponse = SetComposingStatusResponses[keyof SetComposingStatusResponses];
 
-export type GetV2ByAccountIdEmailsData = {
+export type GetEmailsListData = {
     body?: never;
     path: {
         /**
@@ -5644,7 +5644,7 @@ export type GetV2ByAccountIdEmailsData = {
     url: '/v2/{account_id}/emails';
 };
 
-export type GetV2ByAccountIdEmailsResponses = {
+export type GetEmailsListResponses = {
     /**
      * Default Response
      */
@@ -5986,9 +5986,9 @@ export type GetV2ByAccountIdEmailsResponses = {
     };
 };
 
-export type GetV2ByAccountIdEmailsResponse = GetV2ByAccountIdEmailsResponses[keyof GetV2ByAccountIdEmailsResponses];
+export type GetEmailsListResponse = GetEmailsListResponses[keyof GetEmailsListResponses];
 
-export type GetV2ByAccountIdFoldersByFolderIdEmailsData = {
+export type GetFolderEmailsListData = {
     body?: never;
     path: {
         /**
@@ -6041,7 +6041,7 @@ export type GetV2ByAccountIdFoldersByFolderIdEmailsData = {
     url: '/v2/{account_id}/folders/{folder_id}/emails';
 };
 
-export type GetV2ByAccountIdFoldersByFolderIdEmailsResponses = {
+export type GetFolderEmailsListResponses = {
     /**
      * Default Response
      */
@@ -6383,9 +6383,9 @@ export type GetV2ByAccountIdFoldersByFolderIdEmailsResponses = {
     };
 };
 
-export type GetV2ByAccountIdFoldersByFolderIdEmailsResponse = GetV2ByAccountIdFoldersByFolderIdEmailsResponses[keyof GetV2ByAccountIdFoldersByFolderIdEmailsResponses];
+export type GetFolderEmailsListResponse = GetFolderEmailsListResponses[keyof GetFolderEmailsListResponses];
 
-export type GetV2ByAccountIdThreadsByThreadIdData = {
+export type GetThreadData = {
     body?: never;
     path: {
         /**
@@ -6406,7 +6406,7 @@ export type GetV2ByAccountIdThreadsByThreadIdData = {
     url: '/v2/{account_id}/threads/{thread_id}';
 };
 
-export type GetV2ByAccountIdThreadsByThreadIdResponses = {
+export type GetThreadResponses = {
     /**
      * Default Response
      */
@@ -6745,9 +6745,9 @@ export type GetV2ByAccountIdThreadsByThreadIdResponses = {
     };
 };
 
-export type GetV2ByAccountIdThreadsByThreadIdResponse = GetV2ByAccountIdThreadsByThreadIdResponses[keyof GetV2ByAccountIdThreadsByThreadIdResponses];
+export type GetThreadResponse = GetThreadResponses[keyof GetThreadResponses];
 
-export type DeleteV2ByAccountIdEmailsByEmailIdData = {
+export type TrashEmailData = {
     body?: never;
     path: {
         /**
@@ -6763,7 +6763,7 @@ export type DeleteV2ByAccountIdEmailsByEmailIdData = {
     url: '/v2/{account_id}/emails/{email_id}';
 };
 
-export type DeleteV2ByAccountIdEmailsByEmailIdResponses = {
+export type TrashEmailResponses = {
     /**
      * Default Response
      */
@@ -6772,9 +6772,9 @@ export type DeleteV2ByAccountIdEmailsByEmailIdResponses = {
     };
 };
 
-export type DeleteV2ByAccountIdEmailsByEmailIdResponse = DeleteV2ByAccountIdEmailsByEmailIdResponses[keyof DeleteV2ByAccountIdEmailsByEmailIdResponses];
+export type TrashEmailResponse = TrashEmailResponses[keyof TrashEmailResponses];
 
-export type GetV2ByAccountIdEmailsByEmailIdData = {
+export type GetEmailData = {
     body?: never;
     path: {
         /**
@@ -6795,7 +6795,7 @@ export type GetV2ByAccountIdEmailsByEmailIdData = {
     url: '/v2/{account_id}/emails/{email_id}';
 };
 
-export type GetV2ByAccountIdEmailsByEmailIdResponses = {
+export type GetEmailResponses = {
     /**
      * Default Response
      */
@@ -7127,9 +7127,9 @@ export type GetV2ByAccountIdEmailsByEmailIdResponses = {
     };
 };
 
-export type GetV2ByAccountIdEmailsByEmailIdResponse = GetV2ByAccountIdEmailsByEmailIdResponses[keyof GetV2ByAccountIdEmailsByEmailIdResponses];
+export type GetEmailResponse = GetEmailResponses[keyof GetEmailResponses];
 
-export type GetV2ByAccountIdEmailsByEmailIdAttachmentsByAttachmentIdData = {
+export type GetAttachment1Data = {
     body?: never;
     path: {
         /**
@@ -7149,14 +7149,14 @@ export type GetV2ByAccountIdEmailsByEmailIdAttachmentsByAttachmentIdData = {
     url: '/v2/{account_id}/emails/{email_id}/attachments/{attachment_id}';
 };
 
-export type GetV2ByAccountIdEmailsByEmailIdAttachmentsByAttachmentIdResponses = {
+export type GetAttachment1Responses = {
     /**
      * Default Response
      */
     200: unknown;
 };
 
-export type PostV2ByAccountIdEmailsByEmailIdModifyData = {
+export type ModifyEmailData = {
     body: {
         /**
          * The ID(s) of the folder(s) to apply, overwriting all folders previously associated with the Email. Outlook emails can be in a single folder only. Google allows a single email to appear in multiple folders.
@@ -7177,7 +7177,7 @@ export type PostV2ByAccountIdEmailsByEmailIdModifyData = {
     url: '/v2/{account_id}/emails/{email_id}/modify';
 };
 
-export type PostV2ByAccountIdEmailsByEmailIdModifyResponses = {
+export type ModifyEmailResponses = {
     /**
      * Default Response
      */
@@ -7509,9 +7509,9 @@ export type PostV2ByAccountIdEmailsByEmailIdModifyResponses = {
     };
 };
 
-export type PostV2ByAccountIdEmailsByEmailIdModifyResponse = PostV2ByAccountIdEmailsByEmailIdModifyResponses[keyof PostV2ByAccountIdEmailsByEmailIdModifyResponses];
+export type ModifyEmailResponse = ModifyEmailResponses[keyof ModifyEmailResponses];
 
-export type PostV2ByAccountIdEmailsByEmailIdUnreadData = {
+export type UnreadEmailData = {
     body?: never;
     path: {
         /**
@@ -7527,7 +7527,7 @@ export type PostV2ByAccountIdEmailsByEmailIdUnreadData = {
     url: '/v2/{account_id}/emails/{email_id}/unread';
 };
 
-export type PostV2ByAccountIdEmailsByEmailIdUnreadResponses = {
+export type UnreadEmailResponses = {
     /**
      * Default Response
      */
@@ -7536,9 +7536,9 @@ export type PostV2ByAccountIdEmailsByEmailIdUnreadResponses = {
     };
 };
 
-export type PostV2ByAccountIdEmailsByEmailIdUnreadResponse = PostV2ByAccountIdEmailsByEmailIdUnreadResponses[keyof PostV2ByAccountIdEmailsByEmailIdUnreadResponses];
+export type UnreadEmailResponse = UnreadEmailResponses[keyof UnreadEmailResponses];
 
-export type PostV2ByAccountIdEmailsByEmailIdReadData = {
+export type ReadEmailData = {
     body?: never;
     path: {
         /**
@@ -7554,7 +7554,7 @@ export type PostV2ByAccountIdEmailsByEmailIdReadData = {
     url: '/v2/{account_id}/emails/{email_id}/read';
 };
 
-export type PostV2ByAccountIdEmailsByEmailIdReadResponses = {
+export type ReadEmailResponses = {
     /**
      * Default Response
      */
@@ -7563,9 +7563,9 @@ export type PostV2ByAccountIdEmailsByEmailIdReadResponses = {
     };
 };
 
-export type PostV2ByAccountIdEmailsByEmailIdReadResponse = PostV2ByAccountIdEmailsByEmailIdReadResponses[keyof PostV2ByAccountIdEmailsByEmailIdReadResponses];
+export type ReadEmailResponse = ReadEmailResponses[keyof ReadEmailResponses];
 
-export type PostV2ByAccountIdEmailsSendData = {
+export type SendEmailData = {
     body: {
         /**
          * The HTML content of the email. Required for tracking.
@@ -7697,7 +7697,7 @@ export type PostV2ByAccountIdEmailsSendData = {
     url: '/v2/{account_id}/emails/send';
 };
 
-export type PostV2ByAccountIdEmailsSendResponses = {
+export type SendEmailResponses = {
     /**
      * Default Response
      */
@@ -7714,9 +7714,9 @@ export type PostV2ByAccountIdEmailsSendResponses = {
     };
 };
 
-export type PostV2ByAccountIdEmailsSendResponse = PostV2ByAccountIdEmailsSendResponses[keyof PostV2ByAccountIdEmailsSendResponses];
+export type SendEmailResponse = SendEmailResponses[keyof SendEmailResponses];
 
-export type GetV2ByAccountIdDraftsData = {
+export type GetDraftsListData = {
     body?: never;
     path: {
         /**
@@ -7753,7 +7753,7 @@ export type GetV2ByAccountIdDraftsData = {
     url: '/v2/{account_id}/drafts';
 };
 
-export type GetV2ByAccountIdDraftsResponses = {
+export type GetDraftsListResponses = {
     /**
      * Default Response
      */
@@ -8070,9 +8070,9 @@ export type GetV2ByAccountIdDraftsResponses = {
     };
 };
 
-export type GetV2ByAccountIdDraftsResponse = GetV2ByAccountIdDraftsResponses[keyof GetV2ByAccountIdDraftsResponses];
+export type GetDraftsListResponse = GetDraftsListResponses[keyof GetDraftsListResponses];
 
-export type PostV2ByAccountIdDraftsData = {
+export type CreateDraftData = {
     body: {
         /**
          * The HTML content of the draft. Required for tracking.
@@ -8193,7 +8193,7 @@ export type PostV2ByAccountIdDraftsData = {
     url: '/v2/{account_id}/drafts';
 };
 
-export type PostV2ByAccountIdDraftsResponses = {
+export type CreateDraftResponses = {
     /**
      * Default Response
      */
@@ -8500,9 +8500,9 @@ export type PostV2ByAccountIdDraftsResponses = {
     };
 };
 
-export type PostV2ByAccountIdDraftsResponse = PostV2ByAccountIdDraftsResponses[keyof PostV2ByAccountIdDraftsResponses];
+export type CreateDraftResponse = CreateDraftResponses[keyof CreateDraftResponses];
 
-export type DeleteV2ByAccountIdDraftsByDraftIdData = {
+export type DeleteDraftData = {
     body?: never;
     path: {
         draft_id: string;
@@ -8515,16 +8515,16 @@ export type DeleteV2ByAccountIdDraftsByDraftIdData = {
     url: '/v2/{account_id}/drafts/{draft_id}';
 };
 
-export type DeleteV2ByAccountIdDraftsByDraftIdResponses = {
+export type DeleteDraftResponses = {
     /**
      * Default Response
      */
     204: void;
 };
 
-export type DeleteV2ByAccountIdDraftsByDraftIdResponse = DeleteV2ByAccountIdDraftsByDraftIdResponses[keyof DeleteV2ByAccountIdDraftsByDraftIdResponses];
+export type DeleteDraftResponse = DeleteDraftResponses[keyof DeleteDraftResponses];
 
-export type GetV2ByAccountIdDraftsByDraftIdData = {
+export type GetDraftData = {
     body?: never;
     path: {
         draft_id: string;
@@ -8537,7 +8537,7 @@ export type GetV2ByAccountIdDraftsByDraftIdData = {
     url: '/v2/{account_id}/drafts/{draft_id}';
 };
 
-export type GetV2ByAccountIdDraftsByDraftIdResponses = {
+export type GetDraftResponses = {
     /**
      * Default Response
      */
@@ -8844,9 +8844,9 @@ export type GetV2ByAccountIdDraftsByDraftIdResponses = {
     };
 };
 
-export type GetV2ByAccountIdDraftsByDraftIdResponse = GetV2ByAccountIdDraftsByDraftIdResponses[keyof GetV2ByAccountIdDraftsByDraftIdResponses];
+export type GetDraftResponse = GetDraftResponses[keyof GetDraftResponses];
 
-export type PatchV2ByAccountIdDraftsByDraftIdData = {
+export type UpdateDraftData = {
     body?: {
         /**
          * The HTML content of the draft. Required for tracking.
@@ -8968,7 +8968,7 @@ export type PatchV2ByAccountIdDraftsByDraftIdData = {
     url: '/v2/{account_id}/drafts/{draft_id}';
 };
 
-export type PatchV2ByAccountIdDraftsByDraftIdResponses = {
+export type UpdateDraftResponses = {
     /**
      * Default Response
      */
@@ -9275,9 +9275,9 @@ export type PatchV2ByAccountIdDraftsByDraftIdResponses = {
     };
 };
 
-export type PatchV2ByAccountIdDraftsByDraftIdResponse = PatchV2ByAccountIdDraftsByDraftIdResponses[keyof PatchV2ByAccountIdDraftsByDraftIdResponses];
+export type UpdateDraftResponse = UpdateDraftResponses[keyof UpdateDraftResponses];
 
-export type PostV2ByAccountIdDraftsByDraftIdSendData = {
+export type SendDraftData = {
     body?: never;
     path: {
         /**
@@ -9293,7 +9293,7 @@ export type PostV2ByAccountIdDraftsByDraftIdSendData = {
     url: '/v2/{account_id}/drafts/{draft_id}/send';
 };
 
-export type PostV2ByAccountIdDraftsByDraftIdSendResponses = {
+export type SendDraftResponses = {
     /**
      * Default Response
      */
@@ -9310,9 +9310,9 @@ export type PostV2ByAccountIdDraftsByDraftIdSendResponses = {
     };
 };
 
-export type PostV2ByAccountIdDraftsByDraftIdSendResponse = PostV2ByAccountIdDraftsByDraftIdSendResponses[keyof PostV2ByAccountIdDraftsByDraftIdSendResponses];
+export type SendDraftResponse = SendDraftResponses[keyof SendDraftResponses];
 
-export type GetV2ByAccountIdFoldersData = {
+export type GetFoldersListData = {
     body?: never;
     path: {
         /**
@@ -9337,7 +9337,7 @@ export type GetV2ByAccountIdFoldersData = {
     url: '/v2/{account_id}/folders';
 };
 
-export type GetV2ByAccountIdFoldersResponses = {
+export type GetFoldersListResponses = {
     /**
      * Default Response
      */
@@ -9392,9 +9392,9 @@ export type GetV2ByAccountIdFoldersResponses = {
     };
 };
 
-export type GetV2ByAccountIdFoldersResponse = GetV2ByAccountIdFoldersResponses[keyof GetV2ByAccountIdFoldersResponses];
+export type GetFoldersListResponse = GetFoldersListResponses[keyof GetFoldersListResponses];
 
-export type PostV2ByAccountIdFoldersData = {
+export type CreateFolderData = {
     body: {
         /**
          * Name of the folder. For Gmail, name of the label.
@@ -9423,7 +9423,7 @@ export type PostV2ByAccountIdFoldersData = {
     url: '/v2/{account_id}/folders';
 };
 
-export type PostV2ByAccountIdFoldersResponses = {
+export type CreateFolderResponses = {
     /**
      * Default Response
      */
@@ -9468,9 +9468,9 @@ export type PostV2ByAccountIdFoldersResponses = {
     };
 };
 
-export type PostV2ByAccountIdFoldersResponse = PostV2ByAccountIdFoldersResponses[keyof PostV2ByAccountIdFoldersResponses];
+export type CreateFolderResponse = CreateFolderResponses[keyof CreateFolderResponses];
 
-export type DeleteV2ByAccountIdFoldersByFolderIdData = {
+export type DeleteFolderData = {
     body?: never;
     path: {
         /**
@@ -9486,16 +9486,16 @@ export type DeleteV2ByAccountIdFoldersByFolderIdData = {
     url: '/v2/{account_id}/folders/{folder_id}';
 };
 
-export type DeleteV2ByAccountIdFoldersByFolderIdResponses = {
+export type DeleteFolderResponses = {
     /**
      * Default Response
      */
     204: void;
 };
 
-export type DeleteV2ByAccountIdFoldersByFolderIdResponse = DeleteV2ByAccountIdFoldersByFolderIdResponses[keyof DeleteV2ByAccountIdFoldersByFolderIdResponses];
+export type DeleteFolderResponse = DeleteFolderResponses[keyof DeleteFolderResponses];
 
-export type GetV2ByAccountIdFoldersByFolderIdData = {
+export type GetFolderData = {
     body?: never;
     path: {
         /**
@@ -9511,7 +9511,7 @@ export type GetV2ByAccountIdFoldersByFolderIdData = {
     url: '/v2/{account_id}/folders/{folder_id}';
 };
 
-export type GetV2ByAccountIdFoldersByFolderIdResponses = {
+export type GetFolderResponses = {
     /**
      * Default Response
      */
@@ -9556,9 +9556,9 @@ export type GetV2ByAccountIdFoldersByFolderIdResponses = {
     };
 };
 
-export type GetV2ByAccountIdFoldersByFolderIdResponse = GetV2ByAccountIdFoldersByFolderIdResponses[keyof GetV2ByAccountIdFoldersByFolderIdResponses];
+export type GetFolderResponse = GetFolderResponses[keyof GetFolderResponses];
 
-export type PatchV2ByAccountIdFoldersByFolderIdData = {
+export type UpdateFolderData = {
     body?: {
         /**
          * Name of the folder. For Gmail, name of the label.
@@ -9591,7 +9591,7 @@ export type PatchV2ByAccountIdFoldersByFolderIdData = {
     url: '/v2/{account_id}/folders/{folder_id}';
 };
 
-export type PatchV2ByAccountIdFoldersByFolderIdResponses = {
+export type UpdateFolderResponses = {
     /**
      * Default Response
      */
@@ -9636,9 +9636,9 @@ export type PatchV2ByAccountIdFoldersByFolderIdResponses = {
     };
 };
 
-export type PatchV2ByAccountIdFoldersByFolderIdResponse = PatchV2ByAccountIdFoldersByFolderIdResponses[keyof PatchV2ByAccountIdFoldersByFolderIdResponses];
+export type UpdateFolderResponse = UpdateFolderResponses[keyof UpdateFolderResponses];
 
-export type GetV2ByAccountIdUsersByUserIdData = {
+export type GetUserProfileData = {
     body?: never;
     path: {
         /**
@@ -9657,7 +9657,7 @@ export type GetV2ByAccountIdUsersByUserIdData = {
     url: '/v2/{account_id}/users/{user_id}';
 };
 
-export type GetV2ByAccountIdUsersByUserIdResponses = {
+export type GetUserProfileResponses = {
     /**
      * Default Response
      */
@@ -9668,7 +9668,7 @@ export type GetV2ByAccountIdUsersByUserIdResponses = {
         id: string;
         object: 'UserProfile';
         /**
-         * Type of the user.
+         * Type of the user
          * - `individual` is an individual user.
          * - `organization` is an organization / business entity.
          * - `other` is an other type of entity.
@@ -10109,7 +10109,7 @@ export type GetV2ByAccountIdUsersByUserIdResponses = {
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -10178,7 +10178,7 @@ export type GetV2ByAccountIdUsersByUserIdResponses = {
                         id: string;
                         object: 'User';
                         /**
-                         * Type of the user.
+                         * Type of the user
                          * - `individual` is an individual user.
                          * - `organization` is an organization / business entity.
                          * - `other` is an other type of entity.
@@ -10230,7 +10230,7 @@ export type GetV2ByAccountIdUsersByUserIdResponses = {
                         id: string;
                         object: 'User';
                         /**
-                         * Type of the user.
+                         * Type of the user
                          * - `individual` is an individual user.
                          * - `organization` is an organization / business entity.
                          * - `other` is an other type of entity.
@@ -10273,9 +10273,9 @@ export type GetV2ByAccountIdUsersByUserIdResponses = {
     };
 };
 
-export type GetV2ByAccountIdUsersByUserIdResponse = GetV2ByAccountIdUsersByUserIdResponses[keyof GetV2ByAccountIdUsersByUserIdResponses];
+export type GetUserProfileResponse = GetUserProfileResponses[keyof GetUserProfileResponses];
 
-export type PatchV2ByAccountIdUsersByUserIdData = {
+export type UpdateUserProfileData = {
     body: {
         /**
          * The first name of the User.
@@ -10984,7 +10984,7 @@ export type PatchV2ByAccountIdUsersByUserIdData = {
     url: '/v2/{account_id}/users/{user_id}';
 };
 
-export type PatchV2ByAccountIdUsersByUserIdResponses = {
+export type UpdateUserProfileResponses = {
     /**
      * Default Response
      */
@@ -10993,9 +10993,9 @@ export type PatchV2ByAccountIdUsersByUserIdResponses = {
     };
 };
 
-export type PatchV2ByAccountIdUsersByUserIdResponse = PatchV2ByAccountIdUsersByUserIdResponses[keyof PatchV2ByAccountIdUsersByUserIdResponses];
+export type UpdateUserProfileResponse = UpdateUserProfileResponses[keyof UpdateUserProfileResponses];
 
-export type PostV2ByAccountIdUsersVisitProfileData = {
+export type VisitUserProfileData = {
     body?: never;
     path: {
         account_id: string;
@@ -11009,7 +11009,7 @@ export type PostV2ByAccountIdUsersVisitProfileData = {
     url: '/v2/{account_id}/users/visit-profile';
 };
 
-export type PostV2ByAccountIdUsersVisitProfileResponses = {
+export type VisitUserProfileResponses = {
     /**
      * Default Response
      */
@@ -11018,9 +11018,9 @@ export type PostV2ByAccountIdUsersVisitProfileResponses = {
     };
 };
 
-export type PostV2ByAccountIdUsersVisitProfileResponse = PostV2ByAccountIdUsersVisitProfileResponses[keyof PostV2ByAccountIdUsersVisitProfileResponses];
+export type VisitUserProfileResponse = VisitUserProfileResponses[keyof VisitUserProfileResponses];
 
-export type GetV2ByAccountIdUsersByUserIdRelationsData = {
+export type GetUserRelationsData = {
     body?: never;
     path: {
         /**
@@ -11053,7 +11053,7 @@ export type GetV2ByAccountIdUsersByUserIdRelationsData = {
     url: '/v2/{account_id}/users/{user_id}/relations';
 };
 
-export type GetV2ByAccountIdUsersByUserIdRelationsResponses = {
+export type GetUserRelationsResponses = {
     /**
      * Default Response
      */
@@ -11074,7 +11074,7 @@ export type GetV2ByAccountIdUsersByUserIdRelationsResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -11121,9 +11121,9 @@ export type GetV2ByAccountIdUsersByUserIdRelationsResponses = {
     };
 };
 
-export type GetV2ByAccountIdUsersByUserIdRelationsResponse = GetV2ByAccountIdUsersByUserIdRelationsResponses[keyof GetV2ByAccountIdUsersByUserIdRelationsResponses];
+export type GetUserRelationsResponse = GetUserRelationsResponses[keyof GetUserRelationsResponses];
 
-export type DeleteV2ByAccountIdUsersMeRelationsByUserIdData = {
+export type DeleteRelationData = {
     body?: never;
     path: {
         /**
@@ -11139,16 +11139,16 @@ export type DeleteV2ByAccountIdUsersMeRelationsByUserIdData = {
     url: '/v2/{account_id}/users/me/relations/{user_id}';
 };
 
-export type DeleteV2ByAccountIdUsersMeRelationsByUserIdResponses = {
+export type DeleteRelationResponses = {
     /**
      * Default Response
      */
     204: void;
 };
 
-export type DeleteV2ByAccountIdUsersMeRelationsByUserIdResponse = DeleteV2ByAccountIdUsersMeRelationsByUserIdResponses[keyof DeleteV2ByAccountIdUsersMeRelationsByUserIdResponses];
+export type DeleteRelationResponse = DeleteRelationResponses[keyof DeleteRelationResponses];
 
-export type GetV2ByAccountIdUsersMeRelationRequestsData = {
+export type GetRelationRequestsListData = {
     body?: never;
     path: {
         /**
@@ -11179,7 +11179,7 @@ export type GetV2ByAccountIdUsersMeRelationRequestsData = {
     url: '/v2/{account_id}/users/me/relation-requests';
 };
 
-export type GetV2ByAccountIdUsersMeRelationRequestsResponses = {
+export type GetRelationRequestsListResponses = {
     /**
      * Default Response
      */
@@ -11196,7 +11196,7 @@ export type GetV2ByAccountIdUsersMeRelationRequestsResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -11257,9 +11257,9 @@ export type GetV2ByAccountIdUsersMeRelationRequestsResponses = {
     };
 };
 
-export type GetV2ByAccountIdUsersMeRelationRequestsResponse = GetV2ByAccountIdUsersMeRelationRequestsResponses[keyof GetV2ByAccountIdUsersMeRelationRequestsResponses];
+export type GetRelationRequestsListResponse = GetRelationRequestsListResponses[keyof GetRelationRequestsListResponses];
 
-export type PostV2ByAccountIdUsersMeRelationRequestsData = {
+export type CreateRelationRequestData = {
     body: {
         /**
          * A message to send to the user along with the request (if supported by the provider).
@@ -11277,7 +11277,7 @@ export type PostV2ByAccountIdUsersMeRelationRequestsData = {
     url: '/v2/{account_id}/users/me/relation-requests';
 };
 
-export type PostV2ByAccountIdUsersMeRelationRequestsResponses = {
+export type CreateRelationRequestResponses = {
     /**
      * Default Response
      */
@@ -11311,7 +11311,7 @@ export type PostV2ByAccountIdUsersMeRelationRequestsResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -11345,9 +11345,9 @@ export type PostV2ByAccountIdUsersMeRelationRequestsResponses = {
     };
 };
 
-export type PostV2ByAccountIdUsersMeRelationRequestsResponse = PostV2ByAccountIdUsersMeRelationRequestsResponses[keyof PostV2ByAccountIdUsersMeRelationRequestsResponses];
+export type CreateRelationRequestResponse = CreateRelationRequestResponses[keyof CreateRelationRequestResponses];
 
-export type PostV2ByAccountIdUsersMeRelationRequestsByRequestIdCancelData = {
+export type CancelRelationRequestData = {
     body?: never;
     path: {
         /**
@@ -11363,7 +11363,7 @@ export type PostV2ByAccountIdUsersMeRelationRequestsByRequestIdCancelData = {
     url: '/v2/{account_id}/users/me/relation-requests/{request_id}/cancel';
 };
 
-export type PostV2ByAccountIdUsersMeRelationRequestsByRequestIdCancelResponses = {
+export type CancelRelationRequestResponses = {
     /**
      * Default Response
      */
@@ -11372,9 +11372,9 @@ export type PostV2ByAccountIdUsersMeRelationRequestsByRequestIdCancelResponses =
     };
 };
 
-export type PostV2ByAccountIdUsersMeRelationRequestsByRequestIdCancelResponse = PostV2ByAccountIdUsersMeRelationRequestsByRequestIdCancelResponses[keyof PostV2ByAccountIdUsersMeRelationRequestsByRequestIdCancelResponses];
+export type CancelRelationRequestResponse = CancelRelationRequestResponses[keyof CancelRelationRequestResponses];
 
-export type PostV2ByAccountIdUsersMeRelationRequestsByRequestIdAcceptData = {
+export type AcceptRelationRequestData = {
     body?: never;
     path: {
         /**
@@ -11390,7 +11390,7 @@ export type PostV2ByAccountIdUsersMeRelationRequestsByRequestIdAcceptData = {
     url: '/v2/{account_id}/users/me/relation-requests/{request_id}/accept';
 };
 
-export type PostV2ByAccountIdUsersMeRelationRequestsByRequestIdAcceptResponses = {
+export type AcceptRelationRequestResponses = {
     /**
      * Default Response
      */
@@ -11399,9 +11399,9 @@ export type PostV2ByAccountIdUsersMeRelationRequestsByRequestIdAcceptResponses =
     };
 };
 
-export type PostV2ByAccountIdUsersMeRelationRequestsByRequestIdAcceptResponse = PostV2ByAccountIdUsersMeRelationRequestsByRequestIdAcceptResponses[keyof PostV2ByAccountIdUsersMeRelationRequestsByRequestIdAcceptResponses];
+export type AcceptRelationRequestResponse = AcceptRelationRequestResponses[keyof AcceptRelationRequestResponses];
 
-export type GetV2ByAccountIdUsersByUserIdFollowersData = {
+export type ListUserFollowersData = {
     body?: never;
     path: {
         /**
@@ -11430,7 +11430,7 @@ export type GetV2ByAccountIdUsersByUserIdFollowersData = {
     url: '/v2/{account_id}/users/{user_id}/followers';
 };
 
-export type GetV2ByAccountIdUsersByUserIdFollowersResponses = {
+export type ListUserFollowersResponses = {
     /**
      * Default Response
      */
@@ -11442,7 +11442,7 @@ export type GetV2ByAccountIdUsersByUserIdFollowersResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -11484,9 +11484,9 @@ export type GetV2ByAccountIdUsersByUserIdFollowersResponses = {
     };
 };
 
-export type GetV2ByAccountIdUsersByUserIdFollowersResponse = GetV2ByAccountIdUsersByUserIdFollowersResponses[keyof GetV2ByAccountIdUsersByUserIdFollowersResponses];
+export type ListUserFollowersResponse = ListUserFollowersResponses[keyof ListUserFollowersResponses];
 
-export type GetV2ByAccountIdUsersByUserIdFollowingData = {
+export type ListUserFollowingData = {
     body?: never;
     path: {
         /**
@@ -11515,7 +11515,7 @@ export type GetV2ByAccountIdUsersByUserIdFollowingData = {
     url: '/v2/{account_id}/users/{user_id}/following';
 };
 
-export type GetV2ByAccountIdUsersByUserIdFollowingResponses = {
+export type ListUserFollowingResponses = {
     /**
      * Default Response
      */
@@ -11527,7 +11527,7 @@ export type GetV2ByAccountIdUsersByUserIdFollowingResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -11569,9 +11569,9 @@ export type GetV2ByAccountIdUsersByUserIdFollowingResponses = {
     };
 };
 
-export type GetV2ByAccountIdUsersByUserIdFollowingResponse = GetV2ByAccountIdUsersByUserIdFollowingResponses[keyof GetV2ByAccountIdUsersByUserIdFollowingResponses];
+export type ListUserFollowingResponse = ListUserFollowingResponses[keyof ListUserFollowingResponses];
 
-export type PostV2ByAccountIdUsersMeFollowByUserIdData = {
+export type FollowUserData = {
     body?: never;
     path: {
         /**
@@ -11587,7 +11587,7 @@ export type PostV2ByAccountIdUsersMeFollowByUserIdData = {
     url: '/v2/{account_id}/users/me/follow/{user_id}';
 };
 
-export type PostV2ByAccountIdUsersMeFollowByUserIdResponses = {
+export type FollowUserResponses = {
     /**
      * Default Response
      */
@@ -11605,7 +11605,7 @@ export type PostV2ByAccountIdUsersMeFollowByUserIdResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -11657,9 +11657,9 @@ export type PostV2ByAccountIdUsersMeFollowByUserIdResponses = {
     };
 };
 
-export type PostV2ByAccountIdUsersMeFollowByUserIdResponse = PostV2ByAccountIdUsersMeFollowByUserIdResponses[keyof PostV2ByAccountIdUsersMeFollowByUserIdResponses];
+export type FollowUserResponse = FollowUserResponses[keyof FollowUserResponses];
 
-export type PostV2ByAccountIdUsersMeUnfollowByUserIdData = {
+export type UnfollowUserData = {
     body?: never;
     path: {
         /**
@@ -11675,7 +11675,7 @@ export type PostV2ByAccountIdUsersMeUnfollowByUserIdData = {
     url: '/v2/{account_id}/users/me/unfollow/{user_id}';
 };
 
-export type PostV2ByAccountIdUsersMeUnfollowByUserIdResponses = {
+export type UnfollowUserResponses = {
     /**
      * Default Response
      */
@@ -11684,9 +11684,9 @@ export type PostV2ByAccountIdUsersMeUnfollowByUserIdResponses = {
     };
 };
 
-export type PostV2ByAccountIdUsersMeUnfollowByUserIdResponse = PostV2ByAccountIdUsersMeUnfollowByUserIdResponses[keyof PostV2ByAccountIdUsersMeUnfollowByUserIdResponses];
+export type UnfollowUserResponse = UnfollowUserResponses[keyof UnfollowUserResponses];
 
-export type GetV2ByAccountIdUsersByUserIdPostsData = {
+export type GetPostsListData = {
     body?: never;
     path: {
         /**
@@ -11715,7 +11715,7 @@ export type GetV2ByAccountIdUsersByUserIdPostsData = {
     url: '/v2/{account_id}/users/{user_id}/posts';
 };
 
-export type GetV2ByAccountIdUsersByUserIdPostsResponses = {
+export type GetPostsListResponses = {
     /**
      * Default Response
      */
@@ -11752,7 +11752,7 @@ export type GetV2ByAccountIdUsersByUserIdPostsResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -12124,7 +12124,7 @@ export type GetV2ByAccountIdUsersByUserIdPostsResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -12190,7 +12190,7 @@ export type GetV2ByAccountIdUsersByUserIdPostsResponses = {
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -12561,9 +12561,9 @@ export type GetV2ByAccountIdUsersByUserIdPostsResponses = {
     };
 };
 
-export type GetV2ByAccountIdUsersByUserIdPostsResponse = GetV2ByAccountIdUsersByUserIdPostsResponses[keyof GetV2ByAccountIdUsersByUserIdPostsResponses];
+export type GetPostsListResponse = GetPostsListResponses[keyof GetPostsListResponses];
 
-export type DeleteV2ByAccountIdPostsByPostIdData = {
+export type DeletePostData = {
     body?: never;
     path: {
         /**
@@ -12579,16 +12579,16 @@ export type DeleteV2ByAccountIdPostsByPostIdData = {
     url: '/v2/{account_id}/posts/{post_id}';
 };
 
-export type DeleteV2ByAccountIdPostsByPostIdResponses = {
+export type DeletePostResponses = {
     /**
      * Default Response
      */
     204: void;
 };
 
-export type DeleteV2ByAccountIdPostsByPostIdResponse = DeleteV2ByAccountIdPostsByPostIdResponses[keyof DeleteV2ByAccountIdPostsByPostIdResponses];
+export type DeletePostResponse = DeletePostResponses[keyof DeletePostResponses];
 
-export type GetV2ByAccountIdPostsByPostIdData = {
+export type GetPostData = {
     body?: never;
     path: {
         /**
@@ -12604,7 +12604,7 @@ export type GetV2ByAccountIdPostsByPostIdData = {
     url: '/v2/{account_id}/posts/{post_id}';
 };
 
-export type GetV2ByAccountIdPostsByPostIdResponses = {
+export type GetPostResponses = {
     /**
      * Default Response
      */
@@ -12640,7 +12640,7 @@ export type GetV2ByAccountIdPostsByPostIdResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -13012,7 +13012,7 @@ export type GetV2ByAccountIdPostsByPostIdResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -13078,7 +13078,7 @@ export type GetV2ByAccountIdPostsByPostIdResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -13440,9 +13440,9 @@ export type GetV2ByAccountIdPostsByPostIdResponses = {
     };
 };
 
-export type GetV2ByAccountIdPostsByPostIdResponse = GetV2ByAccountIdPostsByPostIdResponses[keyof GetV2ByAccountIdPostsByPostIdResponses];
+export type GetPostResponse = GetPostResponses[keyof GetPostResponses];
 
-export type PatchV2ByAccountIdPostsByPostIdData = {
+export type UpdatePostData = {
     body?: {
         /**
          * Textual content of the post. User mentions can be added by inserting an @ followed by the ID or public identifier of the user (example: @JohnDoe).
@@ -13470,7 +13470,7 @@ export type PatchV2ByAccountIdPostsByPostIdData = {
     url: '/v2/{account_id}/posts/{post_id}';
 };
 
-export type PatchV2ByAccountIdPostsByPostIdResponses = {
+export type UpdatePostResponses = {
     /**
      * Default Response
      */
@@ -13506,7 +13506,7 @@ export type PatchV2ByAccountIdPostsByPostIdResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -13878,7 +13878,7 @@ export type PatchV2ByAccountIdPostsByPostIdResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -13944,7 +13944,7 @@ export type PatchV2ByAccountIdPostsByPostIdResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -14306,9 +14306,9 @@ export type PatchV2ByAccountIdPostsByPostIdResponses = {
     };
 };
 
-export type PatchV2ByAccountIdPostsByPostIdResponse = PatchV2ByAccountIdPostsByPostIdResponses[keyof PatchV2ByAccountIdPostsByPostIdResponses];
+export type UpdatePostResponse = UpdatePostResponses[keyof UpdatePostResponses];
 
-export type PostV2ByAccountIdPostsData = {
+export type CreatePostData = {
     body: {
         /**
          * Textual content of the post. User mentions can be added by inserting an @ followed by the ID or public identifier of the user (example: @JohnDoe).
@@ -14393,7 +14393,7 @@ export type PostV2ByAccountIdPostsData = {
     url: '/v2/{account_id}/posts';
 };
 
-export type PostV2ByAccountIdPostsResponses = {
+export type CreatePostResponses = {
     /**
      * Default Response
      */
@@ -14429,7 +14429,7 @@ export type PostV2ByAccountIdPostsResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -14801,7 +14801,7 @@ export type PostV2ByAccountIdPostsResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -14867,7 +14867,7 @@ export type PostV2ByAccountIdPostsResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -15229,9 +15229,9 @@ export type PostV2ByAccountIdPostsResponses = {
     };
 };
 
-export type PostV2ByAccountIdPostsResponse = PostV2ByAccountIdPostsResponses[keyof PostV2ByAccountIdPostsResponses];
+export type CreatePostResponse = CreatePostResponses[keyof CreatePostResponses];
 
-export type DeleteV2ByAccountIdPostsByPostIdReactionsData = {
+export type RemovePostReactionData = {
     body: {
         reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
     };
@@ -15249,7 +15249,7 @@ export type DeleteV2ByAccountIdPostsByPostIdReactionsData = {
     url: '/v2/{account_id}/posts/{post_id}/reactions';
 };
 
-export type DeleteV2ByAccountIdPostsByPostIdReactionsResponses = {
+export type RemovePostReactionResponses = {
     /**
      * Default Response
      */
@@ -15258,9 +15258,9 @@ export type DeleteV2ByAccountIdPostsByPostIdReactionsResponses = {
     };
 };
 
-export type DeleteV2ByAccountIdPostsByPostIdReactionsResponse = DeleteV2ByAccountIdPostsByPostIdReactionsResponses[keyof DeleteV2ByAccountIdPostsByPostIdReactionsResponses];
+export type RemovePostReactionResponse = RemovePostReactionResponses[keyof RemovePostReactionResponses];
 
-export type GetV2ByAccountIdPostsByPostIdReactionsData = {
+export type GetPostReactionsListData = {
     body?: never;
     path: {
         /**
@@ -15289,7 +15289,7 @@ export type GetV2ByAccountIdPostsByPostIdReactionsData = {
     url: '/v2/{account_id}/posts/{post_id}/reactions';
 };
 
-export type GetV2ByAccountIdPostsByPostIdReactionsResponses = {
+export type GetPostReactionsListResponses = {
     /**
      * Default Response
      */
@@ -15310,7 +15310,7 @@ export type GetV2ByAccountIdPostsByPostIdReactionsResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -15357,9 +15357,9 @@ export type GetV2ByAccountIdPostsByPostIdReactionsResponses = {
     };
 };
 
-export type GetV2ByAccountIdPostsByPostIdReactionsResponse = GetV2ByAccountIdPostsByPostIdReactionsResponses[keyof GetV2ByAccountIdPostsByPostIdReactionsResponses];
+export type GetPostReactionsListResponse = GetPostReactionsListResponses[keyof GetPostReactionsListResponses];
 
-export type PostV2ByAccountIdPostsByPostIdReactionsData = {
+export type AddPostReactionData = {
     body: {
         reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
         /**
@@ -15381,7 +15381,7 @@ export type PostV2ByAccountIdPostsByPostIdReactionsData = {
     url: '/v2/{account_id}/posts/{post_id}/reactions';
 };
 
-export type PostV2ByAccountIdPostsByPostIdReactionsResponses = {
+export type AddPostReactionResponses = {
     /**
      * Default Response
      */
@@ -15390,9 +15390,9 @@ export type PostV2ByAccountIdPostsByPostIdReactionsResponses = {
     };
 };
 
-export type PostV2ByAccountIdPostsByPostIdReactionsResponse = PostV2ByAccountIdPostsByPostIdReactionsResponses[keyof PostV2ByAccountIdPostsByPostIdReactionsResponses];
+export type AddPostReactionResponse = AddPostReactionResponses[keyof AddPostReactionResponses];
 
-export type GetV2ByAccountIdPostsByPostIdCommentsData = {
+export type GetPostCommentsListData = {
     body?: never;
     path: {
         /**
@@ -15421,7 +15421,7 @@ export type GetV2ByAccountIdPostsByPostIdCommentsData = {
     url: '/v2/{account_id}/posts/{post_id}/comments';
 };
 
-export type GetV2ByAccountIdPostsByPostIdCommentsResponses = {
+export type GetPostCommentsListResponses = {
     /**
      * Default Response
      */
@@ -15446,7 +15446,7 @@ export type GetV2ByAccountIdPostsByPostIdCommentsResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -15526,9 +15526,9 @@ export type GetV2ByAccountIdPostsByPostIdCommentsResponses = {
     };
 };
 
-export type GetV2ByAccountIdPostsByPostIdCommentsResponse = GetV2ByAccountIdPostsByPostIdCommentsResponses[keyof GetV2ByAccountIdPostsByPostIdCommentsResponses];
+export type GetPostCommentsListResponse = GetPostCommentsListResponses[keyof GetPostCommentsListResponses];
 
-export type PostV2ByAccountIdPostsByPostIdCommentsData = {
+export type AddPostCommentData = {
     body: {
         /**
          * Textual content of the comment. User mentions can be added by inserting an @ followed by the `id` or `public_identifier` of the user (example: @JohnDoe).
@@ -15553,7 +15553,7 @@ export type PostV2ByAccountIdPostsByPostIdCommentsData = {
     url: '/v2/{account_id}/posts/{post_id}/comments';
 };
 
-export type PostV2ByAccountIdPostsByPostIdCommentsResponses = {
+export type AddPostCommentResponses = {
     /**
      * Default Response
      */
@@ -15577,7 +15577,7 @@ export type PostV2ByAccountIdPostsByPostIdCommentsResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -15648,9 +15648,9 @@ export type PostV2ByAccountIdPostsByPostIdCommentsResponses = {
     };
 };
 
-export type PostV2ByAccountIdPostsByPostIdCommentsResponse = PostV2ByAccountIdPostsByPostIdCommentsResponses[keyof PostV2ByAccountIdPostsByPostIdCommentsResponses];
+export type AddPostCommentResponse = AddPostCommentResponses[keyof AddPostCommentResponses];
 
-export type DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdData = {
+export type DeletePostCommentData = {
     body?: never;
     path: {
         /**
@@ -15670,16 +15670,16 @@ export type DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdData = {
     url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}';
 };
 
-export type DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses = {
+export type DeletePostCommentResponses = {
     /**
      * Default Response
      */
     204: void;
 };
 
-export type DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdResponse = DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses[keyof DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses];
+export type DeletePostCommentResponse = DeletePostCommentResponses[keyof DeletePostCommentResponses];
 
-export type PatchV2ByAccountIdPostsByPostIdCommentsByCommentIdData = {
+export type UpdatePostCommentData = {
     body: {
         /**
          * Updated textual content of the comment. User mentions can be added by inserting an @ followed by the `id` or `public_identifier` of the user (example: @JohnDoe).
@@ -15704,7 +15704,7 @@ export type PatchV2ByAccountIdPostsByPostIdCommentsByCommentIdData = {
     url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}';
 };
 
-export type PatchV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses = {
+export type UpdatePostCommentResponses = {
     /**
      * Default Response
      */
@@ -15728,7 +15728,7 @@ export type PatchV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -15799,9 +15799,9 @@ export type PatchV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses = {
     };
 };
 
-export type PatchV2ByAccountIdPostsByPostIdCommentsByCommentIdResponse = PatchV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses[keyof PatchV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses];
+export type UpdatePostCommentResponse = UpdatePostCommentResponses[keyof UpdatePostCommentResponses];
 
-export type PostV2ByAccountIdPostsByPostIdCommentsByCommentIdData = {
+export type ReplyToCommentData = {
     body: {
         /**
          * Textual content of the comment. User mentions can be added by inserting an @ followed by the `id` or `public_identifier` of the user (example: @JohnDoe).
@@ -15830,7 +15830,7 @@ export type PostV2ByAccountIdPostsByPostIdCommentsByCommentIdData = {
     url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}';
 };
 
-export type PostV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses = {
+export type ReplyToCommentResponses = {
     /**
      * Default Response
      */
@@ -15854,7 +15854,7 @@ export type PostV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses = {
             id: string;
             object: 'User';
             /**
-             * Type of the user.
+             * Type of the user
              * - `individual` is an individual user.
              * - `organization` is an organization / business entity.
              * - `other` is an other type of entity.
@@ -15925,9 +15925,9 @@ export type PostV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses = {
     };
 };
 
-export type PostV2ByAccountIdPostsByPostIdCommentsByCommentIdResponse = PostV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses[keyof PostV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses];
+export type ReplyToCommentResponse = ReplyToCommentResponses[keyof ReplyToCommentResponses];
 
-export type GetV2ByAccountIdPostsByPostIdCommentsByCommentIdRepliesData = {
+export type GetPostCommentRepliesListData = {
     body?: never;
     path: {
         /**
@@ -15960,7 +15960,7 @@ export type GetV2ByAccountIdPostsByPostIdCommentsByCommentIdRepliesData = {
     url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}/replies';
 };
 
-export type GetV2ByAccountIdPostsByPostIdCommentsByCommentIdRepliesResponses = {
+export type GetPostCommentRepliesListResponses = {
     /**
      * Default Response
      */
@@ -15985,7 +15985,7 @@ export type GetV2ByAccountIdPostsByPostIdCommentsByCommentIdRepliesResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -16065,9 +16065,9 @@ export type GetV2ByAccountIdPostsByPostIdCommentsByCommentIdRepliesResponses = {
     };
 };
 
-export type GetV2ByAccountIdPostsByPostIdCommentsByCommentIdRepliesResponse = GetV2ByAccountIdPostsByPostIdCommentsByCommentIdRepliesResponses[keyof GetV2ByAccountIdPostsByPostIdCommentsByCommentIdRepliesResponses];
+export type GetPostCommentRepliesListResponse = GetPostCommentRepliesListResponses[keyof GetPostCommentRepliesListResponses];
 
-export type DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsData = {
+export type RemovePostCommentReactionData = {
     body: {
         reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
     };
@@ -16089,7 +16089,7 @@ export type DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsData = {
     url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}/reactions';
 };
 
-export type DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses = {
+export type RemovePostCommentReactionResponses = {
     /**
      * Default Response
      */
@@ -16098,9 +16098,9 @@ export type DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponse
     };
 };
 
-export type DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponse = DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses[keyof DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses];
+export type RemovePostCommentReactionResponse = RemovePostCommentReactionResponses[keyof RemovePostCommentReactionResponses];
 
-export type GetV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsData = {
+export type GetPostCommentReactionsListData = {
     body?: never;
     path: {
         /**
@@ -16133,7 +16133,7 @@ export type GetV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsData = {
     url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}/reactions';
 };
 
-export type GetV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses = {
+export type GetPostCommentReactionsListResponses = {
     /**
      * Default Response
      */
@@ -16154,7 +16154,7 @@ export type GetV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses =
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -16201,9 +16201,9 @@ export type GetV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses =
     };
 };
 
-export type GetV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponse = GetV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses[keyof GetV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses];
+export type GetPostCommentReactionsListResponse = GetPostCommentReactionsListResponses[keyof GetPostCommentReactionsListResponses];
 
-export type PostV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsData = {
+export type AddPostCommentReactionData = {
     body: {
         reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
         /**
@@ -16229,7 +16229,7 @@ export type PostV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsData = {
     url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}/reactions';
 };
 
-export type PostV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses = {
+export type AddPostCommentReactionResponses = {
     /**
      * Default Response
      */
@@ -16238,9 +16238,9 @@ export type PostV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses 
     };
 };
 
-export type PostV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponse = PostV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses[keyof PostV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses];
+export type AddPostCommentReactionResponse = AddPostCommentReactionResponses[keyof AddPostCommentReactionResponses];
 
-export type GetV2ByAccountIdCalendarsData = {
+export type GetCalendarsListData = {
     body?: never;
     path: {
         /**
@@ -16265,7 +16265,7 @@ export type GetV2ByAccountIdCalendarsData = {
     url: '/v2/{account_id}/calendars';
 };
 
-export type GetV2ByAccountIdCalendarsResponses = {
+export type GetCalendarsListResponses = {
     /**
      * Default Response
      */
@@ -16320,9 +16320,9 @@ export type GetV2ByAccountIdCalendarsResponses = {
     };
 };
 
-export type GetV2ByAccountIdCalendarsResponse = GetV2ByAccountIdCalendarsResponses[keyof GetV2ByAccountIdCalendarsResponses];
+export type GetCalendarsListResponse = GetCalendarsListResponses[keyof GetCalendarsListResponses];
 
-export type PostV2ByAccountIdCalendarsData = {
+export type CreateCalendarData = {
     body: {
         /**
          * Name of the new calendar
@@ -16347,7 +16347,7 @@ export type PostV2ByAccountIdCalendarsData = {
     url: '/v2/{account_id}/calendars';
 };
 
-export type PostV2ByAccountIdCalendarsResponses = {
+export type CreateCalendarResponses = {
     /**
      * Default Response
      */
@@ -16392,9 +16392,9 @@ export type PostV2ByAccountIdCalendarsResponses = {
     };
 };
 
-export type PostV2ByAccountIdCalendarsResponse = PostV2ByAccountIdCalendarsResponses[keyof PostV2ByAccountIdCalendarsResponses];
+export type CreateCalendarResponse = CreateCalendarResponses[keyof CreateCalendarResponses];
 
-export type DeleteV2ByAccountIdCalendarsByCalendarIdData = {
+export type DeleteCalendarData = {
     body?: never;
     path: {
         /**
@@ -16410,16 +16410,16 @@ export type DeleteV2ByAccountIdCalendarsByCalendarIdData = {
     url: '/v2/{account_id}/calendars/{calendar_id}';
 };
 
-export type DeleteV2ByAccountIdCalendarsByCalendarIdResponses = {
+export type DeleteCalendarResponses = {
     /**
      * Default Response
      */
     204: void;
 };
 
-export type DeleteV2ByAccountIdCalendarsByCalendarIdResponse = DeleteV2ByAccountIdCalendarsByCalendarIdResponses[keyof DeleteV2ByAccountIdCalendarsByCalendarIdResponses];
+export type DeleteCalendarResponse = DeleteCalendarResponses[keyof DeleteCalendarResponses];
 
-export type GetV2ByAccountIdCalendarsByCalendarIdData = {
+export type GetCalendarData = {
     body?: never;
     path: {
         /**
@@ -16435,7 +16435,7 @@ export type GetV2ByAccountIdCalendarsByCalendarIdData = {
     url: '/v2/{account_id}/calendars/{calendar_id}';
 };
 
-export type GetV2ByAccountIdCalendarsByCalendarIdResponses = {
+export type GetCalendarResponses = {
     /**
      * Default Response
      */
@@ -16480,9 +16480,9 @@ export type GetV2ByAccountIdCalendarsByCalendarIdResponses = {
     };
 };
 
-export type GetV2ByAccountIdCalendarsByCalendarIdResponse = GetV2ByAccountIdCalendarsByCalendarIdResponses[keyof GetV2ByAccountIdCalendarsByCalendarIdResponses];
+export type GetCalendarResponse = GetCalendarResponses[keyof GetCalendarResponses];
 
-export type PatchV2ByAccountIdCalendarsByCalendarIdData = {
+export type UpdateCalendarData = {
     body?: {
         /**
          * Name of the new calendar
@@ -16511,7 +16511,7 @@ export type PatchV2ByAccountIdCalendarsByCalendarIdData = {
     url: '/v2/{account_id}/calendars/{calendar_id}';
 };
 
-export type PatchV2ByAccountIdCalendarsByCalendarIdResponses = {
+export type UpdateCalendarResponses = {
     /**
      * Default Response
      */
@@ -16556,9 +16556,9 @@ export type PatchV2ByAccountIdCalendarsByCalendarIdResponses = {
     };
 };
 
-export type PatchV2ByAccountIdCalendarsByCalendarIdResponse = PatchV2ByAccountIdCalendarsByCalendarIdResponses[keyof PatchV2ByAccountIdCalendarsByCalendarIdResponses];
+export type UpdateCalendarResponse = UpdateCalendarResponses[keyof UpdateCalendarResponses];
 
-export type GetV2ByAccountIdCalendarsByCalendarIdEventsData = {
+export type GetCalendarEventListData = {
     body?: never;
     path: {
         /**
@@ -16639,7 +16639,7 @@ export type GetV2ByAccountIdCalendarsByCalendarIdEventsData = {
     url: '/v2/{account_id}/calendars/{calendar_id}/events';
 };
 
-export type GetV2ByAccountIdCalendarsByCalendarIdEventsResponses = {
+export type GetCalendarEventListResponses = {
     /**
      * Default Response
      */
@@ -16843,9 +16843,9 @@ export type GetV2ByAccountIdCalendarsByCalendarIdEventsResponses = {
     };
 };
 
-export type GetV2ByAccountIdCalendarsByCalendarIdEventsResponse = GetV2ByAccountIdCalendarsByCalendarIdEventsResponses[keyof GetV2ByAccountIdCalendarsByCalendarIdEventsResponses];
+export type GetCalendarEventListResponse = GetCalendarEventListResponses[keyof GetCalendarEventListResponses];
 
-export type PostV2ByAccountIdCalendarsByCalendarIdEventsData = {
+export type CreateCalendarEventData = {
     body: {
         /**
          * The title of the event.
@@ -16963,7 +16963,7 @@ export type PostV2ByAccountIdCalendarsByCalendarIdEventsData = {
     url: '/v2/{account_id}/calendars/{calendar_id}/events';
 };
 
-export type PostV2ByAccountIdCalendarsByCalendarIdEventsResponses = {
+export type CreateCalendarEventResponses = {
     /**
      * Default Response
      */
@@ -17157,9 +17157,9 @@ export type PostV2ByAccountIdCalendarsByCalendarIdEventsResponses = {
     };
 };
 
-export type PostV2ByAccountIdCalendarsByCalendarIdEventsResponse = PostV2ByAccountIdCalendarsByCalendarIdEventsResponses[keyof PostV2ByAccountIdCalendarsByCalendarIdEventsResponses];
+export type CreateCalendarEventResponse = CreateCalendarEventResponses[keyof CreateCalendarEventResponses];
 
-export type DeleteV2ByAccountIdCalendarsByCalendarIdEventsByEventIdData = {
+export type DeleteCalendarEventData = {
     body?: never;
     path: {
         /**
@@ -17179,16 +17179,16 @@ export type DeleteV2ByAccountIdCalendarsByCalendarIdEventsByEventIdData = {
     url: '/v2/{account_id}/calendars/{calendar_id}/events/{event_id}';
 };
 
-export type DeleteV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses = {
+export type DeleteCalendarEventResponses = {
     /**
      * Default Response
      */
     204: void;
 };
 
-export type DeleteV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponse = DeleteV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses[keyof DeleteV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses];
+export type DeleteCalendarEventResponse = DeleteCalendarEventResponses[keyof DeleteCalendarEventResponses];
 
-export type GetV2ByAccountIdCalendarsByCalendarIdEventsByEventIdData = {
+export type GetCalendarEventData = {
     body?: never;
     path: {
         /**
@@ -17208,7 +17208,7 @@ export type GetV2ByAccountIdCalendarsByCalendarIdEventsByEventIdData = {
     url: '/v2/{account_id}/calendars/{calendar_id}/events/{event_id}';
 };
 
-export type GetV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses = {
+export type GetCalendarEventResponses = {
     /**
      * Default Response
      */
@@ -17402,9 +17402,9 @@ export type GetV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses = {
     };
 };
 
-export type GetV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponse = GetV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses[keyof GetV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses];
+export type GetCalendarEventResponse = GetCalendarEventResponses[keyof GetCalendarEventResponses];
 
-export type PatchV2ByAccountIdCalendarsByCalendarIdEventsByEventIdData = {
+export type UpdateCalendarEventData = {
     body?: {
         /**
          * The title of the event.
@@ -17533,7 +17533,7 @@ export type PatchV2ByAccountIdCalendarsByCalendarIdEventsByEventIdData = {
     url: '/v2/{account_id}/calendars/{calendar_id}/events/{event_id}';
 };
 
-export type PatchV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses = {
+export type UpdateCalendarEventResponses = {
     /**
      * Default Response
      */
@@ -17727,9 +17727,9 @@ export type PatchV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses = {
     };
 };
 
-export type PatchV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponse = PatchV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses[keyof PatchV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses];
+export type UpdateCalendarEventResponse = UpdateCalendarEventResponses[keyof UpdateCalendarEventResponses];
 
-export type PostV2ByAccountIdLinkedinData = {
+export type ProxyRequestData = {
     body: {
         /**
          * The specific LinkedIn public API endpoint you need to call. Path variables can be declared with the `:VARIABLE_NAME` syntax.
@@ -17778,7 +17778,7 @@ export type PostV2ByAccountIdLinkedinData = {
     url: '/v2/{account_id}/linkedin/';
 };
 
-export type PostV2ByAccountIdLinkedinResponses = {
+export type ProxyRequestResponses = {
     /**
      * Default Response
      */
@@ -17791,9 +17791,9 @@ export type PostV2ByAccountIdLinkedinResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinResponse = PostV2ByAccountIdLinkedinResponses[keyof PostV2ByAccountIdLinkedinResponses];
+export type ProxyRequestResponse = ProxyRequestResponses[keyof ProxyRequestResponses];
 
-export type GetV2ByAccountIdLinkedinInmailCreditsData = {
+export type GetInmailCreditsData = {
     body?: never;
     path: {
         /**
@@ -17810,7 +17810,7 @@ export type GetV2ByAccountIdLinkedinInmailCreditsData = {
     url: '/v2/{account_id}/linkedin/inmail-credits';
 };
 
-export type GetV2ByAccountIdLinkedinInmailCreditsResponses = {
+export type GetInmailCreditsResponses = {
     /**
      * Default Response
      */
@@ -17833,9 +17833,9 @@ export type GetV2ByAccountIdLinkedinInmailCreditsResponses = {
     };
 };
 
-export type GetV2ByAccountIdLinkedinInmailCreditsResponse = GetV2ByAccountIdLinkedinInmailCreditsResponses[keyof GetV2ByAccountIdLinkedinInmailCreditsResponses];
+export type GetInmailCreditsResponse = GetInmailCreditsResponses[keyof GetInmailCreditsResponses];
 
-export type GetV2ByAccountIdLinkedinCompanyByCompanyIdData = {
+export type GetClassicCompanyProfileData = {
     body?: never;
     path: {
         /**
@@ -17851,7 +17851,7 @@ export type GetV2ByAccountIdLinkedinCompanyByCompanyIdData = {
     url: '/v2/{account_id}/linkedin/company/{company_id}';
 };
 
-export type GetV2ByAccountIdLinkedinCompanyByCompanyIdResponses = {
+export type GetClassicCompanyProfileResponses = {
     /**
      * Default Response
      */
@@ -18038,9 +18038,9 @@ export type GetV2ByAccountIdLinkedinCompanyByCompanyIdResponses = {
     };
 };
 
-export type GetV2ByAccountIdLinkedinCompanyByCompanyIdResponse = GetV2ByAccountIdLinkedinCompanyByCompanyIdResponses[keyof GetV2ByAccountIdLinkedinCompanyByCompanyIdResponses];
+export type GetClassicCompanyProfileResponse = GetClassicCompanyProfileResponses[keyof GetClassicCompanyProfileResponses];
 
-export type PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberVerifyEmailData = {
+export type VerifyClassicCompanyMemberIdentityData = {
     body: {
         /**
          * The email address to submit for verification.
@@ -18061,7 +18061,7 @@ export type PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberVerifyEmailData = {
     url: '/v2/{account_id}/linkedin/company/{company_id}/member/verify-email';
 };
 
-export type PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberVerifyEmailResponses = {
+export type VerifyClassicCompanyMemberIdentityResponses = {
     /**
      * Default Response
      */
@@ -18074,9 +18074,9 @@ export type PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberVerifyEmailResponse
     };
 };
 
-export type PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberVerifyEmailResponse = PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberVerifyEmailResponses[keyof PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberVerifyEmailResponses];
+export type VerifyClassicCompanyMemberIdentityResponse = VerifyClassicCompanyMemberIdentityResponses[keyof VerifyClassicCompanyMemberIdentityResponses];
 
-export type PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberSubmitOtpData = {
+export type SubmitClassicCompanyOtpCodeData = {
     body: {
         /**
          * The email address on which you received the code.
@@ -18105,7 +18105,7 @@ export type PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberSubmitOtpData = {
     url: '/v2/{account_id}/linkedin/company/{company_id}/member/submit-otp';
 };
 
-export type PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberSubmitOtpResponses = {
+export type SubmitClassicCompanyOtpCodeResponses = {
     /**
      * Default Response
      */
@@ -18114,9 +18114,9 @@ export type PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberSubmitOtpResponses 
     };
 };
 
-export type PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberSubmitOtpResponse = PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberSubmitOtpResponses[keyof PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberSubmitOtpResponses];
+export type SubmitClassicCompanyOtpCodeResponse = SubmitClassicCompanyOtpCodeResponses[keyof SubmitClassicCompanyOtpCodeResponses];
 
-export type GetV2ByAccountIdLinkedinSearchParametersData = {
+export type GetClassicSearchParametersData = {
     body?: never;
     path: {
         /**
@@ -18145,7 +18145,7 @@ export type GetV2ByAccountIdLinkedinSearchParametersData = {
     url: '/v2/{account_id}/linkedin/search/parameters';
 };
 
-export type GetV2ByAccountIdLinkedinSearchParametersResponses = {
+export type GetClassicSearchParametersResponses = {
     /**
      * Default Response
      */
@@ -18172,9 +18172,9 @@ export type GetV2ByAccountIdLinkedinSearchParametersResponses = {
     };
 };
 
-export type GetV2ByAccountIdLinkedinSearchParametersResponse = GetV2ByAccountIdLinkedinSearchParametersResponses[keyof GetV2ByAccountIdLinkedinSearchParametersResponses];
+export type GetClassicSearchParametersResponse = GetClassicSearchParametersResponses[keyof GetClassicSearchParametersResponses];
 
-export type PostV2ByAccountIdLinkedinSearchData = {
+export type PerformClassicSearchFromUrlData = {
     body: {
         /**
          * The URL to perform the search from.
@@ -18200,7 +18200,7 @@ export type PostV2ByAccountIdLinkedinSearchData = {
     url: '/v2/{account_id}/linkedin/search';
 };
 
-export type PostV2ByAccountIdLinkedinSearchResponses = {
+export type PerformClassicSearchFromUrlResponses = {
     /**
      * Default Response
      */
@@ -18318,7 +18318,7 @@ export type PostV2ByAccountIdLinkedinSearchResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -18690,7 +18690,7 @@ export type PostV2ByAccountIdLinkedinSearchResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -18756,7 +18756,7 @@ export type PostV2ByAccountIdLinkedinSearchResponses = {
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -19274,9 +19274,9 @@ export type PostV2ByAccountIdLinkedinSearchResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinSearchResponse = PostV2ByAccountIdLinkedinSearchResponses[keyof PostV2ByAccountIdLinkedinSearchResponses];
+export type PerformClassicSearchFromUrlResponse = PerformClassicSearchFromUrlResponses[keyof PerformClassicSearchFromUrlResponses];
 
-export type PostV2ByAccountIdLinkedinSearchPeopleData = {
+export type PerformClassicPeopleSearchData = {
     body?: {
         /**
          * A keyword or group of keywords.
@@ -19410,7 +19410,7 @@ export type PostV2ByAccountIdLinkedinSearchPeopleData = {
     url: '/v2/{account_id}/linkedin/search/people';
 };
 
-export type PostV2ByAccountIdLinkedinSearchPeopleResponses = {
+export type PerformClassicPeopleSearchResponses = {
     /**
      * Default Response
      */
@@ -19503,9 +19503,9 @@ export type PostV2ByAccountIdLinkedinSearchPeopleResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinSearchPeopleResponse = PostV2ByAccountIdLinkedinSearchPeopleResponses[keyof PostV2ByAccountIdLinkedinSearchPeopleResponses];
+export type PerformClassicPeopleSearchResponse = PerformClassicPeopleSearchResponses[keyof PerformClassicPeopleSearchResponses];
 
-export type PostV2ByAccountIdLinkedinSearchCompaniesData = {
+export type PerformClassicCompaniesSearchData = {
     body?: {
         /**
          * A keyword or group of keywords.
@@ -19563,7 +19563,7 @@ export type PostV2ByAccountIdLinkedinSearchCompaniesData = {
     url: '/v2/{account_id}/linkedin/search/companies';
 };
 
-export type PostV2ByAccountIdLinkedinSearchCompaniesResponses = {
+export type PerformClassicCompaniesSearchResponses = {
     /**
      * Default Response
      */
@@ -19631,9 +19631,9 @@ export type PostV2ByAccountIdLinkedinSearchCompaniesResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinSearchCompaniesResponse = PostV2ByAccountIdLinkedinSearchCompaniesResponses[keyof PostV2ByAccountIdLinkedinSearchCompaniesResponses];
+export type PerformClassicCompaniesSearchResponse = PerformClassicCompaniesSearchResponses[keyof PerformClassicCompaniesSearchResponses];
 
-export type PostV2ByAccountIdLinkedinSearchPostsData = {
+export type PerformClassicPostsSearchData = {
     body?: {
         /**
          * A keyword or group of keywords.
@@ -19756,7 +19756,7 @@ export type PostV2ByAccountIdLinkedinSearchPostsData = {
     url: '/v2/{account_id}/linkedin/search/posts';
 };
 
-export type PostV2ByAccountIdLinkedinSearchPostsResponses = {
+export type PerformClassicPostsSearchResponses = {
     /**
      * Default Response
      */
@@ -19793,7 +19793,7 @@ export type PostV2ByAccountIdLinkedinSearchPostsResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -20165,7 +20165,7 @@ export type PostV2ByAccountIdLinkedinSearchPostsResponses = {
                 id: string;
                 object: 'User';
                 /**
-                 * Type of the user.
+                 * Type of the user
                  * - `individual` is an individual user.
                  * - `organization` is an organization / business entity.
                  * - `other` is an other type of entity.
@@ -20231,7 +20231,7 @@ export type PostV2ByAccountIdLinkedinSearchPostsResponses = {
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -20602,9 +20602,9 @@ export type PostV2ByAccountIdLinkedinSearchPostsResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinSearchPostsResponse = PostV2ByAccountIdLinkedinSearchPostsResponses[keyof PostV2ByAccountIdLinkedinSearchPostsResponses];
+export type PerformClassicPostsSearchResponse = PerformClassicPostsSearchResponses[keyof PerformClassicPostsSearchResponses];
 
-export type PostV2ByAccountIdLinkedinSearchJobsData = {
+export type PerformClassicJobsSearchData = {
     body?: {
         /**
          * A keyword or group of keywords.
@@ -20758,7 +20758,7 @@ export type PostV2ByAccountIdLinkedinSearchJobsData = {
     url: '/v2/{account_id}/linkedin/search/jobs';
 };
 
-export type PostV2ByAccountIdLinkedinSearchJobsResponses = {
+export type PerformClassicJobsSearchResponses = {
     /**
      * Default Response
      */
@@ -20846,9 +20846,9 @@ export type PostV2ByAccountIdLinkedinSearchJobsResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinSearchJobsResponse = PostV2ByAccountIdLinkedinSearchJobsResponses[keyof PostV2ByAccountIdLinkedinSearchJobsResponses];
+export type PerformClassicJobsSearchResponse = PerformClassicJobsSearchResponses[keyof PerformClassicJobsSearchResponses];
 
-export type GetV2ByAccountIdLinkedinJobsData = {
+export type ListClassicUserJobPostingsData = {
     body?: never;
     path: {
         /**
@@ -20873,7 +20873,7 @@ export type GetV2ByAccountIdLinkedinJobsData = {
     url: '/v2/{account_id}/linkedin/jobs';
 };
 
-export type GetV2ByAccountIdLinkedinJobsResponses = {
+export type ListClassicUserJobPostingsResponses = {
     /**
      * Default Response
      */
@@ -20917,9 +20917,9 @@ export type GetV2ByAccountIdLinkedinJobsResponses = {
     };
 };
 
-export type GetV2ByAccountIdLinkedinJobsResponse = GetV2ByAccountIdLinkedinJobsResponses[keyof GetV2ByAccountIdLinkedinJobsResponses];
+export type ListClassicUserJobPostingsResponse = ListClassicUserJobPostingsResponses[keyof ListClassicUserJobPostingsResponses];
 
-export type PostV2ByAccountIdLinkedinJobsData = {
+export type CreateClassicJobPostingDraftData = {
     body: {
         /**
          * The title of the job.
@@ -21037,7 +21037,7 @@ export type PostV2ByAccountIdLinkedinJobsData = {
     url: '/v2/{account_id}/linkedin/jobs';
 };
 
-export type PostV2ByAccountIdLinkedinJobsResponses = {
+export type CreateClassicJobPostingDraftResponses = {
     /**
      * Default Response
      */
@@ -21050,9 +21050,9 @@ export type PostV2ByAccountIdLinkedinJobsResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinJobsResponse = PostV2ByAccountIdLinkedinJobsResponses[keyof PostV2ByAccountIdLinkedinJobsResponses];
+export type CreateClassicJobPostingDraftResponse = CreateClassicJobPostingDraftResponses[keyof CreateClassicJobPostingDraftResponses];
 
-export type GetV2ByAccountIdLinkedinJobsByJobIdData = {
+export type GetClassicJobPostingData = {
     body?: never;
     path: {
         /**
@@ -21077,7 +21077,7 @@ export type GetV2ByAccountIdLinkedinJobsByJobIdData = {
     url: '/v2/{account_id}/linkedin/jobs/{job_id}';
 };
 
-export type GetV2ByAccountIdLinkedinJobsByJobIdResponses = {
+export type GetClassicJobPostingResponses = {
     /**
      * Default Response
      */
@@ -21261,9 +21261,9 @@ export type GetV2ByAccountIdLinkedinJobsByJobIdResponses = {
     };
 };
 
-export type GetV2ByAccountIdLinkedinJobsByJobIdResponse = GetV2ByAccountIdLinkedinJobsByJobIdResponses[keyof GetV2ByAccountIdLinkedinJobsByJobIdResponses];
+export type GetClassicJobPostingResponse = GetClassicJobPostingResponses[keyof GetClassicJobPostingResponses];
 
-export type PatchV2ByAccountIdLinkedinJobsByJobIdData = {
+export type EditClassicJobPostingData = {
     body?: {
         /**
          * The title of the job.
@@ -21385,7 +21385,7 @@ export type PatchV2ByAccountIdLinkedinJobsByJobIdData = {
     url: '/v2/{account_id}/linkedin/jobs/{job_id}';
 };
 
-export type PatchV2ByAccountIdLinkedinJobsByJobIdResponses = {
+export type EditClassicJobPostingResponses = {
     /**
      * Default Response
      */
@@ -21394,9 +21394,9 @@ export type PatchV2ByAccountIdLinkedinJobsByJobIdResponses = {
     };
 };
 
-export type PatchV2ByAccountIdLinkedinJobsByJobIdResponse = PatchV2ByAccountIdLinkedinJobsByJobIdResponses[keyof PatchV2ByAccountIdLinkedinJobsByJobIdResponses];
+export type EditClassicJobPostingResponse = EditClassicJobPostingResponses[keyof EditClassicJobPostingResponses];
 
-export type GetV2ByAccountIdLinkedinJobsByJobIdBudgetData = {
+export type GetClassicJobPostingBudgetData = {
     body?: never;
     path: {
         /**
@@ -21412,7 +21412,7 @@ export type GetV2ByAccountIdLinkedinJobsByJobIdBudgetData = {
     url: '/v2/{account_id}/linkedin/jobs/{job_id}/budget';
 };
 
-export type GetV2ByAccountIdLinkedinJobsByJobIdBudgetResponses = {
+export type GetClassicJobPostingBudgetResponses = {
     /**
      * Default Response
      */
@@ -21490,9 +21490,9 @@ export type GetV2ByAccountIdLinkedinJobsByJobIdBudgetResponses = {
     };
 };
 
-export type GetV2ByAccountIdLinkedinJobsByJobIdBudgetResponse = GetV2ByAccountIdLinkedinJobsByJobIdBudgetResponses[keyof GetV2ByAccountIdLinkedinJobsByJobIdBudgetResponses];
+export type GetClassicJobPostingBudgetResponse = GetClassicJobPostingBudgetResponses[keyof GetClassicJobPostingBudgetResponses];
 
-export type PostV2ByAccountIdLinkedinJobsByJobIdPublishData = {
+export type PublishClassicJobPostingData = {
     body?: {
         /**
          * Whether to add the hiring frame to you public profile picture.
@@ -21554,7 +21554,7 @@ export type PostV2ByAccountIdLinkedinJobsByJobIdPublishData = {
     url: '/v2/{account_id}/linkedin/jobs/{job_id}/publish';
 };
 
-export type PostV2ByAccountIdLinkedinJobsByJobIdPublishResponses = {
+export type PublishClassicJobPostingResponses = {
     /**
      * Default Response
      */
@@ -21567,9 +21567,9 @@ export type PostV2ByAccountIdLinkedinJobsByJobIdPublishResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinJobsByJobIdPublishResponse = PostV2ByAccountIdLinkedinJobsByJobIdPublishResponses[keyof PostV2ByAccountIdLinkedinJobsByJobIdPublishResponses];
+export type PublishClassicJobPostingResponse = PublishClassicJobPostingResponses[keyof PublishClassicJobPostingResponses];
 
-export type PostV2ByAccountIdLinkedinJobsByJobIdCloseData = {
+export type CloseClassicJobPostingData = {
     body?: never;
     path: {
         /**
@@ -21585,7 +21585,7 @@ export type PostV2ByAccountIdLinkedinJobsByJobIdCloseData = {
     url: '/v2/{account_id}/linkedin/jobs/{job_id}/close';
 };
 
-export type PostV2ByAccountIdLinkedinJobsByJobIdCloseResponses = {
+export type CloseClassicJobPostingResponses = {
     /**
      * Default Response
      */
@@ -21594,9 +21594,9 @@ export type PostV2ByAccountIdLinkedinJobsByJobIdCloseResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinJobsByJobIdCloseResponse = PostV2ByAccountIdLinkedinJobsByJobIdCloseResponses[keyof PostV2ByAccountIdLinkedinJobsByJobIdCloseResponses];
+export type CloseClassicJobPostingResponse = CloseClassicJobPostingResponses[keyof CloseClassicJobPostingResponses];
 
-export type PostV2ByAccountIdLinkedinJobsByJobIdApplicantsData = {
+export type GetClassicApplicantsData = {
     body?: {
         /**
          * A list of ratings to filter applicants.
@@ -21655,7 +21655,7 @@ export type PostV2ByAccountIdLinkedinJobsByJobIdApplicantsData = {
     url: '/v2/{account_id}/linkedin/jobs/{job_id}/applicants';
 };
 
-export type PostV2ByAccountIdLinkedinJobsByJobIdApplicantsResponses = {
+export type GetClassicApplicantsResponses = {
     /**
      * Default Response
      */
@@ -21869,9 +21869,9 @@ export type PostV2ByAccountIdLinkedinJobsByJobIdApplicantsResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinJobsByJobIdApplicantsResponse = PostV2ByAccountIdLinkedinJobsByJobIdApplicantsResponses[keyof PostV2ByAccountIdLinkedinJobsByJobIdApplicantsResponses];
+export type GetClassicApplicantsResponse = GetClassicApplicantsResponses[keyof GetClassicApplicantsResponses];
 
-export type GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdData = {
+export type GetClassicApplicantByIdData = {
     body?: never;
     path: {
         /**
@@ -21891,7 +21891,7 @@ export type GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdData = {
     url: '/v2/{account_id}/linkedin/jobs/{job_id}/applicants/{applicant_id}';
 };
 
-export type GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdResponses = {
+export type GetClassicApplicantByIdResponses = {
     /**
      * Default Response
      */
@@ -22095,9 +22095,9 @@ export type GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdResponses 
     };
 };
 
-export type GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdResponse = GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdResponses[keyof GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdResponses];
+export type GetClassicApplicantByIdResponse = GetClassicApplicantByIdResponses[keyof GetClassicApplicantByIdResponses];
 
-export type GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdResumeData = {
+export type GetClassicApplicantResumeData = {
     body?: never;
     path: {
         /**
@@ -22117,14 +22117,14 @@ export type GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdResumeData
     url: '/v2/{account_id}/linkedin/jobs/{job_id}/applicants/{applicant_id}/resume';
 };
 
-export type GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdResumeResponses = {
+export type GetClassicApplicantResumeResponses = {
     /**
      * Default Response
      */
     200: unknown;
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterProjectsData = {
+export type GetRecruiterHiringProjectListData = {
     body?: never;
     path: {
         /**
@@ -22153,7 +22153,7 @@ export type GetV2ByAccountIdLinkedinRecruiterProjectsData = {
     url: '/v2/{account_id}/linkedin/recruiter/projects';
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterProjectsResponses = {
+export type GetRecruiterHiringProjectListResponses = {
     /**
      * Default Response
      */
@@ -22384,9 +22384,9 @@ export type GetV2ByAccountIdLinkedinRecruiterProjectsResponses = {
     };
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterProjectsResponse = GetV2ByAccountIdLinkedinRecruiterProjectsResponses[keyof GetV2ByAccountIdLinkedinRecruiterProjectsResponses];
+export type GetRecruiterHiringProjectListResponse = GetRecruiterHiringProjectListResponses[keyof GetRecruiterHiringProjectListResponses];
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsData = {
+export type CreateRecruiterHiringProjectData = {
     body: {
         /**
          * The name of the project.
@@ -22436,7 +22436,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsData = {
     url: '/v2/{account_id}/linkedin/recruiter/projects';
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsResponses = {
+export type CreateRecruiterHiringProjectResponses = {
     /**
      * Default Response
      */
@@ -22449,9 +22449,9 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsResponse = PostV2ByAccountIdLinkedinRecruiterProjectsResponses[keyof PostV2ByAccountIdLinkedinRecruiterProjectsResponses];
+export type CreateRecruiterHiringProjectResponse = CreateRecruiterHiringProjectResponses[keyof CreateRecruiterHiringProjectResponses];
 
-export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdData = {
+export type GetRecruiterHiringProjectData = {
     body?: never;
     path: {
         /**
@@ -22467,7 +22467,7 @@ export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdData = {
     url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}';
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdResponses = {
+export type GetRecruiterHiringProjectResponses = {
     /**
      * Default Response
      */
@@ -22688,9 +22688,9 @@ export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdResponses = {
     };
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdResponse = GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdResponses[keyof GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdResponses];
+export type GetRecruiterHiringProjectResponse = GetRecruiterHiringProjectResponses[keyof GetRecruiterHiringProjectResponses];
 
-export type PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdData = {
+export type EditRecruiterHiringProjectData = {
     body?: {
         /**
          * The name of the project.
@@ -22744,7 +22744,7 @@ export type PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdData = {
     url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}';
 };
 
-export type PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdResponses = {
+export type EditRecruiterHiringProjectResponses = {
     /**
      * Default Response
      */
@@ -22753,9 +22753,9 @@ export type PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdResponses = {
     };
 };
 
-export type PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdResponse = PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdResponses[keyof PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdResponses];
+export type EditRecruiterHiringProjectResponse = EditRecruiterHiringProjectResponses[keyof EditRecruiterHiringProjectResponses];
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsData = {
+export type GetRecruiterTalentPoolApplicantsData = {
     body: {
         /**
          * The ID of the JOB_POSTING channel from the Talent Pool.
@@ -22999,7 +22999,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolAppli
     url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/applicants';
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsResponses = {
+export type GetRecruiterTalentPoolApplicantsResponses = {
     /**
      * Applicants Search
      *
@@ -23440,7 +23440,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolAppli
                         id: string;
                         object: 'User';
                         /**
-                         * Type of the user.
+                         * Type of the user
                          * - `individual` is an individual user.
                          * - `organization` is an organization / business entity.
                          * - `other` is an other type of entity.
@@ -23553,7 +23553,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolAppli
                         id: string;
                         object: 'User';
                         /**
-                         * Type of the user.
+                         * Type of the user
                          * - `individual` is an individual user.
                          * - `organization` is an organization / business entity.
                          * - `other` is an other type of entity.
@@ -23598,9 +23598,9 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolAppli
     };
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsResponse = PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsResponses[keyof PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsResponses];
+export type GetRecruiterTalentPoolApplicantsResponse = GetRecruiterTalentPoolApplicantsResponses[keyof GetRecruiterTalentPoolApplicantsResponses];
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsByApplicantIdData = {
+export type GetRecruiterApplicantByIdData = {
     body?: never;
     path: {
         /**
@@ -23620,7 +23620,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolAppli
     url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/applicants/{applicant_id}';
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsByApplicantIdResponses = {
+export type GetRecruiterApplicantByIdResponses = {
     /**
      * Default Response
      */
@@ -24058,7 +24058,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolAppli
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -24171,7 +24171,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolAppli
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -24207,9 +24207,9 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolAppli
     };
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsByApplicantIdResponse = PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsByApplicantIdResponses[keyof PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsByApplicantIdResponses];
+export type GetRecruiterApplicantByIdResponse = GetRecruiterApplicantByIdResponses[keyof GetRecruiterApplicantByIdResponses];
 
-export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsByApplicantIdResumeData = {
+export type GetRecruiterApplicantResumeData = {
     body?: never;
     path: {
         /**
@@ -24229,14 +24229,14 @@ export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplic
     url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/applicants/{applicant_id}/resume';
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsByApplicantIdResumeResponses = {
+export type GetRecruiterApplicantResumeResponses = {
     /**
      * Default Response
      */
     200: unknown;
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineData = {
+export type GetRecruiterPipelineCandidatesData = {
     body?: {
         /**
          * A keyword or group of keywords.
@@ -24348,7 +24348,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineData = 
     url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/pipeline';
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineResponses = {
+export type GetRecruiterPipelineCandidatesResponses = {
     /**
      * Pipeline Candidates Search
      *
@@ -24755,7 +24755,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineRespons
                         id: string;
                         object: 'User';
                         /**
-                         * Type of the user.
+                         * Type of the user
                          * - `individual` is an individual user.
                          * - `organization` is an organization / business entity.
                          * - `other` is an other type of entity.
@@ -24868,7 +24868,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineRespons
                         id: string;
                         object: 'User';
                         /**
-                         * Type of the user.
+                         * Type of the user
                          * - `individual` is an individual user.
                          * - `organization` is an organization / business entity.
                          * - `other` is an other type of entity.
@@ -24913,9 +24913,9 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineRespons
     };
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineResponse = PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineResponses[keyof PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineResponses];
+export type GetRecruiterPipelineCandidatesResponse = GetRecruiterPipelineCandidatesResponses[keyof GetRecruiterPipelineCandidatesResponses];
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineCandidateSaveData = {
+export type SaveRecruiterCandidateToPipelineData = {
     body: {
         /**
          * The ID of the Pipeline stage.
@@ -24940,7 +24940,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineCandida
     url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/pipeline/candidate/save';
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineCandidateSaveResponses = {
+export type SaveRecruiterCandidateToPipelineResponses = {
     /**
      * Default Response
      */
@@ -24949,9 +24949,9 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineCandida
     };
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineCandidateSaveResponse = PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineCandidateSaveResponses[keyof PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineCandidateSaveResponses];
+export type SaveRecruiterCandidateToPipelineResponse = SaveRecruiterCandidateToPipelineResponses[keyof SaveRecruiterCandidateToPipelineResponses];
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolSearchData = {
+export type PerformRecruiterPeopleSearchFromTalentPoolData = {
     body: {
         /**
          * A keyword or group of keywords.
@@ -25279,7 +25279,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolSearc
     url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/search';
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolSearchResponses = {
+export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
     /**
      * People Search
      *
@@ -25688,7 +25688,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolSearc
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -25801,7 +25801,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolSearc
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -25845,9 +25845,9 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolSearc
     };
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolSearchResponse = PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolSearchResponses[keyof PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolSearchResponses];
+export type PerformRecruiterPeopleSearchFromTalentPoolResponse = PerformRecruiterPeopleSearchFromTalentPoolResponses[keyof PerformRecruiterPeopleSearchFromTalentPoolResponses];
 
-export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsData = {
+export type GetRecruiterJobPostingByProjectIdData = {
     body?: never;
     path: {
         /**
@@ -25863,7 +25863,7 @@ export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsData = {
     url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/jobs';
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsResponses = {
+export type GetRecruiterJobPostingByProjectIdResponses = {
     /**
      * Default Response
      */
@@ -26000,9 +26000,9 @@ export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsResponses = 
     };
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsResponse = GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsResponses[keyof GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsResponses];
+export type GetRecruiterJobPostingByProjectIdResponse = GetRecruiterJobPostingByProjectIdResponses[keyof GetRecruiterJobPostingByProjectIdResponses];
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsData = {
+export type CreateRecruiterJobPostingDraftInExistingProjectData = {
     body: {
         /**
          * The title of the job.
@@ -26163,7 +26163,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsData = {
     url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/jobs';
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsResponses = {
+export type CreateRecruiterJobPostingDraftInExistingProjectResponses = {
     /**
      * Default Response
      */
@@ -26180,9 +26180,9 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsResponses =
     };
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsResponse = PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsResponses[keyof PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsResponses];
+export type CreateRecruiterJobPostingDraftInExistingProjectResponse = CreateRecruiterJobPostingDraftInExistingProjectResponses[keyof CreateRecruiterJobPostingDraftInExistingProjectResponses];
 
-export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdBudgetData = {
+export type GetRecruiterJobPostingBudgetData = {
     body?: never;
     path: {
         /**
@@ -26202,7 +26202,7 @@ export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdBudge
     url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/jobs/{job_id}/budget';
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdBudgetResponses = {
+export type GetRecruiterJobPostingBudgetResponses = {
     /**
      * Default Response
      */
@@ -26259,9 +26259,9 @@ export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdBudge
     };
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdBudgetResponse = GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdBudgetResponses[keyof GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdBudgetResponses];
+export type GetRecruiterJobPostingBudgetResponse = GetRecruiterJobPostingBudgetResponses[keyof GetRecruiterJobPostingBudgetResponses];
 
-export type GetV2ByAccountIdLinkedinRecruiterJobsData = {
+export type GetRecruiterJobPostingListData = {
     body?: never;
     path: {
         /**
@@ -26315,7 +26315,7 @@ export type GetV2ByAccountIdLinkedinRecruiterJobsData = {
     url: '/v2/{account_id}/linkedin/recruiter/jobs';
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterJobsResponses = {
+export type GetRecruiterJobPostingListResponses = {
     /**
      * Default Response
      */
@@ -26367,9 +26367,9 @@ export type GetV2ByAccountIdLinkedinRecruiterJobsResponses = {
     };
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterJobsResponse = GetV2ByAccountIdLinkedinRecruiterJobsResponses[keyof GetV2ByAccountIdLinkedinRecruiterJobsResponses];
+export type GetRecruiterJobPostingListResponse = GetRecruiterJobPostingListResponses[keyof GetRecruiterJobPostingListResponses];
 
-export type PostV2ByAccountIdLinkedinRecruiterJobsData = {
+export type CreateRecruiterJobPostingDraftInNewProjectData = {
     body: {
         /**
          * The title of the job.
@@ -26530,7 +26530,7 @@ export type PostV2ByAccountIdLinkedinRecruiterJobsData = {
     url: '/v2/{account_id}/linkedin/recruiter/jobs';
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterJobsResponses = {
+export type CreateRecruiterJobPostingDraftInNewProjectResponses = {
     /**
      * Default Response
      */
@@ -26547,9 +26547,9 @@ export type PostV2ByAccountIdLinkedinRecruiterJobsResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterJobsResponse = PostV2ByAccountIdLinkedinRecruiterJobsResponses[keyof PostV2ByAccountIdLinkedinRecruiterJobsResponses];
+export type CreateRecruiterJobPostingDraftInNewProjectResponse = CreateRecruiterJobPostingDraftInNewProjectResponses[keyof CreateRecruiterJobPostingDraftInNewProjectResponses];
 
-export type PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdData = {
+export type EditRecruiterJobPostingData = {
     body?: {
         /**
          * The title of the job.
@@ -26714,7 +26714,7 @@ export type PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdDat
     url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/jobs/{job_id}';
 };
 
-export type PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdResponses = {
+export type EditRecruiterJobPostingResponses = {
     /**
      * Default Response
      */
@@ -26723,9 +26723,9 @@ export type PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdRes
     };
 };
 
-export type PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdResponse = PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdResponses[keyof PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdResponses];
+export type EditRecruiterJobPostingResponse = EditRecruiterJobPostingResponses[keyof EditRecruiterJobPostingResponses];
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdPublishData = {
+export type PublishRecruiterJobPostingData = {
     body?: {
         /**
          * Whether not to verify if you're allowed to post a job on behalf on the current company.
@@ -26783,7 +26783,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdPubl
     url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/jobs/{job_id}/publish';
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdPublishResponses = {
+export type PublishRecruiterJobPostingResponses = {
     /**
      * Default Response
      */
@@ -26796,9 +26796,9 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdPubl
     };
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdPublishResponse = PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdPublishResponses[keyof PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdPublishResponses];
+export type PublishRecruiterJobPostingResponse = PublishRecruiterJobPostingResponses[keyof PublishRecruiterJobPostingResponses];
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdCloseData = {
+export type CloseRecruiterJobPostingData = {
     body?: never;
     path: {
         /**
@@ -26818,7 +26818,7 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdClos
     url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/jobs/{job_id}/close';
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdCloseResponses = {
+export type CloseRecruiterJobPostingResponses = {
     /**
      * Default Response
      */
@@ -26827,9 +26827,9 @@ export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdClos
     };
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdCloseResponse = PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdCloseResponses[keyof PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdCloseResponses];
+export type CloseRecruiterJobPostingResponse = CloseRecruiterJobPostingResponses[keyof CloseRecruiterJobPostingResponses];
 
-export type GetV2ByAccountIdLinkedinRecruiterJobsByJobIdData = {
+export type GetRecruiterJobPostingByIdData = {
     body?: never;
     path: {
         /**
@@ -26845,7 +26845,7 @@ export type GetV2ByAccountIdLinkedinRecruiterJobsByJobIdData = {
     url: '/v2/{account_id}/linkedin/recruiter/jobs/{job_id}';
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterJobsByJobIdResponses = {
+export type GetRecruiterJobPostingByIdResponses = {
     /**
      * Default Response
      */
@@ -26982,9 +26982,9 @@ export type GetV2ByAccountIdLinkedinRecruiterJobsByJobIdResponses = {
     };
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterJobsByJobIdResponse = GetV2ByAccountIdLinkedinRecruiterJobsByJobIdResponses[keyof GetV2ByAccountIdLinkedinRecruiterJobsByJobIdResponses];
+export type GetRecruiterJobPostingByIdResponse = GetRecruiterJobPostingByIdResponses[keyof GetRecruiterJobPostingByIdResponses];
 
-export type PostV2ByAccountIdLinkedinRecruiterSearchData = {
+export type PerformRecruiterSearchFromUrlData = {
     body: {
         /**
          * The URL to perform the search from.
@@ -27010,7 +27010,7 @@ export type PostV2ByAccountIdLinkedinRecruiterSearchData = {
     url: '/v2/{account_id}/linkedin/recruiter/search';
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterSearchResponses = {
+export type PerformRecruiterSearchFromUrlResponses = {
     /**
      * Default Response
      */
@@ -27417,7 +27417,7 @@ export type PostV2ByAccountIdLinkedinRecruiterSearchResponses = {
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -27530,7 +27530,7 @@ export type PostV2ByAccountIdLinkedinRecruiterSearchResponses = {
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -28006,7 +28006,7 @@ export type PostV2ByAccountIdLinkedinRecruiterSearchResponses = {
                         id: string;
                         object: 'User';
                         /**
-                         * Type of the user.
+                         * Type of the user
                          * - `individual` is an individual user.
                          * - `organization` is an organization / business entity.
                          * - `other` is an other type of entity.
@@ -28119,7 +28119,7 @@ export type PostV2ByAccountIdLinkedinRecruiterSearchResponses = {
                         id: string;
                         object: 'User';
                         /**
-                         * Type of the user.
+                         * Type of the user
                          * - `individual` is an individual user.
                          * - `organization` is an organization / business entity.
                          * - `other` is an other type of entity.
@@ -28562,7 +28562,7 @@ export type PostV2ByAccountIdLinkedinRecruiterSearchResponses = {
                         id: string;
                         object: 'User';
                         /**
-                         * Type of the user.
+                         * Type of the user
                          * - `individual` is an individual user.
                          * - `organization` is an organization / business entity.
                          * - `other` is an other type of entity.
@@ -28675,7 +28675,7 @@ export type PostV2ByAccountIdLinkedinRecruiterSearchResponses = {
                         id: string;
                         object: 'User';
                         /**
-                         * Type of the user.
+                         * Type of the user
                          * - `individual` is an individual user.
                          * - `organization` is an organization / business entity.
                          * - `other` is an other type of entity.
@@ -28720,9 +28720,9 @@ export type PostV2ByAccountIdLinkedinRecruiterSearchResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterSearchResponse = PostV2ByAccountIdLinkedinRecruiterSearchResponses[keyof PostV2ByAccountIdLinkedinRecruiterSearchResponses];
+export type PerformRecruiterSearchFromUrlResponse = PerformRecruiterSearchFromUrlResponses[keyof PerformRecruiterSearchFromUrlResponses];
 
-export type GetV2ByAccountIdLinkedinRecruiterSearchParametersData = {
+export type GetRecruiterSearchParametersData = {
     body?: never;
     path: {
         /**
@@ -28764,7 +28764,7 @@ export type GetV2ByAccountIdLinkedinRecruiterSearchParametersData = {
     url: '/v2/{account_id}/linkedin/recruiter/search/parameters';
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterSearchParametersResponses = {
+export type GetRecruiterSearchParametersResponses = {
     /**
      * Default Response
      */
@@ -28791,9 +28791,9 @@ export type GetV2ByAccountIdLinkedinRecruiterSearchParametersResponses = {
     };
 };
 
-export type GetV2ByAccountIdLinkedinRecruiterSearchParametersResponse = GetV2ByAccountIdLinkedinRecruiterSearchParametersResponses[keyof GetV2ByAccountIdLinkedinRecruiterSearchParametersResponses];
+export type GetRecruiterSearchParametersResponse = GetRecruiterSearchParametersResponses[keyof GetRecruiterSearchParametersResponses];
 
-export type PostV2ByAccountIdLinkedinRecruiterSearchPeopleData = {
+export type PerformRecruiterPeopleSearchData = {
     body?: {
         /**
          * A keyword or group of keywords.
@@ -29113,7 +29113,7 @@ export type PostV2ByAccountIdLinkedinRecruiterSearchPeopleData = {
     url: '/v2/{account_id}/linkedin/recruiter/search/people';
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterSearchPeopleResponses = {
+export type PerformRecruiterPeopleSearchResponses = {
     /**
      * People Search
      *
@@ -29522,7 +29522,7 @@ export type PostV2ByAccountIdLinkedinRecruiterSearchPeopleResponses = {
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -29635,7 +29635,7 @@ export type PostV2ByAccountIdLinkedinRecruiterSearchPeopleResponses = {
                     id: string;
                     object: 'User';
                     /**
-                     * Type of the user.
+                     * Type of the user
                      * - `individual` is an individual user.
                      * - `organization` is an organization / business entity.
                      * - `other` is an other type of entity.
@@ -29679,9 +29679,9 @@ export type PostV2ByAccountIdLinkedinRecruiterSearchPeopleResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterSearchPeopleResponse = PostV2ByAccountIdLinkedinRecruiterSearchPeopleResponses[keyof PostV2ByAccountIdLinkedinRecruiterSearchPeopleResponses];
+export type PerformRecruiterPeopleSearchResponse = PerformRecruiterPeopleSearchResponses[keyof PerformRecruiterPeopleSearchResponses];
 
-export type PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberVerifyEmailData = {
+export type VerifyRecruiterCompanyMemberIdentityData = {
     body: {
         /**
          * The email address to submit for verification.
@@ -29702,7 +29702,7 @@ export type PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberVerifyEmai
     url: '/v2/{account_id}/linkedin/recruiter/company/{company_id}/member/verify-email';
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberVerifyEmailResponses = {
+export type VerifyRecruiterCompanyMemberIdentityResponses = {
     /**
      * Default Response
      */
@@ -29715,9 +29715,9 @@ export type PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberVerifyEmai
     };
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberVerifyEmailResponse = PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberVerifyEmailResponses[keyof PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberVerifyEmailResponses];
+export type VerifyRecruiterCompanyMemberIdentityResponse = VerifyRecruiterCompanyMemberIdentityResponses[keyof VerifyRecruiterCompanyMemberIdentityResponses];
 
-export type PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberSubmitOtpData = {
+export type SubmitRecruiterOtpCodeData = {
     body: {
         /**
          * The email address on which you received the code.
@@ -29746,7 +29746,7 @@ export type PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberSubmitOtpD
     url: '/v2/{account_id}/linkedin/recruiter/company/{company_id}/member/submit-otp';
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberSubmitOtpResponses = {
+export type SubmitRecruiterOtpCodeResponses = {
     /**
      * Default Response
      */
@@ -29755,9 +29755,9 @@ export type PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberSubmitOtpR
     };
 };
 
-export type PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberSubmitOtpResponse = PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberSubmitOtpResponses[keyof PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberSubmitOtpResponses];
+export type SubmitRecruiterOtpCodeResponse = SubmitRecruiterOtpCodeResponses[keyof SubmitRecruiterOtpCodeResponses];
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorSearchData = {
+export type PerformSalesSearchFromUrlData = {
     body: {
         /**
          * The URL to perform the search from.
@@ -29783,7 +29783,7 @@ export type PostV2ByAccountIdLinkedinSalesNavigatorSearchData = {
     url: '/v2/{account_id}/linkedin/sales-navigator/search';
 };
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorSearchResponses = {
+export type PerformSalesSearchFromUrlResponses = {
     /**
      * Default Response
      */
@@ -31014,9 +31014,9 @@ export type PostV2ByAccountIdLinkedinSalesNavigatorSearchResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorSearchResponse = PostV2ByAccountIdLinkedinSalesNavigatorSearchResponses[keyof PostV2ByAccountIdLinkedinSalesNavigatorSearchResponses];
+export type PerformSalesSearchFromUrlResponse = PerformSalesSearchFromUrlResponses[keyof PerformSalesSearchFromUrlResponses];
 
-export type GetV2ByAccountIdLinkedinSalesNavigatorSearchParametersData = {
+export type GetSalesSearchParametersData = {
     body?: never;
     path: {
         /**
@@ -31045,7 +31045,7 @@ export type GetV2ByAccountIdLinkedinSalesNavigatorSearchParametersData = {
     url: '/v2/{account_id}/linkedin/sales-navigator/search/parameters';
 };
 
-export type GetV2ByAccountIdLinkedinSalesNavigatorSearchParametersResponses = {
+export type GetSalesSearchParametersResponses = {
     /**
      * Default Response
      */
@@ -31072,9 +31072,9 @@ export type GetV2ByAccountIdLinkedinSalesNavigatorSearchParametersResponses = {
     };
 };
 
-export type GetV2ByAccountIdLinkedinSalesNavigatorSearchParametersResponse = GetV2ByAccountIdLinkedinSalesNavigatorSearchParametersResponses[keyof GetV2ByAccountIdLinkedinSalesNavigatorSearchParametersResponses];
+export type GetSalesSearchParametersResponse = GetSalesSearchParametersResponses[keyof GetSalesSearchParametersResponses];
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorSearchPeopleData = {
+export type PerformSalesPeopleSearchData = {
     body?: {
         /**
          * A keyword or group of keywords.
@@ -31477,7 +31477,7 @@ export type PostV2ByAccountIdLinkedinSalesNavigatorSearchPeopleData = {
     url: '/v2/{account_id}/linkedin/sales-navigator/search/people';
 };
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorSearchPeopleResponses = {
+export type PerformSalesPeopleSearchResponses = {
     /**
      * People Search
      *
@@ -31831,9 +31831,9 @@ export type PostV2ByAccountIdLinkedinSalesNavigatorSearchPeopleResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorSearchPeopleResponse = PostV2ByAccountIdLinkedinSalesNavigatorSearchPeopleResponses[keyof PostV2ByAccountIdLinkedinSalesNavigatorSearchPeopleResponses];
+export type PerformSalesPeopleSearchResponse = PerformSalesPeopleSearchResponses[keyof PerformSalesPeopleSearchResponses];
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorSearchCompaniesData = {
+export type PerformSalesCompaniesSearchData = {
     body?: {
         /**
          * A keyword or group of keywords.
@@ -32014,7 +32014,7 @@ export type PostV2ByAccountIdLinkedinSalesNavigatorSearchCompaniesData = {
     url: '/v2/{account_id}/linkedin/sales-navigator/search/companies';
 };
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorSearchCompaniesResponses = {
+export type PerformSalesCompaniesSearchResponses = {
     /**
      * Companies Search
      *
@@ -32112,9 +32112,9 @@ export type PostV2ByAccountIdLinkedinSalesNavigatorSearchCompaniesResponses = {
     };
 };
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorSearchCompaniesResponse = PostV2ByAccountIdLinkedinSalesNavigatorSearchCompaniesResponses[keyof PostV2ByAccountIdLinkedinSalesNavigatorSearchCompaniesResponses];
+export type PerformSalesCompaniesSearchResponse = PerformSalesCompaniesSearchResponses[keyof PerformSalesCompaniesSearchResponses];
 
-export type GetV2ByAccountIdLinkedinSalesNavigatorLeadListsData = {
+export type GetSalesLeadListsData = {
     body?: never;
     path: {
         /**
@@ -32135,7 +32135,7 @@ export type GetV2ByAccountIdLinkedinSalesNavigatorLeadListsData = {
     url: '/v2/{account_id}/linkedin/sales-navigator/lead-lists';
 };
 
-export type GetV2ByAccountIdLinkedinSalesNavigatorLeadListsResponses = {
+export type GetSalesLeadListsResponses = {
     /**
      * Default Response
      */
@@ -32178,9 +32178,9 @@ export type GetV2ByAccountIdLinkedinSalesNavigatorLeadListsResponses = {
     };
 };
 
-export type GetV2ByAccountIdLinkedinSalesNavigatorLeadListsResponse = GetV2ByAccountIdLinkedinSalesNavigatorLeadListsResponses[keyof GetV2ByAccountIdLinkedinSalesNavigatorLeadListsResponses];
+export type GetSalesLeadListsResponse = GetSalesLeadListsResponses[keyof GetSalesLeadListsResponses];
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdData = {
+export type BrowseSalesLeadListData = {
     body?: {
         /**
          * Smart filter to help you prioritize leads.
@@ -32218,7 +32218,7 @@ export type PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdData = {
     url: '/v2/{account_id}/linkedin/sales-navigator/lead-lists/{list_id}';
 };
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdResponses = {
+export type BrowseSalesLeadListResponses = {
     /**
      * Lead List
      *
@@ -32603,9 +32603,9 @@ export type PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdResponses = 
     };
 };
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdResponse = PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdResponses[keyof PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdResponses];
+export type BrowseSalesLeadListResponse = BrowseSalesLeadListResponses[keyof BrowseSalesLeadListResponses];
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdSaveData = {
+export type SaveSalesLeadToListData = {
     body: {
         /**
          * The ID of the User to be saved as Lead to the List.
@@ -32626,7 +32626,7 @@ export type PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdSaveData = {
     url: '/v2/{account_id}/linkedin/sales-navigator/lead-lists/{list_id}/save';
 };
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdSaveResponses = {
+export type SaveSalesLeadToListResponses = {
     /**
      * Default Response
      */
@@ -32635,9 +32635,9 @@ export type PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdSaveResponse
     };
 };
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdSaveResponse = PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdSaveResponses[keyof PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdSaveResponses];
+export type SaveSalesLeadToListResponse = SaveSalesLeadToListResponses[keyof SaveSalesLeadToListResponses];
 
-export type GetV2ByAccountIdLinkedinSalesNavigatorAccountListsData = {
+export type GetSalesAccountListsData = {
     body?: never;
     path: {
         /**
@@ -32658,7 +32658,7 @@ export type GetV2ByAccountIdLinkedinSalesNavigatorAccountListsData = {
     url: '/v2/{account_id}/linkedin/sales-navigator/account-lists';
 };
 
-export type GetV2ByAccountIdLinkedinSalesNavigatorAccountListsResponses = {
+export type GetSalesAccountListsResponses = {
     /**
      * Default Response
      */
@@ -32701,9 +32701,9 @@ export type GetV2ByAccountIdLinkedinSalesNavigatorAccountListsResponses = {
     };
 };
 
-export type GetV2ByAccountIdLinkedinSalesNavigatorAccountListsResponse = GetV2ByAccountIdLinkedinSalesNavigatorAccountListsResponses[keyof GetV2ByAccountIdLinkedinSalesNavigatorAccountListsResponses];
+export type GetSalesAccountListsResponse = GetSalesAccountListsResponses[keyof GetSalesAccountListsResponses];
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdData = {
+export type BrowseSalesAccountListData = {
     body?: {
         persona?: string;
         /**
@@ -32745,7 +32745,7 @@ export type PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdData = {
     url: '/v2/{account_id}/linkedin/sales-navigator/account-lists/{list_id}';
 };
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdResponses = {
+export type BrowseSalesAccountListResponses = {
     /**
      * Account List
      *
@@ -33168,9 +33168,9 @@ export type PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdResponses
     };
 };
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdResponse = PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdResponses[keyof PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdResponses];
+export type BrowseSalesAccountListResponse = BrowseSalesAccountListResponses[keyof BrowseSalesAccountListResponses];
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdSaveData = {
+export type SaveSalesAccountToListData = {
     body: {
         /**
          * The ID of the Company to be saved as Account to the List.
@@ -33191,7 +33191,7 @@ export type PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdSaveData 
     url: '/v2/{account_id}/linkedin/sales-navigator/account-lists/{list_id}/save';
 };
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdSaveResponses = {
+export type SaveSalesAccountToListResponses = {
     /**
      * Default Response
      */
@@ -33200,9 +33200,9 @@ export type PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdSaveRespo
     };
 };
 
-export type PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdSaveResponse = PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdSaveResponses[keyof PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdSaveResponses];
+export type SaveSalesAccountToListResponse = SaveSalesAccountToListResponses[keyof SaveSalesAccountToListResponses];
 
-export type GetV2ByAccountIdInstagramSearchLocationsData = {
+export type SearchLocationsData = {
     body?: never;
     path: {
         /**
@@ -33227,7 +33227,7 @@ export type GetV2ByAccountIdInstagramSearchLocationsData = {
     url: '/v2/{account_id}/instagram/search/locations';
 };
 
-export type GetV2ByAccountIdInstagramSearchLocationsResponses = {
+export type SearchLocationsResponses = {
     /**
      * Default Response
      */
@@ -33242,9 +33242,9 @@ export type GetV2ByAccountIdInstagramSearchLocationsResponses = {
     }>;
 };
 
-export type GetV2ByAccountIdInstagramSearchLocationsResponse = GetV2ByAccountIdInstagramSearchLocationsResponses[keyof GetV2ByAccountIdInstagramSearchLocationsResponses];
+export type SearchLocationsResponse = SearchLocationsResponses[keyof SearchLocationsResponses];
 
-export type PostV2AuthCheckpointData = {
+export type SolveCheckpointData = {
     body: {
         /**
          * The code to solve the checkpoint. Check the AuthenticationCheckpoint response you have already obtained to see what type of code is expected.
@@ -33264,7 +33264,7 @@ export type PostV2AuthCheckpointData = {
     url: '/v2/auth/checkpoint';
 };
 
-export type PostV2AuthCheckpointResponses = {
+export type SolveCheckpointResponses = {
     /**
      * Default Response
      */
@@ -33406,9 +33406,9 @@ export type PostV2AuthCheckpointResponses = {
     };
 };
 
-export type PostV2AuthCheckpointResponse = PostV2AuthCheckpointResponses[keyof PostV2AuthCheckpointResponses];
+export type SolveCheckpointResponse = SolveCheckpointResponses[keyof SolveCheckpointResponses];
 
-export type PostV2AuthIntentData = {
+export type StartAuthIntentData = {
     body?: ({
         /**
          * The provider to authenticate with.
@@ -34069,7 +34069,7 @@ export type PostV2AuthIntentData = {
     url: '/v2/auth/intent';
 };
 
-export type PostV2AuthIntentResponses = {
+export type StartAuthIntentResponses = {
     /**
      * Default Response
      */
@@ -34211,9 +34211,9 @@ export type PostV2AuthIntentResponses = {
     };
 };
 
-export type PostV2AuthIntentResponse = PostV2AuthIntentResponses[keyof PostV2AuthIntentResponses];
+export type StartAuthIntentResponse = StartAuthIntentResponses[keyof StartAuthIntentResponses];
 
-export type PostV2AuthLinkData = {
+export type CreateAuthLinkData = {
     body?: {
         /**
          * The expiration date of the link. Use ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
@@ -35311,7 +35311,7 @@ export type PostV2AuthLinkData = {
     url: '/v2/auth/link';
 };
 
-export type PostV2AuthLinkResponses = {
+export type CreateAuthLinkResponses = {
     /**
      * Default Response
      */
@@ -35324,9 +35324,9 @@ export type PostV2AuthLinkResponses = {
     };
 };
 
-export type PostV2AuthLinkResponse = PostV2AuthLinkResponses[keyof PostV2AuthLinkResponses];
+export type CreateAuthLinkResponse = CreateAuthLinkResponses[keyof CreateAuthLinkResponses];
 
-export type DeleteV2AccountsByAccountIdData = {
+export type RemoveAccountData = {
     body?: never;
     path: {
         /**
@@ -35338,7 +35338,7 @@ export type DeleteV2AccountsByAccountIdData = {
     url: '/v2/accounts/{account_id}';
 };
 
-export type DeleteV2AccountsByAccountIdResponses = {
+export type RemoveAccountResponses = {
     /**
      * Default Response
      */
@@ -35347,9 +35347,9 @@ export type DeleteV2AccountsByAccountIdResponses = {
     };
 };
 
-export type DeleteV2AccountsByAccountIdResponse = DeleteV2AccountsByAccountIdResponses[keyof DeleteV2AccountsByAccountIdResponses];
+export type RemoveAccountResponse = RemoveAccountResponses[keyof RemoveAccountResponses];
 
-export type GetV2AccountsByAccountIdData = {
+export type GetAccountData = {
     body?: never;
     path: {
         account_id: string;
@@ -35358,7 +35358,7 @@ export type GetV2AccountsByAccountIdData = {
     url: '/v2/accounts/{account_id}';
 };
 
-export type GetV2AccountsByAccountIdResponses = {
+export type GetAccountResponses = {
     /**
      * Account
      *
@@ -35451,9 +35451,9 @@ export type GetV2AccountsByAccountIdResponses = {
     };
 };
 
-export type GetV2AccountsByAccountIdResponse = GetV2AccountsByAccountIdResponses[keyof GetV2AccountsByAccountIdResponses];
+export type GetAccountResponse = GetAccountResponses[keyof GetAccountResponses];
 
-export type PatchV2AccountsByAccountIdData = {
+export type UpdateAccountData = {
     body: {
         /**
          * Metadata of the account.
@@ -35501,7 +35501,7 @@ export type PatchV2AccountsByAccountIdData = {
     url: '/v2/accounts/{account_id}';
 };
 
-export type PatchV2AccountsByAccountIdResponses = {
+export type UpdateAccountResponses = {
     /**
      * Account
      *
@@ -35594,9 +35594,9 @@ export type PatchV2AccountsByAccountIdResponses = {
     };
 };
 
-export type PatchV2AccountsByAccountIdResponse = PatchV2AccountsByAccountIdResponses[keyof PatchV2AccountsByAccountIdResponses];
+export type UpdateAccountResponse = UpdateAccountResponses[keyof UpdateAccountResponses];
 
-export type GetV2AccountsData = {
+export type ListAccountsData = {
     body?: never;
     path?: never;
     query?: {
@@ -35632,7 +35632,7 @@ export type GetV2AccountsData = {
     url: '/v2/accounts/';
 };
 
-export type GetV2AccountsResponses = {
+export type ListAccountsResponses = {
     /**
      * Default Response
      */
@@ -35730,9 +35730,9 @@ export type GetV2AccountsResponses = {
     };
 };
 
-export type GetV2AccountsResponse = GetV2AccountsResponses[keyof GetV2AccountsResponses];
+export type ListAccountsResponse = ListAccountsResponses[keyof ListAccountsResponses];
 
-export type GetV2WebhooksConversationsData = {
+export type ListWebhookConversationsData = {
     body?: never;
     path?: never;
     query: {
@@ -35756,7 +35756,7 @@ export type GetV2WebhooksConversationsData = {
     url: '/v2/webhooks/conversations/';
 };
 
-export type GetV2WebhooksConversationsResponses = {
+export type ListWebhookConversationsResponses = {
     /**
      * Default Response
      */
@@ -35778,9 +35778,9 @@ export type GetV2WebhooksConversationsResponses = {
     };
 };
 
-export type GetV2WebhooksConversationsResponse = GetV2WebhooksConversationsResponses[keyof GetV2WebhooksConversationsResponses];
+export type ListWebhookConversationsResponse = ListWebhookConversationsResponses[keyof ListWebhookConversationsResponses];
 
-export type GetV2WebhooksEndpointsData = {
+export type ListWebhookEndpointsData = {
     body?: never;
     path?: never;
     query?: {
@@ -35796,7 +35796,7 @@ export type GetV2WebhooksEndpointsData = {
     url: '/v2/webhooks/endpoints/';
 };
 
-export type GetV2WebhooksEndpointsResponses = {
+export type ListWebhookEndpointsResponses = {
     /**
      * Default Response
      */
@@ -35816,9 +35816,9 @@ export type GetV2WebhooksEndpointsResponses = {
     };
 };
 
-export type GetV2WebhooksEndpointsResponse = GetV2WebhooksEndpointsResponses[keyof GetV2WebhooksEndpointsResponses];
+export type ListWebhookEndpointsResponse = ListWebhookEndpointsResponses[keyof ListWebhookEndpointsResponses];
 
-export type PostV2WebhooksEndpointsData = {
+export type CreateWebhookEndpointData = {
     body: {
         /**
          * The events that will trigger the webhook endpoint.
@@ -35839,7 +35839,7 @@ export type PostV2WebhooksEndpointsData = {
     url: '/v2/webhooks/endpoints/';
 };
 
-export type PostV2WebhooksEndpointsResponses = {
+export type CreateWebhookEndpointResponses = {
     /**
      * Default Response
      */
@@ -35855,9 +35855,9 @@ export type PostV2WebhooksEndpointsResponses = {
     };
 };
 
-export type PostV2WebhooksEndpointsResponse = PostV2WebhooksEndpointsResponses[keyof PostV2WebhooksEndpointsResponses];
+export type CreateWebhookEndpointResponse = CreateWebhookEndpointResponses[keyof CreateWebhookEndpointResponses];
 
-export type DeleteV2WebhooksEndpointsByIdData = {
+export type DeleteWebhookEndpointData = {
     body?: never;
     path: {
         /**
@@ -35869,7 +35869,7 @@ export type DeleteV2WebhooksEndpointsByIdData = {
     url: '/v2/webhooks/endpoints/{id}';
 };
 
-export type DeleteV2WebhooksEndpointsByIdResponses = {
+export type DeleteWebhookEndpointResponses = {
     /**
      * Default Response
      */
@@ -35878,9 +35878,9 @@ export type DeleteV2WebhooksEndpointsByIdResponses = {
     };
 };
 
-export type DeleteV2WebhooksEndpointsByIdResponse = DeleteV2WebhooksEndpointsByIdResponses[keyof DeleteV2WebhooksEndpointsByIdResponses];
+export type DeleteWebhookEndpointResponse = DeleteWebhookEndpointResponses[keyof DeleteWebhookEndpointResponses];
 
-export type GetV2WebhooksEndpointsByIdData = {
+export type GetWebhookEndpointData = {
     body?: never;
     path: {
         /**
@@ -35892,7 +35892,7 @@ export type GetV2WebhooksEndpointsByIdData = {
     url: '/v2/webhooks/endpoints/{id}';
 };
 
-export type GetV2WebhooksEndpointsByIdResponses = {
+export type GetWebhookEndpointResponses = {
     /**
      * Default Response
      */
@@ -35908,9 +35908,9 @@ export type GetV2WebhooksEndpointsByIdResponses = {
     };
 };
 
-export type GetV2WebhooksEndpointsByIdResponse = GetV2WebhooksEndpointsByIdResponses[keyof GetV2WebhooksEndpointsByIdResponses];
+export type GetWebhookEndpointResponse = GetWebhookEndpointResponses[keyof GetWebhookEndpointResponses];
 
-export type PatchV2WebhooksEndpointsByIdData = {
+export type UpdateWebhookEndpointData = {
     body?: {
         /**
          * The events that will trigger the webhook endpoint.
@@ -35940,7 +35940,7 @@ export type PatchV2WebhooksEndpointsByIdData = {
     url: '/v2/webhooks/endpoints/{id}';
 };
 
-export type PatchV2WebhooksEndpointsByIdResponses = {
+export type UpdateWebhookEndpointResponses = {
     /**
      * Default Response
      */
@@ -35956,4 +35956,4 @@ export type PatchV2WebhooksEndpointsByIdResponses = {
     };
 };
 
-export type PatchV2WebhooksEndpointsByIdResponse = PatchV2WebhooksEndpointsByIdResponses[keyof PatchV2WebhooksEndpointsByIdResponses];
+export type UpdateWebhookEndpointResponse = UpdateWebhookEndpointResponses[keyof UpdateWebhookEndpointResponses];
