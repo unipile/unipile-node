@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { DeleteV2AccountsByAccountIdData, DeleteV2AccountsByAccountIdResponses, DeleteV2ByAccountIdCalendarsByCalendarIdData, DeleteV2ByAccountIdCalendarsByCalendarIdEventsByEventIdData, DeleteV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses, DeleteV2ByAccountIdCalendarsByCalendarIdResponses, DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdData, DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsData, DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses, DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdResponses, DeleteV2ByAccountIdChatsByChatIdParticipantsByUserIdData, DeleteV2ByAccountIdChatsByChatIdParticipantsByUserIdResponses, DeleteV2ByAccountIdDraftsByDraftIdData, DeleteV2ByAccountIdDraftsByDraftIdResponses, DeleteV2ByAccountIdEmailsByEmailIdData, DeleteV2ByAccountIdEmailsByEmailIdResponses, DeleteV2ByAccountIdFoldersByFolderIdData, DeleteV2ByAccountIdFoldersByFolderIdResponses, DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdData, DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsData, DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses, DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses, DeleteV2ByAccountIdPostsByPostIdData, DeleteV2ByAccountIdPostsByPostIdReactionsData, DeleteV2ByAccountIdPostsByPostIdReactionsResponses, DeleteV2ByAccountIdPostsByPostIdResponses, DeleteV2ByAccountIdUsersMeRelationsByUserIdData, DeleteV2ByAccountIdUsersMeRelationsByUserIdResponses, DeleteV2WebhooksEndpointsByIdData, DeleteV2WebhooksEndpointsByIdResponses, GetV2AccountsByAccountIdData, GetV2AccountsByAccountIdResponses, GetV2AccountsData, GetV2AccountsResponses, GetV2ByAccountIdCalendarsByCalendarIdData, GetV2ByAccountIdCalendarsByCalendarIdEventsByEventIdData, GetV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses, GetV2ByAccountIdCalendarsByCalendarIdEventsData, GetV2ByAccountIdCalendarsByCalendarIdEventsResponses, GetV2ByAccountIdCalendarsByCalendarIdResponses, GetV2ByAccountIdCalendarsData, GetV2ByAccountIdCalendarsResponses, GetV2ByAccountIdChatsByChatIdData, GetV2ByAccountIdChatsByChatIdMessagesByMessageIdAttachmentsByAttachmentIdData, GetV2ByAccountIdChatsByChatIdMessagesByMessageIdAttachmentsByAttachmentIdResponses, GetV2ByAccountIdChatsByChatIdMessagesByMessageIdData, GetV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsData, GetV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses, GetV2ByAccountIdChatsByChatIdMessagesByMessageIdResponses, GetV2ByAccountIdChatsByChatIdMessagesData, GetV2ByAccountIdChatsByChatIdMessagesResponses, GetV2ByAccountIdChatsByChatIdParticipantsData, GetV2ByAccountIdChatsByChatIdParticipantsResponses, GetV2ByAccountIdChatsByChatIdResponses, GetV2ByAccountIdChatsData, GetV2ByAccountIdChatsResponses, GetV2ByAccountIdDraftsByDraftIdData, GetV2ByAccountIdDraftsByDraftIdResponses, GetV2ByAccountIdDraftsData, GetV2ByAccountIdDraftsResponses, GetV2ByAccountIdEmailsByEmailIdAttachmentsByAttachmentIdData, GetV2ByAccountIdEmailsByEmailIdAttachmentsByAttachmentIdResponses, GetV2ByAccountIdEmailsByEmailIdData, GetV2ByAccountIdEmailsByEmailIdResponses, GetV2ByAccountIdEmailsData, GetV2ByAccountIdEmailsResponses, GetV2ByAccountIdFoldersByFolderIdData, GetV2ByAccountIdFoldersByFolderIdEmailsData, GetV2ByAccountIdFoldersByFolderIdEmailsResponses, GetV2ByAccountIdFoldersByFolderIdResponses, GetV2ByAccountIdFoldersData, GetV2ByAccountIdFoldersResponses, GetV2ByAccountIdInboxesByInboxIdChatsData, GetV2ByAccountIdInboxesByInboxIdChatsResponses, GetV2ByAccountIdInboxesData, GetV2ByAccountIdInboxesResponses, GetV2ByAccountIdInstagramSearchLocationsData, GetV2ByAccountIdInstagramSearchLocationsResponses, GetV2ByAccountIdLinkedinCompanyByCompanyIdData, GetV2ByAccountIdLinkedinCompanyByCompanyIdResponses, GetV2ByAccountIdLinkedinInmailCreditsData, GetV2ByAccountIdLinkedinInmailCreditsResponses, GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdData, GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdResponses, GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdResumeData, GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdResumeResponses, GetV2ByAccountIdLinkedinJobsByJobIdBudgetData, GetV2ByAccountIdLinkedinJobsByJobIdBudgetResponses, GetV2ByAccountIdLinkedinJobsByJobIdData, GetV2ByAccountIdLinkedinJobsByJobIdResponses, GetV2ByAccountIdLinkedinJobsData, GetV2ByAccountIdLinkedinJobsResponses, GetV2ByAccountIdLinkedinRecruiterJobsByJobIdData, GetV2ByAccountIdLinkedinRecruiterJobsByJobIdResponses, GetV2ByAccountIdLinkedinRecruiterJobsData, GetV2ByAccountIdLinkedinRecruiterJobsResponses, GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdData, GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdBudgetData, GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdBudgetResponses, GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsData, GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsResponses, GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdResponses, GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsByApplicantIdResumeData, GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsByApplicantIdResumeResponses, GetV2ByAccountIdLinkedinRecruiterProjectsData, GetV2ByAccountIdLinkedinRecruiterProjectsResponses, GetV2ByAccountIdLinkedinRecruiterSearchParametersData, GetV2ByAccountIdLinkedinRecruiterSearchParametersResponses, GetV2ByAccountIdLinkedinSalesNavigatorAccountListsData, GetV2ByAccountIdLinkedinSalesNavigatorAccountListsResponses, GetV2ByAccountIdLinkedinSalesNavigatorLeadListsData, GetV2ByAccountIdLinkedinSalesNavigatorLeadListsResponses, GetV2ByAccountIdLinkedinSalesNavigatorSearchParametersData, GetV2ByAccountIdLinkedinSalesNavigatorSearchParametersResponses, GetV2ByAccountIdLinkedinSearchParametersData, GetV2ByAccountIdLinkedinSearchParametersResponses, GetV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsData, GetV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses, GetV2ByAccountIdPostsByPostIdCommentsByCommentIdRepliesData, GetV2ByAccountIdPostsByPostIdCommentsByCommentIdRepliesResponses, GetV2ByAccountIdPostsByPostIdCommentsData, GetV2ByAccountIdPostsByPostIdCommentsResponses, GetV2ByAccountIdPostsByPostIdData, GetV2ByAccountIdPostsByPostIdReactionsData, GetV2ByAccountIdPostsByPostIdReactionsResponses, GetV2ByAccountIdPostsByPostIdResponses, GetV2ByAccountIdThreadsByThreadIdData, GetV2ByAccountIdThreadsByThreadIdResponses, GetV2ByAccountIdUsersByUserIdData, GetV2ByAccountIdUsersByUserIdFollowersData, GetV2ByAccountIdUsersByUserIdFollowersResponses, GetV2ByAccountIdUsersByUserIdFollowingData, GetV2ByAccountIdUsersByUserIdFollowingResponses, GetV2ByAccountIdUsersByUserIdPostsData, GetV2ByAccountIdUsersByUserIdPostsResponses, GetV2ByAccountIdUsersByUserIdRelationsData, GetV2ByAccountIdUsersByUserIdRelationsResponses, GetV2ByAccountIdUsersByUserIdResponses, GetV2ByAccountIdUsersMeRelationRequestsData, GetV2ByAccountIdUsersMeRelationRequestsResponses, GetV2WebhooksConversationsData, GetV2WebhooksConversationsResponses, GetV2WebhooksEndpointsByIdData, GetV2WebhooksEndpointsByIdResponses, GetV2WebhooksEndpointsData, GetV2WebhooksEndpointsResponses, PatchV2AccountsByAccountIdData, PatchV2AccountsByAccountIdResponses, PatchV2ByAccountIdCalendarsByCalendarIdData, PatchV2ByAccountIdCalendarsByCalendarIdEventsByEventIdData, PatchV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses, PatchV2ByAccountIdCalendarsByCalendarIdResponses, PatchV2ByAccountIdChatsByChatIdData, PatchV2ByAccountIdChatsByChatIdResponses, PatchV2ByAccountIdDraftsByDraftIdData, PatchV2ByAccountIdDraftsByDraftIdResponses, PatchV2ByAccountIdFoldersByFolderIdData, PatchV2ByAccountIdFoldersByFolderIdResponses, PatchV2ByAccountIdLinkedinJobsByJobIdData, PatchV2ByAccountIdLinkedinJobsByJobIdResponses, PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdData, PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdData, PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdResponses, PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdResponses, PatchV2ByAccountIdPostsByPostIdCommentsByCommentIdData, PatchV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses, PatchV2ByAccountIdPostsByPostIdData, PatchV2ByAccountIdPostsByPostIdResponses, PatchV2ByAccountIdUsersByUserIdData, PatchV2ByAccountIdUsersByUserIdResponses, PatchV2WebhooksEndpointsByIdData, PatchV2WebhooksEndpointsByIdResponses, PostV2AuthCheckpointData, PostV2AuthCheckpointResponses, PostV2AuthIntentData, PostV2AuthIntentResponses, PostV2AuthLinkData, PostV2AuthLinkResponses, PostV2ByAccountIdCalendarsByCalendarIdEventsData, PostV2ByAccountIdCalendarsByCalendarIdEventsResponses, PostV2ByAccountIdCalendarsData, PostV2ByAccountIdCalendarsResponses, PostV2ByAccountIdChatsByChatIdComposingData, PostV2ByAccountIdChatsByChatIdComposingResponses, PostV2ByAccountIdChatsByChatIdMessagesByMessageIdForwardData, PostV2ByAccountIdChatsByChatIdMessagesByMessageIdForwardResponses, PostV2ByAccountIdChatsByChatIdMessagesByMessageIdModifyData, PostV2ByAccountIdChatsByChatIdMessagesByMessageIdModifyResponses, PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsData, PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses, PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReadData, PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReadResponses, PostV2ByAccountIdChatsByChatIdMessagesSendData, PostV2ByAccountIdChatsByChatIdMessagesSendResponses, PostV2ByAccountIdChatsByChatIdParticipantsData, PostV2ByAccountIdChatsByChatIdParticipantsResponses, PostV2ByAccountIdChatsSendData, PostV2ByAccountIdChatsSendResponses, PostV2ByAccountIdDraftsByDraftIdSendData, PostV2ByAccountIdDraftsByDraftIdSendResponses, PostV2ByAccountIdDraftsData, PostV2ByAccountIdDraftsResponses, PostV2ByAccountIdEmailsByEmailIdModifyData, PostV2ByAccountIdEmailsByEmailIdModifyResponses, PostV2ByAccountIdEmailsByEmailIdReadData, PostV2ByAccountIdEmailsByEmailIdReadResponses, PostV2ByAccountIdEmailsByEmailIdUnreadData, PostV2ByAccountIdEmailsByEmailIdUnreadResponses, PostV2ByAccountIdEmailsSendData, PostV2ByAccountIdEmailsSendResponses, PostV2ByAccountIdFoldersData, PostV2ByAccountIdFoldersResponses, PostV2ByAccountIdInboxesByInboxIdChatsSendData, PostV2ByAccountIdInboxesByInboxIdChatsSendResponses, PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberSubmitOtpData, PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberSubmitOtpResponses, PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberVerifyEmailData, PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberVerifyEmailResponses, PostV2ByAccountIdLinkedinData, PostV2ByAccountIdLinkedinJobsByJobIdApplicantsData, PostV2ByAccountIdLinkedinJobsByJobIdApplicantsResponses, PostV2ByAccountIdLinkedinJobsByJobIdCloseData, PostV2ByAccountIdLinkedinJobsByJobIdCloseResponses, PostV2ByAccountIdLinkedinJobsByJobIdPublishData, PostV2ByAccountIdLinkedinJobsByJobIdPublishResponses, PostV2ByAccountIdLinkedinJobsData, PostV2ByAccountIdLinkedinJobsResponses, PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberSubmitOtpData, PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberSubmitOtpResponses, PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberVerifyEmailData, PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberVerifyEmailResponses, PostV2ByAccountIdLinkedinRecruiterJobsData, PostV2ByAccountIdLinkedinRecruiterJobsResponses, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdCloseData, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdCloseResponses, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdPublishData, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdPublishResponses, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsData, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsResponses, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineCandidateSaveData, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineCandidateSaveResponses, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineData, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineResponses, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsByApplicantIdData, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsByApplicantIdResponses, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsData, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsResponses, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolSearchData, PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolSearchResponses, PostV2ByAccountIdLinkedinRecruiterProjectsData, PostV2ByAccountIdLinkedinRecruiterProjectsResponses, PostV2ByAccountIdLinkedinRecruiterSearchData, PostV2ByAccountIdLinkedinRecruiterSearchPeopleData, PostV2ByAccountIdLinkedinRecruiterSearchPeopleResponses, PostV2ByAccountIdLinkedinRecruiterSearchResponses, PostV2ByAccountIdLinkedinResponses, PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdData, PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdResponses, PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdSaveData, PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdSaveResponses, PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdData, PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdResponses, PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdSaveData, PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdSaveResponses, PostV2ByAccountIdLinkedinSalesNavigatorSearchCompaniesData, PostV2ByAccountIdLinkedinSalesNavigatorSearchCompaniesResponses, PostV2ByAccountIdLinkedinSalesNavigatorSearchData, PostV2ByAccountIdLinkedinSalesNavigatorSearchPeopleData, PostV2ByAccountIdLinkedinSalesNavigatorSearchPeopleResponses, PostV2ByAccountIdLinkedinSalesNavigatorSearchResponses, PostV2ByAccountIdLinkedinSearchCompaniesData, PostV2ByAccountIdLinkedinSearchCompaniesResponses, PostV2ByAccountIdLinkedinSearchData, PostV2ByAccountIdLinkedinSearchJobsData, PostV2ByAccountIdLinkedinSearchJobsResponses, PostV2ByAccountIdLinkedinSearchPeopleData, PostV2ByAccountIdLinkedinSearchPeopleResponses, PostV2ByAccountIdLinkedinSearchPostsData, PostV2ByAccountIdLinkedinSearchPostsResponses, PostV2ByAccountIdLinkedinSearchResponses, PostV2ByAccountIdPostsByPostIdCommentsByCommentIdData, PostV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsData, PostV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses, PostV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses, PostV2ByAccountIdPostsByPostIdCommentsData, PostV2ByAccountIdPostsByPostIdCommentsResponses, PostV2ByAccountIdPostsByPostIdReactionsData, PostV2ByAccountIdPostsByPostIdReactionsResponses, PostV2ByAccountIdPostsData, PostV2ByAccountIdPostsResponses, PostV2ByAccountIdPresenceData, PostV2ByAccountIdPresenceResponses, PostV2ByAccountIdUsersMeFollowByUserIdData, PostV2ByAccountIdUsersMeFollowByUserIdResponses, PostV2ByAccountIdUsersMeRelationRequestsByRequestIdAcceptData, PostV2ByAccountIdUsersMeRelationRequestsByRequestIdAcceptResponses, PostV2ByAccountIdUsersMeRelationRequestsByRequestIdCancelData, PostV2ByAccountIdUsersMeRelationRequestsByRequestIdCancelResponses, PostV2ByAccountIdUsersMeRelationRequestsData, PostV2ByAccountIdUsersMeRelationRequestsResponses, PostV2ByAccountIdUsersMeUnfollowByUserIdData, PostV2ByAccountIdUsersMeUnfollowByUserIdResponses, PostV2ByAccountIdUsersVisitProfileData, PostV2ByAccountIdUsersVisitProfileResponses, PostV2WebhooksEndpointsData, PostV2WebhooksEndpointsResponses } from './types.gen';
+import type { AcceptRelationRequestData, AcceptRelationRequestResponses, AddMessageReactionData, AddMessageReactionResponses, AddParticipantData, AddParticipantResponses, AddPostCommentData, AddPostCommentReactionData, AddPostCommentReactionResponses, AddPostCommentResponses, AddPostReactionData, AddPostReactionResponses, BrowseSalesAccountListData, BrowseSalesAccountListResponses, BrowseSalesLeadListData, BrowseSalesLeadListResponses, CancelRelationRequestData, CancelRelationRequestResponses, CloseClassicJobPostingData, CloseClassicJobPostingResponses, CloseRecruiterJobPostingData, CloseRecruiterJobPostingResponses, CreateAuthLinkData, CreateAuthLinkResponses, CreateCalendarData, CreateCalendarEventData, CreateCalendarEventResponses, CreateCalendarResponses, CreateClassicJobPostingDraftData, CreateClassicJobPostingDraftResponses, CreateDraftData, CreateDraftResponses, CreateFolderData, CreateFolderResponses, CreatePostData, CreatePostResponses, CreateRecruiterHiringProjectData, CreateRecruiterHiringProjectResponses, CreateRecruiterJobPostingDraftInExistingProjectData, CreateRecruiterJobPostingDraftInExistingProjectResponses, CreateRecruiterJobPostingDraftInNewProjectData, CreateRecruiterJobPostingDraftInNewProjectResponses, CreateRelationRequestData, CreateRelationRequestResponses, CreateWebhookEndpointData, CreateWebhookEndpointResponses, DeleteCalendarData, DeleteCalendarEventData, DeleteCalendarEventResponses, DeleteCalendarResponses, DeleteDraftData, DeleteDraftResponses, DeleteFolderData, DeleteFolderResponses, DeleteMessageData, DeleteMessageResponses, DeletePostCommentData, DeletePostCommentResponses, DeletePostData, DeletePostResponses, DeleteRelationData, DeleteRelationResponses, DeleteWebhookEndpointData, DeleteWebhookEndpointResponses, EditClassicJobPostingData, EditClassicJobPostingResponses, EditRecruiterHiringProjectData, EditRecruiterHiringProjectResponses, EditRecruiterJobPostingData, EditRecruiterJobPostingResponses, FollowUserData, FollowUserResponses, ForwardMessageData, ForwardMessageResponses, GetAccountData, GetAccountResponses, GetAttachment1Data, GetAttachment1Responses, GetAttachmentData, GetAttachmentResponses, GetCalendarData, GetCalendarEventData, GetCalendarEventListData, GetCalendarEventListResponses, GetCalendarEventResponses, GetCalendarResponses, GetCalendarsListData, GetCalendarsListResponses, GetChatData, GetChatResponses, GetChatsListData, GetChatsListResponses, GetClassicApplicantByIdData, GetClassicApplicantByIdResponses, GetClassicApplicantResumeData, GetClassicApplicantResumeResponses, GetClassicApplicantsData, GetClassicApplicantsResponses, GetClassicCompanyProfileData, GetClassicCompanyProfileResponses, GetClassicJobPostingBudgetData, GetClassicJobPostingBudgetResponses, GetClassicJobPostingData, GetClassicJobPostingResponses, GetClassicSearchParametersData, GetClassicSearchParametersResponses, GetDraftData, GetDraftResponses, GetDraftsListData, GetDraftsListResponses, GetEmailData, GetEmailResponses, GetEmailsListData, GetEmailsListResponses, GetFolderData, GetFolderEmailsListData, GetFolderEmailsListResponses, GetFolderResponses, GetFoldersListData, GetFoldersListResponses, GetInboxChatsListData, GetInboxChatsListResponses, GetInboxesListData, GetInboxesListResponses, GetInmailCreditsData, GetInmailCreditsResponses, GetMessageData, GetMessageReactionsListData, GetMessageReactionsListResponses, GetMessageResponses, GetMessagesListData, GetMessagesListResponses, GetParticipantsListData, GetParticipantsListResponses, GetPostCommentReactionsListData, GetPostCommentReactionsListResponses, GetPostCommentRepliesListData, GetPostCommentRepliesListResponses, GetPostCommentsListData, GetPostCommentsListResponses, GetPostData, GetPostReactionsListData, GetPostReactionsListResponses, GetPostResponses, GetPostsListData, GetPostsListResponses, GetRecruiterApplicantByIdData, GetRecruiterApplicantByIdResponses, GetRecruiterApplicantResumeData, GetRecruiterApplicantResumeResponses, GetRecruiterHiringProjectData, GetRecruiterHiringProjectListData, GetRecruiterHiringProjectListResponses, GetRecruiterHiringProjectResponses, GetRecruiterJobPostingBudgetData, GetRecruiterJobPostingBudgetResponses, GetRecruiterJobPostingByIdData, GetRecruiterJobPostingByIdResponses, GetRecruiterJobPostingByProjectIdData, GetRecruiterJobPostingByProjectIdResponses, GetRecruiterJobPostingListData, GetRecruiterJobPostingListResponses, GetRecruiterPipelineCandidatesData, GetRecruiterPipelineCandidatesResponses, GetRecruiterSearchParametersData, GetRecruiterSearchParametersResponses, GetRecruiterTalentPoolApplicantsData, GetRecruiterTalentPoolApplicantsResponses, GetRelationRequestsListData, GetRelationRequestsListResponses, GetSalesAccountListsData, GetSalesAccountListsResponses, GetSalesLeadListsData, GetSalesLeadListsResponses, GetSalesSearchParametersData, GetSalesSearchParametersResponses, GetThreadData, GetThreadResponses, GetUserProfileData, GetUserProfileResponses, GetUserRelationsData, GetUserRelationsResponses, GetWebhookEndpointData, GetWebhookEndpointResponses, ListAccountsData, ListAccountsResponses, ListClassicUserJobPostingsData, ListClassicUserJobPostingsResponses, ListUserFollowersData, ListUserFollowersResponses, ListUserFollowingData, ListUserFollowingResponses, ListWebhookConversationsData, ListWebhookConversationsResponses, ListWebhookEndpointsData, ListWebhookEndpointsResponses, ModifyEmailData, ModifyEmailResponses, ModifyMessageData, ModifyMessageResponses, PerformClassicCompaniesSearchData, PerformClassicCompaniesSearchResponses, PerformClassicJobsSearchData, PerformClassicJobsSearchResponses, PerformClassicPeopleSearchData, PerformClassicPeopleSearchResponses, PerformClassicPostsSearchData, PerformClassicPostsSearchResponses, PerformClassicSearchFromUrlData, PerformClassicSearchFromUrlResponses, PerformRecruiterPeopleSearchData, PerformRecruiterPeopleSearchFromTalentPoolData, PerformRecruiterPeopleSearchFromTalentPoolResponses, PerformRecruiterPeopleSearchResponses, PerformRecruiterSearchFromUrlData, PerformRecruiterSearchFromUrlResponses, PerformSalesCompaniesSearchData, PerformSalesCompaniesSearchResponses, PerformSalesPeopleSearchData, PerformSalesPeopleSearchResponses, PerformSalesSearchFromUrlData, PerformSalesSearchFromUrlResponses, ProxyRequestData, ProxyRequestResponses, PublishClassicJobPostingData, PublishClassicJobPostingResponses, PublishRecruiterJobPostingData, PublishRecruiterJobPostingResponses, ReadEmailData, ReadEmailResponses, ReadMessageData, ReadMessageResponses, RemoveAccountData, RemoveAccountResponses, RemoveMessageReactionData, RemoveMessageReactionResponses, RemoveParticipantData, RemoveParticipantResponses, RemovePostCommentReactionData, RemovePostCommentReactionResponses, RemovePostReactionData, RemovePostReactionResponses, ReplyToCommentData, ReplyToCommentResponses, SaveRecruiterCandidateToPipelineData, SaveRecruiterCandidateToPipelineResponses, SaveSalesAccountToListData, SaveSalesAccountToListResponses, SaveSalesLeadToListData, SaveSalesLeadToListResponses, SearchLocationsData, SearchLocationsResponses, SendDraftData, SendDraftResponses, SendEmailData, SendEmailResponses, SendMessageData, SendMessageResponses, SetComposingStatusData, SetComposingStatusResponses, SetPresenceData, SetPresenceResponses, SolveCheckpointData, SolveCheckpointResponses, StartAuthIntentData, StartAuthIntentResponses, StartChatData, StartChatFromInboxData, StartChatFromInboxResponses, StartChatResponses, SubmitClassicCompanyOtpCodeData, SubmitClassicCompanyOtpCodeResponses, SubmitRecruiterOtpCodeData, SubmitRecruiterOtpCodeResponses, TrashEmailData, TrashEmailResponses, UnfollowUserData, UnfollowUserResponses, UnreadEmailData, UnreadEmailResponses, UpdateAccountData, UpdateAccountResponses, UpdateCalendarData, UpdateCalendarEventData, UpdateCalendarEventResponses, UpdateCalendarResponses, UpdateChatData, UpdateChatResponses, UpdateDraftData, UpdateDraftResponses, UpdateFolderData, UpdateFolderResponses, UpdatePostCommentData, UpdatePostCommentResponses, UpdatePostData, UpdatePostResponses, UpdateUserProfileData, UpdateUserProfileResponses, UpdateWebhookEndpointData, UpdateWebhookEndpointResponses, VerifyClassicCompanyMemberIdentityData, VerifyClassicCompanyMemberIdentityResponses, VerifyRecruiterCompanyMemberIdentityData, VerifyRecruiterCompanyMemberIdentityResponses, VisitUserProfileData, VisitUserProfileResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -36,7 +36,7 @@ class HeyApiRegistry<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileClient()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileMessaging()" to fix this error.`);
         }
         return instance;
     }
@@ -46,14 +46,304 @@ class HeyApiRegistry<T> {
     }
 }
 
-export class Messaging extends HeyApiClient {
+class HeyApiClient2 {
+    protected client: Client;
+    
+    constructor(args?: {
+        client?: Client;
+    }) {
+        this.client = args?.client ?? client;
+    }
+}
+
+class HeyApiRegistry2<T> {
+    private readonly defaultKey = 'default';
+    
+    private readonly instances: Map<string, T> = new Map();
+    
+    get(key?: string): T {
+        const instance = this.instances.get(key ?? this.defaultKey);
+        if (!instance) {
+            throw new Error(`No SDK client found. Create one with "new UnipileEmails()" to fix this error.`);
+        }
+        return instance;
+    }
+    
+    set(value: T, key?: string): void {
+        this.instances.set(key ?? this.defaultKey, value);
+    }
+}
+
+class HeyApiClient3 {
+    protected client: Client;
+    
+    constructor(args?: {
+        client?: Client;
+    }) {
+        this.client = args?.client ?? client;
+    }
+}
+
+class HeyApiRegistry3<T> {
+    private readonly defaultKey = 'default';
+    
+    private readonly instances: Map<string, T> = new Map();
+    
+    get(key?: string): T {
+        const instance = this.instances.get(key ?? this.defaultKey);
+        if (!instance) {
+            throw new Error(`No SDK client found. Create one with "new UnipileUsers()" to fix this error.`);
+        }
+        return instance;
+    }
+    
+    set(value: T, key?: string): void {
+        this.instances.set(key ?? this.defaultKey, value);
+    }
+}
+
+class HeyApiClient4 {
+    protected client: Client;
+    
+    constructor(args?: {
+        client?: Client;
+    }) {
+        this.client = args?.client ?? client;
+    }
+}
+
+class HeyApiRegistry4<T> {
+    private readonly defaultKey = 'default';
+    
+    private readonly instances: Map<string, T> = new Map();
+    
+    get(key?: string): T {
+        const instance = this.instances.get(key ?? this.defaultKey);
+        if (!instance) {
+            throw new Error(`No SDK client found. Create one with "new UnipilePosts()" to fix this error.`);
+        }
+        return instance;
+    }
+    
+    set(value: T, key?: string): void {
+        this.instances.set(key ?? this.defaultKey, value);
+    }
+}
+
+class HeyApiClient5 {
+    protected client: Client;
+    
+    constructor(args?: {
+        client?: Client;
+    }) {
+        this.client = args?.client ?? client;
+    }
+}
+
+class HeyApiRegistry5<T> {
+    private readonly defaultKey = 'default';
+    
+    private readonly instances: Map<string, T> = new Map();
+    
+    get(key?: string): T {
+        const instance = this.instances.get(key ?? this.defaultKey);
+        if (!instance) {
+            throw new Error(`No SDK client found. Create one with "new UnipileCalendar()" to fix this error.`);
+        }
+        return instance;
+    }
+    
+    set(value: T, key?: string): void {
+        this.instances.set(key ?? this.defaultKey, value);
+    }
+}
+
+class HeyApiClient6 {
+    protected client: Client;
+    
+    constructor(args?: {
+        client?: Client;
+    }) {
+        this.client = args?.client ?? client;
+    }
+}
+
+class HeyApiRegistry6<T> {
+    private readonly defaultKey = 'default';
+    
+    private readonly instances: Map<string, T> = new Map();
+    
+    get(key?: string): T {
+        const instance = this.instances.get(key ?? this.defaultKey);
+        if (!instance) {
+            throw new Error(`No SDK client found. Create one with "new UnipileLinkedIn()" to fix this error.`);
+        }
+        return instance;
+    }
+    
+    set(value: T, key?: string): void {
+        this.instances.set(key ?? this.defaultKey, value);
+    }
+}
+
+class HeyApiClient7 {
+    protected client: Client;
+    
+    constructor(args?: {
+        client?: Client;
+    }) {
+        this.client = args?.client ?? client;
+    }
+}
+
+class HeyApiRegistry7<T> {
+    private readonly defaultKey = 'default';
+    
+    private readonly instances: Map<string, T> = new Map();
+    
+    get(key?: string): T {
+        const instance = this.instances.get(key ?? this.defaultKey);
+        if (!instance) {
+            throw new Error(`No SDK client found. Create one with "new UnipileInstagram()" to fix this error.`);
+        }
+        return instance;
+    }
+    
+    set(value: T, key?: string): void {
+        this.instances.set(key ?? this.defaultKey, value);
+    }
+}
+
+class HeyApiClient8 {
+    protected client: Client;
+    
+    constructor(args?: {
+        client?: Client;
+    }) {
+        this.client = args?.client ?? client;
+    }
+}
+
+class HeyApiRegistry8<T> {
+    private readonly defaultKey = 'default';
+    
+    private readonly instances: Map<string, T> = new Map();
+    
+    get(key?: string): T {
+        const instance = this.instances.get(key ?? this.defaultKey);
+        if (!instance) {
+            throw new Error(`No SDK client found. Create one with "new UnipileCustomAuth()" to fix this error.`);
+        }
+        return instance;
+    }
+    
+    set(value: T, key?: string): void {
+        this.instances.set(key ?? this.defaultKey, value);
+    }
+}
+
+class HeyApiClient9 {
+    protected client: Client;
+    
+    constructor(args?: {
+        client?: Client;
+    }) {
+        this.client = args?.client ?? client;
+    }
+}
+
+class HeyApiRegistry9<T> {
+    private readonly defaultKey = 'default';
+    
+    private readonly instances: Map<string, T> = new Map();
+    
+    get(key?: string): T {
+        const instance = this.instances.get(key ?? this.defaultKey);
+        if (!instance) {
+            throw new Error(`No SDK client found. Create one with "new UnipileHostedAuth()" to fix this error.`);
+        }
+        return instance;
+    }
+    
+    set(value: T, key?: string): void {
+        this.instances.set(key ?? this.defaultKey, value);
+    }
+}
+
+class HeyApiClient10 {
+    protected client: Client;
+    
+    constructor(args?: {
+        client?: Client;
+    }) {
+        this.client = args?.client ?? client;
+    }
+}
+
+class HeyApiRegistry10<T> {
+    private readonly defaultKey = 'default';
+    
+    private readonly instances: Map<string, T> = new Map();
+    
+    get(key?: string): T {
+        const instance = this.instances.get(key ?? this.defaultKey);
+        if (!instance) {
+            throw new Error(`No SDK client found. Create one with "new UnipileAccounts()" to fix this error.`);
+        }
+        return instance;
+    }
+    
+    set(value: T, key?: string): void {
+        this.instances.set(key ?? this.defaultKey, value);
+    }
+}
+
+class HeyApiClient11 {
+    protected client: Client;
+    
+    constructor(args?: {
+        client?: Client;
+    }) {
+        this.client = args?.client ?? client;
+    }
+}
+
+class HeyApiRegistry11<T> {
+    private readonly defaultKey = 'default';
+    
+    private readonly instances: Map<string, T> = new Map();
+    
+    get(key?: string): T {
+        const instance = this.instances.get(key ?? this.defaultKey);
+        if (!instance) {
+            throw new Error(`No SDK client found. Create one with "new UnipileWebhooks()" to fix this error.`);
+        }
+        return instance;
+    }
+    
+    set(value: T, key?: string): void {
+        this.instances.set(key ?? this.defaultKey, value);
+    }
+}
+
+export class UnipileMessaging extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry<UnipileMessaging>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipileMessaging.__registry.set(this, args?.key);
+    }
+    
     /**
      * List all Chats
      *
      * Returns a list of account's chats, whatever the inbox they belong to. The chats are returned sorted by their last message date, with the most recent appearing first. You might want to use the <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes-inbox-id-chats">List inbox Chats</a> instead if not supported by the provider. Filters are applied with an AND logic if supported by the provider.
      */
-    public getChatsList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdChatsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdChatsResponses, unknown, ThrowOnError>({
+    public getChatsList<ThrowOnError extends boolean = false>(options: Options<GetChatsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetChatsListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats',
             ...options
@@ -65,8 +355,8 @@ export class Messaging extends HeyApiClient {
      *
      * Returns a list of the account's Inboxes.
      */
-    public getInboxesList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdInboxesData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdInboxesResponses, unknown, ThrowOnError>({
+    public getInboxesList<ThrowOnError extends boolean = false>(options: Options<GetInboxesListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetInboxesListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/inboxes',
             ...options
@@ -78,8 +368,8 @@ export class Messaging extends HeyApiClient {
      *
      * Returns a list of account's chats from a specific inbox. The chats are returned sorted by their last message date, with the most recent appearing first. Filters are applied with an AND logic if supported by the provider.
      */
-    public getInboxChatsList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdInboxesByInboxIdChatsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdInboxesByInboxIdChatsResponses, unknown, ThrowOnError>({
+    public getInboxChatsList<ThrowOnError extends boolean = false>(options: Options<GetInboxChatsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetInboxChatsListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/inboxes/{inbox_id}/chats',
             ...options
@@ -91,8 +381,8 @@ export class Messaging extends HeyApiClient {
      *
      * Retrieves a Chat object.
      */
-    public getChat<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdChatsByChatIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdChatsByChatIdResponses, unknown, ThrowOnError>({
+    public getChat<ThrowOnError extends boolean = false>(options: Options<GetChatData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetChatResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}',
             ...options
@@ -104,8 +394,8 @@ export class Messaging extends HeyApiClient {
      *
      * Updates the specified chat by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
      */
-    public updateChat<ThrowOnError extends boolean = false>(options: Options<PatchV2ByAccountIdChatsByChatIdData, ThrowOnError>) {
-        return (options.client ?? this.client).patch<PatchV2ByAccountIdChatsByChatIdResponses, unknown, ThrowOnError>({
+    public updateChat<ThrowOnError extends boolean = false>(options: Options<UpdateChatData, ThrowOnError>) {
+        return (options.client ?? this.client).patch<UpdateChatResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}',
             ...options,
@@ -125,8 +415,8 @@ export class Messaging extends HeyApiClient {
      * <br/>
      * Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-account-id-inboxes-inbox-id-chats">Start a Chat from Inbox</a> if the provider uses the inbox concept.
      */
-    public startChat<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdChatsSendData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdChatsSendResponses, unknown, ThrowOnError>({
+    public startChat<ThrowOnError extends boolean = false>(options: Options<StartChatData, ThrowOnError>) {
+        return (options.client ?? this.client).post<StartChatResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/send',
             ...options,
@@ -147,8 +437,8 @@ export class Messaging extends HeyApiClient {
      * Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send">Start a Chat</a> instead if the provider does not use the inbox concept.
      *
      */
-    public startChatFromInbox<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdInboxesByInboxIdChatsSendData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdInboxesByInboxIdChatsSendResponses, unknown, ThrowOnError>({
+    public startChatFromInbox<ThrowOnError extends boolean = false>(options: Options<StartChatFromInboxData, ThrowOnError>) {
+        return (options.client ?? this.client).post<StartChatFromInboxResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/inboxes/{inbox_id}/chats/send',
             ...options,
@@ -164,8 +454,8 @@ export class Messaging extends HeyApiClient {
      *
      * Returns a list of messages in a chat. The messages are returned sorted by their timestamp, with the most recent appearing first.
      */
-    public getMessagesList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdChatsByChatIdMessagesData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdChatsByChatIdMessagesResponses, unknown, ThrowOnError>({
+    public getMessagesList<ThrowOnError extends boolean = false>(options: Options<GetMessagesListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetMessagesListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}/messages',
             ...options
@@ -179,8 +469,8 @@ export class Messaging extends HeyApiClient {
      * <br />
      * Trying to delete the message of another user will fail.
      */
-    public deleteMessage<ThrowOnError extends boolean = false>(options: Options<DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdData, ThrowOnError>) {
-        return (options.client ?? this.client).delete<DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdResponses, unknown, ThrowOnError>({
+    public deleteMessage<ThrowOnError extends boolean = false>(options: Options<DeleteMessageData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<DeleteMessageResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}',
             ...options
@@ -192,8 +482,8 @@ export class Messaging extends HeyApiClient {
      *
      * Retrieves a message object.
      */
-    public getMessage<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdChatsByChatIdMessagesByMessageIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdChatsByChatIdMessagesByMessageIdResponses, unknown, ThrowOnError>({
+    public getMessage<ThrowOnError extends boolean = false>(options: Options<GetMessageData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetMessageResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}',
             ...options
@@ -207,8 +497,8 @@ export class Messaging extends HeyApiClient {
      * <br/>
      * Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send">Start a Chat</a> if you don't have a conversation with the wanted user(s) yet.
      */
-    public sendMessage<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdChatsByChatIdMessagesSendData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdChatsByChatIdMessagesSendResponses, unknown, ThrowOnError>({
+    public sendMessage<ThrowOnError extends boolean = false>(options: Options<SendMessageData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SendMessageResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}/messages/send',
             ...options,
@@ -224,8 +514,8 @@ export class Messaging extends HeyApiClient {
      *
      * Forwards a message to another chat.
      */
-    public forwardMessage<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdChatsByChatIdMessagesByMessageIdForwardData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdChatsByChatIdMessagesByMessageIdForwardResponses, unknown, ThrowOnError>({
+    public forwardMessage<ThrowOnError extends boolean = false>(options: Options<ForwardMessageData, ThrowOnError>) {
+        return (options.client ?? this.client).post<ForwardMessageResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/forward',
             ...options,
@@ -243,8 +533,8 @@ export class Messaging extends HeyApiClient {
      * <br/>
      * Trying to modify the message of another user will fail.
      */
-    public modifyMessage<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdChatsByChatIdMessagesByMessageIdModifyData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdChatsByChatIdMessagesByMessageIdModifyResponses, unknown, ThrowOnError>({
+    public modifyMessage<ThrowOnError extends boolean = false>(options: Options<ModifyMessageData, ThrowOnError>) {
+        return (options.client ?? this.client).post<ModifyMessageResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/modify',
             ...options,
@@ -262,8 +552,8 @@ export class Messaging extends HeyApiClient {
      * Trying to mark your own messages as read will fail.
      * This does not affect the read status of the chat. Use <a href="https://developer.unipile.com/v2.0/reference/patch_v2-account-id-chats-chat-id">Update a Chat</a> to mark a chat as read.
      */
-    public readMessage<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReadData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReadResponses, unknown, ThrowOnError>({
+    public readMessage<ThrowOnError extends boolean = false>(options: Options<ReadMessageData, ThrowOnError>) {
+        return (options.client ?? this.client).post<ReadMessageResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/read',
             ...options
@@ -277,8 +567,8 @@ export class Messaging extends HeyApiClient {
      * <br />
      * Trying to retrieve the list of participants of a 1to1 chat will fail.
      */
-    public getParticipantsList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdChatsByChatIdParticipantsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdChatsByChatIdParticipantsResponses, unknown, ThrowOnError>({
+    public getParticipantsList<ThrowOnError extends boolean = false>(options: Options<GetParticipantsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetParticipantsListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}/participants',
             ...options
@@ -292,8 +582,8 @@ export class Messaging extends HeyApiClient {
      * <br />
      * Trying to add a participant into a 1to1 chat can fail depending on the provider.
      */
-    public addParticipant<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdChatsByChatIdParticipantsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdChatsByChatIdParticipantsResponses, unknown, ThrowOnError>({
+    public addParticipant<ThrowOnError extends boolean = false>(options: Options<AddParticipantData, ThrowOnError>) {
+        return (options.client ?? this.client).post<AddParticipantResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}/participants',
             ...options,
@@ -311,8 +601,8 @@ export class Messaging extends HeyApiClient {
      * <br />
      * Trying to remove a participant from a 1to1 chat will fail.
      */
-    public removeParticipant<ThrowOnError extends boolean = false>(options: Options<DeleteV2ByAccountIdChatsByChatIdParticipantsByUserIdData, ThrowOnError>) {
-        return (options.client ?? this.client).delete<DeleteV2ByAccountIdChatsByChatIdParticipantsByUserIdResponses, unknown, ThrowOnError>({
+    public removeParticipant<ThrowOnError extends boolean = false>(options: Options<RemoveParticipantData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<RemoveParticipantResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}/participants/{user_id}',
             ...options
@@ -324,8 +614,8 @@ export class Messaging extends HeyApiClient {
      *
      * Removes a reaction of the account's owner from a message. Trying to remove a reaction from another user will fail.
      */
-    public removeMessageReaction<ThrowOnError extends boolean = false>(options: Options<DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsData, ThrowOnError>) {
-        return (options.client ?? this.client).delete<DeleteV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses, unknown, ThrowOnError>({
+    public removeMessageReaction<ThrowOnError extends boolean = false>(options: Options<RemoveMessageReactionData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<RemoveMessageReactionResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/reactions',
             ...options,
@@ -341,8 +631,8 @@ export class Messaging extends HeyApiClient {
      *
      * Returns the list of reactions made to a message. Reaction counts are given with the Message object. This is useful to show a detailed list of all reactions and their author.
      */
-    public getMessageReactionsList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses, unknown, ThrowOnError>({
+    public getMessageReactionsList<ThrowOnError extends boolean = false>(options: Options<GetMessageReactionsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetMessageReactionsListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/reactions',
             ...options
@@ -354,8 +644,8 @@ export class Messaging extends HeyApiClient {
      *
      * Adds a reaction to a message. Some providers only allow the use of a limited list of emojis, trying to react with an unsupported emoji will fail.
      */
-    public addMessageReaction<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdChatsByChatIdMessagesByMessageIdReactionsResponses, unknown, ThrowOnError>({
+    public addMessageReaction<ThrowOnError extends boolean = false>(options: Options<AddMessageReactionData, ThrowOnError>) {
+        return (options.client ?? this.client).post<AddMessageReactionResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/reactions',
             ...options,
@@ -371,8 +661,8 @@ export class Messaging extends HeyApiClient {
      *
      * Download the attachment file of a message.
      */
-    public getAttachment<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdChatsByChatIdMessagesByMessageIdAttachmentsByAttachmentIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdChatsByChatIdMessagesByMessageIdAttachmentsByAttachmentIdResponses, unknown, ThrowOnError>({
+    public getAttachment<ThrowOnError extends boolean = false>(options: Options<GetAttachmentData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetAttachmentResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/attachments/{attachment_id}',
             ...options
@@ -384,8 +674,8 @@ export class Messaging extends HeyApiClient {
      *
      * Sets the presence of the user.
      */
-    public setPresence<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdPresenceData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdPresenceResponses, unknown, ThrowOnError>({
+    public setPresence<ThrowOnError extends boolean = false>(options: Options<SetPresenceData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SetPresenceResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/presence',
             ...options,
@@ -401,8 +691,8 @@ export class Messaging extends HeyApiClient {
      *
      * Sets the composing status of the user in a chat.
      */
-    public setComposingStatus<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdChatsByChatIdComposingData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdChatsByChatIdComposingResponses, unknown, ThrowOnError>({
+    public setComposingStatus<ThrowOnError extends boolean = false>(options: Options<SetComposingStatusData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SetComposingStatusResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/chats/{chat_id}/composing',
             ...options
@@ -410,14 +700,24 @@ export class Messaging extends HeyApiClient {
     }
 }
 
-export class Emails extends HeyApiClient {
+export class UnipileEmails extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry2<UnipileEmails>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipileEmails.__registry.set(this, args?.key);
+    }
+    
     /**
      * List all Emails
      *
      * Returns a list of emails in the account mailbox. Emails are returned sorted by their `date`, with the most recent appearing first.
      */
-    public getEmailsList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdEmailsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdEmailsResponses, unknown, ThrowOnError>({
+    public getEmailsList<ThrowOnError extends boolean = false>(options: Options<GetEmailsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetEmailsListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/emails',
             ...options
@@ -429,8 +729,8 @@ export class Emails extends HeyApiClient {
      *
      * Returns a list of emails in the specific folder of the account mailbox. Emails are returned sorted by their `date`, with the most recent appearing first.
      */
-    public getFolderEmailsList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdFoldersByFolderIdEmailsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdFoldersByFolderIdEmailsResponses, unknown, ThrowOnError>({
+    public getFolderEmailsList<ThrowOnError extends boolean = false>(options: Options<GetFolderEmailsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetFolderEmailsListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/folders/{folder_id}/emails',
             ...options
@@ -442,8 +742,8 @@ export class Emails extends HeyApiClient {
      *
      * Returns a list of emails belonging to the specific thread. Emails are returned sorted by their `date`, with the most recent appearing first.
      */
-    public getThread<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdThreadsByThreadIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdThreadsByThreadIdResponses, unknown, ThrowOnError>({
+    public getThread<ThrowOnError extends boolean = false>(options: Options<GetThreadData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetThreadResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/threads/{thread_id}',
             ...options
@@ -455,8 +755,8 @@ export class Emails extends HeyApiClient {
      *
      * Moves the specified Email to the trash.
      */
-    public trashEmail<ThrowOnError extends boolean = false>(options: Options<DeleteV2ByAccountIdEmailsByEmailIdData, ThrowOnError>) {
-        return (options.client ?? this.client).delete<DeleteV2ByAccountIdEmailsByEmailIdResponses, unknown, ThrowOnError>({
+    public trashEmail<ThrowOnError extends boolean = false>(options: Options<TrashEmailData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<TrashEmailResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/emails/{email_id}',
             ...options
@@ -468,8 +768,8 @@ export class Emails extends HeyApiClient {
      *
      * Retrieve the specified Email.
      */
-    public getEmail<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdEmailsByEmailIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdEmailsByEmailIdResponses, unknown, ThrowOnError>({
+    public getEmail<ThrowOnError extends boolean = false>(options: Options<GetEmailData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetEmailResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/emails/{email_id}',
             ...options
@@ -481,8 +781,8 @@ export class Emails extends HeyApiClient {
      *
      * Download the attachment file of an Email.
      */
-    public getAttachment1<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdEmailsByEmailIdAttachmentsByAttachmentIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdEmailsByEmailIdAttachmentsByAttachmentIdResponses, unknown, ThrowOnError>({
+    public getAttachment1<ThrowOnError extends boolean = false>(options: Options<GetAttachment1Data, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetAttachment1Responses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/emails/{email_id}/attachments/{attachment_id}',
             ...options
@@ -494,8 +794,8 @@ export class Emails extends HeyApiClient {
      *
      * Modifies the folder(s) on the specified Email.
      */
-    public modifyEmail<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdEmailsByEmailIdModifyData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdEmailsByEmailIdModifyResponses, unknown, ThrowOnError>({
+    public modifyEmail<ThrowOnError extends boolean = false>(options: Options<ModifyEmailData, ThrowOnError>) {
+        return (options.client ?? this.client).post<ModifyEmailResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/emails/{email_id}/modify',
             ...options,
@@ -511,8 +811,8 @@ export class Emails extends HeyApiClient {
      *
      * Mark the specified Email as unread.
      */
-    public unreadEmail<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdEmailsByEmailIdUnreadData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdEmailsByEmailIdUnreadResponses, unknown, ThrowOnError>({
+    public unreadEmail<ThrowOnError extends boolean = false>(options: Options<UnreadEmailData, ThrowOnError>) {
+        return (options.client ?? this.client).post<UnreadEmailResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/emails/{email_id}/unread',
             ...options
@@ -524,8 +824,8 @@ export class Emails extends HeyApiClient {
      *
      * Mark the specified Email as read.
      */
-    public readEmail<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdEmailsByEmailIdReadData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdEmailsByEmailIdReadResponses, unknown, ThrowOnError>({
+    public readEmail<ThrowOnError extends boolean = false>(options: Options<ReadEmailData, ThrowOnError>) {
+        return (options.client ?? this.client).post<ReadEmailResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/emails/{email_id}/read',
             ...options
@@ -537,8 +837,8 @@ export class Emails extends HeyApiClient {
      *
      * Sends an Email to the recipients in the `to`, `cc`, and `bcc`.
      */
-    public sendEmail<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdEmailsSendData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdEmailsSendResponses, unknown, ThrowOnError>({
+    public sendEmail<ThrowOnError extends boolean = false>(options: Options<SendEmailData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SendEmailResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/emails/send',
             ...options,
@@ -554,8 +854,8 @@ export class Emails extends HeyApiClient {
      *
      * Returns a list of the account drafts. Drafts are returned sorted by their creation date, with the most recent appearing first.
      */
-    public getDraftsList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdDraftsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdDraftsResponses, unknown, ThrowOnError>({
+    public getDraftsList<ThrowOnError extends boolean = false>(options: Options<GetDraftsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetDraftsListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/drafts',
             ...options
@@ -567,8 +867,8 @@ export class Emails extends HeyApiClient {
      *
      * Creates a new Draft in the draft folder of the provider. Use <a href="@todo">Send a Draft</a> to send the Email later.
      */
-    public createDraft<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdDraftsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdDraftsResponses, unknown, ThrowOnError>({
+    public createDraft<ThrowOnError extends boolean = false>(options: Options<CreateDraftData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateDraftResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/drafts',
             ...options,
@@ -584,8 +884,8 @@ export class Emails extends HeyApiClient {
      *
      * Permanently deletes the specified Draft.
      */
-    public deleteDraft<ThrowOnError extends boolean = false>(options: Options<DeleteV2ByAccountIdDraftsByDraftIdData, ThrowOnError>) {
-        return (options.client ?? this.client).delete<DeleteV2ByAccountIdDraftsByDraftIdResponses, unknown, ThrowOnError>({
+    public deleteDraft<ThrowOnError extends boolean = false>(options: Options<DeleteDraftData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<DeleteDraftResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/drafts/{draft_id}',
             ...options
@@ -597,8 +897,8 @@ export class Emails extends HeyApiClient {
      *
      * Retrieve the specified Draft.
      */
-    public getDraft<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdDraftsByDraftIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdDraftsByDraftIdResponses, unknown, ThrowOnError>({
+    public getDraft<ThrowOnError extends boolean = false>(options: Options<GetDraftData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetDraftResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/drafts/{draft_id}',
             ...options
@@ -610,8 +910,8 @@ export class Emails extends HeyApiClient {
      *
      * Updates the specified Draft by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
      */
-    public updateDraft<ThrowOnError extends boolean = false>(options: Options<PatchV2ByAccountIdDraftsByDraftIdData, ThrowOnError>) {
-        return (options.client ?? this.client).patch<PatchV2ByAccountIdDraftsByDraftIdResponses, unknown, ThrowOnError>({
+    public updateDraft<ThrowOnError extends boolean = false>(options: Options<UpdateDraftData, ThrowOnError>) {
+        return (options.client ?? this.client).patch<UpdateDraftResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/drafts/{draft_id}',
             ...options,
@@ -627,8 +927,8 @@ export class Emails extends HeyApiClient {
      *
      * Sends the specified Draft to the recipients in the `to`, `cc`, and `bcc` fields of the draft.
      */
-    public sendDraft<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdDraftsByDraftIdSendData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdDraftsByDraftIdSendResponses, unknown, ThrowOnError>({
+    public sendDraft<ThrowOnError extends boolean = false>(options: Options<SendDraftData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SendDraftResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/drafts/{draft_id}/send',
             ...options
@@ -640,8 +940,8 @@ export class Emails extends HeyApiClient {
      *
      * Returns a list of folders in the account mailbox.
      */
-    public getFoldersList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdFoldersData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdFoldersResponses, unknown, ThrowOnError>({
+    public getFoldersList<ThrowOnError extends boolean = false>(options: Options<GetFoldersListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetFoldersListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/folders',
             ...options
@@ -653,8 +953,8 @@ export class Emails extends HeyApiClient {
      *
      * Creates a new Folder in the account mailbox.
      */
-    public createFolder<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdFoldersData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdFoldersResponses, unknown, ThrowOnError>({
+    public createFolder<ThrowOnError extends boolean = false>(options: Options<CreateFolderData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateFolderResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/folders',
             ...options,
@@ -670,8 +970,8 @@ export class Emails extends HeyApiClient {
      *
      * Deletes the specified Folder
      */
-    public deleteFolder<ThrowOnError extends boolean = false>(options: Options<DeleteV2ByAccountIdFoldersByFolderIdData, ThrowOnError>) {
-        return (options.client ?? this.client).delete<DeleteV2ByAccountIdFoldersByFolderIdResponses, unknown, ThrowOnError>({
+    public deleteFolder<ThrowOnError extends boolean = false>(options: Options<DeleteFolderData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<DeleteFolderResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/folders/{folder_id}',
             ...options
@@ -683,8 +983,8 @@ export class Emails extends HeyApiClient {
      *
      * Retrieves the specified Folder
      */
-    public getFolder<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdFoldersByFolderIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdFoldersByFolderIdResponses, unknown, ThrowOnError>({
+    public getFolder<ThrowOnError extends boolean = false>(options: Options<GetFolderData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetFolderResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/folders/{folder_id}',
             ...options
@@ -696,8 +996,8 @@ export class Emails extends HeyApiClient {
      *
      * Updates the specified Folder by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
      */
-    public updateFolder<ThrowOnError extends boolean = false>(options: Options<PatchV2ByAccountIdFoldersByFolderIdData, ThrowOnError>) {
-        return (options.client ?? this.client).patch<PatchV2ByAccountIdFoldersByFolderIdResponses, unknown, ThrowOnError>({
+    public updateFolder<ThrowOnError extends boolean = false>(options: Options<UpdateFolderData, ThrowOnError>) {
+        return (options.client ?? this.client).patch<UpdateFolderResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/folders/{folder_id}',
             ...options,
@@ -709,14 +1009,24 @@ export class Emails extends HeyApiClient {
     }
 }
 
-export class Users extends HeyApiClient {
+export class UnipileUsers extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry3<UnipileUsers>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipileUsers.__registry.set(this, args?.key);
+    }
+    
     /**
      * Get a User Profile
      *
      * Retrieves the specified User profile. Use `me` as `user_id` to specify the owner of the connected account.
      */
-    public getUserProfile<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdUsersByUserIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdUsersByUserIdResponses, unknown, ThrowOnError>({
+    public getUserProfile<ThrowOnError extends boolean = false>(options: Options<GetUserProfileData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetUserProfileResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/users/{user_id}',
             ...options
@@ -728,8 +1038,8 @@ export class Users extends HeyApiClient {
      *
      * Updates the specified User profile. Use `me` as `user_id` to update the account owner profile.
      */
-    public updateUserProfile<ThrowOnError extends boolean = false>(options: Options<PatchV2ByAccountIdUsersByUserIdData, ThrowOnError>) {
-        return (options.client ?? this.client).patch<PatchV2ByAccountIdUsersByUserIdResponses, unknown, ThrowOnError>({
+    public updateUserProfile<ThrowOnError extends boolean = false>(options: Options<UpdateUserProfileData, ThrowOnError>) {
+        return (options.client ?? this.client).patch<UpdateUserProfileResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/users/{user_id}',
             ...options,
@@ -745,8 +1055,8 @@ export class Users extends HeyApiClient {
      *
      * Report to the provider that you have visited a given user profile. This can be used to simulate engagement and activity.
      */
-    public visitUserProfile<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdUsersVisitProfileData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdUsersVisitProfileResponses, unknown, ThrowOnError>({
+    public visitUserProfile<ThrowOnError extends boolean = false>(options: Options<VisitUserProfileData, ThrowOnError>) {
+        return (options.client ?? this.client).post<VisitUserProfileResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/users/visit-profile',
             ...options
@@ -758,8 +1068,8 @@ export class Users extends HeyApiClient {
      *
      * Returns a list of bi-directional relations for the specified User. Use `me` as `user_id` to specify the owner of the connected account.
      */
-    public getUserRelations<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdUsersByUserIdRelationsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdUsersByUserIdRelationsResponses, unknown, ThrowOnError>({
+    public getUserRelations<ThrowOnError extends boolean = false>(options: Options<GetUserRelationsData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetUserRelationsResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/users/{user_id}/relations',
             ...options
@@ -771,8 +1081,8 @@ export class Users extends HeyApiClient {
      *
      * Deletes a bi-directional relation with another user. For uni-directional relations, use `Unfollow User` instead.
      */
-    public deleteRelation<ThrowOnError extends boolean = false>(options: Options<DeleteV2ByAccountIdUsersMeRelationsByUserIdData, ThrowOnError>) {
-        return (options.client ?? this.client).delete<DeleteV2ByAccountIdUsersMeRelationsByUserIdResponses, unknown, ThrowOnError>({
+    public deleteRelation<ThrowOnError extends boolean = false>(options: Options<DeleteRelationData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<DeleteRelationResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/users/me/relations/{user_id}',
             ...options
@@ -784,8 +1094,8 @@ export class Users extends HeyApiClient {
      *
      * Returns a list of pending relation / follow requests that have been sent or received by the owner of the account.
      */
-    public getRelationRequestsList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdUsersMeRelationRequestsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdUsersMeRelationRequestsResponses, unknown, ThrowOnError>({
+    public getRelationRequestsList<ThrowOnError extends boolean = false>(options: Options<GetRelationRequestsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetRelationRequestsListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/users/me/relation-requests',
             ...options
@@ -797,8 +1107,8 @@ export class Users extends HeyApiClient {
      *
      * Sends a bi-directional relation request to a user. Trying to send a relation request to an existing relation will fail. For uni-directional relations, use `Follow User` instead.
      */
-    public createRelationRequest<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdUsersMeRelationRequestsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdUsersMeRelationRequestsResponses, unknown, ThrowOnError>({
+    public createRelationRequest<ThrowOnError extends boolean = false>(options: Options<CreateRelationRequestData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateRelationRequestResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/users/me/relation-requests',
             ...options,
@@ -814,8 +1124,8 @@ export class Users extends HeyApiClient {
      *
      * Cancels the relation / follow request if sent by the owner of the account to another user. Refuses the relation / follow request if received by the owner of the account from another user.
      */
-    public cancelRelationRequest<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdUsersMeRelationRequestsByRequestIdCancelData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdUsersMeRelationRequestsByRequestIdCancelResponses, unknown, ThrowOnError>({
+    public cancelRelationRequest<ThrowOnError extends boolean = false>(options: Options<CancelRelationRequestData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CancelRelationRequestResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/users/me/relation-requests/{request_id}/cancel',
             ...options
@@ -827,8 +1137,8 @@ export class Users extends HeyApiClient {
      *
      * Accepts a received relation request from another user. Trying to accept a sent relation request will fail.
      */
-    public acceptRelationRequest<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdUsersMeRelationRequestsByRequestIdAcceptData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdUsersMeRelationRequestsByRequestIdAcceptResponses, unknown, ThrowOnError>({
+    public acceptRelationRequest<ThrowOnError extends boolean = false>(options: Options<AcceptRelationRequestData, ThrowOnError>) {
+        return (options.client ?? this.client).post<AcceptRelationRequestResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/users/me/relation-requests/{request_id}/accept',
             ...options
@@ -840,8 +1150,8 @@ export class Users extends HeyApiClient {
      *
      * Returns a list of followers of the specified User. Set `me` as `user_id` to specify the owner of the connected account.
      */
-    public listUserFollowers<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdUsersByUserIdFollowersData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdUsersByUserIdFollowersResponses, unknown, ThrowOnError>({
+    public listUserFollowers<ThrowOnError extends boolean = false>(options: Options<ListUserFollowersData, ThrowOnError>) {
+        return (options.client ?? this.client).get<ListUserFollowersResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/users/{user_id}/followers',
             ...options
@@ -853,8 +1163,8 @@ export class Users extends HeyApiClient {
      *
      * Returns a list of Users followed by the specified User. Set `me` as `user_id` to specify the owner of the connected account.
      */
-    public listUserFollowing<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdUsersByUserIdFollowingData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdUsersByUserIdFollowingResponses, unknown, ThrowOnError>({
+    public listUserFollowing<ThrowOnError extends boolean = false>(options: Options<ListUserFollowingData, ThrowOnError>) {
+        return (options.client ?? this.client).get<ListUserFollowingResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/users/{user_id}/following',
             ...options
@@ -866,8 +1176,8 @@ export class Users extends HeyApiClient {
      *
      * Follows a user. Trying to follow an already followed User will fail. For bi-directional relations, use `Send Relation Request` instead. If the User has a private profile, this will create a Follow Request.
      */
-    public followUser<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdUsersMeFollowByUserIdData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdUsersMeFollowByUserIdResponses, unknown, ThrowOnError>({
+    public followUser<ThrowOnError extends boolean = false>(options: Options<FollowUserData, ThrowOnError>) {
+        return (options.client ?? this.client).post<FollowUserResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/users/me/follow/{user_id}',
             ...options
@@ -879,23 +1189,46 @@ export class Users extends HeyApiClient {
      *
      * Unfollows a user. Trying to unfollow a not followed User will fail.
      */
-    public unfollowUser<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdUsersMeUnfollowByUserIdData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdUsersMeUnfollowByUserIdResponses, unknown, ThrowOnError>({
+    public unfollowUser<ThrowOnError extends boolean = false>(options: Options<UnfollowUserData, ThrowOnError>) {
+        return (options.client ?? this.client).post<UnfollowUserResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/users/me/unfollow/{user_id}',
             ...options
         });
     }
-}
-
-export class Posts extends HeyApiClient {
+    
     /**
      * List all User's Posts
      *
      * Returns a list of posts created or shared by a user. Use `me` as `user_id` to specify the owner of the connected account.
      */
-    public getPostsList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdUsersByUserIdPostsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdUsersByUserIdPostsResponses, unknown, ThrowOnError>({
+    public getPostsList<ThrowOnError extends boolean = false>(options: Options<GetPostsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetPostsListResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/users/{user_id}/posts',
+            ...options
+        });
+    }
+}
+
+export class UnipilePosts extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry4<UnipilePosts>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipilePosts.__registry.set(this, args?.key);
+    }
+    
+    /**
+     * List all User's Posts
+     *
+     * Returns a list of posts created or shared by a user. Use `me` as `user_id` to specify the owner of the connected account.
+     */
+    public getPostsList<ThrowOnError extends boolean = false>(options: Options<GetPostsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetPostsListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/users/{user_id}/posts',
             ...options
@@ -907,8 +1240,8 @@ export class Posts extends HeyApiClient {
      *
      * Deletes a post created by the owner of the account. Trying to delete a post created by another user will fail.
      */
-    public deletePost<ThrowOnError extends boolean = false>(options: Options<DeleteV2ByAccountIdPostsByPostIdData, ThrowOnError>) {
-        return (options.client ?? this.client).delete<DeleteV2ByAccountIdPostsByPostIdResponses, unknown, ThrowOnError>({
+    public deletePost<ThrowOnError extends boolean = false>(options: Options<DeletePostData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<DeletePostResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts/{post_id}',
             ...options
@@ -920,8 +1253,8 @@ export class Posts extends HeyApiClient {
      *
      * Retrieves the specified post.
      */
-    public getPost<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdPostsByPostIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdPostsByPostIdResponses, unknown, ThrowOnError>({
+    public getPost<ThrowOnError extends boolean = false>(options: Options<GetPostData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetPostResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts/{post_id}',
             ...options
@@ -933,8 +1266,8 @@ export class Posts extends HeyApiClient {
      *
      * Updates an existing post.
      */
-    public updatePost<ThrowOnError extends boolean = false>(options: Options<PatchV2ByAccountIdPostsByPostIdData, ThrowOnError>) {
-        return (options.client ?? this.client).patch<PatchV2ByAccountIdPostsByPostIdResponses, unknown, ThrowOnError>({
+    public updatePost<ThrowOnError extends boolean = false>(options: Options<UpdatePostData, ThrowOnError>) {
+        return (options.client ?? this.client).patch<UpdatePostResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts/{post_id}',
             ...options,
@@ -950,8 +1283,8 @@ export class Posts extends HeyApiClient {
      *
      * Creates a new post.
      */
-    public createPost<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdPostsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdPostsResponses, unknown, ThrowOnError>({
+    public createPost<ThrowOnError extends boolean = false>(options: Options<CreatePostData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreatePostResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts',
             ...options,
@@ -967,8 +1300,8 @@ export class Posts extends HeyApiClient {
      *
      * Removes a reaction from a post.
      */
-    public removePostReaction<ThrowOnError extends boolean = false>(options: Options<DeleteV2ByAccountIdPostsByPostIdReactionsData, ThrowOnError>) {
-        return (options.client ?? this.client).delete<DeleteV2ByAccountIdPostsByPostIdReactionsResponses, unknown, ThrowOnError>({
+    public removePostReaction<ThrowOnError extends boolean = false>(options: Options<RemovePostReactionData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<RemovePostReactionResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts/{post_id}/reactions',
             ...options,
@@ -984,8 +1317,8 @@ export class Posts extends HeyApiClient {
      *
      * Returns the list of reactions made to a post. Reaction counts are given with the Post object. This is useful to show a detailed list of all reactions and their author. LIMITATIONS: On Instagram, the list is always limited to a maximum of 100 reactions.
      */
-    public getPostReactionsList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdPostsByPostIdReactionsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdPostsByPostIdReactionsResponses, unknown, ThrowOnError>({
+    public getPostReactionsList<ThrowOnError extends boolean = false>(options: Options<GetPostReactionsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetPostReactionsListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts/{post_id}/reactions',
             ...options
@@ -997,8 +1330,8 @@ export class Posts extends HeyApiClient {
      *
      * Adds a reaction to a post.
      */
-    public addPostReaction<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdPostsByPostIdReactionsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdPostsByPostIdReactionsResponses, unknown, ThrowOnError>({
+    public addPostReaction<ThrowOnError extends boolean = false>(options: Options<AddPostReactionData, ThrowOnError>) {
+        return (options.client ?? this.client).post<AddPostReactionResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts/{post_id}/reactions',
             ...options,
@@ -1014,8 +1347,8 @@ export class Posts extends HeyApiClient {
      *
      * Returns a list of post comments. The comments are returned sorted by their creation date, with the most recent appearing first.
      */
-    public getPostCommentsList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdPostsByPostIdCommentsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdPostsByPostIdCommentsResponses, unknown, ThrowOnError>({
+    public getPostCommentsList<ThrowOnError extends boolean = false>(options: Options<GetPostCommentsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetPostCommentsListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts/{post_id}/comments',
             ...options
@@ -1027,8 +1360,8 @@ export class Posts extends HeyApiClient {
      *
      * Adds a comment to a post.
      */
-    public addPostComment<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdPostsByPostIdCommentsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdPostsByPostIdCommentsResponses, unknown, ThrowOnError>({
+    public addPostComment<ThrowOnError extends boolean = false>(options: Options<AddPostCommentData, ThrowOnError>) {
+        return (options.client ?? this.client).post<AddPostCommentResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts/{post_id}/comments',
             ...options,
@@ -1044,8 +1377,8 @@ export class Posts extends HeyApiClient {
      *
      * Deletes a comment of the account's owner from a post. Trying to delete a comment from another user will fail.
      */
-    public deletePostComment<ThrowOnError extends boolean = false>(options: Options<DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdData, ThrowOnError>) {
-        return (options.client ?? this.client).delete<DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses, unknown, ThrowOnError>({
+    public deletePostComment<ThrowOnError extends boolean = false>(options: Options<DeletePostCommentData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<DeletePostCommentResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}',
             ...options
@@ -1057,8 +1390,8 @@ export class Posts extends HeyApiClient {
      *
      * Updates an existing comment.
      */
-    public updatePostComment<ThrowOnError extends boolean = false>(options: Options<PatchV2ByAccountIdPostsByPostIdCommentsByCommentIdData, ThrowOnError>) {
-        return (options.client ?? this.client).patch<PatchV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses, unknown, ThrowOnError>({
+    public updatePostComment<ThrowOnError extends boolean = false>(options: Options<UpdatePostCommentData, ThrowOnError>) {
+        return (options.client ?? this.client).patch<UpdatePostCommentResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}',
             ...options,
@@ -1074,8 +1407,8 @@ export class Posts extends HeyApiClient {
      *
      * Replies to a particular comment.
      */
-    public replyToComment<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdPostsByPostIdCommentsByCommentIdData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdPostsByPostIdCommentsByCommentIdResponses, unknown, ThrowOnError>({
+    public replyToComment<ThrowOnError extends boolean = false>(options: Options<ReplyToCommentData, ThrowOnError>) {
+        return (options.client ?? this.client).post<ReplyToCommentResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}',
             ...options,
@@ -1091,8 +1424,8 @@ export class Posts extends HeyApiClient {
      *
      * Returns the list of replies to a comment. The replies are returned sorted by their creation date, with the most recent appearing first.
      */
-    public getPostCommentRepliesList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdPostsByPostIdCommentsByCommentIdRepliesData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdPostsByPostIdCommentsByCommentIdRepliesResponses, unknown, ThrowOnError>({
+    public getPostCommentRepliesList<ThrowOnError extends boolean = false>(options: Options<GetPostCommentRepliesListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetPostCommentRepliesListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}/replies',
             ...options
@@ -1104,8 +1437,8 @@ export class Posts extends HeyApiClient {
      *
      * Removes a reaction of the account's owner from a comment. Trying to remove a reaction from another user will fail.
      */
-    public removePostCommentReaction<ThrowOnError extends boolean = false>(options: Options<DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsData, ThrowOnError>) {
-        return (options.client ?? this.client).delete<DeleteV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses, unknown, ThrowOnError>({
+    public removePostCommentReaction<ThrowOnError extends boolean = false>(options: Options<RemovePostCommentReactionData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<RemovePostCommentReactionResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}/reactions',
             ...options,
@@ -1121,8 +1454,8 @@ export class Posts extends HeyApiClient {
      *
      * Returns the list of reactions made to a comment. Reaction counts are given with the Comment object. This is useful to show a detailed list of all reactions and their author.
      */
-    public getPostCommentReactionsList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses, unknown, ThrowOnError>({
+    public getPostCommentReactionsList<ThrowOnError extends boolean = false>(options: Options<GetPostCommentReactionsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetPostCommentReactionsListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}/reactions',
             ...options
@@ -1134,8 +1467,8 @@ export class Posts extends HeyApiClient {
      *
      * Adds a reaction to a post.
      */
-    public addPostCommentReaction<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdPostsByPostIdCommentsByCommentIdReactionsResponses, unknown, ThrowOnError>({
+    public addPostCommentReaction<ThrowOnError extends boolean = false>(options: Options<AddPostCommentReactionData, ThrowOnError>) {
+        return (options.client ?? this.client).post<AddPostCommentReactionResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}/reactions',
             ...options,
@@ -1147,14 +1480,24 @@ export class Posts extends HeyApiClient {
     }
 }
 
-export class Calendar extends HeyApiClient {
+export class UnipileCalendar extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry5<UnipileCalendar>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipileCalendar.__registry.set(this, args?.key);
+    }
+    
     /**
      * List all Calendars
      *
      * Returns a list of calendars.
      */
-    public getCalendarsList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdCalendarsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdCalendarsResponses, unknown, ThrowOnError>({
+    public getCalendarsList<ThrowOnError extends boolean = false>(options: Options<GetCalendarsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetCalendarsListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/calendars',
             ...options
@@ -1166,8 +1509,8 @@ export class Calendar extends HeyApiClient {
      *
      * Create a new calendar.
      */
-    public createCalendar<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdCalendarsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdCalendarsResponses, unknown, ThrowOnError>({
+    public createCalendar<ThrowOnError extends boolean = false>(options: Options<CreateCalendarData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateCalendarResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/calendars',
             ...options,
@@ -1183,8 +1526,8 @@ export class Calendar extends HeyApiClient {
      *
      * Delete the specified calendar.
      */
-    public deleteCalendar<ThrowOnError extends boolean = false>(options: Options<DeleteV2ByAccountIdCalendarsByCalendarIdData, ThrowOnError>) {
-        return (options.client ?? this.client).delete<DeleteV2ByAccountIdCalendarsByCalendarIdResponses, unknown, ThrowOnError>({
+    public deleteCalendar<ThrowOnError extends boolean = false>(options: Options<DeleteCalendarData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<DeleteCalendarResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/calendars/{calendar_id}',
             ...options
@@ -1196,8 +1539,8 @@ export class Calendar extends HeyApiClient {
      *
      * Retrieves the specified Calendar.
      */
-    public getCalendar<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdCalendarsByCalendarIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdCalendarsByCalendarIdResponses, unknown, ThrowOnError>({
+    public getCalendar<ThrowOnError extends boolean = false>(options: Options<GetCalendarData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetCalendarResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/calendars/{calendar_id}',
             ...options
@@ -1209,8 +1552,8 @@ export class Calendar extends HeyApiClient {
      *
      * Updates the specified calendar by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
      */
-    public updateCalendar<ThrowOnError extends boolean = false>(options: Options<PatchV2ByAccountIdCalendarsByCalendarIdData, ThrowOnError>) {
-        return (options.client ?? this.client).patch<PatchV2ByAccountIdCalendarsByCalendarIdResponses, unknown, ThrowOnError>({
+    public updateCalendar<ThrowOnError extends boolean = false>(options: Options<UpdateCalendarData, ThrowOnError>) {
+        return (options.client ?? this.client).patch<UpdateCalendarResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/calendars/{calendar_id}',
             ...options,
@@ -1226,8 +1569,8 @@ export class Calendar extends HeyApiClient {
      *
      * Returns a list of calendar events.
      */
-    public getCalendarEventList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdCalendarsByCalendarIdEventsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdCalendarsByCalendarIdEventsResponses, unknown, ThrowOnError>({
+    public getCalendarEventList<ThrowOnError extends boolean = false>(options: Options<GetCalendarEventListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetCalendarEventListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/calendars/{calendar_id}/events',
             ...options
@@ -1239,8 +1582,8 @@ export class Calendar extends HeyApiClient {
      *
      * Create a brand new calendar event.
      */
-    public createCalendarEvent<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdCalendarsByCalendarIdEventsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdCalendarsByCalendarIdEventsResponses, unknown, ThrowOnError>({
+    public createCalendarEvent<ThrowOnError extends boolean = false>(options: Options<CreateCalendarEventData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateCalendarEventResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/calendars/{calendar_id}/events',
             ...options,
@@ -1256,8 +1599,8 @@ export class Calendar extends HeyApiClient {
      *
      * Delete the specified calendar event.
      */
-    public deleteCalendarEvent<ThrowOnError extends boolean = false>(options: Options<DeleteV2ByAccountIdCalendarsByCalendarIdEventsByEventIdData, ThrowOnError>) {
-        return (options.client ?? this.client).delete<DeleteV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses, unknown, ThrowOnError>({
+    public deleteCalendarEvent<ThrowOnError extends boolean = false>(options: Options<DeleteCalendarEventData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<DeleteCalendarEventResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/calendars/{calendar_id}/events/{event_id}',
             ...options
@@ -1269,8 +1612,8 @@ export class Calendar extends HeyApiClient {
      *
      * Retrieves a calendar event object.
      */
-    public getCalendarEvent<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdCalendarsByCalendarIdEventsByEventIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses, unknown, ThrowOnError>({
+    public getCalendarEvent<ThrowOnError extends boolean = false>(options: Options<GetCalendarEventData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetCalendarEventResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/calendars/{calendar_id}/events/{event_id}',
             ...options
@@ -1282,8 +1625,8 @@ export class Calendar extends HeyApiClient {
      *
      * Updates the specified calendar by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
      */
-    public updateCalendarEvent<ThrowOnError extends boolean = false>(options: Options<PatchV2ByAccountIdCalendarsByCalendarIdEventsByEventIdData, ThrowOnError>) {
-        return (options.client ?? this.client).patch<PatchV2ByAccountIdCalendarsByCalendarIdEventsByEventIdResponses, unknown, ThrowOnError>({
+    public updateCalendarEvent<ThrowOnError extends boolean = false>(options: Options<UpdateCalendarEventData, ThrowOnError>) {
+        return (options.client ?? this.client).patch<UpdateCalendarEventResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/calendars/{calendar_id}/events/{event_id}',
             ...options,
@@ -1295,14 +1638,24 @@ export class Calendar extends HeyApiClient {
     }
 }
 
-export class LinkedIn extends HeyApiClient {
+export class UnipileLinkedIn extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry6<UnipileLinkedIn>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipileLinkedIn.__registry.set(this, args?.key);
+    }
+    
     /**
      * Perform a Request to any LinkedIn API Endpoint
      *
      * Allows advanced users to implement any LinkedIn feature that is not yet supported by our platform.
      */
-    public proxyRequest<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinResponses, unknown, ThrowOnError>({
+    public proxyRequest<ThrowOnError extends boolean = false>(options: Options<ProxyRequestData, ThrowOnError>) {
+        return (options.client ?? this.client).post<ProxyRequestResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/',
             ...options,
@@ -1318,8 +1671,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Retrieves InMail credits by service or for all subscribed services.
      */
-    public getInmailCredits<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinInmailCreditsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinInmailCreditsResponses, unknown, ThrowOnError>({
+    public getInmailCredits<ThrowOnError extends boolean = false>(options: Options<GetInmailCreditsData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetInmailCreditsResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/inmail-credits',
             ...options
@@ -1331,8 +1684,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Retrieves the specified company profile.
      */
-    public getClassicCompanyProfile<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinCompanyByCompanyIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinCompanyByCompanyIdResponses, unknown, ThrowOnError>({
+    public getClassicCompanyProfile<ThrowOnError extends boolean = false>(options: Options<GetClassicCompanyProfileData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetClassicCompanyProfileResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/company/{company_id}',
             ...options
@@ -1344,8 +1697,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Verifies member identity by submitting an email address.
      */
-    public verifyClassicCompanyMemberIdentity<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberVerifyEmailData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberVerifyEmailResponses, unknown, ThrowOnError>({
+    public verifyClassicCompanyMemberIdentity<ThrowOnError extends boolean = false>(options: Options<VerifyClassicCompanyMemberIdentityData, ThrowOnError>) {
+        return (options.client ?? this.client).post<VerifyClassicCompanyMemberIdentityResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/company/{company_id}/member/verify-email',
             ...options,
@@ -1361,8 +1714,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Completes the process of member identity verification.
      */
-    public submitClassicCompanyOtpCode<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberSubmitOtpData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinCompanyByCompanyIdMemberSubmitOtpResponses, unknown, ThrowOnError>({
+    public submitClassicCompanyOtpCode<ThrowOnError extends boolean = false>(options: Options<SubmitClassicCompanyOtpCodeData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SubmitClassicCompanyOtpCodeResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/company/{company_id}/member/submit-otp',
             ...options,
@@ -1378,8 +1731,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of parameters to be used in the search route.
      */
-    public getClassicSearchParameters<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinSearchParametersData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinSearchParametersResponses, unknown, ThrowOnError>({
+    public getClassicSearchParameters<ThrowOnError extends boolean = false>(options: Options<GetClassicSearchParametersData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetClassicSearchParametersResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/search/parameters',
             ...options
@@ -1391,8 +1744,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of results from a LinkedIn Classic search URL.
      */
-    public performClassicSearchFromUrl<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinSearchData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinSearchResponses, unknown, ThrowOnError>({
+    public performClassicSearchFromUrl<ThrowOnError extends boolean = false>(options: Options<PerformClassicSearchFromUrlData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformClassicSearchFromUrlResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/search',
             ...options,
@@ -1408,8 +1761,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of people from search results.
      */
-    public performClassicPeopleSearch<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinSearchPeopleData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinSearchPeopleResponses, unknown, ThrowOnError>({
+    public performClassicPeopleSearch<ThrowOnError extends boolean = false>(options: Options<PerformClassicPeopleSearchData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformClassicPeopleSearchResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/search/people',
             ...options,
@@ -1425,8 +1778,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of companies from search results.
      */
-    public performClassicCompaniesSearch<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinSearchCompaniesData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinSearchCompaniesResponses, unknown, ThrowOnError>({
+    public performClassicCompaniesSearch<ThrowOnError extends boolean = false>(options: Options<PerformClassicCompaniesSearchData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformClassicCompaniesSearchResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/search/companies',
             ...options,
@@ -1442,8 +1795,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of posts from search results.
      */
-    public performClassicPostsSearch<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinSearchPostsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinSearchPostsResponses, unknown, ThrowOnError>({
+    public performClassicPostsSearch<ThrowOnError extends boolean = false>(options: Options<PerformClassicPostsSearchData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformClassicPostsSearchResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/search/posts',
             ...options,
@@ -1459,8 +1812,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of job postings from search results.
      */
-    public performClassicJobsSearch<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinSearchJobsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinSearchJobsResponses, unknown, ThrowOnError>({
+    public performClassicJobsSearch<ThrowOnError extends boolean = false>(options: Options<PerformClassicJobsSearchData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformClassicJobsSearchResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/search/jobs',
             ...options,
@@ -1476,8 +1829,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of job postings created by the current user.
      */
-    public listClassicUserJobPostings<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinJobsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinJobsResponses, unknown, ThrowOnError>({
+    public listClassicUserJobPostings<ThrowOnError extends boolean = false>(options: Options<ListClassicUserJobPostingsData, ThrowOnError>) {
+        return (options.client ?? this.client).get<ListClassicUserJobPostingsResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/jobs',
             ...options
@@ -1492,8 +1845,8 @@ export class LinkedIn extends HeyApiClient {
      * Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-account-id-linkedin-jobs-job-id-publish">Publish a Job Posting Draft</a> to publish the job once you are ready.
      *
      */
-    public createClassicJobPostingDraft<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinJobsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinJobsResponses, unknown, ThrowOnError>({
+    public createClassicJobPostingDraft<ThrowOnError extends boolean = false>(options: Options<CreateClassicJobPostingDraftData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateClassicJobPostingDraftResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/jobs',
             ...options,
@@ -1509,8 +1862,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Retrieves a job posting by its ID.
      */
-    public getClassicJobPosting<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinJobsByJobIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinJobsByJobIdResponses, unknown, ThrowOnError>({
+    public getClassicJobPosting<ThrowOnError extends boolean = false>(options: Options<GetClassicJobPostingData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetClassicJobPostingResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/jobs/{job_id}',
             ...options
@@ -1522,8 +1875,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Edits a job posting created by the current user.
      */
-    public editClassicJobPosting<ThrowOnError extends boolean = false>(options: Options<PatchV2ByAccountIdLinkedinJobsByJobIdData, ThrowOnError>) {
-        return (options.client ?? this.client).patch<PatchV2ByAccountIdLinkedinJobsByJobIdResponses, unknown, ThrowOnError>({
+    public editClassicJobPosting<ThrowOnError extends boolean = false>(options: Options<EditClassicJobPostingData, ThrowOnError>) {
+        return (options.client ?? this.client).patch<EditClassicJobPostingResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/jobs/{job_id}',
             ...options,
@@ -1539,8 +1892,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns available budget ranges, recommended budgets, and estimated impact.
      */
-    public getClassicJobPostingBudget<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinJobsByJobIdBudgetData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinJobsByJobIdBudgetResponses, unknown, ThrowOnError>({
+    public getClassicJobPostingBudget<ThrowOnError extends boolean = false>(options: Options<GetClassicJobPostingBudgetData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetClassicJobPostingBudgetResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/jobs/{job_id}/budget',
             ...options
@@ -1552,8 +1905,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Publishes a job posting with specific budget options.
      */
-    public publishClassicJobPosting<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinJobsByJobIdPublishData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinJobsByJobIdPublishResponses, unknown, ThrowOnError>({
+    public publishClassicJobPosting<ThrowOnError extends boolean = false>(options: Options<PublishClassicJobPostingData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PublishClassicJobPostingResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/jobs/{job_id}/publish',
             ...options,
@@ -1569,8 +1922,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Closes a job posting so applications cannot be submitted anymore.
      */
-    public closeClassicJobPosting<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinJobsByJobIdCloseData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinJobsByJobIdCloseResponses, unknown, ThrowOnError>({
+    public closeClassicJobPosting<ThrowOnError extends boolean = false>(options: Options<CloseClassicJobPostingData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CloseClassicJobPostingResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/jobs/{job_id}/close',
             ...options
@@ -1582,8 +1935,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of the applicants to a job posting.
      */
-    public getClassicApplicants<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinJobsByJobIdApplicantsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinJobsByJobIdApplicantsResponses, unknown, ThrowOnError>({
+    public getClassicApplicants<ThrowOnError extends boolean = false>(options: Options<GetClassicApplicantsData, ThrowOnError>) {
+        return (options.client ?? this.client).post<GetClassicApplicantsResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/jobs/{job_id}/applicants',
             ...options,
@@ -1599,8 +1952,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Retrieves an applicant by ID.
      */
-    public getClassicApplicantById<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdResponses, unknown, ThrowOnError>({
+    public getClassicApplicantById<ThrowOnError extends boolean = false>(options: Options<GetClassicApplicantByIdData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetClassicApplicantByIdResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/jobs/{job_id}/applicants/{applicant_id}',
             ...options
@@ -1612,8 +1965,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Downloads the resume of a given applicant.
      */
-    public getClassicApplicantResume<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdResumeData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinJobsByJobIdApplicantsByApplicantIdResumeResponses, unknown, ThrowOnError>({
+    public getClassicApplicantResume<ThrowOnError extends boolean = false>(options: Options<GetClassicApplicantResumeData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetClassicApplicantResumeResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/jobs/{job_id}/applicants/{applicant_id}/resume',
             ...options
@@ -1625,8 +1978,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of hiring projects created in the current contract scope.
      */
-    public getRecruiterHiringProjectList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinRecruiterProjectsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinRecruiterProjectsResponses, unknown, ThrowOnError>({
+    public getRecruiterHiringProjectList<ThrowOnError extends boolean = false>(options: Options<GetRecruiterHiringProjectListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetRecruiterHiringProjectListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects',
             ...options
@@ -1638,8 +1991,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Creates a new project in the current contract.
      */
-    public createRecruiterHiringProject<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinRecruiterProjectsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinRecruiterProjectsResponses, unknown, ThrowOnError>({
+    public createRecruiterHiringProject<ThrowOnError extends boolean = false>(options: Options<CreateRecruiterHiringProjectData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateRecruiterHiringProjectResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects',
             ...options,
@@ -1655,8 +2008,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Retrieves the specified hiring project.
      */
-    public getRecruiterHiringProject<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdResponses, unknown, ThrowOnError>({
+    public getRecruiterHiringProject<ThrowOnError extends boolean = false>(options: Options<GetRecruiterHiringProjectData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetRecruiterHiringProjectResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}',
             ...options
@@ -1668,8 +2021,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Edits the specified hiring project.
      */
-    public editRecruiterHiringProject<ThrowOnError extends boolean = false>(options: Options<PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdData, ThrowOnError>) {
-        return (options.client ?? this.client).patch<PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdResponses, unknown, ThrowOnError>({
+    public editRecruiterHiringProject<ThrowOnError extends boolean = false>(options: Options<EditRecruiterHiringProjectData, ThrowOnError>) {
+        return (options.client ?? this.client).patch<EditRecruiterHiringProjectResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}',
             ...options,
@@ -1685,8 +2038,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of applicants from the talent pool of a project.
      */
-    public getRecruiterTalentPoolApplicants<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsResponses, unknown, ThrowOnError>({
+    public getRecruiterTalentPoolApplicants<ThrowOnError extends boolean = false>(options: Options<GetRecruiterTalentPoolApplicantsData, ThrowOnError>) {
+        return (options.client ?? this.client).post<GetRecruiterTalentPoolApplicantsResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/applicants',
             ...options,
@@ -1702,8 +2055,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Retrieves an applicant by ID.
      */
-    public getRecruiterApplicantById<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsByApplicantIdData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsByApplicantIdResponses, unknown, ThrowOnError>({
+    public getRecruiterApplicantById<ThrowOnError extends boolean = false>(options: Options<GetRecruiterApplicantByIdData, ThrowOnError>) {
+        return (options.client ?? this.client).post<GetRecruiterApplicantByIdResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/applicants/{applicant_id}',
             ...options
@@ -1715,8 +2068,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Downloads the resume of a given applicant.
      */
-    public getRecruiterApplicantResume<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsByApplicantIdResumeData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolApplicantsByApplicantIdResumeResponses, unknown, ThrowOnError>({
+    public getRecruiterApplicantResume<ThrowOnError extends boolean = false>(options: Options<GetRecruiterApplicantResumeData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetRecruiterApplicantResumeResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/applicants/{applicant_id}/resume',
             ...options
@@ -1728,8 +2081,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of candidates from the pipeline of a project.
      */
-    public getRecruiterPipelineCandidates<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineResponses, unknown, ThrowOnError>({
+    public getRecruiterPipelineCandidates<ThrowOnError extends boolean = false>(options: Options<GetRecruiterPipelineCandidatesData, ThrowOnError>) {
+        return (options.client ?? this.client).post<GetRecruiterPipelineCandidatesResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/pipeline',
             ...options,
@@ -1745,8 +2098,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Saves a candidate to the pipeline of a project
      */
-    public saveRecruiterCandidateToPipeline<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineCandidateSaveData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdPipelineCandidateSaveResponses, unknown, ThrowOnError>({
+    public saveRecruiterCandidateToPipeline<ThrowOnError extends boolean = false>(options: Options<SaveRecruiterCandidateToPipelineData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SaveRecruiterCandidateToPipelineResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/pipeline/candidate/save',
             ...options,
@@ -1762,8 +2115,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of people from search results.
      */
-    public performRecruiterPeopleSearchFromTalentPool<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolSearchData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdTalentPoolSearchResponses, unknown, ThrowOnError>({
+    public performRecruiterPeopleSearchFromTalentPool<ThrowOnError extends boolean = false>(options: Options<PerformRecruiterPeopleSearchFromTalentPoolData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformRecruiterPeopleSearchFromTalentPoolResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/search',
             ...options,
@@ -1779,8 +2132,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Retrieves a job posting by project.
      */
-    public getRecruiterJobPostingByProjectId<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsResponses, unknown, ThrowOnError>({
+    public getRecruiterJobPostingByProjectId<ThrowOnError extends boolean = false>(options: Options<GetRecruiterJobPostingByProjectIdData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetRecruiterJobPostingByProjectIdResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/jobs',
             ...options
@@ -1792,8 +2145,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Creates a new job posting as draft in a new project.
      */
-    public createRecruiterJobPostingDraftInExistingProject<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsResponses, unknown, ThrowOnError>({
+    public createRecruiterJobPostingDraftInExistingProject<ThrowOnError extends boolean = false>(options: Options<CreateRecruiterJobPostingDraftInExistingProjectData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateRecruiterJobPostingDraftInExistingProjectResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/jobs',
             ...options,
@@ -1809,8 +2162,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns available budget ranges, recommended budgets, and estimated impact.
      */
-    public getRecruiterJobPostingBudget<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdBudgetData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdBudgetResponses, unknown, ThrowOnError>({
+    public getRecruiterJobPostingBudget<ThrowOnError extends boolean = false>(options: Options<GetRecruiterJobPostingBudgetData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetRecruiterJobPostingBudgetResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/jobs/{job_id}/budget',
             ...options
@@ -1822,8 +2175,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of job postings created by the current user or related job posters.
      */
-    public getRecruiterJobPostingList<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinRecruiterJobsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinRecruiterJobsResponses, unknown, ThrowOnError>({
+    public getRecruiterJobPostingList<ThrowOnError extends boolean = false>(options: Options<GetRecruiterJobPostingListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetRecruiterJobPostingListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/jobs',
             ...options
@@ -1838,8 +2191,8 @@ export class LinkedIn extends HeyApiClient {
      * Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-account-id-linkedin-recruiter-projects-project-id-jobs-job-id-publish">Publish a Job Posting Draft</a> to publish the job once you are ready.
      *
      */
-    public createRecruiterJobPostingDraftInNewProject<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinRecruiterJobsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinRecruiterJobsResponses, unknown, ThrowOnError>({
+    public createRecruiterJobPostingDraftInNewProject<ThrowOnError extends boolean = false>(options: Options<CreateRecruiterJobPostingDraftInNewProjectData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateRecruiterJobPostingDraftInNewProjectResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/jobs',
             ...options,
@@ -1855,8 +2208,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Edits an existing job posting from a project.
      */
-    public editRecruiterJobPosting<ThrowOnError extends boolean = false>(options: Options<PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdData, ThrowOnError>) {
-        return (options.client ?? this.client).patch<PatchV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdResponses, unknown, ThrowOnError>({
+    public editRecruiterJobPosting<ThrowOnError extends boolean = false>(options: Options<EditRecruiterJobPostingData, ThrowOnError>) {
+        return (options.client ?? this.client).patch<EditRecruiterJobPostingResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/jobs/{job_id}',
             ...options,
@@ -1872,8 +2225,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Publishes a job posting with specific budget options.
      */
-    public publishRecruiterJobPosting<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdPublishData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdPublishResponses, unknown, ThrowOnError>({
+    public publishRecruiterJobPosting<ThrowOnError extends boolean = false>(options: Options<PublishRecruiterJobPostingData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PublishRecruiterJobPostingResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/jobs/{job_id}/publish',
             ...options,
@@ -1889,8 +2242,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Closes a job posting so applications cannot be submitted anymore.
      */
-    public closeRecruiterJobPosting<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdCloseData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinRecruiterProjectsByProjectIdJobsByJobIdCloseResponses, unknown, ThrowOnError>({
+    public closeRecruiterJobPosting<ThrowOnError extends boolean = false>(options: Options<CloseRecruiterJobPostingData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CloseRecruiterJobPostingResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/jobs/{job_id}/close',
             ...options
@@ -1902,8 +2255,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Retrieves a job posting by its ID.
      */
-    public getRecruiterJobPostingById<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinRecruiterJobsByJobIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinRecruiterJobsByJobIdResponses, unknown, ThrowOnError>({
+    public getRecruiterJobPostingById<ThrowOnError extends boolean = false>(options: Options<GetRecruiterJobPostingByIdData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetRecruiterJobPostingByIdResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/jobs/{job_id}',
             ...options
@@ -1915,8 +2268,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of results from a LinkedIn Recruiter search URL.
      */
-    public performRecruiterSearchFromUrl<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinRecruiterSearchData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinRecruiterSearchResponses, unknown, ThrowOnError>({
+    public performRecruiterSearchFromUrl<ThrowOnError extends boolean = false>(options: Options<PerformRecruiterSearchFromUrlData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformRecruiterSearchFromUrlResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/search',
             ...options,
@@ -1932,8 +2285,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of parameters to be used in Recruiter search endpoints.
      */
-    public getRecruiterSearchParameters<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinRecruiterSearchParametersData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinRecruiterSearchParametersResponses, unknown, ThrowOnError>({
+    public getRecruiterSearchParameters<ThrowOnError extends boolean = false>(options: Options<GetRecruiterSearchParametersData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetRecruiterSearchParametersResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/search/parameters',
             ...options
@@ -1945,8 +2298,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of people from search results.
      */
-    public performRecruiterPeopleSearch<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinRecruiterSearchPeopleData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinRecruiterSearchPeopleResponses, unknown, ThrowOnError>({
+    public performRecruiterPeopleSearch<ThrowOnError extends boolean = false>(options: Options<PerformRecruiterPeopleSearchData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformRecruiterPeopleSearchResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/search/people',
             ...options,
@@ -1962,8 +2315,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Verifies member identity by submitting an email address.
      */
-    public verifyRecruiterCompanyMemberIdentity<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberVerifyEmailData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberVerifyEmailResponses, unknown, ThrowOnError>({
+    public verifyRecruiterCompanyMemberIdentity<ThrowOnError extends boolean = false>(options: Options<VerifyRecruiterCompanyMemberIdentityData, ThrowOnError>) {
+        return (options.client ?? this.client).post<VerifyRecruiterCompanyMemberIdentityResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/company/{company_id}/member/verify-email',
             ...options,
@@ -1979,8 +2332,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Completes the process of member identity verification.
      */
-    public submitRecruiterOtpCode<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberSubmitOtpData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinRecruiterCompanyByCompanyIdMemberSubmitOtpResponses, unknown, ThrowOnError>({
+    public submitRecruiterOtpCode<ThrowOnError extends boolean = false>(options: Options<SubmitRecruiterOtpCodeData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SubmitRecruiterOtpCodeResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/company/{company_id}/member/submit-otp',
             ...options,
@@ -1996,8 +2349,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of results from a LinkedIn Sales navigator search URL.
      */
-    public performSalesSearchFromUrl<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinSalesNavigatorSearchData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinSalesNavigatorSearchResponses, unknown, ThrowOnError>({
+    public performSalesSearchFromUrl<ThrowOnError extends boolean = false>(options: Options<PerformSalesSearchFromUrlData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformSalesSearchFromUrlResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/sales-navigator/search',
             ...options,
@@ -2013,8 +2366,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of parameters to be used in Sales navigator search endpoints.
      */
-    public getSalesSearchParameters<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinSalesNavigatorSearchParametersData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinSalesNavigatorSearchParametersResponses, unknown, ThrowOnError>({
+    public getSalesSearchParameters<ThrowOnError extends boolean = false>(options: Options<GetSalesSearchParametersData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetSalesSearchParametersResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/sales-navigator/search/parameters',
             ...options
@@ -2026,8 +2379,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of people from search results.
      */
-    public performSalesPeopleSearch<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinSalesNavigatorSearchPeopleData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinSalesNavigatorSearchPeopleResponses, unknown, ThrowOnError>({
+    public performSalesPeopleSearch<ThrowOnError extends boolean = false>(options: Options<PerformSalesPeopleSearchData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformSalesPeopleSearchResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/sales-navigator/search/people',
             ...options,
@@ -2043,8 +2396,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns a list of companies from search results.
      */
-    public performSalesCompaniesSearch<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinSalesNavigatorSearchCompaniesData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinSalesNavigatorSearchCompaniesResponses, unknown, ThrowOnError>({
+    public performSalesCompaniesSearch<ThrowOnError extends boolean = false>(options: Options<PerformSalesCompaniesSearchData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformSalesCompaniesSearchResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/sales-navigator/search/companies',
             ...options,
@@ -2060,8 +2413,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns your leads lists.
      */
-    public getSalesLeadLists<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinSalesNavigatorLeadListsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinSalesNavigatorLeadListsResponses, unknown, ThrowOnError>({
+    public getSalesLeadLists<ThrowOnError extends boolean = false>(options: Options<GetSalesLeadListsData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetSalesLeadListsResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/sales-navigator/lead-lists',
             ...options
@@ -2073,8 +2426,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns the leads that have been saved in the given list.
      */
-    public browseSalesLeadList<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdResponses, unknown, ThrowOnError>({
+    public browseSalesLeadList<ThrowOnError extends boolean = false>(options: Options<BrowseSalesLeadListData, ThrowOnError>) {
+        return (options.client ?? this.client).post<BrowseSalesLeadListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/sales-navigator/lead-lists/{list_id}',
             ...options,
@@ -2090,8 +2443,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Add a lead to an existing list
      */
-    public saveSalesLeadToList<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdSaveData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinSalesNavigatorLeadListsByListIdSaveResponses, unknown, ThrowOnError>({
+    public saveSalesLeadToList<ThrowOnError extends boolean = false>(options: Options<SaveSalesLeadToListData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SaveSalesLeadToListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/sales-navigator/lead-lists/{list_id}/save',
             ...options,
@@ -2107,8 +2460,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns your accounts lists.
      */
-    public getSalesAccountLists<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdLinkedinSalesNavigatorAccountListsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdLinkedinSalesNavigatorAccountListsResponses, unknown, ThrowOnError>({
+    public getSalesAccountLists<ThrowOnError extends boolean = false>(options: Options<GetSalesAccountListsData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetSalesAccountListsResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/sales-navigator/account-lists',
             ...options
@@ -2120,8 +2473,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Returns the accounts that have been saved in the given list.
      */
-    public browseSalesAccountList<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdResponses, unknown, ThrowOnError>({
+    public browseSalesAccountList<ThrowOnError extends boolean = false>(options: Options<BrowseSalesAccountListData, ThrowOnError>) {
+        return (options.client ?? this.client).post<BrowseSalesAccountListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/sales-navigator/account-lists/{list_id}',
             ...options,
@@ -2137,8 +2490,8 @@ export class LinkedIn extends HeyApiClient {
      *
      * Add an account to an existing list
      */
-    public saveSalesAccountToList<ThrowOnError extends boolean = false>(options: Options<PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdSaveData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2ByAccountIdLinkedinSalesNavigatorAccountListsByListIdSaveResponses, unknown, ThrowOnError>({
+    public saveSalesAccountToList<ThrowOnError extends boolean = false>(options: Options<SaveSalesAccountToListData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SaveSalesAccountToListResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/sales-navigator/account-lists/{list_id}/save',
             ...options,
@@ -2150,14 +2503,24 @@ export class LinkedIn extends HeyApiClient {
     }
 }
 
-export class Instagram extends HeyApiClient {
+export class UnipileInstagram extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry7<UnipileInstagram>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipileInstagram.__registry.set(this, args?.key);
+    }
+    
     /**
      * Search locations
      *
      * Return a list of Instagram locations. Use `latitude` and `longitude` to orient search query results by influencing their relevance ranking. When a search query is performed, locations that are considered most relevant in relation to the provided geographic coordinates are prioritized in the results. This can be used to tag a Post with a location.
      */
-    public searchLocations<ThrowOnError extends boolean = false>(options: Options<GetV2ByAccountIdInstagramSearchLocationsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2ByAccountIdInstagramSearchLocationsResponses, unknown, ThrowOnError>({
+    public searchLocations<ThrowOnError extends boolean = false>(options: Options<SearchLocationsData, ThrowOnError>) {
+        return (options.client ?? this.client).get<SearchLocationsResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/instagram/search/locations',
             ...options
@@ -2165,14 +2528,24 @@ export class Instagram extends HeyApiClient {
     }
 }
 
-export class CustomAuth extends HeyApiClient {
+export class UnipileCustomAuth extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry8<UnipileCustomAuth>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipileCustomAuth.__registry.set(this, args?.key);
+    }
+    
     /**
      * Solve a Checkpoint
      *
      * Solve the current checkpoint for the given authentication intent.
      */
-    public solveCheckpoint<ThrowOnError extends boolean = false>(options: Options<PostV2AuthCheckpointData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2AuthCheckpointResponses, unknown, ThrowOnError>({
+    public solveCheckpoint<ThrowOnError extends boolean = false>(options: Options<SolveCheckpointData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SolveCheckpointResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/auth/checkpoint',
             ...options,
@@ -2188,8 +2561,8 @@ export class CustomAuth extends HeyApiClient {
      *
      * Start an auth intent for a provider. This might require handling of checkpoints and oauth flows depending on the provider. Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-auth-link">Create Auth Link</a> to let Unipile handle everything for you.
      */
-    public startAuthIntent<ThrowOnError extends boolean = false>(options?: Options<PostV2AuthIntentData, ThrowOnError>) {
-        return (options?.client ?? this.client).post<PostV2AuthIntentResponses, unknown, ThrowOnError>({
+    public startAuthIntent<ThrowOnError extends boolean = false>(options?: Options<StartAuthIntentData, ThrowOnError>) {
+        return (options?.client ?? this.client).post<StartAuthIntentResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/auth/intent',
             ...options,
@@ -2201,14 +2574,24 @@ export class CustomAuth extends HeyApiClient {
     }
 }
 
-export class HostedAuth extends HeyApiClient {
+export class UnipileHostedAuth extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry9<UnipileHostedAuth>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipileHostedAuth.__registry.set(this, args?.key);
+    }
+    
     /**
      * Create Auth Link
      *
      * Create a link to the hosted authentication wizard for the user to authenticate with the provider.
      */
-    public createAuthLink<ThrowOnError extends boolean = false>(options?: Options<PostV2AuthLinkData, ThrowOnError>) {
-        return (options?.client ?? this.client).post<PostV2AuthLinkResponses, unknown, ThrowOnError>({
+    public createAuthLink<ThrowOnError extends boolean = false>(options?: Options<CreateAuthLinkData, ThrowOnError>) {
+        return (options?.client ?? this.client).post<CreateAuthLinkResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/auth/link',
             ...options,
@@ -2220,14 +2603,24 @@ export class HostedAuth extends HeyApiClient {
     }
 }
 
-export class Accounts extends HeyApiClient {
+export class UnipileAccounts extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry10<UnipileAccounts>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipileAccounts.__registry.set(this, args?.key);
+    }
+    
     /**
      * Remove an Account
      *
      * Remove an Account from Unipile by its ID. This action is irreversible and will remove all data associated with the Account.
      */
-    public removeAccount<ThrowOnError extends boolean = false>(options: Options<DeleteV2AccountsByAccountIdData, ThrowOnError>) {
-        return (options.client ?? this.client).delete<DeleteV2AccountsByAccountIdResponses, unknown, ThrowOnError>({
+    public removeAccount<ThrowOnError extends boolean = false>(options: Options<RemoveAccountData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<RemoveAccountResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/accounts/{account_id}',
             ...options
@@ -2239,8 +2632,8 @@ export class Accounts extends HeyApiClient {
      *
      * Retrieve an Account.
      */
-    public getAccount<ThrowOnError extends boolean = false>(options: Options<GetV2AccountsByAccountIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2AccountsByAccountIdResponses, unknown, ThrowOnError>({
+    public getAccount<ThrowOnError extends boolean = false>(options: Options<GetAccountData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetAccountResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/accounts/{account_id}',
             ...options
@@ -2252,8 +2645,8 @@ export class Accounts extends HeyApiClient {
      *
      * Update an Account by ID.
      */
-    public updateAccount<ThrowOnError extends boolean = false>(options: Options<PatchV2AccountsByAccountIdData, ThrowOnError>) {
-        return (options.client ?? this.client).patch<PatchV2AccountsByAccountIdResponses, unknown, ThrowOnError>({
+    public updateAccount<ThrowOnError extends boolean = false>(options: Options<UpdateAccountData, ThrowOnError>) {
+        return (options.client ?? this.client).patch<UpdateAccountResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/accounts/{account_id}',
             ...options,
@@ -2269,8 +2662,8 @@ export class Accounts extends HeyApiClient {
      *
      * Returns a list of all Accounts associated with the current Application. The accounts are returned sorted alphabeticaly on `name`.
      */
-    public listAccounts<ThrowOnError extends boolean = false>(options?: Options<GetV2AccountsData, ThrowOnError>) {
-        return (options?.client ?? this.client).get<GetV2AccountsResponses, unknown, ThrowOnError>({
+    public listAccounts<ThrowOnError extends boolean = false>(options?: Options<ListAccountsData, ThrowOnError>) {
+        return (options?.client ?? this.client).get<ListAccountsResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/accounts/',
             ...options
@@ -2278,14 +2671,24 @@ export class Accounts extends HeyApiClient {
     }
 }
 
-export class Webhooks extends HeyApiClient {
+export class UnipileWebhooks extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry11<UnipileWebhooks>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipileWebhooks.__registry.set(this, args?.key);
+    }
+    
     /**
      * List all Webhook Conversations
      *
      * Returns a list of all Webhook Conversations associated with the current Application. The conversations are returned sorted by their creation date, with the most recent appearing first.
      */
-    public listWebhookConversations<ThrowOnError extends boolean = false>(options: Options<GetV2WebhooksConversationsData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2WebhooksConversationsResponses, unknown, ThrowOnError>({
+    public listWebhookConversations<ThrowOnError extends boolean = false>(options: Options<ListWebhookConversationsData, ThrowOnError>) {
+        return (options.client ?? this.client).get<ListWebhookConversationsResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/webhooks/conversations/',
             ...options
@@ -2297,8 +2700,8 @@ export class Webhooks extends HeyApiClient {
      *
      * Returns a list of all Webhook Endpoints associated with the current Application.
      */
-    public listWebhookEndpoints<ThrowOnError extends boolean = false>(options?: Options<GetV2WebhooksEndpointsData, ThrowOnError>) {
-        return (options?.client ?? this.client).get<GetV2WebhooksEndpointsResponses, unknown, ThrowOnError>({
+    public listWebhookEndpoints<ThrowOnError extends boolean = false>(options?: Options<ListWebhookEndpointsData, ThrowOnError>) {
+        return (options?.client ?? this.client).get<ListWebhookEndpointsResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/webhooks/endpoints/',
             ...options
@@ -2310,8 +2713,8 @@ export class Webhooks extends HeyApiClient {
      *
      * Creates a new webhook endpoint.
      */
-    public createWebhookEndpoint<ThrowOnError extends boolean = false>(options: Options<PostV2WebhooksEndpointsData, ThrowOnError>) {
-        return (options.client ?? this.client).post<PostV2WebhooksEndpointsResponses, unknown, ThrowOnError>({
+    public createWebhookEndpoint<ThrowOnError extends boolean = false>(options: Options<CreateWebhookEndpointData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateWebhookEndpointResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/webhooks/endpoints/',
             ...options,
@@ -2327,8 +2730,8 @@ export class Webhooks extends HeyApiClient {
      *
      * Deletes a webhook endpoint by ID.
      */
-    public deleteWebhookEndpoint<ThrowOnError extends boolean = false>(options: Options<DeleteV2WebhooksEndpointsByIdData, ThrowOnError>) {
-        return (options.client ?? this.client).delete<DeleteV2WebhooksEndpointsByIdResponses, unknown, ThrowOnError>({
+    public deleteWebhookEndpoint<ThrowOnError extends boolean = false>(options: Options<DeleteWebhookEndpointData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<DeleteWebhookEndpointResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/webhooks/endpoints/{id}',
             ...options
@@ -2340,8 +2743,8 @@ export class Webhooks extends HeyApiClient {
      *
      * Retrieves a webhook endpoint by ID.
      */
-    public getWebhookEndpoint<ThrowOnError extends boolean = false>(options: Options<GetV2WebhooksEndpointsByIdData, ThrowOnError>) {
-        return (options.client ?? this.client).get<GetV2WebhooksEndpointsByIdResponses, unknown, ThrowOnError>({
+    public getWebhookEndpoint<ThrowOnError extends boolean = false>(options: Options<GetWebhookEndpointData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetWebhookEndpointResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/webhooks/endpoints/{id}',
             ...options
@@ -2353,8 +2756,8 @@ export class Webhooks extends HeyApiClient {
      *
      * Updates a webhook endpoint by ID.
      */
-    public updateWebhookEndpoint<ThrowOnError extends boolean = false>(options: Options<PatchV2WebhooksEndpointsByIdData, ThrowOnError>) {
-        return (options.client ?? this.client).patch<PatchV2WebhooksEndpointsByIdResponses, unknown, ThrowOnError>({
+    public updateWebhookEndpoint<ThrowOnError extends boolean = false>(options: Options<UpdateWebhookEndpointData, ThrowOnError>) {
+        return (options.client ?? this.client).patch<UpdateWebhookEndpointResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/webhooks/endpoints/{id}',
             ...options,
@@ -2363,72 +2766,5 @@ export class Webhooks extends HeyApiClient {
                 ...options.headers
             }
         });
-    }
-}
-
-export class UnipileClient extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry<UnipileClient>();
-    
-    constructor(args?: {
-        client?: Client;
-        key?: string;
-    }) {
-        super(args);
-        UnipileClient.__registry.set(this, args?.key);
-    }
-    
-    private _messaging?: Messaging;
-    get messaging(): Messaging {
-        return this._messaging ??= new Messaging({ client: this.client });
-    }
-    
-    private _emails?: Emails;
-    get emails(): Emails {
-        return this._emails ??= new Emails({ client: this.client });
-    }
-    
-    private _users?: Users;
-    get users(): Users {
-        return this._users ??= new Users({ client: this.client });
-    }
-    
-    private _posts?: Posts;
-    get posts(): Posts {
-        return this._posts ??= new Posts({ client: this.client });
-    }
-    
-    private _calendar?: Calendar;
-    get calendar(): Calendar {
-        return this._calendar ??= new Calendar({ client: this.client });
-    }
-    
-    private _linkedIn?: LinkedIn;
-    get linkedIn(): LinkedIn {
-        return this._linkedIn ??= new LinkedIn({ client: this.client });
-    }
-    
-    private _instagram?: Instagram;
-    get instagram(): Instagram {
-        return this._instagram ??= new Instagram({ client: this.client });
-    }
-    
-    private _customAuth?: CustomAuth;
-    get customAuth(): CustomAuth {
-        return this._customAuth ??= new CustomAuth({ client: this.client });
-    }
-    
-    private _hostedAuth?: HostedAuth;
-    get hostedAuth(): HostedAuth {
-        return this._hostedAuth ??= new HostedAuth({ client: this.client });
-    }
-    
-    private _accounts?: Accounts;
-    get accounts(): Accounts {
-        return this._accounts ??= new Accounts({ client: this.client });
-    }
-    
-    private _webhooks?: Webhooks;
-    get webhooks(): Webhooks {
-        return this._webhooks ??= new Webhooks({ client: this.client });
     }
 }
