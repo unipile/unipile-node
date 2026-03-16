@@ -1148,7 +1148,6 @@ export type StartChatData = {
              */
             send_mode?: 'file' | 'native';
         }>;
-        options?: unknown;
         /**
          * Object containing provider-specific chat data.
          */
@@ -1380,7 +1379,6 @@ export type StartChatFromInboxData = {
              */
             send_mode?: 'file' | 'native';
         }>;
-        options?: unknown;
         /**
          * Object containing provider-specific chat data.
          */
@@ -1908,7 +1906,7 @@ export type GetMessagesListResponses = {
                 message_id: string;
             };
             /**
-             * The number of reactions to the element
+             * A list of reactions to the element.
              */
             reactions_counter: Array<{
                 /**
@@ -3072,7 +3070,7 @@ export type GetMessageResponses = {
             message_id: string;
         };
         /**
-         * The number of reactions to the element
+         * A list of reactions to the element.
          */
         reactions_counter: Array<{
             /**
@@ -4327,7 +4325,7 @@ export type ModifyMessageResponses = {
             message_id: string;
         };
         /**
-         * The number of reactions to the element
+         * A list of reactions to the element.
          */
         reactions_counter: Array<{
             /**
@@ -5609,6 +5607,10 @@ export type GetEmailsListData = {
          */
         to?: string;
         /**
+         * Filter to only return emails with the given string in the subject.
+         */
+        subject?: string;
+        /**
          * Filter to only return emails sent from the given email address.
          */
         from?: string;
@@ -5620,6 +5622,10 @@ export type GetEmailsListData = {
          * Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
          */
         before?: string;
+        /**
+         * Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs.
+         */
+        exclude_folder?: string;
         /**
          * Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
          */
@@ -6006,6 +6012,10 @@ export type GetFolderEmailsListData = {
          */
         to?: string;
         /**
+         * Filter to only return emails with the given string in the subject.
+         */
+        subject?: string;
+        /**
          * Filter to only return emails sent from the given email address.
          */
         from?: string;
@@ -6017,6 +6027,10 @@ export type GetFolderEmailsListData = {
          * Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
          */
         before?: string;
+        /**
+         * Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs.
+         */
+        exclude_folder?: string;
         /**
          * Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
          */
@@ -9651,7 +9665,7 @@ export type GetUserProfileData = {
         account_id: string;
     };
     query?: {
-        with_sections?: Array<string> & Array<'linkedin_*' | 'linkedin_experience' | 'linkedin_education' | 'linkedin_languages' | 'linkedin_skills' | 'linkedin_certifications' | 'linkedin_volunteer_experience' | 'linkedin_projects' | 'linkedin_recommendations' | 'linkedin_*_preview' | 'linkedin_experience_preview' | 'linkedin_education_preview' | 'linkedin_languages_preview' | 'linkedin_skills_preview' | 'linkedin_certifications_preview' | 'linkedin_volunteer_experience_preview' | 'linkedin_projects_preview' | 'linkedin_recommendations_preview'>;
+        with_sections?: Array<string> & Array<'linkedin_*' | 'linkedin_experience' | 'linkedin_education' | 'linkedin_languages' | 'linkedin_skills' | 'linkedin_certifications' | 'linkedin_volunteer_experience' | 'linkedin_projects' | 'linkedin_recommendations' | 'linkedin_recruiting_activity' | 'linkedin_*_preview' | 'linkedin_experience_preview' | 'linkedin_education_preview' | 'linkedin_languages_preview' | 'linkedin_skills_preview' | 'linkedin_certifications_preview' | 'linkedin_volunteer_experience_preview' | 'linkedin_projects_preview' | 'linkedin_recommendations_preview' | 'linkedin_recruiting_activity_preview'>;
         variant?: string & ('linkedin_classic' | 'linkedin_recruiter' | 'linkedin_sales_navigator');
     };
     url: '/v2/{account_id}/users/{user_id}';
@@ -9718,8 +9732,17 @@ export type GetUserProfileResponses = {
          * Birth date of the user.
          */
         birth_date?: string;
+        /**
+         * List of user addresses.
+         */
         addresses?: Array<string>;
+        /**
+         * List of user email addresses.
+         */
         emails?: Array<string>;
+        /**
+         * List of user phone numbers.
+         */
         phone_numbers?: Array<string>;
         /**
          * Date and time when the user account was created on the provider.
@@ -9778,7 +9801,10 @@ export type GetUserProfileResponses = {
          */
         provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
         specifics: unknown & ({
-            member_urn: string | null;
+            /**
+             * LinkedIn internal member ID of the user.
+             */
+            member_id?: string;
             /**
              * Whether the user can be reached with inmails.
              */
@@ -9792,12 +9818,84 @@ export type GetUserProfileResponses = {
              * `OUT_OF_NETWORK`: Unreachable user.'
              */
             network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            relation_request?: {
+                object: 'RelationRequest';
+                /**
+                 * The user who is the target of the relation / follow request.
+                 */
+                user?: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user.
+                     */
+                    display_name: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                };
+                /**
+                 * Type of the relation / follow request.
+                 * - `sent` if the current user has asked another one to be in his relations.
+                 * - `received` if another user has asked the current one to be in his relations.
+                 */
+                type: 'sent' | 'received';
+                /**
+                 * The unique identifier of the invitation for the provider.
+                 */
+                id: string;
+                /**
+                 * Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                created_at?: string;
+                /**
+                 * Any message that comes with the invitation.
+                 */
+                message?: string;
+            };
             /**
-             * Default language of the user's profile.
+             * The status of the relation request with the user if any.
+             */
+            relation_request_status?: 'PENDING' | 'IGNORED' | 'WITHDRAWN';
+            /**
+             * The pronoun to be used to refer to this user.
+             */
+            pronoun?: string;
+            /**
+             * Default locale for the user's profile (POSIX format e.g. en_US, fr_FR...).
              */
             default_locale?: string;
+            /**
+             * List of supported locales for the user's profile (POSIX format e.g. en_US, fr_FR...).
+             */
             supported_locales?: Array<string>;
-            websites?: Array<string>;
             /**
              * Payload that should be passed to the Notify profile visit route in order to notify the visit.
              */
@@ -9834,10 +9932,6 @@ export type GetUserProfileResponses = {
              * Whether the user is a CRM imported user.
              */
             is_crm_imported?: boolean;
-            /**
-             * Number of relations shared with the user.
-             */
-            shared_relations_count?: number;
             skills?: Array<{
                 /**
                  * Name of the skill.
@@ -9889,9 +9983,9 @@ export type GetUserProfileResponses = {
                     industries?: Array<string>;
                 };
                 /**
-                 * Position name in the experience.
+                 * Job title of the experience.
                  */
-                title: string;
+                job_title: string;
                 /**
                  * Start date of the experience in MM/DD/YYYY format.
                  */
@@ -10267,9 +10361,563 @@ export type GetUserProfileResponses = {
              * A list of sections that are temporary unavailable due to LinkedIn rate limiting.
              */
             throttled_sections?: Array<'experience' | 'education' | 'languages' | 'skills' | 'certifications' | 'volunteer_experience' | 'projects' | 'recommendations'>;
+            recruiting_profile?: {
+                /**
+                 * A list of events related to the user.
+                 */
+                events?: Array<{
+                    /**
+                     * The time at which the activity was updated. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    last_updated_at: string;
+                    last_updated_by: {
+                        /**
+                         * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                         */
+                        id: string;
+                        object: 'User';
+                        /**
+                         * Type of the user
+                         * - `individual` is an individual user.
+                         * - `organization` is an organization / business entity.
+                         * - `other` is an other type of entity.
+                         */
+                        type: 'individual' | 'organization' | 'other';
+                        /**
+                         * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Display name of the user.
+                         */
+                        display_name: string;
+                        /**
+                         * Public url to the profile of the user.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Public url to the profile picture of the user.
+                         */
+                        public_picture_url?: string;
+                        /**
+                         * Private url to download the profile picture of the user. This url require authentication.
+                         */
+                        private_picture_download_url?: string;
+                        /**
+                         * Description of the user.
+                         */
+                        description?: string;
+                    };
+                    /**
+                     * The type of event.
+                     */
+                    event: 'MESSAGE';
+                    /**
+                     * The text content of the message.
+                     */
+                    message_content: string;
+                    /**
+                     * The current status of the message.
+                     */
+                    message_status: 'PENDING' | 'ACCEPTED' | 'DECLINED' | 'AWAITING_REPLY';
+                } | {
+                    /**
+                     * The time at which the activity was updated. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    last_updated_at: string;
+                    last_updated_by: {
+                        /**
+                         * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                         */
+                        id: string;
+                        object: 'User';
+                        /**
+                         * Type of the user
+                         * - `individual` is an individual user.
+                         * - `organization` is an organization / business entity.
+                         * - `other` is an other type of entity.
+                         */
+                        type: 'individual' | 'organization' | 'other';
+                        /**
+                         * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Display name of the user.
+                         */
+                        display_name: string;
+                        /**
+                         * Public url to the profile of the user.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Public url to the profile picture of the user.
+                         */
+                        public_picture_url?: string;
+                        /**
+                         * Private url to download the profile picture of the user. This url require authentication.
+                         */
+                        private_picture_download_url?: string;
+                        /**
+                         * Description of the user.
+                         */
+                        description?: string;
+                    };
+                    /**
+                     * The type of event.
+                     */
+                    event: 'NOTE_ADDED' | 'NOTE_DELETED' | 'NOTE_EDITED';
+                    /**
+                     * The text content of the note.
+                     */
+                    note_content?: string;
+                } | {
+                    /**
+                     * The time at which the activity was updated. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    last_updated_at: string;
+                    last_updated_by: {
+                        /**
+                         * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                         */
+                        id: string;
+                        object: 'User';
+                        /**
+                         * Type of the user
+                         * - `individual` is an individual user.
+                         * - `organization` is an organization / business entity.
+                         * - `other` is an other type of entity.
+                         */
+                        type: 'individual' | 'organization' | 'other';
+                        /**
+                         * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Display name of the user.
+                         */
+                        display_name: string;
+                        /**
+                         * Public url to the profile of the user.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Public url to the profile picture of the user.
+                         */
+                        public_picture_url?: string;
+                        /**
+                         * Private url to download the profile picture of the user. This url require authentication.
+                         */
+                        private_picture_download_url?: string;
+                        /**
+                         * Description of the user.
+                         */
+                        description?: string;
+                    };
+                    /**
+                     * The type of event.
+                     */
+                    event: 'LINK_ADDED' | 'LINK_DELETED';
+                    /**
+                     * The URL of the link.
+                     */
+                    link_content: string;
+                } | {
+                    /**
+                     * The time at which the activity was updated. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    last_updated_at: string;
+                    last_updated_by: {
+                        /**
+                         * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                         */
+                        id: string;
+                        object: 'User';
+                        /**
+                         * Type of the user
+                         * - `individual` is an individual user.
+                         * - `organization` is an organization / business entity.
+                         * - `other` is an other type of entity.
+                         */
+                        type: 'individual' | 'organization' | 'other';
+                        /**
+                         * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Display name of the user.
+                         */
+                        display_name: string;
+                        /**
+                         * Public url to the profile of the user.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Public url to the profile picture of the user.
+                         */
+                        public_picture_url?: string;
+                        /**
+                         * Private url to download the profile picture of the user. This url require authentication.
+                         */
+                        private_picture_download_url?: string;
+                        /**
+                         * Description of the user.
+                         */
+                        description?: string;
+                    };
+                    /**
+                     * The type of event.
+                     */
+                    event: 'CANDIDATE_ADDED' | 'CANDIDATE_MOVED';
+                    /**
+                     * The ID of the project the user is related to.
+                     */
+                    project_id: string;
+                    /**
+                     * The name of the project the user is related to.
+                     */
+                    project_name: string;
+                    /**
+                     * The pipeline stage the user was added/moved to.
+                     */
+                    pipeline_stage: string;
+                } | {
+                    /**
+                     * The time at which the activity was updated. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    last_updated_at: string;
+                    last_updated_by: {
+                        /**
+                         * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                         */
+                        id: string;
+                        object: 'User';
+                        /**
+                         * Type of the user
+                         * - `individual` is an individual user.
+                         * - `organization` is an organization / business entity.
+                         * - `other` is an other type of entity.
+                         */
+                        type: 'individual' | 'organization' | 'other';
+                        /**
+                         * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Display name of the user.
+                         */
+                        display_name: string;
+                        /**
+                         * Public url to the profile of the user.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Public url to the profile picture of the user.
+                         */
+                        public_picture_url?: string;
+                        /**
+                         * Private url to download the profile picture of the user. This url require authentication.
+                         */
+                        private_picture_download_url?: string;
+                        /**
+                         * Description of the user.
+                         */
+                        description?: string;
+                    };
+                    /**
+                     * The type of event.
+                     */
+                    event: 'PROFILE_VIEW';
+                } | {
+                    /**
+                     * The time at which the activity was updated. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    last_updated_at: string;
+                    last_updated_by: {
+                        /**
+                         * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                         */
+                        id: string;
+                        object: 'User';
+                        /**
+                         * Type of the user
+                         * - `individual` is an individual user.
+                         * - `organization` is an organization / business entity.
+                         * - `other` is an other type of entity.
+                         */
+                        type: 'individual' | 'organization' | 'other';
+                        /**
+                         * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Display name of the user.
+                         */
+                        display_name: string;
+                        /**
+                         * Public url to the profile of the user.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Public url to the profile picture of the user.
+                         */
+                        public_picture_url?: string;
+                        /**
+                         * Private url to download the profile picture of the user. This url require authentication.
+                         */
+                        private_picture_download_url?: string;
+                        /**
+                         * Description of the user.
+                         */
+                        description?: string;
+                    };
+                    /**
+                     * The type of event.
+                     */
+                    event: 'UNHANDLED_EVENT';
+                }>;
+                /**
+                 * A list of notes about the user.
+                 */
+                notes: Array<{
+                    /**
+                     * The ID of the project where the note was added.
+                     */
+                    project_id?: string;
+                    /**
+                     * The text content of the note.
+                     */
+                    content: string;
+                    /**
+                     * The time at which the note was last modified. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    last_modified_at: string;
+                    author: {
+                        /**
+                         * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                         */
+                        id: string;
+                        object: 'User';
+                        /**
+                         * Type of the user
+                         * - `individual` is an individual user.
+                         * - `organization` is an organization / business entity.
+                         * - `other` is an other type of entity.
+                         */
+                        type: 'individual' | 'organization' | 'other';
+                        /**
+                         * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Display name of the user.
+                         */
+                        display_name: string;
+                        /**
+                         * Public url to the profile of the user.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Public url to the profile picture of the user.
+                         */
+                        public_picture_url?: string;
+                        /**
+                         * Private url to download the profile picture of the user. This url require authentication.
+                         */
+                        private_picture_download_url?: string;
+                        /**
+                         * Description of the user.
+                         */
+                        description?: string;
+                    };
+                    /**
+                     * A list of comments published on this note.
+                     */
+                    comments: Array<{
+                        /**
+                         * The text content of the comment.
+                         */
+                        content: string;
+                        author: {
+                            /**
+                             * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                             */
+                            id: string;
+                            object: 'User';
+                            /**
+                             * Type of the user
+                             * - `individual` is an individual user.
+                             * - `organization` is an organization / business entity.
+                             * - `other` is an other type of entity.
+                             */
+                            type: 'individual' | 'organization' | 'other';
+                            /**
+                             * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                             */
+                            public_identifier?: string;
+                            /**
+                             * Display name of the user.
+                             */
+                            display_name: string;
+                            /**
+                             * Public url to the profile of the user.
+                             */
+                            profile_url?: string;
+                            /**
+                             * Public url to the profile picture of the user.
+                             */
+                            public_picture_url?: string;
+                            /**
+                             * Private url to download the profile picture of the user. This url require authentication.
+                             */
+                            private_picture_download_url?: string;
+                            /**
+                             * Description of the user.
+                             */
+                            description?: string;
+                        };
+                        /**
+                         * The time at which the comment was last modified. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        last_modified_at: string;
+                    }>;
+                }>;
+                /**
+                 * A list of tags about the user.
+                 */
+                tags: Array<{
+                    /**
+                     * The ID of the tag.
+                     */
+                    id: string;
+                    /**
+                     * The text content of the tag.
+                     */
+                    content: string;
+                }>;
+            };
         } | {
             messaging_identifier: string;
         } | null);
+        /**
+         * List of user social handles.
+         */
+        social_handles?: {
+            linkedin?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            instagram?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            github?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            facebook?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            x?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            threads?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            tiktok?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            wechat?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            gtalk?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            qq?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            skype?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+        };
+        /**
+         * List of user websites.
+         */
+        websites?: Array<string>;
     };
 };
 
@@ -10359,6 +11007,9 @@ export type UpdateUserProfileData = {
                  */
                 skills?: Array<{
                     text: string;
+                    /**
+                     * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+                     */
                     id?: string;
                 }>;
                 /**
@@ -10381,16 +11032,25 @@ export type UpdateUserProfileData = {
                     /**
                      * Job title of the experience.
                      */
-                    job_title?: {
+                    job_title: {
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+                         */
                         id?: string;
                     };
+                    /**
+                     * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `EMPLOYMENT_TYPE` type to find out the possible values. Employment type of the experience.
+                     */
                     employment_type?: string;
                     /**
                      * Company of the experience.
                      */
-                    company?: {
+                    company: {
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+                         */
                         id?: string;
                     };
                     /**
@@ -10398,6 +11058,9 @@ export type UpdateUserProfileData = {
                      */
                     location?: {
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+                         */
                         id?: string;
                     };
                     /**
@@ -10443,6 +11106,9 @@ export type UpdateUserProfileData = {
                      */
                     skills?: Array<{
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+                         */
                         id?: string;
                     }>;
                     attachment?: {
@@ -10517,14 +11183,23 @@ export type UpdateUserProfileData = {
                      */
                     job_title?: {
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+                         */
                         id?: string;
                     };
+                    /**
+                     * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `EMPLOYMENT_TYPE` type to find out the possible values. Employment type of the experience.
+                     */
                     employment_type?: string;
                     /**
                      * Company of the experience.
                      */
                     company?: {
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+                         */
                         id?: string;
                     };
                     /**
@@ -10532,6 +11207,9 @@ export type UpdateUserProfileData = {
                      */
                     location?: {
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+                         */
                         id?: string;
                     };
                     /**
@@ -10577,6 +11255,9 @@ export type UpdateUserProfileData = {
                      */
                     skills?: Array<{
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+                         */
                         id?: string;
                     }>;
                     attachment?: {
@@ -10654,8 +11335,11 @@ export type UpdateUserProfileData = {
                     /**
                      * School of the education.
                      */
-                    school?: {
+                    school: {
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+                         */
                         id?: string;
                     };
                     /**
@@ -10663,6 +11347,9 @@ export type UpdateUserProfileData = {
                      */
                     degree?: {
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+                         */
                         id?: string;
                     };
                     /**
@@ -10670,6 +11357,9 @@ export type UpdateUserProfileData = {
                      */
                     field_of_study?: {
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
+                         */
                         id?: string;
                     };
                     /**
@@ -10715,6 +11405,9 @@ export type UpdateUserProfileData = {
                      */
                     skills?: Array<{
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+                         */
                         id?: string;
                     }>;
                     attachment?: {
@@ -10789,6 +11482,9 @@ export type UpdateUserProfileData = {
                      */
                     school?: {
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+                         */
                         id?: string;
                     };
                     /**
@@ -10796,6 +11492,9 @@ export type UpdateUserProfileData = {
                      */
                     degree?: {
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+                         */
                         id?: string;
                     };
                     /**
@@ -10803,6 +11502,9 @@ export type UpdateUserProfileData = {
                      */
                     field_of_study?: {
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
+                         */
                         id?: string;
                     };
                     /**
@@ -10848,6 +11550,9 @@ export type UpdateUserProfileData = {
                      */
                     skills?: Array<{
                         text: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+                         */
                         id?: string;
                     }>;
                     attachment?: {
@@ -10922,8 +11627,50 @@ export type UpdateUserProfileData = {
                      * A visual filter to be applied to the picture.
                      */
                     filter?: 'original' | 'studio' | 'spotlight' | 'prime' | 'classic' | 'edge' | 'luminate';
+                    /**
+                     * A list of spatial coordinates to manage picture positionning.
+                     */
                     layout?: {
-                        [key: string]: unknown;
+                        bottom_left?: {
+                            /**
+                             * The position of the corner on the `x` axis.
+                             */
+                            x: number;
+                            /**
+                             * The position of the corner on the `y` axis.
+                             */
+                            y: number;
+                        };
+                        bottom_right?: {
+                            /**
+                             * The position of the corner on the `x` axis.
+                             */
+                            x: number;
+                            /**
+                             * The position of the corner on the `y` axis.
+                             */
+                            y: number;
+                        };
+                        top_left?: {
+                            /**
+                             * The position of the corner on the `x` axis.
+                             */
+                            x: number;
+                            /**
+                             * The position of the corner on the `y` axis.
+                             */
+                            y: number;
+                        };
+                        top_right?: {
+                            /**
+                             * The position of the corner on the `x` axis.
+                             */
+                            x: number;
+                            /**
+                             * The position of the corner on the `y` axis.
+                             */
+                            y: number;
+                        };
                     };
                     /**
                      * The level of contrast.
@@ -10947,8 +11694,50 @@ export type UpdateUserProfileData = {
                      * A visual filter to be applied to the picture.
                      */
                     filter?: 'original' | 'studio' | 'spotlight' | 'prime' | 'classic' | 'edge' | 'luminate';
+                    /**
+                     * A list of spatial coordinates to manage picture positionning.
+                     */
                     layout?: {
-                        [key: string]: unknown;
+                        bottom_left?: {
+                            /**
+                             * The position of the corner on the `x` axis.
+                             */
+                            x: number;
+                            /**
+                             * The position of the corner on the `y` axis.
+                             */
+                            y: number;
+                        };
+                        bottom_right?: {
+                            /**
+                             * The position of the corner on the `x` axis.
+                             */
+                            x: number;
+                            /**
+                             * The position of the corner on the `y` axis.
+                             */
+                            y: number;
+                        };
+                        top_left?: {
+                            /**
+                             * The position of the corner on the `x` axis.
+                             */
+                            x: number;
+                            /**
+                             * The position of the corner on the `y` axis.
+                             */
+                            y: number;
+                        };
+                        top_right?: {
+                            /**
+                             * The position of the corner on the `x` axis.
+                             */
+                            x: number;
+                            /**
+                             * The position of the corner on the `y` axis.
+                             */
+                            y: number;
+                        };
                     };
                     /**
                      * The level of contrast.
@@ -10966,6 +11755,60 @@ export type UpdateUserProfileData = {
                      * The level of brightness.
                      */
                     brightness?: number;
+                };
+                custom_link?: {
+                    /**
+                     * The type of link.
+                     */
+                    type: 'STORE' | 'WEBSITE' | 'PORTFOLIO' | 'BLOG' | 'NEWSLETTER';
+                    /**
+                     * The type of link.
+                     */
+                    url: string;
+                    /**
+                     * The type of link.
+                     */
+                    display_on?: 'PROFILE_ONLY' | 'EVERYWHERE';
+                };
+                open_to_work?: {
+                    /**
+                     * A list of job titles you would like to hold.
+                     */
+                    job_title: Array<{
+                        /**
+                         * The title of the job.
+                         */
+                        title: string;
+                        /**
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+                         */
+                        id: string;
+                    }>;
+                    /**
+                     * A list of desired workplaces.
+                     */
+                    workplace: Array<{
+                        /**
+                         * The type of workplace.
+                         */
+                        type: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+                        /**
+                         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+                         */
+                        location: Array<string>;
+                    }>;
+                    /**
+                     * The timeframe by which you would like to start.
+                     */
+                    start_date?: 'IMMEDIATELY' | 'FLEXIBLE';
+                    /**
+                     * A list of employment types.
+                     */
+                    employment_type?: Array<'FULL_TIME' | 'PART_TIME' | 'CONTRACT' | 'INTERNSHIP' | 'TEMPORARY'>;
+                    /**
+                     * Who can view that you are open to work.
+                     */
+                    visibility: 'ALL' | 'RECRUITERS_ONLY';
                 };
             };
         };
@@ -15502,7 +16345,7 @@ export type GetPostCommentsListResponses = {
              */
             reply_counter: number;
             /**
-             * The number of reactions to the element
+             * A list of reactions to the element.
              */
             reactions_counter: Array<{
                 /**
@@ -15633,7 +16476,7 @@ export type AddPostCommentResponses = {
          */
         reply_counter: number;
         /**
-         * The number of reactions to the element
+         * A list of reactions to the element.
          */
         reactions_counter: Array<{
             /**
@@ -15784,7 +16627,7 @@ export type UpdatePostCommentResponses = {
          */
         reply_counter: number;
         /**
-         * The number of reactions to the element
+         * A list of reactions to the element.
          */
         reactions_counter: Array<{
             /**
@@ -15910,7 +16753,7 @@ export type ReplyToCommentResponses = {
          */
         reply_counter: number;
         /**
-         * The number of reactions to the element
+         * A list of reactions to the element.
          */
         reactions_counter: Array<{
             /**
@@ -16041,7 +16884,7 @@ export type GetPostCommentRepliesListResponses = {
              */
             reply_counter: number;
             /**
-             * The number of reactions to the element
+             * A list of reactions to the element.
              */
             reactions_counter: Array<{
                 /**
@@ -17805,7 +18648,7 @@ export type GetInmailCreditsData = {
         /**
          * The targeted LinkedIn service. Leave blank to retrieve all credit statements for subscribed services.
          */
-        service?: 'premium' | 'recruiter' | 'sales_navigator';
+        service?: 'classic' | 'recruiter' | 'sales_navigator';
     };
     url: '/v2/{account_id}/linkedin/inmail-credits';
 };
@@ -17820,7 +18663,7 @@ export type GetInmailCreditsResponses = {
             /**
              * InMail credits for Classic Premium.
              */
-            premium?: number;
+            classic?: number;
             /**
              * InMail credits for Recruiter.
              */
@@ -17993,10 +18836,6 @@ export type GetClassicCompanyProfileResponses = {
          */
         activities?: Array<string>;
         /**
-         * The number of employees of the Company.
-         */
-        employee_count: number;
-        /**
          * The website URL of the Company.
          */
         website?: string;
@@ -18012,6 +18851,9 @@ export type GetClassicCompanyProfileResponses = {
          * The list of fields of expertise of the Company.
          */
         fields_of_expertise?: Array<string>;
+        /**
+         * The acquirer company.
+         */
         acquired_by?: {
             object: 'CompanyLightProfile';
             /**
@@ -18030,6 +18872,125 @@ export type GetClassicCompanyProfileResponses = {
              * The public profile URL of the Company.
              */
             profile_url: string;
+        };
+        /**
+         * Insights about the company.
+         */
+        insights: {
+            /**
+             * The number of employees of the Company.
+             */
+            headcount: number;
+            /**
+             * The employees count range the Company falls into.
+             */
+            headcount_range?: {
+                /**
+                 * The lower bound of the range.
+                 */
+                from?: number;
+                /**
+                 * The higher bound of the range.
+                 */
+                to?: number;
+            };
+            /**
+             * A list of time markers to create a chart showing the evolution of the number of employees.
+             */
+            heacount_growth?: Array<{
+                /**
+                 * The date of the marker. Uses ISO 8601 en_US datetime (MM/DD/YYYY).
+                 */
+                date: string;
+                /**
+                 * The number of employees at the specified date.
+                 */
+                headcount: number;
+            }>;
+            /**
+             * A list of time markers to create a chart showing the evolution of the number of employees.
+             */
+            growth_periods?: Array<{
+                /**
+                 * The months range.
+                 */
+                months_range: number;
+                /**
+                 * The growth percentage for the given months range.
+                 */
+                percentage: number;
+            }>;
+            /**
+             * The average years of experience of employees.
+             */
+            average_tenure?: number;
+        };
+        /**
+         * Company funding information.
+         */
+        funding?: {
+            /**
+             * Details about Crunchbase funding.
+             */
+            crunchbase?: {
+                /**
+                 * The URL to the funding rounds on Crunchbase.
+                 */
+                rounds_url: string;
+                /**
+                 * The number of funding rounds.
+                 */
+                rounds_count: number;
+                /**
+                 * The URL of the Company on Crunchbase.
+                 */
+                company_url: string;
+                /**
+                 * The last funding round.
+                 */
+                last_round: {
+                    /**
+                     * The date on which the round was announced. Uses ISO 8601 en_US datetime (MM/DD/YYYY).
+                     */
+                    announced_on: string;
+                    /**
+                     * The URL to the funding round on Crunchbase.
+                     */
+                    url: string;
+                    /**
+                     * The type of funding.
+                     */
+                    funding_type: string;
+                    /**
+                     * The number of investors for the current round.
+                     */
+                    investors_count: number;
+                    /**
+                     * A list of most important investors.
+                     */
+                    lead_investors: Array<{
+                        /**
+                         * The name of the investor.
+                         */
+                        name: string;
+                        /**
+                         * The URL of the investor.
+                         */
+                        url: string;
+                        /**
+                         * The logo URL of the investor.
+                         */
+                        logo_url?: string;
+                    }>;
+                    /**
+                     * The amount of money that has been raised during the funding round.
+                     */
+                    money_raised?: {
+                        amount: number;
+                        currency: string;
+                    };
+                };
+            };
         };
         /**
          * The list of hashtags related to the Company.
@@ -18116,6 +19077,38 @@ export type SubmitClassicCompanyOtpCodeResponses = {
 
 export type SubmitClassicCompanyOtpCodeResponse = SubmitClassicCompanyOtpCodeResponses[keyof SubmitClassicCompanyOtpCodeResponses];
 
+export type EndorseClassicMemberSkillData = {
+    body: {
+        /**
+         * The endorsement ID for the selected skill.<br/>Use <a href="https://developer.unipile.com/v2.0/reference/getuserprofile">Get a User Profile</a> with `linkedin_skills` in param `with_sections` to retrieve the skills you can endorse for the given member.
+         */
+        skill_id: string;
+    };
+    path: {
+        /**
+         * The ID of the member for which to endorse the skill.
+         */
+        member_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/linkedin/member/{member_id}/endorse-skill';
+};
+
+export type EndorseClassicMemberSkillResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        object: 'SkillEndorsed';
+    };
+};
+
+export type EndorseClassicMemberSkillResponse = EndorseClassicMemberSkillResponses[keyof EndorseClassicMemberSkillResponses];
+
 export type GetClassicSearchParametersData = {
     body?: never;
     path: {
@@ -18128,7 +19121,7 @@ export type GetClassicSearchParametersData = {
         /**
          * The type of search parameter.
          */
-        type: 'LOCATION' | 'COMPANY' | 'RELATION' | 'PEOPLE' | 'SCHOOL' | 'INDUSTRY' | 'SERVICE' | 'JOB_FUNCTION';
+        type: 'LOCATION' | 'COMPANY' | 'RELATION' | 'PEOPLE' | 'SCHOOL' | 'INDUSTRY' | 'SERVICE' | 'JOB_FUNCTION' | 'JOB_TITLE' | 'EMPLOYMENT_TYPE' | 'SKILL';
         /**
          * A keyword or group of keywords to filter results.
          */
@@ -18160,6 +19153,24 @@ export type GetClassicSearchParametersResponses = {
              * The display name of the search parameter.
              */
             name: string;
+            /**
+             * Metadata about the current parameter.
+             */
+            metadata?: {
+                object: 'SavedSearchMetadata';
+                product: 'sales_navigator';
+                last_viewed_at: number;
+                new_results_count: number;
+            } | {
+                object: 'SavedSearchMetadata';
+                product: 'recruiter';
+                query: string;
+                new_results_count: number;
+                project?: {
+                    id: string;
+                    name: string;
+                };
+            };
         }>;
         /**
          * Total number of results if supported by the endpoint.
@@ -18205,6 +19216,161 @@ export type PerformClassicSearchFromUrlResponses = {
      * Default Response
      */
     200: {
+        data: Array<{
+            object: 'PeopleSearchResult';
+            /**
+             * The ID of the user.
+             */
+            id: string;
+            /**
+             * The LinkedIn internal member ID of the user.
+             */
+            member_id?: string;
+            /**
+             * The display name of the User.
+             */
+            display_name: string;
+            /**
+             * The public identifier of the User.
+             */
+            public_identifier?: string;
+            /**
+             * The profile URL of the User.
+             */
+            profile_url?: string;
+            /**
+             * The public picture URL of the User.
+             */
+            public_picture_url?: string;
+            /**
+             * The public picture URL of the User in large size.
+             */
+            public_picture_url_large?: string;
+            /**
+             * The number of relations of the User.
+             */
+            relations_count?: number;
+            /**
+             * The location of the User.
+             */
+            location: string;
+            /**
+             * The headline of the User.
+             */
+            headline: string;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            product: 'classic';
+            /**
+             * The number of the followers of the User.
+             */
+            followers_count?: number;
+            /**
+             * The industry to which the User belongs.
+             */
+            industry?: string;
+            /**
+             * Whether the User has a verified account.
+             */
+            is_verified?: boolean;
+            /**
+             * The search terms that produced this result.
+             */
+            keywords_match?: string;
+            /**
+             * Whether the User has a premium account.
+             */
+            is_premium?: boolean;
+            /**
+             * Whether the User has an Open Profile. The Open Profile feature allows anyone on LinkedIn to contact a Premium member for free.
+             */
+            is_open_profile?: boolean;
+            /**
+             * The number of relations that you share with the User.
+             */
+            shared_relations_count?: number;
+        }>;
+        /**
+         * Total number of results if supported by the endpoint.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    } | {
+        data: Array<{
+            object: 'CompanySearchResult';
+            /**
+             * The ID of the Company.
+             */
+            id: string;
+            /**
+             * The display name of the Company.
+             */
+            display_name: string;
+            /**
+             * The public identifier of the Company.
+             */
+            public_identifier?: string;
+            /**
+             * The profile URL of the Company.
+             */
+            profile_url?: string;
+            /**
+             * The public picture URL of the Company.
+             */
+            public_picture_url?: string;
+            /**
+             * The public picture URL of the Company in large size.
+             */
+            public_picture_url_large?: string;
+            /**
+             * The location of the Company.
+             */
+            location?: string;
+            /**
+             * The industry to which the Company belongs.
+             */
+            industry?: string;
+            /**
+             * The summary of the Company's activities.
+             */
+            summary?: string;
+            /**
+             * The number of the relations of the Company.
+             */
+            relations_count?: number;
+            product: 'classic';
+            /**
+             * The number of job postings published by the Company.
+             */
+            job_postings_count?: number;
+            /**
+             * The number of the followers of the Company.
+             */
+            followers_count?: number;
+        }>;
+        /**
+         * Total number of results if supported by the endpoint.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    } | {
         data: Array<{
             object: 'JobSearchResult';
             /**
@@ -19124,153 +20290,6 @@ export type PerformClassicSearchFromUrlResponses = {
          * Cursor to get the next page of results if supported. Else use `offset`.
          */
         next_cursor?: string;
-    } | {
-        data: Array<{
-            object: 'PeopleSearchResult';
-            product: 'classic';
-            /**
-             * The ID of the user.
-             */
-            id: string;
-            /**
-             * The display name of the User.
-             */
-            display_name: string;
-            /**
-             * The public identifier of the User.
-             */
-            public_identifier?: string;
-            /**
-             * The profile URL of the User.
-             */
-            profile_url?: string;
-            /**
-             * The public picture URL of the User.
-             */
-            public_picture_url?: string;
-            /**
-             * The number of relations of the User.
-             */
-            relations_count?: number;
-            /**
-             * The number of relations that you share with the User.
-             */
-            shared_relations_count?: number;
-            /**
-             * The number of the followers of the User.
-             */
-            followers_count?: number;
-            /**
-             * The location of the User.
-             */
-            location: string;
-            /**
-             * The headline of the User.
-             */
-            headline: string;
-            /**
-             * The industry to which the User belongs.
-             */
-            industry?: string;
-            /**
-             * Whether the User has a premium account.
-             */
-            is_premium?: boolean;
-            /**
-             * Whether the User has a verified account.
-             */
-            is_verified?: boolean;
-            /**
-             * Whether the User has an Open Profile. The Open Profile feature allows anyone on LinkedIn to contact a Premium member for free.
-             */
-            is_open_profile?: boolean;
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail?: boolean;
-            /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
-             * The search terms that produced this result.
-             */
-            keywords_match?: string;
-        }>;
-        /**
-         * Total number of results if supported by the endpoint.
-         */
-        total_count?: number;
-        /**
-         * Cursor to get the next page of results if supported. Else use `offset`.
-         */
-        next_cursor?: string;
-    } | {
-        data: Array<{
-            object: 'CompanySearchResult';
-            product: 'classic';
-            /**
-             * The ID of the Company.
-             */
-            id: string;
-            /**
-             * The display name of the Company.
-             */
-            display_name: string;
-            /**
-             * The public identifier of the Company.
-             */
-            public_identifier?: string;
-            /**
-             * The profile URL of the Company.
-             */
-            profile_url?: string;
-            /**
-             * The public picture URL of the Company.
-             */
-            public_picture_url?: string;
-            /**
-             * The location of the Company.
-             */
-            location?: string;
-            /**
-             * The industry to which the Company belongs.
-             */
-            industry?: string;
-            /**
-             * The summary of the Company's activities.
-             */
-            summary?: string;
-            /**
-             * The number of employees of the Company.
-             */
-            headcount?: string;
-            /**
-             * The number of job postings published by the Company.
-             */
-            job_postings_count?: number;
-            /**
-             * The number of the followers of the Company.
-             */
-            followers_count?: number;
-            /**
-             * The number of the relations of the Company.
-             */
-            relations_count?: number;
-        }>;
-        /**
-         * Total number of results if supported by the endpoint.
-         */
-        total_count?: number;
-        /**
-         * Cursor to get the next page of results if supported. Else use `offset`.
-         */
-        next_cursor?: string;
     };
 };
 
@@ -19317,7 +20336,19 @@ export type PerformClassicPeopleSearchData = {
          *
          */
         school?: Array<string>;
+        /**
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `RELATION` type to find out the possible values.
+         *
+         * Native filter : Connections of
+         *
+         */
         connections_of?: string;
+        /**
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `PEOPLE` type to find out the possible values.
+         *
+         * Native filter : Followers of
+         *
+         */
         followers_of?: string;
         /**
          * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
@@ -19417,11 +20448,14 @@ export type PerformClassicPeopleSearchResponses = {
     200: {
         data: Array<{
             object: 'PeopleSearchResult';
-            product: 'classic';
             /**
              * The ID of the user.
              */
             id: string;
+            /**
+             * The LinkedIn internal member ID of the user.
+             */
+            member_id?: string;
             /**
              * The display name of the User.
              */
@@ -19439,17 +20473,13 @@ export type PerformClassicPeopleSearchResponses = {
              */
             public_picture_url?: string;
             /**
+             * The public picture URL of the User in large size.
+             */
+            public_picture_url_large?: string;
+            /**
              * The number of relations of the User.
              */
             relations_count?: number;
-            /**
-             * The number of relations that you share with the User.
-             */
-            shared_relations_count?: number;
-            /**
-             * The number of the followers of the User.
-             */
-            followers_count?: number;
             /**
              * The location of the User.
              */
@@ -19458,26 +20488,6 @@ export type PerformClassicPeopleSearchResponses = {
              * The headline of the User.
              */
             headline: string;
-            /**
-             * The industry to which the User belongs.
-             */
-            industry?: string;
-            /**
-             * Whether the User has a premium account.
-             */
-            is_premium?: boolean;
-            /**
-             * Whether the User has a verified account.
-             */
-            is_verified?: boolean;
-            /**
-             * Whether the User has an Open Profile. The Open Profile feature allows anyone on LinkedIn to contact a Premium member for free.
-             */
-            is_open_profile?: boolean;
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail?: boolean;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -19488,9 +20498,38 @@ export type PerformClassicPeopleSearchResponses = {
              */
             network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
             /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            product: 'classic';
+            /**
+             * The number of the followers of the User.
+             */
+            followers_count?: number;
+            /**
+             * The industry to which the User belongs.
+             */
+            industry?: string;
+            /**
+             * Whether the User has a verified account.
+             */
+            is_verified?: boolean;
+            /**
              * The search terms that produced this result.
              */
             keywords_match?: string;
+            /**
+             * Whether the User has a premium account.
+             */
+            is_premium?: boolean;
+            /**
+             * Whether the User has an Open Profile. The Open Profile feature allows anyone on LinkedIn to contact a Premium member for free.
+             */
+            is_open_profile?: boolean;
+            /**
+             * The number of relations that you share with the User.
+             */
+            shared_relations_count?: number;
         }>;
         /**
          * Total number of results if supported by the endpoint.
@@ -19525,6 +20564,9 @@ export type PerformClassicCompaniesSearchData = {
          *
          */
         industry?: Array<string>;
+        /**
+         * A list of company headcount ranges.
+         */
         headcount?: Array<{
             min?: 1 | 11 | 51 | 201 | 501 | 1001 | 5001 | 10001;
             max?: 10 | 50 | 200 | 500 | 1000 | 5000 | 10000;
@@ -19570,7 +20612,6 @@ export type PerformClassicCompaniesSearchResponses = {
     200: {
         data: Array<{
             object: 'CompanySearchResult';
-            product: 'classic';
             /**
              * The ID of the Company.
              */
@@ -19592,6 +20633,10 @@ export type PerformClassicCompaniesSearchResponses = {
              */
             public_picture_url?: string;
             /**
+             * The public picture URL of the Company in large size.
+             */
+            public_picture_url_large?: string;
+            /**
              * The location of the Company.
              */
             location?: string;
@@ -19604,9 +20649,10 @@ export type PerformClassicCompaniesSearchResponses = {
              */
             summary?: string;
             /**
-             * The number of employees of the Company.
+             * The number of the relations of the Company.
              */
-            headcount?: string;
+            relations_count?: number;
+            product: 'classic';
             /**
              * The number of job postings published by the Company.
              */
@@ -19615,10 +20661,6 @@ export type PerformClassicCompaniesSearchResponses = {
              * The number of the followers of the Company.
              */
             followers_count?: number;
-            /**
-             * The number of the relations of the Company.
-             */
-            relations_count?: number;
         }>;
         /**
          * Total number of results if supported by the endpoint.
@@ -19660,6 +20702,9 @@ export type PerformClassicPostsSearchData = {
          *
          */
         content_type?: 'VIDEOS' | 'IMAGES' | 'JOB_POSTS' | 'LIVE_VIDEOS' | 'DOCUMENTS' | 'COLLABORATIVE_ARTICLES';
+        /**
+         * The users/companies who published the posts.
+         */
         posted_by?: {
             /**
              * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `PEOPLE` type to find out the possible values.
@@ -19697,6 +20742,9 @@ export type PerformClassicPostsSearchData = {
              */
             people_you_follow?: boolean;
         };
+        /**
+         * The users/companies mentionned in the posts.
+         */
         mentioning?: {
             /**
              * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `PEOPLE` type to find out the possible values.
@@ -19713,6 +20761,9 @@ export type PerformClassicPostsSearchData = {
              */
             company?: Array<string>;
         };
+        /**
+         * Advanced filters on post authors.
+         */
         author?: {
             /**
              *
@@ -20624,8 +21675,26 @@ export type PerformClassicJobsSearchData = {
          *
          */
         date_posted?: 'PAST_DAY' | 'PAST_WEEK' | 'PAST_MONTH';
+        /**
+         * A list of workplace types.
+         *
+         * Native filter : Remote
+         *
+         */
         workplace_type?: Array<'ON_SITE' | 'REMOTE' | 'HYBRID'>;
+        /**
+         * A list of experience levels required by the jobs.
+         *
+         * Native filter : Experience level
+         *
+         */
         seniority?: Array<'INTERNSHIP' | 'ENTRY_LEVEL' | 'ASSOCIATE' | 'MID_SENIOR_LEVEL' | 'DIRECTOR' | 'EXECUTIVE'>;
+        /**
+         * A list of employment statuses.
+         *
+         * Native filter : Job type
+         *
+         */
         employment_status?: Array<'FULL_TIME' | 'PART_TIME' | 'CONTRACT' | 'TEMPORARY' | 'VOLUNTEER' | 'INTERNSHIP' | 'OTHER'>;
         /**
          * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
@@ -20634,6 +21703,12 @@ export type PerformClassicJobsSearchData = {
          *
          */
         company?: Array<string>;
+        /**
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+         *
+         * Native filter : Primary location
+         *
+         */
         primary_location?: string;
         /**
          * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
@@ -20924,22 +21999,40 @@ export type CreateClassicJobPostingDraftData = {
         /**
          * The title of the job.
          */
-        title: {
+        job_title: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             */
             id?: string;
-            text?: string;
+            /**
+             * The name of the job.
+             */
+            name?: string;
         };
         /**
          * The company on whose behalf the job is created.
          */
         company: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
             id?: string;
+            /**
+             * The name of the company.
+             */
             name?: string;
         };
         /**
          * The workplace type of the job.
          */
         workplace_type: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+        /**
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
+         */
         location: string;
+        /**
+         * The employment status of the job.
+         */
         employment_status: 'FULL_TIME' | 'PART_TIME' | 'CONTRACT' | 'TEMPORARY' | 'OTHER' | 'VOLUNTEER' | 'INTERNSHIP';
         /**
          * The job description. You can use HTML tags to structure your content.
@@ -21268,22 +22361,40 @@ export type EditClassicJobPostingData = {
         /**
          * The title of the job.
          */
-        title?: {
+        job_title?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             */
             id?: string;
-            text?: string;
+            /**
+             * The name of the job.
+             */
+            name?: string;
         };
         /**
          * The company on whose behalf the job is created.
          */
         company?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
             id?: string;
+            /**
+             * The name of the company.
+             */
             name?: string;
         };
         /**
          * The workplace type of the job.
          */
         workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+        /**
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
+         */
         location?: string;
+        /**
+         * The employment status of the job.
+         */
         employment_status?: 'FULL_TIME' | 'PART_TIME' | 'CONTRACT' | 'TEMPORARY' | 'OTHER' | 'VOLUNTEER' | 'INTERNSHIP';
         /**
          * The job description. You can use HTML tags to structure your content.
@@ -21502,6 +22613,9 @@ export type PublishClassicJobPostingData = {
          * Whether not to verify if you're allowed to post a job on behalf on the current company.
          */
         bypass_email_verification?: boolean;
+        /**
+         * The publishing mode of the job posting.
+         */
         mode: 'FREE';
     } | {
         /**
@@ -21512,32 +22626,26 @@ export type PublishClassicJobPostingData = {
          * Whether not to verify if you're allowed to post a job on behalf on the current company.
          */
         bypass_email_verification?: boolean;
+        /**
+         * The publishing mode of the job posting.
+         */
         mode: 'PROMOTED' | 'PROMOTED_PLUS';
         /**
          * The daily OR total budget.
          */
         budget: {
-            daily: {
-                /**
-                 * A 3 capital letters ISO 4217 currency code.
-                 */
-                currency: string;
-                /**
-                 * The amount of money to be spent on the job posting.
-                 */
-                amount: number;
-            };
-        } | {
-            total: {
-                /**
-                 * A 3 capital letters ISO 4217 currency code.
-                 */
-                currency: string;
-                /**
-                 * The amount of money to be spent on the job posting.
-                 */
-                amount: number;
-            };
+            /**
+             * A 3 capital letters ISO 4217 currency code.
+             */
+            currency: string;
+            /**
+             * The amount of money to be spent on the job posting.
+             */
+            amount: number;
+            /**
+             * The time scope of the budget.
+             */
+            scope: 'DAILY' | 'TOTAL';
         };
     };
     path: {
@@ -22138,6 +23246,10 @@ export type GetRecruiterHiringProjectListData = {
          */
         status?: Array<'ACTIVE' | 'CLOSED' | 'DRAFT' | 'REVIEW'>;
         /**
+         * The sort method.
+         */
+        sort_by?: 'LAST_USED_BY_ME' | 'MOST_USED_BY_ME' | 'LAST_VIEWED_BY_ME' | 'NEWEST_TO_OLDEST' | 'OLDEST_TO_NEWEST' | 'ALPHABETICAL' | 'REVERSE_ALPHABETICAL';
+        /**
          * A keyword or group of keywords to filter projects by name.
          */
         keywords?: string;
@@ -22404,6 +23516,9 @@ export type CreateRecruiterHiringProjectData = {
          * The company on whose behalf the project is created.
          */
         company?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
             id?: string;
             /**
              * The name of the company.
@@ -22414,12 +23529,18 @@ export type CreateRecruiterHiringProjectData = {
          * The job title of the project.
          */
         job_title?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             */
             id: string;
             /**
              * The name of the job.
              */
             name: string;
         };
+        /**
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
+         */
         location?: string;
         /**
          * The level of experience.
@@ -22708,6 +23829,9 @@ export type EditRecruiterHiringProjectData = {
          * The company on whose behalf the project is created.
          */
         company?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
             id?: string;
             /**
              * The name of the company.
@@ -22718,12 +23842,18 @@ export type EditRecruiterHiringProjectData = {
          * The job title of the project.
          */
         job_title?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             */
             id: string;
             /**
              * The name of the job.
              */
             name: string;
         };
+        /**
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
+         */
         location?: string;
         /**
          * The level of experience.
@@ -22840,6 +23970,9 @@ export type GetRecruiterTalentPoolApplicantsData = {
          * A list of languages.
          */
         spoken_language?: Array<{
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SPOKEN_LANGUAGE` type to find out the possible values.
+             */
             id: string;
             /**
              * Whether the user can, must or shouldn't have the value.
@@ -22988,9 +24121,9 @@ export type GetRecruiterTalentPoolApplicantsData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
-        offset?: number;
+        cursor?: string;
         /**
          * The limit of items to be returned.
          */
@@ -23044,38 +24177,59 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
             }>;
             profile: {
                 /**
+                 * The ID of the user.
+                 */
+                id: string;
+                /**
+                 * The headline of the User.
+                 */
+                headline: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * The location of the User.
+                 */
+                location: string;
+                /**
+                 * Whether it is possible to send an inMail to this User.
+                 */
+                can_send_inmail?: boolean;
+                /**
                  * Indidates that you don't have access to the full profile of this User.
                  */
                 visibility: 'partial';
                 /**
-                 * The ID of the User.
-                 */
-                id: string;
-                /**
                  * The candidate ID of the User.
                  */
                 candidate_id: string;
                 /**
-                 * The headline of the User.
-                 */
-                headline: string;
-                /**
-                 * Network distance to a User.
-                 * `SELF`: Yourself.
-                 * `FIRST_DEGREE`: 1st degree connection.
-                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-                 * `OUT_OF_NETWORK`: Unreachable user.'
-                 */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
-                 * The location of the User.
-                 */
-                location: string;
-                /**
                  * Whether the User has been set as hidden candidate.
                  */
                 is_hidden_candidate: boolean;
+                /**
+                 * The hiring project where the User is a candidate.
+                 */
+                hiring_project?: {
+                    /**
+                     * The ID of the project.
+                     */
+                    id: string;
+                    /**
+                     * The name of the project.
+                     */
+                    name: string;
+                    /**
+                     * The pipeline stage at which the User is (contacted, replied, etc.).
+                     */
+                    pipeline_stage: string;
+                };
                 /**
                  * A list of the User's work experiences.
                  */
@@ -23108,9 +24262,9 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                         industries?: Array<string>;
                     };
                     /**
-                     * Position name in the experience.
+                     * Job title of the experience.
                      */
-                    title: string;
+                    job_title: string;
                     /**
                      * Start date of the experience in MM/DD/YYYY format.
                      */
@@ -23144,116 +24298,15 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                      */
                     skills_preview?: string;
                 }>;
-                /**
-                 * Whether it is possible to send an inMail to this User.
-                 */
-                can_send_inmail?: boolean;
             } | {
                 /**
-                 * Indidates that you have access to the full profile of this User.
-                 */
-                visibility: 'full';
-                /**
-                 * The ID of the User.
+                 * The ID of the user.
                  */
                 id: string;
                 /**
-                 * The candidate ID of the User.
+                 * The LinkedIn internal member ID of the user.
                  */
-                candidate_id: string;
-                /**
-                 * The headline of the User.
-                 */
-                headline: string;
-                /**
-                 * Network distance to a User.
-                 * `SELF`: Yourself.
-                 * `FIRST_DEGREE`: 1st degree connection.
-                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-                 * `OUT_OF_NETWORK`: Unreachable user.'
-                 */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
-                 * The location of the User.
-                 */
-                location: string;
-                /**
-                 * Whether the User has been set as hidden candidate.
-                 */
-                is_hidden_candidate: boolean;
-                /**
-                 * A list of the User's work experiences.
-                 */
-                work_experience: Array<{
-                    /**
-                     * Id of the work experience entry.
-                     */
-                    id?: string;
-                    company: {
-                        /**
-                         * Name of the company.
-                         */
-                        name?: string;
-                        id: string | null;
-                        /**
-                         * Public identifier of the company.
-                         */
-                        public_identifier?: string;
-                        /**
-                         * Public url to the profile picture of the company.
-                         */
-                        picture_url?: string;
-                        /**
-                         * Public url to the profile of the company.
-                         */
-                        profile_url?: string;
-                        /**
-                         * Industry types of the company.
-                         */
-                        industries?: Array<string>;
-                    };
-                    /**
-                     * Position name in the experience.
-                     */
-                    title: string;
-                    /**
-                     * Start date of the experience in MM/DD/YYYY format.
-                     */
-                    started_on?: string;
-                    /**
-                     * End date of the experience in MM/DD/YYYY format.
-                     */
-                    ended_on?: string;
-                    /**
-                     * Location of the experience.
-                     */
-                    location?: string;
-                    /**
-                     * Description of the experience.
-                     */
-                    description?: string;
-                    /**
-                     * Employment type of the experience.
-                     */
-                    employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
-                    /**
-                     * Workplace type of the experience.
-                     */
-                    workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
-                    /**
-                     * Skills acquired with experience.
-                     */
-                    skills?: Array<string>;
-                    /**
-                     * Insight of the skills acquired with experience.
-                     */
-                    skills_preview?: string;
-                }>;
-                /**
-                 * Whether it is possible to send an inMail to this User.
-                 */
-                can_send_inmail?: boolean;
+                member_id?: string;
                 /**
                  * The display name of the User.
                  */
@@ -23265,15 +24318,141 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                 /**
                  * The profile URL of the User.
                  */
-                profile_url: string;
+                profile_url?: string;
                 /**
-                 * The industry to which the User belongs.
+                 * The public picture URL of the User.
                  */
-                industry: string;
+                public_picture_url?: string;
+                /**
+                 * The public picture URL of the User in large size.
+                 */
+                public_picture_url_large?: string;
                 /**
                  * The number of relations of the User.
                  */
                 relations_count?: number;
+                /**
+                 * The location of the User.
+                 */
+                location: string;
+                /**
+                 * The headline of the User.
+                 */
+                headline: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * Whether it is possible to send an inMail to this User.
+                 */
+                can_send_inmail?: boolean;
+                /**
+                 * Indidates that you have access to the full profile of this User.
+                 */
+                visibility: 'full';
+                /**
+                 * The candidate ID of the User.
+                 */
+                candidate_id: string;
+                /**
+                 * Whether the User has been set as hidden candidate.
+                 */
+                is_hidden_candidate: boolean;
+                /**
+                 * The hiring project where the User is a candidate.
+                 */
+                hiring_project?: {
+                    /**
+                     * The ID of the project.
+                     */
+                    id: string;
+                    /**
+                     * The name of the project.
+                     */
+                    name: string;
+                    /**
+                     * The pipeline stage at which the User is (contacted, replied, etc.).
+                     */
+                    pipeline_stage: string;
+                };
+                /**
+                 * A list of the User's work experiences.
+                 */
+                work_experience: Array<{
+                    /**
+                     * Id of the work experience entry.
+                     */
+                    id?: string;
+                    company: {
+                        /**
+                         * Name of the company.
+                         */
+                        name?: string;
+                        id: string | null;
+                        /**
+                         * Public identifier of the company.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Public url to the profile picture of the company.
+                         */
+                        picture_url?: string;
+                        /**
+                         * Public url to the profile of the company.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Industry types of the company.
+                         */
+                        industries?: Array<string>;
+                    };
+                    /**
+                     * Job title of the experience.
+                     */
+                    job_title: string;
+                    /**
+                     * Start date of the experience in MM/DD/YYYY format.
+                     */
+                    started_on?: string;
+                    /**
+                     * End date of the experience in MM/DD/YYYY format.
+                     */
+                    ended_on?: string;
+                    /**
+                     * Location of the experience.
+                     */
+                    location?: string;
+                    /**
+                     * Description of the experience.
+                     */
+                    description?: string;
+                    /**
+                     * Employment type of the experience.
+                     */
+                    employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
+                    /**
+                     * Workplace type of the experience.
+                     */
+                    workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+                    /**
+                     * Skills acquired with experience.
+                     */
+                    skills?: Array<string>;
+                    /**
+                     * Insight of the skills acquired with experience.
+                     */
+                    skills_preview?: string;
+                }>;
+                /**
+                 * The industry to which the User belongs.
+                 */
+                industry: string;
                 /**
                  * The number of the followers of the User.
                  */
@@ -23295,10 +24474,6 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                  * The summary of the User.
                  */
                 summary?: string;
-                /**
-                 * The profile picture URL of the User.
-                 */
-                public_picture_url?: string;
                 emails?: Array<string>;
                 phone_numbers?: Array<string>;
                 education: Array<{
@@ -23662,38 +24837,59 @@ export type GetRecruiterApplicantByIdResponses = {
         }>;
         profile: {
             /**
+             * The ID of the user.
+             */
+            id: string;
+            /**
+             * The headline of the User.
+             */
+            headline: string;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            /**
+             * The location of the User.
+             */
+            location: string;
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            /**
              * Indidates that you don't have access to the full profile of this User.
              */
             visibility: 'partial';
             /**
-             * The ID of the User.
-             */
-            id: string;
-            /**
              * The candidate ID of the User.
              */
             candidate_id: string;
             /**
-             * The headline of the User.
-             */
-            headline: string;
-            /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
-             * The location of the User.
-             */
-            location: string;
-            /**
              * Whether the User has been set as hidden candidate.
              */
             is_hidden_candidate: boolean;
+            /**
+             * The hiring project where the User is a candidate.
+             */
+            hiring_project?: {
+                /**
+                 * The ID of the project.
+                 */
+                id: string;
+                /**
+                 * The name of the project.
+                 */
+                name: string;
+                /**
+                 * The pipeline stage at which the User is (contacted, replied, etc.).
+                 */
+                pipeline_stage: string;
+            };
             /**
              * A list of the User's work experiences.
              */
@@ -23726,9 +24922,9 @@ export type GetRecruiterApplicantByIdResponses = {
                     industries?: Array<string>;
                 };
                 /**
-                 * Position name in the experience.
+                 * Job title of the experience.
                  */
-                title: string;
+                job_title: string;
                 /**
                  * Start date of the experience in MM/DD/YYYY format.
                  */
@@ -23762,116 +24958,15 @@ export type GetRecruiterApplicantByIdResponses = {
                  */
                 skills_preview?: string;
             }>;
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail?: boolean;
         } | {
             /**
-             * Indidates that you have access to the full profile of this User.
-             */
-            visibility: 'full';
-            /**
-             * The ID of the User.
+             * The ID of the user.
              */
             id: string;
             /**
-             * The candidate ID of the User.
+             * The LinkedIn internal member ID of the user.
              */
-            candidate_id: string;
-            /**
-             * The headline of the User.
-             */
-            headline: string;
-            /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
-             * The location of the User.
-             */
-            location: string;
-            /**
-             * Whether the User has been set as hidden candidate.
-             */
-            is_hidden_candidate: boolean;
-            /**
-             * A list of the User's work experiences.
-             */
-            work_experience: Array<{
-                /**
-                 * Id of the work experience entry.
-                 */
-                id?: string;
-                company: {
-                    /**
-                     * Name of the company.
-                     */
-                    name?: string;
-                    id: string | null;
-                    /**
-                     * Public identifier of the company.
-                     */
-                    public_identifier?: string;
-                    /**
-                     * Public url to the profile picture of the company.
-                     */
-                    picture_url?: string;
-                    /**
-                     * Public url to the profile of the company.
-                     */
-                    profile_url?: string;
-                    /**
-                     * Industry types of the company.
-                     */
-                    industries?: Array<string>;
-                };
-                /**
-                 * Position name in the experience.
-                 */
-                title: string;
-                /**
-                 * Start date of the experience in MM/DD/YYYY format.
-                 */
-                started_on?: string;
-                /**
-                 * End date of the experience in MM/DD/YYYY format.
-                 */
-                ended_on?: string;
-                /**
-                 * Location of the experience.
-                 */
-                location?: string;
-                /**
-                 * Description of the experience.
-                 */
-                description?: string;
-                /**
-                 * Employment type of the experience.
-                 */
-                employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
-                /**
-                 * Workplace type of the experience.
-                 */
-                workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
-                /**
-                 * Skills acquired with experience.
-                 */
-                skills?: Array<string>;
-                /**
-                 * Insight of the skills acquired with experience.
-                 */
-                skills_preview?: string;
-            }>;
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail?: boolean;
+            member_id?: string;
             /**
              * The display name of the User.
              */
@@ -23883,15 +24978,141 @@ export type GetRecruiterApplicantByIdResponses = {
             /**
              * The profile URL of the User.
              */
-            profile_url: string;
+            profile_url?: string;
             /**
-             * The industry to which the User belongs.
+             * The public picture URL of the User.
              */
-            industry: string;
+            public_picture_url?: string;
+            /**
+             * The public picture URL of the User in large size.
+             */
+            public_picture_url_large?: string;
             /**
              * The number of relations of the User.
              */
             relations_count?: number;
+            /**
+             * The location of the User.
+             */
+            location: string;
+            /**
+             * The headline of the User.
+             */
+            headline: string;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            /**
+             * Indidates that you have access to the full profile of this User.
+             */
+            visibility: 'full';
+            /**
+             * The candidate ID of the User.
+             */
+            candidate_id: string;
+            /**
+             * Whether the User has been set as hidden candidate.
+             */
+            is_hidden_candidate: boolean;
+            /**
+             * The hiring project where the User is a candidate.
+             */
+            hiring_project?: {
+                /**
+                 * The ID of the project.
+                 */
+                id: string;
+                /**
+                 * The name of the project.
+                 */
+                name: string;
+                /**
+                 * The pipeline stage at which the User is (contacted, replied, etc.).
+                 */
+                pipeline_stage: string;
+            };
+            /**
+             * A list of the User's work experiences.
+             */
+            work_experience: Array<{
+                /**
+                 * Id of the work experience entry.
+                 */
+                id?: string;
+                company: {
+                    /**
+                     * Name of the company.
+                     */
+                    name?: string;
+                    id: string | null;
+                    /**
+                     * Public identifier of the company.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Public url to the profile picture of the company.
+                     */
+                    picture_url?: string;
+                    /**
+                     * Public url to the profile of the company.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Industry types of the company.
+                     */
+                    industries?: Array<string>;
+                };
+                /**
+                 * Job title of the experience.
+                 */
+                job_title: string;
+                /**
+                 * Start date of the experience in MM/DD/YYYY format.
+                 */
+                started_on?: string;
+                /**
+                 * End date of the experience in MM/DD/YYYY format.
+                 */
+                ended_on?: string;
+                /**
+                 * Location of the experience.
+                 */
+                location?: string;
+                /**
+                 * Description of the experience.
+                 */
+                description?: string;
+                /**
+                 * Employment type of the experience.
+                 */
+                employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
+                /**
+                 * Workplace type of the experience.
+                 */
+                workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+                /**
+                 * Skills acquired with experience.
+                 */
+                skills?: Array<string>;
+                /**
+                 * Insight of the skills acquired with experience.
+                 */
+                skills_preview?: string;
+            }>;
+            /**
+             * The industry to which the User belongs.
+             */
+            industry: string;
             /**
              * The number of the followers of the User.
              */
@@ -23913,10 +25134,6 @@ export type GetRecruiterApplicantByIdResponses = {
              * The summary of the User.
              */
             summary?: string;
-            /**
-             * The profile picture URL of the User.
-             */
-            public_picture_url?: string;
             emails?: Array<string>;
             phone_numbers?: Array<string>;
             education: Array<{
@@ -24299,6 +25516,12 @@ export type GetRecruiterPipelineCandidatesData = {
          *
          */
         skills?: Array<string>;
+        /**
+         * A list of years ranges
+         *
+         * Native filter : Years of experience
+         *
+         */
         years_of_experience?: Array<{
             min?: 1 | 3 | 6 | 10;
             max?: 1 | 2 | 5 | 10;
@@ -24316,14 +25539,14 @@ export type GetRecruiterPipelineCandidatesData = {
          * Native filter : Current companies
          *
          */
-        company?: Array<string>;
+        current_company?: Array<string>;
         /**
          * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
          *
          * Native filter : Current locations
          *
          */
-        location?: Array<string>;
+        current_location?: Array<string>;
     };
     path: {
         /**
@@ -24337,9 +25560,9 @@ export type GetRecruiterPipelineCandidatesData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
-        offset?: number;
+        cursor?: string;
         /**
          * The limit of items to be returned.
          */
@@ -24359,38 +25582,59 @@ export type GetRecruiterPipelineCandidatesResponses = {
             object: 'PipelineCandidate';
             profile: {
                 /**
+                 * The ID of the user.
+                 */
+                id: string;
+                /**
+                 * The headline of the User.
+                 */
+                headline: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * The location of the User.
+                 */
+                location: string;
+                /**
+                 * Whether it is possible to send an inMail to this User.
+                 */
+                can_send_inmail?: boolean;
+                /**
                  * Indidates that you don't have access to the full profile of this User.
                  */
                 visibility: 'partial';
                 /**
-                 * The ID of the User.
-                 */
-                id: string;
-                /**
                  * The candidate ID of the User.
                  */
                 candidate_id: string;
                 /**
-                 * The headline of the User.
-                 */
-                headline: string;
-                /**
-                 * Network distance to a User.
-                 * `SELF`: Yourself.
-                 * `FIRST_DEGREE`: 1st degree connection.
-                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-                 * `OUT_OF_NETWORK`: Unreachable user.'
-                 */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
-                 * The location of the User.
-                 */
-                location: string;
-                /**
                  * Whether the User has been set as hidden candidate.
                  */
                 is_hidden_candidate: boolean;
+                /**
+                 * The hiring project where the User is a candidate.
+                 */
+                hiring_project?: {
+                    /**
+                     * The ID of the project.
+                     */
+                    id: string;
+                    /**
+                     * The name of the project.
+                     */
+                    name: string;
+                    /**
+                     * The pipeline stage at which the User is (contacted, replied, etc.).
+                     */
+                    pipeline_stage: string;
+                };
                 /**
                  * A list of the User's work experiences.
                  */
@@ -24423,9 +25667,9 @@ export type GetRecruiterPipelineCandidatesResponses = {
                         industries?: Array<string>;
                     };
                     /**
-                     * Position name in the experience.
+                     * Job title of the experience.
                      */
-                    title: string;
+                    job_title: string;
                     /**
                      * Start date of the experience in MM/DD/YYYY format.
                      */
@@ -24459,116 +25703,15 @@ export type GetRecruiterPipelineCandidatesResponses = {
                      */
                     skills_preview?: string;
                 }>;
-                /**
-                 * Whether it is possible to send an inMail to this User.
-                 */
-                can_send_inmail?: boolean;
             } | {
                 /**
-                 * Indidates that you have access to the full profile of this User.
-                 */
-                visibility: 'full';
-                /**
-                 * The ID of the User.
+                 * The ID of the user.
                  */
                 id: string;
                 /**
-                 * The candidate ID of the User.
+                 * The LinkedIn internal member ID of the user.
                  */
-                candidate_id: string;
-                /**
-                 * The headline of the User.
-                 */
-                headline: string;
-                /**
-                 * Network distance to a User.
-                 * `SELF`: Yourself.
-                 * `FIRST_DEGREE`: 1st degree connection.
-                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-                 * `OUT_OF_NETWORK`: Unreachable user.'
-                 */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
-                 * The location of the User.
-                 */
-                location: string;
-                /**
-                 * Whether the User has been set as hidden candidate.
-                 */
-                is_hidden_candidate: boolean;
-                /**
-                 * A list of the User's work experiences.
-                 */
-                work_experience: Array<{
-                    /**
-                     * Id of the work experience entry.
-                     */
-                    id?: string;
-                    company: {
-                        /**
-                         * Name of the company.
-                         */
-                        name?: string;
-                        id: string | null;
-                        /**
-                         * Public identifier of the company.
-                         */
-                        public_identifier?: string;
-                        /**
-                         * Public url to the profile picture of the company.
-                         */
-                        picture_url?: string;
-                        /**
-                         * Public url to the profile of the company.
-                         */
-                        profile_url?: string;
-                        /**
-                         * Industry types of the company.
-                         */
-                        industries?: Array<string>;
-                    };
-                    /**
-                     * Position name in the experience.
-                     */
-                    title: string;
-                    /**
-                     * Start date of the experience in MM/DD/YYYY format.
-                     */
-                    started_on?: string;
-                    /**
-                     * End date of the experience in MM/DD/YYYY format.
-                     */
-                    ended_on?: string;
-                    /**
-                     * Location of the experience.
-                     */
-                    location?: string;
-                    /**
-                     * Description of the experience.
-                     */
-                    description?: string;
-                    /**
-                     * Employment type of the experience.
-                     */
-                    employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
-                    /**
-                     * Workplace type of the experience.
-                     */
-                    workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
-                    /**
-                     * Skills acquired with experience.
-                     */
-                    skills?: Array<string>;
-                    /**
-                     * Insight of the skills acquired with experience.
-                     */
-                    skills_preview?: string;
-                }>;
-                /**
-                 * Whether it is possible to send an inMail to this User.
-                 */
-                can_send_inmail?: boolean;
+                member_id?: string;
                 /**
                  * The display name of the User.
                  */
@@ -24580,15 +25723,141 @@ export type GetRecruiterPipelineCandidatesResponses = {
                 /**
                  * The profile URL of the User.
                  */
-                profile_url: string;
+                profile_url?: string;
                 /**
-                 * The industry to which the User belongs.
+                 * The public picture URL of the User.
                  */
-                industry: string;
+                public_picture_url?: string;
+                /**
+                 * The public picture URL of the User in large size.
+                 */
+                public_picture_url_large?: string;
                 /**
                  * The number of relations of the User.
                  */
                 relations_count?: number;
+                /**
+                 * The location of the User.
+                 */
+                location: string;
+                /**
+                 * The headline of the User.
+                 */
+                headline: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * Whether it is possible to send an inMail to this User.
+                 */
+                can_send_inmail?: boolean;
+                /**
+                 * Indidates that you have access to the full profile of this User.
+                 */
+                visibility: 'full';
+                /**
+                 * The candidate ID of the User.
+                 */
+                candidate_id: string;
+                /**
+                 * Whether the User has been set as hidden candidate.
+                 */
+                is_hidden_candidate: boolean;
+                /**
+                 * The hiring project where the User is a candidate.
+                 */
+                hiring_project?: {
+                    /**
+                     * The ID of the project.
+                     */
+                    id: string;
+                    /**
+                     * The name of the project.
+                     */
+                    name: string;
+                    /**
+                     * The pipeline stage at which the User is (contacted, replied, etc.).
+                     */
+                    pipeline_stage: string;
+                };
+                /**
+                 * A list of the User's work experiences.
+                 */
+                work_experience: Array<{
+                    /**
+                     * Id of the work experience entry.
+                     */
+                    id?: string;
+                    company: {
+                        /**
+                         * Name of the company.
+                         */
+                        name?: string;
+                        id: string | null;
+                        /**
+                         * Public identifier of the company.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Public url to the profile picture of the company.
+                         */
+                        picture_url?: string;
+                        /**
+                         * Public url to the profile of the company.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Industry types of the company.
+                         */
+                        industries?: Array<string>;
+                    };
+                    /**
+                     * Job title of the experience.
+                     */
+                    job_title: string;
+                    /**
+                     * Start date of the experience in MM/DD/YYYY format.
+                     */
+                    started_on?: string;
+                    /**
+                     * End date of the experience in MM/DD/YYYY format.
+                     */
+                    ended_on?: string;
+                    /**
+                     * Location of the experience.
+                     */
+                    location?: string;
+                    /**
+                     * Description of the experience.
+                     */
+                    description?: string;
+                    /**
+                     * Employment type of the experience.
+                     */
+                    employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
+                    /**
+                     * Workplace type of the experience.
+                     */
+                    workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+                    /**
+                     * Skills acquired with experience.
+                     */
+                    skills?: Array<string>;
+                    /**
+                     * Insight of the skills acquired with experience.
+                     */
+                    skills_preview?: string;
+                }>;
+                /**
+                 * The industry to which the User belongs.
+                 */
+                industry: string;
                 /**
                  * The number of the followers of the User.
                  */
@@ -24610,10 +25879,6 @@ export type GetRecruiterPipelineCandidatesResponses = {
                  * The summary of the User.
                  */
                 summary?: string;
-                /**
-                 * The profile picture URL of the User.
-                 */
-                public_picture_url?: string;
                 emails?: Array<string>;
                 phone_numbers?: Array<string>;
                 education: Array<{
@@ -24958,6 +26223,60 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         keywords?: string;
         /**
+         * A list of spotlights.
+         */
+        spotlights?: Array<'OPEN_TO_WORK' | 'ACTIVE_TALENT' | 'REDISCOVERED_CANDIDATES' | 'INTERNAL_CANDIDATES' | 'INTERESTED_IN_YOUR_COMPANY' | 'HAVE_COMPANY_CONNECTIONS'>;
+        /**
+         * Saved search to be loaded. Can be associated with other filters.
+         */
+        load_saved_search?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SAVED_SEARCH` type to find out the possible values.
+             *
+             * Native filter : Saved searches
+             *
+             */
+            id: string;
+            /**
+             * Whether only newest results should be returned.
+             */
+            new_results_only?: boolean;
+        };
+        /**
+         * Custom filter to be loaded. Can be associated with other filters.
+         */
+        load_custom_filter?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `CUSTOM_FILTER` type to find out the possible values.
+             *
+             * Native filter : Custom filters
+             *
+             */
+            id: string;
+        };
+        /**
+         * Allows you to save the current search.
+         */
+        save_search?: {
+            /**
+             * A name to identify the search.
+             */
+            name: string;
+            /**
+             * The ID of the project where the search should be saved.
+             */
+            project_id: string;
+        };
+        /**
+         * Allows you to save the current search as custom filter.
+         */
+        save_custom_filter?: {
+            /**
+             * A name to identify the filter.
+             */
+            name: string;
+        };
+        /**
          * A list of connection degrees (1 for First, 2 for Second, 3 for Third+ and GROUP for Common group members).
          *
          * Native filter : Connections
@@ -24968,6 +26287,12 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          * A list of locations.
          */
         location?: Array<{
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+             *
+             * Native filter : Locations
+             *
+             */
             id: string;
             /**
              * Whether the user can, must or shouldn't have the value.
@@ -24991,6 +26316,12 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
              * The postal code location name.
              */
             name: string;
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `ZIPCODE` type to find out the possible values.
+             *
+             * Native filter : Postal code / Zip code
+             *
+             */
             id: string;
         }>;
         /**
@@ -25008,6 +26339,9 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
              * The job title.
              */
             name: string;
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             */
             id?: string;
             /**
              * Whether the user can, must or shouldn't have the value.
@@ -25031,6 +26365,9 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
              * The occupation name.
              */
             name: string;
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `OCCUPATION` type to find out the possible values.
+             */
             id?: string;
             /**
              * Whether the user can, must or shouldn't have the value.
@@ -25054,6 +26391,9 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
              * The skill name.
              */
             name: string;
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+             */
             id?: string;
             /**
              * Whether the user can, must or shouldn't have the value.
@@ -25071,6 +26411,9 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
              * The company name.
              */
             name: string;
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
             id?: string;
             /**
              * Whether the user can, must or shouldn't have the value.
@@ -25085,6 +26428,38 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
              *
              */
             preferences?: 'CURRENT' | 'CURRENT_OR_PAST' | 'PAST' | 'PAST_NOT_CURRENT';
+        }>;
+        /**
+         * A list of current companies.
+         */
+        current_company?: Array<{
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
+            id: string;
+            /**
+             * Whether the user can, must or shouldn't have the value.
+             *
+             * Native filter : Priority
+             *
+             */
+            priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
+        }>;
+        /**
+         * A list of past companies.
+         */
+        past_company?: Array<{
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
+            id: string;
+            /**
+             * Whether the user can, must or shouldn't have the value.
+             *
+             * Native filter : Priority
+             *
+             */
+            priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
         }>;
         /**
          * A list of company size ranges.
@@ -25104,9 +26479,55 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
             max: number;
         };
         /**
+         *
+         *
+         * Native filter : Years in current position
+         *
+         */
+        years_in_current_position?: {
+            min: number;
+            max: number;
+        };
+        /**
+         *
+         *
+         * Native filter : Years in current company
+         *
+         */
+        years_in_current_company?: {
+            min: number;
+            max: number;
+        };
+        /**
+         *
+         *
+         * Native filter : Degrees
+         *
+         */
+        degree?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
+        /**
+         * A list of workplace types.
+         */
+        workplace_type?: Array<'ON_SITE' | 'HYBRID' | 'REMOTE'>;
+        /**
          * A list of schools.
          */
         school?: Array<{
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+             *
+             * Native filter : Schools
+             *
+             */
             id: string;
             /**
              * Whether the user can, must or shouldn't have the value.
@@ -25116,6 +26537,26 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
              */
             priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
         }>;
+        /**
+         * A list of fields of study.
+         */
+        field_of_study?: Array<{
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
+             */
+            id: string;
+            /**
+             * Whether the user can, must or shouldn't have the value.
+             *
+             * Native filter : Priority
+             *
+             */
+            priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
+        }>;
+        /**
+         * A list of employment types.
+         */
+        employment_type?: Array<'FULL_TIME' | 'PART_TIME' | 'CONTRACT' | 'INTERNSHIP'>;
         /**
          *
          *
@@ -25147,6 +26588,29 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         seniority?: Array<'UNPAID' | 'TRAINING' | 'ENTRY' | 'SENIOR' | 'MANAGER' | 'DIRECTOR' | 'VP' | 'CXO' | 'PARTNER' | 'OWNER'>;
         /**
+         * A list of languages.
+         */
+        spoken_language?: Array<{
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SPOKEN_LANGUAGE` type to find out the possible values.
+             */
+            id: string;
+            /**
+             * Whether the user can, must or shouldn't have the value.
+             *
+             * Native filter : Priority
+             *
+             */
+            priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
+            /**
+             * The level of proficiency for the spoken languages.
+             *
+             * Native filter : Spoken languages proficiency
+             *
+             */
+            proficiency?: 'ELEMENTARY' | 'LIMITED_WORKING' | 'PROFESSIONAL_WORKING' | 'FULL_PROFESSIONAL' | 'NATIVE_OR_BILINGUAL';
+        }>;
+        /**
          * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `PROFILE_LANGUAGE` type to find out the possible values.
          *
          * Native filter : Profile languages
@@ -25161,16 +26625,22 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         project?: {
             include?: Array<{
+                /**
+                 * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `PROJECT` type to find out the possible values.
+                 */
                 id: string;
                 /**
-                 * The title of the project;
+                 * The title of the project.
                  */
                 title: string;
             }>;
             exclude?: Array<{
+                /**
+                 * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `PROJECT` type to find out the possible values.
+                 */
                 id: string;
                 /**
-                 * The title of the project;
+                 * The title of the project.
                  */
                 title: string;
             }>;
@@ -25181,7 +26651,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          * Native filter : Job functions
          *
          */
-        function?: Array<string>;
+        job_function?: Array<string>;
         /**
          * A list of names.
          */
@@ -25252,6 +26722,22 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         notes?: Array<string>;
         /**
+         *
+         *
+         * Native filter : Tags
+         *
+         */
+        tags?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `TAG` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `TAG` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
+        /**
          * The ID of the RECRUITER_SEARCH channel from the Talent Pool.
          */
         channel_id: string;
@@ -25268,9 +26754,9 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
-        offset?: number;
+        cursor?: string;
         /**
          * The limit of items to be returned.
          */
@@ -25288,40 +26774,61 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
     200: {
         data: Array<{
             object: 'PeopleSearchResult';
+            /**
+             * The ID of the user.
+             */
+            id: string;
+            /**
+             * The headline of the User.
+             */
+            headline: string;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            /**
+             * The location of the User.
+             */
+            location: string;
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
             product: 'recruiter';
             /**
              * Indidates that you don't have access to the full profile of this User.
              */
             visibility: 'partial';
             /**
-             * The ID of the User.
-             */
-            id: string;
-            /**
              * The candidate ID of the User.
              */
             candidate_id: string;
             /**
-             * The headline of the User.
-             */
-            headline: string;
-            /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
-             * The location of the User.
-             */
-            location: string;
-            /**
              * Whether the User has been set as hidden candidate.
              */
             is_hidden_candidate: boolean;
+            /**
+             * The hiring project where the User is a candidate.
+             */
+            hiring_project?: {
+                /**
+                 * The ID of the project.
+                 */
+                id: string;
+                /**
+                 * The name of the project.
+                 */
+                name: string;
+                /**
+                 * The pipeline stage at which the User is (contacted, replied, etc.).
+                 */
+                pipeline_stage: string;
+            };
             /**
              * A list of the User's work experiences.
              */
@@ -25354,9 +26861,9 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
                     industries?: Array<string>;
                 };
                 /**
-                 * Position name in the experience.
+                 * Job title of the experience.
                  */
-                title: string;
+                job_title: string;
                 /**
                  * Start date of the experience in MM/DD/YYYY format.
                  */
@@ -25390,118 +26897,16 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
                  */
                 skills_preview?: string;
             }>;
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail?: boolean;
         } | {
             object: 'PeopleSearchResult';
-            product: 'recruiter';
             /**
-             * Indidates that you have access to the full profile of this User.
-             */
-            visibility: 'full';
-            /**
-             * The ID of the User.
+             * The ID of the user.
              */
             id: string;
             /**
-             * The candidate ID of the User.
+             * The LinkedIn internal member ID of the user.
              */
-            candidate_id: string;
-            /**
-             * The headline of the User.
-             */
-            headline: string;
-            /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
-             * The location of the User.
-             */
-            location: string;
-            /**
-             * Whether the User has been set as hidden candidate.
-             */
-            is_hidden_candidate: boolean;
-            /**
-             * A list of the User's work experiences.
-             */
-            work_experience: Array<{
-                /**
-                 * Id of the work experience entry.
-                 */
-                id?: string;
-                company: {
-                    /**
-                     * Name of the company.
-                     */
-                    name?: string;
-                    id: string | null;
-                    /**
-                     * Public identifier of the company.
-                     */
-                    public_identifier?: string;
-                    /**
-                     * Public url to the profile picture of the company.
-                     */
-                    picture_url?: string;
-                    /**
-                     * Public url to the profile of the company.
-                     */
-                    profile_url?: string;
-                    /**
-                     * Industry types of the company.
-                     */
-                    industries?: Array<string>;
-                };
-                /**
-                 * Position name in the experience.
-                 */
-                title: string;
-                /**
-                 * Start date of the experience in MM/DD/YYYY format.
-                 */
-                started_on?: string;
-                /**
-                 * End date of the experience in MM/DD/YYYY format.
-                 */
-                ended_on?: string;
-                /**
-                 * Location of the experience.
-                 */
-                location?: string;
-                /**
-                 * Description of the experience.
-                 */
-                description?: string;
-                /**
-                 * Employment type of the experience.
-                 */
-                employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
-                /**
-                 * Workplace type of the experience.
-                 */
-                workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
-                /**
-                 * Skills acquired with experience.
-                 */
-                skills?: Array<string>;
-                /**
-                 * Insight of the skills acquired with experience.
-                 */
-                skills_preview?: string;
-            }>;
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail?: boolean;
+            member_id?: string;
             /**
              * The display name of the User.
              */
@@ -25513,15 +26918,142 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
             /**
              * The profile URL of the User.
              */
-            profile_url: string;
+            profile_url?: string;
             /**
-             * The industry to which the User belongs.
+             * The public picture URL of the User.
              */
-            industry: string;
+            public_picture_url?: string;
+            /**
+             * The public picture URL of the User in large size.
+             */
+            public_picture_url_large?: string;
             /**
              * The number of relations of the User.
              */
             relations_count?: number;
+            /**
+             * The location of the User.
+             */
+            location: string;
+            /**
+             * The headline of the User.
+             */
+            headline: string;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            product: 'recruiter';
+            /**
+             * Indidates that you have access to the full profile of this User.
+             */
+            visibility: 'full';
+            /**
+             * The candidate ID of the User.
+             */
+            candidate_id: string;
+            /**
+             * Whether the User has been set as hidden candidate.
+             */
+            is_hidden_candidate: boolean;
+            /**
+             * The hiring project where the User is a candidate.
+             */
+            hiring_project?: {
+                /**
+                 * The ID of the project.
+                 */
+                id: string;
+                /**
+                 * The name of the project.
+                 */
+                name: string;
+                /**
+                 * The pipeline stage at which the User is (contacted, replied, etc.).
+                 */
+                pipeline_stage: string;
+            };
+            /**
+             * A list of the User's work experiences.
+             */
+            work_experience: Array<{
+                /**
+                 * Id of the work experience entry.
+                 */
+                id?: string;
+                company: {
+                    /**
+                     * Name of the company.
+                     */
+                    name?: string;
+                    id: string | null;
+                    /**
+                     * Public identifier of the company.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Public url to the profile picture of the company.
+                     */
+                    picture_url?: string;
+                    /**
+                     * Public url to the profile of the company.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Industry types of the company.
+                     */
+                    industries?: Array<string>;
+                };
+                /**
+                 * Job title of the experience.
+                 */
+                job_title: string;
+                /**
+                 * Start date of the experience in MM/DD/YYYY format.
+                 */
+                started_on?: string;
+                /**
+                 * End date of the experience in MM/DD/YYYY format.
+                 */
+                ended_on?: string;
+                /**
+                 * Location of the experience.
+                 */
+                location?: string;
+                /**
+                 * Description of the experience.
+                 */
+                description?: string;
+                /**
+                 * Employment type of the experience.
+                 */
+                employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
+                /**
+                 * Workplace type of the experience.
+                 */
+                workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+                /**
+                 * Skills acquired with experience.
+                 */
+                skills?: Array<string>;
+                /**
+                 * Insight of the skills acquired with experience.
+                 */
+                skills_preview?: string;
+            }>;
+            /**
+             * The industry to which the User belongs.
+             */
+            industry: string;
             /**
              * The number of the followers of the User.
              */
@@ -25543,10 +27075,6 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
              * The summary of the User.
              */
             summary?: string;
-            /**
-             * The profile picture URL of the User.
-             */
-            public_picture_url?: string;
             emails?: Array<string>;
             phone_numbers?: Array<string>;
             education: Array<{
@@ -26008,20 +27536,35 @@ export type CreateRecruiterJobPostingDraftInExistingProjectData = {
          * The title of the job.
          */
         job_title: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             */
             id: string;
+            /**
+             * The name of the job.
+             */
             name: string;
         };
         /**
          * The company on whose behalf the job is created.
          */
         company: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
             id?: string;
+            /**
+             * The name of the company.
+             */
             name?: string;
         };
         /**
          * The working method of the job.
          */
         workplace_type: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+        /**
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
+         */
         location: string;
         /**
          * The employment status of the job.
@@ -26302,6 +27845,12 @@ export type GetRecruiterJobPostingListData = {
          *
          */
         contract?: Array<string>;
+        /**
+         * A list of workplace types.
+         *
+         * Native filter : Workplace type
+         *
+         */
         workplace_type?: Array<'ON_SITE' | 'REMOTE' | 'HYBRID'>;
         /**
          * An offset used for pagination, if supported by the provider, else use `cursor`.
@@ -26375,20 +27924,35 @@ export type CreateRecruiterJobPostingDraftInNewProjectData = {
          * The title of the job.
          */
         job_title: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             */
             id: string;
+            /**
+             * The name of the job.
+             */
             name: string;
         };
         /**
          * The company on whose behalf the job is created.
          */
         company: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
             id?: string;
+            /**
+             * The name of the company.
+             */
             name?: string;
         };
         /**
          * The working method of the job.
          */
         workplace_type: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+        /**
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
+         */
         location: string;
         /**
          * The employment status of the job.
@@ -26555,20 +28119,35 @@ export type EditRecruiterJobPostingData = {
          * The title of the job.
          */
         job_title?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             */
             id: string;
+            /**
+             * The name of the job.
+             */
             name: string;
         };
         /**
          * The company on whose behalf the job is created.
          */
         company?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
             id?: string;
+            /**
+             * The name of the company.
+             */
             name?: string;
         };
         /**
          * The working method of the job.
          */
         workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+        /**
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
+         */
         location?: string;
         /**
          * The employment status of the job.
@@ -26742,27 +28321,18 @@ export type PublishRecruiterJobPostingData = {
          * Leave this field blank if you don't have a choice of budget when posting a job on LinkedIn.
          */
         budget?: {
-            daily: {
-                /**
-                 * A 3 capital letters ISO 4217 currency code.
-                 */
-                currency: string;
-                /**
-                 * The amount of money to be spent on the job posting.
-                 */
-                amount: number;
-            };
-        } | {
-            total: {
-                /**
-                 * A 3 capital letters ISO 4217 currency code.
-                 */
-                currency: string;
-                /**
-                 * The amount of money to be spent on the job posting.
-                 */
-                amount: number;
-            };
+            /**
+             * A 3 capital letters ISO 4217 currency code.
+             */
+            currency: string;
+            /**
+             * The amount of money to be spent on the job posting.
+             */
+            amount: number;
+            /**
+             * The time scope of the budget.
+             */
+            scope: 'DAILY' | 'TOTAL';
         };
     };
     path: {
@@ -26999,9 +28569,9 @@ export type PerformRecruiterSearchFromUrlData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
-        offset?: number;
+        cursor?: string;
         /**
          * The limit of items to be returned.
          */
@@ -27017,40 +28587,61 @@ export type PerformRecruiterSearchFromUrlResponses = {
     200: {
         data: Array<{
             object: 'PeopleSearchResult';
+            /**
+             * The ID of the user.
+             */
+            id: string;
+            /**
+             * The headline of the User.
+             */
+            headline: string;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            /**
+             * The location of the User.
+             */
+            location: string;
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
             product: 'recruiter';
             /**
              * Indidates that you don't have access to the full profile of this User.
              */
             visibility: 'partial';
             /**
-             * The ID of the User.
-             */
-            id: string;
-            /**
              * The candidate ID of the User.
              */
             candidate_id: string;
             /**
-             * The headline of the User.
-             */
-            headline: string;
-            /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
-             * The location of the User.
-             */
-            location: string;
-            /**
              * Whether the User has been set as hidden candidate.
              */
             is_hidden_candidate: boolean;
+            /**
+             * The hiring project where the User is a candidate.
+             */
+            hiring_project?: {
+                /**
+                 * The ID of the project.
+                 */
+                id: string;
+                /**
+                 * The name of the project.
+                 */
+                name: string;
+                /**
+                 * The pipeline stage at which the User is (contacted, replied, etc.).
+                 */
+                pipeline_stage: string;
+            };
             /**
              * A list of the User's work experiences.
              */
@@ -27083,9 +28674,9 @@ export type PerformRecruiterSearchFromUrlResponses = {
                     industries?: Array<string>;
                 };
                 /**
-                 * Position name in the experience.
+                 * Job title of the experience.
                  */
-                title: string;
+                job_title: string;
                 /**
                  * Start date of the experience in MM/DD/YYYY format.
                  */
@@ -27119,118 +28710,16 @@ export type PerformRecruiterSearchFromUrlResponses = {
                  */
                 skills_preview?: string;
             }>;
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail?: boolean;
         } | {
             object: 'PeopleSearchResult';
-            product: 'recruiter';
             /**
-             * Indidates that you have access to the full profile of this User.
-             */
-            visibility: 'full';
-            /**
-             * The ID of the User.
+             * The ID of the user.
              */
             id: string;
             /**
-             * The candidate ID of the User.
+             * The LinkedIn internal member ID of the user.
              */
-            candidate_id: string;
-            /**
-             * The headline of the User.
-             */
-            headline: string;
-            /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
-             * The location of the User.
-             */
-            location: string;
-            /**
-             * Whether the User has been set as hidden candidate.
-             */
-            is_hidden_candidate: boolean;
-            /**
-             * A list of the User's work experiences.
-             */
-            work_experience: Array<{
-                /**
-                 * Id of the work experience entry.
-                 */
-                id?: string;
-                company: {
-                    /**
-                     * Name of the company.
-                     */
-                    name?: string;
-                    id: string | null;
-                    /**
-                     * Public identifier of the company.
-                     */
-                    public_identifier?: string;
-                    /**
-                     * Public url to the profile picture of the company.
-                     */
-                    picture_url?: string;
-                    /**
-                     * Public url to the profile of the company.
-                     */
-                    profile_url?: string;
-                    /**
-                     * Industry types of the company.
-                     */
-                    industries?: Array<string>;
-                };
-                /**
-                 * Position name in the experience.
-                 */
-                title: string;
-                /**
-                 * Start date of the experience in MM/DD/YYYY format.
-                 */
-                started_on?: string;
-                /**
-                 * End date of the experience in MM/DD/YYYY format.
-                 */
-                ended_on?: string;
-                /**
-                 * Location of the experience.
-                 */
-                location?: string;
-                /**
-                 * Description of the experience.
-                 */
-                description?: string;
-                /**
-                 * Employment type of the experience.
-                 */
-                employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
-                /**
-                 * Workplace type of the experience.
-                 */
-                workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
-                /**
-                 * Skills acquired with experience.
-                 */
-                skills?: Array<string>;
-                /**
-                 * Insight of the skills acquired with experience.
-                 */
-                skills_preview?: string;
-            }>;
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail?: boolean;
+            member_id?: string;
             /**
              * The display name of the User.
              */
@@ -27242,15 +28731,142 @@ export type PerformRecruiterSearchFromUrlResponses = {
             /**
              * The profile URL of the User.
              */
-            profile_url: string;
+            profile_url?: string;
             /**
-             * The industry to which the User belongs.
+             * The public picture URL of the User.
              */
-            industry: string;
+            public_picture_url?: string;
+            /**
+             * The public picture URL of the User in large size.
+             */
+            public_picture_url_large?: string;
             /**
              * The number of relations of the User.
              */
             relations_count?: number;
+            /**
+             * The location of the User.
+             */
+            location: string;
+            /**
+             * The headline of the User.
+             */
+            headline: string;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            product: 'recruiter';
+            /**
+             * Indidates that you have access to the full profile of this User.
+             */
+            visibility: 'full';
+            /**
+             * The candidate ID of the User.
+             */
+            candidate_id: string;
+            /**
+             * Whether the User has been set as hidden candidate.
+             */
+            is_hidden_candidate: boolean;
+            /**
+             * The hiring project where the User is a candidate.
+             */
+            hiring_project?: {
+                /**
+                 * The ID of the project.
+                 */
+                id: string;
+                /**
+                 * The name of the project.
+                 */
+                name: string;
+                /**
+                 * The pipeline stage at which the User is (contacted, replied, etc.).
+                 */
+                pipeline_stage: string;
+            };
+            /**
+             * A list of the User's work experiences.
+             */
+            work_experience: Array<{
+                /**
+                 * Id of the work experience entry.
+                 */
+                id?: string;
+                company: {
+                    /**
+                     * Name of the company.
+                     */
+                    name?: string;
+                    id: string | null;
+                    /**
+                     * Public identifier of the company.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Public url to the profile picture of the company.
+                     */
+                    picture_url?: string;
+                    /**
+                     * Public url to the profile of the company.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Industry types of the company.
+                     */
+                    industries?: Array<string>;
+                };
+                /**
+                 * Job title of the experience.
+                 */
+                job_title: string;
+                /**
+                 * Start date of the experience in MM/DD/YYYY format.
+                 */
+                started_on?: string;
+                /**
+                 * End date of the experience in MM/DD/YYYY format.
+                 */
+                ended_on?: string;
+                /**
+                 * Location of the experience.
+                 */
+                location?: string;
+                /**
+                 * Description of the experience.
+                 */
+                description?: string;
+                /**
+                 * Employment type of the experience.
+                 */
+                employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
+                /**
+                 * Workplace type of the experience.
+                 */
+                workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+                /**
+                 * Skills acquired with experience.
+                 */
+                skills?: Array<string>;
+                /**
+                 * Insight of the skills acquired with experience.
+                 */
+                skills_preview?: string;
+            }>;
+            /**
+             * The industry to which the User belongs.
+             */
+            industry: string;
             /**
              * The number of the followers of the User.
              */
@@ -27272,10 +28888,6 @@ export type PerformRecruiterSearchFromUrlResponses = {
              * The summary of the User.
              */
             summary?: string;
-            /**
-             * The profile picture URL of the User.
-             */
-            public_picture_url?: string;
             emails?: Array<string>;
             phone_numbers?: Array<string>;
             education: Array<{
@@ -27610,38 +29222,59 @@ export type PerformRecruiterSearchFromUrlResponses = {
             }>;
             profile: {
                 /**
+                 * The ID of the user.
+                 */
+                id: string;
+                /**
+                 * The headline of the User.
+                 */
+                headline: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * The location of the User.
+                 */
+                location: string;
+                /**
+                 * Whether it is possible to send an inMail to this User.
+                 */
+                can_send_inmail?: boolean;
+                /**
                  * Indidates that you don't have access to the full profile of this User.
                  */
                 visibility: 'partial';
                 /**
-                 * The ID of the User.
-                 */
-                id: string;
-                /**
                  * The candidate ID of the User.
                  */
                 candidate_id: string;
                 /**
-                 * The headline of the User.
-                 */
-                headline: string;
-                /**
-                 * Network distance to a User.
-                 * `SELF`: Yourself.
-                 * `FIRST_DEGREE`: 1st degree connection.
-                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-                 * `OUT_OF_NETWORK`: Unreachable user.'
-                 */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
-                 * The location of the User.
-                 */
-                location: string;
-                /**
                  * Whether the User has been set as hidden candidate.
                  */
                 is_hidden_candidate: boolean;
+                /**
+                 * The hiring project where the User is a candidate.
+                 */
+                hiring_project?: {
+                    /**
+                     * The ID of the project.
+                     */
+                    id: string;
+                    /**
+                     * The name of the project.
+                     */
+                    name: string;
+                    /**
+                     * The pipeline stage at which the User is (contacted, replied, etc.).
+                     */
+                    pipeline_stage: string;
+                };
                 /**
                  * A list of the User's work experiences.
                  */
@@ -27674,9 +29307,9 @@ export type PerformRecruiterSearchFromUrlResponses = {
                         industries?: Array<string>;
                     };
                     /**
-                     * Position name in the experience.
+                     * Job title of the experience.
                      */
-                    title: string;
+                    job_title: string;
                     /**
                      * Start date of the experience in MM/DD/YYYY format.
                      */
@@ -27710,116 +29343,15 @@ export type PerformRecruiterSearchFromUrlResponses = {
                      */
                     skills_preview?: string;
                 }>;
-                /**
-                 * Whether it is possible to send an inMail to this User.
-                 */
-                can_send_inmail?: boolean;
             } | {
                 /**
-                 * Indidates that you have access to the full profile of this User.
-                 */
-                visibility: 'full';
-                /**
-                 * The ID of the User.
+                 * The ID of the user.
                  */
                 id: string;
                 /**
-                 * The candidate ID of the User.
+                 * The LinkedIn internal member ID of the user.
                  */
-                candidate_id: string;
-                /**
-                 * The headline of the User.
-                 */
-                headline: string;
-                /**
-                 * Network distance to a User.
-                 * `SELF`: Yourself.
-                 * `FIRST_DEGREE`: 1st degree connection.
-                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-                 * `OUT_OF_NETWORK`: Unreachable user.'
-                 */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
-                 * The location of the User.
-                 */
-                location: string;
-                /**
-                 * Whether the User has been set as hidden candidate.
-                 */
-                is_hidden_candidate: boolean;
-                /**
-                 * A list of the User's work experiences.
-                 */
-                work_experience: Array<{
-                    /**
-                     * Id of the work experience entry.
-                     */
-                    id?: string;
-                    company: {
-                        /**
-                         * Name of the company.
-                         */
-                        name?: string;
-                        id: string | null;
-                        /**
-                         * Public identifier of the company.
-                         */
-                        public_identifier?: string;
-                        /**
-                         * Public url to the profile picture of the company.
-                         */
-                        picture_url?: string;
-                        /**
-                         * Public url to the profile of the company.
-                         */
-                        profile_url?: string;
-                        /**
-                         * Industry types of the company.
-                         */
-                        industries?: Array<string>;
-                    };
-                    /**
-                     * Position name in the experience.
-                     */
-                    title: string;
-                    /**
-                     * Start date of the experience in MM/DD/YYYY format.
-                     */
-                    started_on?: string;
-                    /**
-                     * End date of the experience in MM/DD/YYYY format.
-                     */
-                    ended_on?: string;
-                    /**
-                     * Location of the experience.
-                     */
-                    location?: string;
-                    /**
-                     * Description of the experience.
-                     */
-                    description?: string;
-                    /**
-                     * Employment type of the experience.
-                     */
-                    employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
-                    /**
-                     * Workplace type of the experience.
-                     */
-                    workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
-                    /**
-                     * Skills acquired with experience.
-                     */
-                    skills?: Array<string>;
-                    /**
-                     * Insight of the skills acquired with experience.
-                     */
-                    skills_preview?: string;
-                }>;
-                /**
-                 * Whether it is possible to send an inMail to this User.
-                 */
-                can_send_inmail?: boolean;
+                member_id?: string;
                 /**
                  * The display name of the User.
                  */
@@ -27831,15 +29363,141 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The profile URL of the User.
                  */
-                profile_url: string;
+                profile_url?: string;
                 /**
-                 * The industry to which the User belongs.
+                 * The public picture URL of the User.
                  */
-                industry: string;
+                public_picture_url?: string;
+                /**
+                 * The public picture URL of the User in large size.
+                 */
+                public_picture_url_large?: string;
                 /**
                  * The number of relations of the User.
                  */
                 relations_count?: number;
+                /**
+                 * The location of the User.
+                 */
+                location: string;
+                /**
+                 * The headline of the User.
+                 */
+                headline: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * Whether it is possible to send an inMail to this User.
+                 */
+                can_send_inmail?: boolean;
+                /**
+                 * Indidates that you have access to the full profile of this User.
+                 */
+                visibility: 'full';
+                /**
+                 * The candidate ID of the User.
+                 */
+                candidate_id: string;
+                /**
+                 * Whether the User has been set as hidden candidate.
+                 */
+                is_hidden_candidate: boolean;
+                /**
+                 * The hiring project where the User is a candidate.
+                 */
+                hiring_project?: {
+                    /**
+                     * The ID of the project.
+                     */
+                    id: string;
+                    /**
+                     * The name of the project.
+                     */
+                    name: string;
+                    /**
+                     * The pipeline stage at which the User is (contacted, replied, etc.).
+                     */
+                    pipeline_stage: string;
+                };
+                /**
+                 * A list of the User's work experiences.
+                 */
+                work_experience: Array<{
+                    /**
+                     * Id of the work experience entry.
+                     */
+                    id?: string;
+                    company: {
+                        /**
+                         * Name of the company.
+                         */
+                        name?: string;
+                        id: string | null;
+                        /**
+                         * Public identifier of the company.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Public url to the profile picture of the company.
+                         */
+                        picture_url?: string;
+                        /**
+                         * Public url to the profile of the company.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Industry types of the company.
+                         */
+                        industries?: Array<string>;
+                    };
+                    /**
+                     * Job title of the experience.
+                     */
+                    job_title: string;
+                    /**
+                     * Start date of the experience in MM/DD/YYYY format.
+                     */
+                    started_on?: string;
+                    /**
+                     * End date of the experience in MM/DD/YYYY format.
+                     */
+                    ended_on?: string;
+                    /**
+                     * Location of the experience.
+                     */
+                    location?: string;
+                    /**
+                     * Description of the experience.
+                     */
+                    description?: string;
+                    /**
+                     * Employment type of the experience.
+                     */
+                    employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
+                    /**
+                     * Workplace type of the experience.
+                     */
+                    workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+                    /**
+                     * Skills acquired with experience.
+                     */
+                    skills?: Array<string>;
+                    /**
+                     * Insight of the skills acquired with experience.
+                     */
+                    skills_preview?: string;
+                }>;
+                /**
+                 * The industry to which the User belongs.
+                 */
+                industry: string;
                 /**
                  * The number of the followers of the User.
                  */
@@ -27861,10 +29519,6 @@ export type PerformRecruiterSearchFromUrlResponses = {
                  * The summary of the User.
                  */
                 summary?: string;
-                /**
-                 * The profile picture URL of the User.
-                 */
-                public_picture_url?: string;
                 emails?: Array<string>;
                 phone_numbers?: Array<string>;
                 education: Array<{
@@ -28166,38 +29820,59 @@ export type PerformRecruiterSearchFromUrlResponses = {
             object: 'PipelineCandidate';
             profile: {
                 /**
+                 * The ID of the user.
+                 */
+                id: string;
+                /**
+                 * The headline of the User.
+                 */
+                headline: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * The location of the User.
+                 */
+                location: string;
+                /**
+                 * Whether it is possible to send an inMail to this User.
+                 */
+                can_send_inmail?: boolean;
+                /**
                  * Indidates that you don't have access to the full profile of this User.
                  */
                 visibility: 'partial';
                 /**
-                 * The ID of the User.
-                 */
-                id: string;
-                /**
                  * The candidate ID of the User.
                  */
                 candidate_id: string;
                 /**
-                 * The headline of the User.
-                 */
-                headline: string;
-                /**
-                 * Network distance to a User.
-                 * `SELF`: Yourself.
-                 * `FIRST_DEGREE`: 1st degree connection.
-                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-                 * `OUT_OF_NETWORK`: Unreachable user.'
-                 */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
-                 * The location of the User.
-                 */
-                location: string;
-                /**
                  * Whether the User has been set as hidden candidate.
                  */
                 is_hidden_candidate: boolean;
+                /**
+                 * The hiring project where the User is a candidate.
+                 */
+                hiring_project?: {
+                    /**
+                     * The ID of the project.
+                     */
+                    id: string;
+                    /**
+                     * The name of the project.
+                     */
+                    name: string;
+                    /**
+                     * The pipeline stage at which the User is (contacted, replied, etc.).
+                     */
+                    pipeline_stage: string;
+                };
                 /**
                  * A list of the User's work experiences.
                  */
@@ -28230,9 +29905,9 @@ export type PerformRecruiterSearchFromUrlResponses = {
                         industries?: Array<string>;
                     };
                     /**
-                     * Position name in the experience.
+                     * Job title of the experience.
                      */
-                    title: string;
+                    job_title: string;
                     /**
                      * Start date of the experience in MM/DD/YYYY format.
                      */
@@ -28266,116 +29941,15 @@ export type PerformRecruiterSearchFromUrlResponses = {
                      */
                     skills_preview?: string;
                 }>;
-                /**
-                 * Whether it is possible to send an inMail to this User.
-                 */
-                can_send_inmail?: boolean;
             } | {
                 /**
-                 * Indidates that you have access to the full profile of this User.
-                 */
-                visibility: 'full';
-                /**
-                 * The ID of the User.
+                 * The ID of the user.
                  */
                 id: string;
                 /**
-                 * The candidate ID of the User.
+                 * The LinkedIn internal member ID of the user.
                  */
-                candidate_id: string;
-                /**
-                 * The headline of the User.
-                 */
-                headline: string;
-                /**
-                 * Network distance to a User.
-                 * `SELF`: Yourself.
-                 * `FIRST_DEGREE`: 1st degree connection.
-                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-                 * `OUT_OF_NETWORK`: Unreachable user.'
-                 */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
-                 * The location of the User.
-                 */
-                location: string;
-                /**
-                 * Whether the User has been set as hidden candidate.
-                 */
-                is_hidden_candidate: boolean;
-                /**
-                 * A list of the User's work experiences.
-                 */
-                work_experience: Array<{
-                    /**
-                     * Id of the work experience entry.
-                     */
-                    id?: string;
-                    company: {
-                        /**
-                         * Name of the company.
-                         */
-                        name?: string;
-                        id: string | null;
-                        /**
-                         * Public identifier of the company.
-                         */
-                        public_identifier?: string;
-                        /**
-                         * Public url to the profile picture of the company.
-                         */
-                        picture_url?: string;
-                        /**
-                         * Public url to the profile of the company.
-                         */
-                        profile_url?: string;
-                        /**
-                         * Industry types of the company.
-                         */
-                        industries?: Array<string>;
-                    };
-                    /**
-                     * Position name in the experience.
-                     */
-                    title: string;
-                    /**
-                     * Start date of the experience in MM/DD/YYYY format.
-                     */
-                    started_on?: string;
-                    /**
-                     * End date of the experience in MM/DD/YYYY format.
-                     */
-                    ended_on?: string;
-                    /**
-                     * Location of the experience.
-                     */
-                    location?: string;
-                    /**
-                     * Description of the experience.
-                     */
-                    description?: string;
-                    /**
-                     * Employment type of the experience.
-                     */
-                    employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
-                    /**
-                     * Workplace type of the experience.
-                     */
-                    workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
-                    /**
-                     * Skills acquired with experience.
-                     */
-                    skills?: Array<string>;
-                    /**
-                     * Insight of the skills acquired with experience.
-                     */
-                    skills_preview?: string;
-                }>;
-                /**
-                 * Whether it is possible to send an inMail to this User.
-                 */
-                can_send_inmail?: boolean;
+                member_id?: string;
                 /**
                  * The display name of the User.
                  */
@@ -28387,15 +29961,141 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The profile URL of the User.
                  */
-                profile_url: string;
+                profile_url?: string;
                 /**
-                 * The industry to which the User belongs.
+                 * The public picture URL of the User.
                  */
-                industry: string;
+                public_picture_url?: string;
+                /**
+                 * The public picture URL of the User in large size.
+                 */
+                public_picture_url_large?: string;
                 /**
                  * The number of relations of the User.
                  */
                 relations_count?: number;
+                /**
+                 * The location of the User.
+                 */
+                location: string;
+                /**
+                 * The headline of the User.
+                 */
+                headline: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * Whether it is possible to send an inMail to this User.
+                 */
+                can_send_inmail?: boolean;
+                /**
+                 * Indidates that you have access to the full profile of this User.
+                 */
+                visibility: 'full';
+                /**
+                 * The candidate ID of the User.
+                 */
+                candidate_id: string;
+                /**
+                 * Whether the User has been set as hidden candidate.
+                 */
+                is_hidden_candidate: boolean;
+                /**
+                 * The hiring project where the User is a candidate.
+                 */
+                hiring_project?: {
+                    /**
+                     * The ID of the project.
+                     */
+                    id: string;
+                    /**
+                     * The name of the project.
+                     */
+                    name: string;
+                    /**
+                     * The pipeline stage at which the User is (contacted, replied, etc.).
+                     */
+                    pipeline_stage: string;
+                };
+                /**
+                 * A list of the User's work experiences.
+                 */
+                work_experience: Array<{
+                    /**
+                     * Id of the work experience entry.
+                     */
+                    id?: string;
+                    company: {
+                        /**
+                         * Name of the company.
+                         */
+                        name?: string;
+                        id: string | null;
+                        /**
+                         * Public identifier of the company.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Public url to the profile picture of the company.
+                         */
+                        picture_url?: string;
+                        /**
+                         * Public url to the profile of the company.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Industry types of the company.
+                         */
+                        industries?: Array<string>;
+                    };
+                    /**
+                     * Job title of the experience.
+                     */
+                    job_title: string;
+                    /**
+                     * Start date of the experience in MM/DD/YYYY format.
+                     */
+                    started_on?: string;
+                    /**
+                     * End date of the experience in MM/DD/YYYY format.
+                     */
+                    ended_on?: string;
+                    /**
+                     * Location of the experience.
+                     */
+                    location?: string;
+                    /**
+                     * Description of the experience.
+                     */
+                    description?: string;
+                    /**
+                     * Employment type of the experience.
+                     */
+                    employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
+                    /**
+                     * Workplace type of the experience.
+                     */
+                    workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+                    /**
+                     * Skills acquired with experience.
+                     */
+                    skills?: Array<string>;
+                    /**
+                     * Insight of the skills acquired with experience.
+                     */
+                    skills_preview?: string;
+                }>;
+                /**
+                 * The industry to which the User belongs.
+                 */
+                industry: string;
                 /**
                  * The number of the followers of the User.
                  */
@@ -28417,10 +30117,6 @@ export type PerformRecruiterSearchFromUrlResponses = {
                  * The summary of the User.
                  */
                 summary?: string;
-                /**
-                 * The profile picture URL of the User.
-                 */
-                public_picture_url?: string;
                 emails?: Array<string>;
                 phone_numbers?: Array<string>;
                 education: Array<{
@@ -28723,23 +30419,62 @@ export type PerformRecruiterSearchFromUrlResponses = {
 export type PerformRecruiterSearchFromUrlResponse = PerformRecruiterSearchFromUrlResponses[keyof PerformRecruiterSearchFromUrlResponses];
 
 export type GetRecruiterSearchParametersData = {
-    body?: never;
-    path: {
+    body?: {
+        source: 'APPLICANTS';
         /**
-         * ID of the Account (acc_xxx) to call the method on behalf of.
-         */
-        account_id: string;
-    };
-    query: {
-        source: 'JOBS';
-        /**
-         * The ID of the Project the Pipeline belongs to.
+         * The ID of the Project associated with the Talent pool.
          */
         project_id: string;
         /**
          * In Talent Pool context, the ID of the JOB_POSTING Channel to get parameters from.
          */
         channel_id: string;
+        /**
+         * A keyword or group of keywords to filter results. Applicable to TAG only.
+         */
+        keywords?: string;
+        /**
+         * The type of search parameter.
+         */
+        type: 'SKILL' | 'LOCATION' | 'JOB_TITLE' | 'JOB_FUNCTION' | 'CURRENT_COMPANY' | 'INDUSTRY' | 'FIELD_OF_STUDY' | 'DEGREE' | 'TAG' | 'SPOKEN_LANGUAGE';
+    } | {
+        source: 'PIPELINE';
+        /**
+         * The ID of the Project the Pipeline belongs to.
+         */
+        project_id: string;
+        /**
+         * In Pipeline context, the ID of the Stage to get parameters from. Leave undefined to get results from all stages.
+         */
+        stage_id?: string;
+        /**
+         * A keyword or group of keywords to filter results. Applicable to SEAT only.
+         */
+        keywords?: string;
+        /**
+         * The type of search parameter.
+         */
+        type: 'SEAT' | 'SKILL' | 'CURRENT_COMPANY' | 'JOB_TITLE' | 'LOCATION';
+    } | {
+        source: 'SEARCH' | 'JOB_POSTING';
+        /**
+         * A keyword or group of keywords to filter results. Not applicable to JOB_FUNCTION, PROFILE_LANGUAGE and CUSTOM_FILTER.
+         */
+        keywords?: string;
+        /**
+         * The type of search parameter.
+         */
+        type: 'OCCUPATION' | 'JOB_TITLE' | 'JOB_FUNCTION' | 'LOCATION' | 'ZIPCODE' | 'SKILL' | 'COMPANY' | 'SCHOOL' | 'INDUSTRY' | 'GROUP' | 'PROJECT' | 'CUSTOM_FILTER' | 'PROFILE_LANGUAGE' | 'SEAT' | 'SAVED_SEARCH' | 'DEGREE';
+        /**
+         * An offset used for pagination. Not applicable to JOB_FUNCTION.
+         */
+        offset?: number;
+        /**
+         * Not applicable to JOB_FUNCTION.
+         */
+        limit?: number;
+    } | {
+        source: 'JOBS';
         /**
          * A keyword or group of keywords to filter results.
          */
@@ -28749,10 +30484,6 @@ export type GetRecruiterSearchParametersData = {
          */
         type: 'CONTRACT' | 'SEAT' | 'LOCATION';
         /**
-         * In Pipeline context, the ID of the Stage to get parameters from. Leave undefined to get results from all stages.
-         */
-        stage_id?: string;
-        /**
          * An offset used for pagination.
          */
         offset?: number;
@@ -28761,6 +30492,13 @@ export type GetRecruiterSearchParametersData = {
          */
         limit?: number;
     };
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
     url: '/v2/{account_id}/linkedin/recruiter/search/parameters';
 };
 
@@ -28779,6 +30517,24 @@ export type GetRecruiterSearchParametersResponses = {
              * The display name of the search parameter.
              */
             name: string;
+            /**
+             * Metadata about the current parameter.
+             */
+            metadata?: {
+                object: 'SavedSearchMetadata';
+                product: 'sales_navigator';
+                last_viewed_at: number;
+                new_results_count: number;
+            } | {
+                object: 'SavedSearchMetadata';
+                product: 'recruiter';
+                query: string;
+                new_results_count: number;
+                project?: {
+                    id: string;
+                    name: string;
+                };
+            };
         }>;
         /**
          * Total number of results if supported by the endpoint.
@@ -28800,6 +30556,60 @@ export type PerformRecruiterPeopleSearchData = {
          */
         keywords?: string;
         /**
+         * A list of spotlights.
+         */
+        spotlights?: Array<'OPEN_TO_WORK' | 'ACTIVE_TALENT' | 'REDISCOVERED_CANDIDATES' | 'INTERNAL_CANDIDATES' | 'INTERESTED_IN_YOUR_COMPANY' | 'HAVE_COMPANY_CONNECTIONS'>;
+        /**
+         * Saved search to be loaded. Can be associated with other filters.
+         */
+        load_saved_search?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SAVED_SEARCH` type to find out the possible values.
+             *
+             * Native filter : Saved searches
+             *
+             */
+            id: string;
+            /**
+             * Whether only newest results should be returned.
+             */
+            new_results_only?: boolean;
+        };
+        /**
+         * Custom filter to be loaded. Can be associated with other filters.
+         */
+        load_custom_filter?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `CUSTOM_FILTER` type to find out the possible values.
+             *
+             * Native filter : Custom filters
+             *
+             */
+            id: string;
+        };
+        /**
+         * Allows you to save the current search.
+         */
+        save_search?: {
+            /**
+             * A name to identify the search.
+             */
+            name: string;
+            /**
+             * The ID of the project where the search should be saved.
+             */
+            project_id: string;
+        };
+        /**
+         * Allows you to save the current search as custom filter.
+         */
+        save_custom_filter?: {
+            /**
+             * A name to identify the filter.
+             */
+            name: string;
+        };
+        /**
          * A list of connection degrees (1 for First, 2 for Second, 3 for Third+ and GROUP for Common group members).
          *
          * Native filter : Connections
@@ -28810,6 +30620,12 @@ export type PerformRecruiterPeopleSearchData = {
          * A list of locations.
          */
         location?: Array<{
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+             *
+             * Native filter : Locations
+             *
+             */
             id: string;
             /**
              * Whether the user can, must or shouldn't have the value.
@@ -28833,6 +30649,12 @@ export type PerformRecruiterPeopleSearchData = {
              * The postal code location name.
              */
             name: string;
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `ZIPCODE` type to find out the possible values.
+             *
+             * Native filter : Postal code / Zip code
+             *
+             */
             id: string;
         }>;
         /**
@@ -28850,6 +30672,9 @@ export type PerformRecruiterPeopleSearchData = {
              * The job title.
              */
             name: string;
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             */
             id?: string;
             /**
              * Whether the user can, must or shouldn't have the value.
@@ -28873,6 +30698,9 @@ export type PerformRecruiterPeopleSearchData = {
              * The occupation name.
              */
             name: string;
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `OCCUPATION` type to find out the possible values.
+             */
             id?: string;
             /**
              * Whether the user can, must or shouldn't have the value.
@@ -28896,6 +30724,9 @@ export type PerformRecruiterPeopleSearchData = {
              * The skill name.
              */
             name: string;
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+             */
             id?: string;
             /**
              * Whether the user can, must or shouldn't have the value.
@@ -28913,6 +30744,9 @@ export type PerformRecruiterPeopleSearchData = {
              * The company name.
              */
             name: string;
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
             id?: string;
             /**
              * Whether the user can, must or shouldn't have the value.
@@ -28927,6 +30761,38 @@ export type PerformRecruiterPeopleSearchData = {
              *
              */
             preferences?: 'CURRENT' | 'CURRENT_OR_PAST' | 'PAST' | 'PAST_NOT_CURRENT';
+        }>;
+        /**
+         * A list of current companies.
+         */
+        current_company?: Array<{
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
+            id: string;
+            /**
+             * Whether the user can, must or shouldn't have the value.
+             *
+             * Native filter : Priority
+             *
+             */
+            priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
+        }>;
+        /**
+         * A list of past companies.
+         */
+        past_company?: Array<{
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
+            id: string;
+            /**
+             * Whether the user can, must or shouldn't have the value.
+             *
+             * Native filter : Priority
+             *
+             */
+            priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
         }>;
         /**
          * A list of company size ranges.
@@ -28946,9 +30812,55 @@ export type PerformRecruiterPeopleSearchData = {
             max: number;
         };
         /**
+         *
+         *
+         * Native filter : Years in current position
+         *
+         */
+        years_in_current_position?: {
+            min: number;
+            max: number;
+        };
+        /**
+         *
+         *
+         * Native filter : Years in current company
+         *
+         */
+        years_in_current_company?: {
+            min: number;
+            max: number;
+        };
+        /**
+         *
+         *
+         * Native filter : Degrees
+         *
+         */
+        degree?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
+        /**
+         * A list of workplace types.
+         */
+        workplace_type?: Array<'ON_SITE' | 'HYBRID' | 'REMOTE'>;
+        /**
          * A list of schools.
          */
         school?: Array<{
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+             *
+             * Native filter : Schools
+             *
+             */
             id: string;
             /**
              * Whether the user can, must or shouldn't have the value.
@@ -28958,6 +30870,26 @@ export type PerformRecruiterPeopleSearchData = {
              */
             priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
         }>;
+        /**
+         * A list of fields of study.
+         */
+        field_of_study?: Array<{
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
+             */
+            id: string;
+            /**
+             * Whether the user can, must or shouldn't have the value.
+             *
+             * Native filter : Priority
+             *
+             */
+            priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
+        }>;
+        /**
+         * A list of employment types.
+         */
+        employment_type?: Array<'FULL_TIME' | 'PART_TIME' | 'CONTRACT' | 'INTERNSHIP'>;
         /**
          *
          *
@@ -28989,6 +30921,29 @@ export type PerformRecruiterPeopleSearchData = {
          */
         seniority?: Array<'UNPAID' | 'TRAINING' | 'ENTRY' | 'SENIOR' | 'MANAGER' | 'DIRECTOR' | 'VP' | 'CXO' | 'PARTNER' | 'OWNER'>;
         /**
+         * A list of languages.
+         */
+        spoken_language?: Array<{
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SPOKEN_LANGUAGE` type to find out the possible values.
+             */
+            id: string;
+            /**
+             * Whether the user can, must or shouldn't have the value.
+             *
+             * Native filter : Priority
+             *
+             */
+            priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
+            /**
+             * The level of proficiency for the spoken languages.
+             *
+             * Native filter : Spoken languages proficiency
+             *
+             */
+            proficiency?: 'ELEMENTARY' | 'LIMITED_WORKING' | 'PROFESSIONAL_WORKING' | 'FULL_PROFESSIONAL' | 'NATIVE_OR_BILINGUAL';
+        }>;
+        /**
          * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `PROFILE_LANGUAGE` type to find out the possible values.
          *
          * Native filter : Profile languages
@@ -29003,16 +30958,22 @@ export type PerformRecruiterPeopleSearchData = {
          */
         project?: {
             include?: Array<{
+                /**
+                 * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `PROJECT` type to find out the possible values.
+                 */
                 id: string;
                 /**
-                 * The title of the project;
+                 * The title of the project.
                  */
                 title: string;
             }>;
             exclude?: Array<{
+                /**
+                 * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `PROJECT` type to find out the possible values.
+                 */
                 id: string;
                 /**
-                 * The title of the project;
+                 * The title of the project.
                  */
                 title: string;
             }>;
@@ -29023,7 +30984,7 @@ export type PerformRecruiterPeopleSearchData = {
          * Native filter : Job functions
          *
          */
-        function?: Array<string>;
+        job_function?: Array<string>;
         /**
          * A list of names.
          */
@@ -29093,6 +31054,22 @@ export type PerformRecruiterPeopleSearchData = {
          * A list of notes.
          */
         notes?: Array<string>;
+        /**
+         *
+         *
+         * Native filter : Tags
+         *
+         */
+        tags?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `TAG` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `TAG` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
     };
     path: {
         /**
@@ -29102,9 +31079,9 @@ export type PerformRecruiterPeopleSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
-        offset?: number;
+        cursor?: string;
         /**
          * The limit of items to be returned.
          */
@@ -29122,40 +31099,61 @@ export type PerformRecruiterPeopleSearchResponses = {
     200: {
         data: Array<{
             object: 'PeopleSearchResult';
+            /**
+             * The ID of the user.
+             */
+            id: string;
+            /**
+             * The headline of the User.
+             */
+            headline: string;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            /**
+             * The location of the User.
+             */
+            location: string;
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
             product: 'recruiter';
             /**
              * Indidates that you don't have access to the full profile of this User.
              */
             visibility: 'partial';
             /**
-             * The ID of the User.
-             */
-            id: string;
-            /**
              * The candidate ID of the User.
              */
             candidate_id: string;
             /**
-             * The headline of the User.
-             */
-            headline: string;
-            /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
-             * The location of the User.
-             */
-            location: string;
-            /**
              * Whether the User has been set as hidden candidate.
              */
             is_hidden_candidate: boolean;
+            /**
+             * The hiring project where the User is a candidate.
+             */
+            hiring_project?: {
+                /**
+                 * The ID of the project.
+                 */
+                id: string;
+                /**
+                 * The name of the project.
+                 */
+                name: string;
+                /**
+                 * The pipeline stage at which the User is (contacted, replied, etc.).
+                 */
+                pipeline_stage: string;
+            };
             /**
              * A list of the User's work experiences.
              */
@@ -29188,9 +31186,9 @@ export type PerformRecruiterPeopleSearchResponses = {
                     industries?: Array<string>;
                 };
                 /**
-                 * Position name in the experience.
+                 * Job title of the experience.
                  */
-                title: string;
+                job_title: string;
                 /**
                  * Start date of the experience in MM/DD/YYYY format.
                  */
@@ -29224,118 +31222,16 @@ export type PerformRecruiterPeopleSearchResponses = {
                  */
                 skills_preview?: string;
             }>;
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail?: boolean;
         } | {
             object: 'PeopleSearchResult';
-            product: 'recruiter';
             /**
-             * Indidates that you have access to the full profile of this User.
-             */
-            visibility: 'full';
-            /**
-             * The ID of the User.
+             * The ID of the user.
              */
             id: string;
             /**
-             * The candidate ID of the User.
+             * The LinkedIn internal member ID of the user.
              */
-            candidate_id: string;
-            /**
-             * The headline of the User.
-             */
-            headline: string;
-            /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
-             * The location of the User.
-             */
-            location: string;
-            /**
-             * Whether the User has been set as hidden candidate.
-             */
-            is_hidden_candidate: boolean;
-            /**
-             * A list of the User's work experiences.
-             */
-            work_experience: Array<{
-                /**
-                 * Id of the work experience entry.
-                 */
-                id?: string;
-                company: {
-                    /**
-                     * Name of the company.
-                     */
-                    name?: string;
-                    id: string | null;
-                    /**
-                     * Public identifier of the company.
-                     */
-                    public_identifier?: string;
-                    /**
-                     * Public url to the profile picture of the company.
-                     */
-                    picture_url?: string;
-                    /**
-                     * Public url to the profile of the company.
-                     */
-                    profile_url?: string;
-                    /**
-                     * Industry types of the company.
-                     */
-                    industries?: Array<string>;
-                };
-                /**
-                 * Position name in the experience.
-                 */
-                title: string;
-                /**
-                 * Start date of the experience in MM/DD/YYYY format.
-                 */
-                started_on?: string;
-                /**
-                 * End date of the experience in MM/DD/YYYY format.
-                 */
-                ended_on?: string;
-                /**
-                 * Location of the experience.
-                 */
-                location?: string;
-                /**
-                 * Description of the experience.
-                 */
-                description?: string;
-                /**
-                 * Employment type of the experience.
-                 */
-                employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
-                /**
-                 * Workplace type of the experience.
-                 */
-                workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
-                /**
-                 * Skills acquired with experience.
-                 */
-                skills?: Array<string>;
-                /**
-                 * Insight of the skills acquired with experience.
-                 */
-                skills_preview?: string;
-            }>;
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail?: boolean;
+            member_id?: string;
             /**
              * The display name of the User.
              */
@@ -29347,15 +31243,142 @@ export type PerformRecruiterPeopleSearchResponses = {
             /**
              * The profile URL of the User.
              */
-            profile_url: string;
+            profile_url?: string;
             /**
-             * The industry to which the User belongs.
+             * The public picture URL of the User.
              */
-            industry: string;
+            public_picture_url?: string;
+            /**
+             * The public picture URL of the User in large size.
+             */
+            public_picture_url_large?: string;
             /**
              * The number of relations of the User.
              */
             relations_count?: number;
+            /**
+             * The location of the User.
+             */
+            location: string;
+            /**
+             * The headline of the User.
+             */
+            headline: string;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            product: 'recruiter';
+            /**
+             * Indidates that you have access to the full profile of this User.
+             */
+            visibility: 'full';
+            /**
+             * The candidate ID of the User.
+             */
+            candidate_id: string;
+            /**
+             * Whether the User has been set as hidden candidate.
+             */
+            is_hidden_candidate: boolean;
+            /**
+             * The hiring project where the User is a candidate.
+             */
+            hiring_project?: {
+                /**
+                 * The ID of the project.
+                 */
+                id: string;
+                /**
+                 * The name of the project.
+                 */
+                name: string;
+                /**
+                 * The pipeline stage at which the User is (contacted, replied, etc.).
+                 */
+                pipeline_stage: string;
+            };
+            /**
+             * A list of the User's work experiences.
+             */
+            work_experience: Array<{
+                /**
+                 * Id of the work experience entry.
+                 */
+                id?: string;
+                company: {
+                    /**
+                     * Name of the company.
+                     */
+                    name?: string;
+                    id: string | null;
+                    /**
+                     * Public identifier of the company.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Public url to the profile picture of the company.
+                     */
+                    picture_url?: string;
+                    /**
+                     * Public url to the profile of the company.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Industry types of the company.
+                     */
+                    industries?: Array<string>;
+                };
+                /**
+                 * Job title of the experience.
+                 */
+                job_title: string;
+                /**
+                 * Start date of the experience in MM/DD/YYYY format.
+                 */
+                started_on?: string;
+                /**
+                 * End date of the experience in MM/DD/YYYY format.
+                 */
+                ended_on?: string;
+                /**
+                 * Location of the experience.
+                 */
+                location?: string;
+                /**
+                 * Description of the experience.
+                 */
+                description?: string;
+                /**
+                 * Employment type of the experience.
+                 */
+                employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
+                /**
+                 * Workplace type of the experience.
+                 */
+                workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+                /**
+                 * Skills acquired with experience.
+                 */
+                skills?: Array<string>;
+                /**
+                 * Insight of the skills acquired with experience.
+                 */
+                skills_preview?: string;
+            }>;
+            /**
+             * The industry to which the User belongs.
+             */
+            industry: string;
             /**
              * The number of the followers of the User.
              */
@@ -29377,10 +31400,6 @@ export type PerformRecruiterPeopleSearchResponses = {
              * The summary of the User.
              */
             summary?: string;
-            /**
-             * The profile picture URL of the User.
-             */
-            public_picture_url?: string;
             emails?: Array<string>;
             phone_numbers?: Array<string>;
             education: Array<{
@@ -29790,7 +31809,6 @@ export type PerformSalesSearchFromUrlResponses = {
     200: {
         data: Array<{
             object: 'CompanySearchResult';
-            product: 'sales_navigator';
             /**
              * The ID of the Company.
              */
@@ -29800,14 +31818,6 @@ export type PerformSalesSearchFromUrlResponses = {
              */
             display_name: string;
             /**
-             * The type of the Company.
-             */
-            type?: string;
-            /**
-             * A list of the company's activities.
-             */
-            specialties?: Array<string>;
-            /**
              * The public identifier of the Company.
              */
             public_identifier?: string;
@@ -29816,9 +31826,13 @@ export type PerformSalesSearchFromUrlResponses = {
              */
             profile_url?: string;
             /**
-             * The profile picture URL of the Company.
+             * The public picture URL of the Company.
              */
             public_picture_url?: string;
+            /**
+             * The public picture URL of the Company in large size.
+             */
+            public_picture_url_large?: string;
             /**
              * The location of the Company.
              */
@@ -29826,23 +31840,32 @@ export type PerformSalesSearchFromUrlResponses = {
             /**
              * The industry to which the Company belongs.
              */
-            industry: string;
+            industry?: string;
             /**
              * The summary of the Company's activities.
              */
             summary?: string;
             /**
+             * The number of the relations of the Company.
+             */
+            relations_count?: number;
+            product: 'sales_navigator';
+            /**
+             * The type of the Company.
+             */
+            type?: string;
+            /**
              * The number of employees of the Company.
              */
             headcount?: number;
             /**
+             * A list of the company's activities.
+             */
+            specialties?: Array<string>;
+            /**
              * Whether the Company is hiring on LinkedIn.
              */
             is_hiring_on_linkedin?: boolean;
-            /**
-             * The number of the relations of the Company.
-             */
-            relations_count?: number;
             /**
              * The number of lists you own on which the Company appears.
              */
@@ -29879,11 +31902,14 @@ export type PerformSalesSearchFromUrlResponses = {
     } | {
         data: Array<{
             object: 'PeopleSearchResult';
-            product: 'sales_navigator';
             /**
-             * The ID of the User.
+             * The ID of the user.
              */
             id: string;
+            /**
+             * The LinkedIn internal member ID of the user.
+             */
+            member_id?: string;
             /**
              * The display name of the User.
              */
@@ -29897,17 +31923,17 @@ export type PerformSalesSearchFromUrlResponses = {
              */
             profile_url?: string;
             /**
-             * The profile picture URL of the User.
+             * The public picture URL of the User.
              */
             public_picture_url?: string;
             /**
-             * The number of the relations of the User.
+             * The public picture URL of the User in large size.
+             */
+            public_picture_url_large?: string;
+            /**
+             * The number of relations of the User.
              */
             relations_count?: number;
-            /**
-             * The number of relations that you share with the User.
-             */
-            shared_relations_count?: number;
             /**
              * The location of the User.
              */
@@ -29916,6 +31942,16 @@ export type PerformSalesSearchFromUrlResponses = {
              * The headline of the User.
              */
             headline: string;
+            network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            product: 'sales_navigator';
+            /**
+             * The number of relations that you share with the User.
+             */
+            shared_relations_count?: number;
             /**
              * The summary of the User.
              */
@@ -29961,10 +31997,6 @@ export type PerformSalesSearchFromUrlResponses = {
              */
             is_open_profile: boolean;
             /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail: boolean;
-            /**
              * A list of websites of the User.
              */
             websites?: Array<string>;
@@ -30008,23 +32040,11 @@ export type PerformSalesSearchFromUrlResponses = {
              */
             notes_count: number;
             /**
-             * Social network information about the User.
+             * Social handles of the User.
              */
-            social_networks: {
-                /**
-                 * The Twitter ID of the User.
-                 */
-                twitter_id?: string;
+            social_handles?: {
+                twitter?: string;
             };
-            /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
             education: Array<{
                 /**
                  * Id of the education entry.
@@ -30121,9 +32141,9 @@ export type PerformSalesSearchFromUrlResponses = {
                     industries?: Array<string>;
                 };
                 /**
-                 * Position name in the experience.
+                 * Job title of the experience.
                  */
-                title: string;
+                job_title: string;
                 /**
                  * Start date of the experience in MM/DD/YYYY format.
                  */
@@ -30224,9 +32244,13 @@ export type PerformSalesSearchFromUrlResponses = {
     } | {
         data: Array<{
             /**
-             * The ID of the User.
+             * The ID of the user.
              */
             id: string;
+            /**
+             * The LinkedIn internal member ID of the user.
+             */
+            member_id?: string;
             /**
              * The display name of the User.
              */
@@ -30240,17 +32264,17 @@ export type PerformSalesSearchFromUrlResponses = {
              */
             profile_url?: string;
             /**
-             * The profile picture URL of the User.
+             * The public picture URL of the User.
              */
             public_picture_url?: string;
             /**
-             * The number of the relations of the User.
+             * The public picture URL of the User in large size.
+             */
+            public_picture_url_large?: string;
+            /**
+             * The number of relations of the User.
              */
             relations_count?: number;
-            /**
-             * The number of relations that you share with the User.
-             */
-            shared_relations_count?: number;
             /**
              * The location of the User.
              */
@@ -30259,6 +32283,15 @@ export type PerformSalesSearchFromUrlResponses = {
              * The headline of the User.
              */
             headline: string;
+            network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            /**
+             * The number of relations that you share with the User.
+             */
+            shared_relations_count?: number;
             /**
              * The summary of the User.
              */
@@ -30295,10 +32328,6 @@ export type PerformSalesSearchFromUrlResponses = {
              * Whether the User has an Open Profile. The Open Profile feature allows anyone on LinkedIn to contact a Premium member for free.
              */
             is_open_profile: boolean;
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail: boolean;
             /**
              * A list of websites of the User.
              */
@@ -30343,23 +32372,11 @@ export type PerformSalesSearchFromUrlResponses = {
              */
             notes_count: number;
             /**
-             * Social network information about the User.
+             * Social handles of the User.
              */
-            social_networks: {
-                /**
-                 * The Twitter ID of the User.
-                 */
-                twitter_id?: string;
+            social_handles?: {
+                twitter?: string;
             };
-            /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
             education: Array<{
                 /**
                  * Id of the education entry.
@@ -30456,9 +32473,9 @@ export type PerformSalesSearchFromUrlResponses = {
                     industries?: Array<string>;
                 };
                 /**
-                 * Position name in the experience.
+                 * Job title of the experience.
                  */
-                title: string;
+                job_title: string;
                 /**
                  * Start date of the experience in MM/DD/YYYY format.
                  */
@@ -30608,14 +32625,6 @@ export type PerformSalesSearchFromUrlResponses = {
              */
             display_name: string;
             /**
-             * The type of the Company.
-             */
-            type?: string;
-            /**
-             * A list of the company's activities.
-             */
-            specialties?: Array<string>;
-            /**
              * The public identifier of the Company.
              */
             public_identifier?: string;
@@ -30624,9 +32633,13 @@ export type PerformSalesSearchFromUrlResponses = {
              */
             profile_url?: string;
             /**
-             * The profile picture URL of the Company.
+             * The public picture URL of the Company.
              */
             public_picture_url?: string;
+            /**
+             * The public picture URL of the Company in large size.
+             */
+            public_picture_url_large?: string;
             /**
              * The location of the Company.
              */
@@ -30634,23 +32647,31 @@ export type PerformSalesSearchFromUrlResponses = {
             /**
              * The industry to which the Company belongs.
              */
-            industry: string;
+            industry?: string;
             /**
              * The summary of the Company's activities.
              */
             summary?: string;
             /**
+             * The number of the relations of the Company.
+             */
+            relations_count?: number;
+            /**
+             * The type of the Company.
+             */
+            type?: string;
+            /**
              * The number of employees of the Company.
              */
             headcount?: number;
             /**
+             * A list of the company's activities.
+             */
+            specialties?: Array<string>;
+            /**
              * Whether the Company is hiring on LinkedIn.
              */
             is_hiring_on_linkedin?: boolean;
-            /**
-             * The number of the relations of the Company.
-             */
-            relations_count?: number;
             /**
              * The number of lists you own on which the Company appears.
              */
@@ -30677,9 +32698,13 @@ export type PerformSalesSearchFromUrlResponses = {
              */
             recommended_lead?: {
                 /**
-                 * The ID of the User.
+                 * The ID of the user.
                  */
                 id: string;
+                /**
+                 * The LinkedIn internal member ID of the user.
+                 */
+                member_id?: string;
                 /**
                  * The display name of the User.
                  */
@@ -30693,17 +32718,17 @@ export type PerformSalesSearchFromUrlResponses = {
                  */
                 profile_url?: string;
                 /**
-                 * The profile picture URL of the User.
+                 * The public picture URL of the User.
                  */
                 public_picture_url?: string;
                 /**
-                 * The number of the relations of the User.
+                 * The public picture URL of the User in large size.
+                 */
+                public_picture_url_large?: string;
+                /**
+                 * The number of relations of the User.
                  */
                 relations_count?: number;
-                /**
-                 * The number of relations that you share with the User.
-                 */
-                shared_relations_count?: number;
                 /**
                  * The location of the User.
                  */
@@ -30712,6 +32737,15 @@ export type PerformSalesSearchFromUrlResponses = {
                  * The headline of the User.
                  */
                 headline: string;
+                network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
+                /**
+                 * Whether it is possible to send an inMail to this User.
+                 */
+                can_send_inmail?: boolean;
+                /**
+                 * The number of relations that you share with the User.
+                 */
+                shared_relations_count?: number;
                 /**
                  * The summary of the User.
                  */
@@ -30748,10 +32782,6 @@ export type PerformSalesSearchFromUrlResponses = {
                  * Whether the User has an Open Profile. The Open Profile feature allows anyone on LinkedIn to contact a Premium member for free.
                  */
                 is_open_profile: boolean;
-                /**
-                 * Whether it is possible to send an inMail to this User.
-                 */
-                can_send_inmail: boolean;
                 /**
                  * A list of websites of the User.
                  */
@@ -30796,23 +32826,11 @@ export type PerformSalesSearchFromUrlResponses = {
                  */
                 notes_count: number;
                 /**
-                 * Social network information about the User.
+                 * Social handles of the User.
                  */
-                social_networks: {
-                    /**
-                     * The Twitter ID of the User.
-                     */
-                    twitter_id?: string;
+                social_handles?: {
+                    twitter?: string;
                 };
-                /**
-                 * Network distance to a User.
-                 * `SELF`: Yourself.
-                 * `FIRST_DEGREE`: 1st degree connection.
-                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-                 * `OUT_OF_NETWORK`: Unreachable user.'
-                 */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
                 education: Array<{
                     /**
                      * Id of the education entry.
@@ -30909,9 +32927,9 @@ export type PerformSalesSearchFromUrlResponses = {
                         industries?: Array<string>;
                     };
                     /**
-                     * Position name in the experience.
+                     * Job title of the experience.
                      */
-                    title: string;
+                    job_title: string;
                     /**
                      * Start date of the experience in MM/DD/YYYY format.
                      */
@@ -31032,7 +33050,7 @@ export type GetSalesSearchParametersData = {
         /**
          * The type of search parameter.
          */
-        type: 'COMPANY' | 'ACCOUNT_LIST' | 'LEAD_LIST' | 'LOCATION' | 'POSTAL_CODE' | 'JOB_FUNCTION' | 'JOB_TITLE' | 'INDUSTRY' | 'GROUP' | 'SCHOOL' | 'RELATION' | 'PERSONA';
+        type: 'COMPANY' | 'ACCOUNT_LIST' | 'LEAD_LIST' | 'LOCATION' | 'POSTAL_CODE' | 'JOB_FUNCTION' | 'JOB_TITLE' | 'INDUSTRY' | 'GROUP' | 'SCHOOL' | 'RELATION' | 'PERSONA' | 'SAVED_PEOPLE_SEARCH' | 'SAVED_COMPANY_SEARCH' | 'RECENT_SEARCH' | 'PROFILE_LANGUAGE';
         /**
          * An offset used for pagination.
          */
@@ -31060,6 +33078,24 @@ export type GetSalesSearchParametersResponses = {
              * The display name of the search parameter.
              */
             name: string;
+            /**
+             * Metadata about the current parameter.
+             */
+            metadata?: {
+                object: 'SavedSearchMetadata';
+                product: 'sales_navigator';
+                last_viewed_at: number;
+                new_results_count: number;
+            } | {
+                object: 'SavedSearchMetadata';
+                product: 'recruiter';
+                query: string;
+                new_results_count: number;
+                project?: {
+                    id: string;
+                    name: string;
+                };
+            };
         }>;
         /**
          * Total number of results if supported by the endpoint.
@@ -31080,6 +33116,43 @@ export type PerformSalesPeopleSearchData = {
          * A keyword or group of keywords.
          */
         keywords?: string;
+        /**
+         * Allows you to save the current search.
+         */
+        save_search?: {
+            /**
+             * A name to identify the search.
+             */
+            name: string;
+        };
+        /**
+         * Saved search to be loaded. Overrides all other filters.
+         */
+        load_saved_search?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `SAVED_PEOPLE_SEARCH` type to find out the possible values.
+             *
+             * Native filter : Saved search
+             *
+             */
+            id: string;
+            /**
+             * A Unix timestamp indicating the last time the search results were accessed, to be used to retrieve only the new results.
+             */
+            last_viewed_at?: number;
+        };
+        /**
+         * Recent search to be loaded. Overrides all other filters.
+         */
+        load_recent_search?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `RECENT_SEARCH` type to find out the possible values.
+             *
+             * Native filter : Recent search
+             *
+             */
+            id: string;
+        };
         /**
          *
          *
@@ -31272,7 +33345,10 @@ export type PerformSalesPeopleSearchData = {
          */
         last_name?: Array<string>;
         /**
-         * A list of languages.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `PROFILE_LANGUAGE` type to find out the possible values.
+         *
+         * Native filter : Personal / Profile language
+         *
          */
         profile_language?: Array<string>;
         /**
@@ -31486,11 +33562,14 @@ export type PerformSalesPeopleSearchResponses = {
     200: {
         data: Array<{
             object: 'PeopleSearchResult';
-            product: 'sales_navigator';
             /**
-             * The ID of the User.
+             * The ID of the user.
              */
             id: string;
+            /**
+             * The LinkedIn internal member ID of the user.
+             */
+            member_id?: string;
             /**
              * The display name of the User.
              */
@@ -31504,17 +33583,17 @@ export type PerformSalesPeopleSearchResponses = {
              */
             profile_url?: string;
             /**
-             * The profile picture URL of the User.
+             * The public picture URL of the User.
              */
             public_picture_url?: string;
             /**
-             * The number of the relations of the User.
+             * The public picture URL of the User in large size.
+             */
+            public_picture_url_large?: string;
+            /**
+             * The number of relations of the User.
              */
             relations_count?: number;
-            /**
-             * The number of relations that you share with the User.
-             */
-            shared_relations_count?: number;
             /**
              * The location of the User.
              */
@@ -31523,6 +33602,16 @@ export type PerformSalesPeopleSearchResponses = {
              * The headline of the User.
              */
             headline: string;
+            network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            product: 'sales_navigator';
+            /**
+             * The number of relations that you share with the User.
+             */
+            shared_relations_count?: number;
             /**
              * The summary of the User.
              */
@@ -31568,10 +33657,6 @@ export type PerformSalesPeopleSearchResponses = {
              */
             is_open_profile: boolean;
             /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail: boolean;
-            /**
              * A list of websites of the User.
              */
             websites?: Array<string>;
@@ -31615,23 +33700,11 @@ export type PerformSalesPeopleSearchResponses = {
              */
             notes_count: number;
             /**
-             * Social network information about the User.
+             * Social handles of the User.
              */
-            social_networks: {
-                /**
-                 * The Twitter ID of the User.
-                 */
-                twitter_id?: string;
+            social_handles?: {
+                twitter?: string;
             };
-            /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
             education: Array<{
                 /**
                  * Id of the education entry.
@@ -31728,9 +33801,9 @@ export type PerformSalesPeopleSearchResponses = {
                     industries?: Array<string>;
                 };
                 /**
-                 * Position name in the experience.
+                 * Job title of the experience.
                  */
-                title: string;
+                job_title: string;
                 /**
                  * Start date of the experience in MM/DD/YYYY format.
                  */
@@ -31840,6 +33913,43 @@ export type PerformSalesCompaniesSearchData = {
          */
         keywords?: string;
         /**
+         * Allows you to save the current search.
+         */
+        save_search?: {
+            /**
+             * A name to identify the search.
+             */
+            name: string;
+        };
+        /**
+         * Saved search to be loaded. Overrides all other filters.
+         */
+        load_saved_search?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `SAVED_PEOPLE_SEARCH` type to find out the possible values.
+             *
+             * Native filter : Saved search
+             *
+             */
+            id: string;
+            /**
+             * A Unix timestamp indicating the last time the search results were accessed, to be used to retrieve only the new results.
+             */
+            last_viewed_at?: number;
+        };
+        /**
+         * Recent search to be loaded. Overrides all other filters.
+         */
+        load_recent_search?: {
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `RECENT_SEARCH` type to find out the possible values.
+             *
+             * Native filter : Recent search
+             *
+             */
+            id: string;
+        };
+        /**
          *
          *
          * Native filter : Company attributes / Annual revenue
@@ -31931,6 +34041,9 @@ export type PerformSalesCompaniesSearchData = {
         department_headcount?: {
             min: number;
             max: number;
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
+             */
             department: string;
         };
         /**
@@ -31942,6 +34055,9 @@ export type PerformSalesCompaniesSearchData = {
         department_headcount_growth?: {
             min: number;
             max: number;
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
+             */
             department: string;
         };
         /**
@@ -31951,22 +34067,6 @@ export type PerformSalesCompaniesSearchData = {
             min?: 51 | 101 | 251;
             max?: 50 | 100 | 250 | 500;
         }>;
-        /**
-         *
-         *
-         * Native filter : Company attributes / Technologies used
-         *
-         */
-        technologies?: {
-            /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `TECHNOLOGY` type to find out the possible values.
-             */
-            include?: Array<string>;
-            /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `TECHNOLOGY` type to find out the possible values.
-             */
-            exclude?: Array<string>;
-        };
         /**
          * A list of spotlights.
          */
@@ -32023,7 +34123,6 @@ export type PerformSalesCompaniesSearchResponses = {
     200: {
         data: Array<{
             object: 'CompanySearchResult';
-            product: 'sales_navigator';
             /**
              * The ID of the Company.
              */
@@ -32033,14 +34132,6 @@ export type PerformSalesCompaniesSearchResponses = {
              */
             display_name: string;
             /**
-             * The type of the Company.
-             */
-            type?: string;
-            /**
-             * A list of the company's activities.
-             */
-            specialties?: Array<string>;
-            /**
              * The public identifier of the Company.
              */
             public_identifier?: string;
@@ -32049,9 +34140,13 @@ export type PerformSalesCompaniesSearchResponses = {
              */
             profile_url?: string;
             /**
-             * The profile picture URL of the Company.
+             * The public picture URL of the Company.
              */
             public_picture_url?: string;
+            /**
+             * The public picture URL of the Company in large size.
+             */
+            public_picture_url_large?: string;
             /**
              * The location of the Company.
              */
@@ -32059,23 +34154,32 @@ export type PerformSalesCompaniesSearchResponses = {
             /**
              * The industry to which the Company belongs.
              */
-            industry: string;
+            industry?: string;
             /**
              * The summary of the Company's activities.
              */
             summary?: string;
             /**
+             * The number of the relations of the Company.
+             */
+            relations_count?: number;
+            product: 'sales_navigator';
+            /**
+             * The type of the Company.
+             */
+            type?: string;
+            /**
              * The number of employees of the Company.
              */
             headcount?: number;
             /**
+             * A list of the company's activities.
+             */
+            specialties?: Array<string>;
+            /**
              * Whether the Company is hiring on LinkedIn.
              */
             is_hiring_on_linkedin?: boolean;
-            /**
-             * The number of the relations of the Company.
-             */
-            relations_count?: number;
             /**
              * The number of lists you own on which the Company appears.
              */
@@ -32227,9 +34331,13 @@ export type BrowseSalesLeadListResponses = {
     200: {
         data: Array<{
             /**
-             * The ID of the User.
+             * The ID of the user.
              */
             id: string;
+            /**
+             * The LinkedIn internal member ID of the user.
+             */
+            member_id?: string;
             /**
              * The display name of the User.
              */
@@ -32243,17 +34351,17 @@ export type BrowseSalesLeadListResponses = {
              */
             profile_url?: string;
             /**
-             * The profile picture URL of the User.
+             * The public picture URL of the User.
              */
             public_picture_url?: string;
             /**
-             * The number of the relations of the User.
+             * The public picture URL of the User in large size.
+             */
+            public_picture_url_large?: string;
+            /**
+             * The number of relations of the User.
              */
             relations_count?: number;
-            /**
-             * The number of relations that you share with the User.
-             */
-            shared_relations_count?: number;
             /**
              * The location of the User.
              */
@@ -32262,6 +34370,15 @@ export type BrowseSalesLeadListResponses = {
              * The headline of the User.
              */
             headline: string;
+            network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            /**
+             * The number of relations that you share with the User.
+             */
+            shared_relations_count?: number;
             /**
              * The summary of the User.
              */
@@ -32298,10 +34415,6 @@ export type BrowseSalesLeadListResponses = {
              * Whether the User has an Open Profile. The Open Profile feature allows anyone on LinkedIn to contact a Premium member for free.
              */
             is_open_profile: boolean;
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail: boolean;
             /**
              * A list of websites of the User.
              */
@@ -32346,23 +34459,11 @@ export type BrowseSalesLeadListResponses = {
              */
             notes_count: number;
             /**
-             * Social network information about the User.
+             * Social handles of the User.
              */
-            social_networks: {
-                /**
-                 * The Twitter ID of the User.
-                 */
-                twitter_id?: string;
+            social_handles?: {
+                twitter?: string;
             };
-            /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
             education: Array<{
                 /**
                  * Id of the education entry.
@@ -32459,9 +34560,9 @@ export type BrowseSalesLeadListResponses = {
                     industries?: Array<string>;
                 };
                 /**
-                 * Position name in the experience.
+                 * Job title of the experience.
                  */
-                title: string;
+                job_title: string;
                 /**
                  * Start date of the experience in MM/DD/YYYY format.
                  */
@@ -32705,6 +34806,12 @@ export type GetSalesAccountListsResponse = GetSalesAccountListsResponses[keyof G
 
 export type BrowseSalesAccountListData = {
     body?: {
+        /**
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `PERSONA` type to find out the possible values.
+         *
+         * Native filter : Persona
+         *
+         */
         persona?: string;
         /**
          *
@@ -32762,14 +34869,6 @@ export type BrowseSalesAccountListResponses = {
              */
             display_name: string;
             /**
-             * The type of the Company.
-             */
-            type?: string;
-            /**
-             * A list of the company's activities.
-             */
-            specialties?: Array<string>;
-            /**
              * The public identifier of the Company.
              */
             public_identifier?: string;
@@ -32778,9 +34877,13 @@ export type BrowseSalesAccountListResponses = {
              */
             profile_url?: string;
             /**
-             * The profile picture URL of the Company.
+             * The public picture URL of the Company.
              */
             public_picture_url?: string;
+            /**
+             * The public picture URL of the Company in large size.
+             */
+            public_picture_url_large?: string;
             /**
              * The location of the Company.
              */
@@ -32788,23 +34891,31 @@ export type BrowseSalesAccountListResponses = {
             /**
              * The industry to which the Company belongs.
              */
-            industry: string;
+            industry?: string;
             /**
              * The summary of the Company's activities.
              */
             summary?: string;
             /**
+             * The number of the relations of the Company.
+             */
+            relations_count?: number;
+            /**
+             * The type of the Company.
+             */
+            type?: string;
+            /**
              * The number of employees of the Company.
              */
             headcount?: number;
             /**
+             * A list of the company's activities.
+             */
+            specialties?: Array<string>;
+            /**
              * Whether the Company is hiring on LinkedIn.
              */
             is_hiring_on_linkedin?: boolean;
-            /**
-             * The number of the relations of the Company.
-             */
-            relations_count?: number;
             /**
              * The number of lists you own on which the Company appears.
              */
@@ -32831,9 +34942,13 @@ export type BrowseSalesAccountListResponses = {
              */
             recommended_lead?: {
                 /**
-                 * The ID of the User.
+                 * The ID of the user.
                  */
                 id: string;
+                /**
+                 * The LinkedIn internal member ID of the user.
+                 */
+                member_id?: string;
                 /**
                  * The display name of the User.
                  */
@@ -32847,17 +34962,17 @@ export type BrowseSalesAccountListResponses = {
                  */
                 profile_url?: string;
                 /**
-                 * The profile picture URL of the User.
+                 * The public picture URL of the User.
                  */
                 public_picture_url?: string;
                 /**
-                 * The number of the relations of the User.
+                 * The public picture URL of the User in large size.
+                 */
+                public_picture_url_large?: string;
+                /**
+                 * The number of relations of the User.
                  */
                 relations_count?: number;
-                /**
-                 * The number of relations that you share with the User.
-                 */
-                shared_relations_count?: number;
                 /**
                  * The location of the User.
                  */
@@ -32866,6 +34981,15 @@ export type BrowseSalesAccountListResponses = {
                  * The headline of the User.
                  */
                 headline: string;
+                network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
+                /**
+                 * Whether it is possible to send an inMail to this User.
+                 */
+                can_send_inmail?: boolean;
+                /**
+                 * The number of relations that you share with the User.
+                 */
+                shared_relations_count?: number;
                 /**
                  * The summary of the User.
                  */
@@ -32902,10 +35026,6 @@ export type BrowseSalesAccountListResponses = {
                  * Whether the User has an Open Profile. The Open Profile feature allows anyone on LinkedIn to contact a Premium member for free.
                  */
                 is_open_profile: boolean;
-                /**
-                 * Whether it is possible to send an inMail to this User.
-                 */
-                can_send_inmail: boolean;
                 /**
                  * A list of websites of the User.
                  */
@@ -32950,23 +35070,11 @@ export type BrowseSalesAccountListResponses = {
                  */
                 notes_count: number;
                 /**
-                 * Social network information about the User.
+                 * Social handles of the User.
                  */
-                social_networks: {
-                    /**
-                     * The Twitter ID of the User.
-                     */
-                    twitter_id?: string;
+                social_handles?: {
+                    twitter?: string;
                 };
-                /**
-                 * Network distance to a User.
-                 * `SELF`: Yourself.
-                 * `FIRST_DEGREE`: 1st degree connection.
-                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-                 * `OUT_OF_NETWORK`: Unreachable user.'
-                 */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
                 education: Array<{
                     /**
                      * Id of the education entry.
@@ -33063,9 +35171,9 @@ export type BrowseSalesAccountListResponses = {
                         industries?: Array<string>;
                     };
                     /**
-                     * Position name in the experience.
+                     * Job title of the experience.
                      */
-                    title: string;
+                    job_title: string;
                     /**
                      * Start date of the experience in MM/DD/YYYY format.
                      */
@@ -33298,6 +35406,8 @@ export type SolveCheckpointResponses = {
              * The data of the CAPTCHA. This is used to verify the CAPTCHA.
              */
             data: string | null;
+        } | {
+            type: 'OTP_OR_IN_APP_VALIDATION';
         };
         /**
          * The ID of the auth intent. This should be used in Solve Checkpoint.
@@ -33958,6 +36068,9 @@ export type StartAuthIntentData = {
          * The provider to authenticate with.
          */
         provider: 'instagram';
+        /**
+         * The user credentials required by the provider to authenticate with.
+         */
         credentials: {
             /**
              * The username of the Instagram account.
@@ -33967,6 +36080,11 @@ export type StartAuthIntentData = {
              * The password of the Instagram account.
              */
             password: string;
+        } | {
+            /**
+             * The sessionid cookie value.
+             */
+            sessionid: string;
         };
         /**
          * Instagram specific configuration.
@@ -34018,6 +36136,13 @@ export type StartAuthIntentData = {
                  */
                 ip?: string;
             };
+            /**
+             * The authentication methods to show in the hosted auth.
+             * `credentials` : Credentials Authentication
+             * `cookies` : Cookies Authentication
+             *
+             */
+            allow_methods?: Array<'credentials' | 'cookies'>;
             [key: string]: unknown | {
                 /**
                  * The host of the proxy.
@@ -34052,7 +36177,7 @@ export type StartAuthIntentData = {
                  * An IPv4 address to infer proxy's location.
                  */
                 ip?: string;
-            } | undefined;
+            } | Array<'credentials' | 'cookies'> | undefined;
         };
     }) & {
         /**
@@ -34103,6 +36228,8 @@ export type StartAuthIntentResponses = {
              * The data of the CAPTCHA. This is used to verify the CAPTCHA.
              */
             data: string | null;
+        } | {
+            type: 'OTP_OR_IN_APP_VALIDATION';
         };
         /**
          * The ID of the auth intent. This should be used in Solve Checkpoint.
@@ -34566,6 +36693,13 @@ export type CreateAuthLinkData = {
                      */
                     ip?: string;
                 };
+                /**
+                 * The authentication methods to show in the hosted auth.
+                 * `credentials` : Credentials Authentication
+                 * `cookies` : Cookies Authentication
+                 *
+                 */
+                allow_methods?: Array<'credentials' | 'cookies'>;
                 [key: string]: unknown | {
                     /**
                      * The host of the proxy.
@@ -34600,7 +36734,7 @@ export type CreateAuthLinkData = {
                      * An IPv4 address to infer proxy's location.
                      */
                     ip?: string;
-                } | undefined;
+                } | Array<'credentials' | 'cookies'> | undefined;
             };
             /**
              * IMAP specific configuration.
@@ -35115,6 +37249,13 @@ export type CreateAuthLinkData = {
                      */
                     ip?: string;
                 };
+                /**
+                 * The authentication methods to show in the hosted auth.
+                 * `credentials` : Credentials Authentication
+                 * `cookies` : Cookies Authentication
+                 *
+                 */
+                allow_methods?: Array<'credentials' | 'cookies'>;
                 [key: string]: unknown | {
                     /**
                      * The host of the proxy.
@@ -35149,7 +37290,7 @@ export type CreateAuthLinkData = {
                      * An IPv4 address to infer proxy's location.
                      */
                     ip?: string;
-                } | undefined;
+                } | Array<'credentials' | 'cookies'> | undefined;
             };
             /**
              * IMAP specific configuration.
