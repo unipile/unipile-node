@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { AcceptRelationRequestData, AcceptRelationRequestResponses, AddMessageReactionData, AddMessageReactionResponses, AddParticipantData, AddParticipantResponses, AddPostCommentData, AddPostCommentReactionData, AddPostCommentReactionResponses, AddPostCommentResponses, AddPostReactionData, AddPostReactionResponses, BrowseSalesAccountListData, BrowseSalesAccountListResponses, BrowseSalesLeadListData, BrowseSalesLeadListResponses, CancelRelationRequestData, CancelRelationRequestResponses, CloseClassicJobPostingData, CloseClassicJobPostingResponses, CloseRecruiterJobPostingData, CloseRecruiterJobPostingResponses, CreateAuthLinkData, CreateAuthLinkResponses, CreateCalendarData, CreateCalendarEventData, CreateCalendarEventResponses, CreateCalendarResponses, CreateClassicJobPostingDraftData, CreateClassicJobPostingDraftResponses, CreateDraftData, CreateDraftResponses, CreateFolderData, CreateFolderResponses, CreatePostData, CreatePostResponses, CreateRecruiterHiringProjectData, CreateRecruiterHiringProjectResponses, CreateRecruiterJobPostingDraftInExistingProjectData, CreateRecruiterJobPostingDraftInExistingProjectResponses, CreateRecruiterJobPostingDraftInNewProjectData, CreateRecruiterJobPostingDraftInNewProjectResponses, CreateRelationRequestData, CreateRelationRequestResponses, CreateWebhookEndpointData, CreateWebhookEndpointResponses, DeleteCalendarData, DeleteCalendarEventData, DeleteCalendarEventResponses, DeleteCalendarResponses, DeleteDraftData, DeleteDraftResponses, DeleteFolderData, DeleteFolderResponses, DeleteMessageData, DeleteMessageResponses, DeletePostCommentData, DeletePostCommentResponses, DeletePostData, DeletePostResponses, DeleteRelationData, DeleteRelationResponses, DeleteWebhookEndpointData, DeleteWebhookEndpointResponses, EditClassicJobPostingData, EditClassicJobPostingResponses, EditRecruiterHiringProjectData, EditRecruiterHiringProjectResponses, EditRecruiterJobPostingData, EditRecruiterJobPostingResponses, EndorseClassicMemberSkillData, EndorseClassicMemberSkillResponses, FollowUserData, FollowUserResponses, ForwardMessageData, ForwardMessageResponses, GetAccountData, GetAccountResponses, GetAttachment1Data, GetAttachment1Responses, GetAttachmentData, GetAttachmentResponses, GetCalendarData, GetCalendarEventData, GetCalendarEventListData, GetCalendarEventListResponses, GetCalendarEventResponses, GetCalendarResponses, GetCalendarsListData, GetCalendarsListResponses, GetChatData, GetChatResponses, GetChatsListData, GetChatsListResponses, GetClassicApplicantByIdData, GetClassicApplicantByIdResponses, GetClassicApplicantResumeData, GetClassicApplicantResumeResponses, GetClassicApplicantsData, GetClassicApplicantsResponses, GetClassicCompanyProfileData, GetClassicCompanyProfileResponses, GetClassicJobPostingBudgetData, GetClassicJobPostingBudgetResponses, GetClassicJobPostingData, GetClassicJobPostingResponses, GetClassicSearchParametersData, GetClassicSearchParametersResponses, GetDraftData, GetDraftResponses, GetDraftsListData, GetDraftsListResponses, GetEmailData, GetEmailResponses, GetEmailsListData, GetEmailsListResponses, GetFolderData, GetFolderEmailsListData, GetFolderEmailsListResponses, GetFolderResponses, GetFoldersListData, GetFoldersListResponses, GetInboxChatsListData, GetInboxChatsListResponses, GetInboxesListData, GetInboxesListResponses, GetInmailCreditsData, GetInmailCreditsResponses, GetMessageData, GetMessageReactionsListData, GetMessageReactionsListResponses, GetMessageResponses, GetMessagesListData, GetMessagesListResponses, GetParticipantsListData, GetParticipantsListResponses, GetPostCommentReactionsListData, GetPostCommentReactionsListResponses, GetPostCommentRepliesListData, GetPostCommentRepliesListResponses, GetPostCommentsListData, GetPostCommentsListResponses, GetPostData, GetPostReactionsListData, GetPostReactionsListResponses, GetPostResponses, GetPostsListData, GetPostsListResponses, GetRecruiterApplicantByIdData, GetRecruiterApplicantByIdResponses, GetRecruiterApplicantResumeData, GetRecruiterApplicantResumeResponses, GetRecruiterHiringProjectData, GetRecruiterHiringProjectListData, GetRecruiterHiringProjectListResponses, GetRecruiterHiringProjectResponses, GetRecruiterJobPostingBudgetData, GetRecruiterJobPostingBudgetResponses, GetRecruiterJobPostingByIdData, GetRecruiterJobPostingByIdResponses, GetRecruiterJobPostingByProjectIdData, GetRecruiterJobPostingByProjectIdResponses, GetRecruiterJobPostingListData, GetRecruiterJobPostingListResponses, GetRecruiterPipelineCandidatesData, GetRecruiterPipelineCandidatesResponses, GetRecruiterSearchParametersData, GetRecruiterSearchParametersResponses, GetRecruiterTalentPoolApplicantsData, GetRecruiterTalentPoolApplicantsResponses, GetRelationRequestsListData, GetRelationRequestsListResponses, GetSalesAccountListsData, GetSalesAccountListsResponses, GetSalesLeadListsData, GetSalesLeadListsResponses, GetSalesSearchParametersData, GetSalesSearchParametersResponses, GetThreadData, GetThreadResponses, GetUserProfileData, GetUserProfileResponses, GetUserRelationsData, GetUserRelationsResponses, GetWebhookEndpointData, GetWebhookEndpointResponses, ListAccountsData, ListAccountsResponses, ListClassicUserJobPostingsData, ListClassicUserJobPostingsResponses, ListUserFollowersData, ListUserFollowersResponses, ListUserFollowingData, ListUserFollowingResponses, ListWebhookConversationsData, ListWebhookConversationsResponses, ListWebhookEndpointsData, ListWebhookEndpointsResponses, ModifyEmailData, ModifyEmailResponses, ModifyMessageData, ModifyMessageResponses, PerformClassicCompaniesSearchData, PerformClassicCompaniesSearchResponses, PerformClassicJobsSearchData, PerformClassicJobsSearchResponses, PerformClassicPeopleSearchData, PerformClassicPeopleSearchResponses, PerformClassicPostsSearchData, PerformClassicPostsSearchResponses, PerformClassicSearchFromUrlData, PerformClassicSearchFromUrlResponses, PerformRecruiterPeopleSearchData, PerformRecruiterPeopleSearchFromTalentPoolData, PerformRecruiterPeopleSearchFromTalentPoolResponses, PerformRecruiterPeopleSearchResponses, PerformRecruiterSearchFromUrlData, PerformRecruiterSearchFromUrlResponses, PerformSalesCompaniesSearchData, PerformSalesCompaniesSearchResponses, PerformSalesPeopleSearchData, PerformSalesPeopleSearchResponses, PerformSalesSearchFromUrlData, PerformSalesSearchFromUrlResponses, ProxyRequestData, ProxyRequestResponses, PublishClassicJobPostingData, PublishClassicJobPostingResponses, PublishRecruiterJobPostingData, PublishRecruiterJobPostingResponses, ReadEmailData, ReadEmailResponses, ReadMessageData, ReadMessageResponses, RemoveAccountData, RemoveAccountResponses, RemoveMessageReactionData, RemoveMessageReactionResponses, RemoveParticipantData, RemoveParticipantResponses, RemovePostCommentReactionData, RemovePostCommentReactionResponses, RemovePostReactionData, RemovePostReactionResponses, ReplyToCommentData, ReplyToCommentResponses, SaveRecruiterCandidateToPipelineData, SaveRecruiterCandidateToPipelineResponses, SaveSalesAccountToListData, SaveSalesAccountToListResponses, SaveSalesLeadToListData, SaveSalesLeadToListResponses, SearchLocationsData, SearchLocationsResponses, SendDraftData, SendDraftResponses, SendEmailData, SendEmailResponses, SendMessageData, SendMessageResponses, SetComposingStatusData, SetComposingStatusResponses, SetPresenceData, SetPresenceResponses, SolveCheckpointData, SolveCheckpointResponses, StartAuthIntentData, StartAuthIntentResponses, StartChatData, StartChatFromInboxData, StartChatFromInboxResponses, StartChatResponses, SubmitClassicCompanyOtpCodeData, SubmitClassicCompanyOtpCodeResponses, SubmitRecruiterOtpCodeData, SubmitRecruiterOtpCodeResponses, TrashEmailData, TrashEmailResponses, UnfollowUserData, UnfollowUserResponses, UnreadEmailData, UnreadEmailResponses, UpdateAccountData, UpdateAccountResponses, UpdateCalendarData, UpdateCalendarEventData, UpdateCalendarEventResponses, UpdateCalendarResponses, UpdateChatData, UpdateChatResponses, UpdateDraftData, UpdateDraftResponses, UpdateFolderData, UpdateFolderResponses, UpdatePostCommentData, UpdatePostCommentResponses, UpdatePostData, UpdatePostResponses, UpdateUserProfileData, UpdateUserProfileResponses, UpdateWebhookEndpointData, UpdateWebhookEndpointResponses, VerifyClassicCompanyMemberIdentityData, VerifyClassicCompanyMemberIdentityResponses, VerifyRecruiterCompanyMemberIdentityData, VerifyRecruiterCompanyMemberIdentityResponses, VisitUserProfileData, VisitUserProfileResponses } from './types.gen';
+import type { AcceptRelationRequestData, AcceptRelationRequestResponses, AddMessageReactionData, AddMessageReactionResponses, AddParticipantData, AddParticipantResponses, AddPostCommentData, AddPostCommentReactionData, AddPostCommentReactionResponses, AddPostCommentResponses, AddPostReactionData, AddPostReactionResponses, BrowseSalesAccountListData, BrowseSalesAccountListResponses, BrowseSalesLeadListData, BrowseSalesLeadListResponses, CancelRelationRequestData, CancelRelationRequestResponses, CloseClassicJobPostingData, CloseClassicJobPostingResponses, CloseRecruiterJobPostingData, CloseRecruiterJobPostingResponses, CreateAuthLinkData, CreateAuthLinkResponses, CreateCalendarData, CreateCalendarEventData, CreateCalendarEventResponses, CreateCalendarResponses, CreateClassicJobPostingDraftData, CreateClassicJobPostingDraftResponses, CreateDraftData, CreateDraftResponses, CreateFolderData, CreateFolderResponses, CreatePostData, CreatePostResponses, CreateRecruiterHiringProjectData, CreateRecruiterHiringProjectResponses, CreateRecruiterJobPostingDraftInExistingProjectData, CreateRecruiterJobPostingDraftInExistingProjectResponses, CreateRecruiterJobPostingDraftInNewProjectData, CreateRecruiterJobPostingDraftInNewProjectResponses, CreateRelationRequestData, CreateRelationRequestResponses, CreateWebhookEndpointData, CreateWebhookEndpointResponses, DeleteCalendarData, DeleteCalendarEventData, DeleteCalendarEventResponses, DeleteCalendarResponses, DeleteChatData, DeleteChatResponses, DeleteDraftData, DeleteDraftResponses, DeleteFolderData, DeleteFolderResponses, DeleteMessageData, DeleteMessageResponses, DeletePostCommentData, DeletePostCommentResponses, DeletePostData, DeletePostResponses, DeleteRelationData, DeleteRelationResponses, DeleteWebhookEndpointData, DeleteWebhookEndpointResponses, EditClassicJobPostingData, EditClassicJobPostingResponses, EditRecruiterHiringProjectData, EditRecruiterHiringProjectResponses, EditRecruiterJobPostingData, EditRecruiterJobPostingResponses, EndorseClassicMemberSkillData, EndorseClassicMemberSkillResponses, FollowUserData, FollowUserResponses, ForwardMessageData, ForwardMessageResponses, GetAccountData, GetAccountResponses, GetAttachment1Data, GetAttachment1Responses, GetAttachmentData, GetAttachmentResponses, GetAvailableContractsData, GetAvailableContractsResponses, GetCalendarData, GetCalendarEventData, GetCalendarEventListData, GetCalendarEventListResponses, GetCalendarEventResponses, GetCalendarResponses, GetCalendarsListData, GetCalendarsListResponses, GetChatData, GetChatResponses, GetChatsListData, GetChatsListResponses, GetClassicApplicantByIdData, GetClassicApplicantByIdResponses, GetClassicApplicantResumeData, GetClassicApplicantResumeResponses, GetClassicApplicantsData, GetClassicApplicantsResponses, GetClassicCompanyProfileData, GetClassicCompanyProfileResponses, GetClassicJobPostingBudgetData, GetClassicJobPostingBudgetResponses, GetClassicJobPostingData, GetClassicJobPostingResponses, GetClassicSearchParametersData, GetClassicSearchParametersResponses, GetDraftData, GetDraftResponses, GetDraftsListData, GetDraftsListResponses, GetEmailContactsListData, GetEmailContactsListResponses, GetEmailData, GetEmailResponses, GetEmailsListData, GetEmailsListResponses, GetFolderData, GetFolderEmailsListData, GetFolderEmailsListResponses, GetFolderResponses, GetFoldersListData, GetFoldersListResponses, GetInboxChatsListData, GetInboxChatsListResponses, GetInboxesListData, GetInboxesListResponses, GetInmailCreditsData, GetInmailCreditsResponses, GetMessageData, GetMessageReactionsListData, GetMessageReactionsListResponses, GetMessageResponses, GetMessagesListData, GetMessagesListResponses, GetParticipantsListData, GetParticipantsListResponses, GetPostCommentReactionsListData, GetPostCommentReactionsListResponses, GetPostCommentRepliesListData, GetPostCommentRepliesListResponses, GetPostCommentsListData, GetPostCommentsListResponses, GetPostData, GetPostReactionsListData, GetPostReactionsListResponses, GetPostResponses, GetPostsListData, GetPostsListResponses, GetRecruiterApplicantByIdData, GetRecruiterApplicantByIdResponses, GetRecruiterApplicantResumeData, GetRecruiterApplicantResumeResponses, GetRecruiterHiringProjectData, GetRecruiterHiringProjectListData, GetRecruiterHiringProjectListResponses, GetRecruiterHiringProjectResponses, GetRecruiterJobPostingBudgetData, GetRecruiterJobPostingBudgetResponses, GetRecruiterJobPostingByIdData, GetRecruiterJobPostingByIdResponses, GetRecruiterJobPostingByProjectIdData, GetRecruiterJobPostingByProjectIdResponses, GetRecruiterJobPostingListData, GetRecruiterJobPostingListResponses, GetRecruiterPipelineCandidatesData, GetRecruiterPipelineCandidatesResponses, GetRecruiterSearchParametersData, GetRecruiterSearchParametersResponses, GetRecruiterTalentPoolApplicantsData, GetRecruiterTalentPoolApplicantsResponses, GetRelationRequestsListData, GetRelationRequestsListResponses, GetSalesAccountListsData, GetSalesAccountListsResponses, GetSalesLeadListsData, GetSalesLeadListsResponses, GetSalesSearchParametersData, GetSalesSearchParametersResponses, GetThreadData, GetThreadResponses, GetUserChatData, GetUserChatResponses, GetUserCommentsListData, GetUserCommentsListResponses, GetUserProfileData, GetUserProfileResponses, GetUserReactionsListData, GetUserReactionsListResponses, GetUserRelationsData, GetUserRelationsResponses, GetWebhookEndpointData, GetWebhookEndpointResponses, ListAccountsData, ListAccountsResponses, ListClassicUserJobPostingsData, ListClassicUserJobPostingsResponses, ListUserFollowersData, ListUserFollowersResponses, ListUserFollowingData, ListUserFollowingResponses, ListWebhookConversationsData, ListWebhookConversationsResponses, ListWebhookEndpointsData, ListWebhookEndpointsResponses, ModifyEmailData, ModifyEmailResponses, ModifyMessageData, ModifyMessageResponses, PerformClassicCompaniesSearchData, PerformClassicCompaniesSearchResponses, PerformClassicJobsSearchData, PerformClassicJobsSearchResponses, PerformClassicPeopleSearchData, PerformClassicPeopleSearchResponses, PerformClassicPostsSearchData, PerformClassicPostsSearchResponses, PerformClassicSearchFromUrlData, PerformClassicSearchFromUrlResponses, PerformRecruiterPeopleSearchData, PerformRecruiterPeopleSearchFromTalentPoolData, PerformRecruiterPeopleSearchFromTalentPoolResponses, PerformRecruiterPeopleSearchResponses, PerformRecruiterSearchFromUrlData, PerformRecruiterSearchFromUrlResponses, PerformSalesCompaniesSearchData, PerformSalesCompaniesSearchResponses, PerformSalesPeopleSearchData, PerformSalesPeopleSearchResponses, PerformSalesSearchFromUrlData, PerformSalesSearchFromUrlResponses, ProxyRequestData, ProxyRequestResponses, PublishClassicJobPostingData, PublishClassicJobPostingResponses, PublishRecruiterJobPostingData, PublishRecruiterJobPostingResponses, ReadEmailData, ReadEmailResponses, ReadMessageData, ReadMessageResponses, RemoveAccountData, RemoveAccountResponses, RemoveMessageReactionData, RemoveMessageReactionResponses, RemoveParticipantData, RemoveParticipantResponses, RemovePostCommentReactionData, RemovePostCommentReactionResponses, RemovePostReactionData, RemovePostReactionResponses, ReplyToCommentData, ReplyToCommentResponses, SaveRecruiterCandidateToPipelineData, SaveRecruiterCandidateToPipelineResponses, SaveSalesAccountToListData, SaveSalesAccountToListResponses, SaveSalesLeadToListData, SaveSalesLeadToListResponses, SearchLocationsData, SearchLocationsResponses, SelectContractData, SelectContractResponses, SendDraftData, SendDraftResponses, SendEmailData, SendEmailResponses, SendMessageData, SendMessageResponses, SetComposingStatusData, SetComposingStatusResponses, SetPresenceData, SetPresenceResponses, SolveCheckpointData, SolveCheckpointResponses, StartAuthIntentData, StartAuthIntentResponses, StartChatData, StartChatFromInboxData, StartChatFromInboxResponses, StartChatResponses, SubmitClassicCompanyOtpCodeData, SubmitClassicCompanyOtpCodeResponses, SubmitRecruiterOtpCodeData, SubmitRecruiterOtpCodeResponses, TrashEmailData, TrashEmailResponses, UnfollowUserData, UnfollowUserResponses, UnreadEmailData, UnreadEmailResponses, UpdateAccountData, UpdateAccountResponses, UpdateCalendarData, UpdateCalendarEventData, UpdateCalendarEventResponses, UpdateCalendarResponses, UpdateChatData, UpdateChatResponses, UpdateDraftData, UpdateDraftResponses, UpdateFolderData, UpdateFolderResponses, UpdatePostCommentData, UpdatePostCommentResponses, UpdatePostData, UpdatePostResponses, UpdateUserProfileData, UpdateUserProfileResponses, UpdateWebhookEndpointData, UpdateWebhookEndpointResponses, VerifyClassicCompanyMemberIdentityData, VerifyClassicCompanyMemberIdentityResponses, VerifyRecruiterCompanyMemberIdentityData, VerifyRecruiterCompanyMemberIdentityResponses, VisitUserProfileData, VisitUserProfileResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -377,6 +377,19 @@ export class UnipileMessaging extends HeyApiClient {
     }
     
     /**
+     * Delete a Chat
+     *
+     * Deletes a chat if supported by the provider.
+     */
+    public deleteChat<ThrowOnError extends boolean = false>(options: Options<DeleteChatData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<DeleteChatResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/chats/{chat_id}',
+            ...options
+        });
+    }
+    
+    /**
      * Get a Chat
      *
      * Retrieves a Chat object.
@@ -407,6 +420,19 @@ export class UnipileMessaging extends HeyApiClient {
     }
     
     /**
+     * Get a User Chat
+     *
+     * Resolves chat identifiers associated with the specified User. Depending on the provider, the result may include chats with or without message history, and may return multiple matches across inboxes or contexts.
+     */
+    public getUserChat<ThrowOnError extends boolean = false>(options: Options<GetUserChatData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetUserChatResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/users/{user_id}/chat',
+            ...options
+        });
+    }
+    
+    /**
      * Start a Chat
      *
      * Starts a new 1to1 or group chat by sending the first message.
@@ -414,6 +440,8 @@ export class UnipileMessaging extends HeyApiClient {
      * Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-chat-id-messages-send">Send a Message</a> if a conversation already exist with the wanted user(s).
      * <br/>
      * Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-account-id-inboxes-inbox-id-chats">Start a Chat from Inbox</a> if the provider uses the inbox concept.
+     * <br/>
+     * Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
      */
     public startChat<ThrowOnError extends boolean = false>(options: Options<StartChatData, ThrowOnError>) {
         return (options.client ?? this.client).post<StartChatResponses, unknown, ThrowOnError>({
@@ -436,6 +464,8 @@ export class UnipileMessaging extends HeyApiClient {
      * <br/>
      * Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send">Start a Chat</a> instead if the provider does not use the inbox concept.
      *
+     * <br/>
+     * Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
      */
     public startChatFromInbox<ThrowOnError extends boolean = false>(options: Options<StartChatFromInboxData, ThrowOnError>) {
         return (options.client ?? this.client).post<StartChatFromInboxResponses, unknown, ThrowOnError>({
@@ -496,6 +526,8 @@ export class UnipileMessaging extends HeyApiClient {
      * Sends a message in the specified chat.
      * <br/>
      * Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send">Start a Chat</a> if you don't have a conversation with the wanted user(s) yet.
+     * <br/>
+     * Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
      */
     public sendMessage<ThrowOnError extends boolean = false>(options: Options<SendMessageData, ThrowOnError>) {
         return (options.client ?? this.client).post<SendMessageResponses, unknown, ThrowOnError>({
@@ -792,7 +824,7 @@ export class UnipileEmails extends HeyApiClient {
     /**
      * Modify an Email
      *
-     * Modifies the folder(s) on the specified Email.
+     * Modifies the folder(s) and/or provider-specific properties on the specified Email.
      */
     public modifyEmail<ThrowOnError extends boolean = false>(options: Options<ModifyEmailData, ThrowOnError>) {
         return (options.client ?? this.client).post<ModifyEmailResponses, unknown, ThrowOnError>({
@@ -836,6 +868,8 @@ export class UnipileEmails extends HeyApiClient {
      * Send an Email
      *
      * Sends an Email to the recipients in the `to`, `cc`, and `bcc`.
+     * <br/>
+     * Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
      */
     public sendEmail<ThrowOnError extends boolean = false>(options: Options<SendEmailData, ThrowOnError>) {
         return (options.client ?? this.client).post<SendEmailResponses, unknown, ThrowOnError>({
@@ -866,6 +900,8 @@ export class UnipileEmails extends HeyApiClient {
      * Create a Draft
      *
      * Creates a new Draft in the draft folder of the provider. Use <a href="@todo">Send a Draft</a> to send the Email later.
+     * <br/>
+     * Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
      */
     public createDraft<ThrowOnError extends boolean = false>(options: Options<CreateDraftData, ThrowOnError>) {
         return (options.client ?? this.client).post<CreateDraftResponses, unknown, ThrowOnError>({
@@ -909,6 +945,8 @@ export class UnipileEmails extends HeyApiClient {
      * Update a Draft
      *
      * Updates the specified Draft by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+     * <br/>
+     * Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
      */
     public updateDraft<ThrowOnError extends boolean = false>(options: Options<UpdateDraftData, ThrowOnError>) {
         return (options.client ?? this.client).patch<UpdateDraftResponses, unknown, ThrowOnError>({
@@ -1007,6 +1045,19 @@ export class UnipileEmails extends HeyApiClient {
             }
         });
     }
+    
+    /**
+     * List email contacts
+     *
+     * Returns a list of contacts from the email provider.
+     */
+    public getEmailContactsList<ThrowOnError extends boolean = false>(options: Options<GetEmailContactsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetEmailContactsListResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/contacts',
+            ...options
+        });
+    }
 }
 
 export class UnipileUsers extends HeyApiClient {
@@ -1037,6 +1088,8 @@ export class UnipileUsers extends HeyApiClient {
      * Update a User Profile
      *
      * Updates the specified User profile. Use `me` as `user_id` to update the account owner profile.
+     * <br/>
+     * Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
      */
     public updateUserProfile<ThrowOnError extends boolean = false>(options: Options<UpdateUserProfileData, ThrowOnError>) {
         return (options.client ?? this.client).patch<UpdateUserProfileResponses, unknown, ThrowOnError>({
@@ -1282,6 +1335,8 @@ export class UnipilePosts extends HeyApiClient {
      * Create a Post
      *
      * Creates a new post.
+     * <br/>
+     * Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
      */
     public createPost<ThrowOnError extends boolean = false>(options: Options<CreatePostData, ThrowOnError>) {
         return (options.client ?? this.client).post<CreatePostResponses, unknown, ThrowOnError>({
@@ -1359,6 +1414,8 @@ export class UnipilePosts extends HeyApiClient {
      * Add Comment to a Post
      *
      * Adds a comment to a post.
+     * <br/>
+     * Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
      */
     public addPostComment<ThrowOnError extends boolean = false>(options: Options<AddPostCommentData, ThrowOnError>) {
         return (options.client ?? this.client).post<AddPostCommentResponses, unknown, ThrowOnError>({
@@ -1406,6 +1463,8 @@ export class UnipilePosts extends HeyApiClient {
      * Reply to a Comment
      *
      * Replies to a particular comment.
+     * <br/>
+     * Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
      */
     public replyToComment<ThrowOnError extends boolean = false>(options: Options<ReplyToCommentData, ThrowOnError>) {
         return (options.client ?? this.client).post<ReplyToCommentResponses, unknown, ThrowOnError>({
@@ -1476,6 +1535,32 @@ export class UnipilePosts extends HeyApiClient {
                 'Content-Type': 'application/json',
                 ...options.headers
             }
+        });
+    }
+    
+    /**
+     * List all User Comments
+     *
+     * Returns the list of comments made by a user to posts. Use `me` as `user_id` to specify the owner of the connected account.
+     */
+    public getUserCommentsList<ThrowOnError extends boolean = false>(options: Options<GetUserCommentsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetUserCommentsListResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/users/{user_id}/comments',
+            ...options
+        });
+    }
+    
+    /**
+     * List all User Reactions
+     *
+     * Returns the list of reactions made by a user to posts. Use `me` as `user_id` to specify the owner of the connected account.
+     */
+    public getUserReactionsList<ThrowOnError extends boolean = false>(options: Options<GetUserReactionsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetUserReactionsListResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/users/{user_id}/reactions',
+            ...options
         });
     }
 }
@@ -1675,6 +1760,32 @@ export class UnipileLinkedIn extends HeyApiClient {
         return (options.client ?? this.client).get<GetInmailCreditsResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/inmail-credits',
+            ...options
+        });
+    }
+    
+    /**
+     * List Available Contracts
+     *
+     * Returns a list of Recruiter/Sales Navigator contracts associated with your account.
+     */
+    public getAvailableContracts<ThrowOnError extends boolean = false>(options: Options<GetAvailableContractsData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetAvailableContractsResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/linkedin/contracts',
+            ...options
+        });
+    }
+    
+    /**
+     * Select a Contract
+     *
+     * Activates a given Recruiter/Sales Navigator contract on your account.
+     */
+    public selectContract<ThrowOnError extends boolean = false>(options: Options<SelectContractData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SelectContractResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/linkedin/contracts/{contract_id}/select',
             ...options
         });
     }
