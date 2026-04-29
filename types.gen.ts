@@ -33,6 +33,14 @@ export type GetChatsListData = {
          */
         type?: '1to1' | 'group' | 'channel';
         /**
+         * A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         */
+        before?: string;
+        /**
+         * A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..
+         */
+        after?: string;
+        /**
          * Return only chats of the given archived status (if supported by the provider).
          */
         is_archived?: boolean;
@@ -59,6 +67,10 @@ export type GetChatsListResponses = {
              * The name / title of the chat. If the provider does not provide a name, name is built out of participants usernames.
              */
             name: string;
+            /**
+             * If supported by the provider, a label associated with the chat.
+             */
+            label?: string;
             /**
              * The description / subject of the chat.
              */
@@ -357,6 +369,14 @@ export type GetInboxChatsListData = {
          */
         type?: '1to1' | 'group' | 'channel';
         /**
+         * A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         */
+        before?: string;
+        /**
+         * A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..
+         */
+        after?: string;
+        /**
          * Return only chats of the given archived status (if supported by the provider).
          */
         is_archived?: boolean;
@@ -383,6 +403,10 @@ export type GetInboxChatsListResponses = {
              * The name / title of the chat. If the provider does not provide a name, name is built out of participants usernames.
              */
             name: string;
+            /**
+             * If supported by the provider, a label associated with the chat.
+             */
+            label?: string;
             /**
              * The description / subject of the chat.
              */
@@ -603,6 +627,31 @@ export type GetInboxChatsListResponses = {
 
 export type GetInboxChatsListResponse = GetInboxChatsListResponses[keyof GetInboxChatsListResponses];
 
+export type DeleteChatData = {
+    body?: never;
+    path: {
+        /**
+         * ID of the Chat to delete.
+         */
+        chat_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/chats/{chat_id}';
+};
+
+export type DeleteChatResponses = {
+    /**
+     * Default Response
+     */
+    204: void;
+};
+
+export type DeleteChatResponse = DeleteChatResponses[keyof DeleteChatResponses];
+
 export type GetChatData = {
     body?: never;
     path: {
@@ -633,6 +682,10 @@ export type GetChatResponses = {
          * The name / title of the chat. If the provider does not provide a name, name is built out of participants usernames.
          */
         name: string;
+        /**
+         * If supported by the provider, a label associated with the chat.
+         */
+        label?: string;
         /**
          * The description / subject of the chat.
          */
@@ -851,6 +904,18 @@ export type UpdateChatData = {
          */
         name?: string;
         /**
+         * If supported, set to `true` to pin the chat at the top of the list, or `false` to unpin it.
+         */
+        pin_status?: boolean;
+        /**
+         * If supported, set to `true` to archive the chat, or `false` to move it back to the main inbox.
+         */
+        archive_status?: boolean;
+        /**
+         * If supported, associate the chat with the given label. For Whatsapp, this is resolved by label name and created if missing.
+         */
+        label?: string;
+        /**
          * If supported, the date until which the conversation should be muted. Else `true` to mute the chat for an indefinite time, else `false` to un-mute an already muted chat.
          */
         muted_until?: boolean | string;
@@ -887,6 +952,10 @@ export type UpdateChatResponses = {
          * The name / title of the chat. If the provider does not provide a name, name is built out of participants usernames.
          */
         name: string;
+        /**
+         * If supported by the provider, a label associated with the chat.
+         */
+        label?: string;
         /**
          * The description / subject of the chat.
          */
@@ -1098,6 +1167,50 @@ export type UpdateChatResponses = {
 
 export type UpdateChatResponse = UpdateChatResponses[keyof UpdateChatResponses];
 
+export type GetUserChatData = {
+    body?: never;
+    path: {
+        /**
+         * ID of the User whose existing 1to1 Chat should be retrieved.
+         */
+        user_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/users/{user_id}/chat';
+};
+
+export type GetUserChatResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        object: 'ChatLookup';
+        /**
+         * Resolved chats associated with the given user. Empty if none could be resolved.
+         */
+        data: Array<{
+            /**
+             * The ID of the Chat associated with the given user.
+             */
+            chat_id: string;
+            /**
+             * The ID of the Inbox containing the chat, if applicable.
+             */
+            inbox_id?: string;
+            /**
+             * Whether the provider could determine that the chat already contains message history.
+             */
+            has_history?: boolean;
+        }>;
+    };
+};
+
+export type GetUserChatResponse = GetUserChatResponses[keyof GetUserChatResponses];
+
 export type StartChatData = {
     body: {
         /**
@@ -1119,7 +1232,7 @@ export type StartChatData = {
          */
         attachments?: Array<{
             /**
-             * Content of the file encoded as base64.
+             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
              */
             content: string;
             /**
@@ -1170,6 +1283,10 @@ export type StartChatData = {
                      * The topic for a conversation with a company.
                      */
                     company_topic?: 'SERVICE_REQUEST' | 'REQUEST_A_DEMO' | 'SUPPORT' | 'CAREERS' | 'OTHER';
+                    /**
+                     * If you'd like to start a conversation with a user you received a relation request from, the ID of the request is mandatory.
+                     */
+                    relation_request_id?: string;
                     /**
                      * Options available when the recipient is a candidate for one of your job postings.
                      */
@@ -1244,7 +1361,7 @@ export type StartChatData = {
                          */
                         attachments?: Array<{
                             /**
-                             * Content of the file encoded as base64.
+                             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
                              */
                             content: string;
                             /**
@@ -1350,7 +1467,7 @@ export type StartChatFromInboxData = {
          */
         attachments?: Array<{
             /**
-             * Content of the file encoded as base64.
+             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
              */
             content: string;
             /**
@@ -1401,6 +1518,10 @@ export type StartChatFromInboxData = {
                      * The topic for a conversation with a company.
                      */
                     company_topic?: 'SERVICE_REQUEST' | 'REQUEST_A_DEMO' | 'SUPPORT' | 'CAREERS' | 'OTHER';
+                    /**
+                     * If you'd like to start a conversation with a user you received a relation request from, the ID of the request is mandatory.
+                     */
+                    relation_request_id?: string;
                     /**
                      * Options available when the recipient is a candidate for one of your job postings.
                      */
@@ -1475,7 +1596,7 @@ export type StartChatFromInboxData = {
                          */
                         attachments?: Array<{
                             /**
-                             * Content of the file encoded as base64.
+                             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
                              */
                             content: string;
                             /**
@@ -3893,7 +4014,7 @@ export type SendMessageData = {
          */
         attachments?: Array<{
             /**
-             * Content of the file encoded as base64.
+             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
              */
             content: string;
             /**
@@ -5977,6 +6098,10 @@ export type GetEmailsListResponses = {
              */
             folders: Array<string>;
             /**
+             * List of categories assigned to the email.
+             */
+            categories?: Array<string>;
+            /**
              * Is the email unread.
              */
             is_unread: boolean;
@@ -6382,6 +6507,10 @@ export type GetFolderEmailsListResponses = {
              */
             folders: Array<string>;
             /**
+             * List of categories assigned to the email.
+             */
+            categories?: Array<string>;
+            /**
              * Is the email unread.
              */
             is_unread: boolean;
@@ -6751,6 +6880,10 @@ export type GetThreadResponses = {
              * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
              */
             folders: Array<string>;
+            /**
+             * List of categories assigned to the email.
+             */
+            categories?: Array<string>;
             /**
              * Is the email unread.
              */
@@ -7135,6 +7268,10 @@ export type GetEmailResponses = {
          */
         folders: Array<string>;
         /**
+         * List of categories assigned to the email.
+         */
+        categories?: Array<string>;
+        /**
          * Is the email unread.
          */
         is_unread: boolean;
@@ -7171,11 +7308,22 @@ export type GetAttachment1Responses = {
 };
 
 export type ModifyEmailData = {
-    body: {
+    body?: {
         /**
          * The ID(s) of the folder(s) to apply, overwriting all folders previously associated with the Email. Outlook emails can be in a single folder only. Google allows a single email to appear in multiple folders.
          */
-        folders_ids: Array<string>;
+        folders_ids?: Array<string>;
+        specifics?: unknown & {
+            /**
+             * Specific options to apply if the provider of the targeted account is Outlook.
+             */
+            outlook?: {
+                /**
+                 * List of categories to assign to the email.
+                 */
+                categories?: Array<string>;
+            };
+        };
     };
     path: {
         /**
@@ -7517,6 +7665,10 @@ export type ModifyEmailResponses = {
          */
         folders: Array<string>;
         /**
+         * List of categories assigned to the email.
+         */
+        categories?: Array<string>;
+        /**
          * Is the email unread.
          */
         is_unread: boolean;
@@ -7651,7 +7803,7 @@ export type SendEmailData = {
          */
         attachments?: Array<{
             /**
-             * Content of the file encoded as base64.
+             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
              */
             content: string;
             /**
@@ -8072,6 +8224,10 @@ export type GetDraftsListResponses = {
              * The folder the draft is in. For Gmail, the labels assigned to the draft.
              */
             folders: Array<string>;
+            /**
+             * List of categories assigned to the draft.
+             */
+            categories?: Array<string>;
         }>;
         /**
          * Total number of results if supported by the endpoint.
@@ -8154,7 +8310,7 @@ export type CreateDraftData = {
          */
         attachments?: Array<{
             /**
-             * Content of the file encoded as base64.
+             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
              */
             content: string;
             /**
@@ -8511,6 +8667,10 @@ export type CreateDraftResponses = {
          * The folder the draft is in. For Gmail, the labels assigned to the draft.
          */
         folders: Array<string>;
+        /**
+         * List of categories assigned to the draft.
+         */
+        categories?: Array<string>;
     };
 };
 
@@ -8855,6 +9015,10 @@ export type GetDraftResponses = {
          * The folder the draft is in. For Gmail, the labels assigned to the draft.
          */
         folders: Array<string>;
+        /**
+         * List of categories assigned to the draft.
+         */
+        categories?: Array<string>;
     };
 };
 
@@ -8928,7 +9092,7 @@ export type UpdateDraftData = {
          */
         attachments?: Array<{
             /**
-             * Content of the file encoded as base64.
+             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
              */
             content: string;
             /**
@@ -8969,6 +9133,17 @@ export type UpdateDraftData = {
              * Your custom domain pointing to https://tracking.unipile.com to handle links tracking.
              */
             custom_domain?: string;
+        };
+        specifics?: unknown & {
+            /**
+             * Specific options to apply if the provider of the targeted account is Outlook.
+             */
+            outlook?: {
+                /**
+                 * List of categories to assign to the draft.
+                 */
+                categories?: Array<string>;
+            };
         };
     };
     path: {
@@ -9286,6 +9461,10 @@ export type UpdateDraftResponses = {
          * The folder the draft is in. For Gmail, the labels assigned to the draft.
          */
         folders: Array<string>;
+        /**
+         * List of categories assigned to the draft.
+         */
+        categories?: Array<string>;
     };
 };
 
@@ -9651,6 +9830,355 @@ export type UpdateFolderResponses = {
 };
 
 export type UpdateFolderResponse = UpdateFolderResponses[keyof UpdateFolderResponses];
+
+export type GetEmailContactsListData = {
+    body?: never;
+    path: {
+        account_id: string;
+    };
+    query?: {
+        /**
+         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+         */
+        cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
+    };
+    url: '/v2/{account_id}/contacts';
+};
+
+export type GetEmailContactsListResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        data: Array<{
+            /**
+             * Object type identifier, always "Contact".
+             */
+            object: 'Contact';
+            /**
+             * Unique identifier of the contact.
+             */
+            id: string;
+            /**
+             * URL of the profile picture of the contact.
+             */
+            picture_url?: string;
+            /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Middle name of the contact.
+             */
+            middle_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
+            /**
+             * Display name of the user.
+             */
+            display_name?: string;
+            /**
+             * Name suffix (e.g. Jr., Sr., PhD).
+             */
+            suffix?: string;
+            /**
+             * Birth date of the user.
+             */
+            birth_date?: string;
+            /**
+             * Name of the company the contact works for.
+             */
+            company_name?: string;
+            /**
+             * Job title or position of the contact.
+             */
+            job_title?: string;
+            /**
+             * Name of the contact's manager.
+             */
+            manager_name?: string;
+            /**
+             * Office location or building of the contact.
+             */
+            office_location?: string;
+            /**
+             * Free-text notes associated with the contact.
+             */
+            notes?: string;
+            /**
+             * List of user email addresses.
+             */
+            emails?: Array<string>;
+            /**
+             * List of user phone numbers.
+             */
+            phone_numbers?: Array<string>;
+            /**
+             * List of user social handles.
+             */
+            social_handles?: {
+                linkedin?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                instagram?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                github?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                facebook?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                x?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                threads?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                tiktok?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                wechat?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                gtalk?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                qq?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                skype?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                icq?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                xmpp?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                sip?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                yahoo?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                aim?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                jabber?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                msn?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                netmeeting?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+                googletalk?: {
+                    /**
+                     * The url of the user profile
+                     */
+                    url?: string;
+                    /**
+                     * The name of the user on the social media
+                     */
+                    name?: string;
+                };
+            };
+            /**
+             * List of physical addresses associated with the contact.
+             */
+            addresses?: Array<{
+                /**
+                 * City of the physical address.
+                 */
+                city: string;
+                /**
+                 * Country of the physical address.
+                 */
+                country: string;
+                /**
+                 * Postal or ZIP code of the physical address.
+                 */
+                postal_code: string;
+                /**
+                 * State or province of the physical address.
+                 */
+                state: string;
+                /**
+                 * Street address line.
+                 */
+                street_address: string;
+                /**
+                 * Type of address (e.g. personal, business, other).
+                 */
+                type: string;
+            }>;
+            /**
+             * List of user websites.
+             */
+            websites?: Array<string>;
+            /**
+             * List of groups the contact belongs to.
+             */
+            groups?: Array<{
+                /**
+                 * Identifier of a group the contact belongs to.
+                 */
+                id: string;
+            }>;
+        }>;
+        /**
+         * Total number of results if supported by the endpoint.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type GetEmailContactsListResponse = GetEmailContactsListResponses[keyof GetEmailContactsListResponses];
 
 export type GetUserProfileData = {
     body?: never;
@@ -10913,6 +11441,96 @@ export type GetUserProfileResponses = {
                  */
                 name?: string;
             };
+            icq?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            xmpp?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            sip?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            yahoo?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            aim?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            jabber?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            msn?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            netmeeting?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
+            googletalk?: {
+                /**
+                 * The url of the user profile
+                 */
+                url?: string;
+                /**
+                 * The name of the user on the social media
+                 */
+                name?: string;
+            };
         };
         /**
          * List of user websites.
@@ -10950,7 +11568,7 @@ export type UpdateUserProfileData = {
          */
         picture?: {
             /**
-             * Content of the file encoded as base64.
+             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
              */
             content: string;
             /**
@@ -10976,7 +11594,7 @@ export type UpdateUserProfileData = {
          */
         background_picture?: {
             /**
-             * Content of the file encoded as base64.
+             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
              */
             content: string;
             /**
@@ -11006,7 +11624,7 @@ export type UpdateUserProfileData = {
                  * List of skills to add to the profile.
                  */
                 skills?: Array<{
-                    text: string;
+                    name: string;
                     /**
                      * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
                      */
@@ -11033,7 +11651,7 @@ export type UpdateUserProfileData = {
                      * Job title of the experience.
                      */
                     job_title: {
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
                          */
@@ -11047,7 +11665,7 @@ export type UpdateUserProfileData = {
                      * Company of the experience.
                      */
                     company: {
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
                          */
@@ -11057,7 +11675,7 @@ export type UpdateUserProfileData = {
                      * Location of the experience.
                      */
                     location?: {
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
                          */
@@ -11105,35 +11723,58 @@ export type UpdateUserProfileData = {
                      * List of skills. We recommend adding your top 5 used in this role. They’ll also appear in your profile Skills section.
                      */
                     skills?: Array<{
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
                          */
                         id?: string;
                     }>;
-                    attachment?: {
+                    media?: {
                         /**
-                         * Content of the file encoded as base64.
+                         * Title of the media.
                          */
-                        content: string;
+                        title?: string;
                         /**
-                         * <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME type</a> of the file.
+                         * Description of the media.
                          */
-                        content_type: string;
+                        description?: string;
+                        type: 'file';
                         /**
-                         * Name of the file (including extension).
+                         * A file to be uploaded.
                          */
-                        filename: string;
-                        /**
-                         * Metadata of the the file.
-                         */
-                        metadata?: {
+                        attachment: {
                             /**
-                             * Duration of the media file.
+                             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
                              */
-                            duration?: number;
+                            content: string;
+                            /**
+                             * <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME type</a> of the file.
+                             */
+                            content_type: string;
+                            /**
+                             * Name of the file (including extension).
+                             */
+                            filename: string;
+                            /**
+                             * Metadata of the the file.
+                             */
+                            metadata?: {
+                                /**
+                                 * Duration of the media file.
+                                 */
+                                duration?: number;
+                            };
                         };
                     } | {
+                        /**
+                         * Title of the media.
+                         */
+                        title?: string;
+                        /**
+                         * Description of the media.
+                         */
+                        description?: string;
+                        type: 'link';
                         /**
                          * URL of the link.
                          */
@@ -11143,7 +11784,7 @@ export type UpdateUserProfileData = {
                          */
                         thumbnail?: {
                             /**
-                             * Content of the file encoded as base64.
+                             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
                              */
                             content: string;
                             /**
@@ -11165,14 +11806,7 @@ export type UpdateUserProfileData = {
                             };
                         };
                     };
-                    /**
-                     * Title of the attachment.
-                     */
-                    attachment_title?: string;
-                    /**
-                     * Description of the attachment.
-                     */
-                    attachment_description?: string;
+                    operation: 'create';
                 } | {
                     /**
                      * Notify the network about the experience. Turn on to notify your network of key profile changes (such as new job) and work anniversaries. Updates can take up to 2 hours.
@@ -11182,7 +11816,7 @@ export type UpdateUserProfileData = {
                      * Job title of the experience.
                      */
                     job_title?: {
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
                          */
@@ -11196,7 +11830,7 @@ export type UpdateUserProfileData = {
                      * Company of the experience.
                      */
                     company?: {
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
                          */
@@ -11206,7 +11840,7 @@ export type UpdateUserProfileData = {
                      * Location of the experience.
                      */
                     location?: {
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
                          */
@@ -11254,35 +11888,58 @@ export type UpdateUserProfileData = {
                      * List of skills. We recommend adding your top 5 used in this role. They’ll also appear in your profile Skills section.
                      */
                     skills?: Array<{
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
                          */
                         id?: string;
                     }>;
-                    attachment?: {
+                    media?: {
                         /**
-                         * Content of the file encoded as base64.
+                         * Title of the media.
                          */
-                        content: string;
+                        title?: string;
                         /**
-                         * <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME type</a> of the file.
+                         * Description of the media.
                          */
-                        content_type: string;
+                        description?: string;
+                        type: 'file';
                         /**
-                         * Name of the file (including extension).
+                         * A file to be uploaded.
                          */
-                        filename: string;
-                        /**
-                         * Metadata of the the file.
-                         */
-                        metadata?: {
+                        attachment: {
                             /**
-                             * Duration of the media file.
+                             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
                              */
-                            duration?: number;
+                            content: string;
+                            /**
+                             * <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME type</a> of the file.
+                             */
+                            content_type: string;
+                            /**
+                             * Name of the file (including extension).
+                             */
+                            filename: string;
+                            /**
+                             * Metadata of the the file.
+                             */
+                            metadata?: {
+                                /**
+                                 * Duration of the media file.
+                                 */
+                                duration?: number;
+                            };
                         };
                     } | {
+                        /**
+                         * Title of the media.
+                         */
+                        title?: string;
+                        /**
+                         * Description of the media.
+                         */
+                        description?: string;
+                        type: 'link';
                         /**
                          * URL of the link.
                          */
@@ -11292,7 +11949,7 @@ export type UpdateUserProfileData = {
                          */
                         thumbnail?: {
                             /**
-                             * Content of the file encoded as base64.
+                             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
                              */
                             content: string;
                             /**
@@ -11314,14 +11971,7 @@ export type UpdateUserProfileData = {
                             };
                         };
                     };
-                    /**
-                     * Title of the attachment.
-                     */
-                    attachment_title?: string;
-                    /**
-                     * Description of the attachment.
-                     */
-                    attachment_description?: string;
+                    operation: 'edit';
                     /**
                      * ID of the experience to edit.
                      */
@@ -11336,7 +11986,7 @@ export type UpdateUserProfileData = {
                      * School of the education.
                      */
                     school: {
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
                          */
@@ -11346,7 +11996,7 @@ export type UpdateUserProfileData = {
                      * Degree of the education.
                      */
                     degree?: {
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
                          */
@@ -11356,7 +12006,7 @@ export type UpdateUserProfileData = {
                      * Field of study of the education.
                      */
                     field_of_study?: {
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
                          */
@@ -11404,35 +12054,58 @@ export type UpdateUserProfileData = {
                      * List of skills. We recommend adding your top 5 used in this training. They’ll also appear in your profile Skills section.
                      */
                     skills?: Array<{
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
                          */
                         id?: string;
                     }>;
-                    attachment?: {
+                    media?: {
                         /**
-                         * Content of the file encoded as base64.
+                         * Title of the media.
                          */
-                        content: string;
+                        title?: string;
                         /**
-                         * <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME type</a> of the file.
+                         * Description of the media.
                          */
-                        content_type: string;
+                        description?: string;
+                        type: 'file';
                         /**
-                         * Name of the file (including extension).
+                         * A file to be uploaded.
                          */
-                        filename: string;
-                        /**
-                         * Metadata of the the file.
-                         */
-                        metadata?: {
+                        attachment: {
                             /**
-                             * Duration of the media file.
+                             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
                              */
-                            duration?: number;
+                            content: string;
+                            /**
+                             * <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME type</a> of the file.
+                             */
+                            content_type: string;
+                            /**
+                             * Name of the file (including extension).
+                             */
+                            filename: string;
+                            /**
+                             * Metadata of the the file.
+                             */
+                            metadata?: {
+                                /**
+                                 * Duration of the media file.
+                                 */
+                                duration?: number;
+                            };
                         };
                     } | {
+                        /**
+                         * Title of the media.
+                         */
+                        title?: string;
+                        /**
+                         * Description of the media.
+                         */
+                        description?: string;
+                        type: 'link';
                         /**
                          * URL of the link.
                          */
@@ -11442,7 +12115,7 @@ export type UpdateUserProfileData = {
                          */
                         thumbnail?: {
                             /**
-                             * Content of the file encoded as base64.
+                             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
                              */
                             content: string;
                             /**
@@ -11464,14 +12137,7 @@ export type UpdateUserProfileData = {
                             };
                         };
                     };
-                    /**
-                     * Title of the attachment.
-                     */
-                    attachment_title?: string;
-                    /**
-                     * Description of the attachment.
-                     */
-                    attachment_description?: string;
+                    operation: 'create';
                 } | {
                     /**
                      * Notify the network about the education. Turn on to notify your network of key profile changes (such as new education) and work anniversaries.
@@ -11481,7 +12147,7 @@ export type UpdateUserProfileData = {
                      * School of the education.
                      */
                     school?: {
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
                          */
@@ -11491,7 +12157,7 @@ export type UpdateUserProfileData = {
                      * Degree of the education.
                      */
                     degree?: {
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
                          */
@@ -11501,7 +12167,7 @@ export type UpdateUserProfileData = {
                      * Field of study of the education.
                      */
                     field_of_study?: {
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
                          */
@@ -11549,35 +12215,58 @@ export type UpdateUserProfileData = {
                      * List of skills. We recommend adding your top 5 used in this training. They’ll also appear in your profile Skills section.
                      */
                     skills?: Array<{
-                        text: string;
+                        name: string;
                         /**
                          * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
                          */
                         id?: string;
                     }>;
-                    attachment?: {
+                    media?: {
                         /**
-                         * Content of the file encoded as base64.
+                         * Title of the media.
                          */
-                        content: string;
+                        title?: string;
                         /**
-                         * <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME type</a> of the file.
+                         * Description of the media.
                          */
-                        content_type: string;
+                        description?: string;
+                        type: 'file';
                         /**
-                         * Name of the file (including extension).
+                         * A file to be uploaded.
                          */
-                        filename: string;
-                        /**
-                         * Metadata of the the file.
-                         */
-                        metadata?: {
+                        attachment: {
                             /**
-                             * Duration of the media file.
+                             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
                              */
-                            duration?: number;
+                            content: string;
+                            /**
+                             * <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME type</a> of the file.
+                             */
+                            content_type: string;
+                            /**
+                             * Name of the file (including extension).
+                             */
+                            filename: string;
+                            /**
+                             * Metadata of the the file.
+                             */
+                            metadata?: {
+                                /**
+                                 * Duration of the media file.
+                                 */
+                                duration?: number;
+                            };
                         };
                     } | {
+                        /**
+                         * Title of the media.
+                         */
+                        title?: string;
+                        /**
+                         * Description of the media.
+                         */
+                        description?: string;
+                        type: 'link';
                         /**
                          * URL of the link.
                          */
@@ -11587,7 +12276,7 @@ export type UpdateUserProfileData = {
                          */
                         thumbnail?: {
                             /**
-                             * Content of the file encoded as base64.
+                             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
                              */
                             content: string;
                             /**
@@ -11609,14 +12298,7 @@ export type UpdateUserProfileData = {
                             };
                         };
                     };
-                    /**
-                     * Title of the attachment.
-                     */
-                    attachment_title?: string;
-                    /**
-                     * Description of the attachment.
-                     */
-                    attachment_description?: string;
+                    operation: 'edit';
                     /**
                      * ID of the education to edit.
                      */
@@ -15162,7 +15844,7 @@ export type CreatePostData = {
          */
         attachments?: Array<{
             /**
-             * Content of the file encoded as base64.
+             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
              */
             content: string;
             /**
@@ -15204,25 +15886,15 @@ export type CreatePostData = {
          * The ID of the User on whose behalf the post should be published (if supported by the provider).
          */
         post_as?: string;
-        specifics: unknown & {
+        specifics?: unknown & {
             /**
              * Specific options to apply if the provider of the targeted account is Instagram
              */
             instagram?: {
-                location?: {
-                    /**
-                     * The ID of the location to tag the post with.
-                     */
-                    id: string;
-                    /**
-                     * The longitude of the location to tag the post with.
-                     */
-                    longitude?: number;
-                    /**
-                     * The latitude of the location to tag the post with.
-                     */
-                    latitude?: number;
-                };
+                /**
+                 * The ID of the location to tag the post with.
+                 */
+                location_id?: string;
             };
         };
     };
@@ -16076,7 +16748,7 @@ export type CreatePostResponse = CreatePostResponses[keyof CreatePostResponses];
 
 export type RemovePostReactionData = {
     body: {
-        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
+        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'linkedin_maybe' | 'instagram_like');
     };
     path: {
         /**
@@ -16204,7 +16876,7 @@ export type GetPostReactionsListResponse = GetPostReactionsListResponses[keyof G
 
 export type AddPostReactionData = {
     body: {
-        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
+        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'linkedin_maybe' | 'instagram_like');
         /**
          * The ID of the User on whose behalf the reaction should be published (if supported by the provider).
          */
@@ -16260,6 +16932,10 @@ export type GetPostCommentsListData = {
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * Sort criterion for the posts list: MOST_RECENT (most recent first) or MOST_RELEVANT (most relevant first).
+         */
+        sort_by?: 'MOST_RECENT' | 'MOST_RELEVANT';
     };
     url: '/v2/{account_id}/posts/{post_id}/comments';
 };
@@ -16381,6 +17057,32 @@ export type AddPostCommentData = {
          * The ID of the User on whose behalf the comment should be published (if supported by the provider).
          */
         comment_as?: string;
+        /**
+         * Attachment associated with the comment
+         */
+        attachments?: Array<{
+            /**
+             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
+             */
+            content: string;
+            /**
+             * <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME type</a> of the file.
+             */
+            content_type: string;
+            /**
+             * Name of the file (including extension).
+             */
+            filename: string;
+            /**
+             * Metadata of the the file.
+             */
+            metadata?: {
+                /**
+                 * Duration of the media file.
+                 */
+                duration?: number;
+            };
+        }>;
     };
     path: {
         /**
@@ -16654,6 +17356,32 @@ export type ReplyToCommentData = {
          * The ID of the User on whose behalf the comment should be published (if supported by the provider).
          */
         comment_as?: string;
+        /**
+         * Attachment associated with the comment
+         */
+        attachments?: Array<{
+            /**
+             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
+             */
+            content: string;
+            /**
+             * <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME type</a> of the file.
+             */
+            content_type: string;
+            /**
+             * Name of the file (including extension).
+             */
+            filename: string;
+            /**
+             * Metadata of the the file.
+             */
+            metadata?: {
+                /**
+                 * Duration of the media file.
+                 */
+                duration?: number;
+            };
+        }>;
     };
     path: {
         /**
@@ -16912,7 +17640,7 @@ export type GetPostCommentRepliesListResponse = GetPostCommentRepliesListRespons
 
 export type RemovePostCommentReactionData = {
     body: {
-        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
+        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'linkedin_maybe' | 'instagram_like');
     };
     path: {
         /**
@@ -17048,7 +17776,7 @@ export type GetPostCommentReactionsListResponse = GetPostCommentReactionsListRes
 
 export type AddPostCommentReactionData = {
     body: {
-        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
+        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'linkedin_maybe' | 'instagram_like');
         /**
          * The ID of the User on whose behalf the reaction should be published (if supported by the provider).
          */
@@ -17082,6 +17810,381 @@ export type AddPostCommentReactionResponses = {
 };
 
 export type AddPostCommentReactionResponse = AddPostCommentReactionResponses[keyof AddPostCommentReactionResponses];
+
+export type GetUserCommentsListData = {
+    body?: never;
+    path: {
+        /**
+         * The ID of the User to retrieve the comments from.
+         */
+        user_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: {
+        /**
+         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         */
+        offset?: number;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
+        /**
+         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+         */
+        cursor?: string;
+    };
+    url: '/v2/{account_id}/users/{user_id}/comments';
+};
+
+export type GetUserCommentsListResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        data: Array<{
+            object: 'Comment';
+            /**
+             * The ID of the comment.
+             */
+            id: string;
+            /**
+             * The ID of the thread if this is a reply to another comment.
+             */
+            thread_id?: string;
+            /**
+             * The author of the comment.
+             */
+            author: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user.
+                 */
+                display_name: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+            };
+            /**
+             * The creation date of the comment. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            created_at: string;
+            /**
+             * The text content of the comment.
+             */
+            text: string;
+            /**
+             * Is the current user the sender of the comment.
+             */
+            is_sender: boolean;
+            /**
+             * Whether the current user can reply to the comment or not.
+             */
+            can_reply: boolean;
+            /**
+             * Whether the current user can react to the comment or not.
+             */
+            can_react: boolean;
+            /**
+             * The number of replies to the comment.
+             */
+            reply_counter: number;
+            /**
+             * A list of reactions to the element.
+             */
+            reactions_counter: Array<{
+                /**
+                 * Value of the reaction. Usually an emoji unicode.
+                 */
+                reaction: string;
+                /**
+                 * The total count of this reaction.
+                 */
+                count: number;
+            }>;
+            /**
+             * Based on the provider, more or less data is returned.
+             */
+            parent_post?: {
+                object: 'PostPreview';
+                /**
+                 * The ID of the post for the provider.
+                 */
+                id: string;
+                /**
+                 * The URL to share the post.
+                 */
+                share_url?: string;
+                /**
+                 * The text content of the post.
+                 */
+                text?: string;
+                /**
+                 * The author of the post.
+                 */
+                author?: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user.
+                     */
+                    display_name: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                };
+                /**
+                 * Attachments of the parent post (e.g. post image).
+                 */
+                attachments?: Array<{
+                    object: 'Attachment';
+                    type: 'img';
+                    /**
+                     * The URL of the attachment.
+                     */
+                    url: string;
+                }>;
+            };
+        }>;
+        /**
+         * Total number of results if supported by the endpoint.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type GetUserCommentsListResponse = GetUserCommentsListResponses[keyof GetUserCommentsListResponses];
+
+export type GetUserReactionsListData = {
+    body?: never;
+    path: {
+        /**
+         * The ID of the User to retrieve the reactions from.
+         */
+        user_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: {
+        /**
+         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         */
+        offset?: number;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
+        /**
+         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+         */
+        cursor?: string;
+    };
+    url: '/v2/{account_id}/users/{user_id}/reactions';
+};
+
+export type GetUserReactionsListResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        data: Array<{
+            object: 'Reaction';
+            /**
+             * Value of the reaction. Usually an emoji unicode.
+             */
+            value: string;
+            /**
+             * The user who sent the reaction.
+             */
+            sender: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user.
+                 */
+                display_name: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+            };
+            /**
+             * Is the current user the sender of the reaction.
+             */
+            is_sender: boolean;
+            /**
+             * Based on the provider, more or less data is returned.
+             */
+            parent_post?: {
+                object: 'PostPreview';
+                /**
+                 * The ID of the post for the provider.
+                 */
+                id: string;
+                /**
+                 * The URL to share the post.
+                 */
+                share_url?: string;
+                /**
+                 * The text content of the post.
+                 */
+                text?: string;
+                /**
+                 * The author of the post.
+                 */
+                author?: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user.
+                     */
+                    display_name: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                };
+                /**
+                 * Attachments of the parent post (e.g. post image).
+                 */
+                attachments?: Array<{
+                    object: 'Attachment';
+                    type: 'img';
+                    /**
+                     * The URL of the attachment.
+                     */
+                    url: string;
+                }>;
+            };
+        }>;
+        /**
+         * Total number of results if supported by the endpoint.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type GetUserReactionsListResponse = GetUserReactionsListResponses[keyof GetUserReactionsListResponses];
 
 export type GetCalendarsListData = {
     body?: never;
@@ -17417,7 +18520,7 @@ export type GetCalendarEventListData = {
         /**
          * Whether you want to retrieve the cancelled events.
          */
-        is_canceled?: boolean;
+        is_cancelled?: boolean;
         /**
          * Filter for events matching the specified title.
          */
@@ -17522,9 +18625,9 @@ export type GetCalendarEventListResponses = {
              */
             location?: string;
             /**
-             * Is the event canceled.
+             * Is the event cancelled.
              */
-            is_canceled: boolean;
+            is_cancelled: boolean;
             /**
              * Is the event all day.
              */
@@ -17845,9 +18948,9 @@ export type CreateCalendarEventResponses = {
          */
         location?: string;
         /**
-         * Is the event canceled.
+         * Is the event cancelled.
          */
-        is_canceled: boolean;
+        is_cancelled: boolean;
         /**
          * Is the event all day.
          */
@@ -18090,9 +19193,9 @@ export type GetCalendarEventResponses = {
          */
         location?: string;
         /**
-         * Is the event canceled.
+         * Is the event cancelled.
          */
-        is_canceled: boolean;
+        is_cancelled: boolean;
         /**
          * Is the event all day.
          */
@@ -18415,9 +19518,9 @@ export type UpdateCalendarEventResponses = {
          */
         location?: string;
         /**
-         * Is the event canceled.
+         * Is the event cancelled.
          */
-        is_canceled: boolean;
+        is_cancelled: boolean;
         /**
          * Is the event all day.
          */
@@ -18677,6 +19780,90 @@ export type GetInmailCreditsResponses = {
 };
 
 export type GetInmailCreditsResponse = GetInmailCreditsResponses[keyof GetInmailCreditsResponses];
+
+export type GetAvailableContractsData = {
+    body?: never;
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/linkedin/contracts';
+};
+
+export type GetAvailableContractsResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        object: 'AvailableContracts';
+        contracts: Array<{
+            object: 'Contract';
+            product: 'recruiter' | 'sales_navigator';
+            selected: boolean;
+            /**
+             * The ID of the contract.
+             */
+            id: string;
+            /**
+             * The name of the contract.
+             */
+            name: string;
+            /**
+             * The description of the contract.
+             */
+            description?: string;
+        }>;
+    };
+};
+
+export type GetAvailableContractsResponse = GetAvailableContractsResponses[keyof GetAvailableContractsResponses];
+
+export type SelectContractData = {
+    body?: never;
+    path: {
+        /**
+         * The ID of the contract to be activated on the account.
+         */
+        contract_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/linkedin/contracts/{contract_id}/select';
+};
+
+export type SelectContractResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        object: 'ContractSelected';
+        contract: {
+            object: 'Contract';
+            product: 'recruiter' | 'sales_navigator';
+            selected: boolean;
+            /**
+             * The ID of the contract.
+             */
+            id: string;
+            /**
+             * The name of the contract.
+             */
+            name: string;
+            /**
+             * The description of the contract.
+             */
+            description?: string;
+        };
+    };
+};
+
+export type SelectContractResponse = SelectContractResponses[keyof SelectContractResponses];
 
 export type GetClassicCompanyProfileData = {
     body?: never;
@@ -35341,11 +36528,29 @@ export type SearchLocationsResponses = {
      */
     200: Array<{
         object: 'InstagramLocation';
+        /**
+         * The unique identifier of the Instagram location.
+         */
         id: string;
-        id_source: string;
+        /**
+         * The source provider of the location.
+         */
+        source: string;
+        /**
+         * The name of the location.
+         */
         name: string;
+        /**
+         * The street address of the location.
+         */
         address?: string;
+        /**
+         * The latitude coordinate of the location.
+         */
         latitude?: number;
+        /**
+         * The longitude coordinate of the location.
+         */
         longitude?: number;
     }>;
 };
@@ -35362,10 +36567,6 @@ export type SolveCheckpointData = {
          * The ID of the intent to solve.
          */
         intent_id: string;
-        /**
-         * State data sent in the `account.add` / `account.reconnect` webhook payload after the authentication process.
-         */
-        state?: string;
     };
     path?: never;
     query?: never;
@@ -35622,13 +36823,13 @@ export type StartAuthIntentData = {
                  */
                 password?: string;
                 /**
-                 * The protocol of the proxy.
+                 * The protocol of the proxy. Defaults to `https`.
                  * - `https` is HTTPS.
                  * - `http` is HTTP.
                  * - `socks5` is SOCKS5.
                  * - `socks4` is SOCKS4.
                  */
-                protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             };
             /**
              * Whether the initial sync should be enabled. The initial sync is required to perform advanced search. Read more in the Synced Accounts guide.
@@ -35652,13 +36853,13 @@ export type StartAuthIntentData = {
                  */
                 password?: string;
                 /**
-                 * The protocol of the proxy.
+                 * The protocol of the proxy. Defaults to `https`.
                  * - `https` is HTTPS.
                  * - `http` is HTTP.
                  * - `socks5` is SOCKS5.
                  * - `socks4` is SOCKS4.
                  */
-                protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             } | boolean | undefined;
         };
     } | {
@@ -35702,13 +36903,13 @@ export type StartAuthIntentData = {
                  */
                 password?: string;
                 /**
-                 * The protocol of the proxy.
+                 * The protocol of the proxy. Defaults to `https`.
                  * - `https` is HTTPS.
                  * - `http` is HTTP.
                  * - `socks5` is SOCKS5.
                  * - `socks4` is SOCKS4.
                  */
-                protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             };
             /**
              * Automatic proxy configuration
@@ -35743,13 +36944,13 @@ export type StartAuthIntentData = {
                  */
                 password?: string;
                 /**
-                 * The protocol of the proxy.
+                 * The protocol of the proxy. Defaults to `https`.
                  * - `https` is HTTPS.
                  * - `http` is HTTP.
                  * - `socks5` is SOCKS5.
                  * - `socks4` is SOCKS4.
                  */
-                protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             } | {
                 /**
                  * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
@@ -35823,13 +37024,13 @@ export type StartAuthIntentData = {
                  */
                 password?: string;
                 /**
-                 * The protocol of the proxy.
+                 * The protocol of the proxy. Defaults to `https`.
                  * - `https` is HTTPS.
                  * - `http` is HTTP.
                  * - `socks5` is SOCKS5.
                  * - `socks4` is SOCKS4.
                  */
-                protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             };
             /**
              * Automatic proxy configuration
@@ -35873,13 +37074,13 @@ export type StartAuthIntentData = {
                  */
                 password?: string;
                 /**
-                 * The protocol of the proxy.
+                 * The protocol of the proxy. Defaults to `https`.
                  * - `https` is HTTPS.
                  * - `http` is HTTP.
                  * - `socks5` is SOCKS5.
                  * - `socks4` is SOCKS4.
                  */
-                protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             } | {
                 /**
                  * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
@@ -35944,13 +37145,13 @@ export type StartAuthIntentData = {
                  */
                 password?: string;
                 /**
-                 * The protocol of the proxy.
+                 * The protocol of the proxy. Defaults to `https`.
                  * - `https` is HTTPS.
                  * - `http` is HTTP.
                  * - `socks5` is SOCKS5.
                  * - `socks4` is SOCKS4.
                  */
-                protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             };
             /**
              * Override of the list of authorizations to request from the Provider. Use this field to narrow the scope of API access. For example, if your application only uses the Calendar API, you may request authorization solely for the calendar, excluding email access for providers like Google. Make sure to give only authorizations accepted by your registered provider application. If left unspecified, all authorizations defined in the Provider OAuth settings section will be requested.
@@ -35974,13 +37175,13 @@ export type StartAuthIntentData = {
                  */
                 password?: string;
                 /**
-                 * The protocol of the proxy.
+                 * The protocol of the proxy. Defaults to `https`.
                  * - `https` is HTTPS.
                  * - `http` is HTTP.
                  * - `socks5` is SOCKS5.
                  * - `socks4` is SOCKS4.
                  */
-                protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             } | Array<string> | undefined;
         };
     } | {
@@ -36028,13 +37229,13 @@ export type StartAuthIntentData = {
                  */
                 password?: string;
                 /**
-                 * The protocol of the proxy.
+                 * The protocol of the proxy. Defaults to `https`.
                  * - `https` is HTTPS.
                  * - `http` is HTTP.
                  * - `socks5` is SOCKS5.
                  * - `socks4` is SOCKS4.
                  */
-                protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             };
             [key: string]: unknown | {
                 /**
@@ -36054,13 +37255,13 @@ export type StartAuthIntentData = {
                  */
                 password?: string;
                 /**
-                 * The protocol of the proxy.
+                 * The protocol of the proxy. Defaults to `https`.
                  * - `https` is HTTPS.
                  * - `http` is HTTP.
                  * - `socks5` is SOCKS5.
                  * - `socks4` is SOCKS4.
                  */
-                protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             } | undefined;
         };
     } | {
@@ -36113,13 +37314,13 @@ export type StartAuthIntentData = {
                  */
                 password?: string;
                 /**
-                 * The protocol of the proxy.
+                 * The protocol of the proxy. Defaults to `https`.
                  * - `https` is HTTPS.
                  * - `http` is HTTP.
                  * - `socks5` is SOCKS5.
                  * - `socks4` is SOCKS4.
                  */
-                protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             };
             /**
              * Automatic proxy configuration
@@ -36161,13 +37362,13 @@ export type StartAuthIntentData = {
                  */
                 password?: string;
                 /**
-                 * The protocol of the proxy.
+                 * The protocol of the proxy. Defaults to `https`.
                  * - `https` is HTTPS.
                  * - `http` is HTTP.
                  * - `socks5` is SOCKS5.
                  * - `socks4` is SOCKS4.
                  */
-                protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             } | {
                 /**
                  * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
@@ -36347,6 +37548,10 @@ export type CreateAuthLinkData = {
          */
         expires_on: string;
         /**
+         * Optional Hosted Auth hostname to use in the generated link instead of the default `auth.unipile.com`. The hostname must already be explicitly verified by Unipile for the parent Application.
+         */
+        domain?: string;
+        /**
          * The URL to redirect to after the authentication process. If the authentication succeeded, `account_id` and `provider` will be present in query params, along the specified `state`. If the authentication has failed, `error_title` is present instead. This is useful for your app to be aware of the authentication result and to redirect the user to the correct page of your app.
          */
         redirect_uri: string;
@@ -36385,13 +37590,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
                  * Override of the list of authorizations to request from the Provider. Use this field to narrow the scope of API access. For example, if your application only uses the Calendar API, you may request authorization solely for the calendar, excluding email access for providers like Google. Make sure to give only authorizations accepted by your registered provider application. If left unspecified, all authorizations defined in the Provider OAuth settings section will be requested.
@@ -36415,13 +37620,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | Array<string> | undefined;
             };
             /**
@@ -36451,13 +37656,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
                  * Override of the list of authorizations to request from the Provider. Use this field to narrow the scope of API access. For example, if your application only uses the Calendar API, you may request authorization solely for the calendar, excluding email access for providers like Google. Make sure to give only authorizations accepted by your registered provider application. If left unspecified, all authorizations defined in the Provider OAuth settings section will be requested.
@@ -36481,13 +37686,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | Array<string> | undefined;
             };
             /**
@@ -36517,13 +37722,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
                  * Automatic proxy configuration
@@ -36584,13 +37789,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
                  * Automatic proxy configuration
@@ -36625,13 +37830,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | {
                     /**
                      * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
@@ -36670,13 +37875,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
                  * Automatic proxy configuration
@@ -36718,13 +37923,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | {
                     /**
                      * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
@@ -36763,13 +37968,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
                  * Whether the initial sync should be enabled. The initial sync is required to perform advanced search. Read more in the Synced Accounts guide.
@@ -36793,13 +37998,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | boolean | undefined;
             };
             /**
@@ -36829,13 +38034,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 [key: string]: unknown | {
                     /**
@@ -36855,13 +38060,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | undefined;
             };
             /**
@@ -36903,6 +38108,10 @@ export type CreateAuthLinkData = {
          */
         expires_on: string;
         /**
+         * Optional Hosted Auth hostname to use in the generated link instead of the default `auth.unipile.com`. The hostname must already be explicitly verified by Unipile for the parent Application.
+         */
+        domain?: string;
+        /**
          * The URL to redirect to after the authentication process. If the authentication succeeded, `account_id` and `provider` will be present in query params, along the specified `state`. If the authentication has failed, `error_title` is present instead. This is useful for your app to be aware of the authentication result and to redirect the user to the correct page of your app.
          */
         redirect_uri: string;
@@ -36941,13 +38150,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
                  * Override of the list of authorizations to request from the Provider. Use this field to narrow the scope of API access. For example, if your application only uses the Calendar API, you may request authorization solely for the calendar, excluding email access for providers like Google. Make sure to give only authorizations accepted by your registered provider application. If left unspecified, all authorizations defined in the Provider OAuth settings section will be requested.
@@ -36971,13 +38180,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | Array<string> | undefined;
             };
             /**
@@ -37007,13 +38216,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
                  * Override of the list of authorizations to request from the Provider. Use this field to narrow the scope of API access. For example, if your application only uses the Calendar API, you may request authorization solely for the calendar, excluding email access for providers like Google. Make sure to give only authorizations accepted by your registered provider application. If left unspecified, all authorizations defined in the Provider OAuth settings section will be requested.
@@ -37037,13 +38246,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | Array<string> | undefined;
             };
             /**
@@ -37073,13 +38282,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
                  * Automatic proxy configuration
@@ -37140,13 +38349,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
                  * Automatic proxy configuration
@@ -37181,13 +38390,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | {
                     /**
                      * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
@@ -37226,13 +38435,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
                  * Automatic proxy configuration
@@ -37274,13 +38483,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | {
                     /**
                      * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
@@ -37319,13 +38528,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
                  * Whether the initial sync should be enabled. The initial sync is required to perform advanced search. Read more in the Synced Accounts guide.
@@ -37349,13 +38558,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | boolean | undefined;
             };
             /**
@@ -37385,13 +38594,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 [key: string]: unknown | {
                     /**
@@ -37411,13 +38620,13 @@ export type CreateAuthLinkData = {
                      */
                     password?: string;
                     /**
-                     * The protocol of the proxy.
+                     * The protocol of the proxy. Defaults to `https`.
                      * - `https` is HTTPS.
                      * - `http` is HTTP.
                      * - `socks5` is SOCKS5.
                      * - `socks4` is SOCKS4.
                      */
-                    protocol: 'https' | 'http' | 'socks5' | 'socks4';
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | undefined;
             };
             /**
@@ -37459,7 +38668,7 @@ export type CreateAuthLinkResponses = {
     200: {
         object: 'HostedAuthLink';
         /**
-         * Link to the Hosted Auth session. Redirect your users to this link so they can authenticate their account.
+         * Link to the Hosted Auth session. Redirect your users to this link so they can authenticate their account. If you use a white-label domain, only replace the hostname with a domain that has been explicitly verified by Unipile for the parent Application.
          */
         link: string;
     };
@@ -37623,13 +38832,13 @@ export type UpdateAccountData = {
              */
             password?: string;
             /**
-             * The protocol of the proxy.
+             * The protocol of the proxy. Defaults to `https`.
              * - `https` is HTTPS.
              * - `http` is HTTP.
              * - `socks5` is SOCKS5.
              * - `socks4` is SOCKS4.
              */
-            protocol: 'https' | 'http' | 'socks5' | 'socks4';
+            protocol?: 'https' | 'http' | 'socks5' | 'socks4';
         } | null;
     };
     path: {
@@ -37952,6 +39161,25 @@ export type ListWebhookEndpointsResponses = {
             object: 'WebhookEndpoint';
             id: string;
             application_id: string;
+            account_ids: Array<string>;
+            account_targets: Array<{
+                account_name: string | null;
+                /**
+                 * The provider's of the Account.
+                 * - `mock` is mock.
+                 * - `whatsapp` is WhatsApp.
+                 * - `linkedin` is LinkedIn.
+                 * - `instagram` is Instagram.
+                 * - `google` is Google.
+                 * - `outlook` is Outlook.
+                 * - `telegram` is Telegram.
+                 * - `imap` is IMAP.
+                 */
+                account_provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+                object: 'WebhookEndpointAccountTarget';
+                id: string;
+                status: 'active' | 'deleted';
+            }>;
         }>;
         has_more: boolean;
     };
@@ -37966,6 +39194,10 @@ export type CreateWebhookEndpointData = {
          * Refer to [Events Types](https://developer.unipile.com/v2.0/reference/event-types-1) to see the list of available values.
          */
         trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.paused' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.request.accept'>;
+        /**
+         * Restrict the webhook to specific accounts. Leave empty or omit the field to listen to events from every account in the application.
+         */
+        account_ids?: Array<string>;
         /**
          * The URL to send the webhook payload to.
          */
@@ -37993,6 +39225,25 @@ export type CreateWebhookEndpointResponses = {
         object: 'WebhookEndpoint';
         id: string;
         application_id: string;
+        account_ids: Array<string>;
+        account_targets: Array<{
+            account_name: string | null;
+            /**
+             * The provider's of the Account.
+             * - `mock` is mock.
+             * - `whatsapp` is WhatsApp.
+             * - `linkedin` is LinkedIn.
+             * - `instagram` is Instagram.
+             * - `google` is Google.
+             * - `outlook` is Outlook.
+             * - `telegram` is Telegram.
+             * - `imap` is IMAP.
+             */
+            account_provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+            object: 'WebhookEndpointAccountTarget';
+            id: string;
+            status: 'active' | 'deleted';
+        }>;
     };
 };
 
@@ -38046,6 +39297,25 @@ export type GetWebhookEndpointResponses = {
         object: 'WebhookEndpoint';
         id: string;
         application_id: string;
+        account_ids: Array<string>;
+        account_targets: Array<{
+            account_name: string | null;
+            /**
+             * The provider's of the Account.
+             * - `mock` is mock.
+             * - `whatsapp` is WhatsApp.
+             * - `linkedin` is LinkedIn.
+             * - `instagram` is Instagram.
+             * - `google` is Google.
+             * - `outlook` is Outlook.
+             * - `telegram` is Telegram.
+             * - `imap` is IMAP.
+             */
+            account_provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+            object: 'WebhookEndpointAccountTarget';
+            id: string;
+            status: 'active' | 'deleted';
+        }>;
     };
 };
 
@@ -38058,6 +39328,10 @@ export type UpdateWebhookEndpointData = {
          * Refer to [Events Types](https://developer.unipile.com/v2.0/reference/event-types-1) to see the list of available values.
          */
         trigger_events?: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.paused' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.request.accept'>;
+        /**
+         * Restrict the webhook to specific accounts. Leave empty or omit the field to listen to events from every account in the application.
+         */
+        account_ids?: Array<string>;
         /**
          * The URL to send the webhook payload to.
          */
@@ -38094,6 +39368,25 @@ export type UpdateWebhookEndpointResponses = {
         object: 'WebhookEndpoint';
         id: string;
         application_id: string;
+        account_ids: Array<string>;
+        account_targets: Array<{
+            account_name: string | null;
+            /**
+             * The provider's of the Account.
+             * - `mock` is mock.
+             * - `whatsapp` is WhatsApp.
+             * - `linkedin` is LinkedIn.
+             * - `instagram` is Instagram.
+             * - `google` is Google.
+             * - `outlook` is Outlook.
+             * - `telegram` is Telegram.
+             * - `imap` is IMAP.
+             */
+            account_provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+            object: 'WebhookEndpointAccountTarget';
+            id: string;
+            status: 'active' | 'deleted';
+        }>;
     };
 };
 
