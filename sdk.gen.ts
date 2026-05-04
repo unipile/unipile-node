@@ -2184,7 +2184,7 @@ export class UnipileLinkedIn extends HeyApiClient {
      * Retrieves an applicant by ID.
      */
     public getRecruiterApplicantById<ThrowOnError extends boolean = false>(options: Options<GetRecruiterApplicantByIdData, ThrowOnError>) {
-        return (options.client ?? this.client).post<GetRecruiterApplicantByIdResponses, unknown, ThrowOnError>({
+        return (options.client ?? this.client).get<GetRecruiterApplicantByIdResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/applicants/{applicant_id}',
             ...options

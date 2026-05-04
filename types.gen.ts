@@ -1226,8 +1226,6 @@ export type StartChatData = {
          */
         users_ids: Array<string> | string;
         /**
-         * Message File
-         *
          * The list of file attachments to the message to be sent in the chat.
          */
         attachments?: Array<{
@@ -1252,7 +1250,6 @@ export type StartChatData = {
                  */
                 duration?: number;
             };
-        } & {
             /**
              * Defines how the attachment should be sent, if the provider supports multiple modes.
              * Omitted: use the provider’s native default behavior.
@@ -1355,8 +1352,6 @@ export type StartChatData = {
                          */
                         text: string;
                         /**
-                         * Message File
-                         *
                          * The list of file attachments to the message to be sent in the chat.
                          */
                         attachments?: Array<{
@@ -1381,7 +1376,6 @@ export type StartChatData = {
                                  */
                                 duration?: number;
                             };
-                        } & {
                             /**
                              * Defines how the attachment should be sent, if the provider supports multiple modes.
                              * Omitted: use the provider’s native default behavior.
@@ -1461,8 +1455,6 @@ export type StartChatFromInboxData = {
          */
         users_ids: Array<string> | string;
         /**
-         * Message File
-         *
          * The list of file attachments to the message to be sent in the chat.
          */
         attachments?: Array<{
@@ -1487,7 +1479,6 @@ export type StartChatFromInboxData = {
                  */
                 duration?: number;
             };
-        } & {
             /**
              * Defines how the attachment should be sent, if the provider supports multiple modes.
              * Omitted: use the provider’s native default behavior.
@@ -1590,8 +1581,6 @@ export type StartChatFromInboxData = {
                          */
                         text: string;
                         /**
-                         * Message File
-                         *
                          * The list of file attachments to the message to be sent in the chat.
                          */
                         attachments?: Array<{
@@ -1616,7 +1605,6 @@ export type StartChatFromInboxData = {
                                  */
                                 duration?: number;
                             };
-                        } & {
                             /**
                              * Defines how the attachment should be sent, if the provider supports multiple modes.
                              * Omitted: use the provider’s native default behavior.
@@ -2827,7 +2815,12 @@ export type GetMessagesListResponses = {
                 };
                 object: 'ForwardedMessage';
             };
-            specifics?: unknown;
+            specifics?: unknown & {
+                /**
+                 * The subject of the message.
+                 */
+                subject?: string;
+            };
         }>;
         /**
          * Total number of results if supported by the endpoint.
@@ -3991,7 +3984,12 @@ export type GetMessageResponses = {
             };
             object: 'ForwardedMessage';
         };
-        specifics?: unknown;
+        specifics?: unknown & {
+            /**
+             * The subject of the message.
+             */
+            subject?: string;
+        };
     };
 };
 
@@ -4008,8 +4006,6 @@ export type SendMessageData = {
          */
         quote_id?: string;
         /**
-         * Message File
-         *
          * The list of file attachments to the message to be sent in the chat.
          */
         attachments?: Array<{
@@ -4034,7 +4030,6 @@ export type SendMessageData = {
                  */
                 duration?: number;
             };
-        } & {
             /**
              * Defines how the attachment should be sent, if the provider supports multiple modes.
              * Omitted: use the provider’s native default behavior.
@@ -5247,7 +5242,7 @@ export type ModifyMessageResponses = {
             object: 'ForwardedMessage';
         };
         specifics?: unknown;
-    };
+    } | null;
 };
 
 export type ModifyMessageResponse = ModifyMessageResponses[keyof ModifyMessageResponses];
@@ -11542,7 +11537,7 @@ export type GetUserProfileResponses = {
 export type GetUserProfileResponse = GetUserProfileResponses[keyof GetUserProfileResponses];
 
 export type UpdateUserProfileData = {
-    body: {
+    body?: {
         /**
          * The first name of the User.
          */
@@ -11615,7 +11610,7 @@ export type UpdateUserProfileData = {
                 duration?: number;
             };
         };
-        specifics: unknown & {
+        specifics?: unknown & {
             /**
              * Specific options to apply if the provider of the targeted account is Linkedin
              */
@@ -12444,11 +12439,11 @@ export type UpdateUserProfileData = {
                      */
                     type: 'STORE' | 'WEBSITE' | 'PORTFOLIO' | 'BLOG' | 'NEWSLETTER';
                     /**
-                     * The type of link.
+                     * The URL of the link.
                      */
                     url: string;
                     /**
-                     * The type of link.
+                     * Whether the link should be displayed everywhere or only on the profile.
                      */
                     display_on?: 'PROFILE_ONLY' | 'EVERYWHERE';
                 };
@@ -13390,6 +13385,47 @@ export type GetPostsListResponses = {
                 }>;
             };
             /**
+             * Data about the event if the post is an event.
+             */
+            event?: {
+                /**
+                 * The ID of the event.
+                 */
+                id: string;
+                /**
+                 * The name of the event.
+                 */
+                name: string;
+                /**
+                 * The link to the event.
+                 */
+                url?: string;
+                /**
+                 * Whether the event is an online event.
+                 */
+                online: boolean;
+                /**
+                 * The location of the event.
+                 */
+                location?: string;
+                /**
+                 * The description of the event.
+                 */
+                description?: string;
+                /**
+                 * Public url to the picture of the event.
+                 */
+                public_picture_url?: string;
+                /**
+                 * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                starts_on?: string;
+                /**
+                 * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                ends_on?: string;
+            };
+            /**
              * List of post attachments.
              */
             attachments: Array<{
@@ -13826,6 +13862,47 @@ export type GetPostsListResponses = {
                          */
                         votes_count: number;
                     }>;
+                };
+                /**
+                 * Data about the event if the post is an event.
+                 */
+                event?: {
+                    /**
+                     * The ID of the event.
+                     */
+                    id: string;
+                    /**
+                     * The name of the event.
+                     */
+                    name: string;
+                    /**
+                     * The link to the event.
+                     */
+                    url?: string;
+                    /**
+                     * Whether the event is an online event.
+                     */
+                    online: boolean;
+                    /**
+                     * The location of the event.
+                     */
+                    location?: string;
+                    /**
+                     * The description of the event.
+                     */
+                    description?: string;
+                    /**
+                     * Public url to the picture of the event.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    starts_on?: string;
+                    /**
+                     * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    ends_on?: string;
                 };
                 /**
                  * List of post attachments.
@@ -14278,6 +14355,47 @@ export type GetPostResponses = {
             }>;
         };
         /**
+         * Data about the event if the post is an event.
+         */
+        event?: {
+            /**
+             * The ID of the event.
+             */
+            id: string;
+            /**
+             * The name of the event.
+             */
+            name: string;
+            /**
+             * The link to the event.
+             */
+            url?: string;
+            /**
+             * Whether the event is an online event.
+             */
+            online: boolean;
+            /**
+             * The location of the event.
+             */
+            location?: string;
+            /**
+             * The description of the event.
+             */
+            description?: string;
+            /**
+             * Public url to the picture of the event.
+             */
+            public_picture_url?: string;
+            /**
+             * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            starts_on?: string;
+            /**
+             * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            ends_on?: string;
+        };
+        /**
          * List of post attachments.
          */
         attachments: Array<{
@@ -14714,6 +14832,47 @@ export type GetPostResponses = {
                      */
                     votes_count: number;
                 }>;
+            };
+            /**
+             * Data about the event if the post is an event.
+             */
+            event?: {
+                /**
+                 * The ID of the event.
+                 */
+                id: string;
+                /**
+                 * The name of the event.
+                 */
+                name: string;
+                /**
+                 * The link to the event.
+                 */
+                url?: string;
+                /**
+                 * Whether the event is an online event.
+                 */
+                online: boolean;
+                /**
+                 * The location of the event.
+                 */
+                location?: string;
+                /**
+                 * The description of the event.
+                 */
+                description?: string;
+                /**
+                 * Public url to the picture of the event.
+                 */
+                public_picture_url?: string;
+                /**
+                 * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                starts_on?: string;
+                /**
+                 * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                ends_on?: string;
             };
             /**
              * List of post attachments.
@@ -15144,6 +15303,47 @@ export type UpdatePostResponses = {
             }>;
         };
         /**
+         * Data about the event if the post is an event.
+         */
+        event?: {
+            /**
+             * The ID of the event.
+             */
+            id: string;
+            /**
+             * The name of the event.
+             */
+            name: string;
+            /**
+             * The link to the event.
+             */
+            url?: string;
+            /**
+             * Whether the event is an online event.
+             */
+            online: boolean;
+            /**
+             * The location of the event.
+             */
+            location?: string;
+            /**
+             * The description of the event.
+             */
+            description?: string;
+            /**
+             * Public url to the picture of the event.
+             */
+            public_picture_url?: string;
+            /**
+             * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            starts_on?: string;
+            /**
+             * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            ends_on?: string;
+        };
+        /**
          * List of post attachments.
          */
         attachments: Array<{
@@ -15580,6 +15780,47 @@ export type UpdatePostResponses = {
                      */
                     votes_count: number;
                 }>;
+            };
+            /**
+             * Data about the event if the post is an event.
+             */
+            event?: {
+                /**
+                 * The ID of the event.
+                 */
+                id: string;
+                /**
+                 * The name of the event.
+                 */
+                name: string;
+                /**
+                 * The link to the event.
+                 */
+                url?: string;
+                /**
+                 * Whether the event is an online event.
+                 */
+                online: boolean;
+                /**
+                 * The location of the event.
+                 */
+                location?: string;
+                /**
+                 * The description of the event.
+                 */
+                description?: string;
+                /**
+                 * Public url to the picture of the event.
+                 */
+                public_picture_url?: string;
+                /**
+                 * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                starts_on?: string;
+                /**
+                 * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                ends_on?: string;
             };
             /**
              * List of post attachments.
@@ -16057,6 +16298,47 @@ export type CreatePostResponses = {
             }>;
         };
         /**
+         * Data about the event if the post is an event.
+         */
+        event?: {
+            /**
+             * The ID of the event.
+             */
+            id: string;
+            /**
+             * The name of the event.
+             */
+            name: string;
+            /**
+             * The link to the event.
+             */
+            url?: string;
+            /**
+             * Whether the event is an online event.
+             */
+            online: boolean;
+            /**
+             * The location of the event.
+             */
+            location?: string;
+            /**
+             * The description of the event.
+             */
+            description?: string;
+            /**
+             * Public url to the picture of the event.
+             */
+            public_picture_url?: string;
+            /**
+             * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            starts_on?: string;
+            /**
+             * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            ends_on?: string;
+        };
+        /**
          * List of post attachments.
          */
         attachments: Array<{
@@ -16495,6 +16777,47 @@ export type CreatePostResponses = {
                 }>;
             };
             /**
+             * Data about the event if the post is an event.
+             */
+            event?: {
+                /**
+                 * The ID of the event.
+                 */
+                id: string;
+                /**
+                 * The name of the event.
+                 */
+                name: string;
+                /**
+                 * The link to the event.
+                 */
+                url?: string;
+                /**
+                 * Whether the event is an online event.
+                 */
+                online: boolean;
+                /**
+                 * The location of the event.
+                 */
+                location?: string;
+                /**
+                 * The description of the event.
+                 */
+                description?: string;
+                /**
+                 * Public url to the picture of the event.
+                 */
+                public_picture_url?: string;
+                /**
+                 * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                starts_on?: string;
+                /**
+                 * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                ends_on?: string;
+            };
+            /**
              * List of post attachments.
              */
             attachments: Array<{
@@ -16748,7 +17071,7 @@ export type CreatePostResponse = CreatePostResponses[keyof CreatePostResponses];
 
 export type RemovePostReactionData = {
     body: {
-        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'linkedin_maybe' | 'instagram_like');
+        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
     };
     path: {
         /**
@@ -16876,7 +17199,7 @@ export type GetPostReactionsListResponse = GetPostReactionsListResponses[keyof G
 
 export type AddPostReactionData = {
     body: {
-        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'linkedin_maybe' | 'instagram_like');
+        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
         /**
          * The ID of the User on whose behalf the reaction should be published (if supported by the provider).
          */
@@ -17640,7 +17963,7 @@ export type GetPostCommentRepliesListResponse = GetPostCommentRepliesListRespons
 
 export type RemovePostCommentReactionData = {
     body: {
-        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'linkedin_maybe' | 'instagram_like');
+        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
     };
     path: {
         /**
@@ -17776,7 +18099,7 @@ export type GetPostCommentReactionsListResponse = GetPostCommentReactionsListRes
 
 export type AddPostCommentReactionData = {
     body: {
-        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'linkedin_maybe' | 'instagram_like');
+        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
         /**
          * The ID of the User on whose behalf the reaction should be published (if supported by the provider).
          */
@@ -17933,10 +18256,7 @@ export type GetUserCommentsListResponses = {
                  */
                 count: number;
             }>;
-            /**
-             * Based on the provider, more or less data is returned.
-             */
-            parent_post?: {
+            parent_post: {
                 object: 'PostPreview';
                 /**
                  * The ID of the post for the provider.
@@ -18002,7 +18322,918 @@ export type GetUserCommentsListResponses = {
                      */
                     url: string;
                 }>;
-            };
+            } | {
+                object: 'Post';
+                /**
+                 * The ID of the post for the provider.
+                 */
+                id: string;
+                /**
+                 * The URL to share the post.
+                 */
+                share_url: string;
+                /**
+                 * The creation date of the post. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                created_at: string;
+                /**
+                 * The title of the post.
+                 */
+                title?: string;
+                /**
+                 * The text content of the post.
+                 */
+                text: string;
+                /**
+                 * The author of the post.
+                 */
+                author: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user.
+                     */
+                    display_name: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                };
+                /**
+                 * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
+                 */
+                user_reacted: boolean | string;
+                /**
+                 * The permissions for the account owner on the post.
+                 */
+                permissions: {
+                    /**
+                     * Whether the account owner can share the post.
+                     */
+                    can_share: boolean;
+                    /**
+                     * Whether the account owner can react to the post.
+                     */
+                    can_react: boolean;
+                    /**
+                     * Whether the account owner can comment on the post.
+                     */
+                    can_post_comments: boolean;
+                };
+                /**
+                 * The counter of reactions to the post. `null` if counter is hidden.
+                 */
+                reactions_counter: Array<{
+                    /**
+                     * Value of the reaction. Usually an emoji unicode.
+                     */
+                    reaction: string;
+                    /**
+                     * The total count of this reaction.
+                     */
+                    count: number;
+                }> | null;
+                /**
+                 * The number of comments to the post. `null` if counter is hidden.
+                 */
+                comments_counter: number | null;
+                /**
+                 * The number of reposts of the post. `null` if counter is hidden.
+                 */
+                reposts_counter: number | null;
+                /**
+                 * Data about the poll if the post is a poll.
+                 */
+                poll?: {
+                    /**
+                     * The ID of the poll.
+                     */
+                    id: string;
+                    /**
+                     * The total number of votes for the poll.
+                     */
+                    total_votes_count: number;
+                    /**
+                     * The question of the poll.
+                     */
+                    question: string;
+                    /**
+                     * Whether the poll is open. If the poll is closed, the user can only see the results.
+                     */
+                    is_open: boolean;
+                    options: Array<{
+                        /**
+                         * The ID of the option.
+                         */
+                        id: string;
+                        /**
+                         * The displayed text of the option.
+                         */
+                        text: string;
+                        /**
+                         * Whether the option is the winning option.
+                         */
+                        win: boolean;
+                        /**
+                         * The number of votes for this option.
+                         */
+                        votes_count: number;
+                    }>;
+                };
+                /**
+                 * Data about the event if the post is an event.
+                 */
+                event?: {
+                    /**
+                     * The ID of the event.
+                     */
+                    id: string;
+                    /**
+                     * The name of the event.
+                     */
+                    name: string;
+                    /**
+                     * The link to the event.
+                     */
+                    url?: string;
+                    /**
+                     * Whether the event is an online event.
+                     */
+                    online: boolean;
+                    /**
+                     * The location of the event.
+                     */
+                    location?: string;
+                    /**
+                     * The description of the event.
+                     */
+                    description?: string;
+                    /**
+                     * Public url to the picture of the event.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    starts_on?: string;
+                    /**
+                     * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    ends_on?: string;
+                };
+                /**
+                 * List of post attachments.
+                 */
+                attachments: Array<{
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'audio';
+                    /**
+                     * The duration of the audio in seconds.
+                     */
+                    duration?: number;
+                    /**
+                     * The audio is a voice note (should be displayed differently)
+                     */
+                    voice_note: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'img';
+                    /**
+                     * The size of the image in pixels.
+                     */
+                    size?: {
+                        height: number;
+                        width: number;
+                    };
+                    /**
+                     * The image is a sticker (should be displayed differently)
+                     */
+                    sticker: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'video';
+                    /**
+                     * The duration of the video in seconds.
+                     */
+                    duration?: number;
+                    /**
+                     * The size of the video in pixels.
+                     */
+                    size: {
+                        height: number;
+                        width: number;
+                    };
+                    /**
+                     * The video is a GIF (should be displayed differently)
+                     */
+                    gif: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'file';
+                    /**
+                     * The name of the file, including the extension.
+                     */
+                    filename: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL of the shared content.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'shared_content';
+                    /**
+                     * The type of content being shared.
+                     */
+                    media_type: 'post' | 'story' | 'url' | 'reel';
+                    /**
+                     * The author of the shared content, if applicable.
+                     */
+                    author?: string;
+                    /**
+                     * A brief description of the shared content.
+                     */
+                    description?: string;
+                }>;
+                /**
+                 * Analytics data of the post.
+                 */
+                analytics?: {
+                    /**
+                     * The number of impressions of the post.
+                     */
+                    impressions_counter?: number;
+                    /**
+                     * The number of engagements of the post.
+                     */
+                    engagements_counter?: number;
+                    /**
+                     * The engagement rate of the post.
+                     */
+                    engagement_rate?: number;
+                    /**
+                     * The number of clicks of the post.
+                     */
+                    clicks_counter?: number;
+                    /**
+                     * The clickthrough rate of the post.
+                     */
+                    clickthrough_rate?: number;
+                    /**
+                     * The number of page viewers from this post.
+                     */
+                    page_viewers_from_this_post_counter?: number;
+                    /**
+                     * The number of followers gained from this post.
+                     */
+                    followers_gained_from_this_post_counter?: number;
+                    /**
+                     * The number of users reached from this post.
+                     */
+                    users_reached_counter?: number;
+                };
+                /**
+                 * `true` if this post is reposted by someone without quote. Quoted post does not qualify as a repost.
+                 */
+                is_repost: boolean;
+                /**
+                 * The user who reposted the post if `is_repost` is `true`.
+                 */
+                reposted_by?: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user.
+                     */
+                    display_name: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                };
+                /**
+                 * The post that is quoted in this post.
+                 */
+                quoted_post?: {
+                    object: 'Post';
+                    /**
+                     * The ID of the post for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The URL to share the post.
+                     */
+                    share_url: string;
+                    /**
+                     * The creation date of the post. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    created_at: string;
+                    /**
+                     * The title of the post.
+                     */
+                    title?: string;
+                    /**
+                     * The text content of the post.
+                     */
+                    text: string;
+                    /**
+                     * The author of the post.
+                     */
+                    author: {
+                        /**
+                         * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                         */
+                        id: string;
+                        object: 'User';
+                        /**
+                         * Type of the user
+                         * - `individual` is an individual user.
+                         * - `organization` is an organization / business entity.
+                         * - `other` is an other type of entity.
+                         */
+                        type: 'individual' | 'organization' | 'other';
+                        /**
+                         * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Display name of the user.
+                         */
+                        display_name: string;
+                        /**
+                         * Public url to the profile of the user.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Public url to the profile picture of the user.
+                         */
+                        public_picture_url?: string;
+                        /**
+                         * Private url to download the profile picture of the user. This url require authentication.
+                         */
+                        private_picture_download_url?: string;
+                        /**
+                         * Description of the user.
+                         */
+                        description?: string;
+                    };
+                    /**
+                     * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
+                     */
+                    user_reacted: boolean | string;
+                    /**
+                     * The permissions for the account owner on the post.
+                     */
+                    permissions: {
+                        /**
+                         * Whether the account owner can share the post.
+                         */
+                        can_share: boolean;
+                        /**
+                         * Whether the account owner can react to the post.
+                         */
+                        can_react: boolean;
+                        /**
+                         * Whether the account owner can comment on the post.
+                         */
+                        can_post_comments: boolean;
+                    };
+                    /**
+                     * The counter of reactions to the post. `null` if counter is hidden.
+                     */
+                    reactions_counter: Array<{
+                        /**
+                         * Value of the reaction. Usually an emoji unicode.
+                         */
+                        reaction: string;
+                        /**
+                         * The total count of this reaction.
+                         */
+                        count: number;
+                    }> | null;
+                    /**
+                     * The number of comments to the post. `null` if counter is hidden.
+                     */
+                    comments_counter: number | null;
+                    /**
+                     * The number of reposts of the post. `null` if counter is hidden.
+                     */
+                    reposts_counter: number | null;
+                    /**
+                     * Data about the poll if the post is a poll.
+                     */
+                    poll?: {
+                        /**
+                         * The ID of the poll.
+                         */
+                        id: string;
+                        /**
+                         * The total number of votes for the poll.
+                         */
+                        total_votes_count: number;
+                        /**
+                         * The question of the poll.
+                         */
+                        question: string;
+                        /**
+                         * Whether the poll is open. If the poll is closed, the user can only see the results.
+                         */
+                        is_open: boolean;
+                        options: Array<{
+                            /**
+                             * The ID of the option.
+                             */
+                            id: string;
+                            /**
+                             * The displayed text of the option.
+                             */
+                            text: string;
+                            /**
+                             * Whether the option is the winning option.
+                             */
+                            win: boolean;
+                            /**
+                             * The number of votes for this option.
+                             */
+                            votes_count: number;
+                        }>;
+                    };
+                    /**
+                     * Data about the event if the post is an event.
+                     */
+                    event?: {
+                        /**
+                         * The ID of the event.
+                         */
+                        id: string;
+                        /**
+                         * The name of the event.
+                         */
+                        name: string;
+                        /**
+                         * The link to the event.
+                         */
+                        url?: string;
+                        /**
+                         * Whether the event is an online event.
+                         */
+                        online: boolean;
+                        /**
+                         * The location of the event.
+                         */
+                        location?: string;
+                        /**
+                         * The description of the event.
+                         */
+                        description?: string;
+                        /**
+                         * Public url to the picture of the event.
+                         */
+                        public_picture_url?: string;
+                        /**
+                         * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        starts_on?: string;
+                        /**
+                         * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        ends_on?: string;
+                    };
+                    /**
+                     * List of post attachments.
+                     */
+                    attachments: Array<{
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'audio';
+                        /**
+                         * The duration of the audio in seconds.
+                         */
+                        duration?: number;
+                        /**
+                         * The audio is a voice note (should be displayed differently)
+                         */
+                        voice_note: boolean;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'img';
+                        /**
+                         * The size of the image in pixels.
+                         */
+                        size?: {
+                            height: number;
+                            width: number;
+                        };
+                        /**
+                         * The image is a sticker (should be displayed differently)
+                         */
+                        sticker: boolean;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'video';
+                        /**
+                         * The duration of the video in seconds.
+                         */
+                        duration?: number;
+                        /**
+                         * The size of the video in pixels.
+                         */
+                        size: {
+                            height: number;
+                            width: number;
+                        };
+                        /**
+                         * The video is a GIF (should be displayed differently)
+                         */
+                        gif: boolean;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'file';
+                        /**
+                         * The name of the file, including the extension.
+                         */
+                        filename: string;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL of the shared content.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'shared_content';
+                        /**
+                         * The type of content being shared.
+                         */
+                        media_type: 'post' | 'story' | 'url' | 'reel';
+                        /**
+                         * The author of the shared content, if applicable.
+                         */
+                        author?: string;
+                        /**
+                         * A brief description of the shared content.
+                         */
+                        description?: string;
+                    }>;
+                    /**
+                     * Analytics data of the post.
+                     */
+                    analytics?: {
+                        /**
+                         * The number of impressions of the post.
+                         */
+                        impressions_counter?: number;
+                        /**
+                         * The number of engagements of the post.
+                         */
+                        engagements_counter?: number;
+                        /**
+                         * The engagement rate of the post.
+                         */
+                        engagement_rate?: number;
+                        /**
+                         * The number of clicks of the post.
+                         */
+                        clicks_counter?: number;
+                        /**
+                         * The clickthrough rate of the post.
+                         */
+                        clickthrough_rate?: number;
+                        /**
+                         * The number of page viewers from this post.
+                         */
+                        page_viewers_from_this_post_counter?: number;
+                        /**
+                         * The number of followers gained from this post.
+                         */
+                        followers_gained_from_this_post_counter?: number;
+                        /**
+                         * The number of users reached from this post.
+                         */
+                        users_reached_counter?: number;
+                    };
+                };
+            } | null;
         }>;
         /**
          * Total number of results if supported by the endpoint.
@@ -18102,10 +19333,7 @@ export type GetUserReactionsListResponses = {
              * Is the current user the sender of the reaction.
              */
             is_sender: boolean;
-            /**
-             * Based on the provider, more or less data is returned.
-             */
-            parent_post?: {
+            parent_post: {
                 object: 'PostPreview';
                 /**
                  * The ID of the post for the provider.
@@ -18171,7 +19399,918 @@ export type GetUserReactionsListResponses = {
                      */
                     url: string;
                 }>;
-            };
+            } | {
+                object: 'Post';
+                /**
+                 * The ID of the post for the provider.
+                 */
+                id: string;
+                /**
+                 * The URL to share the post.
+                 */
+                share_url: string;
+                /**
+                 * The creation date of the post. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                created_at: string;
+                /**
+                 * The title of the post.
+                 */
+                title?: string;
+                /**
+                 * The text content of the post.
+                 */
+                text: string;
+                /**
+                 * The author of the post.
+                 */
+                author: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user.
+                     */
+                    display_name: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                };
+                /**
+                 * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
+                 */
+                user_reacted: boolean | string;
+                /**
+                 * The permissions for the account owner on the post.
+                 */
+                permissions: {
+                    /**
+                     * Whether the account owner can share the post.
+                     */
+                    can_share: boolean;
+                    /**
+                     * Whether the account owner can react to the post.
+                     */
+                    can_react: boolean;
+                    /**
+                     * Whether the account owner can comment on the post.
+                     */
+                    can_post_comments: boolean;
+                };
+                /**
+                 * The counter of reactions to the post. `null` if counter is hidden.
+                 */
+                reactions_counter: Array<{
+                    /**
+                     * Value of the reaction. Usually an emoji unicode.
+                     */
+                    reaction: string;
+                    /**
+                     * The total count of this reaction.
+                     */
+                    count: number;
+                }> | null;
+                /**
+                 * The number of comments to the post. `null` if counter is hidden.
+                 */
+                comments_counter: number | null;
+                /**
+                 * The number of reposts of the post. `null` if counter is hidden.
+                 */
+                reposts_counter: number | null;
+                /**
+                 * Data about the poll if the post is a poll.
+                 */
+                poll?: {
+                    /**
+                     * The ID of the poll.
+                     */
+                    id: string;
+                    /**
+                     * The total number of votes for the poll.
+                     */
+                    total_votes_count: number;
+                    /**
+                     * The question of the poll.
+                     */
+                    question: string;
+                    /**
+                     * Whether the poll is open. If the poll is closed, the user can only see the results.
+                     */
+                    is_open: boolean;
+                    options: Array<{
+                        /**
+                         * The ID of the option.
+                         */
+                        id: string;
+                        /**
+                         * The displayed text of the option.
+                         */
+                        text: string;
+                        /**
+                         * Whether the option is the winning option.
+                         */
+                        win: boolean;
+                        /**
+                         * The number of votes for this option.
+                         */
+                        votes_count: number;
+                    }>;
+                };
+                /**
+                 * Data about the event if the post is an event.
+                 */
+                event?: {
+                    /**
+                     * The ID of the event.
+                     */
+                    id: string;
+                    /**
+                     * The name of the event.
+                     */
+                    name: string;
+                    /**
+                     * The link to the event.
+                     */
+                    url?: string;
+                    /**
+                     * Whether the event is an online event.
+                     */
+                    online: boolean;
+                    /**
+                     * The location of the event.
+                     */
+                    location?: string;
+                    /**
+                     * The description of the event.
+                     */
+                    description?: string;
+                    /**
+                     * Public url to the picture of the event.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    starts_on?: string;
+                    /**
+                     * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    ends_on?: string;
+                };
+                /**
+                 * List of post attachments.
+                 */
+                attachments: Array<{
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'audio';
+                    /**
+                     * The duration of the audio in seconds.
+                     */
+                    duration?: number;
+                    /**
+                     * The audio is a voice note (should be displayed differently)
+                     */
+                    voice_note: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'img';
+                    /**
+                     * The size of the image in pixels.
+                     */
+                    size?: {
+                        height: number;
+                        width: number;
+                    };
+                    /**
+                     * The image is a sticker (should be displayed differently)
+                     */
+                    sticker: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'video';
+                    /**
+                     * The duration of the video in seconds.
+                     */
+                    duration?: number;
+                    /**
+                     * The size of the video in pixels.
+                     */
+                    size: {
+                        height: number;
+                        width: number;
+                    };
+                    /**
+                     * The video is a GIF (should be displayed differently)
+                     */
+                    gif: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'file';
+                    /**
+                     * The name of the file, including the extension.
+                     */
+                    filename: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL of the shared content.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'shared_content';
+                    /**
+                     * The type of content being shared.
+                     */
+                    media_type: 'post' | 'story' | 'url' | 'reel';
+                    /**
+                     * The author of the shared content, if applicable.
+                     */
+                    author?: string;
+                    /**
+                     * A brief description of the shared content.
+                     */
+                    description?: string;
+                }>;
+                /**
+                 * Analytics data of the post.
+                 */
+                analytics?: {
+                    /**
+                     * The number of impressions of the post.
+                     */
+                    impressions_counter?: number;
+                    /**
+                     * The number of engagements of the post.
+                     */
+                    engagements_counter?: number;
+                    /**
+                     * The engagement rate of the post.
+                     */
+                    engagement_rate?: number;
+                    /**
+                     * The number of clicks of the post.
+                     */
+                    clicks_counter?: number;
+                    /**
+                     * The clickthrough rate of the post.
+                     */
+                    clickthrough_rate?: number;
+                    /**
+                     * The number of page viewers from this post.
+                     */
+                    page_viewers_from_this_post_counter?: number;
+                    /**
+                     * The number of followers gained from this post.
+                     */
+                    followers_gained_from_this_post_counter?: number;
+                    /**
+                     * The number of users reached from this post.
+                     */
+                    users_reached_counter?: number;
+                };
+                /**
+                 * `true` if this post is reposted by someone without quote. Quoted post does not qualify as a repost.
+                 */
+                is_repost: boolean;
+                /**
+                 * The user who reposted the post if `is_repost` is `true`.
+                 */
+                reposted_by?: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user.
+                     */
+                    display_name: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                };
+                /**
+                 * The post that is quoted in this post.
+                 */
+                quoted_post?: {
+                    object: 'Post';
+                    /**
+                     * The ID of the post for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The URL to share the post.
+                     */
+                    share_url: string;
+                    /**
+                     * The creation date of the post. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    created_at: string;
+                    /**
+                     * The title of the post.
+                     */
+                    title?: string;
+                    /**
+                     * The text content of the post.
+                     */
+                    text: string;
+                    /**
+                     * The author of the post.
+                     */
+                    author: {
+                        /**
+                         * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                         */
+                        id: string;
+                        object: 'User';
+                        /**
+                         * Type of the user
+                         * - `individual` is an individual user.
+                         * - `organization` is an organization / business entity.
+                         * - `other` is an other type of entity.
+                         */
+                        type: 'individual' | 'organization' | 'other';
+                        /**
+                         * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Display name of the user.
+                         */
+                        display_name: string;
+                        /**
+                         * Public url to the profile of the user.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Public url to the profile picture of the user.
+                         */
+                        public_picture_url?: string;
+                        /**
+                         * Private url to download the profile picture of the user. This url require authentication.
+                         */
+                        private_picture_download_url?: string;
+                        /**
+                         * Description of the user.
+                         */
+                        description?: string;
+                    };
+                    /**
+                     * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
+                     */
+                    user_reacted: boolean | string;
+                    /**
+                     * The permissions for the account owner on the post.
+                     */
+                    permissions: {
+                        /**
+                         * Whether the account owner can share the post.
+                         */
+                        can_share: boolean;
+                        /**
+                         * Whether the account owner can react to the post.
+                         */
+                        can_react: boolean;
+                        /**
+                         * Whether the account owner can comment on the post.
+                         */
+                        can_post_comments: boolean;
+                    };
+                    /**
+                     * The counter of reactions to the post. `null` if counter is hidden.
+                     */
+                    reactions_counter: Array<{
+                        /**
+                         * Value of the reaction. Usually an emoji unicode.
+                         */
+                        reaction: string;
+                        /**
+                         * The total count of this reaction.
+                         */
+                        count: number;
+                    }> | null;
+                    /**
+                     * The number of comments to the post. `null` if counter is hidden.
+                     */
+                    comments_counter: number | null;
+                    /**
+                     * The number of reposts of the post. `null` if counter is hidden.
+                     */
+                    reposts_counter: number | null;
+                    /**
+                     * Data about the poll if the post is a poll.
+                     */
+                    poll?: {
+                        /**
+                         * The ID of the poll.
+                         */
+                        id: string;
+                        /**
+                         * The total number of votes for the poll.
+                         */
+                        total_votes_count: number;
+                        /**
+                         * The question of the poll.
+                         */
+                        question: string;
+                        /**
+                         * Whether the poll is open. If the poll is closed, the user can only see the results.
+                         */
+                        is_open: boolean;
+                        options: Array<{
+                            /**
+                             * The ID of the option.
+                             */
+                            id: string;
+                            /**
+                             * The displayed text of the option.
+                             */
+                            text: string;
+                            /**
+                             * Whether the option is the winning option.
+                             */
+                            win: boolean;
+                            /**
+                             * The number of votes for this option.
+                             */
+                            votes_count: number;
+                        }>;
+                    };
+                    /**
+                     * Data about the event if the post is an event.
+                     */
+                    event?: {
+                        /**
+                         * The ID of the event.
+                         */
+                        id: string;
+                        /**
+                         * The name of the event.
+                         */
+                        name: string;
+                        /**
+                         * The link to the event.
+                         */
+                        url?: string;
+                        /**
+                         * Whether the event is an online event.
+                         */
+                        online: boolean;
+                        /**
+                         * The location of the event.
+                         */
+                        location?: string;
+                        /**
+                         * The description of the event.
+                         */
+                        description?: string;
+                        /**
+                         * Public url to the picture of the event.
+                         */
+                        public_picture_url?: string;
+                        /**
+                         * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        starts_on?: string;
+                        /**
+                         * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        ends_on?: string;
+                    };
+                    /**
+                     * List of post attachments.
+                     */
+                    attachments: Array<{
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'audio';
+                        /**
+                         * The duration of the audio in seconds.
+                         */
+                        duration?: number;
+                        /**
+                         * The audio is a voice note (should be displayed differently)
+                         */
+                        voice_note: boolean;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'img';
+                        /**
+                         * The size of the image in pixels.
+                         */
+                        size?: {
+                            height: number;
+                            width: number;
+                        };
+                        /**
+                         * The image is a sticker (should be displayed differently)
+                         */
+                        sticker: boolean;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'video';
+                        /**
+                         * The duration of the video in seconds.
+                         */
+                        duration?: number;
+                        /**
+                         * The size of the video in pixels.
+                         */
+                        size: {
+                            height: number;
+                            width: number;
+                        };
+                        /**
+                         * The video is a GIF (should be displayed differently)
+                         */
+                        gif: boolean;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'file';
+                        /**
+                         * The name of the file, including the extension.
+                         */
+                        filename: string;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL of the shared content.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'shared_content';
+                        /**
+                         * The type of content being shared.
+                         */
+                        media_type: 'post' | 'story' | 'url' | 'reel';
+                        /**
+                         * The author of the shared content, if applicable.
+                         */
+                        author?: string;
+                        /**
+                         * A brief description of the shared content.
+                         */
+                        description?: string;
+                    }>;
+                    /**
+                     * Analytics data of the post.
+                     */
+                    analytics?: {
+                        /**
+                         * The number of impressions of the post.
+                         */
+                        impressions_counter?: number;
+                        /**
+                         * The number of engagements of the post.
+                         */
+                        engagements_counter?: number;
+                        /**
+                         * The engagement rate of the post.
+                         */
+                        engagement_rate?: number;
+                        /**
+                         * The number of clicks of the post.
+                         */
+                        clicks_counter?: number;
+                        /**
+                         * The clickthrough rate of the post.
+                         */
+                        clickthrough_rate?: number;
+                        /**
+                         * The number of page viewers from this post.
+                         */
+                        page_viewers_from_this_post_counter?: number;
+                        /**
+                         * The number of followers gained from this post.
+                         */
+                        followers_gained_from_this_post_counter?: number;
+                        /**
+                         * The number of users reached from this post.
+                         */
+                        users_reached_counter?: number;
+                    };
+                };
+            } | null;
         }>;
         /**
          * Total number of results if supported by the endpoint.
@@ -20440,7 +22579,7 @@ export type PerformClassicSearchFromUrlResponses = {
             /**
              * The location of the User.
              */
-            location: string;
+            location?: string;
             /**
              * The headline of the User.
              */
@@ -20782,6 +22921,47 @@ export type PerformClassicSearchFromUrlResponses = {
                      */
                     votes_count: number;
                 }>;
+            };
+            /**
+             * Data about the event if the post is an event.
+             */
+            event?: {
+                /**
+                 * The ID of the event.
+                 */
+                id: string;
+                /**
+                 * The name of the event.
+                 */
+                name: string;
+                /**
+                 * The link to the event.
+                 */
+                url?: string;
+                /**
+                 * Whether the event is an online event.
+                 */
+                online: boolean;
+                /**
+                 * The location of the event.
+                 */
+                location?: string;
+                /**
+                 * The description of the event.
+                 */
+                description?: string;
+                /**
+                 * Public url to the picture of the event.
+                 */
+                public_picture_url?: string;
+                /**
+                 * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                starts_on?: string;
+                /**
+                 * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                ends_on?: string;
             };
             /**
              * List of post attachments.
@@ -21220,6 +23400,47 @@ export type PerformClassicSearchFromUrlResponses = {
                          */
                         votes_count: number;
                     }>;
+                };
+                /**
+                 * Data about the event if the post is an event.
+                 */
+                event?: {
+                    /**
+                     * The ID of the event.
+                     */
+                    id: string;
+                    /**
+                     * The name of the event.
+                     */
+                    name: string;
+                    /**
+                     * The link to the event.
+                     */
+                    url?: string;
+                    /**
+                     * Whether the event is an online event.
+                     */
+                    online: boolean;
+                    /**
+                     * The location of the event.
+                     */
+                    location?: string;
+                    /**
+                     * The description of the event.
+                     */
+                    description?: string;
+                    /**
+                     * Public url to the picture of the event.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    starts_on?: string;
+                    /**
+                     * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    ends_on?: string;
                 };
                 /**
                  * List of post attachments.
@@ -21670,7 +23891,7 @@ export type PerformClassicPeopleSearchResponses = {
             /**
              * The location of the User.
              */
-            location: string;
+            location?: string;
             /**
              * The headline of the User.
              */
@@ -22144,6 +24365,47 @@ export type PerformClassicPostsSearchResponses = {
                 }>;
             };
             /**
+             * Data about the event if the post is an event.
+             */
+            event?: {
+                /**
+                 * The ID of the event.
+                 */
+                id: string;
+                /**
+                 * The name of the event.
+                 */
+                name: string;
+                /**
+                 * The link to the event.
+                 */
+                url?: string;
+                /**
+                 * Whether the event is an online event.
+                 */
+                online: boolean;
+                /**
+                 * The location of the event.
+                 */
+                location?: string;
+                /**
+                 * The description of the event.
+                 */
+                description?: string;
+                /**
+                 * Public url to the picture of the event.
+                 */
+                public_picture_url?: string;
+                /**
+                 * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                starts_on?: string;
+                /**
+                 * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                ends_on?: string;
+            };
+            /**
              * List of post attachments.
              */
             attachments: Array<{
@@ -22580,6 +24842,47 @@ export type PerformClassicPostsSearchResponses = {
                          */
                         votes_count: number;
                     }>;
+                };
+                /**
+                 * Data about the event if the post is an event.
+                 */
+                event?: {
+                    /**
+                     * The ID of the event.
+                     */
+                    id: string;
+                    /**
+                     * The name of the event.
+                     */
+                    name: string;
+                    /**
+                     * The link to the event.
+                     */
+                    url?: string;
+                    /**
+                     * Whether the event is an online event.
+                     */
+                    online: boolean;
+                    /**
+                     * The location of the event.
+                     */
+                    location?: string;
+                    /**
+                     * The description of the event.
+                     */
+                    description?: string;
+                    /**
+                     * Public url to the picture of the event.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    starts_on?: string;
+                    /**
+                     * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    ends_on?: string;
                 };
                 /**
                  * List of post attachments.
@@ -23158,7 +25461,7 @@ export type ListClassicUserJobPostingsResponses = {
             /**
              * The location of the Job posting.
              */
-            location: string;
+            location?: string;
             /**
              * The state of the Job posting.
              */
@@ -25383,7 +27686,7 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                 /**
                  * The location of the User.
                  */
-                location: string;
+                location?: string;
                 /**
                  * Whether it is possible to send an inMail to this User.
                  */
@@ -25521,7 +27824,7 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                 /**
                  * The location of the User.
                  */
-                location: string;
+                location?: string;
                 /**
                  * The headline of the User.
                  */
@@ -26043,7 +28346,7 @@ export type GetRecruiterApplicantByIdResponses = {
             /**
              * The location of the User.
              */
-            location: string;
+            location?: string;
             /**
              * Whether it is possible to send an inMail to this User.
              */
@@ -26181,7 +28484,7 @@ export type GetRecruiterApplicantByIdResponses = {
             /**
              * The location of the User.
              */
-            location: string;
+            location?: string;
             /**
              * The headline of the User.
              */
@@ -26788,7 +29091,7 @@ export type GetRecruiterPipelineCandidatesResponses = {
                 /**
                  * The location of the User.
                  */
-                location: string;
+                location?: string;
                 /**
                  * Whether it is possible to send an inMail to this User.
                  */
@@ -26926,7 +29229,7 @@ export type GetRecruiterPipelineCandidatesResponses = {
                 /**
                  * The location of the User.
                  */
-                location: string;
+                location?: string;
                 /**
                  * The headline of the User.
                  */
@@ -27981,7 +30284,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
             /**
              * The location of the User.
              */
-            location: string;
+            location?: string;
             /**
              * Whether it is possible to send an inMail to this User.
              */
@@ -28121,7 +30424,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
             /**
              * The location of the User.
              */
-            location: string;
+            location?: string;
             /**
              * The headline of the User.
              */
@@ -29794,7 +32097,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
             /**
              * The location of the User.
              */
-            location: string;
+            location?: string;
             /**
              * Whether it is possible to send an inMail to this User.
              */
@@ -29934,7 +32237,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
             /**
              * The location of the User.
              */
-            location: string;
+            location?: string;
             /**
              * The headline of the User.
              */
@@ -30428,7 +32731,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The location of the User.
                  */
-                location: string;
+                location?: string;
                 /**
                  * Whether it is possible to send an inMail to this User.
                  */
@@ -30566,7 +32869,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The location of the User.
                  */
-                location: string;
+                location?: string;
                 /**
                  * The headline of the User.
                  */
@@ -31026,7 +33329,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The location of the User.
                  */
-                location: string;
+                location?: string;
                 /**
                  * Whether it is possible to send an inMail to this User.
                  */
@@ -31164,7 +33467,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The location of the User.
                  */
-                location: string;
+                location?: string;
                 /**
                  * The headline of the User.
                  */
@@ -32306,7 +34609,7 @@ export type PerformRecruiterPeopleSearchResponses = {
             /**
              * The location of the User.
              */
-            location: string;
+            location?: string;
             /**
              * Whether it is possible to send an inMail to this User.
              */
@@ -32446,7 +34749,7 @@ export type PerformRecruiterPeopleSearchResponses = {
             /**
              * The location of the User.
              */
-            location: string;
+            location?: string;
             /**
              * The headline of the User.
              */
@@ -33124,7 +35427,7 @@ export type PerformSalesSearchFromUrlResponses = {
             /**
              * The location of the User.
              */
-            location: string;
+            location?: string;
             /**
              * The headline of the User.
              */
@@ -33465,7 +35768,7 @@ export type PerformSalesSearchFromUrlResponses = {
             /**
              * The location of the User.
              */
-            location: string;
+            location?: string;
             /**
              * The headline of the User.
              */
@@ -33919,7 +36222,7 @@ export type PerformSalesSearchFromUrlResponses = {
                 /**
                  * The location of the User.
                  */
-                location: string;
+                location?: string;
                 /**
                  * The headline of the User.
                  */
@@ -34784,7 +37087,7 @@ export type PerformSalesPeopleSearchResponses = {
             /**
              * The location of the User.
              */
-            location: string;
+            location?: string;
             /**
              * The headline of the User.
              */
@@ -35552,7 +37855,7 @@ export type BrowseSalesLeadListResponses = {
             /**
              * The location of the User.
              */
-            location: string;
+            location?: string;
             /**
              * The headline of the User.
              */
@@ -36163,7 +38466,7 @@ export type BrowseSalesAccountListResponses = {
                 /**
                  * The location of the User.
                  */
-                location: string;
+                location?: string;
                 /**
                  * The headline of the User.
                  */
