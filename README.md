@@ -9,13 +9,7 @@ This SDK is only for **Unipile API v2 (BETA)**. Use https://github.com/unipile/u
 The package is not published on npm yet. Install it directly from GitHub:
 
 ```sh
-npm install git+https://github.com/unipile/unipile-node.git
-```
-
-You can also pin a branch, tag, or commit:
-
-```sh
-npm install git+https://github.com/unipile/unipile-node.git#main
+npm install @unipile/sdk
 ```
 
 ## Usage

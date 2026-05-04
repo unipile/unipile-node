@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: npm
-      url: https://www.npmjs.com/package/unipile
+      url: https://www.npmjs.com/package/@unipile/sdk
     permissions:
       contents: read
       id-token: write
@@ -38,4 +38,4 @@ jobs:
         run: npm run build
 
       - name: Publish package
-        run: npm publish --provenance
+        run: npm publish --provenance --access public
