@@ -2,7 +2,7 @@
 
 TypeScript SDK for the Unipile API.
 
-This SDK is only for **Unipile API v2**.
+This SDK is only for **Unipile API v2 (BETA)**. Use https://github.com/unipile/unipile-node-sdk for Unipile API v1.
 
 ## Installation
 
