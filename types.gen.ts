@@ -31161,6 +31161,42 @@ export type CreateRecruiterJobPostingDraftInExistingProjectData = {
             suggested_value: string;
         }>;
         /**
+         * The base salary for the job.
+         */
+        salary?: {
+            currency: string;
+            /**
+             * The frequency at which the compensation is paid.
+             */
+            pay_frequency: 'YEARLY' | 'MONTHLY' | 'HOURLY';
+            /**
+             * The minimum in the compensation range.
+             */
+            min: number;
+            /**
+             * The maximum in the compensation range.
+             */
+            max: number;
+        };
+        /**
+         * Any additional compensation for the job.
+         */
+        additional_compensation?: {
+            currency: string;
+            /**
+             * The frequency at which the compensation is paid.
+             */
+            pay_frequency: 'YEARLY' | 'MONTHLY' | 'HOURLY';
+            /**
+             * The minimum in the compensation range.
+             */
+            min: number;
+            /**
+             * The maximum in the compensation range.
+             */
+            max: number;
+        };
+        /**
          * The settings for automated rejection system.
          */
         rejection_settings?: {
@@ -31549,6 +31585,42 @@ export type CreateRecruiterJobPostingDraftInNewProjectData = {
             suggested_value: string;
         }>;
         /**
+         * The base salary for the job.
+         */
+        salary?: {
+            currency: string;
+            /**
+             * The frequency at which the compensation is paid.
+             */
+            pay_frequency: 'YEARLY' | 'MONTHLY' | 'HOURLY';
+            /**
+             * The minimum in the compensation range.
+             */
+            min: number;
+            /**
+             * The maximum in the compensation range.
+             */
+            max: number;
+        };
+        /**
+         * Any additional compensation for the job.
+         */
+        additional_compensation?: {
+            currency: string;
+            /**
+             * The frequency at which the compensation is paid.
+             */
+            pay_frequency: 'YEARLY' | 'MONTHLY' | 'HOURLY';
+            /**
+             * The minimum in the compensation range.
+             */
+            min: number;
+            /**
+             * The maximum in the compensation range.
+             */
+            max: number;
+        };
+        /**
          * The settings for automated rejection system.
          */
         rejection_settings?: {
@@ -31743,6 +31815,42 @@ export type EditRecruiterJobPostingData = {
              */
             suggested_value: string;
         }>;
+        /**
+         * The base salary for the job.
+         */
+        salary?: {
+            currency: string;
+            /**
+             * The frequency at which the compensation is paid.
+             */
+            pay_frequency: 'YEARLY' | 'MONTHLY' | 'HOURLY';
+            /**
+             * The minimum in the compensation range.
+             */
+            min: number;
+            /**
+             * The maximum in the compensation range.
+             */
+            max: number;
+        };
+        /**
+         * Any additional compensation for the job.
+         */
+        additional_compensation?: {
+            currency: string;
+            /**
+             * The frequency at which the compensation is paid.
+             */
+            pay_frequency: 'YEARLY' | 'MONTHLY' | 'HOURLY';
+            /**
+             * The minimum in the compensation range.
+             */
+            min: number;
+            /**
+             * The maximum in the compensation range.
+             */
+            max: number;
+        };
         /**
          * The settings for automated rejection system.
          */
@@ -39271,10 +39379,6 @@ export type StartAuthIntentData = {
          */
         provider: 'linkedin';
         /**
-         * If encountering disconnection issues, enter the exact user agent of the browser on which the account has been connected before the `li_at` retrieval. You can easily get it in the browser's console with this command : `console.log(navigator.userAgent)`
-         */
-        user_agent?: string;
-        /**
          * The time zone of the current user can be used on a few specific features (e.g. scheduled actions). Setting it at authentication avoids having to do it on a case-by-case basis later on.
          */
         user_timezone?: string;
@@ -39290,6 +39394,10 @@ export type StartAuthIntentData = {
              * Password of the LinkedIn account.
              */
             password: string;
+            /**
+             * A custom user agent if you need the session to be started from a specific browser. You can easily get it in the browser's console with this command : `console.log(navigator.userAgent)`
+             */
+            user_agent?: string;
         } | {
             /**
              * The access token to authenticate with. This is the `li_at` cookie value.
@@ -39299,6 +39407,10 @@ export type StartAuthIntentData = {
              * The access token to authenticate Recruiter or Sales Navigator with. This is the `li_a` cookie value.
              */
             premium_access_token?: string;
+            /**
+             * The exact user agent of the browser on which the session has been started. You can easily get it in the browser's console with this command : `console.log(navigator.userAgent)`
+             */
+            user_agent: string;
         };
         /**
          * LinkedIn specific configuration.
