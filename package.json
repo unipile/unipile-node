@@ -2,6 +2,16 @@
   "name": "@unipile/sdk",
   "version": "2.1.0",
   "description": "TypeScript SDK for Unipile API",
+  "homepage": "https://github.com/unipile/unipile-node#readme",
+  "bugs": {
+    "url": "https://github.com/unipile/unipile-node/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unipile/unipile-node.git"
+  },
+  "license": "Unlicense",
+  "author": "Unipile API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -9,13 +19,9 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepack": "npm run clean && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/unipile/unipile-node.git"
-  },
-  "license": "Unlicense",
   "devDependencies": {
     "typescript": "^5.8.2"
   }
