@@ -38968,6 +38968,20 @@ export type SearchLocationsResponses = {
 
 export type SearchLocationsResponse = SearchLocationsResponses[keyof SearchLocationsResponses];
 
+export type OptionsV2AuthCheckpointData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/v2/auth/checkpoint';
+};
+
+export type OptionsV2AuthCheckpointResponses = {
+    /**
+     * Default Response
+     */
+    200: unknown;
+};
+
 export type SolveCheckpointData = {
     body: {
         /**
@@ -39129,6 +39143,20 @@ export type SolveCheckpointResponses = {
 };
 
 export type SolveCheckpointResponse = SolveCheckpointResponses[keyof SolveCheckpointResponses];
+
+export type OptionsV2AuthIntentData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/v2/auth/intent';
+};
+
+export type OptionsV2AuthIntentResponses = {
+    /**
+     * Default Response
+     */
+    200: unknown;
+};
 
 export type StartAuthIntentData = {
     body?: ({
