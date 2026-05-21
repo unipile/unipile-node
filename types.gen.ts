@@ -7820,7 +7820,7 @@ export type SendEmailData = {
             };
         }>;
         /**
-         * An array of custom headers to add to the email.
+         * An array of custom headers to add to the email. Each header overrides any existing header with the same name (case-insensitive), including headers set by other fields such as `to`, `cc`, `bcc`, `from`, `subject`, or `reply_to`.
          */
         custom_headers?: Array<{
             name: string;
@@ -8300,6 +8300,10 @@ export type CreateDraftData = {
              */
             display_name?: string;
         }>;
+        /**
+         * The ID of the email message that you're replying to. For Gmail, this is the provider ID for the email message that you're replying to. For IMAP, this is the RFC822 Message-ID header of the email message that you're replying to. Outlook draft replies are not supported.
+         */
+        reply_to?: string;
         /**
          * The list of file attachments to the draft.
          */
@@ -9082,6 +9086,10 @@ export type UpdateDraftData = {
              */
             display_name?: string;
         }>;
+        /**
+         * The ID of the email message that you're replying to. For Gmail, this is the provider ID for the email message that you're replying to. For IMAP, this is the RFC822 Message-ID header of the email message that you're replying to. Outlook draft replies are not supported.
+         */
+        reply_to?: string;
         /**
          * The list of file attachments to the draft. Any attachment already existing will be removed and replaced by the new ones.
          */
@@ -14169,7 +14177,7 @@ export type DeletePostData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post to delete.
+         * The ID of the Post to delete.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -14194,7 +14202,7 @@ export type GetPostData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post to retrieve.
+         * The ID of the Post to retrieve.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -15142,7 +15150,7 @@ export type UpdatePostData = {
     };
     path: {
         /**
-         * The ID of the Post to update.
+         * The ID of the Post to update.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17075,7 +17083,7 @@ export type RemovePostReactionData = {
     };
     path: {
         /**
-         * The ID of the Post where the reaction is.
+         * The ID of the Post where the reaction is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17102,7 +17110,7 @@ export type GetPostReactionsListData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post to retrieve reactions from.
+         * The ID of the Post to retrieve reactions from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17207,7 +17215,7 @@ export type AddPostReactionData = {
     };
     path: {
         /**
-         * The ID of the Post to add the reaction to.
+         * The ID of the Post to add the reaction to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17234,7 +17242,7 @@ export type GetPostCommentsListData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post to retrieve comments from.
+         * The ID of the Post to retrieve comments from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17409,7 +17417,7 @@ export type AddPostCommentData = {
     };
     path: {
         /**
-         * The ID of the Post to add the comment to.
+         * The ID of the Post to add the comment to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17522,7 +17530,7 @@ export type DeletePostCommentData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post where the comment is.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17556,7 +17564,7 @@ export type UpdatePostCommentData = {
     };
     path: {
         /**
-         * The ID of the Post where the comment is.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17708,7 +17716,7 @@ export type ReplyToCommentData = {
     };
     path: {
         /**
-         * The ID of the Post to add the comment to.
+         * The ID of the Post to add the comment to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17825,7 +17833,7 @@ export type GetPostCommentRepliesListData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post where the comment is.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17967,7 +17975,7 @@ export type RemovePostCommentReactionData = {
     };
     path: {
         /**
-         * The ID of the Post where the comment is.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17998,7 +18006,7 @@ export type GetPostCommentReactionsListData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post where the comment is.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -18107,7 +18115,7 @@ export type AddPostCommentReactionData = {
     };
     path: {
         /**
-         * The ID of the Post where the comment is.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -22583,7 +22591,7 @@ export type PerformClassicSearchFromUrlResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -23895,7 +23903,7 @@ export type PerformClassicPeopleSearchResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -27673,7 +27681,7 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -27828,7 +27836,7 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -28333,7 +28341,7 @@ export type GetRecruiterApplicantByIdResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -28488,7 +28496,7 @@ export type GetRecruiterApplicantByIdResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -29078,7 +29086,7 @@ export type GetRecruiterPipelineCandidatesResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -29233,7 +29241,7 @@ export type GetRecruiterPipelineCandidatesResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -30271,7 +30279,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -30428,7 +30436,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -32192,7 +32200,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -32349,7 +32357,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -32826,7 +32834,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -32981,7 +32989,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -33424,7 +33432,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -33579,7 +33587,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -34704,7 +34712,7 @@ export type PerformRecruiterPeopleSearchResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -34861,7 +34869,7 @@ export type PerformRecruiterPeopleSearchResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -35539,7 +35547,7 @@ export type PerformSalesSearchFromUrlResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
             /**
              * Whether it is possible to send an inMail to this User.
@@ -35880,7 +35888,7 @@ export type PerformSalesSearchFromUrlResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
             /**
              * Whether it is possible to send an inMail to this User.
@@ -36334,7 +36342,7 @@ export type PerformSalesSearchFromUrlResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
                 /**
                  * Whether it is possible to send an inMail to this User.
@@ -37199,7 +37207,7 @@ export type PerformSalesPeopleSearchResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
             /**
              * Whether it is possible to send an inMail to this User.
@@ -37967,7 +37975,7 @@ export type BrowseSalesLeadListResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
             /**
              * Whether it is possible to send an inMail to this User.
@@ -38578,7 +38586,7 @@ export type BrowseSalesAccountListResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
                 /**
                  * Whether it is possible to send an inMail to this User.
@@ -38968,6 +38976,20 @@ export type SearchLocationsResponses = {
 
 export type SearchLocationsResponse = SearchLocationsResponses[keyof SearchLocationsResponses];
 
+export type OptionsV2AuthCheckpointData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/v2/auth/checkpoint';
+};
+
+export type OptionsV2AuthCheckpointResponses = {
+    /**
+     * Default Response
+     */
+    200: unknown;
+};
+
 export type SolveCheckpointData = {
     body: {
         /**
@@ -39088,11 +39110,27 @@ export type SolveCheckpointResponses = {
          * If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.
          */
         oauth_scope?: string;
-        /**
-         * Metadata of the account.
-         */
-        metadata?: {
-            [key: string]: string;
+        metadata: {
+            /**
+             * The chosen country for the automatic proxy selection.
+             */
+            auto_proxy_country?: string;
+            /**
+             * The ID of the account in the v1 if the account is migrated from v1.
+             */
+            v1_account_id?: string;
+            /**
+             * The status of the connection to a product, if the account is connected to multiple products.
+             */
+            products_connection_status?: {
+                [key: string]: 'running' | 'disconnected' | 'errored';
+            };
+            /**
+             * Custom data of the account. This is where you can store custom data using "Update an account" method.
+             */
+            custom_data?: {
+                [key: string]: string;
+            };
         };
         /**
          * Sync details if the account has initial sync enabled.
@@ -39129,6 +39167,20 @@ export type SolveCheckpointResponses = {
 };
 
 export type SolveCheckpointResponse = SolveCheckpointResponses[keyof SolveCheckpointResponses];
+
+export type OptionsV2AuthIntentData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/v2/auth/intent';
+};
+
+export type OptionsV2AuthIntentResponses = {
+    /**
+     * Default Response
+     */
+    200: unknown;
+};
 
 export type StartAuthIntentData = {
     body?: ({
@@ -39914,11 +39966,27 @@ export type StartAuthIntentResponses = {
          * If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.
          */
         oauth_scope?: string;
-        /**
-         * Metadata of the account.
-         */
-        metadata?: {
-            [key: string]: string;
+        metadata: {
+            /**
+             * The chosen country for the automatic proxy selection.
+             */
+            auto_proxy_country?: string;
+            /**
+             * The ID of the account in the v1 if the account is migrated from v1.
+             */
+            v1_account_id?: string;
+            /**
+             * The status of the connection to a product, if the account is connected to multiple products.
+             */
+            products_connection_status?: {
+                [key: string]: 'running' | 'disconnected' | 'errored';
+            };
+            /**
+             * Custom data of the account. This is where you can store custom data using "Update an account" method.
+             */
+            custom_data?: {
+                [key: string]: string;
+            };
         };
         /**
          * Sync details if the account has initial sync enabled.
@@ -41176,11 +41244,27 @@ export type GetAccountResponses = {
          * If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.
          */
         oauth_scope?: string;
-        /**
-         * Metadata of the account.
-         */
-        metadata?: {
-            [key: string]: string;
+        metadata: {
+            /**
+             * The chosen country for the automatic proxy selection.
+             */
+            auto_proxy_country?: string;
+            /**
+             * The ID of the account in the v1 if the account is migrated from v1.
+             */
+            v1_account_id?: string;
+            /**
+             * The status of the connection to a product, if the account is connected to multiple products.
+             */
+            products_connection_status?: {
+                [key: string]: 'running' | 'disconnected' | 'errored';
+            };
+            /**
+             * Custom data of the account. This is where you can store custom data using "Update an account" method.
+             */
+            custom_data?: {
+                [key: string]: string;
+            };
         };
         /**
          * Sync details if the account has initial sync enabled.
@@ -41219,11 +41303,11 @@ export type GetAccountResponses = {
 export type GetAccountResponse = GetAccountResponses[keyof GetAccountResponses];
 
 export type UpdateAccountData = {
-    body: {
+    body?: {
         /**
-         * Metadata of the account.
+         * Custom key-value data for the account. Replaces the account `metadata.custom_data` field; other metadata fields are not modified. Any fields not provided will be removed.
          */
-        metadata: {
+        metadata?: {
             [key: string]: string;
         };
         /**
@@ -41319,11 +41403,27 @@ export type UpdateAccountResponses = {
          * If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.
          */
         oauth_scope?: string;
-        /**
-         * Metadata of the account.
-         */
-        metadata?: {
-            [key: string]: string;
+        metadata: {
+            /**
+             * The chosen country for the automatic proxy selection.
+             */
+            auto_proxy_country?: string;
+            /**
+             * The ID of the account in the v1 if the account is migrated from v1.
+             */
+            v1_account_id?: string;
+            /**
+             * The status of the connection to a product, if the account is connected to multiple products.
+             */
+            products_connection_status?: {
+                [key: string]: 'running' | 'disconnected' | 'errored';
+            };
+            /**
+             * Custom data of the account. This is where you can store custom data using "Update an account" method.
+             */
+            custom_data?: {
+                [key: string]: string;
+            };
         };
         /**
          * Sync details if the account has initial sync enabled.
@@ -41450,11 +41550,27 @@ export type ListAccountsResponses = {
              * If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.
              */
             oauth_scope?: string;
-            /**
-             * Metadata of the account.
-             */
-            metadata?: {
-                [key: string]: string;
+            metadata: {
+                /**
+                 * The chosen country for the automatic proxy selection.
+                 */
+                auto_proxy_country?: string;
+                /**
+                 * The ID of the account in the v1 if the account is migrated from v1.
+                 */
+                v1_account_id?: string;
+                /**
+                 * The status of the connection to a product, if the account is connected to multiple products.
+                 */
+                products_connection_status?: {
+                    [key: string]: 'running' | 'disconnected' | 'errored';
+                };
+                /**
+                 * Custom data of the account. This is where you can store custom data using "Update an account" method.
+                 */
+                custom_data?: {
+                    [key: string]: string;
+                };
             };
             /**
              * Sync details if the account has initial sync enabled.
@@ -41614,7 +41730,7 @@ export type CreateWebhookEndpointData = {
          */
         account_ids?: Array<string>;
         /**
-         * The URL to send the webhook payload to.
+         * The HTTP or HTTPS URL to send the webhook payload to.
          */
         url: string;
         /**
@@ -41748,7 +41864,7 @@ export type UpdateWebhookEndpointData = {
          */
         account_ids?: Array<string>;
         /**
-         * The URL to send the webhook payload to.
+         * The HTTP or HTTPS URL to send the webhook payload to.
          */
         url?: string;
         /**
