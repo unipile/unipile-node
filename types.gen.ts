@@ -152,61 +152,6 @@ export type GetChatsListResponses = {
              */
             restrictions?: Array<'send_message'>;
             /**
-             * List of participants in the chat if group chat.
-             */
-            participants?: Array<{
-                object: 'GroupParticipant';
-                /**
-                 * The user who is a participant of the group.
-                 */
-                user: {
-                    /**
-                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
-                     */
-                    id: string;
-                    object: 'User';
-                    /**
-                     * Type of the user
-                     * - `individual` is an individual user.
-                     * - `organization` is an organization / business entity.
-                     * - `other` is an other type of entity.
-                     */
-                    type: 'individual' | 'organization' | 'other';
-                    /**
-                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
-                     */
-                    public_identifier?: string;
-                    /**
-                     * Display name of the user.
-                     */
-                    display_name: string;
-                    /**
-                     * Public url to the profile of the user.
-                     */
-                    profile_url?: string;
-                    /**
-                     * Public url to the profile picture of the user.
-                     */
-                    public_picture_url?: string;
-                    /**
-                     * Private url to download the profile picture of the user. This url require authentication.
-                     */
-                    private_picture_download_url?: string;
-                    /**
-                     * Description of the user.
-                     */
-                    description?: string;
-                };
-                /**
-                 * Is the current user the participant.
-                 */
-                is_self: boolean;
-                /**
-                 * Is the participant an admin of the group.
-                 */
-                is_admin: boolean;
-            }>;
-            /**
              * The last message in the chat.
              */
             last_message?: {
@@ -223,6 +168,19 @@ export type GetChatsListResponses = {
                  */
                 is_sender: boolean;
             };
+            /**
+             * The provider's of the Account.
+             * - `mock` is mock.
+             * - `whatsapp` is WhatsApp.
+             * - `linkedin` is LinkedIn.
+             * - `instagram` is Instagram.
+             * - `google` is Google.
+             * - `outlook` is Outlook.
+             * - `telegram` is Telegram.
+             * - `imap` is IMAP.
+             */
+            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+            specifics?: unknown;
             /**
              * The other participant if 1to1 chat.
              */
@@ -263,23 +221,172 @@ export type GetChatsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
             };
             /**
-             * The provider's of the Account.
-             * - `mock` is mock.
-             * - `whatsapp` is WhatsApp.
-             * - `linkedin` is LinkedIn.
-             * - `instagram` is Instagram.
-             * - `google` is Google.
-             * - `outlook` is Outlook.
-             * - `telegram` is Telegram.
-             * - `imap` is IMAP.
+             * List of participants in the chat if group chat.
              */
-            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
-            specifics?: unknown;
+            participants?: Array<{
+                object: 'GroupParticipant';
+                /**
+                 * Is the current user the participant.
+                 */
+                is_self: boolean;
+                /**
+                 * Is the participant an admin of the group.
+                 */
+                is_admin: boolean;
+                user: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user.
+                     */
+                    display_name: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                    specifics?: unknown & {
+                        /**
+                         * The geographical location of the user.
+                         */
+                        location?: string;
+                        /**
+                         * Network distance to a User.
+                         * `SELF`: Yourself.
+                         * `FIRST_DEGREE`: 1st degree connection.
+                         * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                         * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                         * `OUT_OF_NETWORK`: Unreachable user.'
+                         */
+                        network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                        /**
+                         * The user's industry.
+                         */
+                        industry?: string;
+                        /**
+                         * Whether the user is followed by the current user.
+                         */
+                        following?: boolean;
+                        /**
+                         * The number of followers of the user.
+                         */
+                        followers_count?: number;
+                        /**
+                         * The number of relations of the user.
+                         */
+                        relations_count?: number;
+                        /**
+                         * The number of relations that you share with the user.
+                         */
+                        shared_relations_count?: number;
+                        /**
+                         * The URL of the website provided by the user.
+                         */
+                        website_url?: string;
+                        /**
+                         * The URL of the portfolio provided by the user.
+                         */
+                        portfolio_url?: string;
+                        /**
+                         * The LinkedIn internal URL of the user's services page.
+                         */
+                        services_page_url?: string;
+                        /**
+                         * Whether the User has a premium account.
+                         */
+                        is_premium?: boolean;
+                        /**
+                         * Whether the User has a verified account.
+                         */
+                        is_verified?: boolean;
+                    };
+                };
+            }>;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -324,7 +431,7 @@ export type GetInboxesListResponses = {
             disabled: boolean;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -488,61 +595,6 @@ export type GetInboxChatsListResponses = {
              */
             restrictions?: Array<'send_message'>;
             /**
-             * List of participants in the chat if group chat.
-             */
-            participants?: Array<{
-                object: 'GroupParticipant';
-                /**
-                 * The user who is a participant of the group.
-                 */
-                user: {
-                    /**
-                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
-                     */
-                    id: string;
-                    object: 'User';
-                    /**
-                     * Type of the user
-                     * - `individual` is an individual user.
-                     * - `organization` is an organization / business entity.
-                     * - `other` is an other type of entity.
-                     */
-                    type: 'individual' | 'organization' | 'other';
-                    /**
-                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
-                     */
-                    public_identifier?: string;
-                    /**
-                     * Display name of the user.
-                     */
-                    display_name: string;
-                    /**
-                     * Public url to the profile of the user.
-                     */
-                    profile_url?: string;
-                    /**
-                     * Public url to the profile picture of the user.
-                     */
-                    public_picture_url?: string;
-                    /**
-                     * Private url to download the profile picture of the user. This url require authentication.
-                     */
-                    private_picture_download_url?: string;
-                    /**
-                     * Description of the user.
-                     */
-                    description?: string;
-                };
-                /**
-                 * Is the current user the participant.
-                 */
-                is_self: boolean;
-                /**
-                 * Is the participant an admin of the group.
-                 */
-                is_admin: boolean;
-            }>;
-            /**
              * The last message in the chat.
              */
             last_message?: {
@@ -559,6 +611,19 @@ export type GetInboxChatsListResponses = {
                  */
                 is_sender: boolean;
             };
+            /**
+             * The provider's of the Account.
+             * - `mock` is mock.
+             * - `whatsapp` is WhatsApp.
+             * - `linkedin` is LinkedIn.
+             * - `instagram` is Instagram.
+             * - `google` is Google.
+             * - `outlook` is Outlook.
+             * - `telegram` is Telegram.
+             * - `imap` is IMAP.
+             */
+            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+            specifics?: unknown;
             /**
              * The other participant if 1to1 chat.
              */
@@ -599,23 +664,172 @@ export type GetInboxChatsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
             };
             /**
-             * The provider's of the Account.
-             * - `mock` is mock.
-             * - `whatsapp` is WhatsApp.
-             * - `linkedin` is LinkedIn.
-             * - `instagram` is Instagram.
-             * - `google` is Google.
-             * - `outlook` is Outlook.
-             * - `telegram` is Telegram.
-             * - `imap` is IMAP.
+             * List of participants in the chat if group chat.
              */
-            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
-            specifics?: unknown;
+            participants?: Array<{
+                object: 'GroupParticipant';
+                /**
+                 * Is the current user the participant.
+                 */
+                is_self: boolean;
+                /**
+                 * Is the participant an admin of the group.
+                 */
+                is_admin: boolean;
+                user: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user.
+                     */
+                    display_name: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                    specifics?: unknown & {
+                        /**
+                         * The geographical location of the user.
+                         */
+                        location?: string;
+                        /**
+                         * Network distance to a User.
+                         * `SELF`: Yourself.
+                         * `FIRST_DEGREE`: 1st degree connection.
+                         * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                         * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                         * `OUT_OF_NETWORK`: Unreachable user.'
+                         */
+                        network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                        /**
+                         * The user's industry.
+                         */
+                        industry?: string;
+                        /**
+                         * Whether the user is followed by the current user.
+                         */
+                        following?: boolean;
+                        /**
+                         * The number of followers of the user.
+                         */
+                        followers_count?: number;
+                        /**
+                         * The number of relations of the user.
+                         */
+                        relations_count?: number;
+                        /**
+                         * The number of relations that you share with the user.
+                         */
+                        shared_relations_count?: number;
+                        /**
+                         * The URL of the website provided by the user.
+                         */
+                        website_url?: string;
+                        /**
+                         * The URL of the portfolio provided by the user.
+                         */
+                        portfolio_url?: string;
+                        /**
+                         * The LinkedIn internal URL of the user's services page.
+                         */
+                        services_page_url?: string;
+                        /**
+                         * Whether the User has a premium account.
+                         */
+                        is_premium?: boolean;
+                        /**
+                         * Whether the User has a verified account.
+                         */
+                        is_verified?: boolean;
+                    };
+                };
+            }>;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -767,61 +981,6 @@ export type GetChatResponses = {
          */
         restrictions?: Array<'send_message'>;
         /**
-         * List of participants in the chat if group chat.
-         */
-        participants?: Array<{
-            object: 'GroupParticipant';
-            /**
-             * The user who is a participant of the group.
-             */
-            user: {
-                /**
-                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
-                 */
-                id: string;
-                object: 'User';
-                /**
-                 * Type of the user
-                 * - `individual` is an individual user.
-                 * - `organization` is an organization / business entity.
-                 * - `other` is an other type of entity.
-                 */
-                type: 'individual' | 'organization' | 'other';
-                /**
-                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
-                 */
-                public_identifier?: string;
-                /**
-                 * Display name of the user.
-                 */
-                display_name: string;
-                /**
-                 * Public url to the profile of the user.
-                 */
-                profile_url?: string;
-                /**
-                 * Public url to the profile picture of the user.
-                 */
-                public_picture_url?: string;
-                /**
-                 * Private url to download the profile picture of the user. This url require authentication.
-                 */
-                private_picture_download_url?: string;
-                /**
-                 * Description of the user.
-                 */
-                description?: string;
-            };
-            /**
-             * Is the current user the participant.
-             */
-            is_self: boolean;
-            /**
-             * Is the participant an admin of the group.
-             */
-            is_admin: boolean;
-        }>;
-        /**
          * The last message in the chat.
          */
         last_message?: {
@@ -838,6 +997,19 @@ export type GetChatResponses = {
              */
             is_sender: boolean;
         };
+        /**
+         * The provider's of the Account.
+         * - `mock` is mock.
+         * - `whatsapp` is WhatsApp.
+         * - `linkedin` is LinkedIn.
+         * - `instagram` is Instagram.
+         * - `google` is Google.
+         * - `outlook` is Outlook.
+         * - `telegram` is Telegram.
+         * - `imap` is IMAP.
+         */
+        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+        specifics?: unknown;
         /**
          * The other participant if 1to1 chat.
          */
@@ -878,20 +1050,169 @@ export type GetChatResponses = {
              * Description of the user.
              */
             description?: string;
+            specifics?: unknown & {
+                /**
+                 * The geographical location of the user.
+                 */
+                location?: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * The user's industry.
+                 */
+                industry?: string;
+                /**
+                 * Whether the user is followed by the current user.
+                 */
+                following?: boolean;
+                /**
+                 * The number of followers of the user.
+                 */
+                followers_count?: number;
+                /**
+                 * The number of relations of the user.
+                 */
+                relations_count?: number;
+                /**
+                 * The number of relations that you share with the user.
+                 */
+                shared_relations_count?: number;
+                /**
+                 * The URL of the website provided by the user.
+                 */
+                website_url?: string;
+                /**
+                 * The URL of the portfolio provided by the user.
+                 */
+                portfolio_url?: string;
+                /**
+                 * The LinkedIn internal URL of the user's services page.
+                 */
+                services_page_url?: string;
+                /**
+                 * Whether the User has a premium account.
+                 */
+                is_premium?: boolean;
+                /**
+                 * Whether the User has a verified account.
+                 */
+                is_verified?: boolean;
+            };
         };
         /**
-         * The provider's of the Account.
-         * - `mock` is mock.
-         * - `whatsapp` is WhatsApp.
-         * - `linkedin` is LinkedIn.
-         * - `instagram` is Instagram.
-         * - `google` is Google.
-         * - `outlook` is Outlook.
-         * - `telegram` is Telegram.
-         * - `imap` is IMAP.
+         * List of participants in the chat if group chat.
          */
-        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
-        specifics?: unknown;
+        participants?: Array<{
+            object: 'GroupParticipant';
+            /**
+             * Is the current user the participant.
+             */
+            is_self: boolean;
+            /**
+             * Is the participant an admin of the group.
+             */
+            is_admin: boolean;
+            user: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user.
+                 */
+                display_name: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
+            };
+        }>;
     };
 };
 
@@ -1081,6 +1402,7 @@ export type UpdateChatResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown;
             };
             /**
              * Is the current user the participant.
@@ -1148,6 +1470,7 @@ export type UpdateChatResponses = {
              * Description of the user.
              */
             description?: string;
+            specifics?: unknown;
         };
         /**
          * The provider's of the Account.
@@ -2028,47 +2351,6 @@ export type GetMessagesListResponses = {
                 count: number;
             }>;
             /**
-             * The user who sent the message.
-             */
-            sender?: {
-                /**
-                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
-                 */
-                id: string;
-                object: 'User';
-                /**
-                 * Type of the user
-                 * - `individual` is an individual user.
-                 * - `organization` is an organization / business entity.
-                 * - `other` is an other type of entity.
-                 */
-                type: 'individual' | 'organization' | 'other';
-                /**
-                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
-                 */
-                public_identifier?: string;
-                /**
-                 * Display name of the user.
-                 */
-                display_name: string;
-                /**
-                 * Public url to the profile of the user.
-                 */
-                profile_url?: string;
-                /**
-                 * Public url to the profile picture of the user.
-                 */
-                public_picture_url?: string;
-                /**
-                 * Private url to download the profile picture of the user. This url require authentication.
-                 */
-                private_picture_download_url?: string;
-                /**
-                 * Description of the user.
-                 */
-                description?: string;
-            };
-            /**
              * The provider's of the Account.
              * - `mock` is mock.
              * - `whatsapp` is WhatsApp.
@@ -2289,6 +2571,108 @@ export type GetMessagesListResponses = {
                  */
                 description?: string;
             }>;
+            specifics?: unknown & {
+                /**
+                 * The subject of the message.
+                 */
+                subject?: string;
+            };
+            /**
+             * The user who sent the message.
+             */
+            sender?: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user.
+                 */
+                display_name: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
+            };
             /**
              * The quoted message.
              */
@@ -2551,6 +2935,61 @@ export type GetMessagesListResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown & {
+                        /**
+                         * The geographical location of the user.
+                         */
+                        location?: string;
+                        /**
+                         * Network distance to a User.
+                         * `SELF`: Yourself.
+                         * `FIRST_DEGREE`: 1st degree connection.
+                         * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                         * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                         * `OUT_OF_NETWORK`: Unreachable user.'
+                         */
+                        network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                        /**
+                         * The user's industry.
+                         */
+                        industry?: string;
+                        /**
+                         * Whether the user is followed by the current user.
+                         */
+                        following?: boolean;
+                        /**
+                         * The number of followers of the user.
+                         */
+                        followers_count?: number;
+                        /**
+                         * The number of relations of the user.
+                         */
+                        relations_count?: number;
+                        /**
+                         * The number of relations that you share with the user.
+                         */
+                        shared_relations_count?: number;
+                        /**
+                         * The URL of the website provided by the user.
+                         */
+                        website_url?: string;
+                        /**
+                         * The URL of the portfolio provided by the user.
+                         */
+                        portfolio_url?: string;
+                        /**
+                         * The LinkedIn internal URL of the user's services page.
+                         */
+                        services_page_url?: string;
+                        /**
+                         * Whether the User has a premium account.
+                         */
+                        is_premium?: boolean;
+                        /**
+                         * Whether the User has a verified account.
+                         */
+                        is_verified?: boolean;
+                    };
                 };
             };
             /**
@@ -2772,6 +3211,7 @@ export type GetMessagesListResponses = {
                      */
                     description?: string;
                 }>;
+                object: 'ForwardedMessage';
                 /**
                  * The user who sent the message.
                  */
@@ -2812,18 +3252,66 @@ export type GetMessagesListResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown & {
+                        /**
+                         * The geographical location of the user.
+                         */
+                        location?: string;
+                        /**
+                         * Network distance to a User.
+                         * `SELF`: Yourself.
+                         * `FIRST_DEGREE`: 1st degree connection.
+                         * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                         * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                         * `OUT_OF_NETWORK`: Unreachable user.'
+                         */
+                        network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                        /**
+                         * The user's industry.
+                         */
+                        industry?: string;
+                        /**
+                         * Whether the user is followed by the current user.
+                         */
+                        following?: boolean;
+                        /**
+                         * The number of followers of the user.
+                         */
+                        followers_count?: number;
+                        /**
+                         * The number of relations of the user.
+                         */
+                        relations_count?: number;
+                        /**
+                         * The number of relations that you share with the user.
+                         */
+                        shared_relations_count?: number;
+                        /**
+                         * The URL of the website provided by the user.
+                         */
+                        website_url?: string;
+                        /**
+                         * The URL of the portfolio provided by the user.
+                         */
+                        portfolio_url?: string;
+                        /**
+                         * The LinkedIn internal URL of the user's services page.
+                         */
+                        services_page_url?: string;
+                        /**
+                         * Whether the User has a premium account.
+                         */
+                        is_premium?: boolean;
+                        /**
+                         * Whether the User has a verified account.
+                         */
+                        is_verified?: boolean;
+                    };
                 };
-                object: 'ForwardedMessage';
-            };
-            specifics?: unknown & {
-                /**
-                 * The subject of the message.
-                 */
-                subject?: string;
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -3197,47 +3685,6 @@ export type GetMessageResponses = {
             count: number;
         }>;
         /**
-         * The user who sent the message.
-         */
-        sender?: {
-            /**
-             * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
-             */
-            id: string;
-            object: 'User';
-            /**
-             * Type of the user
-             * - `individual` is an individual user.
-             * - `organization` is an organization / business entity.
-             * - `other` is an other type of entity.
-             */
-            type: 'individual' | 'organization' | 'other';
-            /**
-             * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
-             */
-            public_identifier?: string;
-            /**
-             * Display name of the user.
-             */
-            display_name: string;
-            /**
-             * Public url to the profile of the user.
-             */
-            profile_url?: string;
-            /**
-             * Public url to the profile picture of the user.
-             */
-            public_picture_url?: string;
-            /**
-             * Private url to download the profile picture of the user. This url require authentication.
-             */
-            private_picture_download_url?: string;
-            /**
-             * Description of the user.
-             */
-            description?: string;
-        };
-        /**
          * The provider's of the Account.
          * - `mock` is mock.
          * - `whatsapp` is WhatsApp.
@@ -3458,6 +3905,108 @@ export type GetMessageResponses = {
              */
             description?: string;
         }>;
+        specifics?: unknown & {
+            /**
+             * The subject of the message.
+             */
+            subject?: string;
+        };
+        /**
+         * The user who sent the message.
+         */
+        sender?: {
+            /**
+             * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+             */
+            id: string;
+            object: 'User';
+            /**
+             * Type of the user
+             * - `individual` is an individual user.
+             * - `organization` is an organization / business entity.
+             * - `other` is an other type of entity.
+             */
+            type: 'individual' | 'organization' | 'other';
+            /**
+             * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+             */
+            public_identifier?: string;
+            /**
+             * Display name of the user.
+             */
+            display_name: string;
+            /**
+             * Public url to the profile of the user.
+             */
+            profile_url?: string;
+            /**
+             * Public url to the profile picture of the user.
+             */
+            public_picture_url?: string;
+            /**
+             * Private url to download the profile picture of the user. This url require authentication.
+             */
+            private_picture_download_url?: string;
+            /**
+             * Description of the user.
+             */
+            description?: string;
+            specifics?: unknown & {
+                /**
+                 * The geographical location of the user.
+                 */
+                location?: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * The user's industry.
+                 */
+                industry?: string;
+                /**
+                 * Whether the user is followed by the current user.
+                 */
+                following?: boolean;
+                /**
+                 * The number of followers of the user.
+                 */
+                followers_count?: number;
+                /**
+                 * The number of relations of the user.
+                 */
+                relations_count?: number;
+                /**
+                 * The number of relations that you share with the user.
+                 */
+                shared_relations_count?: number;
+                /**
+                 * The URL of the website provided by the user.
+                 */
+                website_url?: string;
+                /**
+                 * The URL of the portfolio provided by the user.
+                 */
+                portfolio_url?: string;
+                /**
+                 * The LinkedIn internal URL of the user's services page.
+                 */
+                services_page_url?: string;
+                /**
+                 * Whether the User has a premium account.
+                 */
+                is_premium?: boolean;
+                /**
+                 * Whether the User has a verified account.
+                 */
+                is_verified?: boolean;
+            };
+        };
         /**
          * The quoted message.
          */
@@ -3720,6 +4269,61 @@ export type GetMessageResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
             };
         };
         /**
@@ -3941,6 +4545,7 @@ export type GetMessageResponses = {
                  */
                 description?: string;
             }>;
+            object: 'ForwardedMessage';
             /**
              * The user who sent the message.
              */
@@ -3981,14 +4586,62 @@ export type GetMessageResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
             };
-            object: 'ForwardedMessage';
-        };
-        specifics?: unknown & {
-            /**
-             * The subject of the message.
-             */
-            subject?: string;
         };
     };
 };
@@ -4493,6 +5146,7 @@ export type ModifyMessageResponses = {
              * Description of the user.
              */
             description?: string;
+            specifics?: unknown;
         };
         /**
          * The provider's of the Account.
@@ -4977,6 +5631,7 @@ export type ModifyMessageResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown;
             };
         };
         /**
@@ -5238,6 +5893,7 @@ export type ModifyMessageResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown;
             };
             object: 'ForwardedMessage';
         };
@@ -5315,8 +5971,13 @@ export type GetParticipantsListResponses = {
         data: Array<{
             object: 'GroupParticipant';
             /**
-             * The user who is a participant of the group.
+             * Is the current user the participant.
              */
+            is_self: boolean;
+            /**
+             * Is the participant an admin of the group.
+             */
+            is_admin: boolean;
             user: {
                 /**
                  * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
@@ -5354,18 +6015,65 @@ export type GetParticipantsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
             };
-            /**
-             * Is the current user the participant.
-             */
-            is_self: boolean;
-            /**
-             * Is the participant an admin of the group.
-             */
-            is_admin: boolean;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -5521,8 +6229,9 @@ export type GetMessageReactionsListResponses = {
              */
             value: string;
             /**
-             * The user who sent the reaction.
+             * Is the current user the sender of the reaction.
              */
+            is_sender: boolean;
             sender: {
                 /**
                  * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
@@ -5560,14 +6269,65 @@ export type GetMessageReactionsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
             };
-            /**
-             * Is the current user the sender of the reaction.
-             */
-            is_sender: boolean;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -6102,7 +6862,7 @@ export type GetEmailsListResponses = {
             is_unread: boolean;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -6511,7 +7271,7 @@ export type GetFolderEmailsListResponses = {
             is_unread: boolean;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -7820,7 +8580,7 @@ export type SendEmailData = {
             };
         }>;
         /**
-         * An array of custom headers to add to the email.
+         * An array of custom headers to add to the email. Each header overrides any existing header with the same name (case-insensitive), including headers set by other fields such as `to`, `cc`, `bcc`, `from`, `subject`, or `reply_to`.
          */
         custom_headers?: Array<{
             name: string;
@@ -8225,7 +8985,7 @@ export type GetDraftsListResponses = {
             categories?: Array<string>;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -8300,6 +9060,10 @@ export type CreateDraftData = {
              */
             display_name?: string;
         }>;
+        /**
+         * The ID of the email message that you're replying to. For Gmail, this is the provider ID for the email message that you're replying to. For IMAP, this is the RFC822 Message-ID header of the email message that you're replying to. Outlook draft replies are not supported.
+         */
+        reply_to?: string;
         /**
          * The list of file attachments to the draft.
          */
@@ -9083,6 +9847,10 @@ export type UpdateDraftData = {
             display_name?: string;
         }>;
         /**
+         * The ID of the email message that you're replying to. For Gmail, this is the provider ID for the email message that you're replying to. For IMAP, this is the RFC822 Message-ID header of the email message that you're replying to. Outlook draft replies are not supported.
+         */
+        reply_to?: string;
+        /**
          * The list of file attachments to the draft. Any attachment already existing will be removed and replaced by the new ones.
          */
         attachments?: Array<{
@@ -9570,7 +10338,7 @@ export type GetFoldersListResponses = {
             parent_id?: string;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -10163,7 +10931,7 @@ export type GetEmailContactsListResponses = {
             }>;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -10235,94 +11003,6 @@ export type GetUserProfileResponses = {
          * Description of the user.
          */
         description?: string;
-        /**
-         * URL of the user's background / banner picture.
-         */
-        background_picture_url?: string;
-        /**
-         * URL of the user's public picture in large size.
-         */
-        public_picture_url_large?: string;
-        /**
-         * First name of the user.
-         */
-        first_name?: string;
-        /**
-         * Last name of the user.
-         */
-        last_name?: string;
-        /**
-         * Birth date of the user.
-         */
-        birth_date?: string;
-        /**
-         * List of user addresses.
-         */
-        addresses?: Array<string>;
-        /**
-         * List of user email addresses.
-         */
-        emails?: Array<string>;
-        /**
-         * List of user phone numbers.
-         */
-        phone_numbers?: Array<string>;
-        /**
-         * Date and time when the user account was created on the provider.
-         */
-        created_at?: string;
-        /**
-         * Biography of the user.
-         */
-        bio?: string;
-        /**
-         * Location of the user.
-         */
-        location?: string;
-        /**
-         * Date and time until when the user is muted.
-         */
-        muted_until?: string;
-        /**
-         * Whether the user is followed by the current user.
-         */
-        following?: boolean;
-        /**
-         * Number of followers of the user.
-         */
-        followers_count?: number;
-        /**
-         * Number of users followed by the user.
-         */
-        following_count?: number;
-        /**
-         * Number of relations of the user.
-         */
-        relations_count?: number;
-        /**
-         * Number of users that have a relation with the given profile and with the account owner.
-         */
-        shared_relations_count?: number;
-        /**
-         * Number of following users that follows the given profile.
-         */
-        shared_followers_count?: number;
-        /**
-         * Whether the user is blocked by the current user.
-         */
-        is_blocked: boolean;
-        /**
-         * The provider's of the Account.
-         * - `mock` is mock.
-         * - `whatsapp` is WhatsApp.
-         * - `linkedin` is LinkedIn.
-         * - `instagram` is Instagram.
-         * - `google` is Google.
-         * - `outlook` is Outlook.
-         * - `telegram` is Telegram.
-         * - `imap` is IMAP.
-         */
-        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
         specifics: unknown & ({
             /**
              * LinkedIn internal member ID of the user.
@@ -10383,6 +11063,7 @@ export type GetUserProfileResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown;
                 };
                 /**
                  * Type of the relation / follow request.
@@ -10756,6 +11437,7 @@ export type GetUserProfileResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown;
                 }>;
                 /**
                  * Skills related to the project.
@@ -10825,6 +11507,7 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: unknown;
                     } | null;
                 }>;
                 given: Array<{
@@ -10877,6 +11560,7 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: unknown;
                     } | null;
                 }>;
             };
@@ -10930,6 +11614,61 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: {
+                            /**
+                             * The geographical location of the user.
+                             */
+                            location?: string;
+                            /**
+                             * Network distance to a User.
+                             * `SELF`: Yourself.
+                             * `FIRST_DEGREE`: 1st degree connection.
+                             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                             * `OUT_OF_NETWORK`: Unreachable user.'
+                             */
+                            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                            /**
+                             * The user's industry.
+                             */
+                            industry?: string;
+                            /**
+                             * Whether the user is followed by the current user.
+                             */
+                            following?: boolean;
+                            /**
+                             * The number of followers of the user.
+                             */
+                            followers_count?: number;
+                            /**
+                             * The number of relations of the user.
+                             */
+                            relations_count?: number;
+                            /**
+                             * The number of relations that you share with the user.
+                             */
+                            shared_relations_count?: number;
+                            /**
+                             * The URL of the website provided by the user.
+                             */
+                            website_url?: string;
+                            /**
+                             * The URL of the portfolio provided by the user.
+                             */
+                            portfolio_url?: string;
+                            /**
+                             * The LinkedIn internal URL of the user's services page.
+                             */
+                            services_page_url?: string;
+                            /**
+                             * Whether the User has a premium account.
+                             */
+                            is_premium?: boolean;
+                            /**
+                             * Whether the User has a verified account.
+                             */
+                            is_verified?: boolean;
+                        };
                     };
                     /**
                      * The type of event.
@@ -10985,6 +11724,61 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: {
+                            /**
+                             * The geographical location of the user.
+                             */
+                            location?: string;
+                            /**
+                             * Network distance to a User.
+                             * `SELF`: Yourself.
+                             * `FIRST_DEGREE`: 1st degree connection.
+                             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                             * `OUT_OF_NETWORK`: Unreachable user.'
+                             */
+                            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                            /**
+                             * The user's industry.
+                             */
+                            industry?: string;
+                            /**
+                             * Whether the user is followed by the current user.
+                             */
+                            following?: boolean;
+                            /**
+                             * The number of followers of the user.
+                             */
+                            followers_count?: number;
+                            /**
+                             * The number of relations of the user.
+                             */
+                            relations_count?: number;
+                            /**
+                             * The number of relations that you share with the user.
+                             */
+                            shared_relations_count?: number;
+                            /**
+                             * The URL of the website provided by the user.
+                             */
+                            website_url?: string;
+                            /**
+                             * The URL of the portfolio provided by the user.
+                             */
+                            portfolio_url?: string;
+                            /**
+                             * The LinkedIn internal URL of the user's services page.
+                             */
+                            services_page_url?: string;
+                            /**
+                             * Whether the User has a premium account.
+                             */
+                            is_premium?: boolean;
+                            /**
+                             * Whether the User has a verified account.
+                             */
+                            is_verified?: boolean;
+                        };
                     };
                     /**
                      * The type of event.
@@ -11036,6 +11830,61 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: {
+                            /**
+                             * The geographical location of the user.
+                             */
+                            location?: string;
+                            /**
+                             * Network distance to a User.
+                             * `SELF`: Yourself.
+                             * `FIRST_DEGREE`: 1st degree connection.
+                             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                             * `OUT_OF_NETWORK`: Unreachable user.'
+                             */
+                            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                            /**
+                             * The user's industry.
+                             */
+                            industry?: string;
+                            /**
+                             * Whether the user is followed by the current user.
+                             */
+                            following?: boolean;
+                            /**
+                             * The number of followers of the user.
+                             */
+                            followers_count?: number;
+                            /**
+                             * The number of relations of the user.
+                             */
+                            relations_count?: number;
+                            /**
+                             * The number of relations that you share with the user.
+                             */
+                            shared_relations_count?: number;
+                            /**
+                             * The URL of the website provided by the user.
+                             */
+                            website_url?: string;
+                            /**
+                             * The URL of the portfolio provided by the user.
+                             */
+                            portfolio_url?: string;
+                            /**
+                             * The LinkedIn internal URL of the user's services page.
+                             */
+                            services_page_url?: string;
+                            /**
+                             * Whether the User has a premium account.
+                             */
+                            is_premium?: boolean;
+                            /**
+                             * Whether the User has a verified account.
+                             */
+                            is_verified?: boolean;
+                        };
                     };
                     /**
                      * The type of event.
@@ -11087,6 +11936,61 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: {
+                            /**
+                             * The geographical location of the user.
+                             */
+                            location?: string;
+                            /**
+                             * Network distance to a User.
+                             * `SELF`: Yourself.
+                             * `FIRST_DEGREE`: 1st degree connection.
+                             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                             * `OUT_OF_NETWORK`: Unreachable user.'
+                             */
+                            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                            /**
+                             * The user's industry.
+                             */
+                            industry?: string;
+                            /**
+                             * Whether the user is followed by the current user.
+                             */
+                            following?: boolean;
+                            /**
+                             * The number of followers of the user.
+                             */
+                            followers_count?: number;
+                            /**
+                             * The number of relations of the user.
+                             */
+                            relations_count?: number;
+                            /**
+                             * The number of relations that you share with the user.
+                             */
+                            shared_relations_count?: number;
+                            /**
+                             * The URL of the website provided by the user.
+                             */
+                            website_url?: string;
+                            /**
+                             * The URL of the portfolio provided by the user.
+                             */
+                            portfolio_url?: string;
+                            /**
+                             * The LinkedIn internal URL of the user's services page.
+                             */
+                            services_page_url?: string;
+                            /**
+                             * Whether the User has a premium account.
+                             */
+                            is_premium?: boolean;
+                            /**
+                             * Whether the User has a verified account.
+                             */
+                            is_verified?: boolean;
+                        };
                     };
                     /**
                      * The type of event.
@@ -11146,6 +12050,61 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: {
+                            /**
+                             * The geographical location of the user.
+                             */
+                            location?: string;
+                            /**
+                             * Network distance to a User.
+                             * `SELF`: Yourself.
+                             * `FIRST_DEGREE`: 1st degree connection.
+                             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                             * `OUT_OF_NETWORK`: Unreachable user.'
+                             */
+                            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                            /**
+                             * The user's industry.
+                             */
+                            industry?: string;
+                            /**
+                             * Whether the user is followed by the current user.
+                             */
+                            following?: boolean;
+                            /**
+                             * The number of followers of the user.
+                             */
+                            followers_count?: number;
+                            /**
+                             * The number of relations of the user.
+                             */
+                            relations_count?: number;
+                            /**
+                             * The number of relations that you share with the user.
+                             */
+                            shared_relations_count?: number;
+                            /**
+                             * The URL of the website provided by the user.
+                             */
+                            website_url?: string;
+                            /**
+                             * The URL of the portfolio provided by the user.
+                             */
+                            portfolio_url?: string;
+                            /**
+                             * The LinkedIn internal URL of the user's services page.
+                             */
+                            services_page_url?: string;
+                            /**
+                             * Whether the User has a premium account.
+                             */
+                            is_premium?: boolean;
+                            /**
+                             * Whether the User has a verified account.
+                             */
+                            is_verified?: boolean;
+                        };
                     };
                     /**
                      * The type of event.
@@ -11193,6 +12152,61 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: {
+                            /**
+                             * The geographical location of the user.
+                             */
+                            location?: string;
+                            /**
+                             * Network distance to a User.
+                             * `SELF`: Yourself.
+                             * `FIRST_DEGREE`: 1st degree connection.
+                             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                             * `OUT_OF_NETWORK`: Unreachable user.'
+                             */
+                            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                            /**
+                             * The user's industry.
+                             */
+                            industry?: string;
+                            /**
+                             * Whether the user is followed by the current user.
+                             */
+                            following?: boolean;
+                            /**
+                             * The number of followers of the user.
+                             */
+                            followers_count?: number;
+                            /**
+                             * The number of relations of the user.
+                             */
+                            relations_count?: number;
+                            /**
+                             * The number of relations that you share with the user.
+                             */
+                            shared_relations_count?: number;
+                            /**
+                             * The URL of the website provided by the user.
+                             */
+                            website_url?: string;
+                            /**
+                             * The URL of the portfolio provided by the user.
+                             */
+                            portfolio_url?: string;
+                            /**
+                             * The LinkedIn internal URL of the user's services page.
+                             */
+                            services_page_url?: string;
+                            /**
+                             * Whether the User has a premium account.
+                             */
+                            is_premium?: boolean;
+                            /**
+                             * Whether the User has a verified account.
+                             */
+                            is_verified?: boolean;
+                        };
                     };
                     /**
                      * The type of event.
@@ -11252,6 +12266,61 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: {
+                            /**
+                             * The geographical location of the user.
+                             */
+                            location?: string;
+                            /**
+                             * Network distance to a User.
+                             * `SELF`: Yourself.
+                             * `FIRST_DEGREE`: 1st degree connection.
+                             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                             * `OUT_OF_NETWORK`: Unreachable user.'
+                             */
+                            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                            /**
+                             * The user's industry.
+                             */
+                            industry?: string;
+                            /**
+                             * Whether the user is followed by the current user.
+                             */
+                            following?: boolean;
+                            /**
+                             * The number of followers of the user.
+                             */
+                            followers_count?: number;
+                            /**
+                             * The number of relations of the user.
+                             */
+                            relations_count?: number;
+                            /**
+                             * The number of relations that you share with the user.
+                             */
+                            shared_relations_count?: number;
+                            /**
+                             * The URL of the website provided by the user.
+                             */
+                            website_url?: string;
+                            /**
+                             * The URL of the portfolio provided by the user.
+                             */
+                            portfolio_url?: string;
+                            /**
+                             * The LinkedIn internal URL of the user's services page.
+                             */
+                            services_page_url?: string;
+                            /**
+                             * Whether the User has a premium account.
+                             */
+                            is_premium?: boolean;
+                            /**
+                             * Whether the User has a verified account.
+                             */
+                            is_verified?: boolean;
+                        };
                     };
                     /**
                      * A list of comments published on this note.
@@ -11298,6 +12367,61 @@ export type GetUserProfileResponses = {
                              * Description of the user.
                              */
                             description?: string;
+                            specifics?: {
+                                /**
+                                 * The geographical location of the user.
+                                 */
+                                location?: string;
+                                /**
+                                 * Network distance to a User.
+                                 * `SELF`: Yourself.
+                                 * `FIRST_DEGREE`: 1st degree connection.
+                                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                                 * `OUT_OF_NETWORK`: Unreachable user.'
+                                 */
+                                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                                /**
+                                 * The user's industry.
+                                 */
+                                industry?: string;
+                                /**
+                                 * Whether the user is followed by the current user.
+                                 */
+                                following?: boolean;
+                                /**
+                                 * The number of followers of the user.
+                                 */
+                                followers_count?: number;
+                                /**
+                                 * The number of relations of the user.
+                                 */
+                                relations_count?: number;
+                                /**
+                                 * The number of relations that you share with the user.
+                                 */
+                                shared_relations_count?: number;
+                                /**
+                                 * The URL of the website provided by the user.
+                                 */
+                                website_url?: string;
+                                /**
+                                 * The URL of the portfolio provided by the user.
+                                 */
+                                portfolio_url?: string;
+                                /**
+                                 * The LinkedIn internal URL of the user's services page.
+                                 */
+                                services_page_url?: string;
+                                /**
+                                 * Whether the User has a premium account.
+                                 */
+                                is_premium?: boolean;
+                                /**
+                                 * Whether the User has a verified account.
+                                 */
+                                is_verified?: boolean;
+                            };
                         };
                         /**
                          * The time at which the comment was last modified. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
@@ -11322,6 +12446,94 @@ export type GetUserProfileResponses = {
         } | {
             messaging_identifier: string;
         } | null);
+        /**
+         * URL of the user's background / banner picture.
+         */
+        background_picture_url?: string;
+        /**
+         * URL of the user's public picture in large size.
+         */
+        public_picture_url_large?: string;
+        /**
+         * First name of the user.
+         */
+        first_name?: string;
+        /**
+         * Last name of the user.
+         */
+        last_name?: string;
+        /**
+         * Birth date of the user.
+         */
+        birth_date?: string;
+        /**
+         * List of user addresses.
+         */
+        addresses?: Array<string>;
+        /**
+         * List of user email addresses.
+         */
+        emails?: Array<string>;
+        /**
+         * List of user phone numbers.
+         */
+        phone_numbers?: Array<string>;
+        /**
+         * Date and time when the user account was created on the provider.
+         */
+        created_at?: string;
+        /**
+         * Biography of the user.
+         */
+        bio?: string;
+        /**
+         * Location of the user.
+         */
+        location?: string;
+        /**
+         * Date and time until when the user is muted.
+         */
+        muted_until?: string;
+        /**
+         * Whether the user is followed by the current user.
+         */
+        following?: boolean;
+        /**
+         * Number of followers of the user.
+         */
+        followers_count?: number;
+        /**
+         * Number of users followed by the user.
+         */
+        following_count?: number;
+        /**
+         * Number of relations of the user.
+         */
+        relations_count?: number;
+        /**
+         * Number of users that have a relation with the given profile and with the account owner.
+         */
+        shared_relations_count?: number;
+        /**
+         * Number of following users that follows the given profile.
+         */
+        shared_followers_count?: number;
+        /**
+         * Whether the user is blocked by the current user.
+         */
+        is_blocked: boolean;
+        /**
+         * The provider's of the Account.
+         * - `mock` is mock.
+         * - `whatsapp` is WhatsApp.
+         * - `linkedin` is LinkedIn.
+         * - `instagram` is Instagram.
+         * - `google` is Google.
+         * - `outlook` is Outlook.
+         * - `telegram` is Telegram.
+         * - `imap` is IMAP.
+         */
+        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
         /**
          * List of user social handles.
          */
@@ -12585,6 +13797,10 @@ export type GetUserRelationsResponses = {
             id: string;
             object: 'UserRelation';
             /**
+             * Date and time when the relation was created.
+             */
+            created_at?: string;
+            /**
              * The user of the relation.
              */
             user: {
@@ -12624,14 +13840,65 @@ export type GetUserRelationsResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
             };
-            /**
-             * Date and time when the relation was created.
-             */
-            created_at?: string;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -12707,6 +13974,24 @@ export type GetRelationRequestsListResponses = {
         data: Array<{
             object: 'RelationRequest';
             /**
+             * Type of the relation / follow request.
+             * - `sent` if the current user has asked another one to be in his relations.
+             * - `received` if another user has asked the current one to be in his relations.
+             */
+            type: 'sent' | 'received';
+            /**
+             * The unique identifier of the invitation for the provider.
+             */
+            id: string;
+            /**
+             * Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            created_at?: string;
+            /**
+             * Any message that comes with the invitation.
+             */
+            message?: string;
+            /**
              * The user who is the target of the relation / follow request.
              */
             user?: {
@@ -12746,28 +14031,65 @@ export type GetRelationRequestsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
             };
-            /**
-             * Type of the relation / follow request.
-             * - `sent` if the current user has asked another one to be in his relations.
-             * - `received` if another user has asked the current one to be in his relations.
-             */
-            type: 'sent' | 'received';
-            /**
-             * The unique identifier of the invitation for the provider.
-             */
-            id: string;
-            /**
-             * Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
-             */
-            created_at?: string;
-            /**
-             * Any message that comes with the invitation.
-             */
-            message?: string;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -12861,6 +14183,61 @@ export type CreateRelationRequestResponses = {
              * Description of the user.
              */
             description?: string;
+            specifics?: unknown & {
+                /**
+                 * The geographical location of the user.
+                 */
+                location?: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * The user's industry.
+                 */
+                industry?: string;
+                /**
+                 * Whether the user is followed by the current user.
+                 */
+                following?: boolean;
+                /**
+                 * The number of followers of the user.
+                 */
+                followers_count?: number;
+                /**
+                 * The number of relations of the user.
+                 */
+                relations_count?: number;
+                /**
+                 * The number of relations that you share with the user.
+                 */
+                shared_relations_count?: number;
+                /**
+                 * The URL of the website provided by the user.
+                 */
+                website_url?: string;
+                /**
+                 * The URL of the portfolio provided by the user.
+                 */
+                portfolio_url?: string;
+                /**
+                 * The LinkedIn internal URL of the user's services page.
+                 */
+                services_page_url?: string;
+                /**
+                 * Whether the User has a premium account.
+                 */
+                is_premium?: boolean;
+                /**
+                 * Whether the User has a verified account.
+                 */
+                is_verified?: boolean;
+            };
         };
     };
 };
@@ -12992,9 +14369,64 @@ export type ListUserFollowersResponses = {
              * Description of the user.
              */
             description?: string;
+            specifics?: unknown & {
+                /**
+                 * The geographical location of the user.
+                 */
+                location?: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * The user's industry.
+                 */
+                industry?: string;
+                /**
+                 * Whether the user is followed by the current user.
+                 */
+                following?: boolean;
+                /**
+                 * The number of followers of the user.
+                 */
+                followers_count?: number;
+                /**
+                 * The number of relations of the user.
+                 */
+                relations_count?: number;
+                /**
+                 * The number of relations that you share with the user.
+                 */
+                shared_relations_count?: number;
+                /**
+                 * The URL of the website provided by the user.
+                 */
+                website_url?: string;
+                /**
+                 * The URL of the portfolio provided by the user.
+                 */
+                portfolio_url?: string;
+                /**
+                 * The LinkedIn internal URL of the user's services page.
+                 */
+                services_page_url?: string;
+                /**
+                 * Whether the User has a premium account.
+                 */
+                is_premium?: boolean;
+                /**
+                 * Whether the User has a verified account.
+                 */
+                is_verified?: boolean;
+            };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -13077,9 +14509,64 @@ export type ListUserFollowingResponses = {
              * Description of the user.
              */
             description?: string;
+            specifics?: unknown & {
+                /**
+                 * The geographical location of the user.
+                 */
+                location?: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * The user's industry.
+                 */
+                industry?: string;
+                /**
+                 * Whether the user is followed by the current user.
+                 */
+                following?: boolean;
+                /**
+                 * The number of followers of the user.
+                 */
+                followers_count?: number;
+                /**
+                 * The number of relations of the user.
+                 */
+                relations_count?: number;
+                /**
+                 * The number of relations that you share with the user.
+                 */
+                shared_relations_count?: number;
+                /**
+                 * The URL of the website provided by the user.
+                 */
+                website_url?: string;
+                /**
+                 * The URL of the portfolio provided by the user.
+                 */
+                portfolio_url?: string;
+                /**
+                 * The LinkedIn internal URL of the user's services page.
+                 */
+                services_page_url?: string;
+                /**
+                 * Whether the User has a premium account.
+                 */
+                is_premium?: boolean;
+                /**
+                 * Whether the User has a verified account.
+                 */
+                is_verified?: boolean;
+            };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -13115,6 +14602,24 @@ export type FollowUserResponses = {
         object: 'UserFollowed';
     } | {
         object: 'RelationRequest';
+        /**
+         * Type of the relation / follow request.
+         * - `sent` if the current user has asked another one to be in his relations.
+         * - `received` if another user has asked the current one to be in his relations.
+         */
+        type: 'sent' | 'received';
+        /**
+         * The unique identifier of the invitation for the provider.
+         */
+        id: string;
+        /**
+         * Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         */
+        created_at?: string;
+        /**
+         * Any message that comes with the invitation.
+         */
+        message?: string;
         /**
          * The user who is the target of the relation / follow request.
          */
@@ -13155,25 +14660,62 @@ export type FollowUserResponses = {
              * Description of the user.
              */
             description?: string;
+            specifics?: unknown & {
+                /**
+                 * The geographical location of the user.
+                 */
+                location?: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * The user's industry.
+                 */
+                industry?: string;
+                /**
+                 * Whether the user is followed by the current user.
+                 */
+                following?: boolean;
+                /**
+                 * The number of followers of the user.
+                 */
+                followers_count?: number;
+                /**
+                 * The number of relations of the user.
+                 */
+                relations_count?: number;
+                /**
+                 * The number of relations that you share with the user.
+                 */
+                shared_relations_count?: number;
+                /**
+                 * The URL of the website provided by the user.
+                 */
+                website_url?: string;
+                /**
+                 * The URL of the portfolio provided by the user.
+                 */
+                portfolio_url?: string;
+                /**
+                 * The LinkedIn internal URL of the user's services page.
+                 */
+                services_page_url?: string;
+                /**
+                 * Whether the User has a premium account.
+                 */
+                is_premium?: boolean;
+                /**
+                 * Whether the User has a verified account.
+                 */
+                is_verified?: boolean;
+            };
         };
-        /**
-         * Type of the relation / follow request.
-         * - `sent` if the current user has asked another one to be in his relations.
-         * - `received` if another user has asked the current one to be in his relations.
-         */
-        type: 'sent' | 'received';
-        /**
-         * The unique identifier of the invitation for the provider.
-         */
-        id: string;
-        /**
-         * Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
-         */
-        created_at?: string;
-        /**
-         * Any message that comes with the invitation.
-         */
-        message?: string;
     };
 };
 
@@ -13262,47 +14804,6 @@ export type GetPostsListResponses = {
              * The text content of the post.
              */
             text: string;
-            /**
-             * The author of the post.
-             */
-            author: {
-                /**
-                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
-                 */
-                id: string;
-                object: 'User';
-                /**
-                 * Type of the user
-                 * - `individual` is an individual user.
-                 * - `organization` is an organization / business entity.
-                 * - `other` is an other type of entity.
-                 */
-                type: 'individual' | 'organization' | 'other';
-                /**
-                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
-                 */
-                public_identifier?: string;
-                /**
-                 * Display name of the user.
-                 */
-                display_name: string;
-                /**
-                 * Public url to the profile of the user.
-                 */
-                profile_url?: string;
-                /**
-                 * Public url to the profile picture of the user.
-                 */
-                public_picture_url?: string;
-                /**
-                 * Private url to download the profile picture of the user. This url require authentication.
-                 */
-                private_picture_download_url?: string;
-                /**
-                 * Description of the user.
-                 */
-                description?: string;
-            };
             /**
              * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
              */
@@ -13676,6 +15177,102 @@ export type GetPostsListResponses = {
              */
             is_repost: boolean;
             /**
+             * The author of the post.
+             */
+            author: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user.
+                 */
+                display_name: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
+            };
+            /**
              * The user who reposted the post if `is_repost` is `true`.
              */
             reposted_by?: {
@@ -13715,6 +15312,61 @@ export type GetPostsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
             };
             /**
              * The post that is quoted in this post.
@@ -13741,47 +15393,6 @@ export type GetPostsListResponses = {
                  * The text content of the post.
                  */
                 text: string;
-                /**
-                 * The author of the post.
-                 */
-                author: {
-                    /**
-                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
-                     */
-                    id: string;
-                    object: 'User';
-                    /**
-                     * Type of the user
-                     * - `individual` is an individual user.
-                     * - `organization` is an organization / business entity.
-                     * - `other` is an other type of entity.
-                     */
-                    type: 'individual' | 'organization' | 'other';
-                    /**
-                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
-                     */
-                    public_identifier?: string;
-                    /**
-                     * Display name of the user.
-                     */
-                    display_name: string;
-                    /**
-                     * Public url to the profile of the user.
-                     */
-                    profile_url?: string;
-                    /**
-                     * Public url to the profile picture of the user.
-                     */
-                    public_picture_url?: string;
-                    /**
-                     * Private url to download the profile picture of the user. This url require authentication.
-                     */
-                    private_picture_download_url?: string;
-                    /**
-                     * Description of the user.
-                     */
-                    description?: string;
-                };
                 /**
                  * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
                  */
@@ -14150,10 +15761,106 @@ export type GetPostsListResponses = {
                      */
                     users_reached_counter?: number;
                 };
+                /**
+                 * The author of the post.
+                 */
+                author: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user.
+                     */
+                    display_name: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                    specifics?: unknown & {
+                        /**
+                         * The geographical location of the user.
+                         */
+                        location?: string;
+                        /**
+                         * Network distance to a User.
+                         * `SELF`: Yourself.
+                         * `FIRST_DEGREE`: 1st degree connection.
+                         * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                         * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                         * `OUT_OF_NETWORK`: Unreachable user.'
+                         */
+                        network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                        /**
+                         * The user's industry.
+                         */
+                        industry?: string;
+                        /**
+                         * Whether the user is followed by the current user.
+                         */
+                        following?: boolean;
+                        /**
+                         * The number of followers of the user.
+                         */
+                        followers_count?: number;
+                        /**
+                         * The number of relations of the user.
+                         */
+                        relations_count?: number;
+                        /**
+                         * The number of relations that you share with the user.
+                         */
+                        shared_relations_count?: number;
+                        /**
+                         * The URL of the website provided by the user.
+                         */
+                        website_url?: string;
+                        /**
+                         * The URL of the portfolio provided by the user.
+                         */
+                        portfolio_url?: string;
+                        /**
+                         * The LinkedIn internal URL of the user's services page.
+                         */
+                        services_page_url?: string;
+                        /**
+                         * Whether the User has a premium account.
+                         */
+                        is_premium?: boolean;
+                        /**
+                         * Whether the User has a verified account.
+                         */
+                        is_verified?: boolean;
+                    };
+                };
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -14169,7 +15876,7 @@ export type DeletePostData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post to delete.
+         * The ID of the Post to delete.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -14194,7 +15901,7 @@ export type GetPostData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post to retrieve.
+         * The ID of the Post to retrieve.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -14232,47 +15939,6 @@ export type GetPostResponses = {
          * The text content of the post.
          */
         text: string;
-        /**
-         * The author of the post.
-         */
-        author: {
-            /**
-             * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
-             */
-            id: string;
-            object: 'User';
-            /**
-             * Type of the user
-             * - `individual` is an individual user.
-             * - `organization` is an organization / business entity.
-             * - `other` is an other type of entity.
-             */
-            type: 'individual' | 'organization' | 'other';
-            /**
-             * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
-             */
-            public_identifier?: string;
-            /**
-             * Display name of the user.
-             */
-            display_name: string;
-            /**
-             * Public url to the profile of the user.
-             */
-            profile_url?: string;
-            /**
-             * Public url to the profile picture of the user.
-             */
-            public_picture_url?: string;
-            /**
-             * Private url to download the profile picture of the user. This url require authentication.
-             */
-            private_picture_download_url?: string;
-            /**
-             * Description of the user.
-             */
-            description?: string;
-        };
         /**
          * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
          */
@@ -14646,6 +16312,102 @@ export type GetPostResponses = {
          */
         is_repost: boolean;
         /**
+         * The author of the post.
+         */
+        author: {
+            /**
+             * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+             */
+            id: string;
+            object: 'User';
+            /**
+             * Type of the user
+             * - `individual` is an individual user.
+             * - `organization` is an organization / business entity.
+             * - `other` is an other type of entity.
+             */
+            type: 'individual' | 'organization' | 'other';
+            /**
+             * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+             */
+            public_identifier?: string;
+            /**
+             * Display name of the user.
+             */
+            display_name: string;
+            /**
+             * Public url to the profile of the user.
+             */
+            profile_url?: string;
+            /**
+             * Public url to the profile picture of the user.
+             */
+            public_picture_url?: string;
+            /**
+             * Private url to download the profile picture of the user. This url require authentication.
+             */
+            private_picture_download_url?: string;
+            /**
+             * Description of the user.
+             */
+            description?: string;
+            specifics?: unknown & {
+                /**
+                 * The geographical location of the user.
+                 */
+                location?: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * The user's industry.
+                 */
+                industry?: string;
+                /**
+                 * Whether the user is followed by the current user.
+                 */
+                following?: boolean;
+                /**
+                 * The number of followers of the user.
+                 */
+                followers_count?: number;
+                /**
+                 * The number of relations of the user.
+                 */
+                relations_count?: number;
+                /**
+                 * The number of relations that you share with the user.
+                 */
+                shared_relations_count?: number;
+                /**
+                 * The URL of the website provided by the user.
+                 */
+                website_url?: string;
+                /**
+                 * The URL of the portfolio provided by the user.
+                 */
+                portfolio_url?: string;
+                /**
+                 * The LinkedIn internal URL of the user's services page.
+                 */
+                services_page_url?: string;
+                /**
+                 * Whether the User has a premium account.
+                 */
+                is_premium?: boolean;
+                /**
+                 * Whether the User has a verified account.
+                 */
+                is_verified?: boolean;
+            };
+        };
+        /**
          * The user who reposted the post if `is_repost` is `true`.
          */
         reposted_by?: {
@@ -14685,6 +16447,61 @@ export type GetPostResponses = {
              * Description of the user.
              */
             description?: string;
+            specifics?: unknown & {
+                /**
+                 * The geographical location of the user.
+                 */
+                location?: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * The user's industry.
+                 */
+                industry?: string;
+                /**
+                 * Whether the user is followed by the current user.
+                 */
+                following?: boolean;
+                /**
+                 * The number of followers of the user.
+                 */
+                followers_count?: number;
+                /**
+                 * The number of relations of the user.
+                 */
+                relations_count?: number;
+                /**
+                 * The number of relations that you share with the user.
+                 */
+                shared_relations_count?: number;
+                /**
+                 * The URL of the website provided by the user.
+                 */
+                website_url?: string;
+                /**
+                 * The URL of the portfolio provided by the user.
+                 */
+                portfolio_url?: string;
+                /**
+                 * The LinkedIn internal URL of the user's services page.
+                 */
+                services_page_url?: string;
+                /**
+                 * Whether the User has a premium account.
+                 */
+                is_premium?: boolean;
+                /**
+                 * Whether the User has a verified account.
+                 */
+                is_verified?: boolean;
+            };
         };
         /**
          * The post that is quoted in this post.
@@ -14711,47 +16528,6 @@ export type GetPostResponses = {
              * The text content of the post.
              */
             text: string;
-            /**
-             * The author of the post.
-             */
-            author: {
-                /**
-                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
-                 */
-                id: string;
-                object: 'User';
-                /**
-                 * Type of the user
-                 * - `individual` is an individual user.
-                 * - `organization` is an organization / business entity.
-                 * - `other` is an other type of entity.
-                 */
-                type: 'individual' | 'organization' | 'other';
-                /**
-                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
-                 */
-                public_identifier?: string;
-                /**
-                 * Display name of the user.
-                 */
-                display_name: string;
-                /**
-                 * Public url to the profile of the user.
-                 */
-                profile_url?: string;
-                /**
-                 * Public url to the profile picture of the user.
-                 */
-                public_picture_url?: string;
-                /**
-                 * Private url to download the profile picture of the user. This url require authentication.
-                 */
-                private_picture_download_url?: string;
-                /**
-                 * Description of the user.
-                 */
-                description?: string;
-            };
             /**
              * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
              */
@@ -15120,6 +16896,102 @@ export type GetPostResponses = {
                  */
                 users_reached_counter?: number;
             };
+            /**
+             * The author of the post.
+             */
+            author: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user.
+                 */
+                display_name: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
+            };
         };
     };
 };
@@ -15142,7 +17014,7 @@ export type UpdatePostData = {
     };
     path: {
         /**
-         * The ID of the Post to update.
+         * The ID of the Post to update.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -15220,6 +17092,7 @@ export type UpdatePostResponses = {
              * Description of the user.
              */
             description?: string;
+            specifics?: unknown;
         };
         /**
          * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
@@ -15633,6 +17506,7 @@ export type UpdatePostResponses = {
              * Description of the user.
              */
             description?: string;
+            specifics?: unknown;
         };
         /**
          * The post that is quoted in this post.
@@ -15699,6 +17573,7 @@ export type UpdatePostResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown;
             };
             /**
              * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
@@ -16215,6 +18090,7 @@ export type CreatePostResponses = {
              * Description of the user.
              */
             description?: string;
+            specifics?: unknown;
         };
         /**
          * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
@@ -16628,6 +18504,7 @@ export type CreatePostResponses = {
              * Description of the user.
              */
             description?: string;
+            specifics?: unknown;
         };
         /**
          * The post that is quoted in this post.
@@ -16694,6 +18571,7 @@ export type CreatePostResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown;
             };
             /**
              * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
@@ -17075,7 +18953,7 @@ export type RemovePostReactionData = {
     };
     path: {
         /**
-         * The ID of the Post where the reaction is.
+         * The ID of the Post where the reaction is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17102,7 +18980,7 @@ export type GetPostReactionsListData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post to retrieve reactions from.
+         * The ID of the Post to retrieve reactions from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17139,8 +19017,9 @@ export type GetPostReactionsListResponses = {
              */
             value: string;
             /**
-             * The user who sent the reaction.
+             * Is the current user the sender of the reaction.
              */
+            is_sender: boolean;
             sender: {
                 /**
                  * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
@@ -17178,14 +19057,65 @@ export type GetPostReactionsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
             };
-            /**
-             * Is the current user the sender of the reaction.
-             */
-            is_sender: boolean;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -17207,7 +19137,7 @@ export type AddPostReactionData = {
     };
     path: {
         /**
-         * The ID of the Post to add the reaction to.
+         * The ID of the Post to add the reaction to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17234,7 +19164,7 @@ export type GetPostCommentsListData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post to retrieve comments from.
+         * The ID of the Post to retrieve comments from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17279,6 +19209,256 @@ export type GetPostCommentsListResponses = {
              */
             thread_id?: string;
             /**
+             * The creation date of the comment. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            created_at: string;
+            /**
+             * The text content of the comment.
+             */
+            text: string;
+            /**
+             * List of comment attachments.
+             */
+            attachments: Array<{
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'audio';
+                /**
+                 * The duration of the audio in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The audio is a voice note (should be displayed differently)
+                 */
+                voice_note: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'img';
+                /**
+                 * The size of the image in pixels.
+                 */
+                size?: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The image is a sticker (should be displayed differently)
+                 */
+                sticker: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'video';
+                /**
+                 * The duration of the video in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The size of the video in pixels.
+                 */
+                size: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The video is a GIF (should be displayed differently)
+                 */
+                gif: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'file';
+                /**
+                 * The name of the file, including the extension.
+                 */
+                filename: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL of the shared content.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'shared_content';
+                /**
+                 * The type of content being shared.
+                 */
+                media_type: 'post' | 'story' | 'url' | 'reel';
+                /**
+                 * The author of the shared content, if applicable.
+                 */
+                author?: string;
+                /**
+                 * A brief description of the shared content.
+                 */
+                description?: string;
+            }>;
+            /**
+             * Is the current user the sender of the comment.
+             */
+            is_sender: boolean;
+            /**
+             * Whether the current user can reply to the comment or not.
+             */
+            can_reply: boolean;
+            /**
+             * Whether the current user can react to the comment or not.
+             */
+            can_react: boolean;
+            /**
+             * The number of replies to the comment.
+             */
+            reply_counter: number;
+            /**
+             * The number of impressions of the comment.
+             */
+            impressions_counter?: number;
+            /**
+             * A list of reactions to the element.
+             */
+            reactions_counter: Array<{
+                /**
+                 * Value of the reaction. Usually an emoji unicode.
+                 */
+                reaction: string;
+                /**
+                 * The total count of this reaction.
+                 */
+                count: number;
+            }>;
+            /**
              * The author of the comment.
              */
             author: {
@@ -17318,47 +19498,65 @@ export type GetPostCommentsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
             };
-            /**
-             * The creation date of the comment. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
-             */
-            created_at: string;
-            /**
-             * The text content of the comment.
-             */
-            text: string;
-            /**
-             * Is the current user the sender of the comment.
-             */
-            is_sender: boolean;
-            /**
-             * Whether the current user can reply to the comment or not.
-             */
-            can_reply: boolean;
-            /**
-             * Whether the current user can react to the comment or not.
-             */
-            can_react: boolean;
-            /**
-             * The number of replies to the comment.
-             */
-            reply_counter: number;
-            /**
-             * A list of reactions to the element.
-             */
-            reactions_counter: Array<{
-                /**
-                 * Value of the reaction. Usually an emoji unicode.
-                 */
-                reaction: string;
-                /**
-                 * The total count of this reaction.
-                 */
-                count: number;
-            }>;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -17409,7 +19607,7 @@ export type AddPostCommentData = {
     };
     path: {
         /**
-         * The ID of the Post to add the comment to.
+         * The ID of the Post to add the comment to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17475,6 +19673,7 @@ export type AddPostCommentResponses = {
              * Description of the user.
              */
             description?: string;
+            specifics?: unknown;
         };
         /**
          * The creation date of the comment. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
@@ -17484,6 +19683,215 @@ export type AddPostCommentResponses = {
          * The text content of the comment.
          */
         text: string;
+        /**
+         * List of comment attachments.
+         */
+        attachments: Array<{
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'audio';
+            /**
+             * The duration of the audio in seconds.
+             */
+            duration?: number;
+            /**
+             * The audio is a voice note (should be displayed differently)
+             */
+            voice_note: boolean;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'img';
+            /**
+             * The size of the image in pixels.
+             */
+            size?: {
+                height: number;
+                width: number;
+            };
+            /**
+             * The image is a sticker (should be displayed differently)
+             */
+            sticker: boolean;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'video';
+            /**
+             * The duration of the video in seconds.
+             */
+            duration?: number;
+            /**
+             * The size of the video in pixels.
+             */
+            size: {
+                height: number;
+                width: number;
+            };
+            /**
+             * The video is a GIF (should be displayed differently)
+             */
+            gif: boolean;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'file';
+            /**
+             * The name of the file, including the extension.
+             */
+            filename: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL of the shared content.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'shared_content';
+            /**
+             * The type of content being shared.
+             */
+            media_type: 'post' | 'story' | 'url' | 'reel';
+            /**
+             * The author of the shared content, if applicable.
+             */
+            author?: string;
+            /**
+             * A brief description of the shared content.
+             */
+            description?: string;
+        }>;
         /**
          * Is the current user the sender of the comment.
          */
@@ -17500,6 +19908,10 @@ export type AddPostCommentResponses = {
          * The number of replies to the comment.
          */
         reply_counter: number;
+        /**
+         * The number of impressions of the comment.
+         */
+        impressions_counter?: number;
         /**
          * A list of reactions to the element.
          */
@@ -17522,7 +19934,7 @@ export type DeletePostCommentData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post where the comment is.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17556,7 +19968,7 @@ export type UpdatePostCommentData = {
     };
     path: {
         /**
-         * The ID of the Post where the comment is.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17626,6 +20038,7 @@ export type UpdatePostCommentResponses = {
              * Description of the user.
              */
             description?: string;
+            specifics?: unknown;
         };
         /**
          * The creation date of the comment. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
@@ -17635,6 +20048,215 @@ export type UpdatePostCommentResponses = {
          * The text content of the comment.
          */
         text: string;
+        /**
+         * List of comment attachments.
+         */
+        attachments: Array<{
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'audio';
+            /**
+             * The duration of the audio in seconds.
+             */
+            duration?: number;
+            /**
+             * The audio is a voice note (should be displayed differently)
+             */
+            voice_note: boolean;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'img';
+            /**
+             * The size of the image in pixels.
+             */
+            size?: {
+                height: number;
+                width: number;
+            };
+            /**
+             * The image is a sticker (should be displayed differently)
+             */
+            sticker: boolean;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'video';
+            /**
+             * The duration of the video in seconds.
+             */
+            duration?: number;
+            /**
+             * The size of the video in pixels.
+             */
+            size: {
+                height: number;
+                width: number;
+            };
+            /**
+             * The video is a GIF (should be displayed differently)
+             */
+            gif: boolean;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'file';
+            /**
+             * The name of the file, including the extension.
+             */
+            filename: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL of the shared content.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'shared_content';
+            /**
+             * The type of content being shared.
+             */
+            media_type: 'post' | 'story' | 'url' | 'reel';
+            /**
+             * The author of the shared content, if applicable.
+             */
+            author?: string;
+            /**
+             * A brief description of the shared content.
+             */
+            description?: string;
+        }>;
         /**
          * Is the current user the sender of the comment.
          */
@@ -17651,6 +20273,10 @@ export type UpdatePostCommentResponses = {
          * The number of replies to the comment.
          */
         reply_counter: number;
+        /**
+         * The number of impressions of the comment.
+         */
+        impressions_counter?: number;
         /**
          * A list of reactions to the element.
          */
@@ -17708,7 +20334,7 @@ export type ReplyToCommentData = {
     };
     path: {
         /**
-         * The ID of the Post to add the comment to.
+         * The ID of the Post to add the comment to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17778,6 +20404,7 @@ export type ReplyToCommentResponses = {
              * Description of the user.
              */
             description?: string;
+            specifics?: unknown;
         };
         /**
          * The creation date of the comment. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
@@ -17787,6 +20414,215 @@ export type ReplyToCommentResponses = {
          * The text content of the comment.
          */
         text: string;
+        /**
+         * List of comment attachments.
+         */
+        attachments: Array<{
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'audio';
+            /**
+             * The duration of the audio in seconds.
+             */
+            duration?: number;
+            /**
+             * The audio is a voice note (should be displayed differently)
+             */
+            voice_note: boolean;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'img';
+            /**
+             * The size of the image in pixels.
+             */
+            size?: {
+                height: number;
+                width: number;
+            };
+            /**
+             * The image is a sticker (should be displayed differently)
+             */
+            sticker: boolean;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'video';
+            /**
+             * The duration of the video in seconds.
+             */
+            duration?: number;
+            /**
+             * The size of the video in pixels.
+             */
+            size: {
+                height: number;
+                width: number;
+            };
+            /**
+             * The video is a GIF (should be displayed differently)
+             */
+            gif: boolean;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'file';
+            /**
+             * The name of the file, including the extension.
+             */
+            filename: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL of the shared content.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'shared_content';
+            /**
+             * The type of content being shared.
+             */
+            media_type: 'post' | 'story' | 'url' | 'reel';
+            /**
+             * The author of the shared content, if applicable.
+             */
+            author?: string;
+            /**
+             * A brief description of the shared content.
+             */
+            description?: string;
+        }>;
         /**
          * Is the current user the sender of the comment.
          */
@@ -17803,6 +20639,10 @@ export type ReplyToCommentResponses = {
          * The number of replies to the comment.
          */
         reply_counter: number;
+        /**
+         * The number of impressions of the comment.
+         */
+        impressions_counter?: number;
         /**
          * A list of reactions to the element.
          */
@@ -17825,7 +20665,7 @@ export type GetPostCommentRepliesListData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post where the comment is.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17870,6 +20710,256 @@ export type GetPostCommentRepliesListResponses = {
              */
             thread_id?: string;
             /**
+             * The creation date of the comment. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            created_at: string;
+            /**
+             * The text content of the comment.
+             */
+            text: string;
+            /**
+             * List of comment attachments.
+             */
+            attachments: Array<{
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'audio';
+                /**
+                 * The duration of the audio in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The audio is a voice note (should be displayed differently)
+                 */
+                voice_note: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'img';
+                /**
+                 * The size of the image in pixels.
+                 */
+                size?: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The image is a sticker (should be displayed differently)
+                 */
+                sticker: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'video';
+                /**
+                 * The duration of the video in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The size of the video in pixels.
+                 */
+                size: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The video is a GIF (should be displayed differently)
+                 */
+                gif: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'file';
+                /**
+                 * The name of the file, including the extension.
+                 */
+                filename: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL of the shared content.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'shared_content';
+                /**
+                 * The type of content being shared.
+                 */
+                media_type: 'post' | 'story' | 'url' | 'reel';
+                /**
+                 * The author of the shared content, if applicable.
+                 */
+                author?: string;
+                /**
+                 * A brief description of the shared content.
+                 */
+                description?: string;
+            }>;
+            /**
+             * Is the current user the sender of the comment.
+             */
+            is_sender: boolean;
+            /**
+             * Whether the current user can reply to the comment or not.
+             */
+            can_reply: boolean;
+            /**
+             * Whether the current user can react to the comment or not.
+             */
+            can_react: boolean;
+            /**
+             * The number of replies to the comment.
+             */
+            reply_counter: number;
+            /**
+             * The number of impressions of the comment.
+             */
+            impressions_counter?: number;
+            /**
+             * A list of reactions to the element.
+             */
+            reactions_counter: Array<{
+                /**
+                 * Value of the reaction. Usually an emoji unicode.
+                 */
+                reaction: string;
+                /**
+                 * The total count of this reaction.
+                 */
+                count: number;
+            }>;
+            /**
              * The author of the comment.
              */
             author: {
@@ -17909,47 +20999,65 @@ export type GetPostCommentRepliesListResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
             };
-            /**
-             * The creation date of the comment. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
-             */
-            created_at: string;
-            /**
-             * The text content of the comment.
-             */
-            text: string;
-            /**
-             * Is the current user the sender of the comment.
-             */
-            is_sender: boolean;
-            /**
-             * Whether the current user can reply to the comment or not.
-             */
-            can_reply: boolean;
-            /**
-             * Whether the current user can react to the comment or not.
-             */
-            can_react: boolean;
-            /**
-             * The number of replies to the comment.
-             */
-            reply_counter: number;
-            /**
-             * A list of reactions to the element.
-             */
-            reactions_counter: Array<{
-                /**
-                 * Value of the reaction. Usually an emoji unicode.
-                 */
-                reaction: string;
-                /**
-                 * The total count of this reaction.
-                 */
-                count: number;
-            }>;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -17967,7 +21075,7 @@ export type RemovePostCommentReactionData = {
     };
     path: {
         /**
-         * The ID of the Post where the comment is.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -17998,7 +21106,7 @@ export type GetPostCommentReactionsListData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post where the comment is.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -18039,8 +21147,9 @@ export type GetPostCommentReactionsListResponses = {
              */
             value: string;
             /**
-             * The user who sent the reaction.
+             * Is the current user the sender of the reaction.
              */
+            is_sender: boolean;
             sender: {
                 /**
                  * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
@@ -18078,14 +21187,65 @@ export type GetPostCommentReactionsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
             };
-            /**
-             * Is the current user the sender of the reaction.
-             */
-            is_sender: boolean;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -18107,7 +21267,7 @@ export type AddPostCommentReactionData = {
     };
     path: {
         /**
-         * The ID of the Post where the comment is.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -18179,6 +21339,256 @@ export type GetUserCommentsListResponses = {
              */
             thread_id?: string;
             /**
+             * The creation date of the comment. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            created_at: string;
+            /**
+             * The text content of the comment.
+             */
+            text: string;
+            /**
+             * List of comment attachments.
+             */
+            attachments: Array<{
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'audio';
+                /**
+                 * The duration of the audio in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The audio is a voice note (should be displayed differently)
+                 */
+                voice_note: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'img';
+                /**
+                 * The size of the image in pixels.
+                 */
+                size?: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The image is a sticker (should be displayed differently)
+                 */
+                sticker: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'video';
+                /**
+                 * The duration of the video in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The size of the video in pixels.
+                 */
+                size: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The video is a GIF (should be displayed differently)
+                 */
+                gif: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'file';
+                /**
+                 * The name of the file, including the extension.
+                 */
+                filename: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL of the shared content.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'shared_content';
+                /**
+                 * The type of content being shared.
+                 */
+                media_type: 'post' | 'story' | 'url' | 'reel';
+                /**
+                 * The author of the shared content, if applicable.
+                 */
+                author?: string;
+                /**
+                 * A brief description of the shared content.
+                 */
+                description?: string;
+            }>;
+            /**
+             * Is the current user the sender of the comment.
+             */
+            is_sender: boolean;
+            /**
+             * Whether the current user can reply to the comment or not.
+             */
+            can_reply: boolean;
+            /**
+             * Whether the current user can react to the comment or not.
+             */
+            can_react: boolean;
+            /**
+             * The number of replies to the comment.
+             */
+            reply_counter: number;
+            /**
+             * The number of impressions of the comment.
+             */
+            impressions_counter?: number;
+            /**
+             * A list of reactions to the element.
+             */
+            reactions_counter: Array<{
+                /**
+                 * Value of the reaction. Usually an emoji unicode.
+                 */
+                reaction: string;
+                /**
+                 * The total count of this reaction.
+                 */
+                count: number;
+            }>;
+            /**
              * The author of the comment.
              */
             author: {
@@ -18218,44 +21628,62 @@ export type GetUserCommentsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
             };
-            /**
-             * The creation date of the comment. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
-             */
-            created_at: string;
-            /**
-             * The text content of the comment.
-             */
-            text: string;
-            /**
-             * Is the current user the sender of the comment.
-             */
-            is_sender: boolean;
-            /**
-             * Whether the current user can reply to the comment or not.
-             */
-            can_reply: boolean;
-            /**
-             * Whether the current user can react to the comment or not.
-             */
-            can_react: boolean;
-            /**
-             * The number of replies to the comment.
-             */
-            reply_counter: number;
-            /**
-             * A list of reactions to the element.
-             */
-            reactions_counter: Array<{
-                /**
-                 * Value of the reaction. Usually an emoji unicode.
-                 */
-                reaction: string;
-                /**
-                 * The total count of this reaction.
-                 */
-                count: number;
-            }>;
             parent_post: {
                 object: 'PostPreview';
                 /**
@@ -18270,6 +21698,17 @@ export type GetUserCommentsListResponses = {
                  * The text content of the post.
                  */
                 text?: string;
+                /**
+                 * Attachments of the parent post (e.g. post image).
+                 */
+                attachments?: Array<{
+                    object: 'Attachment';
+                    type: 'img';
+                    /**
+                     * The URL of the attachment.
+                     */
+                    url: string;
+                }>;
                 /**
                  * The author of the post.
                  */
@@ -18310,18 +21749,62 @@ export type GetUserCommentsListResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown & {
+                        /**
+                         * The geographical location of the user.
+                         */
+                        location?: string;
+                        /**
+                         * Network distance to a User.
+                         * `SELF`: Yourself.
+                         * `FIRST_DEGREE`: 1st degree connection.
+                         * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                         * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                         * `OUT_OF_NETWORK`: Unreachable user.'
+                         */
+                        network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                        /**
+                         * The user's industry.
+                         */
+                        industry?: string;
+                        /**
+                         * Whether the user is followed by the current user.
+                         */
+                        following?: boolean;
+                        /**
+                         * The number of followers of the user.
+                         */
+                        followers_count?: number;
+                        /**
+                         * The number of relations of the user.
+                         */
+                        relations_count?: number;
+                        /**
+                         * The number of relations that you share with the user.
+                         */
+                        shared_relations_count?: number;
+                        /**
+                         * The URL of the website provided by the user.
+                         */
+                        website_url?: string;
+                        /**
+                         * The URL of the portfolio provided by the user.
+                         */
+                        portfolio_url?: string;
+                        /**
+                         * The LinkedIn internal URL of the user's services page.
+                         */
+                        services_page_url?: string;
+                        /**
+                         * Whether the User has a premium account.
+                         */
+                        is_premium?: boolean;
+                        /**
+                         * Whether the User has a verified account.
+                         */
+                        is_verified?: boolean;
+                    };
                 };
-                /**
-                 * Attachments of the parent post (e.g. post image).
-                 */
-                attachments?: Array<{
-                    object: 'Attachment';
-                    type: 'img';
-                    /**
-                     * The URL of the attachment.
-                     */
-                    url: string;
-                }>;
             } | {
                 object: 'Post';
                 /**
@@ -18344,47 +21827,6 @@ export type GetUserCommentsListResponses = {
                  * The text content of the post.
                  */
                 text: string;
-                /**
-                 * The author of the post.
-                 */
-                author: {
-                    /**
-                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
-                     */
-                    id: string;
-                    object: 'User';
-                    /**
-                     * Type of the user
-                     * - `individual` is an individual user.
-                     * - `organization` is an organization / business entity.
-                     * - `other` is an other type of entity.
-                     */
-                    type: 'individual' | 'organization' | 'other';
-                    /**
-                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
-                     */
-                    public_identifier?: string;
-                    /**
-                     * Display name of the user.
-                     */
-                    display_name: string;
-                    /**
-                     * Public url to the profile of the user.
-                     */
-                    profile_url?: string;
-                    /**
-                     * Public url to the profile picture of the user.
-                     */
-                    public_picture_url?: string;
-                    /**
-                     * Private url to download the profile picture of the user. This url require authentication.
-                     */
-                    private_picture_download_url?: string;
-                    /**
-                     * Description of the user.
-                     */
-                    description?: string;
-                };
                 /**
                  * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
                  */
@@ -18758,6 +22200,102 @@ export type GetUserCommentsListResponses = {
                  */
                 is_repost: boolean;
                 /**
+                 * The author of the post.
+                 */
+                author: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user.
+                     */
+                    display_name: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                    specifics?: unknown & {
+                        /**
+                         * The geographical location of the user.
+                         */
+                        location?: string;
+                        /**
+                         * Network distance to a User.
+                         * `SELF`: Yourself.
+                         * `FIRST_DEGREE`: 1st degree connection.
+                         * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                         * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                         * `OUT_OF_NETWORK`: Unreachable user.'
+                         */
+                        network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                        /**
+                         * The user's industry.
+                         */
+                        industry?: string;
+                        /**
+                         * Whether the user is followed by the current user.
+                         */
+                        following?: boolean;
+                        /**
+                         * The number of followers of the user.
+                         */
+                        followers_count?: number;
+                        /**
+                         * The number of relations of the user.
+                         */
+                        relations_count?: number;
+                        /**
+                         * The number of relations that you share with the user.
+                         */
+                        shared_relations_count?: number;
+                        /**
+                         * The URL of the website provided by the user.
+                         */
+                        website_url?: string;
+                        /**
+                         * The URL of the portfolio provided by the user.
+                         */
+                        portfolio_url?: string;
+                        /**
+                         * The LinkedIn internal URL of the user's services page.
+                         */
+                        services_page_url?: string;
+                        /**
+                         * Whether the User has a premium account.
+                         */
+                        is_premium?: boolean;
+                        /**
+                         * Whether the User has a verified account.
+                         */
+                        is_verified?: boolean;
+                    };
+                };
+                /**
                  * The user who reposted the post if `is_repost` is `true`.
                  */
                 reposted_by?: {
@@ -18797,6 +22335,61 @@ export type GetUserCommentsListResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown & {
+                        /**
+                         * The geographical location of the user.
+                         */
+                        location?: string;
+                        /**
+                         * Network distance to a User.
+                         * `SELF`: Yourself.
+                         * `FIRST_DEGREE`: 1st degree connection.
+                         * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                         * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                         * `OUT_OF_NETWORK`: Unreachable user.'
+                         */
+                        network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                        /**
+                         * The user's industry.
+                         */
+                        industry?: string;
+                        /**
+                         * Whether the user is followed by the current user.
+                         */
+                        following?: boolean;
+                        /**
+                         * The number of followers of the user.
+                         */
+                        followers_count?: number;
+                        /**
+                         * The number of relations of the user.
+                         */
+                        relations_count?: number;
+                        /**
+                         * The number of relations that you share with the user.
+                         */
+                        shared_relations_count?: number;
+                        /**
+                         * The URL of the website provided by the user.
+                         */
+                        website_url?: string;
+                        /**
+                         * The URL of the portfolio provided by the user.
+                         */
+                        portfolio_url?: string;
+                        /**
+                         * The LinkedIn internal URL of the user's services page.
+                         */
+                        services_page_url?: string;
+                        /**
+                         * Whether the User has a premium account.
+                         */
+                        is_premium?: boolean;
+                        /**
+                         * Whether the User has a verified account.
+                         */
+                        is_verified?: boolean;
+                    };
                 };
                 /**
                  * The post that is quoted in this post.
@@ -18823,47 +22416,6 @@ export type GetUserCommentsListResponses = {
                      * The text content of the post.
                      */
                     text: string;
-                    /**
-                     * The author of the post.
-                     */
-                    author: {
-                        /**
-                         * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
-                         */
-                        id: string;
-                        object: 'User';
-                        /**
-                         * Type of the user
-                         * - `individual` is an individual user.
-                         * - `organization` is an organization / business entity.
-                         * - `other` is an other type of entity.
-                         */
-                        type: 'individual' | 'organization' | 'other';
-                        /**
-                         * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
-                         */
-                        public_identifier?: string;
-                        /**
-                         * Display name of the user.
-                         */
-                        display_name: string;
-                        /**
-                         * Public url to the profile of the user.
-                         */
-                        profile_url?: string;
-                        /**
-                         * Public url to the profile picture of the user.
-                         */
-                        public_picture_url?: string;
-                        /**
-                         * Private url to download the profile picture of the user. This url require authentication.
-                         */
-                        private_picture_download_url?: string;
-                        /**
-                         * Description of the user.
-                         */
-                        description?: string;
-                    };
                     /**
                      * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
                      */
@@ -19232,11 +22784,107 @@ export type GetUserCommentsListResponses = {
                          */
                         users_reached_counter?: number;
                     };
+                    /**
+                     * The author of the post.
+                     */
+                    author: {
+                        /**
+                         * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                         */
+                        id: string;
+                        object: 'User';
+                        /**
+                         * Type of the user
+                         * - `individual` is an individual user.
+                         * - `organization` is an organization / business entity.
+                         * - `other` is an other type of entity.
+                         */
+                        type: 'individual' | 'organization' | 'other';
+                        /**
+                         * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Display name of the user.
+                         */
+                        display_name: string;
+                        /**
+                         * Public url to the profile of the user.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Public url to the profile picture of the user.
+                         */
+                        public_picture_url?: string;
+                        /**
+                         * Private url to download the profile picture of the user. This url require authentication.
+                         */
+                        private_picture_download_url?: string;
+                        /**
+                         * Description of the user.
+                         */
+                        description?: string;
+                        specifics?: unknown & {
+                            /**
+                             * The geographical location of the user.
+                             */
+                            location?: string;
+                            /**
+                             * Network distance to a User.
+                             * `SELF`: Yourself.
+                             * `FIRST_DEGREE`: 1st degree connection.
+                             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                             * `OUT_OF_NETWORK`: Unreachable user.'
+                             */
+                            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                            /**
+                             * The user's industry.
+                             */
+                            industry?: string;
+                            /**
+                             * Whether the user is followed by the current user.
+                             */
+                            following?: boolean;
+                            /**
+                             * The number of followers of the user.
+                             */
+                            followers_count?: number;
+                            /**
+                             * The number of relations of the user.
+                             */
+                            relations_count?: number;
+                            /**
+                             * The number of relations that you share with the user.
+                             */
+                            shared_relations_count?: number;
+                            /**
+                             * The URL of the website provided by the user.
+                             */
+                            website_url?: string;
+                            /**
+                             * The URL of the portfolio provided by the user.
+                             */
+                            portfolio_url?: string;
+                            /**
+                             * The LinkedIn internal URL of the user's services page.
+                             */
+                            services_page_url?: string;
+                            /**
+                             * Whether the User has a premium account.
+                             */
+                            is_premium?: boolean;
+                            /**
+                             * Whether the User has a verified account.
+                             */
+                            is_verified?: boolean;
+                        };
+                    };
                 };
             } | null;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -19289,8 +22937,9 @@ export type GetUserReactionsListResponses = {
              */
             value: string;
             /**
-             * The user who sent the reaction.
+             * Is the current user the sender of the reaction.
              */
+            is_sender: boolean;
             sender: {
                 /**
                  * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
@@ -19328,11 +22977,62 @@ export type GetUserReactionsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown & {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the user is followed by the current user.
+                     */
+                    following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
             };
-            /**
-             * Is the current user the sender of the reaction.
-             */
-            is_sender: boolean;
             parent_post: {
                 object: 'PostPreview';
                 /**
@@ -19347,6 +23047,17 @@ export type GetUserReactionsListResponses = {
                  * The text content of the post.
                  */
                 text?: string;
+                /**
+                 * Attachments of the parent post (e.g. post image).
+                 */
+                attachments?: Array<{
+                    object: 'Attachment';
+                    type: 'img';
+                    /**
+                     * The URL of the attachment.
+                     */
+                    url: string;
+                }>;
                 /**
                  * The author of the post.
                  */
@@ -19387,18 +23098,62 @@ export type GetUserReactionsListResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown & {
+                        /**
+                         * The geographical location of the user.
+                         */
+                        location?: string;
+                        /**
+                         * Network distance to a User.
+                         * `SELF`: Yourself.
+                         * `FIRST_DEGREE`: 1st degree connection.
+                         * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                         * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                         * `OUT_OF_NETWORK`: Unreachable user.'
+                         */
+                        network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                        /**
+                         * The user's industry.
+                         */
+                        industry?: string;
+                        /**
+                         * Whether the user is followed by the current user.
+                         */
+                        following?: boolean;
+                        /**
+                         * The number of followers of the user.
+                         */
+                        followers_count?: number;
+                        /**
+                         * The number of relations of the user.
+                         */
+                        relations_count?: number;
+                        /**
+                         * The number of relations that you share with the user.
+                         */
+                        shared_relations_count?: number;
+                        /**
+                         * The URL of the website provided by the user.
+                         */
+                        website_url?: string;
+                        /**
+                         * The URL of the portfolio provided by the user.
+                         */
+                        portfolio_url?: string;
+                        /**
+                         * The LinkedIn internal URL of the user's services page.
+                         */
+                        services_page_url?: string;
+                        /**
+                         * Whether the User has a premium account.
+                         */
+                        is_premium?: boolean;
+                        /**
+                         * Whether the User has a verified account.
+                         */
+                        is_verified?: boolean;
+                    };
                 };
-                /**
-                 * Attachments of the parent post (e.g. post image).
-                 */
-                attachments?: Array<{
-                    object: 'Attachment';
-                    type: 'img';
-                    /**
-                     * The URL of the attachment.
-                     */
-                    url: string;
-                }>;
             } | {
                 object: 'Post';
                 /**
@@ -19421,47 +23176,6 @@ export type GetUserReactionsListResponses = {
                  * The text content of the post.
                  */
                 text: string;
-                /**
-                 * The author of the post.
-                 */
-                author: {
-                    /**
-                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
-                     */
-                    id: string;
-                    object: 'User';
-                    /**
-                     * Type of the user
-                     * - `individual` is an individual user.
-                     * - `organization` is an organization / business entity.
-                     * - `other` is an other type of entity.
-                     */
-                    type: 'individual' | 'organization' | 'other';
-                    /**
-                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
-                     */
-                    public_identifier?: string;
-                    /**
-                     * Display name of the user.
-                     */
-                    display_name: string;
-                    /**
-                     * Public url to the profile of the user.
-                     */
-                    profile_url?: string;
-                    /**
-                     * Public url to the profile picture of the user.
-                     */
-                    public_picture_url?: string;
-                    /**
-                     * Private url to download the profile picture of the user. This url require authentication.
-                     */
-                    private_picture_download_url?: string;
-                    /**
-                     * Description of the user.
-                     */
-                    description?: string;
-                };
                 /**
                  * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
                  */
@@ -19835,6 +23549,102 @@ export type GetUserReactionsListResponses = {
                  */
                 is_repost: boolean;
                 /**
+                 * The author of the post.
+                 */
+                author: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user.
+                     */
+                    display_name: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                    specifics?: unknown & {
+                        /**
+                         * The geographical location of the user.
+                         */
+                        location?: string;
+                        /**
+                         * Network distance to a User.
+                         * `SELF`: Yourself.
+                         * `FIRST_DEGREE`: 1st degree connection.
+                         * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                         * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                         * `OUT_OF_NETWORK`: Unreachable user.'
+                         */
+                        network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                        /**
+                         * The user's industry.
+                         */
+                        industry?: string;
+                        /**
+                         * Whether the user is followed by the current user.
+                         */
+                        following?: boolean;
+                        /**
+                         * The number of followers of the user.
+                         */
+                        followers_count?: number;
+                        /**
+                         * The number of relations of the user.
+                         */
+                        relations_count?: number;
+                        /**
+                         * The number of relations that you share with the user.
+                         */
+                        shared_relations_count?: number;
+                        /**
+                         * The URL of the website provided by the user.
+                         */
+                        website_url?: string;
+                        /**
+                         * The URL of the portfolio provided by the user.
+                         */
+                        portfolio_url?: string;
+                        /**
+                         * The LinkedIn internal URL of the user's services page.
+                         */
+                        services_page_url?: string;
+                        /**
+                         * Whether the User has a premium account.
+                         */
+                        is_premium?: boolean;
+                        /**
+                         * Whether the User has a verified account.
+                         */
+                        is_verified?: boolean;
+                    };
+                };
+                /**
                  * The user who reposted the post if `is_repost` is `true`.
                  */
                 reposted_by?: {
@@ -19874,6 +23684,61 @@ export type GetUserReactionsListResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown & {
+                        /**
+                         * The geographical location of the user.
+                         */
+                        location?: string;
+                        /**
+                         * Network distance to a User.
+                         * `SELF`: Yourself.
+                         * `FIRST_DEGREE`: 1st degree connection.
+                         * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                         * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                         * `OUT_OF_NETWORK`: Unreachable user.'
+                         */
+                        network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                        /**
+                         * The user's industry.
+                         */
+                        industry?: string;
+                        /**
+                         * Whether the user is followed by the current user.
+                         */
+                        following?: boolean;
+                        /**
+                         * The number of followers of the user.
+                         */
+                        followers_count?: number;
+                        /**
+                         * The number of relations of the user.
+                         */
+                        relations_count?: number;
+                        /**
+                         * The number of relations that you share with the user.
+                         */
+                        shared_relations_count?: number;
+                        /**
+                         * The URL of the website provided by the user.
+                         */
+                        website_url?: string;
+                        /**
+                         * The URL of the portfolio provided by the user.
+                         */
+                        portfolio_url?: string;
+                        /**
+                         * The LinkedIn internal URL of the user's services page.
+                         */
+                        services_page_url?: string;
+                        /**
+                         * Whether the User has a premium account.
+                         */
+                        is_premium?: boolean;
+                        /**
+                         * Whether the User has a verified account.
+                         */
+                        is_verified?: boolean;
+                    };
                 };
                 /**
                  * The post that is quoted in this post.
@@ -19900,47 +23765,6 @@ export type GetUserReactionsListResponses = {
                      * The text content of the post.
                      */
                     text: string;
-                    /**
-                     * The author of the post.
-                     */
-                    author: {
-                        /**
-                         * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
-                         */
-                        id: string;
-                        object: 'User';
-                        /**
-                         * Type of the user
-                         * - `individual` is an individual user.
-                         * - `organization` is an organization / business entity.
-                         * - `other` is an other type of entity.
-                         */
-                        type: 'individual' | 'organization' | 'other';
-                        /**
-                         * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
-                         */
-                        public_identifier?: string;
-                        /**
-                         * Display name of the user.
-                         */
-                        display_name: string;
-                        /**
-                         * Public url to the profile of the user.
-                         */
-                        profile_url?: string;
-                        /**
-                         * Public url to the profile picture of the user.
-                         */
-                        public_picture_url?: string;
-                        /**
-                         * Private url to download the profile picture of the user. This url require authentication.
-                         */
-                        private_picture_download_url?: string;
-                        /**
-                         * Description of the user.
-                         */
-                        description?: string;
-                    };
                     /**
                      * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
                      */
@@ -20309,11 +24133,107 @@ export type GetUserReactionsListResponses = {
                          */
                         users_reached_counter?: number;
                     };
+                    /**
+                     * The author of the post.
+                     */
+                    author: {
+                        /**
+                         * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                         */
+                        id: string;
+                        object: 'User';
+                        /**
+                         * Type of the user
+                         * - `individual` is an individual user.
+                         * - `organization` is an organization / business entity.
+                         * - `other` is an other type of entity.
+                         */
+                        type: 'individual' | 'organization' | 'other';
+                        /**
+                         * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Display name of the user.
+                         */
+                        display_name: string;
+                        /**
+                         * Public url to the profile of the user.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Public url to the profile picture of the user.
+                         */
+                        public_picture_url?: string;
+                        /**
+                         * Private url to download the profile picture of the user. This url require authentication.
+                         */
+                        private_picture_download_url?: string;
+                        /**
+                         * Description of the user.
+                         */
+                        description?: string;
+                        specifics?: unknown & {
+                            /**
+                             * The geographical location of the user.
+                             */
+                            location?: string;
+                            /**
+                             * Network distance to a User.
+                             * `SELF`: Yourself.
+                             * `FIRST_DEGREE`: 1st degree connection.
+                             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                             * `OUT_OF_NETWORK`: Unreachable user.'
+                             */
+                            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                            /**
+                             * The user's industry.
+                             */
+                            industry?: string;
+                            /**
+                             * Whether the user is followed by the current user.
+                             */
+                            following?: boolean;
+                            /**
+                             * The number of followers of the user.
+                             */
+                            followers_count?: number;
+                            /**
+                             * The number of relations of the user.
+                             */
+                            relations_count?: number;
+                            /**
+                             * The number of relations that you share with the user.
+                             */
+                            shared_relations_count?: number;
+                            /**
+                             * The URL of the website provided by the user.
+                             */
+                            website_url?: string;
+                            /**
+                             * The URL of the portfolio provided by the user.
+                             */
+                            portfolio_url?: string;
+                            /**
+                             * The LinkedIn internal URL of the user's services page.
+                             */
+                            services_page_url?: string;
+                            /**
+                             * Whether the User has a premium account.
+                             */
+                            is_premium?: boolean;
+                            /**
+                             * Whether the User has a verified account.
+                             */
+                            is_verified?: boolean;
+                        };
+                    };
                 };
             } | null;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -20395,7 +24315,7 @@ export type GetCalendarsListResponses = {
             timezone?: string;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -20918,7 +24838,7 @@ export type GetCalendarEventListResponses = {
             text_color?: string;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -22466,6 +26386,8 @@ export type GetClassicSearchParametersData = {
 
 export type GetClassicSearchParametersResponses = {
     /**
+     * Search parameters list
+     *
      * Default Response
      */
     200: {
@@ -22499,7 +26421,7 @@ export type GetClassicSearchParametersResponses = {
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -22583,7 +26505,7 @@ export type PerformClassicSearchFromUrlResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -22626,9 +26548,21 @@ export type PerformClassicSearchFromUrlResponses = {
              * The number of relations that you share with the User.
              */
             shared_relations_count?: number;
+            /**
+             * The URL of the website provided by the User.
+             */
+            website_url?: string;
+            /**
+             * The URL of the portfolio provided by the User.
+             */
+            portfolio_url?: string;
+            /**
+             * The LinkedIn internal URL of the User's services page.
+             */
+            services_page_url?: string;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -22689,7 +26623,7 @@ export type PerformClassicSearchFromUrlResponses = {
             followers_count?: number;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -22770,7 +26704,7 @@ export type PerformClassicSearchFromUrlResponses = {
             insights: Array<string>;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -22840,6 +26774,7 @@ export type PerformClassicSearchFromUrlResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown;
             };
             /**
              * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
@@ -23253,6 +27188,7 @@ export type PerformClassicSearchFromUrlResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown;
             };
             /**
              * The post that is quoted in this post.
@@ -23319,6 +27255,7 @@ export type PerformClassicSearchFromUrlResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown;
                 };
                 /**
                  * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
@@ -23691,7 +27628,7 @@ export type PerformClassicSearchFromUrlResponses = {
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -23851,6 +27788,8 @@ export type PerformClassicPeopleSearchData = {
 
 export type PerformClassicPeopleSearchResponses = {
     /**
+     * People search results
+     *
      * Default Response
      */
     200: {
@@ -23895,7 +27834,7 @@ export type PerformClassicPeopleSearchResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -23938,9 +27877,21 @@ export type PerformClassicPeopleSearchResponses = {
              * The number of relations that you share with the User.
              */
             shared_relations_count?: number;
+            /**
+             * The URL of the website provided by the User.
+             */
+            website_url?: string;
+            /**
+             * The URL of the portfolio provided by the User.
+             */
+            portfolio_url?: string;
+            /**
+             * The LinkedIn internal URL of the User's services page.
+             */
+            services_page_url?: string;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -24015,6 +27966,8 @@ export type PerformClassicCompaniesSearchData = {
 
 export type PerformClassicCompaniesSearchResponses = {
     /**
+     * Companies search results
+     *
      * Default Response
      */
     200: {
@@ -24071,7 +28024,7 @@ export type PerformClassicCompaniesSearchResponses = {
             followers_count?: number;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -24217,6 +28170,8 @@ export type PerformClassicPostsSearchData = {
 
 export type PerformClassicPostsSearchResponses = {
     /**
+     * Posts search results
+     *
      * Default Response
      */
     200: {
@@ -24282,6 +28237,7 @@ export type PerformClassicPostsSearchResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown;
             };
             /**
              * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
@@ -24695,6 +28651,7 @@ export type PerformClassicPostsSearchResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                specifics?: unknown;
             };
             /**
              * The post that is quoted in this post.
@@ -24761,6 +28718,7 @@ export type PerformClassicPostsSearchResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown;
                 };
                 /**
                  * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
@@ -25133,7 +29091,7 @@ export type PerformClassicPostsSearchResponses = {
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -25325,6 +29283,8 @@ export type PerformClassicJobsSearchData = {
 
 export type PerformClassicJobsSearchResponses = {
     /**
+     * Jobs search results
+     *
      * Default Response
      */
     200: {
@@ -25401,7 +29361,7 @@ export type PerformClassicJobsSearchResponses = {
             insights: Array<string>;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -25472,7 +29432,7 @@ export type ListClassicUserJobPostingsResponses = {
             applications_count: number;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -26457,7 +30417,7 @@ export type GetClassicApplicantsResponses = {
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -26905,7 +30865,7 @@ export type GetRecruiterHiringProjectListResponses = {
                     /**
                      * The type of the Channel.
                      */
-                    type: 'CAREER_SITE' | 'MANUAL_IMPORT' | 'INTERNAL_CANDIDATES' | 'RECRUITER_SEARCH' | 'REFERRAL' | 'JOB_POSTING_RECOMMENDED_MATCHES' | 'AUTOMATED_SOURCING' | 'JOB_POSTING';
+                    type: 'CAREER_SITE' | 'MANUAL_IMPORT' | 'INTERNAL_CANDIDATES' | 'RECRUITER_SEARCH' | 'REFERRAL' | 'JOB_POSTING_RECOMMENDED_MATCHES' | 'AUTOMATED_SOURCING' | 'JOB_POSTING' | 'APPLY_STARTERS' | 'TALENT_AGENT';
                     /**
                      * The custom name of the Channel.
                      */
@@ -26976,7 +30936,7 @@ export type GetRecruiterHiringProjectListResponses = {
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -27227,7 +31187,7 @@ export type GetRecruiterHiringProjectResponses = {
                 /**
                  * The type of the Channel.
                  */
-                type: 'CAREER_SITE' | 'MANUAL_IMPORT' | 'INTERNAL_CANDIDATES' | 'RECRUITER_SEARCH' | 'REFERRAL' | 'JOB_POSTING_RECOMMENDED_MATCHES' | 'AUTOMATED_SOURCING' | 'JOB_POSTING';
+                type: 'CAREER_SITE' | 'MANUAL_IMPORT' | 'INTERNAL_CANDIDATES' | 'RECRUITER_SEARCH' | 'REFERRAL' | 'JOB_POSTING_RECOMMENDED_MATCHES' | 'AUTOMATED_SOURCING' | 'JOB_POSTING' | 'APPLY_STARTERS' | 'TALENT_AGENT';
                 /**
                  * The custom name of the Channel.
                  */
@@ -27673,7 +31633,7 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -27828,7 +31788,7 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -28135,6 +32095,7 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: unknown;
                     }>;
                     /**
                      * Skills related to the project.
@@ -28248,12 +32209,13 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: unknown;
                     } | null;
                 }>;
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -28333,7 +32295,7 @@ export type GetRecruiterApplicantByIdResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -28488,7 +32450,7 @@ export type GetRecruiterApplicantByIdResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -28795,6 +32757,7 @@ export type GetRecruiterApplicantByIdResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown;
                 }>;
                 /**
                  * Skills related to the project.
@@ -28908,6 +32871,7 @@ export type GetRecruiterApplicantByIdResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown;
                 } | null;
             }>;
         };
@@ -29078,7 +33042,7 @@ export type GetRecruiterPipelineCandidatesResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -29233,7 +33197,7 @@ export type GetRecruiterPipelineCandidatesResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -29540,6 +33504,7 @@ export type GetRecruiterPipelineCandidatesResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: unknown;
                     }>;
                     /**
                      * Skills related to the project.
@@ -29653,12 +33618,13 @@ export type GetRecruiterPipelineCandidatesResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: unknown;
                     } | null;
                 }>;
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -30271,7 +34237,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -30428,7 +34394,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -30736,6 +34702,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown;
                 }>;
                 /**
                  * Skills related to the project.
@@ -30849,11 +34816,12 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown;
                 } | null;
             }>;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -31432,7 +35400,7 @@ export type GetRecruiterJobPostingListResponses = {
             views_count: number;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -32192,7 +36160,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -32349,7 +36317,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -32657,6 +36625,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown;
                 }>;
                 /**
                  * Skills related to the project.
@@ -32770,11 +36739,12 @@ export type PerformRecruiterSearchFromUrlResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown;
                 } | null;
             }>;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -32826,7 +36796,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -32981,7 +36951,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -33288,6 +37258,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: unknown;
                     }>;
                     /**
                      * Skills related to the project.
@@ -33401,12 +37372,13 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: unknown;
                     } | null;
                 }>;
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -33424,7 +37396,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -33579,7 +37551,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
@@ -33886,6 +37858,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: unknown;
                     }>;
                     /**
                      * Skills related to the project.
@@ -33999,12 +37972,13 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        specifics?: unknown;
                     } | null;
                 }>;
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -34102,6 +38076,8 @@ export type GetRecruiterSearchParametersData = {
 
 export type GetRecruiterSearchParametersResponses = {
     /**
+     * Search parameters list
+     *
      * Default Response
      */
     200: {
@@ -34135,7 +38111,7 @@ export type GetRecruiterSearchParametersResponses = {
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -34704,7 +38680,7 @@ export type PerformRecruiterPeopleSearchResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -34861,7 +38837,7 @@ export type PerformRecruiterPeopleSearchResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             /**
              * Network distance to a User.
              * `SELF`: Yourself.
@@ -35169,6 +39145,7 @@ export type PerformRecruiterPeopleSearchResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown;
                 }>;
                 /**
                  * Skills related to the project.
@@ -35282,11 +39259,12 @@ export type PerformRecruiterPeopleSearchResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    specifics?: unknown;
                 } | null;
             }>;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -35406,99 +39384,6 @@ export type PerformSalesSearchFromUrlResponses = {
      */
     200: {
         data: Array<{
-            object: 'CompanySearchResult';
-            /**
-             * The ID of the Company.
-             */
-            id: string;
-            /**
-             * The display name of the Company.
-             */
-            display_name: string;
-            /**
-             * The public identifier of the Company.
-             */
-            public_identifier?: string;
-            /**
-             * The profile URL of the Company.
-             */
-            profile_url?: string;
-            /**
-             * The public picture URL of the Company.
-             */
-            public_picture_url?: string;
-            /**
-             * The public picture URL of the Company in large size.
-             */
-            public_picture_url_large?: string;
-            /**
-             * The location of the Company.
-             */
-            location?: string;
-            /**
-             * The industry to which the Company belongs.
-             */
-            industry?: string;
-            /**
-             * The summary of the Company's activities.
-             */
-            summary?: string;
-            /**
-             * The number of the relations of the Company.
-             */
-            relations_count?: number;
-            product: 'sales_navigator';
-            /**
-             * The type of the Company.
-             */
-            type?: string;
-            /**
-             * The number of employees of the Company.
-             */
-            headcount?: number;
-            /**
-             * A list of the company's activities.
-             */
-            specialties?: Array<string>;
-            /**
-             * Whether the Company is hiring on LinkedIn.
-             */
-            is_hiring_on_linkedin?: boolean;
-            /**
-             * The number of lists you own on which the Company appears.
-             */
-            lists_count: number;
-            /**
-             * The number of notes you own about the Company.
-             */
-            notes_count: number;
-            /**
-             * The webiste URL of the Company.
-             */
-            website?: string;
-            /**
-             * The date on which the Company was founded. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
-             */
-            founded_on?: number;
-            /**
-             * Whether the Company has been saved to a list.
-             */
-            has_been_saved: boolean;
-            /**
-             * Whether the Company is on starred state.
-             */
-            is_starred: boolean;
-        }>;
-        /**
-         * Total number of results if supported by the endpoint.
-         */
-        total_count?: number;
-        /**
-         * Cursor to get the next page of results if supported. Else use `offset`.
-         */
-        next_cursor?: string;
-    } | {
-        data: Array<{
             object: 'PeopleSearchResult';
             /**
              * The ID of the user.
@@ -35539,7 +39424,7 @@ export type PerformSalesSearchFromUrlResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
             /**
              * Whether it is possible to send an inMail to this User.
@@ -35619,7 +39504,7 @@ export type PerformSalesSearchFromUrlResponses = {
              * The last contact you had with the User.
              */
             latest_contact?: {
-                type: 'MESSAGE' | 'INVITATION' | 'PROFILE_VIEW';
+                type: 'MESSAGE' | 'INVITATION_SENT' | 'INVITATION_ACCEPTED' | 'PROFILE_VIEW';
                 /**
                  * The date on which the action was performed. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
                  */
@@ -35832,7 +39717,100 @@ export type PerformSalesSearchFromUrlResponses = {
             }>;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    } | {
+        data: Array<{
+            object: 'CompanySearchResult';
+            /**
+             * The ID of the Company.
+             */
+            id: string;
+            /**
+             * The display name of the Company.
+             */
+            display_name: string;
+            /**
+             * The public identifier of the Company.
+             */
+            public_identifier?: string;
+            /**
+             * The profile URL of the Company.
+             */
+            profile_url?: string;
+            /**
+             * The public picture URL of the Company.
+             */
+            public_picture_url?: string;
+            /**
+             * The public picture URL of the Company in large size.
+             */
+            public_picture_url_large?: string;
+            /**
+             * The location of the Company.
+             */
+            location?: string;
+            /**
+             * The industry to which the Company belongs.
+             */
+            industry?: string;
+            /**
+             * The summary of the Company's activities.
+             */
+            summary?: string;
+            /**
+             * The number of the relations of the Company.
+             */
+            relations_count?: number;
+            product: 'sales_navigator';
+            /**
+             * The type of the Company.
+             */
+            type?: string;
+            /**
+             * The number of employees of the Company.
+             */
+            headcount?: number;
+            /**
+             * A list of the company's activities.
+             */
+            specialties?: Array<string>;
+            /**
+             * Whether the Company is hiring on LinkedIn.
+             */
+            is_hiring_on_linkedin?: boolean;
+            /**
+             * The number of lists you own on which the Company appears.
+             */
+            lists_count: number;
+            /**
+             * The number of notes you own about the Company.
+             */
+            notes_count: number;
+            /**
+             * The webiste URL of the Company.
+             */
+            website?: string;
+            /**
+             * The date on which the Company was founded. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            founded_on?: number;
+            /**
+             * Whether the Company has been saved to a list.
+             */
+            has_been_saved: boolean;
+            /**
+             * Whether the Company is on starred state.
+             */
+            is_starred: boolean;
+        }>;
+        /**
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -35880,7 +39858,7 @@ export type PerformSalesSearchFromUrlResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
             /**
              * Whether it is possible to send an inMail to this User.
@@ -35951,7 +39929,7 @@ export type PerformSalesSearchFromUrlResponses = {
              * The last contact you had with the User.
              */
             latest_contact?: {
-                type: 'MESSAGE' | 'INVITATION' | 'PROFILE_VIEW';
+                type: 'MESSAGE' | 'INVITATION_SENT' | 'INVITATION_ACCEPTED' | 'PROFILE_VIEW';
                 /**
                  * The date on which the action was performed. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
                  */
@@ -36205,7 +40183,7 @@ export type PerformSalesSearchFromUrlResponses = {
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -36334,7 +40312,7 @@ export type PerformSalesSearchFromUrlResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
                 /**
                  * Whether it is possible to send an inMail to this User.
@@ -36405,7 +40383,7 @@ export type PerformSalesSearchFromUrlResponses = {
                  * The last contact you had with the User.
                  */
                 latest_contact?: {
-                    type: 'MESSAGE' | 'INVITATION' | 'PROFILE_VIEW';
+                    type: 'MESSAGE' | 'INVITATION_SENT' | 'INVITATION_ACCEPTED' | 'PROFILE_VIEW';
                     /**
                      * The date on which the action was performed. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
                      */
@@ -36620,7 +40598,7 @@ export type PerformSalesSearchFromUrlResponses = {
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -36663,6 +40641,8 @@ export type GetSalesSearchParametersData = {
 
 export type GetSalesSearchParametersResponses = {
     /**
+     * Search parameters list
+     *
      * Default Response
      */
     200: {
@@ -36696,7 +40676,7 @@ export type GetSalesSearchParametersResponses = {
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -37199,7 +41179,7 @@ export type PerformSalesPeopleSearchResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
             /**
              * Whether it is possible to send an inMail to this User.
@@ -37279,7 +41259,7 @@ export type PerformSalesPeopleSearchResponses = {
              * The last contact you had with the User.
              */
             latest_contact?: {
-                type: 'MESSAGE' | 'INVITATION' | 'PROFILE_VIEW';
+                type: 'MESSAGE' | 'INVITATION_SENT' | 'INVITATION_ACCEPTED' | 'PROFILE_VIEW';
                 /**
                  * The date on which the action was performed. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
                  */
@@ -37492,7 +41472,7 @@ export type PerformSalesPeopleSearchResponses = {
             }>;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -37804,7 +41784,7 @@ export type PerformSalesCompaniesSearchResponses = {
             is_starred: boolean;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -37870,7 +41850,7 @@ export type GetSalesLeadListsResponses = {
             last_viewed_at?: string;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -37967,7 +41947,7 @@ export type BrowseSalesLeadListResponses = {
             /**
              * The headline of the User.
              */
-            headline: string;
+            headline?: string;
             network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
             /**
              * Whether it is possible to send an inMail to this User.
@@ -38038,7 +42018,7 @@ export type BrowseSalesLeadListResponses = {
              * The last contact you had with the User.
              */
             latest_contact?: {
-                type: 'MESSAGE' | 'INVITATION' | 'PROFILE_VIEW';
+                type: 'MESSAGE' | 'INVITATION_SENT' | 'INVITATION_ACCEPTED' | 'PROFILE_VIEW';
                 /**
                  * The date on which the action was performed. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
                  */
@@ -38292,7 +42272,7 @@ export type BrowseSalesLeadListResponses = {
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -38390,7 +42370,7 @@ export type GetSalesAccountListsResponses = {
             last_viewed_at?: string;
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -38578,7 +42558,7 @@ export type BrowseSalesAccountListResponses = {
                 /**
                  * The headline of the User.
                  */
-                headline: string;
+                headline?: string;
                 network_distance: ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK') & ('SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK');
                 /**
                  * Whether it is possible to send an inMail to this User.
@@ -38649,7 +42629,7 @@ export type BrowseSalesAccountListResponses = {
                  * The last contact you had with the User.
                  */
                 latest_contact?: {
-                    type: 'MESSAGE' | 'INVITATION' | 'PROFILE_VIEW';
+                    type: 'MESSAGE' | 'INVITATION_SENT' | 'INVITATION_ACCEPTED' | 'PROFILE_VIEW';
                     /**
                      * The date on which the action was performed. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
                      */
@@ -38864,7 +42844,7 @@ export type BrowseSalesAccountListResponses = {
             };
         }>;
         /**
-         * Total number of results if supported by the endpoint.
+         * Total number of results if supported by the provider.
          */
         total_count?: number;
         /**
@@ -39088,11 +43068,27 @@ export type SolveCheckpointResponses = {
          * If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.
          */
         oauth_scope?: string;
-        /**
-         * Metadata of the account.
-         */
-        metadata?: {
-            [key: string]: string;
+        metadata: {
+            /**
+             * The chosen country for the automatic proxy selection.
+             */
+            auto_proxy_country?: string;
+            /**
+             * The ID of the account in the v1 if the account is migrated from v1.
+             */
+            v1_account_id?: string;
+            /**
+             * The status of the connection to a product, if the account is connected to multiple products.
+             */
+            products_connection_status?: {
+                [key: string]: 'running' | 'disconnected' | 'errored';
+            };
+            /**
+             * Custom data of the account. This is where you can store custom data using "Update an account" method.
+             */
+            custom_data?: {
+                [key: string]: string;
+            };
         };
         /**
          * Sync details if the account has initial sync enabled.
@@ -39124,6 +43120,22 @@ export type SolveCheckpointResponses = {
              * Whether the proxy was set automatically by Unipile.
              */
             auto_proxy: boolean;
+            /**
+             * The host of the custom proxy.
+             */
+            host?: string;
+            /**
+             * The port of the custom proxy.
+             */
+            port?: number;
+            /**
+             * The username used to authenticate to the custom proxy.
+             */
+            username?: string;
+            /**
+             * The protocol of the custom proxy.
+             */
+            protocol?: string;
         };
     };
 };
@@ -39914,11 +43926,27 @@ export type StartAuthIntentResponses = {
          * If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.
          */
         oauth_scope?: string;
-        /**
-         * Metadata of the account.
-         */
-        metadata?: {
-            [key: string]: string;
+        metadata: {
+            /**
+             * The chosen country for the automatic proxy selection.
+             */
+            auto_proxy_country?: string;
+            /**
+             * The ID of the account in the v1 if the account is migrated from v1.
+             */
+            v1_account_id?: string;
+            /**
+             * The status of the connection to a product, if the account is connected to multiple products.
+             */
+            products_connection_status?: {
+                [key: string]: 'running' | 'disconnected' | 'errored';
+            };
+            /**
+             * Custom data of the account. This is where you can store custom data using "Update an account" method.
+             */
+            custom_data?: {
+                [key: string]: string;
+            };
         };
         /**
          * Sync details if the account has initial sync enabled.
@@ -39950,6 +43978,22 @@ export type StartAuthIntentResponses = {
              * Whether the proxy was set automatically by Unipile.
              */
             auto_proxy: boolean;
+            /**
+             * The host of the custom proxy.
+             */
+            host?: string;
+            /**
+             * The port of the custom proxy.
+             */
+            port?: number;
+            /**
+             * The username used to authenticate to the custom proxy.
+             */
+            username?: string;
+            /**
+             * The protocol of the custom proxy.
+             */
+            protocol?: string;
         };
     };
 };
@@ -41176,11 +45220,27 @@ export type GetAccountResponses = {
          * If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.
          */
         oauth_scope?: string;
-        /**
-         * Metadata of the account.
-         */
-        metadata?: {
-            [key: string]: string;
+        metadata: {
+            /**
+             * The chosen country for the automatic proxy selection.
+             */
+            auto_proxy_country?: string;
+            /**
+             * The ID of the account in the v1 if the account is migrated from v1.
+             */
+            v1_account_id?: string;
+            /**
+             * The status of the connection to a product, if the account is connected to multiple products.
+             */
+            products_connection_status?: {
+                [key: string]: 'running' | 'disconnected' | 'errored';
+            };
+            /**
+             * Custom data of the account. This is where you can store custom data using "Update an account" method.
+             */
+            custom_data?: {
+                [key: string]: string;
+            };
         };
         /**
          * Sync details if the account has initial sync enabled.
@@ -41212,6 +45272,22 @@ export type GetAccountResponses = {
              * Whether the proxy was set automatically by Unipile.
              */
             auto_proxy: boolean;
+            /**
+             * The host of the custom proxy.
+             */
+            host?: string;
+            /**
+             * The port of the custom proxy.
+             */
+            port?: number;
+            /**
+             * The username used to authenticate to the custom proxy.
+             */
+            username?: string;
+            /**
+             * The protocol of the custom proxy.
+             */
+            protocol?: string;
         };
     };
 };
@@ -41219,11 +45295,11 @@ export type GetAccountResponses = {
 export type GetAccountResponse = GetAccountResponses[keyof GetAccountResponses];
 
 export type UpdateAccountData = {
-    body: {
+    body?: {
         /**
-         * Metadata of the account.
+         * Custom key-value data for the account. Replaces the account `metadata.custom_data` field; other metadata fields are not modified. Any fields not provided will be removed.
          */
-        metadata: {
+        metadata?: {
             [key: string]: string;
         };
         /**
@@ -41319,11 +45395,27 @@ export type UpdateAccountResponses = {
          * If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.
          */
         oauth_scope?: string;
-        /**
-         * Metadata of the account.
-         */
-        metadata?: {
-            [key: string]: string;
+        metadata: {
+            /**
+             * The chosen country for the automatic proxy selection.
+             */
+            auto_proxy_country?: string;
+            /**
+             * The ID of the account in the v1 if the account is migrated from v1.
+             */
+            v1_account_id?: string;
+            /**
+             * The status of the connection to a product, if the account is connected to multiple products.
+             */
+            products_connection_status?: {
+                [key: string]: 'running' | 'disconnected' | 'errored';
+            };
+            /**
+             * Custom data of the account. This is where you can store custom data using "Update an account" method.
+             */
+            custom_data?: {
+                [key: string]: string;
+            };
         };
         /**
          * Sync details if the account has initial sync enabled.
@@ -41355,6 +45447,22 @@ export type UpdateAccountResponses = {
              * Whether the proxy was set automatically by Unipile.
              */
             auto_proxy: boolean;
+            /**
+             * The host of the custom proxy.
+             */
+            host?: string;
+            /**
+             * The port of the custom proxy.
+             */
+            port?: number;
+            /**
+             * The username used to authenticate to the custom proxy.
+             */
+            username?: string;
+            /**
+             * The protocol of the custom proxy.
+             */
+            protocol?: string;
         };
     };
 };
@@ -41450,11 +45558,27 @@ export type ListAccountsResponses = {
              * If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.
              */
             oauth_scope?: string;
-            /**
-             * Metadata of the account.
-             */
-            metadata?: {
-                [key: string]: string;
+            metadata: {
+                /**
+                 * The chosen country for the automatic proxy selection.
+                 */
+                auto_proxy_country?: string;
+                /**
+                 * The ID of the account in the v1 if the account is migrated from v1.
+                 */
+                v1_account_id?: string;
+                /**
+                 * The status of the connection to a product, if the account is connected to multiple products.
+                 */
+                products_connection_status?: {
+                    [key: string]: 'running' | 'disconnected' | 'errored';
+                };
+                /**
+                 * Custom data of the account. This is where you can store custom data using "Update an account" method.
+                 */
+                custom_data?: {
+                    [key: string]: string;
+                };
             };
             /**
              * Sync details if the account has initial sync enabled.
@@ -41486,6 +45610,22 @@ export type ListAccountsResponses = {
                  * Whether the proxy was set automatically by Unipile.
                  */
                 auto_proxy: boolean;
+                /**
+                 * The host of the custom proxy.
+                 */
+                host?: string;
+                /**
+                 * The port of the custom proxy.
+                 */
+                port?: number;
+                /**
+                 * The username used to authenticate to the custom proxy.
+                 */
+                username?: string;
+                /**
+                 * The protocol of the custom proxy.
+                 */
+                protocol?: string;
             };
         }>;
         /**
@@ -41614,7 +45754,7 @@ export type CreateWebhookEndpointData = {
          */
         account_ids?: Array<string>;
         /**
-         * The URL to send the webhook payload to.
+         * The HTTP or HTTPS URL to send the webhook payload to.
          */
         url: string;
         /**
@@ -41748,7 +45888,7 @@ export type UpdateWebhookEndpointData = {
          */
         account_ids?: Array<string>;
         /**
-         * The URL to send the webhook payload to.
+         * The HTTP or HTTPS URL to send the webhook payload to.
          */
         url?: string;
         /**
