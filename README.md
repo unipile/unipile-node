@@ -6,8 +6,6 @@ This SDK is only for **Unipile API v2 (BETA)**. Use https://github.com/unipile/u
 
 ## Installation
 
-The package is not published on npm yet. Install it directly from GitHub:
-
 ```sh
 npm install @unipile/sdk
 ```
