@@ -26055,7 +26055,7 @@ export type GetClassicCompanyProfileResponses = {
             /**
              * The city of the location.
              */
-            city: string;
+            city?: string;
             /**
              * The area of the location.
              */
