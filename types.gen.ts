@@ -24313,6 +24313,10 @@ export type GetCalendarsListResponses = {
              * Timezone used in this calendar.
              */
             timezone?: string;
+            /**
+             * Object containing provider-specific calendar data.
+             */
+            specifics?: unknown;
         }>;
         /**
          * Total number of results if supported by the provider.
@@ -24341,6 +24345,10 @@ export type CreateCalendarData = {
          * Background color of the calendar in hexadecimal format.
          */
         background_color?: string;
+        /**
+         * Timezone used in this calendar (IANA, e.g. `Europe/Paris`).
+         */
+        timezone?: string;
     };
     path: {
         /**
@@ -24394,6 +24402,10 @@ export type CreateCalendarResponses = {
          * Timezone used in this calendar.
          */
         timezone?: string;
+        /**
+         * Object containing provider-specific calendar data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -24482,6 +24494,10 @@ export type GetCalendarResponses = {
          * Timezone used in this calendar.
          */
         timezone?: string;
+        /**
+         * Object containing provider-specific calendar data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -24501,6 +24517,10 @@ export type UpdateCalendarData = {
          * Background color of the calendar in hexadecimal format.
          */
         background_color?: string;
+        /**
+         * Timezone used in this calendar (IANA, e.g. `Europe/Paris`).
+         */
+        timezone?: string;
     };
     path: {
         /**
@@ -24558,6 +24578,10 @@ export type UpdateCalendarResponses = {
          * Timezone used in this calendar.
          */
         timezone?: string;
+        /**
+         * Object containing provider-specific calendar data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -24751,6 +24775,10 @@ export type GetCalendarEventListResponses = {
                  * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
                  */
                 date_time: string;
+                /**
+                 * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+                 */
+                timezone?: string;
             } | {
                 /**
                  * Indicates a date-only value (for all-day events).
@@ -24760,6 +24788,10 @@ export type GetCalendarEventListResponses = {
                  * The date. Uses ISO 8601 date format (YYYY-MM-DD).
                  */
                 date: string;
+                /**
+                 * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+                 */
+                timezone?: string;
             };
             /**
              * The end date and time of the event.
@@ -24773,6 +24805,10 @@ export type GetCalendarEventListResponses = {
                  * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
                  */
                 date_time: string;
+                /**
+                 * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+                 */
+                timezone?: string;
             } | {
                 /**
                  * Indicates a date-only value (for all-day events).
@@ -24782,6 +24818,10 @@ export type GetCalendarEventListResponses = {
                  * The date. Uses ISO 8601 date format (YYYY-MM-DD).
                  */
                 date: string;
+                /**
+                 * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+                 */
+                timezone?: string;
             };
             /**
              * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545.
@@ -24829,6 +24869,10 @@ export type GetCalendarEventListResponses = {
              */
             event_type: string;
             /**
+             * The IANA timezone when start and end share the same timezone (e.g. `Europe/Paris`). Omitted when they differ; use `start.timezone` and `end.timezone` instead.
+             */
+            timezone?: string;
+            /**
              * Background color of the calendar in hexadecimal format.
              */
             background_color?: string;
@@ -24836,6 +24880,10 @@ export type GetCalendarEventListResponses = {
              * Foreground color of the event in hexadecimal format.
              */
             text_color?: string;
+            /**
+             * Object containing provider-specific calendar event data.
+             */
+            specifics?: unknown;
         }>;
         /**
          * Total number of results if supported by the provider.
@@ -24921,6 +24969,10 @@ export type CreateCalendarEventData = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -24930,6 +24982,10 @@ export type CreateCalendarEventData = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * The end date and time of the event. Use date for all day events.
@@ -24943,6 +24999,10 @@ export type CreateCalendarEventData = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -24952,7 +25012,15 @@ export type CreateCalendarEventData = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
+        /**
+         * The IANA timezone the event is expressed in (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+         */
+        timezone?: string;
     };
     path: {
         /**
@@ -25074,6 +25142,10 @@ export type CreateCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25083,6 +25155,10 @@ export type CreateCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * The end date and time of the event.
@@ -25096,6 +25172,10 @@ export type CreateCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25105,6 +25185,10 @@ export type CreateCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545.
@@ -25152,6 +25236,10 @@ export type CreateCalendarEventResponses = {
          */
         event_type: string;
         /**
+         * The IANA timezone when start and end share the same timezone (e.g. `Europe/Paris`). Omitted when they differ; use `start.timezone` and `end.timezone` instead.
+         */
+        timezone?: string;
+        /**
          * Background color of the calendar in hexadecimal format.
          */
         background_color?: string;
@@ -25159,6 +25247,10 @@ export type CreateCalendarEventResponses = {
          * Foreground color of the event in hexadecimal format.
          */
         text_color?: string;
+        /**
+         * Object containing provider-specific calendar event data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -25319,6 +25411,10 @@ export type GetCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25328,6 +25424,10 @@ export type GetCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * The end date and time of the event.
@@ -25341,6 +25441,10 @@ export type GetCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25350,6 +25454,10 @@ export type GetCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545.
@@ -25397,6 +25505,10 @@ export type GetCalendarEventResponses = {
          */
         event_type: string;
         /**
+         * The IANA timezone when start and end share the same timezone (e.g. `Europe/Paris`). Omitted when they differ; use `start.timezone` and `end.timezone` instead.
+         */
+        timezone?: string;
+        /**
          * Background color of the calendar in hexadecimal format.
          */
         background_color?: string;
@@ -25404,6 +25516,10 @@ export type GetCalendarEventResponses = {
          * Foreground color of the event in hexadecimal format.
          */
         text_color?: string;
+        /**
+         * Object containing provider-specific calendar event data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -25480,6 +25596,10 @@ export type UpdateCalendarEventData = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25489,6 +25609,10 @@ export type UpdateCalendarEventData = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * The end date and time of the event.
@@ -25502,6 +25626,10 @@ export type UpdateCalendarEventData = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25511,6 +25639,10 @@ export type UpdateCalendarEventData = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * Only available for google, guests to send updates to:
@@ -25519,6 +25651,10 @@ export type UpdateCalendarEventData = {
          * - `none`: Do not notify any guests.
          */
         notify?: 'all' | 'externalOnly' | 'none';
+        /**
+         * The IANA timezone the event is expressed in (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+         */
+        timezone?: string;
     };
     path: {
         /**
@@ -25644,6 +25780,10 @@ export type UpdateCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25653,6 +25793,10 @@ export type UpdateCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * The end date and time of the event.
@@ -25666,6 +25810,10 @@ export type UpdateCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25675,6 +25823,10 @@ export type UpdateCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545.
@@ -25722,6 +25874,10 @@ export type UpdateCalendarEventResponses = {
          */
         event_type: string;
         /**
+         * The IANA timezone when start and end share the same timezone (e.g. `Europe/Paris`). Omitted when they differ; use `start.timezone` and `end.timezone` instead.
+         */
+        timezone?: string;
+        /**
          * Background color of the calendar in hexadecimal format.
          */
         background_color?: string;
@@ -25729,6 +25885,10 @@ export type UpdateCalendarEventResponses = {
          * Foreground color of the event in hexadecimal format.
          */
         text_color?: string;
+        /**
+         * Object containing provider-specific calendar event data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -26055,7 +26215,7 @@ export type GetClassicCompanyProfileResponses = {
             /**
              * The city of the location.
              */
-            city: string;
+            city?: string;
             /**
              * The area of the location.
              */
