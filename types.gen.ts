@@ -18,13 +18,13 @@ export type GetChatsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
         /**
          * Return only chats of the given type (if supported by the provider).
          * - `1to1` is a 1to1 chat.
@@ -461,13 +461,13 @@ export type GetInboxChatsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
         /**
          * Return only chats of the given type (if supported by the provider).
          * - `1to1` is a 1to1 chat.
@@ -2026,13 +2026,13 @@ export type GetMessagesListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/chats/{chat_id}/messages';
 };
@@ -5952,13 +5952,13 @@ export type GetParticipantsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/chats/{chat_id}/participants';
 };
@@ -6206,13 +6206,13 @@ export type GetMessageReactionsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/reactions';
 };
@@ -6515,13 +6515,13 @@ export type GetEmailsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/emails';
 };
@@ -6924,13 +6924,13 @@ export type GetFolderEmailsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/folders/{folder_id}/emails';
 };
@@ -8663,13 +8663,13 @@ export type GetDraftsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/drafts';
 };
@@ -10282,13 +10282,13 @@ export type GetFoldersListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/folders';
 };
@@ -10600,6 +10600,10 @@ export type GetEmailContactsListData = {
         account_id: string;
     };
     query?: {
+        /**
+         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         */
+        offset?: number;
         /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
@@ -13774,13 +13778,13 @@ export type GetUserRelationsData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/users/{user_id}/relations';
 };
@@ -13955,13 +13959,13 @@ export type GetRelationRequestsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/users/me/relation-requests';
 };
@@ -14316,13 +14320,13 @@ export type ListUserFollowersData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/users/{user_id}/followers';
 };
@@ -14456,13 +14460,13 @@ export type ListUserFollowingData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/users/{user_id}/following';
 };
@@ -14766,13 +14770,13 @@ export type GetPostsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/users/{user_id}/posts';
 };
@@ -18994,13 +18998,13 @@ export type GetPostReactionsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/posts/{post_id}/reactions';
 };
@@ -19178,13 +19182,13 @@ export type GetPostCommentsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
         /**
          * Sort criterion for the posts list: MOST_RECENT (most recent first) or MOST_RELEVANT (most relevant first).
          */
@@ -20683,13 +20687,13 @@ export type GetPostCommentRepliesListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}/replies';
 };
@@ -21124,13 +21128,13 @@ export type GetPostCommentReactionsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}/reactions';
 };
@@ -21312,13 +21316,13 @@ export type GetUserCommentsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/users/{user_id}/comments';
 };
@@ -22914,13 +22918,13 @@ export type GetUserReactionsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/users/{user_id}/reactions';
 };
@@ -24259,13 +24263,13 @@ export type GetCalendarsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/calendars';
 };
@@ -24313,6 +24317,10 @@ export type GetCalendarsListResponses = {
              * Timezone used in this calendar.
              */
             timezone?: string;
+            /**
+             * Object containing provider-specific calendar data.
+             */
+            specifics?: unknown;
         }>;
         /**
          * Total number of results if supported by the provider.
@@ -24341,6 +24349,10 @@ export type CreateCalendarData = {
          * Background color of the calendar in hexadecimal format.
          */
         background_color?: string;
+        /**
+         * Timezone used in this calendar (IANA, e.g. `Europe/Paris`).
+         */
+        timezone?: string;
     };
     path: {
         /**
@@ -24394,6 +24406,10 @@ export type CreateCalendarResponses = {
          * Timezone used in this calendar.
          */
         timezone?: string;
+        /**
+         * Object containing provider-specific calendar data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -24482,6 +24498,10 @@ export type GetCalendarResponses = {
          * Timezone used in this calendar.
          */
         timezone?: string;
+        /**
+         * Object containing provider-specific calendar data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -24501,6 +24521,10 @@ export type UpdateCalendarData = {
          * Background color of the calendar in hexadecimal format.
          */
         background_color?: string;
+        /**
+         * Timezone used in this calendar (IANA, e.g. `Europe/Paris`).
+         */
+        timezone?: string;
     };
     path: {
         /**
@@ -24558,6 +24582,10 @@ export type UpdateCalendarResponses = {
          * Timezone used in this calendar.
          */
         timezone?: string;
+        /**
+         * Object containing provider-specific calendar data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -24633,13 +24661,13 @@ export type GetCalendarEventListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/calendars/{calendar_id}/events';
 };
@@ -24751,6 +24779,10 @@ export type GetCalendarEventListResponses = {
                  * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
                  */
                 date_time: string;
+                /**
+                 * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+                 */
+                timezone?: string;
             } | {
                 /**
                  * Indicates a date-only value (for all-day events).
@@ -24760,6 +24792,10 @@ export type GetCalendarEventListResponses = {
                  * The date. Uses ISO 8601 date format (YYYY-MM-DD).
                  */
                 date: string;
+                /**
+                 * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+                 */
+                timezone?: string;
             };
             /**
              * The end date and time of the event.
@@ -24773,6 +24809,10 @@ export type GetCalendarEventListResponses = {
                  * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
                  */
                 date_time: string;
+                /**
+                 * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+                 */
+                timezone?: string;
             } | {
                 /**
                  * Indicates a date-only value (for all-day events).
@@ -24782,6 +24822,10 @@ export type GetCalendarEventListResponses = {
                  * The date. Uses ISO 8601 date format (YYYY-MM-DD).
                  */
                 date: string;
+                /**
+                 * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+                 */
+                timezone?: string;
             };
             /**
              * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545.
@@ -24829,6 +24873,10 @@ export type GetCalendarEventListResponses = {
              */
             event_type: string;
             /**
+             * The IANA timezone when start and end share the same timezone (e.g. `Europe/Paris`). Omitted when they differ; use `start.timezone` and `end.timezone` instead.
+             */
+            timezone?: string;
+            /**
              * Background color of the calendar in hexadecimal format.
              */
             background_color?: string;
@@ -24836,6 +24884,10 @@ export type GetCalendarEventListResponses = {
              * Foreground color of the event in hexadecimal format.
              */
             text_color?: string;
+            /**
+             * Object containing provider-specific calendar event data.
+             */
+            specifics?: unknown;
         }>;
         /**
          * Total number of results if supported by the provider.
@@ -24921,6 +24973,10 @@ export type CreateCalendarEventData = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -24930,6 +24986,10 @@ export type CreateCalendarEventData = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * The end date and time of the event. Use date for all day events.
@@ -24943,6 +25003,10 @@ export type CreateCalendarEventData = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -24952,7 +25016,15 @@ export type CreateCalendarEventData = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
+        /**
+         * The IANA timezone the event is expressed in (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+         */
+        timezone?: string;
     };
     path: {
         /**
@@ -25074,6 +25146,10 @@ export type CreateCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25083,6 +25159,10 @@ export type CreateCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * The end date and time of the event.
@@ -25096,6 +25176,10 @@ export type CreateCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25105,6 +25189,10 @@ export type CreateCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545.
@@ -25152,6 +25240,10 @@ export type CreateCalendarEventResponses = {
          */
         event_type: string;
         /**
+         * The IANA timezone when start and end share the same timezone (e.g. `Europe/Paris`). Omitted when they differ; use `start.timezone` and `end.timezone` instead.
+         */
+        timezone?: string;
+        /**
          * Background color of the calendar in hexadecimal format.
          */
         background_color?: string;
@@ -25159,6 +25251,10 @@ export type CreateCalendarEventResponses = {
          * Foreground color of the event in hexadecimal format.
          */
         text_color?: string;
+        /**
+         * Object containing provider-specific calendar event data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -25319,6 +25415,10 @@ export type GetCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25328,6 +25428,10 @@ export type GetCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * The end date and time of the event.
@@ -25341,6 +25445,10 @@ export type GetCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25350,6 +25458,10 @@ export type GetCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545.
@@ -25397,6 +25509,10 @@ export type GetCalendarEventResponses = {
          */
         event_type: string;
         /**
+         * The IANA timezone when start and end share the same timezone (e.g. `Europe/Paris`). Omitted when they differ; use `start.timezone` and `end.timezone` instead.
+         */
+        timezone?: string;
+        /**
          * Background color of the calendar in hexadecimal format.
          */
         background_color?: string;
@@ -25404,6 +25520,10 @@ export type GetCalendarEventResponses = {
          * Foreground color of the event in hexadecimal format.
          */
         text_color?: string;
+        /**
+         * Object containing provider-specific calendar event data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -25480,6 +25600,10 @@ export type UpdateCalendarEventData = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25489,6 +25613,10 @@ export type UpdateCalendarEventData = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * The end date and time of the event.
@@ -25502,6 +25630,10 @@ export type UpdateCalendarEventData = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25511,6 +25643,10 @@ export type UpdateCalendarEventData = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * Only available for google, guests to send updates to:
@@ -25519,6 +25655,10 @@ export type UpdateCalendarEventData = {
          * - `none`: Do not notify any guests.
          */
         notify?: 'all' | 'externalOnly' | 'none';
+        /**
+         * The IANA timezone the event is expressed in (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+         */
+        timezone?: string;
     };
     path: {
         /**
@@ -25644,6 +25784,10 @@ export type UpdateCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25653,6 +25797,10 @@ export type UpdateCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * The end date and time of the event.
@@ -25666,6 +25814,10 @@ export type UpdateCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25675,6 +25827,10 @@ export type UpdateCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545.
@@ -25722,6 +25878,10 @@ export type UpdateCalendarEventResponses = {
          */
         event_type: string;
         /**
+         * The IANA timezone when start and end share the same timezone (e.g. `Europe/Paris`). Omitted when they differ; use `start.timezone` and `end.timezone` instead.
+         */
+        timezone?: string;
+        /**
          * Background color of the calendar in hexadecimal format.
          */
         background_color?: string;
@@ -25729,6 +25889,10 @@ export type UpdateCalendarEventResponses = {
          * Foreground color of the event in hexadecimal format.
          */
         text_color?: string;
+        /**
+         * Object containing provider-specific calendar event data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -26055,7 +26219,7 @@ export type GetClassicCompanyProfileResponses = {
             /**
              * The city of the location.
              */
-            city: string;
+            city?: string;
             /**
              * The area of the location.
              */
@@ -26448,7 +26612,7 @@ export type PerformClassicSearchFromUrlData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
@@ -27775,7 +27939,7 @@ export type PerformClassicPeopleSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
@@ -27953,7 +28117,7 @@ export type PerformClassicCompaniesSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
@@ -28157,7 +28321,7 @@ export type PerformClassicPostsSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
@@ -29270,7 +29434,7 @@ export type PerformClassicJobsSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
@@ -29387,7 +29551,7 @@ export type ListClassicUserJobPostingsData = {
          */
         state: 'DRAFT' | 'OPEN' | 'CLOSED' | 'REVIEW' | 'SUSPENDED';
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
@@ -30202,7 +30366,7 @@ export type GetClassicApplicantsData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
@@ -30704,7 +30868,7 @@ export type GetRecruiterHiringProjectListData = {
          */
         keywords?: string;
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
@@ -31336,11 +31500,7 @@ export type EditRecruiterHiringProjectResponses = {
 export type EditRecruiterHiringProjectResponse = EditRecruiterHiringProjectResponses[keyof EditRecruiterHiringProjectResponses];
 
 export type GetRecruiterTalentPoolApplicantsData = {
-    body: {
-        /**
-         * The ID of the JOB_POSTING channel from the Talent Pool.
-         */
-        channel_id: string;
+    body?: {
         /**
          * A keyword or group of keywords.
          */
@@ -31571,7 +31731,7 @@ export type GetRecruiterTalentPoolApplicantsData = {
     };
     query?: {
         /**
-         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
         cursor?: string;
         /**
@@ -31902,7 +32062,7 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                 /**
                  * The industry to which the User belongs.
                  */
-                industry: string;
+                industry?: string;
                 /**
                  * The number of the followers of the User.
                  */
@@ -32564,7 +32724,7 @@ export type GetRecruiterApplicantByIdResponses = {
             /**
              * The industry to which the User belongs.
              */
-            industry: string;
+            industry?: string;
             /**
              * The number of the followers of the User.
              */
@@ -33014,7 +33174,7 @@ export type GetRecruiterPipelineCandidatesData = {
     };
     query?: {
         /**
-         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
         cursor?: string;
         /**
@@ -33311,7 +33471,7 @@ export type GetRecruiterPipelineCandidatesResponses = {
                 /**
                  * The industry to which the User belongs.
                  */
-                industry: string;
+                industry?: string;
                 /**
                  * The number of the followers of the User.
                  */
@@ -34210,7 +34370,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
     };
     query?: {
         /**
-         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
         cursor?: string;
         /**
@@ -34509,7 +34669,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
             /**
              * The industry to which the User belongs.
              */
-            industry: string;
+            industry?: string;
             /**
              * The number of the followers of the User.
              */
@@ -35347,7 +35507,7 @@ export type GetRecruiterJobPostingListData = {
          */
         workplace_type?: Array<'ON_SITE' | 'REMOTE' | 'HYBRID'>;
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
@@ -36135,11 +36295,13 @@ export type PerformRecruiterSearchFromUrlData = {
     };
     query?: {
         /**
-         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
         cursor?: string;
         /**
-         * The limit of items to be returned.
+         *
+         * `search` and `applicants` channels maximum is 100
+         * `pipeline` channel maximum is 5000
          */
         limit?: number;
     };
@@ -36432,7 +36594,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
             /**
              * The industry to which the User belongs.
              */
-            industry: string;
+            industry?: string;
             /**
              * The number of the followers of the User.
              */
@@ -37065,7 +37227,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The industry to which the User belongs.
                  */
-                industry: string;
+                industry?: string;
                 /**
                  * The number of the followers of the User.
                  */
@@ -37665,7 +37827,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The industry to which the User belongs.
                  */
-                industry: string;
+                industry?: string;
                 /**
                  * The number of the followers of the User.
                  */
@@ -37998,10 +38160,6 @@ export type GetRecruiterSearchParametersData = {
          */
         project_id: string;
         /**
-         * In Talent Pool context, the ID of the JOB_POSTING Channel to get parameters from.
-         */
-        channel_id: string;
-        /**
          * A keyword or group of keywords to filter results. Applicable to TAG only.
          */
         keywords?: string;
@@ -38037,14 +38195,6 @@ export type GetRecruiterSearchParametersData = {
          * The type of search parameter.
          */
         type: 'OCCUPATION' | 'JOB_TITLE' | 'JOB_FUNCTION' | 'LOCATION' | 'ZIPCODE' | 'SKILL' | 'COMPANY' | 'SCHOOL' | 'INDUSTRY' | 'GROUP' | 'PROJECT' | 'CUSTOM_FILTER' | 'PROFILE_LANGUAGE' | 'SEAT' | 'SAVED_SEARCH' | 'DEGREE';
-        /**
-         * An offset used for pagination. Not applicable to JOB_FUNCTION.
-         */
-        offset?: number;
-        /**
-         * Not applicable to JOB_FUNCTION.
-         */
-        limit?: number;
     } | {
         source: 'JOBS';
         /**
@@ -38055,6 +38205,14 @@ export type GetRecruiterSearchParametersData = {
          * The type of search parameter.
          */
         type: 'CONTRACT' | 'SEAT' | 'LOCATION';
+    };
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: {
         /**
          * An offset used for pagination.
          */
@@ -38064,13 +38222,6 @@ export type GetRecruiterSearchParametersData = {
          */
         limit?: number;
     };
-    path: {
-        /**
-         * ID of the Account (acc_xxx) to call the method on behalf of.
-         */
-        account_id: string;
-    };
-    query?: never;
     url: '/v2/{account_id}/linkedin/recruiter/search/parameters';
 };
 
@@ -38653,7 +38804,7 @@ export type PerformRecruiterPeopleSearchData = {
     };
     query?: {
         /**
-         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
         cursor?: string;
         /**
@@ -38952,7 +39103,7 @@ export type PerformRecruiterPeopleSearchResponses = {
             /**
              * The industry to which the User belongs.
              */
-            industry: string;
+            industry?: string;
             /**
              * The number of the followers of the User.
              */
@@ -39367,7 +39518,7 @@ export type PerformSalesSearchFromUrlData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
@@ -41120,7 +41271,7 @@ export type PerformSalesPeopleSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
@@ -41681,7 +41832,7 @@ export type PerformSalesCompaniesSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**

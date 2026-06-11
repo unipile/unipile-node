@@ -1,6 +1,6 @@
 {
   "name": "@unipile/sdk",
-  "version": "2.7.0",
+  "version": "2.10.0",
   "description": "TypeScript SDK for Unipile API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
