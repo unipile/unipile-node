@@ -18,13 +18,13 @@ export type GetChatsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
         /**
          * Return only chats of the given type (if supported by the provider).
          * - `1to1` is a 1to1 chat.
@@ -206,6 +206,14 @@ export type GetChatsListResponses = {
                  */
                 display_name: string;
                 /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
                  * Public url to the profile of the user.
                  */
                 profile_url?: string;
@@ -311,6 +319,14 @@ export type GetChatsListResponses = {
                      * Display name of the user.
                      */
                     display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
                     /**
                      * Public url to the profile of the user.
                      */
@@ -461,13 +477,13 @@ export type GetInboxChatsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
         /**
          * Return only chats of the given type (if supported by the provider).
          * - `1to1` is a 1to1 chat.
@@ -649,6 +665,14 @@ export type GetInboxChatsListResponses = {
                  */
                 display_name: string;
                 /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
                  * Public url to the profile of the user.
                  */
                 profile_url?: string;
@@ -754,6 +778,14 @@ export type GetInboxChatsListResponses = {
                      * Display name of the user.
                      */
                     display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
                     /**
                      * Public url to the profile of the user.
                      */
@@ -1035,6 +1067,14 @@ export type GetChatResponses = {
              */
             display_name: string;
             /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
+            /**
              * Public url to the profile of the user.
              */
             profile_url?: string;
@@ -1140,6 +1180,14 @@ export type GetChatResponses = {
                  * Display name of the user.
                  */
                 display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
                 /**
                  * Public url to the profile of the user.
                  */
@@ -1387,6 +1435,14 @@ export type UpdateChatResponses = {
                  */
                 display_name: string;
                 /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
                  * Public url to the profile of the user.
                  */
                 profile_url?: string;
@@ -1454,6 +1510,14 @@ export type UpdateChatResponses = {
              * Display name of the user.
              */
             display_name: string;
+            /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
             /**
              * Public url to the profile of the user.
              */
@@ -2026,13 +2090,13 @@ export type GetMessagesListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/chats/{chat_id}/messages';
 };
@@ -2602,6 +2666,14 @@ export type GetMessagesListResponses = {
                  */
                 display_name: string;
                 /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
                  * Public url to the profile of the user.
                  */
                 profile_url?: string;
@@ -2920,6 +2992,14 @@ export type GetMessagesListResponses = {
                      */
                     display_name: string;
                     /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
                      * Public url to the profile of the user.
                      */
                     profile_url?: string;
@@ -3236,6 +3316,14 @@ export type GetMessagesListResponses = {
                      * Display name of the user.
                      */
                     display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
                     /**
                      * Public url to the profile of the user.
                      */
@@ -3936,6 +4024,14 @@ export type GetMessageResponses = {
              */
             display_name: string;
             /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
+            /**
              * Public url to the profile of the user.
              */
             profile_url?: string;
@@ -4254,6 +4350,14 @@ export type GetMessageResponses = {
                  */
                 display_name: string;
                 /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
                  * Public url to the profile of the user.
                  */
                 profile_url?: string;
@@ -4570,6 +4674,14 @@ export type GetMessageResponses = {
                  * Display name of the user.
                  */
                 display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
                 /**
                  * Public url to the profile of the user.
                  */
@@ -5131,6 +5243,14 @@ export type ModifyMessageResponses = {
              */
             display_name: string;
             /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
+            /**
              * Public url to the profile of the user.
              */
             profile_url?: string;
@@ -5616,6 +5736,14 @@ export type ModifyMessageResponses = {
                  */
                 display_name: string;
                 /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
                  * Public url to the profile of the user.
                  */
                 profile_url?: string;
@@ -5878,6 +6006,14 @@ export type ModifyMessageResponses = {
                  */
                 display_name: string;
                 /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
                  * Public url to the profile of the user.
                  */
                 profile_url?: string;
@@ -5952,13 +6088,13 @@ export type GetParticipantsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/chats/{chat_id}/participants';
 };
@@ -5999,6 +6135,14 @@ export type GetParticipantsListResponses = {
                  * Display name of the user.
                  */
                 display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
                 /**
                  * Public url to the profile of the user.
                  */
@@ -6206,13 +6350,13 @@ export type GetMessageReactionsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/reactions';
 };
@@ -6253,6 +6397,14 @@ export type GetMessageReactionsListResponses = {
                  * Display name of the user.
                  */
                 display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
                 /**
                  * Public url to the profile of the user.
                  */
@@ -6479,21 +6631,37 @@ export type GetEmailsListData = {
     };
     query?: {
         /**
-         * Filter to only return emails sent to the given email address, either in the to, cc or bcc field.
+         * Full-text search in the email subject and body (case-insensitive, partial match). Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). Combine with `from`, `to`, or `any_email` to narrow by participant address.
+         */
+        q?: string;
+        /**
+         * Speed up the response by only returning the email metadata, excluding the body and attachments metadata.
+         */
+        meta_only?: boolean;
+        /**
+         * Return messages sent to the given email address. For Outlook, some messages matching this filter may be missing due to a provider limitation. Use `GET /threads/:thread_id` to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook).
          */
         to?: string;
         /**
-         * Filter to only return emails with the given string in the subject.
-         */
-        subject?: string;
-        /**
-         * Filter to only return emails sent from the given email address.
+         * Return messages sent from the given email address. For Outlook, some messages matching this filter may be missing due to a provider limitation. Use `GET /threads/:thread_id` to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook).
          */
         from?: string;
         /**
-         * Filter to only return emails related to a comma-separated list of email addresses.
+         * Return messages where at least one of the given comma-separated email addresses appears as a participant (from, to, cc, or bcc). For Outlook, some messages matching this filter may be missing due to a provider limitation. Use `GET /threads/:thread_id` to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook).
          */
         any_email?: string;
+        /**
+         * Filter to only return emails with or without attachments. For Outlook with `meta_only=true`, this uses the provider attachment flag, which excludes inline attachments.
+         */
+        has_attachment?: boolean;
+        /**
+         * Filter to only return starred or unstarred emails.
+         */
+        is_starred?: boolean;
+        /**
+         * Filter to only return unread or read emails.
+         */
+        is_unread?: boolean;
         /**
          * Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
          */
@@ -6507,21 +6675,17 @@ export type GetEmailsListData = {
          */
         after?: string;
         /**
-         * Speed up the response by only returning the email metadata, excluding the body and attachments metadata.
-         */
-        meta_only?: boolean;
-        /**
          * An offset used for pagination, if supported by the provider, else use `cursor`.
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/emails';
 };
@@ -6888,21 +7052,37 @@ export type GetFolderEmailsListData = {
     };
     query?: {
         /**
-         * Filter to only return emails sent to the given email address, either in the to, cc or bcc field.
+         * Full-text search in the email subject and body (case-insensitive, partial match). Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). Combine with `from`, `to`, or `any_email` to narrow by participant address.
+         */
+        q?: string;
+        /**
+         * Speed up the response by only returning the email metadata, excluding the body and attachments metadata.
+         */
+        meta_only?: boolean;
+        /**
+         * Return messages sent to the given email address. For Outlook, some messages matching this filter may be missing due to a provider limitation. Use `GET /threads/:thread_id` to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook).
          */
         to?: string;
         /**
-         * Filter to only return emails with the given string in the subject.
-         */
-        subject?: string;
-        /**
-         * Filter to only return emails sent from the given email address.
+         * Return messages sent from the given email address. For Outlook, some messages matching this filter may be missing due to a provider limitation. Use `GET /threads/:thread_id` to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook).
          */
         from?: string;
         /**
-         * Filter to only return emails related to a comma-separated list of email addresses.
+         * Return messages where at least one of the given comma-separated email addresses appears as a participant (from, to, cc, or bcc). For Outlook, some messages matching this filter may be missing due to a provider limitation. Use `GET /threads/:thread_id` to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook).
          */
         any_email?: string;
+        /**
+         * Filter to only return emails with or without attachments. For Outlook with `meta_only=true`, this uses the provider attachment flag, which excludes inline attachments.
+         */
+        has_attachment?: boolean;
+        /**
+         * Filter to only return starred or unstarred emails.
+         */
+        is_starred?: boolean;
+        /**
+         * Filter to only return unread or read emails.
+         */
+        is_unread?: boolean;
         /**
          * Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
          */
@@ -6916,21 +7096,17 @@ export type GetFolderEmailsListData = {
          */
         after?: string;
         /**
-         * Speed up the response by only returning the email metadata, excluding the body and attachments metadata.
-         */
-        meta_only?: boolean;
-        /**
          * An offset used for pagination, if supported by the provider, else use `cursor`.
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/folders/{folder_id}/emails';
 };
@@ -8595,15 +8771,15 @@ export type SendEmailData = {
              */
             opens?: boolean;
             /**
-             * If `true`, trigger webhooks listening to `tracking.link` when the recipient click on a link in the email content.
+             * If `true`, trigger webhooks listening to `tracking.click` when the recipient click on a link in the email content.
              */
-            links?: boolean;
+            clicks?: boolean;
             /**
              * A label to be sent in the tracking event. This can help you to identify the sent email.
              */
             label?: string;
             /**
-             * Your custom domain pointing to https://tracking.unipile.com to handle links tracking.
+             * Your custom domain pointing to https://s2.lnk-fllw.com to handle links tracking.
              */
             custom_domain?: string;
         };
@@ -8663,13 +8839,13 @@ export type GetDraftsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/drafts';
 };
@@ -9099,15 +9275,15 @@ export type CreateDraftData = {
              */
             opens?: boolean;
             /**
-             * If `true`, trigger webhooks listening to `tracking.link` when the recipient click on a link in the email content.
+             * If `true`, trigger webhooks listening to `tracking.click` when the recipient click on a link in the email content.
              */
-            links?: boolean;
+            clicks?: boolean;
             /**
              * A label to be sent in the tracking event. This can help you to identify the sent email.
              */
             label?: string;
             /**
-             * Your custom domain pointing to https://tracking.unipile.com to handle links tracking.
+             * Your custom domain pointing to https://s2.lnk-fllw.com to handle links tracking.
              */
             custom_domain?: string;
         };
@@ -9885,15 +10061,15 @@ export type UpdateDraftData = {
              */
             opens?: boolean;
             /**
-             * If `true`, trigger webhooks listening to `tracking.link` when the recipient click on a link in the email content.
+             * If `true`, trigger webhooks listening to `tracking.click` when the recipient click on a link in the email content.
              */
-            links?: boolean;
+            clicks?: boolean;
             /**
              * A label to be sent in the tracking event. This can help you to identify the sent email.
              */
             label?: string;
             /**
-             * Your custom domain pointing to https://tracking.unipile.com to handle links tracking.
+             * Your custom domain pointing to https://s2.lnk-fllw.com to handle links tracking.
              */
             custom_domain?: string;
         };
@@ -10282,13 +10458,13 @@ export type GetFoldersListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/folders';
 };
@@ -10601,11 +10777,15 @@ export type GetEmailContactsListData = {
     };
     query?: {
         /**
+         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         */
+        offset?: number;
+        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -10988,6 +11168,14 @@ export type GetUserProfileResponses = {
          */
         display_name: string;
         /**
+         * First name of the user.
+         */
+        first_name?: string;
+        /**
+         * Last name of the user.
+         */
+        last_name?: string;
+        /**
          * Public url to the profile of the user.
          */
         profile_url?: string;
@@ -11047,6 +11235,14 @@ export type GetUserProfileResponses = {
                      * Display name of the user.
                      */
                     display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
                     /**
                      * Public url to the profile of the user.
                      */
@@ -11422,6 +11618,14 @@ export type GetUserProfileResponses = {
                      */
                     display_name: string;
                     /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
                      * Public url to the profile of the user.
                      */
                     profile_url?: string;
@@ -11492,6 +11696,14 @@ export type GetUserProfileResponses = {
                          */
                         display_name: string;
                         /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
+                        /**
                          * Public url to the profile of the user.
                          */
                         profile_url?: string;
@@ -11544,6 +11756,14 @@ export type GetUserProfileResponses = {
                          * Display name of the user.
                          */
                         display_name: string;
+                        /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
                         /**
                          * Public url to the profile of the user.
                          */
@@ -11598,6 +11818,14 @@ export type GetUserProfileResponses = {
                          * Display name of the user.
                          */
                         display_name: string;
+                        /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
                         /**
                          * Public url to the profile of the user.
                          */
@@ -11709,6 +11937,14 @@ export type GetUserProfileResponses = {
                          */
                         display_name: string;
                         /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
+                        /**
                          * Public url to the profile of the user.
                          */
                         profile_url?: string;
@@ -11815,6 +12051,14 @@ export type GetUserProfileResponses = {
                          */
                         display_name: string;
                         /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
+                        /**
                          * Public url to the profile of the user.
                          */
                         profile_url?: string;
@@ -11920,6 +12164,14 @@ export type GetUserProfileResponses = {
                          * Display name of the user.
                          */
                         display_name: string;
+                        /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
                         /**
                          * Public url to the profile of the user.
                          */
@@ -12035,6 +12287,14 @@ export type GetUserProfileResponses = {
                          */
                         display_name: string;
                         /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
+                        /**
                          * Public url to the profile of the user.
                          */
                         profile_url?: string;
@@ -12136,6 +12396,14 @@ export type GetUserProfileResponses = {
                          * Display name of the user.
                          */
                         display_name: string;
+                        /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
                         /**
                          * Public url to the profile of the user.
                          */
@@ -12251,6 +12519,14 @@ export type GetUserProfileResponses = {
                          */
                         display_name: string;
                         /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
+                        /**
                          * Public url to the profile of the user.
                          */
                         profile_url?: string;
@@ -12351,6 +12627,14 @@ export type GetUserProfileResponses = {
                              * Display name of the user.
                              */
                             display_name: string;
+                            /**
+                             * First name of the user.
+                             */
+                            first_name?: string;
+                            /**
+                             * Last name of the user.
+                             */
+                            last_name?: string;
                             /**
                              * Public url to the profile of the user.
                              */
@@ -12454,14 +12738,6 @@ export type GetUserProfileResponses = {
          * URL of the user's public picture in large size.
          */
         public_picture_url_large?: string;
-        /**
-         * First name of the user.
-         */
-        first_name?: string;
-        /**
-         * Last name of the user.
-         */
-        last_name?: string;
         /**
          * Birth date of the user.
          */
@@ -13774,13 +14050,13 @@ export type GetUserRelationsData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/users/{user_id}/relations';
 };
@@ -13824,6 +14100,14 @@ export type GetUserRelationsResponses = {
                  * Display name of the user.
                  */
                 display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
                 /**
                  * Public url to the profile of the user.
                  */
@@ -13955,13 +14239,13 @@ export type GetRelationRequestsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/users/me/relation-requests';
 };
@@ -14015,6 +14299,14 @@ export type GetRelationRequestsListResponses = {
                  * Display name of the user.
                  */
                 display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
                 /**
                  * Public url to the profile of the user.
                  */
@@ -14168,6 +14460,14 @@ export type CreateRelationRequestResponses = {
              */
             display_name: string;
             /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
+            /**
              * Public url to the profile of the user.
              */
             profile_url?: string;
@@ -14316,13 +14616,13 @@ export type ListUserFollowersData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/users/{user_id}/followers';
 };
@@ -14353,6 +14653,14 @@ export type ListUserFollowersResponses = {
              * Display name of the user.
              */
             display_name: string;
+            /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
             /**
              * Public url to the profile of the user.
              */
@@ -14456,13 +14764,13 @@ export type ListUserFollowingData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/users/{user_id}/following';
 };
@@ -14493,6 +14801,14 @@ export type ListUserFollowingResponses = {
              * Display name of the user.
              */
             display_name: string;
+            /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
             /**
              * Public url to the profile of the user.
              */
@@ -14645,6 +14961,14 @@ export type FollowUserResponses = {
              */
             display_name: string;
             /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
+            /**
              * Public url to the profile of the user.
              */
             profile_url?: string;
@@ -14766,13 +15090,13 @@ export type GetPostsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/users/{user_id}/posts';
 };
@@ -15201,6 +15525,14 @@ export type GetPostsListResponses = {
                  */
                 display_name: string;
                 /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
                  * Public url to the profile of the user.
                  */
                 profile_url?: string;
@@ -15296,6 +15628,14 @@ export type GetPostsListResponses = {
                  * Display name of the user.
                  */
                 display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
                 /**
                  * Public url to the profile of the user.
                  */
@@ -15786,6 +16126,14 @@ export type GetPostsListResponses = {
                      */
                     display_name: string;
                     /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
                      * Public url to the profile of the user.
                      */
                     profile_url?: string;
@@ -15856,6 +16204,150 @@ export type GetPostsListResponses = {
                          */
                         is_verified?: boolean;
                     };
+                };
+                /**
+                 * Object containing provider-specific post data.
+                 */
+                specifics?: {
+                    /**
+                     * A job posting that can be included as an insert in the post.
+                     */
+                    job_posting?: {
+                        /**
+                         * Unique identifier of the job posting.
+                         */
+                        id: string | null;
+                        /**
+                         * Title of the job posting.
+                         */
+                        title: string;
+                        /**
+                         * Location of the job posting.
+                         */
+                        location: string;
+                        /**
+                         * The company that published the job posting.
+                         */
+                        company: {
+                            /**
+                             * Unique identifier of the company.
+                             */
+                            id: string | null;
+                            /**
+                             * Name of the company.
+                             */
+                            name: string | null;
+                            /**
+                             * Public url to the profile picture of the company.
+                             */
+                            picture_url?: string;
+                        };
+                    };
+                    /**
+                     * An article that can be included as an insert in the post.
+                     */
+                    article?: {
+                        /**
+                         * Unique identifier of the article.
+                         */
+                        id: string | null;
+                        /**
+                         * Title of the article.
+                         */
+                        title: string;
+                        /**
+                         * Author of the article.
+                         */
+                        author?: string;
+                        /**
+                         * Public url to the article.
+                         */
+                        url?: string;
+                        /**
+                         * The publication date of the article. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        published_at?: string;
+                        /**
+                         * A short excerpt of the article content.
+                         */
+                        excerpt?: string;
+                        /**
+                         * Public url to the cover picture of the article.
+                         */
+                        picture_url?: string;
+                    };
+                };
+            };
+            /**
+             * Object containing provider-specific post data.
+             */
+            specifics?: {
+                /**
+                 * A job posting that can be included as an insert in the post.
+                 */
+                job_posting?: {
+                    /**
+                     * Unique identifier of the job posting.
+                     */
+                    id: string | null;
+                    /**
+                     * Title of the job posting.
+                     */
+                    title: string;
+                    /**
+                     * Location of the job posting.
+                     */
+                    location: string;
+                    /**
+                     * The company that published the job posting.
+                     */
+                    company: {
+                        /**
+                         * Unique identifier of the company.
+                         */
+                        id: string | null;
+                        /**
+                         * Name of the company.
+                         */
+                        name: string | null;
+                        /**
+                         * Public url to the profile picture of the company.
+                         */
+                        picture_url?: string;
+                    };
+                };
+                /**
+                 * An article that can be included as an insert in the post.
+                 */
+                article?: {
+                    /**
+                     * Unique identifier of the article.
+                     */
+                    id: string | null;
+                    /**
+                     * Title of the article.
+                     */
+                    title: string;
+                    /**
+                     * Author of the article.
+                     */
+                    author?: string;
+                    /**
+                     * Public url to the article.
+                     */
+                    url?: string;
+                    /**
+                     * The publication date of the article. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    published_at?: string;
+                    /**
+                     * A short excerpt of the article content.
+                     */
+                    excerpt?: string;
+                    /**
+                     * Public url to the cover picture of the article.
+                     */
+                    picture_url?: string;
                 };
             };
         }>;
@@ -16336,6 +16828,14 @@ export type GetPostResponses = {
              */
             display_name: string;
             /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
+            /**
              * Public url to the profile of the user.
              */
             profile_url?: string;
@@ -16431,6 +16931,14 @@ export type GetPostResponses = {
              * Display name of the user.
              */
             display_name: string;
+            /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
             /**
              * Public url to the profile of the user.
              */
@@ -16921,6 +17429,14 @@ export type GetPostResponses = {
                  */
                 display_name: string;
                 /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
                  * Public url to the profile of the user.
                  */
                 profile_url?: string;
@@ -16991,6 +17507,150 @@ export type GetPostResponses = {
                      */
                     is_verified?: boolean;
                 };
+            };
+            /**
+             * Object containing provider-specific post data.
+             */
+            specifics?: {
+                /**
+                 * A job posting that can be included as an insert in the post.
+                 */
+                job_posting?: {
+                    /**
+                     * Unique identifier of the job posting.
+                     */
+                    id: string | null;
+                    /**
+                     * Title of the job posting.
+                     */
+                    title: string;
+                    /**
+                     * Location of the job posting.
+                     */
+                    location: string;
+                    /**
+                     * The company that published the job posting.
+                     */
+                    company: {
+                        /**
+                         * Unique identifier of the company.
+                         */
+                        id: string | null;
+                        /**
+                         * Name of the company.
+                         */
+                        name: string | null;
+                        /**
+                         * Public url to the profile picture of the company.
+                         */
+                        picture_url?: string;
+                    };
+                };
+                /**
+                 * An article that can be included as an insert in the post.
+                 */
+                article?: {
+                    /**
+                     * Unique identifier of the article.
+                     */
+                    id: string | null;
+                    /**
+                     * Title of the article.
+                     */
+                    title: string;
+                    /**
+                     * Author of the article.
+                     */
+                    author?: string;
+                    /**
+                     * Public url to the article.
+                     */
+                    url?: string;
+                    /**
+                     * The publication date of the article. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    published_at?: string;
+                    /**
+                     * A short excerpt of the article content.
+                     */
+                    excerpt?: string;
+                    /**
+                     * Public url to the cover picture of the article.
+                     */
+                    picture_url?: string;
+                };
+            };
+        };
+        /**
+         * Object containing provider-specific post data.
+         */
+        specifics?: {
+            /**
+             * A job posting that can be included as an insert in the post.
+             */
+            job_posting?: {
+                /**
+                 * Unique identifier of the job posting.
+                 */
+                id: string | null;
+                /**
+                 * Title of the job posting.
+                 */
+                title: string;
+                /**
+                 * Location of the job posting.
+                 */
+                location: string;
+                /**
+                 * The company that published the job posting.
+                 */
+                company: {
+                    /**
+                     * Unique identifier of the company.
+                     */
+                    id: string | null;
+                    /**
+                     * Name of the company.
+                     */
+                    name: string | null;
+                    /**
+                     * Public url to the profile picture of the company.
+                     */
+                    picture_url?: string;
+                };
+            };
+            /**
+             * An article that can be included as an insert in the post.
+             */
+            article?: {
+                /**
+                 * Unique identifier of the article.
+                 */
+                id: string | null;
+                /**
+                 * Title of the article.
+                 */
+                title: string;
+                /**
+                 * Author of the article.
+                 */
+                author?: string;
+                /**
+                 * Public url to the article.
+                 */
+                url?: string;
+                /**
+                 * The publication date of the article. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                published_at?: string;
+                /**
+                 * A short excerpt of the article content.
+                 */
+                excerpt?: string;
+                /**
+                 * Public url to the cover picture of the article.
+                 */
+                picture_url?: string;
             };
         };
     };
@@ -17076,6 +17736,14 @@ export type UpdatePostResponses = {
              * Display name of the user.
              */
             display_name: string;
+            /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
             /**
              * Public url to the profile of the user.
              */
@@ -17463,6 +18131,10 @@ export type UpdatePostResponses = {
             users_reached_counter?: number;
         };
         /**
+         * Object containing provider-specific post data.
+         */
+        specifics?: unknown;
+        /**
          * `true` if this post is reposted by someone without quote. Quoted post does not qualify as a repost.
          */
         is_repost: boolean;
@@ -17490,6 +18162,14 @@ export type UpdatePostResponses = {
              * Display name of the user.
              */
             display_name: string;
+            /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
             /**
              * Public url to the profile of the user.
              */
@@ -17557,6 +18237,14 @@ export type UpdatePostResponses = {
                  * Display name of the user.
                  */
                 display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
                 /**
                  * Public url to the profile of the user.
                  */
@@ -17943,6 +18631,10 @@ export type UpdatePostResponses = {
                  */
                 users_reached_counter?: number;
             };
+            /**
+             * Object containing provider-specific post data.
+             */
+            specifics?: unknown;
         };
     };
 };
@@ -18075,6 +18767,14 @@ export type CreatePostResponses = {
              */
             display_name: string;
             /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
+            /**
              * Public url to the profile of the user.
              */
             profile_url?: string;
@@ -18461,6 +19161,10 @@ export type CreatePostResponses = {
             users_reached_counter?: number;
         };
         /**
+         * Object containing provider-specific post data.
+         */
+        specifics?: unknown;
+        /**
          * `true` if this post is reposted by someone without quote. Quoted post does not qualify as a repost.
          */
         is_repost: boolean;
@@ -18488,6 +19192,14 @@ export type CreatePostResponses = {
              * Display name of the user.
              */
             display_name: string;
+            /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
             /**
              * Public url to the profile of the user.
              */
@@ -18555,6 +19267,14 @@ export type CreatePostResponses = {
                  * Display name of the user.
                  */
                 display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
                 /**
                  * Public url to the profile of the user.
                  */
@@ -18941,6 +19661,10 @@ export type CreatePostResponses = {
                  */
                 users_reached_counter?: number;
             };
+            /**
+             * Object containing provider-specific post data.
+             */
+            specifics?: unknown;
         };
     };
 };
@@ -18994,13 +19718,13 @@ export type GetPostReactionsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/posts/{post_id}/reactions';
 };
@@ -19041,6 +19765,14 @@ export type GetPostReactionsListResponses = {
                  * Display name of the user.
                  */
                 display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
                 /**
                  * Public url to the profile of the user.
                  */
@@ -19178,13 +19910,13 @@ export type GetPostCommentsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
         /**
          * Sort criterion for the posts list: MOST_RECENT (most recent first) or MOST_RELEVANT (most relevant first).
          */
@@ -19483,6 +20215,14 @@ export type GetPostCommentsListResponses = {
                  */
                 display_name: string;
                 /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
                  * Public url to the profile of the user.
                  */
                 profile_url?: string;
@@ -19657,6 +20397,14 @@ export type AddPostCommentResponses = {
              * Display name of the user.
              */
             display_name: string;
+            /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
             /**
              * Public url to the profile of the user.
              */
@@ -20022,6 +20770,14 @@ export type UpdatePostCommentResponses = {
              * Display name of the user.
              */
             display_name: string;
+            /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
             /**
              * Public url to the profile of the user.
              */
@@ -20389,6 +21145,14 @@ export type ReplyToCommentResponses = {
              */
             display_name: string;
             /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
+            /**
              * Public url to the profile of the user.
              */
             profile_url?: string;
@@ -20683,13 +21447,13 @@ export type GetPostCommentRepliesListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}/replies';
 };
@@ -20984,6 +21748,14 @@ export type GetPostCommentRepliesListResponses = {
                  */
                 display_name: string;
                 /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
                  * Public url to the profile of the user.
                  */
                 profile_url?: string;
@@ -21124,13 +21896,13 @@ export type GetPostCommentReactionsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}/reactions';
 };
@@ -21171,6 +21943,14 @@ export type GetPostCommentReactionsListResponses = {
                  * Display name of the user.
                  */
                 display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
                 /**
                  * Public url to the profile of the user.
                  */
@@ -21312,13 +22092,13 @@ export type GetUserCommentsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/users/{user_id}/comments';
 };
@@ -21613,6 +22393,14 @@ export type GetUserCommentsListResponses = {
                  */
                 display_name: string;
                 /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
                  * Public url to the profile of the user.
                  */
                 profile_url?: string;
@@ -21733,6 +22521,14 @@ export type GetUserCommentsListResponses = {
                      * Display name of the user.
                      */
                     display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
                     /**
                      * Public url to the profile of the user.
                      */
@@ -22224,6 +23020,14 @@ export type GetUserCommentsListResponses = {
                      */
                     display_name: string;
                     /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
                      * Public url to the profile of the user.
                      */
                     profile_url?: string;
@@ -22319,6 +23123,14 @@ export type GetUserCommentsListResponses = {
                      * Display name of the user.
                      */
                     display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
                     /**
                      * Public url to the profile of the user.
                      */
@@ -22809,6 +23621,14 @@ export type GetUserCommentsListResponses = {
                          */
                         display_name: string;
                         /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
+                        /**
                          * Public url to the profile of the user.
                          */
                         profile_url?: string;
@@ -22880,6 +23700,150 @@ export type GetUserCommentsListResponses = {
                             is_verified?: boolean;
                         };
                     };
+                    /**
+                     * Object containing provider-specific post data.
+                     */
+                    specifics?: {
+                        /**
+                         * A job posting that can be included as an insert in the post.
+                         */
+                        job_posting?: {
+                            /**
+                             * Unique identifier of the job posting.
+                             */
+                            id: string | null;
+                            /**
+                             * Title of the job posting.
+                             */
+                            title: string;
+                            /**
+                             * Location of the job posting.
+                             */
+                            location: string;
+                            /**
+                             * The company that published the job posting.
+                             */
+                            company: {
+                                /**
+                                 * Unique identifier of the company.
+                                 */
+                                id: string | null;
+                                /**
+                                 * Name of the company.
+                                 */
+                                name: string | null;
+                                /**
+                                 * Public url to the profile picture of the company.
+                                 */
+                                picture_url?: string;
+                            };
+                        };
+                        /**
+                         * An article that can be included as an insert in the post.
+                         */
+                        article?: {
+                            /**
+                             * Unique identifier of the article.
+                             */
+                            id: string | null;
+                            /**
+                             * Title of the article.
+                             */
+                            title: string;
+                            /**
+                             * Author of the article.
+                             */
+                            author?: string;
+                            /**
+                             * Public url to the article.
+                             */
+                            url?: string;
+                            /**
+                             * The publication date of the article. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                             */
+                            published_at?: string;
+                            /**
+                             * A short excerpt of the article content.
+                             */
+                            excerpt?: string;
+                            /**
+                             * Public url to the cover picture of the article.
+                             */
+                            picture_url?: string;
+                        };
+                    };
+                };
+                /**
+                 * Object containing provider-specific post data.
+                 */
+                specifics?: {
+                    /**
+                     * A job posting that can be included as an insert in the post.
+                     */
+                    job_posting?: {
+                        /**
+                         * Unique identifier of the job posting.
+                         */
+                        id: string | null;
+                        /**
+                         * Title of the job posting.
+                         */
+                        title: string;
+                        /**
+                         * Location of the job posting.
+                         */
+                        location: string;
+                        /**
+                         * The company that published the job posting.
+                         */
+                        company: {
+                            /**
+                             * Unique identifier of the company.
+                             */
+                            id: string | null;
+                            /**
+                             * Name of the company.
+                             */
+                            name: string | null;
+                            /**
+                             * Public url to the profile picture of the company.
+                             */
+                            picture_url?: string;
+                        };
+                    };
+                    /**
+                     * An article that can be included as an insert in the post.
+                     */
+                    article?: {
+                        /**
+                         * Unique identifier of the article.
+                         */
+                        id: string | null;
+                        /**
+                         * Title of the article.
+                         */
+                        title: string;
+                        /**
+                         * Author of the article.
+                         */
+                        author?: string;
+                        /**
+                         * Public url to the article.
+                         */
+                        url?: string;
+                        /**
+                         * The publication date of the article. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        published_at?: string;
+                        /**
+                         * A short excerpt of the article content.
+                         */
+                        excerpt?: string;
+                        /**
+                         * Public url to the cover picture of the article.
+                         */
+                        picture_url?: string;
+                    };
                 };
             } | null;
         }>;
@@ -22914,13 +23878,13 @@ export type GetUserReactionsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/users/{user_id}/reactions';
 };
@@ -22962,6 +23926,14 @@ export type GetUserReactionsListResponses = {
                  */
                 display_name: string;
                 /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
                  * Public url to the profile of the user.
                  */
                 profile_url?: string;
@@ -23082,6 +24054,14 @@ export type GetUserReactionsListResponses = {
                      * Display name of the user.
                      */
                     display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
                     /**
                      * Public url to the profile of the user.
                      */
@@ -23573,6 +24553,14 @@ export type GetUserReactionsListResponses = {
                      */
                     display_name: string;
                     /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
                      * Public url to the profile of the user.
                      */
                     profile_url?: string;
@@ -23668,6 +24656,14 @@ export type GetUserReactionsListResponses = {
                      * Display name of the user.
                      */
                     display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
                     /**
                      * Public url to the profile of the user.
                      */
@@ -24158,6 +25154,14 @@ export type GetUserReactionsListResponses = {
                          */
                         display_name: string;
                         /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
+                        /**
                          * Public url to the profile of the user.
                          */
                         profile_url?: string;
@@ -24229,6 +25233,150 @@ export type GetUserReactionsListResponses = {
                             is_verified?: boolean;
                         };
                     };
+                    /**
+                     * Object containing provider-specific post data.
+                     */
+                    specifics?: {
+                        /**
+                         * A job posting that can be included as an insert in the post.
+                         */
+                        job_posting?: {
+                            /**
+                             * Unique identifier of the job posting.
+                             */
+                            id: string | null;
+                            /**
+                             * Title of the job posting.
+                             */
+                            title: string;
+                            /**
+                             * Location of the job posting.
+                             */
+                            location: string;
+                            /**
+                             * The company that published the job posting.
+                             */
+                            company: {
+                                /**
+                                 * Unique identifier of the company.
+                                 */
+                                id: string | null;
+                                /**
+                                 * Name of the company.
+                                 */
+                                name: string | null;
+                                /**
+                                 * Public url to the profile picture of the company.
+                                 */
+                                picture_url?: string;
+                            };
+                        };
+                        /**
+                         * An article that can be included as an insert in the post.
+                         */
+                        article?: {
+                            /**
+                             * Unique identifier of the article.
+                             */
+                            id: string | null;
+                            /**
+                             * Title of the article.
+                             */
+                            title: string;
+                            /**
+                             * Author of the article.
+                             */
+                            author?: string;
+                            /**
+                             * Public url to the article.
+                             */
+                            url?: string;
+                            /**
+                             * The publication date of the article. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                             */
+                            published_at?: string;
+                            /**
+                             * A short excerpt of the article content.
+                             */
+                            excerpt?: string;
+                            /**
+                             * Public url to the cover picture of the article.
+                             */
+                            picture_url?: string;
+                        };
+                    };
+                };
+                /**
+                 * Object containing provider-specific post data.
+                 */
+                specifics?: {
+                    /**
+                     * A job posting that can be included as an insert in the post.
+                     */
+                    job_posting?: {
+                        /**
+                         * Unique identifier of the job posting.
+                         */
+                        id: string | null;
+                        /**
+                         * Title of the job posting.
+                         */
+                        title: string;
+                        /**
+                         * Location of the job posting.
+                         */
+                        location: string;
+                        /**
+                         * The company that published the job posting.
+                         */
+                        company: {
+                            /**
+                             * Unique identifier of the company.
+                             */
+                            id: string | null;
+                            /**
+                             * Name of the company.
+                             */
+                            name: string | null;
+                            /**
+                             * Public url to the profile picture of the company.
+                             */
+                            picture_url?: string;
+                        };
+                    };
+                    /**
+                     * An article that can be included as an insert in the post.
+                     */
+                    article?: {
+                        /**
+                         * Unique identifier of the article.
+                         */
+                        id: string | null;
+                        /**
+                         * Title of the article.
+                         */
+                        title: string;
+                        /**
+                         * Author of the article.
+                         */
+                        author?: string;
+                        /**
+                         * Public url to the article.
+                         */
+                        url?: string;
+                        /**
+                         * The publication date of the article. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        published_at?: string;
+                        /**
+                         * A short excerpt of the article content.
+                         */
+                        excerpt?: string;
+                        /**
+                         * Public url to the cover picture of the article.
+                         */
+                        picture_url?: string;
+                    };
                 };
             } | null;
         }>;
@@ -24259,13 +25407,13 @@ export type GetCalendarsListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/calendars';
 };
@@ -24313,6 +25461,10 @@ export type GetCalendarsListResponses = {
              * Timezone used in this calendar.
              */
             timezone?: string;
+            /**
+             * Object containing provider-specific calendar data.
+             */
+            specifics?: unknown;
         }>;
         /**
          * Total number of results if supported by the provider.
@@ -24341,6 +25493,10 @@ export type CreateCalendarData = {
          * Background color of the calendar in hexadecimal format.
          */
         background_color?: string;
+        /**
+         * Timezone used in this calendar (IANA, e.g. `Europe/Paris`).
+         */
+        timezone?: string;
     };
     path: {
         /**
@@ -24394,6 +25550,10 @@ export type CreateCalendarResponses = {
          * Timezone used in this calendar.
          */
         timezone?: string;
+        /**
+         * Object containing provider-specific calendar data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -24482,6 +25642,10 @@ export type GetCalendarResponses = {
          * Timezone used in this calendar.
          */
         timezone?: string;
+        /**
+         * Object containing provider-specific calendar data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -24501,6 +25665,10 @@ export type UpdateCalendarData = {
          * Background color of the calendar in hexadecimal format.
          */
         background_color?: string;
+        /**
+         * Timezone used in this calendar (IANA, e.g. `Europe/Paris`).
+         */
+        timezone?: string;
     };
     path: {
         /**
@@ -24558,6 +25726,10 @@ export type UpdateCalendarResponses = {
          * Timezone used in this calendar.
          */
         timezone?: string;
+        /**
+         * Object containing provider-specific calendar data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -24633,13 +25805,13 @@ export type GetCalendarEventListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
-        /**
          * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
          */
         cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
     };
     url: '/v2/{account_id}/calendars/{calendar_id}/events';
 };
@@ -24751,6 +25923,10 @@ export type GetCalendarEventListResponses = {
                  * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
                  */
                 date_time: string;
+                /**
+                 * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+                 */
+                timezone?: string;
             } | {
                 /**
                  * Indicates a date-only value (for all-day events).
@@ -24760,6 +25936,10 @@ export type GetCalendarEventListResponses = {
                  * The date. Uses ISO 8601 date format (YYYY-MM-DD).
                  */
                 date: string;
+                /**
+                 * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+                 */
+                timezone?: string;
             };
             /**
              * The end date and time of the event.
@@ -24773,6 +25953,10 @@ export type GetCalendarEventListResponses = {
                  * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
                  */
                 date_time: string;
+                /**
+                 * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+                 */
+                timezone?: string;
             } | {
                 /**
                  * Indicates a date-only value (for all-day events).
@@ -24782,6 +25966,10 @@ export type GetCalendarEventListResponses = {
                  * The date. Uses ISO 8601 date format (YYYY-MM-DD).
                  */
                 date: string;
+                /**
+                 * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+                 */
+                timezone?: string;
             };
             /**
              * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545.
@@ -24829,6 +26017,10 @@ export type GetCalendarEventListResponses = {
              */
             event_type: string;
             /**
+             * The IANA timezone when start and end share the same timezone (e.g. `Europe/Paris`). Omitted when they differ; use `start.timezone` and `end.timezone` instead.
+             */
+            timezone?: string;
+            /**
              * Background color of the calendar in hexadecimal format.
              */
             background_color?: string;
@@ -24836,6 +26028,10 @@ export type GetCalendarEventListResponses = {
              * Foreground color of the event in hexadecimal format.
              */
             text_color?: string;
+            /**
+             * Object containing provider-specific calendar event data.
+             */
+            specifics?: unknown;
         }>;
         /**
          * Total number of results if supported by the provider.
@@ -24921,6 +26117,10 @@ export type CreateCalendarEventData = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -24930,6 +26130,10 @@ export type CreateCalendarEventData = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * The end date and time of the event. Use date for all day events.
@@ -24943,6 +26147,10 @@ export type CreateCalendarEventData = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -24952,7 +26160,15 @@ export type CreateCalendarEventData = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
+        /**
+         * The IANA timezone the event is expressed in (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+         */
+        timezone?: string;
     };
     path: {
         /**
@@ -25074,6 +26290,10 @@ export type CreateCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25083,6 +26303,10 @@ export type CreateCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * The end date and time of the event.
@@ -25096,6 +26320,10 @@ export type CreateCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25105,6 +26333,10 @@ export type CreateCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545.
@@ -25152,6 +26384,10 @@ export type CreateCalendarEventResponses = {
          */
         event_type: string;
         /**
+         * The IANA timezone when start and end share the same timezone (e.g. `Europe/Paris`). Omitted when they differ; use `start.timezone` and `end.timezone` instead.
+         */
+        timezone?: string;
+        /**
          * Background color of the calendar in hexadecimal format.
          */
         background_color?: string;
@@ -25159,6 +26395,10 @@ export type CreateCalendarEventResponses = {
          * Foreground color of the event in hexadecimal format.
          */
         text_color?: string;
+        /**
+         * Object containing provider-specific calendar event data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -25319,6 +26559,10 @@ export type GetCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25328,6 +26572,10 @@ export type GetCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * The end date and time of the event.
@@ -25341,6 +26589,10 @@ export type GetCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25350,6 +26602,10 @@ export type GetCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545.
@@ -25397,6 +26653,10 @@ export type GetCalendarEventResponses = {
          */
         event_type: string;
         /**
+         * The IANA timezone when start and end share the same timezone (e.g. `Europe/Paris`). Omitted when they differ; use `start.timezone` and `end.timezone` instead.
+         */
+        timezone?: string;
+        /**
          * Background color of the calendar in hexadecimal format.
          */
         background_color?: string;
@@ -25404,6 +26664,10 @@ export type GetCalendarEventResponses = {
          * Foreground color of the event in hexadecimal format.
          */
         text_color?: string;
+        /**
+         * Object containing provider-specific calendar event data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -25480,6 +26744,10 @@ export type UpdateCalendarEventData = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25489,6 +26757,10 @@ export type UpdateCalendarEventData = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * The end date and time of the event.
@@ -25502,6 +26774,10 @@ export type UpdateCalendarEventData = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25511,6 +26787,10 @@ export type UpdateCalendarEventData = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * Only available for google, guests to send updates to:
@@ -25519,6 +26799,10 @@ export type UpdateCalendarEventData = {
          * - `none`: Do not notify any guests.
          */
         notify?: 'all' | 'externalOnly' | 'none';
+        /**
+         * The IANA timezone the event is expressed in (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+         */
+        timezone?: string;
     };
     path: {
         /**
@@ -25644,6 +26928,10 @@ export type UpdateCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25653,6 +26941,10 @@ export type UpdateCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * The end date and time of the event.
@@ -25666,6 +26958,10 @@ export type UpdateCalendarEventResponses = {
              * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             date_time: string;
+            /**
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             */
+            timezone?: string;
         } | {
             /**
              * Indicates a date-only value (for all-day events).
@@ -25675,6 +26971,10 @@ export type UpdateCalendarEventResponses = {
              * The date. Uses ISO 8601 date format (YYYY-MM-DD).
              */
             date: string;
+            /**
+             * The IANA timezone in which the date is expressed (e.g. `Europe/Paris`).
+             */
+            timezone?: string;
         };
         /**
          * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545.
@@ -25722,6 +27022,10 @@ export type UpdateCalendarEventResponses = {
          */
         event_type: string;
         /**
+         * The IANA timezone when start and end share the same timezone (e.g. `Europe/Paris`). Omitted when they differ; use `start.timezone` and `end.timezone` instead.
+         */
+        timezone?: string;
+        /**
          * Background color of the calendar in hexadecimal format.
          */
         background_color?: string;
@@ -25729,6 +27033,10 @@ export type UpdateCalendarEventResponses = {
          * Foreground color of the event in hexadecimal format.
          */
         text_color?: string;
+        /**
+         * Object containing provider-specific calendar event data.
+         */
+        specifics?: unknown;
     };
 };
 
@@ -26055,7 +27363,7 @@ export type GetClassicCompanyProfileResponses = {
             /**
              * The city of the location.
              */
-            city: string;
+            city?: string;
             /**
              * The area of the location.
              */
@@ -26377,7 +27685,7 @@ export type GetClassicSearchParametersData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -26448,11 +27756,11 @@ export type PerformClassicSearchFromUrlData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -26759,6 +28067,14 @@ export type PerformClassicSearchFromUrlResponses = {
                  */
                 display_name: string;
                 /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
                  * Public url to the profile of the user.
                  */
                 profile_url?: string;
@@ -27145,6 +28461,10 @@ export type PerformClassicSearchFromUrlResponses = {
                 users_reached_counter?: number;
             };
             /**
+             * Object containing provider-specific post data.
+             */
+            specifics?: unknown;
+            /**
              * `true` if this post is reposted by someone without quote. Quoted post does not qualify as a repost.
              */
             is_repost: boolean;
@@ -27172,6 +28492,14 @@ export type PerformClassicSearchFromUrlResponses = {
                  * Display name of the user.
                  */
                 display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
                 /**
                  * Public url to the profile of the user.
                  */
@@ -27239,6 +28567,14 @@ export type PerformClassicSearchFromUrlResponses = {
                      * Display name of the user.
                      */
                     display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
                     /**
                      * Public url to the profile of the user.
                      */
@@ -27625,6 +28961,10 @@ export type PerformClassicSearchFromUrlResponses = {
                      */
                     users_reached_counter?: number;
                 };
+                /**
+                 * Object containing provider-specific post data.
+                 */
+                specifics?: unknown;
             };
         }>;
         /**
@@ -27775,11 +29115,11 @@ export type PerformClassicPeopleSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -27953,11 +29293,11 @@ export type PerformClassicCompaniesSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -28157,11 +29497,11 @@ export type PerformClassicPostsSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -28221,6 +29561,14 @@ export type PerformClassicPostsSearchResponses = {
                  * Display name of the user.
                  */
                 display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
                 /**
                  * Public url to the profile of the user.
                  */
@@ -28608,6 +29956,10 @@ export type PerformClassicPostsSearchResponses = {
                 users_reached_counter?: number;
             };
             /**
+             * Object containing provider-specific post data.
+             */
+            specifics?: unknown;
+            /**
              * `true` if this post is reposted by someone without quote. Quoted post does not qualify as a repost.
              */
             is_repost: boolean;
@@ -28635,6 +29987,14 @@ export type PerformClassicPostsSearchResponses = {
                  * Display name of the user.
                  */
                 display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
                 /**
                  * Public url to the profile of the user.
                  */
@@ -28702,6 +30062,14 @@ export type PerformClassicPostsSearchResponses = {
                      * Display name of the user.
                      */
                     display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
                     /**
                      * Public url to the profile of the user.
                      */
@@ -29088,6 +30456,10 @@ export type PerformClassicPostsSearchResponses = {
                      */
                     users_reached_counter?: number;
                 };
+                /**
+                 * Object containing provider-specific post data.
+                 */
+                specifics?: unknown;
             };
         }>;
         /**
@@ -29270,11 +30642,11 @@ export type PerformClassicJobsSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -29387,11 +30759,11 @@ export type ListClassicUserJobPostingsData = {
          */
         state: 'DRAFT' | 'OPEN' | 'CLOSED' | 'REVIEW' | 'SUSPENDED';
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -30202,11 +31574,11 @@ export type GetClassicApplicantsData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -30704,11 +32076,11 @@ export type GetRecruiterHiringProjectListData = {
          */
         keywords?: string;
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -31336,11 +32708,7 @@ export type EditRecruiterHiringProjectResponses = {
 export type EditRecruiterHiringProjectResponse = EditRecruiterHiringProjectResponses[keyof EditRecruiterHiringProjectResponses];
 
 export type GetRecruiterTalentPoolApplicantsData = {
-    body: {
-        /**
-         * The ID of the JOB_POSTING channel from the Talent Pool.
-         */
-        channel_id: string;
+    body?: {
         /**
          * A keyword or group of keywords.
          */
@@ -31571,11 +32939,11 @@ export type GetRecruiterTalentPoolApplicantsData = {
     };
     query?: {
         /**
-         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
         cursor?: string;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -31902,7 +33270,7 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                 /**
                  * The industry to which the User belongs.
                  */
-                industry: string;
+                industry?: string;
                 /**
                  * The number of the followers of the User.
                  */
@@ -32080,6 +33448,14 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                          */
                         display_name: string;
                         /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
+                        /**
                          * Public url to the profile of the user.
                          */
                         profile_url?: string;
@@ -32193,6 +33569,14 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                          * Display name of the user.
                          */
                         display_name: string;
+                        /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
                         /**
                          * Public url to the profile of the user.
                          */
@@ -32564,7 +33948,7 @@ export type GetRecruiterApplicantByIdResponses = {
             /**
              * The industry to which the User belongs.
              */
-            industry: string;
+            industry?: string;
             /**
              * The number of the followers of the User.
              */
@@ -32742,6 +34126,14 @@ export type GetRecruiterApplicantByIdResponses = {
                      */
                     display_name: string;
                     /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
                      * Public url to the profile of the user.
                      */
                     profile_url?: string;
@@ -32855,6 +34247,14 @@ export type GetRecruiterApplicantByIdResponses = {
                      * Display name of the user.
                      */
                     display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
                     /**
                      * Public url to the profile of the user.
                      */
@@ -33014,11 +34414,11 @@ export type GetRecruiterPipelineCandidatesData = {
     };
     query?: {
         /**
-         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
         cursor?: string;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -33311,7 +34711,7 @@ export type GetRecruiterPipelineCandidatesResponses = {
                 /**
                  * The industry to which the User belongs.
                  */
-                industry: string;
+                industry?: string;
                 /**
                  * The number of the followers of the User.
                  */
@@ -33489,6 +34889,14 @@ export type GetRecruiterPipelineCandidatesResponses = {
                          */
                         display_name: string;
                         /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
+                        /**
                          * Public url to the profile of the user.
                          */
                         profile_url?: string;
@@ -33602,6 +35010,14 @@ export type GetRecruiterPipelineCandidatesResponses = {
                          * Display name of the user.
                          */
                         display_name: string;
+                        /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
                         /**
                          * Public url to the profile of the user.
                          */
@@ -34210,11 +35626,11 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
     };
     query?: {
         /**
-         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
         cursor?: string;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -34509,7 +35925,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
             /**
              * The industry to which the User belongs.
              */
-            industry: string;
+            industry?: string;
             /**
              * The number of the followers of the User.
              */
@@ -34687,6 +36103,14 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
                      */
                     display_name: string;
                     /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
                      * Public url to the profile of the user.
                      */
                     profile_url?: string;
@@ -34800,6 +36224,14 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
                      * Display name of the user.
                      */
                     display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
                     /**
                      * Public url to the profile of the user.
                      */
@@ -35347,11 +36779,11 @@ export type GetRecruiterJobPostingListData = {
          */
         workplace_type?: Array<'ON_SITE' | 'REMOTE' | 'HYBRID'>;
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -36135,11 +37567,13 @@ export type PerformRecruiterSearchFromUrlData = {
     };
     query?: {
         /**
-         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
         cursor?: string;
         /**
-         * The limit of items to be returned.
+         *
+         * `search` and `applicants` channels maximum is 100<br>
+         * `pipeline` channel maximum is 5000
          */
         limit?: number;
     };
@@ -36432,7 +37866,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
             /**
              * The industry to which the User belongs.
              */
-            industry: string;
+            industry?: string;
             /**
              * The number of the followers of the User.
              */
@@ -36610,6 +38044,14 @@ export type PerformRecruiterSearchFromUrlResponses = {
                      */
                     display_name: string;
                     /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
                      * Public url to the profile of the user.
                      */
                     profile_url?: string;
@@ -36723,6 +38165,14 @@ export type PerformRecruiterSearchFromUrlResponses = {
                      * Display name of the user.
                      */
                     display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
                     /**
                      * Public url to the profile of the user.
                      */
@@ -37065,7 +38515,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The industry to which the User belongs.
                  */
-                industry: string;
+                industry?: string;
                 /**
                  * The number of the followers of the User.
                  */
@@ -37243,6 +38693,14 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          */
                         display_name: string;
                         /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
+                        /**
                          * Public url to the profile of the user.
                          */
                         profile_url?: string;
@@ -37356,6 +38814,14 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Display name of the user.
                          */
                         display_name: string;
+                        /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
                         /**
                          * Public url to the profile of the user.
                          */
@@ -37665,7 +39131,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                 /**
                  * The industry to which the User belongs.
                  */
-                industry: string;
+                industry?: string;
                 /**
                  * The number of the followers of the User.
                  */
@@ -37843,6 +39309,14 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          */
                         display_name: string;
                         /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
+                        /**
                          * Public url to the profile of the user.
                          */
                         profile_url?: string;
@@ -37957,6 +39431,14 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          */
                         display_name: string;
                         /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
+                        /**
                          * Public url to the profile of the user.
                          */
                         profile_url?: string;
@@ -37998,17 +39480,13 @@ export type GetRecruiterSearchParametersData = {
          */
         project_id: string;
         /**
-         * In Talent Pool context, the ID of the JOB_POSTING Channel to get parameters from.
-         */
-        channel_id: string;
-        /**
          * A keyword or group of keywords to filter results. Applicable to TAG only.
          */
         keywords?: string;
         /**
          * The type of search parameter.
          */
-        type: 'SKILL' | 'LOCATION' | 'JOB_TITLE' | 'JOB_FUNCTION' | 'CURRENT_COMPANY' | 'INDUSTRY' | 'FIELD_OF_STUDY' | 'DEGREE' | 'TAG' | 'SPOKEN_LANGUAGE';
+        type: 'SKILL' | 'LOCATION' | 'JOB_TITLE' | 'JOB_FUNCTION' | 'COMPANY' | 'CURRENT_COMPANY' | 'INDUSTRY' | 'FIELD_OF_STUDY' | 'DEGREE' | 'TAG' | 'SPOKEN_LANGUAGE';
     } | {
         source: 'PIPELINE';
         /**
@@ -38037,14 +39515,6 @@ export type GetRecruiterSearchParametersData = {
          * The type of search parameter.
          */
         type: 'OCCUPATION' | 'JOB_TITLE' | 'JOB_FUNCTION' | 'LOCATION' | 'ZIPCODE' | 'SKILL' | 'COMPANY' | 'SCHOOL' | 'INDUSTRY' | 'GROUP' | 'PROJECT' | 'CUSTOM_FILTER' | 'PROFILE_LANGUAGE' | 'SEAT' | 'SAVED_SEARCH' | 'DEGREE';
-        /**
-         * An offset used for pagination. Not applicable to JOB_FUNCTION.
-         */
-        offset?: number;
-        /**
-         * Not applicable to JOB_FUNCTION.
-         */
-        limit?: number;
     } | {
         source: 'JOBS';
         /**
@@ -38055,14 +39525,6 @@ export type GetRecruiterSearchParametersData = {
          * The type of search parameter.
          */
         type: 'CONTRACT' | 'SEAT' | 'LOCATION';
-        /**
-         * An offset used for pagination.
-         */
-        offset?: number;
-        /**
-         * The limit of items to be returned.
-         */
-        limit?: number;
     };
     path: {
         /**
@@ -38070,7 +39532,16 @@ export type GetRecruiterSearchParametersData = {
          */
         account_id: string;
     };
-    query?: never;
+    query?: {
+        /**
+         * An offset used for pagination.
+         */
+        offset?: number;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         */
+        limit?: number;
+    };
     url: '/v2/{account_id}/linkedin/recruiter/search/parameters';
 };
 
@@ -38653,11 +40124,11 @@ export type PerformRecruiterPeopleSearchData = {
     };
     query?: {
         /**
-         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
         cursor?: string;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -38952,7 +40423,7 @@ export type PerformRecruiterPeopleSearchResponses = {
             /**
              * The industry to which the User belongs.
              */
-            industry: string;
+            industry?: string;
             /**
              * The number of the followers of the User.
              */
@@ -39130,6 +40601,14 @@ export type PerformRecruiterPeopleSearchResponses = {
                      */
                     display_name: string;
                     /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
                      * Public url to the profile of the user.
                      */
                     profile_url?: string;
@@ -39243,6 +40722,14 @@ export type PerformRecruiterPeopleSearchResponses = {
                      * Display name of the user.
                      */
                     display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
                     /**
                      * Public url to the profile of the user.
                      */
@@ -39367,11 +40854,11 @@ export type PerformSalesSearchFromUrlData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -40632,7 +42119,7 @@ export type GetSalesSearchParametersData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -41120,11 +42607,11 @@ export type PerformSalesPeopleSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -41681,11 +43168,11 @@ export type PerformSalesCompaniesSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         * An offset used for pagination.
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -41810,7 +43297,7 @@ export type GetSalesLeadListsData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -41893,7 +43380,7 @@ export type BrowseSalesLeadListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -42330,7 +43817,7 @@ export type GetSalesAccountListsData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -42423,7 +43910,7 @@ export type BrowseSalesAccountListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned.
+         * The limit of items to be returned. The maximum allowed value depends on the provider.
          */
         limit?: number;
     };
@@ -43000,6 +44487,21 @@ export type SolveCheckpointResponses = {
             data: string | null;
         } | {
             type: 'OTP_OR_IN_APP_VALIDATION';
+        } | {
+            type: 'CONTRACT_SELECTION';
+            /**
+             * A list of contracts to choose from.
+             */
+            contracts: Array<{
+                /**
+                 * The ID of the contract.
+                 */
+                id: string;
+                /**
+                 * The name of the contract.
+                 */
+                name: string;
+            }>;
         };
         /**
          * The ID of the auth intent. This should be used in Solve Checkpoint.
@@ -43190,6 +44692,21 @@ export type RequestCheckpointResponses = {
             data: string | null;
         } | {
             type: 'OTP_OR_IN_APP_VALIDATION';
+        } | {
+            type: 'CONTRACT_SELECTION';
+            /**
+             * A list of contracts to choose from.
+             */
+            contracts: Array<{
+                /**
+                 * The ID of the contract.
+                 */
+                id: string;
+                /**
+                 * The name of the contract.
+                 */
+                name: string;
+            }>;
         };
         /**
          * The ID of the auth intent. This should be used in Solve Checkpoint.
@@ -43325,7 +44842,7 @@ export type StartAuthIntentData = {
             /**
              * Whether the initial sync should be enabled. The initial sync is required to perform advanced search. Read more in the Synced Accounts guide.
              */
-            initial_sync_enable: boolean;
+            initial_sync_enable?: boolean;
             [key: string]: unknown | {
                 /**
                  * The host of the proxy.
@@ -43543,14 +45060,14 @@ export type StartAuthIntentData = {
                 ip?: string;
             };
             /**
-             * Specifies which LinkedIn products to connect to (if available on the users account). This allows you to disable access to certain product data within Unipile and avoid receiving events related to them. Note: This field does not require the user to be subscribed to the selected products — accounts without access will still be linked successfully. ⚠️ If you plan to access `recruiter` data, we recommend using the Cookie Authentication method for better compatibility. Leave undefined when re-authenticating an already linked account to keep the original configuration or specify a new list of products to augment / reduce the scope.
-             * `classic` : LinkedInSocial network
-             * `recruiter` : Recruiter
-             * `sales_navigator` : Sales navigator
+             * Specifies which LinkedIn products to activate. For the premium `recruiter` and `sales_navigator` products, only one can be activated per account. Also, if the account does not have an active subscription, the linking will fail.<br>When reconnecting an account, just omit this field to keep connecting the same products, or provide new values to expand or narrow the products scope. <a href="https://developer.unipile.com/v2.0/docs/linkedin-link-accounts">Learn more about Linkedin products</a>
+             * `classic` : LinkedIn Social network<br>
+             * `recruiter` : Recruiter<br>
+             * `sales_navigator` : Sales navigator<br>
              * `company` : Company Pages
              *
              */
-            products?: Array<'classic' | 'recruiter' | 'sales_navigator' | 'company'>;
+            products?: Array<'classic' | 'recruiter' | 'company'> | Array<'classic' | 'sales_navigator' | 'company'>;
             [key: string]: unknown | {
                 /**
                  * The host of the proxy.
@@ -43585,7 +45102,7 @@ export type StartAuthIntentData = {
                  * An IPv4 address to infer proxy's location.
                  */
                 ip?: string;
-            } | Array<'classic' | 'recruiter' | 'sales_navigator' | 'company'> | undefined;
+            } | Array<'classic' | 'recruiter' | 'company'> | Array<'classic' | 'sales_navigator' | 'company'> | undefined;
         };
     } | {
         /**
@@ -43926,6 +45443,21 @@ export type StartAuthIntentResponses = {
             data: string | null;
         } | {
             type: 'OTP_OR_IN_APP_VALIDATION';
+        } | {
+            type: 'CONTRACT_SELECTION';
+            /**
+             * A list of contracts to choose from.
+             */
+            contracts: Array<{
+                /**
+                 * The ID of the contract.
+                 */
+                id: string;
+                /**
+                 * The name of the contract.
+                 */
+                name: string;
+            }>;
         };
         /**
          * The ID of the auth intent. This should be used in Solve Checkpoint.
@@ -44273,14 +45805,14 @@ export type CreateAuthLinkData = {
                     ip?: string;
                 };
                 /**
-                 * Specifies which LinkedIn products to connect to (if available on the users account). This allows you to disable access to certain product data within Unipile and avoid receiving events related to them. Note: This field does not require the user to be subscribed to the selected products — accounts without access will still be linked successfully. ⚠️ If you plan to access `recruiter` data, we recommend using the Cookie Authentication method for better compatibility. Leave undefined when re-authenticating an already linked account to keep the original configuration or specify a new list of products to augment / reduce the scope.
-                 * `classic` : LinkedInSocial network
-                 * `recruiter` : Recruiter
-                 * `sales_navigator` : Sales navigator
+                 * Specifies which LinkedIn products to activate. For the premium `recruiter` and `sales_navigator` products, only one can be activated per account. Also, if the account does not have an active subscription, the linking will fail.<br>When reconnecting an account, just omit this field to keep connecting the same products, or provide new values to expand or narrow the products scope. <a href="https://developer.unipile.com/v2.0/docs/linkedin-link-accounts">Learn more about Linkedin products</a>
+                 * `classic` : LinkedIn Social network<br>
+                 * `recruiter` : Recruiter<br>
+                 * `sales_navigator` : Sales navigator<br>
                  * `company` : Company Pages
                  *
                  */
-                products?: Array<'classic' | 'recruiter' | 'sales_navigator' | 'company'>;
+                products?: Array<'classic' | 'recruiter' | 'company'> | Array<'classic' | 'sales_navigator' | 'company'>;
                 /**
                  * The authentication methods to show in the hosted auth.
                  * `credentials` : Credentials Authentication
@@ -44506,7 +46038,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Whether the initial sync should be enabled. The initial sync is required to perform advanced search. Read more in the Synced Accounts guide.
                  */
-                initial_sync_enable: boolean;
+                initial_sync_enable?: boolean;
                 [key: string]: unknown | {
                     /**
                      * The host of the proxy.
@@ -44833,14 +46365,14 @@ export type CreateAuthLinkData = {
                     ip?: string;
                 };
                 /**
-                 * Specifies which LinkedIn products to connect to (if available on the users account). This allows you to disable access to certain product data within Unipile and avoid receiving events related to them. Note: This field does not require the user to be subscribed to the selected products — accounts without access will still be linked successfully. ⚠️ If you plan to access `recruiter` data, we recommend using the Cookie Authentication method for better compatibility. Leave undefined when re-authenticating an already linked account to keep the original configuration or specify a new list of products to augment / reduce the scope.
-                 * `classic` : LinkedInSocial network
-                 * `recruiter` : Recruiter
-                 * `sales_navigator` : Sales navigator
+                 * Specifies which LinkedIn products to activate. For the premium `recruiter` and `sales_navigator` products, only one can be activated per account. Also, if the account does not have an active subscription, the linking will fail.<br>When reconnecting an account, just omit this field to keep connecting the same products, or provide new values to expand or narrow the products scope. <a href="https://developer.unipile.com/v2.0/docs/linkedin-link-accounts">Learn more about Linkedin products</a>
+                 * `classic` : LinkedIn Social network<br>
+                 * `recruiter` : Recruiter<br>
+                 * `sales_navigator` : Sales navigator<br>
                  * `company` : Company Pages
                  *
                  */
-                products?: Array<'classic' | 'recruiter' | 'sales_navigator' | 'company'>;
+                products?: Array<'classic' | 'recruiter' | 'company'> | Array<'classic' | 'sales_navigator' | 'company'>;
                 /**
                  * The authentication methods to show in the hosted auth.
                  * `credentials` : Credentials Authentication
@@ -45066,7 +46598,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Whether the initial sync should be enabled. The initial sync is required to perform advanced search. Read more in the Synced Accounts guide.
                  */
-                initial_sync_enable: boolean;
+                initial_sync_enable?: boolean;
                 [key: string]: unknown | {
                     /**
                      * The host of the proxy.
@@ -45779,7 +47311,7 @@ export type ListWebhookEndpointsResponses = {
             enabled: boolean;
             description: string | null;
             url: string;
-            trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.paused' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.request.accept'>;
+            trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.paused' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.request.accept' | 'relation.new'>;
             secret: string;
             object: 'WebhookEndpoint';
             id: string;
@@ -45816,7 +47348,7 @@ export type CreateWebhookEndpointData = {
          * The events that will trigger the webhook endpoint.
          * Refer to [Events Types](https://developer.unipile.com/v2.0/reference/event-types-1) to see the list of available values.
          */
-        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.paused' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.request.accept'>;
+        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.paused' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.request.accept' | 'relation.new'>;
         /**
          * Restrict the webhook to specific accounts. Leave empty or omit the field to listen to events from every account in the application.
          */
@@ -45843,7 +47375,7 @@ export type CreateWebhookEndpointResponses = {
         enabled: boolean;
         description: string | null;
         url: string;
-        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.paused' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.request.accept'>;
+        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.paused' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.request.accept' | 'relation.new'>;
         secret: string;
         object: 'WebhookEndpoint';
         id: string;
@@ -45915,7 +47447,7 @@ export type GetWebhookEndpointResponses = {
         enabled: boolean;
         description: string | null;
         url: string;
-        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.paused' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.request.accept'>;
+        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.paused' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.request.accept' | 'relation.new'>;
         secret: string;
         object: 'WebhookEndpoint';
         id: string;
@@ -45950,7 +47482,7 @@ export type UpdateWebhookEndpointData = {
          * The events that will trigger the webhook endpoint.
          * Refer to [Events Types](https://developer.unipile.com/v2.0/reference/event-types-1) to see the list of available values.
          */
-        trigger_events?: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.paused' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.request.accept'>;
+        trigger_events?: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.paused' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.request.accept' | 'relation.new'>;
         /**
          * Restrict the webhook to specific accounts. Leave empty or omit the field to listen to events from every account in the application.
          */
@@ -45986,7 +47518,7 @@ export type UpdateWebhookEndpointResponses = {
         enabled: boolean;
         description: string | null;
         url: string;
-        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.paused' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.request.accept'>;
+        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.paused' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.request.accept' | 'relation.new'>;
         secret: string;
         object: 'WebhookEndpoint';
         id: string;
