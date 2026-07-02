@@ -746,7 +746,7 @@ export class UnipileEmails extends HeyApiClient {
     /**
      * List all Emails
      *
-     * Returns a list of emails in the account mailbox. Emails are returned sorted by their `date`, with the most recent appearing first.
+     * Returns a list of emails in the account mailbox. Emails are returned sorted by their `date`, with the most recent appearing first. Search mode applies when `q`, `from`, `to`, or `any_email` is set. Filter mode applies for browse-only queries (dates, folder scope, read/starred/attachment status).
      */
     public getEmailsList<ThrowOnError extends boolean = false>(options: Options<GetEmailsListData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetEmailsListResponses, unknown, ThrowOnError>({
@@ -759,7 +759,7 @@ export class UnipileEmails extends HeyApiClient {
     /**
      * List folder Emails
      *
-     * Returns a list of emails in the specific folder of the account mailbox. Emails are returned sorted by their `date`, with the most recent appearing first.
+     * Returns a list of emails in the specific folder of the account mailbox. Emails are returned sorted by their `date`, with the most recent appearing first. Search mode applies when `q`, `from`, `to`, or `any_email` is set. Filter mode applies for browse-only queries (dates, read/starred/attachment status).
      */
     public getFolderEmailsList<ThrowOnError extends boolean = false>(options: Options<GetFolderEmailsListData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetFolderEmailsListResponses, unknown, ThrowOnError>({
