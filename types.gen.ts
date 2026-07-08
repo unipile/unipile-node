@@ -32228,7 +32228,7 @@ export type GetClassicCompanyProfileResponses = {
             /**
              * The number of employees of the Company.
              */
-            headcount: number;
+            headcount?: number;
             /**
              * The employees count range the Company falls into.
              */
@@ -51696,6 +51696,10 @@ export type UpdateAccountData = {
         metadata?: {
             [key: string]: string;
         };
+        /**
+         * The country to use for Automatic Proxy Protection.
+         */
+        auto_proxy_country?: string;
         /**
          * A new proxy configuration for the account. This will restart the account. Set to `null` to remove the proxy. Removing the proxy will revert the account to using Automatic Proxy Protection if required for the provider.
          */
