@@ -32014,6 +32014,55 @@ export type SelectContractResponses = {
 
 export type SelectContractResponse = SelectContractResponses[keyof SelectContractResponses];
 
+export type GetManagedCompanyPagesData = {
+    body?: never;
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/linkedin/company/pages';
+};
+
+export type GetManagedCompanyPagesResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        data: Array<{
+            object: 'CompanyPage';
+            /**
+             * The ID of the company.
+             */
+            id: string;
+            /**
+             * The messaging ID of the company.
+             */
+            mailbox_id: string;
+            /**
+             * The name of the company.
+             */
+            name: string;
+            /**
+             * Whether messaging features are enabled for this company.
+             */
+            messaging_enabled?: boolean;
+        }>;
+        /**
+         * Total number of results if supported by the provider.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type GetManagedCompanyPagesResponse = GetManagedCompanyPagesResponses[keyof GetManagedCompanyPagesResponses];
+
 export type GetClassicCompanyProfileData = {
     body?: never;
     path: {
@@ -32228,7 +32277,7 @@ export type GetClassicCompanyProfileResponses = {
             /**
              * The number of employees of the Company.
              */
-            headcount: number;
+            headcount?: number;
             /**
              * The employees count range the Company falls into.
              */
@@ -51696,6 +51745,10 @@ export type UpdateAccountData = {
         metadata?: {
             [key: string]: string;
         };
+        /**
+         * The country to use for Automatic Proxy Protection.
+         */
+        auto_proxy_country?: string;
         /**
          * A new proxy configuration for the account. This will restart the account. Set to `null` to remove the proxy. Removing the proxy will revert the account to using Automatic Proxy Protection if required for the provider.
          */
