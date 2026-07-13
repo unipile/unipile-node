@@ -1592,7 +1592,7 @@ export type GetInboxChatsListData = {
     body?: never;
     path: {
         /**
-         * ID of the Inbox to retrieve Chats from. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes">List all Inboxes</a> to get the ID of an inbox.
+         * ID of the Inbox to retrieve Chats from. Use <a href="https://developer.unipile.com/v2.0/reference/getinboxeslist">List all Inboxes</a> to get the ID of an inbox.
          */
         inbox_id: string;
         /**
@@ -6196,7 +6196,7 @@ export type StartChatData = {
                          */
                         id: string;
                         /**
-                         * The messaging token to be retrieved using the <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-jobs-job-id-applicants-applicant-id">Get an Applicant</a> endpoint.
+                         * The messaging token to be retrieved using the <a href="https://developer.unipile.com/v2.0/reference/getclassicapplicantbyid">Get an Applicant</a> endpoint.
                          */
                         messaging_token: string;
                     };
@@ -6425,7 +6425,7 @@ export type StartChatFromInboxData = {
                          */
                         id: string;
                         /**
-                         * The messaging token to be retrieved using the <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-jobs-job-id-applicants-applicant-id">Get an Applicant</a> endpoint.
+                         * The messaging token to be retrieved using the <a href="https://developer.unipile.com/v2.0/reference/getclassicapplicantbyid">Get an Applicant</a> endpoint.
                          */
                         messaging_token: string;
                     };
@@ -6545,7 +6545,7 @@ export type StartChatFromInboxData = {
     };
     path: {
         /**
-         * ID of the Inbox to start the Chat in. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes">List all Inboxes</a> to get the ID of an inbox.
+         * ID of the Inbox to start the Chat in. Use <a href="https://developer.unipile.com/v2.0/reference/getinboxeslist">List all Inboxes</a> to get the ID of an inbox.
          */
         inbox_id: string;
         /**
@@ -17891,7 +17891,7 @@ export type UpdateUserProfileData = {
                 skills?: Array<{
                     name: string;
                     /**
-                     * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+                     * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
                      */
                     id?: string;
                 }>;
@@ -17918,12 +17918,12 @@ export type UpdateUserProfileData = {
                     job_title: {
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
                          */
                         id?: string;
                     };
                     /**
-                     * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `EMPLOYMENT_TYPE` type to find out the possible values. Employment type of the experience.
+                     * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `EMPLOYMENT_TYPE` type to find out the possible values. Employment type of the experience.
                      */
                     employment_type?: string;
                     /**
@@ -17932,7 +17932,7 @@ export type UpdateUserProfileData = {
                     company: {
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
                          */
                         id?: string;
                     };
@@ -17942,7 +17942,7 @@ export type UpdateUserProfileData = {
                     location?: {
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
                          */
                         id?: string;
                     };
@@ -17990,7 +17990,7 @@ export type UpdateUserProfileData = {
                     skills?: Array<{
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
                          */
                         id?: string;
                     }>;
@@ -18083,12 +18083,12 @@ export type UpdateUserProfileData = {
                     job_title?: {
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
                          */
                         id?: string;
                     };
                     /**
-                     * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `EMPLOYMENT_TYPE` type to find out the possible values. Employment type of the experience.
+                     * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `EMPLOYMENT_TYPE` type to find out the possible values. Employment type of the experience.
                      */
                     employment_type?: string;
                     /**
@@ -18097,7 +18097,7 @@ export type UpdateUserProfileData = {
                     company?: {
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
                          */
                         id?: string;
                     };
@@ -18107,7 +18107,7 @@ export type UpdateUserProfileData = {
                     location?: {
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
                          */
                         id?: string;
                     };
@@ -18155,7 +18155,7 @@ export type UpdateUserProfileData = {
                     skills?: Array<{
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
                          */
                         id?: string;
                     }>;
@@ -18253,7 +18253,7 @@ export type UpdateUserProfileData = {
                     school: {
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
                          */
                         id?: string;
                     };
@@ -18263,7 +18263,7 @@ export type UpdateUserProfileData = {
                     degree?: {
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
                          */
                         id?: string;
                     };
@@ -18273,7 +18273,7 @@ export type UpdateUserProfileData = {
                     field_of_study?: {
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
                          */
                         id?: string;
                     };
@@ -18321,7 +18321,7 @@ export type UpdateUserProfileData = {
                     skills?: Array<{
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
                          */
                         id?: string;
                     }>;
@@ -18414,7 +18414,7 @@ export type UpdateUserProfileData = {
                     school?: {
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
                          */
                         id?: string;
                     };
@@ -18424,7 +18424,7 @@ export type UpdateUserProfileData = {
                     degree?: {
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
                          */
                         id?: string;
                     };
@@ -18434,7 +18434,7 @@ export type UpdateUserProfileData = {
                     field_of_study?: {
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
                          */
                         id?: string;
                     };
@@ -18482,7 +18482,7 @@ export type UpdateUserProfileData = {
                     skills?: Array<{
                         name: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
                          */
                         id?: string;
                     }>;
@@ -18727,7 +18727,7 @@ export type UpdateUserProfileData = {
                          */
                         title: string;
                         /**
-                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+                         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
                          */
                         id: string;
                     }>;
@@ -18740,7 +18740,7 @@ export type UpdateUserProfileData = {
                          */
                         type: 'ON_SITE' | 'HYBRID' | 'REMOTE';
                         /**
-                         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+                         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
                          */
                         location: Array<string>;
                     }>;
@@ -32014,6 +32014,55 @@ export type SelectContractResponses = {
 
 export type SelectContractResponse = SelectContractResponses[keyof SelectContractResponses];
 
+export type GetManagedCompanyPagesData = {
+    body?: never;
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/linkedin/company/pages';
+};
+
+export type GetManagedCompanyPagesResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        data: Array<{
+            object: 'CompanyPage';
+            /**
+             * The ID of the company.
+             */
+            id: string;
+            /**
+             * The messaging ID of the company.
+             */
+            mailbox_id: string;
+            /**
+             * The name of the company.
+             */
+            name: string;
+            /**
+             * Whether messaging features are enabled for this company.
+             */
+            messaging_enabled?: boolean;
+        }>;
+        /**
+         * Total number of results if supported by the provider.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type GetManagedCompanyPagesResponse = GetManagedCompanyPagesResponses[keyof GetManagedCompanyPagesResponses];
+
 export type GetClassicCompanyProfileData = {
     body?: never;
     path: {
@@ -32228,7 +32277,7 @@ export type GetClassicCompanyProfileResponses = {
             /**
              * The number of employees of the Company.
              */
-            headcount: number;
+            headcount?: number;
             /**
              * The employees count range the Company falls into.
              */
@@ -33788,56 +33837,56 @@ export type PerformClassicPeopleSearchData = {
          */
         network_distance?: Array<1 | 2 | 3>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
          *
          * Native filter : Locations
          *
          */
         location?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
          *
          * Native filter : Current company
          *
          */
         current_company?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
          *
          * Native filter : Past company
          *
          */
         past_company?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
          *
          * Native filter : School
          *
          */
         school?: Array<string>;
         /**
-         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `RELATION` type to find out the possible values.
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `RELATION` type to find out the possible values.
          *
          * Native filter : Connections of
          *
          */
         connections_of?: string;
         /**
-         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `PEOPLE` type to find out the possible values.
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `PEOPLE` type to find out the possible values.
          *
          * Native filter : Followers of
          *
          */
         followers_of?: string;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
          *
          * Native filter : Industry
          *
          */
         industry?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SERVICE` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `SERVICE` type to find out the possible values.
          *
          * Native filter : Service categories
          *
@@ -34044,14 +34093,14 @@ export type PerformClassicCompaniesSearchData = {
          */
         keywords?: string;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
          *
          * Native filter : Locations
          *
          */
         location?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
          *
          * Native filter : Industry
          *
@@ -34202,14 +34251,14 @@ export type PerformClassicPostsSearchData = {
          */
         posted_by?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `PEOPLE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `PEOPLE` type to find out the possible values.
              *
              * Native filter : From member
              *
              */
             member?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              *
              * Native filter : From company
              *
@@ -34242,14 +34291,14 @@ export type PerformClassicPostsSearchData = {
          */
         mentioning?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `PEOPLE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `PEOPLE` type to find out the possible values.
              *
              * Native filter : Mentioning member
              *
              */
             member?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              *
              * Native filter : Mentioning company
              *
@@ -34268,14 +34317,14 @@ export type PerformClassicPostsSearchData = {
              */
             keywords?: string;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              *
              * Native filter : Author company
              *
              */
             company?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
              *
              * Native filter : Author industry
              *
@@ -35311,21 +35360,21 @@ export type PerformClassicJobsSearchData = {
          */
         employment_status?: Array<'FULL_TIME' | 'PART_TIME' | 'CONTRACT' | 'TEMPORARY' | 'VOLUNTEER' | 'INTERNSHIP' | 'OTHER'>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
          *
          * Native filter : Company
          *
          */
         company?: Array<string>;
         /**
-         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
          *
          * Native filter : Primary location
          *
          */
         primary_location?: string;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
          *
          * Native filter : Location
          *
@@ -35339,21 +35388,21 @@ export type PerformClassicJobsSearchData = {
          */
         location_radius?: 0 | 8 | 16 | 40 | 80 | 160;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
          *
          * Native filter : Industry
          *
          */
         industry?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
          *
          * Native filter : Job function
          *
          */
         function?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
          *
          * Native filter : Job title
          *
@@ -35617,7 +35666,7 @@ export type CreateClassicJobPostingDraftData = {
          */
         job_title: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
              */
             id?: string;
             /**
@@ -35630,7 +35679,7 @@ export type CreateClassicJobPostingDraftData = {
          */
         company: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              */
             id?: string;
             /**
@@ -35643,7 +35692,7 @@ export type CreateClassicJobPostingDraftData = {
          */
         workplace_type: 'ON_SITE' | 'HYBRID' | 'REMOTE';
         /**
-         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
          */
         location: string;
         /**
@@ -35655,7 +35704,7 @@ export type CreateClassicJobPostingDraftData = {
          */
         description: string;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values. The skills related to the job posting.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values. The skills related to the job posting.
          */
         skills?: Array<string>;
         /**
@@ -35979,7 +36028,7 @@ export type EditClassicJobPostingData = {
          */
         job_title?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
              */
             id?: string;
             /**
@@ -35992,7 +36041,7 @@ export type EditClassicJobPostingData = {
          */
         company?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              */
             id?: string;
             /**
@@ -36005,7 +36054,7 @@ export type EditClassicJobPostingData = {
          */
         workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
         /**
-         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
          */
         location?: string;
         /**
@@ -36017,7 +36066,7 @@ export type EditClassicJobPostingData = {
          */
         description?: string;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values. The skills related to the job posting.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values. The skills related to the job posting.
          */
         skills?: Array<string>;
         /**
@@ -36335,7 +36384,7 @@ export type GetClassicApplicantsData = {
          */
         sort_by?: 'APPLIED_DATE' | 'FIRST_NAME' | 'LAST_NAME';
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
          *
          * Native filter : Location
          *
@@ -36349,7 +36398,7 @@ export type GetClassicApplicantsData = {
             max?: 1 | 2 | 5 | 10;
         }>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
          *
          * Native filter : Skilled in
          *
@@ -37133,7 +37182,7 @@ export type CreateRecruiterHiringProjectData = {
          */
         company?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              */
             id?: string;
             /**
@@ -37146,7 +37195,7 @@ export type CreateRecruiterHiringProjectData = {
          */
         job_title?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
              */
             id: string;
             /**
@@ -37155,7 +37204,7 @@ export type CreateRecruiterHiringProjectData = {
             name: string;
         };
         /**
-         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
          */
         location?: string;
         /**
@@ -37446,7 +37495,7 @@ export type EditRecruiterHiringProjectData = {
          */
         company?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              */
             id?: string;
             /**
@@ -37459,7 +37508,7 @@ export type EditRecruiterHiringProjectData = {
          */
         job_title?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
              */
             id: string;
             /**
@@ -37468,7 +37517,7 @@ export type EditRecruiterHiringProjectData = {
             name: string;
         };
         /**
-         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
          */
         location?: string;
         /**
@@ -37519,7 +37568,7 @@ export type GetRecruiterTalentPoolApplicantsData = {
          */
         spotlights?: Array<'ACTIVE_TALENT'>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
          *
          * Native filter : Current locations
          *
@@ -37533,16 +37582,16 @@ export type GetRecruiterTalentPoolApplicantsData = {
          */
         company?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
          *
          * Native filter : Skills
          *
@@ -37556,34 +37605,37 @@ export type GetRecruiterTalentPoolApplicantsData = {
          */
         school?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
          *
          * Native filter : Industries
          *
          */
         industry?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
          *
          * Native filter : Job titles
          *
          */
         job_title?: Array<string>;
         /**
-         * A list of languages.
+         * A list of languages. Only available to Recruiter PRO contracts.
+         *
+         * Native filter : Spoken languages
+         *
          */
         spoken_language?: Array<{
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SPOKEN_LANGUAGE` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SPOKEN_LANGUAGE` type to find out the possible values.
              */
             id: string;
             /**
@@ -37646,11 +37698,11 @@ export type GetRecruiterTalentPoolApplicantsData = {
          */
         degree?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -37662,11 +37714,11 @@ export type GetRecruiterTalentPoolApplicantsData = {
          */
         field_of_study?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -37675,7 +37727,7 @@ export type GetRecruiterTalentPoolApplicantsData = {
          */
         seniority?: Array<'UNPAID' | 'TRAINING' | 'ENTRY' | 'SENIOR' | 'MANAGER' | 'DIRECTOR' | 'VP' | 'CXO' | 'PARTNER' | 'OWNER'>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
          *
          * Native filter : Job functions
          *
@@ -37689,11 +37741,11 @@ export type GetRecruiterTalentPoolApplicantsData = {
          */
         current_company?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `CURRENT_COMPANY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `CURRENT_COMPANY` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `CURRENT_COMPANY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `CURRENT_COMPANY` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -37712,11 +37764,11 @@ export type GetRecruiterTalentPoolApplicantsData = {
          */
         tags?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `TAG` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `TAG` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `TAG` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `TAG` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -39151,14 +39203,14 @@ export type GetRecruiterPipelineCandidatesData = {
             exclude: Array<'MESSAGES' | 'NOTES' | 'PROJECTS' | 'RESUMES' | 'REVIEWS' | 'REVIEWS_IN_PROJECT' | 'REVIEWS_REQUESTED_IN_PROJECT'>;
         };
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SEAT` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SEAT` type to find out the possible values.
          *
          * Native filter : Added by
          *
          */
         added_by?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
          *
          * Native filter : Skills
          *
@@ -39175,21 +39227,21 @@ export type GetRecruiterPipelineCandidatesData = {
             max?: 1 | 2 | 5 | 10;
         }>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
          *
          * Native filter : Job titles
          *
          */
         job_title?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `CURRENT_COMPANY` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `CURRENT_COMPANY` type to find out the possible values.
          *
          * Native filter : Current companies
          *
          */
         current_company?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
          *
          * Native filter : Current locations
          *
@@ -39897,7 +39949,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         load_saved_search?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SAVED_SEARCH` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SAVED_SEARCH` type to find out the possible values.
              *
              * Native filter : Saved searches
              *
@@ -39913,7 +39965,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         load_custom_filter?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `CUSTOM_FILTER` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `CUSTOM_FILTER` type to find out the possible values.
              *
              * Native filter : Custom filters
              *
@@ -39954,7 +40006,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         location?: Array<{
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
              *
              * Native filter : Locations
              *
@@ -39983,7 +40035,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
              */
             name: string;
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `ZIPCODE` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `ZIPCODE` type to find out the possible values.
              *
              * Native filter : Postal code / Zip code
              *
@@ -40006,7 +40058,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
              */
             name: string;
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
              */
             id?: string;
             /**
@@ -40032,7 +40084,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
              */
             name: string;
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `OCCUPATION` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `OCCUPATION` type to find out the possible values.
              */
             id?: string;
             /**
@@ -40058,7 +40110,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
              */
             name: string;
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
              */
             id?: string;
             /**
@@ -40078,7 +40130,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
              */
             name: string;
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              */
             id?: string;
             /**
@@ -40100,7 +40152,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         current_company?: Array<{
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              */
             id: string;
             /**
@@ -40116,7 +40168,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         past_company?: Array<{
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              */
             id: string;
             /**
@@ -40172,11 +40224,11 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         degree?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -40189,7 +40241,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         school?: Array<{
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
              *
              * Native filter : Schools
              *
@@ -40208,7 +40260,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         field_of_study?: Array<{
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
              */
             id: string;
             /**
@@ -40220,7 +40272,10 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
             priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
         }>;
         /**
-         * A list of employment types.
+         * A list of employment types. Only available to Recruiter PRO contracts.
+         *
+         * Native filter : Employment type
+         *
          */
         employment_type?: Array<'FULL_TIME' | 'PART_TIME' | 'CONTRACT' | 'INTERNSHIP'>;
         /**
@@ -40241,11 +40296,11 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         industry?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -40254,11 +40309,14 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         seniority?: Array<'UNPAID' | 'TRAINING' | 'ENTRY' | 'SENIOR' | 'MANAGER' | 'DIRECTOR' | 'VP' | 'CXO' | 'PARTNER' | 'OWNER'>;
         /**
-         * A list of languages.
+         * A list of languages. Only available to Recruiter PRO contracts.
+         *
+         * Native filter : Spoken languages
+         *
          */
         spoken_language?: Array<{
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SPOKEN_LANGUAGE` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SPOKEN_LANGUAGE` type to find out the possible values.
              */
             id: string;
             /**
@@ -40269,7 +40327,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
              */
             priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
             /**
-             * The level of proficiency for the spoken languages.
+             * The level of proficiency for the spoken language.
              *
              * Native filter : Spoken languages proficiency
              *
@@ -40277,7 +40335,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
             proficiency?: 'ELEMENTARY' | 'LIMITED_WORKING' | 'PROFESSIONAL_WORKING' | 'FULL_PROFESSIONAL' | 'NATIVE_OR_BILINGUAL';
         }>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `PROFILE_LANGUAGE` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `PROFILE_LANGUAGE` type to find out the possible values.
          *
          * Native filter : Profile languages
          *
@@ -40292,7 +40350,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
         project?: {
             include?: Array<{
                 /**
-                 * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `PROJECT` type to find out the possible values.
+                 * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `PROJECT` type to find out the possible values.
                  */
                 id: string;
                 /**
@@ -40302,7 +40360,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
             }>;
             exclude?: Array<{
                 /**
-                 * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `PROJECT` type to find out the possible values.
+                 * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `PROJECT` type to find out the possible values.
                  */
                 id: string;
                 /**
@@ -40312,7 +40370,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
             }>;
         };
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
          *
          * Native filter : Job functions
          *
@@ -40370,7 +40428,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
             timespan: 'PAST_MONTH' | 'PAST_3_MONTHS' | 'PAST_6_MONTHS' | 'PAST_YEAR' | 'PAST_2_YEARS';
         };
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `GROUP` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `GROUP` type to find out the possible values.
          *
          * Native filter : All groups
          *
@@ -40395,11 +40453,11 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         tags?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `TAG` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `TAG` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `TAG` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `TAG` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -41221,7 +41279,7 @@ export type CreateRecruiterJobPostingDraftInExistingProjectData = {
          */
         job_title: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
              */
             id: string;
             /**
@@ -41234,7 +41292,7 @@ export type CreateRecruiterJobPostingDraftInExistingProjectData = {
          */
         company: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              */
             id?: string;
             /**
@@ -41247,7 +41305,7 @@ export type CreateRecruiterJobPostingDraftInExistingProjectData = {
          */
         workplace_type: 'ON_SITE' | 'HYBRID' | 'REMOTE';
         /**
-         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
          */
         location: string;
         /**
@@ -41263,15 +41321,15 @@ export type CreateRecruiterJobPostingDraftInExistingProjectData = {
          */
         description: string;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values. The company industries related to the job posting.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values. The company industries related to the job posting.
          */
         industry: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values. The job functions related to the job posting.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values. The job functions related to the job posting.
          */
         job_function: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values. The skills related to the job posting.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values. The skills related to the job posting.
          */
         skills?: Array<string>;
         /**
@@ -41545,21 +41603,21 @@ export type GetRecruiterJobPostingListData = {
          */
         sort_by?: 'LAST_ACCESS_TIME' | 'CHRONOLOGICAL' | 'REVERSE_CHRONOLOGICAL';
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
          *
          * Native filter : Location
          *
          */
         location?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SEAT` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SEAT` type to find out the possible values.
          *
          * Native filter : Job poster
          *
          */
         job_poster?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `CONTRACT` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `CONTRACT` type to find out the possible values.
          *
          * Native filter : Contract
          *
@@ -41645,7 +41703,7 @@ export type CreateRecruiterJobPostingDraftInNewProjectData = {
          */
         job_title: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
              */
             id: string;
             /**
@@ -41658,7 +41716,7 @@ export type CreateRecruiterJobPostingDraftInNewProjectData = {
          */
         company: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              */
             id?: string;
             /**
@@ -41671,7 +41729,7 @@ export type CreateRecruiterJobPostingDraftInNewProjectData = {
          */
         workplace_type: 'ON_SITE' | 'HYBRID' | 'REMOTE';
         /**
-         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
          */
         location: string;
         /**
@@ -41687,15 +41745,15 @@ export type CreateRecruiterJobPostingDraftInNewProjectData = {
          */
         description: string;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values. The company industries related to the job posting.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values. The company industries related to the job posting.
          */
         industry: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values. The job functions related to the job posting.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values. The job functions related to the job posting.
          */
         job_function: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values. The skills related to the job posting.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values. The skills related to the job posting.
          */
         skills?: Array<string>;
         /**
@@ -41876,7 +41934,7 @@ export type EditRecruiterJobPostingData = {
          */
         job_title?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
              */
             id: string;
             /**
@@ -41889,7 +41947,7 @@ export type EditRecruiterJobPostingData = {
          */
         company?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              */
             id?: string;
             /**
@@ -41902,7 +41960,7 @@ export type EditRecruiterJobPostingData = {
          */
         workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
         /**
-         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.
          */
         location?: string;
         /**
@@ -41918,15 +41976,15 @@ export type EditRecruiterJobPostingData = {
          */
         description?: string;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values. The company industries related to the job posting.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values. The company industries related to the job posting.
          */
         industry?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values. The job functions related to the job posting.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values. The job functions related to the job posting.
          */
         job_function?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values. The skills related to the job posting.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values. The skills related to the job posting.
          */
         skills?: Array<string>;
         /**
@@ -44308,7 +44366,7 @@ export type GetRecruiterSearchParametersData = {
         /**
          * The type of search parameter.
          */
-        type: 'OCCUPATION' | 'JOB_TITLE' | 'JOB_FUNCTION' | 'LOCATION' | 'ZIPCODE' | 'SKILL' | 'COMPANY' | 'SCHOOL' | 'INDUSTRY' | 'GROUP' | 'PROJECT' | 'CUSTOM_FILTER' | 'PROFILE_LANGUAGE' | 'SEAT' | 'SAVED_SEARCH' | 'DEGREE';
+        type: 'OCCUPATION' | 'JOB_TITLE' | 'JOB_FUNCTION' | 'LOCATION' | 'ZIPCODE' | 'SKILL' | 'COMPANY' | 'SCHOOL' | 'INDUSTRY' | 'GROUP' | 'PROJECT' | 'CUSTOM_FILTER' | 'PROFILE_LANGUAGE' | 'SPOKEN_LANGUAGE' | 'SEAT' | 'SAVED_SEARCH' | 'DEGREE';
     } | {
         source: 'JOBS';
         /**
@@ -44403,7 +44461,7 @@ export type PerformRecruiterPeopleSearchData = {
          */
         load_saved_search?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SAVED_SEARCH` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SAVED_SEARCH` type to find out the possible values.
              *
              * Native filter : Saved searches
              *
@@ -44419,7 +44477,7 @@ export type PerformRecruiterPeopleSearchData = {
          */
         load_custom_filter?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `CUSTOM_FILTER` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `CUSTOM_FILTER` type to find out the possible values.
              *
              * Native filter : Custom filters
              *
@@ -44460,7 +44518,7 @@ export type PerformRecruiterPeopleSearchData = {
          */
         location?: Array<{
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
              *
              * Native filter : Locations
              *
@@ -44489,7 +44547,7 @@ export type PerformRecruiterPeopleSearchData = {
              */
             name: string;
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `ZIPCODE` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `ZIPCODE` type to find out the possible values.
              *
              * Native filter : Postal code / Zip code
              *
@@ -44512,7 +44570,7 @@ export type PerformRecruiterPeopleSearchData = {
              */
             name: string;
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
              */
             id?: string;
             /**
@@ -44538,7 +44596,7 @@ export type PerformRecruiterPeopleSearchData = {
              */
             name: string;
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `OCCUPATION` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `OCCUPATION` type to find out the possible values.
              */
             id?: string;
             /**
@@ -44564,7 +44622,7 @@ export type PerformRecruiterPeopleSearchData = {
              */
             name: string;
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
              */
             id?: string;
             /**
@@ -44584,7 +44642,7 @@ export type PerformRecruiterPeopleSearchData = {
              */
             name: string;
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              */
             id?: string;
             /**
@@ -44606,7 +44664,7 @@ export type PerformRecruiterPeopleSearchData = {
          */
         current_company?: Array<{
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              */
             id: string;
             /**
@@ -44622,7 +44680,7 @@ export type PerformRecruiterPeopleSearchData = {
          */
         past_company?: Array<{
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
              */
             id: string;
             /**
@@ -44678,11 +44736,11 @@ export type PerformRecruiterPeopleSearchData = {
          */
         degree?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -44695,7 +44753,7 @@ export type PerformRecruiterPeopleSearchData = {
          */
         school?: Array<{
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
              *
              * Native filter : Schools
              *
@@ -44714,7 +44772,7 @@ export type PerformRecruiterPeopleSearchData = {
          */
         field_of_study?: Array<{
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
              */
             id: string;
             /**
@@ -44726,7 +44784,10 @@ export type PerformRecruiterPeopleSearchData = {
             priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
         }>;
         /**
-         * A list of employment types.
+         * A list of employment types. Only available to Recruiter PRO contracts.
+         *
+         * Native filter : Employment type
+         *
          */
         employment_type?: Array<'FULL_TIME' | 'PART_TIME' | 'CONTRACT' | 'INTERNSHIP'>;
         /**
@@ -44747,11 +44808,11 @@ export type PerformRecruiterPeopleSearchData = {
          */
         industry?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -44760,11 +44821,14 @@ export type PerformRecruiterPeopleSearchData = {
          */
         seniority?: Array<'UNPAID' | 'TRAINING' | 'ENTRY' | 'SENIOR' | 'MANAGER' | 'DIRECTOR' | 'VP' | 'CXO' | 'PARTNER' | 'OWNER'>;
         /**
-         * A list of languages.
+         * A list of languages. Only available to Recruiter PRO contracts.
+         *
+         * Native filter : Spoken languages
+         *
          */
         spoken_language?: Array<{
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `SPOKEN_LANGUAGE` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SPOKEN_LANGUAGE` type to find out the possible values.
              */
             id: string;
             /**
@@ -44775,7 +44839,7 @@ export type PerformRecruiterPeopleSearchData = {
              */
             priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
             /**
-             * The level of proficiency for the spoken languages.
+             * The level of proficiency for the spoken language.
              *
              * Native filter : Spoken languages proficiency
              *
@@ -44783,7 +44847,7 @@ export type PerformRecruiterPeopleSearchData = {
             proficiency?: 'ELEMENTARY' | 'LIMITED_WORKING' | 'PROFESSIONAL_WORKING' | 'FULL_PROFESSIONAL' | 'NATIVE_OR_BILINGUAL';
         }>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `PROFILE_LANGUAGE` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `PROFILE_LANGUAGE` type to find out the possible values.
          *
          * Native filter : Profile languages
          *
@@ -44798,7 +44862,7 @@ export type PerformRecruiterPeopleSearchData = {
         project?: {
             include?: Array<{
                 /**
-                 * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `PROJECT` type to find out the possible values.
+                 * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `PROJECT` type to find out the possible values.
                  */
                 id: string;
                 /**
@@ -44808,7 +44872,7 @@ export type PerformRecruiterPeopleSearchData = {
             }>;
             exclude?: Array<{
                 /**
-                 * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `PROJECT` type to find out the possible values.
+                 * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `PROJECT` type to find out the possible values.
                  */
                 id: string;
                 /**
@@ -44818,7 +44882,7 @@ export type PerformRecruiterPeopleSearchData = {
             }>;
         };
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
          *
          * Native filter : Job functions
          *
@@ -44876,7 +44940,7 @@ export type PerformRecruiterPeopleSearchData = {
             timespan: 'PAST_MONTH' | 'PAST_3_MONTHS' | 'PAST_6_MONTHS' | 'PAST_YEAR' | 'PAST_2_YEARS';
         };
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `GROUP` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `GROUP` type to find out the possible values.
          *
          * Native filter : All groups
          *
@@ -44901,11 +44965,11 @@ export type PerformRecruiterPeopleSearchData = {
          */
         tags?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `TAG` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `TAG` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters">List Search Parameters</a> with `TAG` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `TAG` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -46989,7 +47053,7 @@ export type PerformSalesPeopleSearchData = {
          */
         load_saved_search?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `SAVED_PEOPLE_SEARCH` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `SAVED_PEOPLE_SEARCH` type to find out the possible values.
              *
              * Native filter : Saved search
              *
@@ -47005,7 +47069,7 @@ export type PerformSalesPeopleSearchData = {
          */
         load_recent_search?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `RECENT_SEARCH` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `RECENT_SEARCH` type to find out the possible values.
              *
              * Native filter : Recent search
              *
@@ -47020,11 +47084,11 @@ export type PerformSalesPeopleSearchData = {
          */
         current_company?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `COMPANY or ACCOUNT_LIST` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `COMPANY or ACCOUNT_LIST` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `COMPANY or ACCOUNT_LIST` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `COMPANY or ACCOUNT_LIST` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -47036,11 +47100,11 @@ export type PerformSalesPeopleSearchData = {
          */
         past_company?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `COMPANY or ACCOUNT_LIST` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `COMPANY or ACCOUNT_LIST` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `COMPANY or ACCOUNT_LIST` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `COMPANY or ACCOUNT_LIST` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -47063,11 +47127,11 @@ export type PerformSalesPeopleSearchData = {
          */
         company_location?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -47079,11 +47143,11 @@ export type PerformSalesPeopleSearchData = {
          */
         function?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -47095,11 +47159,11 @@ export type PerformSalesPeopleSearchData = {
          */
         current_job_title?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -47111,11 +47175,11 @@ export type PerformSalesPeopleSearchData = {
          */
         past_job_title?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -47151,11 +47215,11 @@ export type PerformSalesPeopleSearchData = {
          */
         location?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -47167,11 +47231,11 @@ export type PerformSalesPeopleSearchData = {
          */
         postal_code?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `POSTAL_CODE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `POSTAL_CODE` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `POSTAL_CODE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `POSTAL_CODE` type to find out the possible values.
              */
             exclude?: Array<string>;
             /**
@@ -47187,11 +47251,11 @@ export type PerformSalesPeopleSearchData = {
          */
         industry?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -47204,7 +47268,7 @@ export type PerformSalesPeopleSearchData = {
          */
         last_name?: Array<string>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `PROFILE_LANGUAGE` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `PROFILE_LANGUAGE` type to find out the possible values.
          *
          * Native filter : Personal / Profile language
          *
@@ -47225,11 +47289,11 @@ export type PerformSalesPeopleSearchData = {
          */
         group?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `GROUP` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `GROUP` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `GROUP` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `GROUP` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -47241,11 +47305,11 @@ export type PerformSalesPeopleSearchData = {
          */
         school?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -47271,7 +47335,7 @@ export type PerformSalesPeopleSearchData = {
          */
         network_distance?: Array<1 | 2 | 3 | 'GROUP'>;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `RELATION` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `RELATION` type to find out the possible values.
          *
          * Native filter : Best path in / Connections of
          *
@@ -47306,7 +47370,7 @@ export type PerformSalesPeopleSearchData = {
          */
         posted_on_linkedin?: boolean;
         /**
-         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `PERSONA` type to find out the possible values.
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `PERSONA` type to find out the possible values.
          *
          * Native filter : Workflow / Persona
          *
@@ -47320,11 +47384,11 @@ export type PerformSalesPeopleSearchData = {
          */
         account_list?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `ACCOUNT_LIST` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `ACCOUNT_LIST` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `ACCOUNT_LIST` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `ACCOUNT_LIST` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -47336,11 +47400,11 @@ export type PerformSalesPeopleSearchData = {
          */
         lead_list?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `LEAD_LIST` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `LEAD_LIST` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `LEAD_LIST` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `LEAD_LIST` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -47785,7 +47849,7 @@ export type PerformSalesCompaniesSearchData = {
          */
         load_saved_search?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `SAVED_PEOPLE_SEARCH` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `SAVED_PEOPLE_SEARCH` type to find out the possible values.
              *
              * Native filter : Saved search
              *
@@ -47801,7 +47865,7 @@ export type PerformSalesCompaniesSearchData = {
          */
         load_recent_search?: {
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `RECENT_SEARCH` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `RECENT_SEARCH` type to find out the possible values.
              *
              * Native filter : Recent search
              *
@@ -47844,11 +47908,11 @@ export type PerformSalesCompaniesSearchData = {
          */
         location?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -47860,11 +47924,11 @@ export type PerformSalesCompaniesSearchData = {
          */
         postal_code?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `POSTAL_CODE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `POSTAL_CODE` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `POSTAL_CODE` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `POSTAL_CODE` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -47876,11 +47940,11 @@ export type PerformSalesCompaniesSearchData = {
          */
         industry?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -47901,7 +47965,7 @@ export type PerformSalesCompaniesSearchData = {
             min: number;
             max: number;
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
              */
             department: string;
         };
@@ -47915,7 +47979,7 @@ export type PerformSalesCompaniesSearchData = {
             min: number;
             max: number;
             /**
-             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
              */
             department: string;
         };
@@ -47945,11 +48009,11 @@ export type PerformSalesCompaniesSearchData = {
          */
         account_list?: {
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `ACCOUNT_LIST` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `ACCOUNT_LIST` type to find out the possible values.
              */
             include?: Array<string>;
             /**
-             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `ACCOUNT_LIST` type to find out the possible values.
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `ACCOUNT_LIST` type to find out the possible values.
              */
             exclude?: Array<string>;
         };
@@ -48666,7 +48730,7 @@ export type GetSalesAccountListsResponse = GetSalesAccountListsResponses[keyof G
 export type BrowseSalesAccountListData = {
     body?: {
         /**
-         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters">List Search Parameters</a> with `PERSONA` type to find out the possible values.
+         * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getsalessearchparameters">List Search Parameters</a> with `PERSONA` type to find out the possible values.
          *
          * Native filter : Persona
          *
@@ -49296,6 +49360,8 @@ export type SolveCheckpointResponses = {
                  */
                 name: string;
             }>;
+        } | {
+            type: 'LOADING';
         };
         /**
          * The ID of the auth intent. This should be used in Solve Checkpoint.
@@ -49501,6 +49567,8 @@ export type RequestCheckpointResponses = {
                  */
                 name: string;
             }>;
+        } | {
+            type: 'LOADING';
         };
         /**
          * The ID of the auth intent. This should be used in Solve Checkpoint.
@@ -49520,6 +49588,27 @@ export type RequestCheckpointResponses = {
 };
 
 export type RequestCheckpointResponse = RequestCheckpointResponses[keyof RequestCheckpointResponses];
+
+export type ResendCheckpointData = {
+    body: {
+        /**
+         * The ID of the intent for which a checkpoint must be resent.
+         */
+        intent_id: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/v2/auth/checkpoint/resend';
+};
+
+export type ResendCheckpointResponses = {
+    /**
+     * Default Response
+     */
+    204: void;
+};
+
+export type ResendCheckpointResponse = ResendCheckpointResponses[keyof ResendCheckpointResponses];
 
 export type StartAuthIntentData = {
     body?: ({
@@ -50252,6 +50341,8 @@ export type StartAuthIntentResponses = {
                  */
                 name: string;
             }>;
+        } | {
+            type: 'LOADING';
         };
         /**
          * The ID of the auth intent. This should be used in Solve Checkpoint.
@@ -51696,6 +51787,10 @@ export type UpdateAccountData = {
         metadata?: {
             [key: string]: string;
         };
+        /**
+         * The country to use for Automatic Proxy Protection.
+         */
+        auto_proxy_country?: string;
         /**
          * A new proxy configuration for the account. This will restart the account. Set to `null` to remove the proxy. Removing the proxy will revert the account to using Automatic Proxy Protection if required for the provider.
          */
