@@ -15639,6 +15639,62 @@ export type GetEmailContactsListResponses = {
 
 export type GetEmailContactsListResponse = GetEmailContactsListResponses[keyof GetEmailContactsListResponses];
 
+export type GetEmailSendersData = {
+    body?: never;
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/email-senders';
+};
+
+export type GetEmailSendersResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        data: Array<{
+            /**
+             * Object type identifier, always "EmailSender".
+             */
+            object: 'EmailSender';
+            /**
+             * Email address that can be placed in the `from` header when sending emails.
+             */
+            email: string;
+            /**
+             * Display name associated with the address, when the provider exposes one.
+             */
+            display_name?: string;
+            /**
+             * Whether this is the primary address of the mailbox (the address used to authenticate the account).
+             */
+            is_primary: boolean;
+            /**
+             * Whether this is the default "From:" address used when composing a new message. Only exposed by providers that have a distinct default sender (Gmail).
+             */
+            is_default?: boolean;
+            /**
+             * Readiness of the address for sending. `verified`: the address is confirmed and can be used in the `from` field. `pending`: the email sender exists but has not completed verification and is not ready to send (Gmail custom addresses). `unknown`: the provider does not expose per-address readiness (e.g. Outlook proxy addresses, whose usability depends on the tenant `SendFromAliasEnabled` setting).
+             */
+            verification_status: 'verified' | 'pending' | 'unknown';
+        }>;
+        /**
+         * Total number of results if supported by the provider.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type GetEmailSendersResponse = GetEmailSendersResponses[keyof GetEmailSendersResponses];
+
 export type GetUserProfileData = {
     body?: never;
     path: {
@@ -36984,7 +37040,7 @@ export type GetRecruiterHiringProjectListResponses = {
                 /**
                  * The email address of the Project owner.
                  */
-                email: string;
+                email?: string;
                 /**
                  * The profile URL of the Project owner.
                  */
@@ -37080,7 +37136,7 @@ export type GetRecruiterHiringProjectListResponses = {
                     /**
                      * The type of the Channel.
                      */
-                    type: 'CAREER_SITE' | 'MANUAL_IMPORT' | 'INTERNAL_CANDIDATES' | 'RECRUITER_SEARCH' | 'REFERRAL' | 'JOB_POSTING_RECOMMENDED_MATCHES' | 'AUTOMATED_SOURCING' | 'JOB_POSTING' | 'APPLY_STARTERS' | 'TALENT_AGENT';
+                    type: 'CAREER_SITE' | 'MANUAL_IMPORT' | 'INTERNAL_CANDIDATES' | 'RECRUITER_SEARCH' | 'REFERRAL' | 'JOB_POSTING_RECOMMENDED_MATCHES' | 'AUTOMATED_SOURCING' | 'JOB_POSTING' | 'APPLY_STARTERS' | 'TALENT_AGENT' | 'PIPELINE_BUILDER';
                     /**
                      * The custom name of the Channel.
                      */
@@ -37306,7 +37362,7 @@ export type GetRecruiterHiringProjectResponses = {
             /**
              * The email address of the Project owner.
              */
-            email: string;
+            email?: string;
             /**
              * The profile URL of the Project owner.
              */
@@ -37402,7 +37458,7 @@ export type GetRecruiterHiringProjectResponses = {
                 /**
                  * The type of the Channel.
                  */
-                type: 'CAREER_SITE' | 'MANUAL_IMPORT' | 'INTERNAL_CANDIDATES' | 'RECRUITER_SEARCH' | 'REFERRAL' | 'JOB_POSTING_RECOMMENDED_MATCHES' | 'AUTOMATED_SOURCING' | 'JOB_POSTING' | 'APPLY_STARTERS' | 'TALENT_AGENT';
+                type: 'CAREER_SITE' | 'MANUAL_IMPORT' | 'INTERNAL_CANDIDATES' | 'RECRUITER_SEARCH' | 'REFERRAL' | 'JOB_POSTING_RECOMMENDED_MATCHES' | 'AUTOMATED_SOURCING' | 'JOB_POSTING' | 'APPLY_STARTERS' | 'TALENT_AGENT' | 'PIPELINE_BUILDER';
                 /**
                  * The custom name of the Channel.
                  */
@@ -47112,8 +47168,8 @@ export type PerformSalesPeopleSearchData = {
          * A list of headcount ranges.
          */
         company_headcount?: Array<{
-            min?: 1 | 51 | 201 | 501 | 1001 | 5001 | 10001;
-            max?: 0 | 10 | 200 | 500 | 1000 | 5000 | 10000;
+            min?: 1 | 11 | 51 | 201 | 501 | 1001 | 5001 | 10001;
+            max?: 0 | 10 | 50 | 200 | 500 | 1000 | 5000 | 10000;
         }>;
         /**
          * A list of company types.
@@ -47887,8 +47943,8 @@ export type PerformSalesCompaniesSearchData = {
          * A list of headcount ranges.
          */
         headcount?: Array<{
-            min?: 1 | 51 | 201 | 501 | 1001 | 5001 | 10001;
-            max?: 0 | 10 | 200 | 500 | 1000 | 5000 | 10000;
+            min?: 1 | 11 | 51 | 201 | 501 | 1001 | 5001 | 10001;
+            max?: 0 | 10 | 50 | 200 | 500 | 1000 | 5000 | 10000;
         }>;
         /**
          *
@@ -49320,6 +49376,10 @@ export type SolveCheckpointResponses = {
          */
         checkpoint: {
             type: 'OTP';
+            /**
+             * The channel the one-time password was sent through, when known.
+             */
+            channel?: 'EMAIL' | 'SMS' | 'WHATSAPP';
         } | {
             type: 'IN_APP_VALIDATION';
         } | {
@@ -49345,6 +49405,10 @@ export type SolveCheckpointResponses = {
             data: string | null;
         } | {
             type: 'OTP_OR_IN_APP_VALIDATION';
+            /**
+             * The channel the one-time password was sent through, when known.
+             */
+            channel?: 'EMAIL' | 'SMS' | 'WHATSAPP';
         } | {
             type: 'CONTRACT_SELECTION';
             /**
@@ -49527,6 +49591,10 @@ export type RequestCheckpointResponses = {
          */
         checkpoint: {
             type: 'OTP';
+            /**
+             * The channel the one-time password was sent through, when known.
+             */
+            channel?: 'EMAIL' | 'SMS' | 'WHATSAPP';
         } | {
             type: 'IN_APP_VALIDATION';
         } | {
@@ -49552,6 +49620,10 @@ export type RequestCheckpointResponses = {
             data: string | null;
         } | {
             type: 'OTP_OR_IN_APP_VALIDATION';
+            /**
+             * The channel the one-time password was sent through, when known.
+             */
+            channel?: 'EMAIL' | 'SMS' | 'WHATSAPP';
         } | {
             type: 'CONTRACT_SELECTION';
             /**
@@ -50301,6 +50373,10 @@ export type StartAuthIntentResponses = {
          */
         checkpoint: {
             type: 'OTP';
+            /**
+             * The channel the one-time password was sent through, when known.
+             */
+            channel?: 'EMAIL' | 'SMS' | 'WHATSAPP';
         } | {
             type: 'IN_APP_VALIDATION';
         } | {
@@ -50326,6 +50402,10 @@ export type StartAuthIntentResponses = {
             data: string | null;
         } | {
             type: 'OTP_OR_IN_APP_VALIDATION';
+            /**
+             * The channel the one-time password was sent through, when known.
+             */
+            channel?: 'EMAIL' | 'SMS' | 'WHATSAPP';
         } | {
             type: 'CONTRACT_SELECTION';
             /**
