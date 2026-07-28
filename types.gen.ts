@@ -501,7 +501,7 @@ export type GetChatsListResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -528,6 +528,9 @@ export type GetChatsListResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 };
                 /**
@@ -555,6 +558,10 @@ export type GetChatsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -594,6 +601,10 @@ export type GetChatsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -636,6 +647,10 @@ export type GetChatsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -683,6 +698,10 @@ export type GetChatsListResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -717,6 +736,10 @@ export type GetChatsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -778,6 +801,10 @@ export type GetChatsListResponses = {
                          */
                         file_size?: number;
                         /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
                         is_unavailable?: boolean;
@@ -816,6 +843,10 @@ export type GetChatsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -858,6 +889,10 @@ export type GetChatsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -905,6 +940,10 @@ export type GetChatsListResponses = {
                          */
                         file_size?: number;
                         /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
                         is_unavailable?: boolean;
@@ -939,6 +978,10 @@ export type GetChatsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -994,7 +1037,7 @@ export type GetChatsListResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -1021,6 +1064,9 @@ export type GetChatsListResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * Provider-specific user data.
+                         */
                         specifics?: unknown;
                     };
                 };
@@ -1048,6 +1094,10 @@ export type GetChatsListResponses = {
                          */
                         file_size?: number;
                         /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
                         is_unavailable?: boolean;
@@ -1086,6 +1136,10 @@ export type GetChatsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -1128,6 +1182,10 @@ export type GetChatsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -1175,6 +1233,10 @@ export type GetChatsListResponses = {
                          */
                         file_size?: number;
                         /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
                         is_unavailable?: boolean;
@@ -1209,6 +1271,10 @@ export type GetChatsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -1264,7 +1330,7 @@ export type GetChatsListResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -1291,6 +1357,9 @@ export type GetChatsListResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * Provider-specific user data.
+                         */
                         specifics?: unknown;
                     };
                     object: 'ForwardedMessage';
@@ -1331,7 +1400,7 @@ export type GetChatsListResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -1358,7 +1427,15 @@ export type GetChatsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -1445,7 +1522,7 @@ export type GetChatsListResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -1472,7 +1549,15 @@ export type GetChatsListResponses = {
                      * Description of the user.
                      */
                     description?: string;
-                    specifics?: unknown & {
+                    /**
+                     * Object containing provider-specific user profile data.
+                     */
+                    specifics?: {
+                        /**
+                         * Name saved by the connected account owner in their WhatsApp address book.
+                         */
+                        contact_name: string;
+                    } | {
                         /**
                          * The geographical location of the user.
                          */
@@ -2089,7 +2174,7 @@ export type GetInboxChatsListResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -2116,6 +2201,9 @@ export type GetInboxChatsListResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 };
                 /**
@@ -2143,6 +2231,10 @@ export type GetInboxChatsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -2182,6 +2274,10 @@ export type GetInboxChatsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -2224,6 +2320,10 @@ export type GetInboxChatsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -2271,6 +2371,10 @@ export type GetInboxChatsListResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -2305,6 +2409,10 @@ export type GetInboxChatsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -2366,6 +2474,10 @@ export type GetInboxChatsListResponses = {
                          */
                         file_size?: number;
                         /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
                         is_unavailable?: boolean;
@@ -2404,6 +2516,10 @@ export type GetInboxChatsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -2446,6 +2562,10 @@ export type GetInboxChatsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -2493,6 +2613,10 @@ export type GetInboxChatsListResponses = {
                          */
                         file_size?: number;
                         /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
                         is_unavailable?: boolean;
@@ -2527,6 +2651,10 @@ export type GetInboxChatsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -2582,7 +2710,7 @@ export type GetInboxChatsListResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -2609,6 +2737,9 @@ export type GetInboxChatsListResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * Provider-specific user data.
+                         */
                         specifics?: unknown;
                     };
                 };
@@ -2636,6 +2767,10 @@ export type GetInboxChatsListResponses = {
                          */
                         file_size?: number;
                         /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
                         is_unavailable?: boolean;
@@ -2674,6 +2809,10 @@ export type GetInboxChatsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -2716,6 +2855,10 @@ export type GetInboxChatsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -2763,6 +2906,10 @@ export type GetInboxChatsListResponses = {
                          */
                         file_size?: number;
                         /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
                         is_unavailable?: boolean;
@@ -2797,6 +2944,10 @@ export type GetInboxChatsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -2852,7 +3003,7 @@ export type GetInboxChatsListResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -2879,6 +3030,9 @@ export type GetInboxChatsListResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * Provider-specific user data.
+                         */
                         specifics?: unknown;
                     };
                     object: 'ForwardedMessage';
@@ -2919,7 +3073,7 @@ export type GetInboxChatsListResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -2946,7 +3100,15 @@ export type GetInboxChatsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -3033,7 +3195,7 @@ export type GetInboxChatsListResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -3060,7 +3222,15 @@ export type GetInboxChatsListResponses = {
                      * Description of the user.
                      */
                     description?: string;
-                    specifics?: unknown & {
+                    /**
+                     * Object containing provider-specific user profile data.
+                     */
+                    specifics?: {
+                        /**
+                         * Name saved by the connected account owner in their WhatsApp address book.
+                         */
+                        contact_name: string;
+                    } | {
                         /**
                          * The geographical location of the user.
                          */
@@ -3620,7 +3790,7 @@ export type GetChatResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -3647,6 +3817,9 @@ export type GetChatResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                /**
+                 * Provider-specific user data.
+                 */
                 specifics?: unknown;
             };
             /**
@@ -3674,6 +3847,10 @@ export type GetChatResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -3713,6 +3890,10 @@ export type GetChatResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -3755,6 +3936,10 @@ export type GetChatResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -3802,6 +3987,10 @@ export type GetChatResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -3836,6 +4025,10 @@ export type GetChatResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -3897,6 +4090,10 @@ export type GetChatResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -3935,6 +4132,10 @@ export type GetChatResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -3977,6 +4178,10 @@ export type GetChatResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -4024,6 +4229,10 @@ export type GetChatResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -4058,6 +4267,10 @@ export type GetChatResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -4113,7 +4326,7 @@ export type GetChatResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -4140,6 +4353,9 @@ export type GetChatResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 };
             };
@@ -4167,6 +4383,10 @@ export type GetChatResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -4205,6 +4425,10 @@ export type GetChatResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -4247,6 +4471,10 @@ export type GetChatResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -4294,6 +4522,10 @@ export type GetChatResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -4328,6 +4560,10 @@ export type GetChatResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -4383,7 +4619,7 @@ export type GetChatResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -4410,6 +4646,9 @@ export type GetChatResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 };
                 object: 'ForwardedMessage';
@@ -4450,7 +4689,7 @@ export type GetChatResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -4477,7 +4716,15 @@ export type GetChatResponses = {
              * Description of the user.
              */
             description?: string;
-            specifics?: unknown & {
+            /**
+             * Object containing provider-specific user profile data.
+             */
+            specifics?: {
+                /**
+                 * Name saved by the connected account owner in their WhatsApp address book.
+                 */
+                contact_name: string;
+            } | {
                 /**
                  * The geographical location of the user.
                  */
@@ -4564,7 +4811,7 @@ export type GetChatResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -4591,7 +4838,15 @@ export type GetChatResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -4818,7 +5073,7 @@ export type UpdateChatResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -4845,6 +5100,9 @@ export type UpdateChatResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                /**
+                 * Provider-specific user data.
+                 */
                 specifics?: unknown;
             };
             /**
@@ -5206,7 +5464,7 @@ export type UpdateChatResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -5233,6 +5491,9 @@ export type UpdateChatResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                /**
+                 * Provider-specific user data.
+                 */
                 specifics?: unknown;
             };
             /**
@@ -5260,6 +5521,10 @@ export type UpdateChatResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -5299,6 +5564,10 @@ export type UpdateChatResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -5341,6 +5610,10 @@ export type UpdateChatResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -5388,6 +5661,10 @@ export type UpdateChatResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -5422,6 +5699,10 @@ export type UpdateChatResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -5483,6 +5764,10 @@ export type UpdateChatResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -5521,6 +5806,10 @@ export type UpdateChatResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -5563,6 +5852,10 @@ export type UpdateChatResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -5610,6 +5903,10 @@ export type UpdateChatResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -5644,6 +5941,10 @@ export type UpdateChatResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -5699,7 +6000,7 @@ export type UpdateChatResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -5726,6 +6027,9 @@ export type UpdateChatResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 };
             };
@@ -5753,6 +6057,10 @@ export type UpdateChatResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -5791,6 +6099,10 @@ export type UpdateChatResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -5833,6 +6145,10 @@ export type UpdateChatResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -5880,6 +6196,10 @@ export type UpdateChatResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -5914,6 +6234,10 @@ export type UpdateChatResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -5969,7 +6293,7 @@ export type UpdateChatResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -5996,6 +6320,9 @@ export type UpdateChatResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 };
                 object: 'ForwardedMessage';
@@ -6023,7 +6350,7 @@ export type UpdateChatResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -6050,6 +6377,9 @@ export type UpdateChatResponses = {
              * Description of the user.
              */
             description?: string;
+            /**
+             * Provider-specific user data.
+             */
             specifics?: unknown;
         };
         /**
@@ -6956,6 +7286,10 @@ export type GetMessagesListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -6994,6 +7328,10 @@ export type GetMessagesListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -7036,6 +7374,10 @@ export type GetMessagesListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -7083,6 +7425,10 @@ export type GetMessagesListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -7117,6 +7463,10 @@ export type GetMessagesListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -7178,7 +7528,7 @@ export type GetMessagesListResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -7205,7 +7555,15 @@ export type GetMessagesListResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -7288,6 +7646,10 @@ export type GetMessagesListResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -7326,6 +7688,10 @@ export type GetMessagesListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -7368,6 +7734,10 @@ export type GetMessagesListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -7415,6 +7785,10 @@ export type GetMessagesListResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -7449,6 +7823,10 @@ export type GetMessagesListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -7504,7 +7882,7 @@ export type GetMessagesListResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -7531,7 +7909,15 @@ export type GetMessagesListResponses = {
                      * Description of the user.
                      */
                     description?: string;
-                    specifics?: unknown & {
+                    /**
+                     * Object containing provider-specific user profile data.
+                     */
+                    specifics?: {
+                        /**
+                         * Name saved by the connected account owner in their WhatsApp address book.
+                         */
+                        contact_name: string;
+                    } | {
                         /**
                          * The geographical location of the user.
                          */
@@ -7612,6 +7998,10 @@ export type GetMessagesListResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -7650,6 +8040,10 @@ export type GetMessagesListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -7692,6 +8086,10 @@ export type GetMessagesListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -7739,6 +8137,10 @@ export type GetMessagesListResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -7773,6 +8175,10 @@ export type GetMessagesListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -7829,7 +8235,7 @@ export type GetMessagesListResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -7856,7 +8262,15 @@ export type GetMessagesListResponses = {
                      * Description of the user.
                      */
                     description?: string;
-                    specifics?: unknown & {
+                    /**
+                     * Object containing provider-specific user profile data.
+                     */
+                    specifics?: {
+                        /**
+                         * Name saved by the connected account owner in their WhatsApp address book.
+                         */
+                        contact_name: string;
+                    } | {
                         /**
                          * The geographical location of the user.
                          */
@@ -8314,6 +8728,10 @@ export type GetMessageResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -8352,6 +8770,10 @@ export type GetMessageResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -8394,6 +8816,10 @@ export type GetMessageResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -8441,6 +8867,10 @@ export type GetMessageResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -8475,6 +8905,10 @@ export type GetMessageResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -8536,7 +8970,7 @@ export type GetMessageResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -8563,7 +8997,15 @@ export type GetMessageResponses = {
              * Description of the user.
              */
             description?: string;
-            specifics?: unknown & {
+            /**
+             * Object containing provider-specific user profile data.
+             */
+            specifics?: {
+                /**
+                 * Name saved by the connected account owner in their WhatsApp address book.
+                 */
+                contact_name: string;
+            } | {
                 /**
                  * The geographical location of the user.
                  */
@@ -8646,6 +9088,10 @@ export type GetMessageResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -8684,6 +9130,10 @@ export type GetMessageResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -8726,6 +9176,10 @@ export type GetMessageResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -8773,6 +9227,10 @@ export type GetMessageResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -8807,6 +9265,10 @@ export type GetMessageResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -8862,7 +9324,7 @@ export type GetMessageResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -8889,7 +9351,15 @@ export type GetMessageResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -8970,6 +9440,10 @@ export type GetMessageResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -9008,6 +9482,10 @@ export type GetMessageResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -9050,6 +9528,10 @@ export type GetMessageResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -9097,6 +9579,10 @@ export type GetMessageResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -9131,6 +9617,10 @@ export type GetMessageResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -9187,7 +9677,7 @@ export type GetMessageResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -9214,7 +9704,15 @@ export type GetMessageResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -9755,7 +10253,7 @@ export type ModifyMessageResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -9782,6 +10280,9 @@ export type ModifyMessageResponses = {
              * Description of the user.
              */
             description?: string;
+            /**
+             * Provider-specific user data.
+             */
             specifics?: unknown;
         };
         /**
@@ -9809,6 +10310,10 @@ export type ModifyMessageResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -9848,6 +10353,10 @@ export type ModifyMessageResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -9890,6 +10399,10 @@ export type ModifyMessageResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -9937,6 +10450,10 @@ export type ModifyMessageResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -9971,6 +10488,10 @@ export type ModifyMessageResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -10032,6 +10553,10 @@ export type ModifyMessageResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -10070,6 +10595,10 @@ export type ModifyMessageResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -10112,6 +10641,10 @@ export type ModifyMessageResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -10159,6 +10692,10 @@ export type ModifyMessageResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -10193,6 +10730,10 @@ export type ModifyMessageResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -10248,7 +10789,7 @@ export type ModifyMessageResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -10275,6 +10816,9 @@ export type ModifyMessageResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                /**
+                 * Provider-specific user data.
+                 */
                 specifics?: unknown;
             };
         };
@@ -10302,6 +10846,10 @@ export type ModifyMessageResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -10340,6 +10888,10 @@ export type ModifyMessageResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -10382,6 +10934,10 @@ export type ModifyMessageResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -10429,6 +10985,10 @@ export type ModifyMessageResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -10463,6 +11023,10 @@ export type ModifyMessageResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -10518,7 +11082,7 @@ export type ModifyMessageResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -10545,6 +11109,9 @@ export type ModifyMessageResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                /**
+                 * Provider-specific user data.
+                 */
                 specifics?: unknown;
             };
             object: 'ForwardedMessage';
@@ -10648,7 +11215,7 @@ export type GetParticipantsListResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -10675,7 +11242,15 @@ export type GetParticipantsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -10910,7 +11485,7 @@ export type GetMessageReactionsListResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -10937,7 +11512,15 @@ export type GetMessageReactionsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -11333,6 +11916,10 @@ export type GetEmailsListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -11371,6 +11958,10 @@ export type GetEmailsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -11413,6 +12004,10 @@ export type GetEmailsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -11460,6 +12055,10 @@ export type GetEmailsListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -11494,6 +12093,10 @@ export type GetEmailsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -11754,6 +12357,10 @@ export type GetFolderEmailsListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -11792,6 +12399,10 @@ export type GetFolderEmailsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -11834,6 +12445,10 @@ export type GetFolderEmailsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -11881,6 +12496,10 @@ export type GetFolderEmailsListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -11915,6 +12534,10 @@ export type GetFolderEmailsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12128,6 +12751,10 @@ export type GetThreadResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -12166,6 +12793,10 @@ export type GetThreadResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12208,6 +12839,10 @@ export type GetThreadResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12255,6 +12890,10 @@ export type GetThreadResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -12289,6 +12928,10 @@ export type GetThreadResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12515,6 +13158,10 @@ export type GetEmailResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -12553,6 +13200,10 @@ export type GetEmailResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -12595,6 +13246,10 @@ export type GetEmailResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -12642,6 +13297,10 @@ export type GetEmailResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -12676,6 +13335,10 @@ export type GetEmailResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -12912,6 +13575,10 @@ export type ModifyEmailResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -12950,6 +13617,10 @@ export type ModifyEmailResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -12992,6 +13663,10 @@ export type ModifyEmailResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -13039,6 +13714,10 @@ export type ModifyEmailResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -13073,6 +13752,10 @@ export type ModifyEmailResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -13472,6 +14155,10 @@ export type GetDraftsListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -13510,6 +14197,10 @@ export type GetDraftsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -13552,6 +14243,10 @@ export type GetDraftsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -13599,6 +14294,10 @@ export type GetDraftsListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -13633,6 +14332,10 @@ export type GetDraftsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -13919,6 +14622,10 @@ export type CreateDraftResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -13957,6 +14664,10 @@ export type CreateDraftResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -13999,6 +14710,10 @@ export type CreateDraftResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -14046,6 +14761,10 @@ export type CreateDraftResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -14080,6 +14799,10 @@ export type CreateDraftResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -14267,6 +14990,10 @@ export type GetDraftResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -14305,6 +15032,10 @@ export type GetDraftResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -14347,6 +15078,10 @@ export type GetDraftResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -14394,6 +15129,10 @@ export type GetDraftResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -14428,6 +15167,10 @@ export type GetDraftResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -14717,6 +15460,10 @@ export type UpdateDraftResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -14755,6 +15502,10 @@ export type UpdateDraftResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -14797,6 +15548,10 @@ export type UpdateDraftResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -14844,6 +15599,10 @@ export type UpdateDraftResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -14878,6 +15637,10 @@ export type UpdateDraftResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -15286,7 +16049,63 @@ export type UpdateFolderResponses = {
 
 export type UpdateFolderResponse = UpdateFolderResponses[keyof UpdateFolderResponses];
 
-export type GetEmailContactsListData = {
+export type GetEmailSendersData = {
+    body?: never;
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/email-senders';
+};
+
+export type GetEmailSendersResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        data: Array<{
+            /**
+             * Object type identifier, always "EmailSender".
+             */
+            object: 'EmailSender';
+            /**
+             * Email address that can be placed in the `from` header when sending emails.
+             */
+            email: string;
+            /**
+             * Display name associated with the address, when the provider exposes one.
+             */
+            display_name?: string;
+            /**
+             * Whether this is the primary address of the mailbox (the address used to authenticate the account).
+             */
+            is_primary: boolean;
+            /**
+             * Whether this is the default "From:" address used when composing a new message. Only exposed by providers that have a distinct default sender (Gmail).
+             */
+            is_default?: boolean;
+            /**
+             * Readiness of the address for sending. `verified`: the address is confirmed and can be used in the `from` field. `pending`: the email sender exists but has not completed verification and is not ready to send (Gmail custom addresses). `unknown`: the provider does not expose per-address readiness (e.g. Outlook proxy addresses, whose usability depends on the tenant `SendFromAliasEnabled` setting).
+             */
+            verification_status: 'verified' | 'pending' | 'unknown';
+        }>;
+        /**
+         * Total number of results if supported by the provider.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type GetEmailSendersResponse = GetEmailSendersResponses[keyof GetEmailSendersResponses];
+
+export type GetContactsListData = {
     body?: never;
     path: {
         account_id: string;
@@ -15308,7 +16127,7 @@ export type GetEmailContactsListData = {
     url: '/v2/{account_id}/contacts';
 };
 
-export type GetEmailContactsListResponses = {
+export type GetContactsListResponses = {
     /**
      * Default Response
      */
@@ -15323,11 +16142,64 @@ export type GetEmailContactsListResponses = {
              */
             id: string;
             /**
+             * For Messaging/Social Providers, the underlying provider user represented by this contact.
+             */
+            user?: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user as exposed by the provider.
+                 */
+                display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+                /**
+                 * Provider-specific user data.
+                 */
+                specifics?: unknown;
+            };
+            /**
              * URL of the profile picture of the contact.
              */
             picture_url?: string;
             /**
-             * First name of the user.
+             * First name of the contact.
              */
             first_name?: string;
             /**
@@ -15335,11 +16207,11 @@ export type GetEmailContactsListResponses = {
              */
             middle_name?: string;
             /**
-             * Last name of the user.
+             * Last name of the contact.
              */
             last_name?: string;
             /**
-             * Display name of the user.
+             * Display name of the contact. This is used if first/middle/last name cannot be determined.
              */
             display_name?: string;
             /**
@@ -15637,7 +16509,7 @@ export type GetEmailContactsListResponses = {
     };
 };
 
-export type GetEmailContactsListResponse = GetEmailContactsListResponses[keyof GetEmailContactsListResponses];
+export type GetContactsListResponse = GetContactsListResponses[keyof GetContactsListResponses];
 
 export type GetUserProfileData = {
     body?: never;
@@ -15680,7 +16552,7 @@ export type GetUserProfileResponses = {
          */
         public_identifier?: string;
         /**
-         * Display name of the user.
+         * Display name of the user as exposed by the provider.
          */
         display_name: string;
         /**
@@ -15748,7 +16620,7 @@ export type GetUserProfileResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -15775,6 +16647,9 @@ export type GetUserProfileResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 };
                 /**
@@ -16151,7 +17026,7 @@ export type GetUserProfileResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -16178,6 +17053,9 @@ export type GetUserProfileResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 }>;
                 /**
@@ -16232,7 +17110,7 @@ export type GetUserProfileResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -16259,6 +17137,9 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * Provider-specific user data.
+                         */
                         specifics?: unknown;
                     } | null;
                 }>;
@@ -16296,7 +17177,7 @@ export type GetUserProfileResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -16323,6 +17204,9 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * Provider-specific user data.
+                         */
                         specifics?: unknown;
                     } | null;
                 }>;
@@ -16352,7 +17236,7 @@ export type GetUserProfileResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -16379,6 +17263,9 @@ export type GetUserProfileResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * LinkedIn
+                     */
                     specifics?: {
                         /**
                          * The geographical location of the user.
@@ -16597,7 +17484,7 @@ export type GetUserProfileResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -16624,6 +17511,9 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * LinkedIn
+                         */
                         specifics?: {
                             /**
                              * The geographical location of the user.
@@ -16715,7 +17605,7 @@ export type GetUserProfileResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -16742,6 +17632,9 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * LinkedIn
+                         */
                         specifics?: {
                             /**
                              * The geographical location of the user.
@@ -16829,7 +17722,7 @@ export type GetUserProfileResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -16856,6 +17749,9 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * LinkedIn
+                         */
                         specifics?: {
                             /**
                              * The geographical location of the user.
@@ -16943,7 +17839,7 @@ export type GetUserProfileResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -16970,6 +17866,9 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * LinkedIn
+                         */
                         specifics?: {
                             /**
                              * The geographical location of the user.
@@ -17065,7 +17964,7 @@ export type GetUserProfileResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -17092,6 +17991,9 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * LinkedIn
+                         */
                         specifics?: {
                             /**
                              * The geographical location of the user.
@@ -17175,7 +18077,7 @@ export type GetUserProfileResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -17202,6 +18104,9 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * LinkedIn
+                         */
                         specifics?: {
                             /**
                              * The geographical location of the user.
@@ -17297,7 +18202,7 @@ export type GetUserProfileResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -17324,6 +18229,9 @@ export type GetUserProfileResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * LinkedIn
+                         */
                         specifics?: {
                             /**
                              * The geographical location of the user.
@@ -17406,7 +18314,7 @@ export type GetUserProfileResponses = {
                              */
                             public_identifier?: string;
                             /**
-                             * Display name of the user.
+                             * Display name of the user as exposed by the provider.
                              */
                             display_name: string;
                             /**
@@ -17433,6 +18341,9 @@ export type GetUserProfileResponses = {
                              * Description of the user.
                              */
                             description?: string;
+                            /**
+                             * LinkedIn
+                             */
                             specifics?: {
                                 /**
                                  * The geographical location of the user.
@@ -17511,6 +18422,11 @@ export type GetUserProfileResponses = {
             };
         } | {
             messaging_identifier: string;
+        } | {
+            /**
+             * Name saved by the connected account owner in their WhatsApp address book.
+             */
+            contact_name?: string;
         } | null);
         /**
          * URL of the user's background / banner picture.
@@ -18879,7 +19795,7 @@ export type GetUserRelationsResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -18906,7 +19822,15 @@ export type GetUserRelationsResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -19078,7 +20002,7 @@ export type GetRelationRequestsListResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -19105,7 +20029,15 @@ export type GetRelationRequestsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -19238,7 +20170,7 @@ export type CreateRelationRequestResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -19265,7 +20197,15 @@ export type CreateRelationRequestResponses = {
              * Description of the user.
              */
             description?: string;
-            specifics?: unknown & {
+            /**
+             * Object containing provider-specific user profile data.
+             */
+            specifics?: {
+                /**
+                 * Name saved by the connected account owner in their WhatsApp address book.
+                 */
+                contact_name: string;
+            } | {
                 /**
                  * The geographical location of the user.
                  */
@@ -19432,7 +20372,7 @@ export type ListUserFollowersResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -19459,7 +20399,15 @@ export type ListUserFollowersResponses = {
              * Description of the user.
              */
             description?: string;
-            specifics?: unknown & {
+            /**
+             * Object containing provider-specific user profile data.
+             */
+            specifics?: {
+                /**
+                 * Name saved by the connected account owner in their WhatsApp address book.
+                 */
+                contact_name: string;
+            } | {
                 /**
                  * The geographical location of the user.
                  */
@@ -19580,7 +20528,7 @@ export type ListUserFollowingResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -19607,7 +20555,15 @@ export type ListUserFollowingResponses = {
              * Description of the user.
              */
             description?: string;
-            specifics?: unknown & {
+            /**
+             * Object containing provider-specific user profile data.
+             */
+            specifics?: {
+                /**
+                 * Name saved by the connected account owner in their WhatsApp address book.
+                 */
+                contact_name: string;
+            } | {
                 /**
                  * The geographical location of the user.
                  */
@@ -19739,7 +20695,7 @@ export type FollowUserResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -19766,7 +20722,15 @@ export type FollowUserResponses = {
              * Description of the user.
              */
             description?: string;
-            specifics?: unknown & {
+            /**
+             * Object containing provider-specific user profile data.
+             */
+            specifics?: {
+                /**
+                 * Name saved by the connected account owner in their WhatsApp address book.
+                 */
+                contact_name: string;
+            } | {
                 /**
                  * The geographical location of the user.
                  */
@@ -20046,6 +21010,10 @@ export type GetPostsListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -20084,6 +21052,10 @@ export type GetPostsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -20126,6 +21098,10 @@ export type GetPostsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -20173,6 +21149,10 @@ export type GetPostsListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -20207,6 +21187,10 @@ export type GetPostsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -20303,7 +21287,7 @@ export type GetPostsListResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -20330,7 +21314,15 @@ export type GetPostsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -20407,7 +21399,7 @@ export type GetPostsListResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -20434,7 +21426,15 @@ export type GetPostsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -20651,6 +21651,10 @@ export type GetPostsListResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -20689,6 +21693,10 @@ export type GetPostsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -20731,6 +21739,10 @@ export type GetPostsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -20778,6 +21790,10 @@ export type GetPostsListResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -20812,6 +21828,10 @@ export type GetPostsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -20904,7 +21924,7 @@ export type GetPostsListResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -20931,7 +21951,15 @@ export type GetPostsListResponses = {
                      * Description of the user.
                      */
                     description?: string;
-                    specifics?: unknown & {
+                    /**
+                     * Object containing provider-specific user profile data.
+                     */
+                    specifics?: {
+                        /**
+                         * Name saved by the connected account owner in their WhatsApp address book.
+                         */
+                        contact_name: string;
+                    } | {
                         /**
                          * The geographical location of the user.
                          */
@@ -21349,6 +22377,10 @@ export type GetPostResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -21387,6 +22419,10 @@ export type GetPostResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -21429,6 +22465,10 @@ export type GetPostResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -21476,6 +22516,10 @@ export type GetPostResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -21510,6 +22554,10 @@ export type GetPostResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -21606,7 +22654,7 @@ export type GetPostResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -21633,7 +22681,15 @@ export type GetPostResponses = {
              * Description of the user.
              */
             description?: string;
-            specifics?: unknown & {
+            /**
+             * Object containing provider-specific user profile data.
+             */
+            specifics?: {
+                /**
+                 * Name saved by the connected account owner in their WhatsApp address book.
+                 */
+                contact_name: string;
+            } | {
                 /**
                  * The geographical location of the user.
                  */
@@ -21710,7 +22766,7 @@ export type GetPostResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -21737,7 +22793,15 @@ export type GetPostResponses = {
              * Description of the user.
              */
             description?: string;
-            specifics?: unknown & {
+            /**
+             * Object containing provider-specific user profile data.
+             */
+            specifics?: {
+                /**
+                 * Name saved by the connected account owner in their WhatsApp address book.
+                 */
+                contact_name: string;
+            } | {
                 /**
                  * The geographical location of the user.
                  */
@@ -21954,6 +23018,10 @@ export type GetPostResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -21992,6 +23060,10 @@ export type GetPostResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -22034,6 +23106,10 @@ export type GetPostResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -22081,6 +23157,10 @@ export type GetPostResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -22115,6 +23195,10 @@ export type GetPostResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -22207,7 +23291,7 @@ export type GetPostResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -22234,7 +23318,15 @@ export type GetPostResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -22515,7 +23607,7 @@ export type UpdatePostResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -22542,6 +23634,9 @@ export type UpdatePostResponses = {
              * Description of the user.
              */
             description?: string;
+            /**
+             * Provider-specific user data.
+             */
             specifics?: unknown;
         };
         /**
@@ -22680,6 +23775,10 @@ export type UpdatePostResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -22718,6 +23817,10 @@ export type UpdatePostResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -22760,6 +23863,10 @@ export type UpdatePostResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -22807,6 +23914,10 @@ export type UpdatePostResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -22841,6 +23952,10 @@ export type UpdatePostResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -22941,7 +24056,7 @@ export type UpdatePostResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -22968,6 +24083,9 @@ export type UpdatePostResponses = {
              * Description of the user.
              */
             description?: string;
+            /**
+             * Provider-specific user data.
+             */
             specifics?: unknown;
         };
         /**
@@ -23016,7 +24134,7 @@ export type UpdatePostResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -23043,6 +24161,9 @@ export type UpdatePostResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                /**
+                 * Provider-specific user data.
+                 */
                 specifics?: unknown;
             };
             /**
@@ -23181,6 +24302,10 @@ export type UpdatePostResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -23219,6 +24344,10 @@ export type UpdatePostResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -23261,6 +24390,10 @@ export type UpdatePostResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -23308,6 +24441,10 @@ export type UpdatePostResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -23342,6 +24479,10 @@ export type UpdatePostResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -23545,7 +24686,7 @@ export type CreatePostResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -23572,6 +24713,9 @@ export type CreatePostResponses = {
              * Description of the user.
              */
             description?: string;
+            /**
+             * Provider-specific user data.
+             */
             specifics?: unknown;
         };
         /**
@@ -23710,6 +24854,10 @@ export type CreatePostResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -23748,6 +24896,10 @@ export type CreatePostResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -23790,6 +24942,10 @@ export type CreatePostResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -23837,6 +24993,10 @@ export type CreatePostResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -23871,6 +25031,10 @@ export type CreatePostResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -23971,7 +25135,7 @@ export type CreatePostResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -23998,6 +25162,9 @@ export type CreatePostResponses = {
              * Description of the user.
              */
             description?: string;
+            /**
+             * Provider-specific user data.
+             */
             specifics?: unknown;
         };
         /**
@@ -24046,7 +25213,7 @@ export type CreatePostResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -24073,6 +25240,9 @@ export type CreatePostResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                /**
+                 * Provider-specific user data.
+                 */
                 specifics?: unknown;
             };
             /**
@@ -24211,6 +25381,10 @@ export type CreatePostResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -24249,6 +25423,10 @@ export type CreatePostResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -24291,6 +25469,10 @@ export type CreatePostResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -24338,6 +25520,10 @@ export type CreatePostResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -24372,6 +25558,10 @@ export type CreatePostResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -24544,7 +25734,7 @@ export type GetPostReactionsListResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -24571,7 +25761,15 @@ export type GetPostReactionsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -24744,6 +25942,10 @@ export type GetPostCommentsListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -24782,6 +25984,10 @@ export type GetPostCommentsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -24824,6 +26030,10 @@ export type GetPostCommentsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -24871,6 +26081,10 @@ export type GetPostCommentsListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -24905,6 +26119,10 @@ export type GetPostCommentsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -24993,7 +26211,7 @@ export type GetPostCommentsListResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -25020,7 +26238,15 @@ export type GetPostCommentsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -25176,7 +26402,7 @@ export type AddPostCommentResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -25203,6 +26429,9 @@ export type AddPostCommentResponses = {
              * Description of the user.
              */
             description?: string;
+            /**
+             * Provider-specific user data.
+             */
             specifics?: unknown;
         };
         /**
@@ -25226,6 +26455,10 @@ export type AddPostCommentResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -25265,6 +26498,10 @@ export type AddPostCommentResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -25307,6 +26544,10 @@ export type AddPostCommentResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -25354,6 +26595,10 @@ export type AddPostCommentResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -25388,6 +26633,10 @@ export type AddPostCommentResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -25549,7 +26798,7 @@ export type UpdatePostCommentResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -25576,6 +26825,9 @@ export type UpdatePostCommentResponses = {
              * Description of the user.
              */
             description?: string;
+            /**
+             * Provider-specific user data.
+             */
             specifics?: unknown;
         };
         /**
@@ -25599,6 +26851,10 @@ export type UpdatePostCommentResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -25638,6 +26894,10 @@ export type UpdatePostCommentResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -25680,6 +26940,10 @@ export type UpdatePostCommentResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -25727,6 +26991,10 @@ export type UpdatePostCommentResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -25761,6 +27029,10 @@ export type UpdatePostCommentResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -25923,7 +27195,7 @@ export type ReplyToCommentResponses = {
              */
             public_identifier?: string;
             /**
-             * Display name of the user.
+             * Display name of the user as exposed by the provider.
              */
             display_name: string;
             /**
@@ -25950,6 +27222,9 @@ export type ReplyToCommentResponses = {
              * Description of the user.
              */
             description?: string;
+            /**
+             * Provider-specific user data.
+             */
             specifics?: unknown;
         };
         /**
@@ -25973,6 +27248,10 @@ export type ReplyToCommentResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -26012,6 +27291,10 @@ export type ReplyToCommentResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -26054,6 +27337,10 @@ export type ReplyToCommentResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -26101,6 +27388,10 @@ export type ReplyToCommentResponses = {
              */
             file_size?: number;
             /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
              * The attachment is not available for download because it was removed from provider servers.
              */
             is_unavailable?: boolean;
@@ -26135,6 +27426,10 @@ export type ReplyToCommentResponses = {
              * The size of the attachment in bytes.
              */
             file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -26277,6 +27572,10 @@ export type GetPostCommentRepliesListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -26315,6 +27614,10 @@ export type GetPostCommentRepliesListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -26357,6 +27660,10 @@ export type GetPostCommentRepliesListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -26404,6 +27711,10 @@ export type GetPostCommentRepliesListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -26438,6 +27749,10 @@ export type GetPostCommentRepliesListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -26526,7 +27841,7 @@ export type GetPostCommentRepliesListResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -26553,7 +27868,15 @@ export type GetPostCommentRepliesListResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -26722,7 +28045,7 @@ export type GetPostCommentReactionsListResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -26749,7 +28072,15 @@ export type GetPostCommentReactionsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -26922,6 +28253,10 @@ export type GetUserCommentsListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -26960,6 +28295,10 @@ export type GetUserCommentsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -27002,6 +28341,10 @@ export type GetUserCommentsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -27049,6 +28392,10 @@ export type GetUserCommentsListResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -27083,6 +28430,10 @@ export type GetUserCommentsListResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -27171,7 +28522,7 @@ export type GetUserCommentsListResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -27198,7 +28549,15 @@ export type GetUserCommentsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -27300,7 +28659,7 @@ export type GetUserCommentsListResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -27327,7 +28686,15 @@ export type GetUserCommentsListResponses = {
                      * Description of the user.
                      */
                     description?: string;
-                    specifics?: unknown & {
+                    /**
+                     * Object containing provider-specific user profile data.
+                     */
+                    specifics?: {
+                        /**
+                         * Name saved by the connected account owner in their WhatsApp address book.
+                         */
+                        contact_name: string;
+                    } | {
                         /**
                          * The geographical location of the user.
                          */
@@ -27541,6 +28908,10 @@ export type GetUserCommentsListResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -27579,6 +28950,10 @@ export type GetUserCommentsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -27621,6 +28996,10 @@ export type GetUserCommentsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -27668,6 +29047,10 @@ export type GetUserCommentsListResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -27702,6 +29085,10 @@ export type GetUserCommentsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -27798,7 +29185,7 @@ export type GetUserCommentsListResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -27825,7 +29212,15 @@ export type GetUserCommentsListResponses = {
                      * Description of the user.
                      */
                     description?: string;
-                    specifics?: unknown & {
+                    /**
+                     * Object containing provider-specific user profile data.
+                     */
+                    specifics?: {
+                        /**
+                         * Name saved by the connected account owner in their WhatsApp address book.
+                         */
+                        contact_name: string;
+                    } | {
                         /**
                          * The geographical location of the user.
                          */
@@ -27902,7 +29297,7 @@ export type GetUserCommentsListResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -27929,7 +29324,15 @@ export type GetUserCommentsListResponses = {
                      * Description of the user.
                      */
                     description?: string;
-                    specifics?: unknown & {
+                    /**
+                     * Object containing provider-specific user profile data.
+                     */
+                    specifics?: {
+                        /**
+                         * Name saved by the connected account owner in their WhatsApp address book.
+                         */
+                        contact_name: string;
+                    } | {
                         /**
                          * The geographical location of the user.
                          */
@@ -28146,6 +29549,10 @@ export type GetUserCommentsListResponses = {
                          */
                         file_size?: number;
                         /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
                         is_unavailable?: boolean;
@@ -28184,6 +29591,10 @@ export type GetUserCommentsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -28226,6 +29637,10 @@ export type GetUserCommentsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -28273,6 +29688,10 @@ export type GetUserCommentsListResponses = {
                          */
                         file_size?: number;
                         /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
                         is_unavailable?: boolean;
@@ -28307,6 +29726,10 @@ export type GetUserCommentsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -28399,7 +29822,7 @@ export type GetUserCommentsListResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -28426,7 +29849,15 @@ export type GetUserCommentsListResponses = {
                          * Description of the user.
                          */
                         description?: string;
-                        specifics?: unknown & {
+                        /**
+                         * Object containing provider-specific user profile data.
+                         */
+                        specifics?: {
+                            /**
+                             * Name saved by the connected account owner in their WhatsApp address book.
+                             */
+                            contact_name: string;
+                        } | {
                             /**
                              * The geographical location of the user.
                              */
@@ -28704,7 +30135,7 @@ export type GetUserReactionsListResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -28731,7 +30162,15 @@ export type GetUserReactionsListResponses = {
                  * Description of the user.
                  */
                 description?: string;
-                specifics?: unknown & {
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
                     /**
                      * The geographical location of the user.
                      */
@@ -28833,7 +30272,7 @@ export type GetUserReactionsListResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -28860,7 +30299,15 @@ export type GetUserReactionsListResponses = {
                      * Description of the user.
                      */
                     description?: string;
-                    specifics?: unknown & {
+                    /**
+                     * Object containing provider-specific user profile data.
+                     */
+                    specifics?: {
+                        /**
+                         * Name saved by the connected account owner in their WhatsApp address book.
+                         */
+                        contact_name: string;
+                    } | {
                         /**
                          * The geographical location of the user.
                          */
@@ -29074,6 +30521,10 @@ export type GetUserReactionsListResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -29112,6 +30563,10 @@ export type GetUserReactionsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -29154,6 +30609,10 @@ export type GetUserReactionsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -29201,6 +30660,10 @@ export type GetUserReactionsListResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -29235,6 +30698,10 @@ export type GetUserReactionsListResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -29331,7 +30798,7 @@ export type GetUserReactionsListResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -29358,7 +30825,15 @@ export type GetUserReactionsListResponses = {
                      * Description of the user.
                      */
                     description?: string;
-                    specifics?: unknown & {
+                    /**
+                     * Object containing provider-specific user profile data.
+                     */
+                    specifics?: {
+                        /**
+                         * Name saved by the connected account owner in their WhatsApp address book.
+                         */
+                        contact_name: string;
+                    } | {
                         /**
                          * The geographical location of the user.
                          */
@@ -29435,7 +30910,7 @@ export type GetUserReactionsListResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -29462,7 +30937,15 @@ export type GetUserReactionsListResponses = {
                      * Description of the user.
                      */
                     description?: string;
-                    specifics?: unknown & {
+                    /**
+                     * Object containing provider-specific user profile data.
+                     */
+                    specifics?: {
+                        /**
+                         * Name saved by the connected account owner in their WhatsApp address book.
+                         */
+                        contact_name: string;
+                    } | {
                         /**
                          * The geographical location of the user.
                          */
@@ -29679,6 +31162,10 @@ export type GetUserReactionsListResponses = {
                          */
                         file_size?: number;
                         /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
                         is_unavailable?: boolean;
@@ -29717,6 +31204,10 @@ export type GetUserReactionsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -29759,6 +31250,10 @@ export type GetUserReactionsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -29806,6 +31301,10 @@ export type GetUserReactionsListResponses = {
                          */
                         file_size?: number;
                         /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
                         is_unavailable?: boolean;
@@ -29840,6 +31339,10 @@ export type GetUserReactionsListResponses = {
                          * The size of the attachment in bytes.
                          */
                         file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -29932,7 +31435,7 @@ export type GetUserReactionsListResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -29959,7 +31462,15 @@ export type GetUserReactionsListResponses = {
                          * Description of the user.
                          */
                         description?: string;
-                        specifics?: unknown & {
+                        /**
+                         * Object containing provider-specific user profile data.
+                         */
+                        specifics?: {
+                            /**
+                             * Name saved by the connected account owner in their WhatsApp address book.
+                             */
+                            contact_name: string;
+                        } | {
                             /**
                              * The geographical location of the user.
                              */
@@ -32906,7 +34417,7 @@ export type PerformClassicSearchFromUrlResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -32933,6 +34444,9 @@ export type PerformClassicSearchFromUrlResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                /**
+                 * Provider-specific user data.
+                 */
                 specifics?: unknown;
             };
             /**
@@ -33071,6 +34585,10 @@ export type PerformClassicSearchFromUrlResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -33109,6 +34627,10 @@ export type PerformClassicSearchFromUrlResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -33151,6 +34673,10 @@ export type PerformClassicSearchFromUrlResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -33198,6 +34724,10 @@ export type PerformClassicSearchFromUrlResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -33232,6 +34762,10 @@ export type PerformClassicSearchFromUrlResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -33332,7 +34866,7 @@ export type PerformClassicSearchFromUrlResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -33359,6 +34893,9 @@ export type PerformClassicSearchFromUrlResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                /**
+                 * Provider-specific user data.
+                 */
                 specifics?: unknown;
             };
             /**
@@ -33407,7 +34944,7 @@ export type PerformClassicSearchFromUrlResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -33434,6 +34971,9 @@ export type PerformClassicSearchFromUrlResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 };
                 /**
@@ -33572,6 +35112,10 @@ export type PerformClassicSearchFromUrlResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -33610,6 +35154,10 @@ export type PerformClassicSearchFromUrlResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -33652,6 +35200,10 @@ export type PerformClassicSearchFromUrlResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -33699,6 +35251,10 @@ export type PerformClassicSearchFromUrlResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -33733,6 +35289,10 @@ export type PerformClassicSearchFromUrlResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -34401,7 +35961,7 @@ export type PerformClassicPostsSearchResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -34428,6 +35988,9 @@ export type PerformClassicPostsSearchResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                /**
+                 * Provider-specific user data.
+                 */
                 specifics?: unknown;
             };
             /**
@@ -34566,6 +36129,10 @@ export type PerformClassicPostsSearchResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -34604,6 +36171,10 @@ export type PerformClassicPostsSearchResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -34646,6 +36217,10 @@ export type PerformClassicPostsSearchResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -34693,6 +36268,10 @@ export type PerformClassicPostsSearchResponses = {
                  */
                 file_size?: number;
                 /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
                 is_unavailable?: boolean;
@@ -34727,6 +36306,10 @@ export type PerformClassicPostsSearchResponses = {
                  * The size of the attachment in bytes.
                  */
                 file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -34827,7 +36410,7 @@ export type PerformClassicPostsSearchResponses = {
                  */
                 public_identifier?: string;
                 /**
-                 * Display name of the user.
+                 * Display name of the user as exposed by the provider.
                  */
                 display_name: string;
                 /**
@@ -34854,6 +36437,9 @@ export type PerformClassicPostsSearchResponses = {
                  * Description of the user.
                  */
                 description?: string;
+                /**
+                 * Provider-specific user data.
+                 */
                 specifics?: unknown;
             };
             /**
@@ -34902,7 +36488,7 @@ export type PerformClassicPostsSearchResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -34929,6 +36515,9 @@ export type PerformClassicPostsSearchResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 };
                 /**
@@ -35067,6 +36656,10 @@ export type PerformClassicPostsSearchResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -35105,6 +36698,10 @@ export type PerformClassicPostsSearchResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -35147,6 +36744,10 @@ export type PerformClassicPostsSearchResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -35194,6 +36795,10 @@ export type PerformClassicPostsSearchResponses = {
                      */
                     file_size?: number;
                     /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
                     is_unavailable?: boolean;
@@ -35228,6 +36833,10 @@ export type PerformClassicPostsSearchResponses = {
                      * The size of the attachment in bytes.
                      */
                     file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -36984,7 +38593,7 @@ export type GetRecruiterHiringProjectListResponses = {
                 /**
                  * The email address of the Project owner.
                  */
-                email: string;
+                email?: string;
                 /**
                  * The profile URL of the Project owner.
                  */
@@ -37080,7 +38689,7 @@ export type GetRecruiterHiringProjectListResponses = {
                     /**
                      * The type of the Channel.
                      */
-                    type: 'CAREER_SITE' | 'MANUAL_IMPORT' | 'INTERNAL_CANDIDATES' | 'RECRUITER_SEARCH' | 'REFERRAL' | 'JOB_POSTING_RECOMMENDED_MATCHES' | 'AUTOMATED_SOURCING' | 'JOB_POSTING' | 'APPLY_STARTERS' | 'TALENT_AGENT';
+                    type: 'CAREER_SITE' | 'MANUAL_IMPORT' | 'INTERNAL_CANDIDATES' | 'RECRUITER_SEARCH' | 'REFERRAL' | 'JOB_POSTING_RECOMMENDED_MATCHES' | 'AUTOMATED_SOURCING' | 'JOB_POSTING' | 'APPLY_STARTERS' | 'TALENT_AGENT' | 'PIPELINE_BUILDER';
                     /**
                      * The custom name of the Channel.
                      */
@@ -37306,7 +38915,7 @@ export type GetRecruiterHiringProjectResponses = {
             /**
              * The email address of the Project owner.
              */
-            email: string;
+            email?: string;
             /**
              * The profile URL of the Project owner.
              */
@@ -37402,7 +39011,7 @@ export type GetRecruiterHiringProjectResponses = {
                 /**
                  * The type of the Channel.
                  */
-                type: 'CAREER_SITE' | 'MANUAL_IMPORT' | 'INTERNAL_CANDIDATES' | 'RECRUITER_SEARCH' | 'REFERRAL' | 'JOB_POSTING_RECOMMENDED_MATCHES' | 'AUTOMATED_SOURCING' | 'JOB_POSTING' | 'APPLY_STARTERS' | 'TALENT_AGENT';
+                type: 'CAREER_SITE' | 'MANUAL_IMPORT' | 'INTERNAL_CANDIDATES' | 'RECRUITER_SEARCH' | 'REFERRAL' | 'JOB_POSTING_RECOMMENDED_MATCHES' | 'AUTOMATED_SOURCING' | 'JOB_POSTING' | 'APPLY_STARTERS' | 'TALENT_AGENT' | 'PIPELINE_BUILDER';
                 /**
                  * The custom name of the Channel.
                  */
@@ -38290,7 +39899,7 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -38317,6 +39926,9 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * Provider-specific user data.
+                         */
                         specifics?: unknown;
                     }>;
                     /**
@@ -38412,7 +40024,7 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -38439,6 +40051,9 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * Provider-specific user data.
+                         */
                         specifics?: unknown;
                     } | null;
                 }>;
@@ -38968,7 +40583,7 @@ export type GetRecruiterApplicantByIdResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -38995,6 +40610,9 @@ export type GetRecruiterApplicantByIdResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 }>;
                 /**
@@ -39090,7 +40708,7 @@ export type GetRecruiterApplicantByIdResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -39117,6 +40735,9 @@ export type GetRecruiterApplicantByIdResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 } | null;
             }>;
@@ -39731,7 +41352,7 @@ export type GetRecruiterPipelineCandidatesResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -39758,6 +41379,9 @@ export type GetRecruiterPipelineCandidatesResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * Provider-specific user data.
+                         */
                         specifics?: unknown;
                     }>;
                     /**
@@ -39853,7 +41477,7 @@ export type GetRecruiterPipelineCandidatesResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -39880,6 +41504,9 @@ export type GetRecruiterPipelineCandidatesResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * Provider-specific user data.
+                         */
                         specifics?: unknown;
                     } | null;
                 }>;
@@ -40951,7 +42578,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -40978,6 +42605,9 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 }>;
                 /**
@@ -41073,7 +42703,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -41100,6 +42730,9 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 } | null;
             }>;
@@ -42892,7 +44525,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -42919,6 +44552,9 @@ export type PerformRecruiterSearchFromUrlResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 }>;
                 /**
@@ -43014,7 +44650,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -43041,6 +44677,9 @@ export type PerformRecruiterSearchFromUrlResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 } | null;
             }>;
@@ -43541,7 +45180,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -43568,6 +45207,9 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * Provider-specific user data.
+                         */
                         specifics?: unknown;
                     }>;
                     /**
@@ -43663,7 +45305,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -43690,6 +45332,9 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * Provider-specific user data.
+                         */
                         specifics?: unknown;
                     } | null;
                 }>;
@@ -44157,7 +45802,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -44184,6 +45829,9 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * Provider-specific user data.
+                         */
                         specifics?: unknown;
                     }>;
                     /**
@@ -44279,7 +45927,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          */
                         public_identifier?: string;
                         /**
-                         * Display name of the user.
+                         * Display name of the user as exposed by the provider.
                          */
                         display_name: string;
                         /**
@@ -44306,6 +45954,9 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Description of the user.
                          */
                         description?: string;
+                        /**
+                         * Provider-specific user data.
+                         */
                         specifics?: unknown;
                     } | null;
                 }>;
@@ -45455,7 +47106,7 @@ export type PerformRecruiterPeopleSearchResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -45482,6 +47133,9 @@ export type PerformRecruiterPeopleSearchResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 }>;
                 /**
@@ -45577,7 +47231,7 @@ export type PerformRecruiterPeopleSearchResponses = {
                      */
                     public_identifier?: string;
                     /**
-                     * Display name of the user.
+                     * Display name of the user as exposed by the provider.
                      */
                     display_name: string;
                     /**
@@ -45604,6 +47258,9 @@ export type PerformRecruiterPeopleSearchResponses = {
                      * Description of the user.
                      */
                     description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
                     specifics?: unknown;
                 } | null;
             }>;
@@ -47112,8 +48769,8 @@ export type PerformSalesPeopleSearchData = {
          * A list of headcount ranges.
          */
         company_headcount?: Array<{
-            min?: 1 | 51 | 201 | 501 | 1001 | 5001 | 10001;
-            max?: 0 | 10 | 200 | 500 | 1000 | 5000 | 10000;
+            min?: 1 | 11 | 51 | 201 | 501 | 1001 | 5001 | 10001;
+            max?: 0 | 10 | 50 | 200 | 500 | 1000 | 5000 | 10000;
         }>;
         /**
          * A list of company types.
@@ -47887,8 +49544,8 @@ export type PerformSalesCompaniesSearchData = {
          * A list of headcount ranges.
          */
         headcount?: Array<{
-            min?: 1 | 51 | 201 | 501 | 1001 | 5001 | 10001;
-            max?: 0 | 10 | 200 | 500 | 1000 | 5000 | 10000;
+            min?: 1 | 11 | 51 | 201 | 501 | 1001 | 5001 | 10001;
+            max?: 0 | 10 | 50 | 200 | 500 | 1000 | 5000 | 10000;
         }>;
         /**
          *
@@ -49320,6 +50977,10 @@ export type SolveCheckpointResponses = {
          */
         checkpoint: {
             type: 'OTP';
+            /**
+             * The channel the one-time password was sent through, when known.
+             */
+            channel?: 'EMAIL' | 'SMS' | 'WHATSAPP';
         } | {
             type: 'IN_APP_VALIDATION';
         } | {
@@ -49345,6 +51006,10 @@ export type SolveCheckpointResponses = {
             data: string | null;
         } | {
             type: 'OTP_OR_IN_APP_VALIDATION';
+            /**
+             * The channel the one-time password was sent through, when known.
+             */
+            channel?: 'EMAIL' | 'SMS' | 'WHATSAPP';
         } | {
             type: 'CONTRACT_SELECTION';
             /**
@@ -49527,6 +51192,10 @@ export type RequestCheckpointResponses = {
          */
         checkpoint: {
             type: 'OTP';
+            /**
+             * The channel the one-time password was sent through, when known.
+             */
+            channel?: 'EMAIL' | 'SMS' | 'WHATSAPP';
         } | {
             type: 'IN_APP_VALIDATION';
         } | {
@@ -49552,6 +51221,10 @@ export type RequestCheckpointResponses = {
             data: string | null;
         } | {
             type: 'OTP_OR_IN_APP_VALIDATION';
+            /**
+             * The channel the one-time password was sent through, when known.
+             */
+            channel?: 'EMAIL' | 'SMS' | 'WHATSAPP';
         } | {
             type: 'CONTRACT_SELECTION';
             /**
@@ -50301,6 +51974,10 @@ export type StartAuthIntentResponses = {
          */
         checkpoint: {
             type: 'OTP';
+            /**
+             * The channel the one-time password was sent through, when known.
+             */
+            channel?: 'EMAIL' | 'SMS' | 'WHATSAPP';
         } | {
             type: 'IN_APP_VALIDATION';
         } | {
@@ -50326,6 +52003,10 @@ export type StartAuthIntentResponses = {
             data: string | null;
         } | {
             type: 'OTP_OR_IN_APP_VALIDATION';
+            /**
+             * The channel the one-time password was sent through, when known.
+             */
+            channel?: 'EMAIL' | 'SMS' | 'WHATSAPP';
         } | {
             type: 'CONTRACT_SELECTION';
             /**
