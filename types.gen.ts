@@ -35858,13 +35858,9 @@ export type PerformClassicCompaniesSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
-        offset?: number;
-        /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
-         */
-        limit?: number;
+        cursor?: string;
     };
     url: '/v2/{account_id}/linkedin/search/companies';
 };
