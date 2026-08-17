@@ -22181,6 +22181,20 @@ export type GetPostsListResponses = {
                  * Object containing provider-specific post data.
                  */
                 specifics?: {
+                    mentions?: Array<{
+                        /**
+                         * Public URL targeted by the mention.
+                         */
+                        url: string;
+                        /**
+                         * Start index of the mention in the post text.
+                         */
+                        start: number;
+                        /**
+                         * Length of the mention in the post text.
+                         */
+                        length: number;
+                    }>;
                     /**
                      * A job posting that can be included as an insert in the post.
                      */
@@ -22254,6 +22268,20 @@ export type GetPostsListResponses = {
              * Object containing provider-specific post data.
              */
             specifics?: {
+                mentions?: Array<{
+                    /**
+                     * Public URL targeted by the mention.
+                     */
+                    url: string;
+                    /**
+                     * Start index of the mention in the post text.
+                     */
+                    start: number;
+                    /**
+                     * Length of the mention in the post text.
+                     */
+                    length: number;
+                }>;
                 /**
                  * A job posting that can be included as an insert in the post.
                  */
@@ -23548,6 +23576,20 @@ export type GetPostResponses = {
              * Object containing provider-specific post data.
              */
             specifics?: {
+                mentions?: Array<{
+                    /**
+                     * Public URL targeted by the mention.
+                     */
+                    url: string;
+                    /**
+                     * Start index of the mention in the post text.
+                     */
+                    start: number;
+                    /**
+                     * Length of the mention in the post text.
+                     */
+                    length: number;
+                }>;
                 /**
                  * A job posting that can be included as an insert in the post.
                  */
@@ -23621,6 +23663,20 @@ export type GetPostResponses = {
          * Object containing provider-specific post data.
          */
         specifics?: {
+            mentions?: Array<{
+                /**
+                 * Public URL targeted by the mention.
+                 */
+                url: string;
+                /**
+                 * Start index of the mention in the post text.
+                 */
+                start: number;
+                /**
+                 * Length of the mention in the post text.
+                 */
+                length: number;
+            }>;
             /**
              * A job posting that can be included as an insert in the post.
              */
@@ -30079,6 +30135,20 @@ export type GetUserCommentsListResponses = {
                      * Object containing provider-specific post data.
                      */
                     specifics?: {
+                        mentions?: Array<{
+                            /**
+                             * Public URL targeted by the mention.
+                             */
+                            url: string;
+                            /**
+                             * Start index of the mention in the post text.
+                             */
+                            start: number;
+                            /**
+                             * Length of the mention in the post text.
+                             */
+                            length: number;
+                        }>;
                         /**
                          * A job posting that can be included as an insert in the post.
                          */
@@ -30152,6 +30222,20 @@ export type GetUserCommentsListResponses = {
                  * Object containing provider-specific post data.
                  */
                 specifics?: {
+                    mentions?: Array<{
+                        /**
+                         * Public URL targeted by the mention.
+                         */
+                        url: string;
+                        /**
+                         * Start index of the mention in the post text.
+                         */
+                        start: number;
+                        /**
+                         * Length of the mention in the post text.
+                         */
+                        length: number;
+                    }>;
                     /**
                      * A job posting that can be included as an insert in the post.
                      */
@@ -31692,6 +31776,20 @@ export type GetUserReactionsListResponses = {
                      * Object containing provider-specific post data.
                      */
                     specifics?: {
+                        mentions?: Array<{
+                            /**
+                             * Public URL targeted by the mention.
+                             */
+                            url: string;
+                            /**
+                             * Start index of the mention in the post text.
+                             */
+                            start: number;
+                            /**
+                             * Length of the mention in the post text.
+                             */
+                            length: number;
+                        }>;
                         /**
                          * A job posting that can be included as an insert in the post.
                          */
@@ -31765,6 +31863,20 @@ export type GetUserReactionsListResponses = {
                  * Object containing provider-specific post data.
                  */
                 specifics?: {
+                    mentions?: Array<{
+                        /**
+                         * Public URL targeted by the mention.
+                         */
+                        url: string;
+                        /**
+                         * Start index of the mention in the post text.
+                         */
+                        start: number;
+                        /**
+                         * Length of the mention in the post text.
+                         */
+                        length: number;
+                    }>;
                     /**
                      * A job posting that can be included as an insert in the post.
                      */
@@ -35858,13 +35970,9 @@ export type PerformClassicCompaniesSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
-        offset?: number;
-        /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
-         */
-        limit?: number;
+        cursor?: string;
     };
     url: '/v2/{account_id}/linkedin/search/companies';
 };
@@ -36062,13 +36170,9 @@ export type PerformClassicPostsSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
-        offset?: number;
-        /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
-         */
-        limit?: number;
+        cursor?: string;
     };
     url: '/v2/{account_id}/linkedin/search/posts';
 };
