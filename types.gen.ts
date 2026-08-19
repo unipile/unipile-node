@@ -22181,6 +22181,20 @@ export type GetPostsListResponses = {
                  * Object containing provider-specific post data.
                  */
                 specifics?: {
+                    mentions?: Array<{
+                        /**
+                         * Public URL targeted by the mention.
+                         */
+                        url: string;
+                        /**
+                         * Start index of the mention in the post text.
+                         */
+                        start: number;
+                        /**
+                         * Length of the mention in the post text.
+                         */
+                        length: number;
+                    }>;
                     /**
                      * A job posting that can be included as an insert in the post.
                      */
@@ -22254,6 +22268,20 @@ export type GetPostsListResponses = {
              * Object containing provider-specific post data.
              */
             specifics?: {
+                mentions?: Array<{
+                    /**
+                     * Public URL targeted by the mention.
+                     */
+                    url: string;
+                    /**
+                     * Start index of the mention in the post text.
+                     */
+                    start: number;
+                    /**
+                     * Length of the mention in the post text.
+                     */
+                    length: number;
+                }>;
                 /**
                  * A job posting that can be included as an insert in the post.
                  */
@@ -23548,6 +23576,20 @@ export type GetPostResponses = {
              * Object containing provider-specific post data.
              */
             specifics?: {
+                mentions?: Array<{
+                    /**
+                     * Public URL targeted by the mention.
+                     */
+                    url: string;
+                    /**
+                     * Start index of the mention in the post text.
+                     */
+                    start: number;
+                    /**
+                     * Length of the mention in the post text.
+                     */
+                    length: number;
+                }>;
                 /**
                  * A job posting that can be included as an insert in the post.
                  */
@@ -23621,6 +23663,20 @@ export type GetPostResponses = {
          * Object containing provider-specific post data.
          */
         specifics?: {
+            mentions?: Array<{
+                /**
+                 * Public URL targeted by the mention.
+                 */
+                url: string;
+                /**
+                 * Start index of the mention in the post text.
+                 */
+                start: number;
+                /**
+                 * Length of the mention in the post text.
+                 */
+                length: number;
+            }>;
             /**
              * A job posting that can be included as an insert in the post.
              */
@@ -30079,6 +30135,20 @@ export type GetUserCommentsListResponses = {
                      * Object containing provider-specific post data.
                      */
                     specifics?: {
+                        mentions?: Array<{
+                            /**
+                             * Public URL targeted by the mention.
+                             */
+                            url: string;
+                            /**
+                             * Start index of the mention in the post text.
+                             */
+                            start: number;
+                            /**
+                             * Length of the mention in the post text.
+                             */
+                            length: number;
+                        }>;
                         /**
                          * A job posting that can be included as an insert in the post.
                          */
@@ -30152,6 +30222,20 @@ export type GetUserCommentsListResponses = {
                  * Object containing provider-specific post data.
                  */
                 specifics?: {
+                    mentions?: Array<{
+                        /**
+                         * Public URL targeted by the mention.
+                         */
+                        url: string;
+                        /**
+                         * Start index of the mention in the post text.
+                         */
+                        start: number;
+                        /**
+                         * Length of the mention in the post text.
+                         */
+                        length: number;
+                    }>;
                     /**
                      * A job posting that can be included as an insert in the post.
                      */
@@ -31692,6 +31776,20 @@ export type GetUserReactionsListResponses = {
                      * Object containing provider-specific post data.
                      */
                     specifics?: {
+                        mentions?: Array<{
+                            /**
+                             * Public URL targeted by the mention.
+                             */
+                            url: string;
+                            /**
+                             * Start index of the mention in the post text.
+                             */
+                            start: number;
+                            /**
+                             * Length of the mention in the post text.
+                             */
+                            length: number;
+                        }>;
                         /**
                          * A job posting that can be included as an insert in the post.
                          */
@@ -31765,6 +31863,20 @@ export type GetUserReactionsListResponses = {
                  * Object containing provider-specific post data.
                  */
                 specifics?: {
+                    mentions?: Array<{
+                        /**
+                         * Public URL targeted by the mention.
+                         */
+                        url: string;
+                        /**
+                         * Start index of the mention in the post text.
+                         */
+                        start: number;
+                        /**
+                         * Length of the mention in the post text.
+                         */
+                        length: number;
+                    }>;
                     /**
                      * A job posting that can be included as an insert in the post.
                      */
@@ -34276,7 +34388,7 @@ export type PerformClassicSearchFromUrlData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The maximum number of items to return. Sales Navigator and Recruiter support up to 100 results. For Classic searches, People and Companies are limited to 10 results per page, while Jobs are limited to 50. Post searches default to 3 results, matching LinkedIn's UI, but the limit can technically be increased up to 49.
          */
         limit?: number;
         /**
@@ -35858,13 +35970,9 @@ export type PerformClassicCompaniesSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
-        offset?: number;
-        /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
-         */
-        limit?: number;
+        cursor?: string;
     };
     url: '/v2/{account_id}/linkedin/search/companies';
 };
@@ -36062,11 +36170,11 @@ export type PerformClassicPostsSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
-        offset?: number;
+        cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The maximum number of posts to return. Post searches default to 3 results, matching LinkedIn's UI, but the limit can technically be increased up to 49.
          */
         limit?: number;
     };
@@ -38755,7 +38863,7 @@ export type GetRecruiterHiringProjectListResponses = {
                 /**
                  * The name of the Project owner.
                  */
-                name: string;
+                name?: string;
                 /**
                  * The email address of the Project owner.
                  */
@@ -38763,11 +38871,11 @@ export type GetRecruiterHiringProjectListResponses = {
                 /**
                  * The profile URL of the Project owner.
                  */
-                profile_url: string;
+                profile_url?: string;
                 /**
                  * The profile headline of the Project owner.
                  */
-                profile_headline: string;
+                profile_headline?: string;
                 /**
                  * The profile picture URL of the Project owner.
                  */
@@ -39093,7 +39201,7 @@ export type GetRecruiterHiringProjectResponses = {
             /**
              * The name of the Project owner.
              */
-            name: string;
+            name?: string;
             /**
              * The email address of the Project owner.
              */
@@ -39101,11 +39209,11 @@ export type GetRecruiterHiringProjectResponses = {
             /**
              * The profile URL of the Project owner.
              */
-            profile_url: string;
+            profile_url?: string;
             /**
              * The profile headline of the Project owner.
              */
-            profile_headline: string;
+            profile_headline?: string;
             /**
              * The profile picture URL of the Project owner.
              */
@@ -43011,7 +43119,7 @@ export type GetRecruiterJobPostingByProjectIdResponses = {
         /**
          * The budget allocated to the Job posting.
          */
-        workplace_type: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+        workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
         /**
          * The budget allocated to the Job posting.
          */
@@ -44143,7 +44251,7 @@ export type GetRecruiterJobPostingByIdResponses = {
         /**
          * The budget allocated to the Job posting.
          */
-        workplace_type: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+        workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
         /**
          * The budget allocated to the Job posting.
          */
