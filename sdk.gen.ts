@@ -1126,7 +1126,7 @@ export class UnipileUsers extends HeyApiClient {
     /**
      * Update a User Profile
      *
-     * Updates the specified User profile. Use `me` as `user_id` to update the account owner profile.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+     * Partially updates the specified User profile. Use `me` as `user_id` to update the account owner profile. Omitted properties remain unchanged; supplied values replace existing values; empty strings clear supported text fields; and null deletes nullable singleton resources.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
      */
     public updateUserProfile<ThrowOnError extends boolean = false>(options: Options<UpdateUserProfileData, ThrowOnError>) {
         return (options.client ?? this.client).patch<UpdateUserProfileResponses, unknown, ThrowOnError>({

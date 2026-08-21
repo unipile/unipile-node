@@ -22,7 +22,7 @@ export type GetChatsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
         /**
@@ -249,9 +249,10 @@ export type GetChatsListResponses = {
                  * 14 : Scheduled Call Cancelled
                  * 15 : Scheduled Call Started
                  * 16 : Announcement
+                 * 17 : Content mention
                  *
                  */
-                event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
+                event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
                 event_metadata?: {
                     /**
                      * The updated title.
@@ -466,6 +467,19 @@ export type GetChatsListResponses = {
                      * ID of the message to which the reaction was added or removed.
                      */
                     message_id: string;
+                };
+                /**
+                 * Content Relation
+                 */
+                content_relation?: {
+                    /**
+                     * How this message relates to a piece of shared content: a normal reply to it, or a provider-generated notice that the current user was mentioned in it.
+                     */
+                    type: 'reply_to' | 'mentioned_in';
+                    /**
+                     * The id of this message's shared-content attachment describing the related content, when the provider still makes it available. Absent once the content is no longer retrievable (e.g. an expired story) but the relation is still known.
+                     */
+                    attachment_id?: string;
                 };
                 /**
                  * A list of reactions to the element.
@@ -1712,7 +1726,7 @@ export type GetInboxChatsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
         /**
@@ -1939,9 +1953,10 @@ export type GetInboxChatsListResponses = {
                  * 14 : Scheduled Call Cancelled
                  * 15 : Scheduled Call Started
                  * 16 : Announcement
+                 * 17 : Content mention
                  *
                  */
-                event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
+                event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
                 event_metadata?: {
                     /**
                      * The updated title.
@@ -2156,6 +2171,19 @@ export type GetInboxChatsListResponses = {
                      * ID of the message to which the reaction was added or removed.
                      */
                     message_id: string;
+                };
+                /**
+                 * Content Relation
+                 */
+                content_relation?: {
+                    /**
+                     * How this message relates to a piece of shared content: a normal reply to it, or a provider-generated notice that the current user was mentioned in it.
+                     */
+                    type: 'reply_to' | 'mentioned_in';
+                    /**
+                     * The id of this message's shared-content attachment describing the related content, when the provider still makes it available. Absent once the content is no longer retrievable (e.g. an expired story) but the relation is still known.
+                     */
+                    attachment_id?: string;
                 };
                 /**
                  * A list of reactions to the element.
@@ -3572,9 +3600,10 @@ export type GetChatResponses = {
              * 14 : Scheduled Call Cancelled
              * 15 : Scheduled Call Started
              * 16 : Announcement
+             * 17 : Content mention
              *
              */
-            event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
+            event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
             event_metadata?: {
                 /**
                  * The updated title.
@@ -3789,6 +3818,19 @@ export type GetChatResponses = {
                  * ID of the message to which the reaction was added or removed.
                  */
                 message_id: string;
+            };
+            /**
+             * Content Relation
+             */
+            content_relation?: {
+                /**
+                 * How this message relates to a piece of shared content: a normal reply to it, or a provider-generated notice that the current user was mentioned in it.
+                 */
+                type: 'reply_to' | 'mentioned_in';
+                /**
+                 * The id of this message's shared-content attachment describing the related content, when the provider still makes it available. Absent once the content is no longer retrievable (e.g. an expired story) but the relation is still known.
+                 */
+                attachment_id?: string;
             };
             /**
              * A list of reactions to the element.
@@ -5263,9 +5305,10 @@ export type UpdateChatResponses = {
              * 14 : Scheduled Call Cancelled
              * 15 : Scheduled Call Started
              * 16 : Announcement
+             * 17 : Content mention
              *
              */
-            event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
+            event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
             event_metadata?: {
                 /**
                  * The updated title.
@@ -5480,6 +5523,19 @@ export type UpdateChatResponses = {
                  * ID of the message to which the reaction was added or removed.
                  */
                 message_id: string;
+            };
+            /**
+             * Content Relation
+             */
+            content_relation?: {
+                /**
+                 * How this message relates to a piece of shared content: a normal reply to it, or a provider-generated notice that the current user was mentioned in it.
+                 */
+                type: 'reply_to' | 'mentioned_in';
+                /**
+                 * The id of this message's shared-content attachment describing the related content, when the provider still makes it available. Absent once the content is no longer retrievable (e.g. an expired story) but the relation is still known.
+                 */
+                attachment_id?: string;
             };
             /**
              * A list of reactions to the element.
@@ -7008,7 +7064,7 @@ export type GetMessagesListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -7097,9 +7153,10 @@ export type GetMessagesListResponses = {
              * 14 : Scheduled Call Cancelled
              * 15 : Scheduled Call Started
              * 16 : Announcement
+             * 17 : Content mention
              *
              */
-            event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
+            event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
             event_metadata?: {
                 /**
                  * The updated title.
@@ -7314,6 +7371,19 @@ export type GetMessagesListResponses = {
                  * ID of the message to which the reaction was added or removed.
                  */
                 message_id: string;
+            };
+            /**
+             * Content Relation
+             */
+            content_relation?: {
+                /**
+                 * How this message relates to a piece of shared content: a normal reply to it, or a provider-generated notice that the current user was mentioned in it.
+                 */
+                type: 'reply_to' | 'mentioned_in';
+                /**
+                 * The id of this message's shared-content attachment describing the related content, when the provider still makes it available. Absent once the content is no longer retrievable (e.g. an expired story) but the relation is still known.
+                 */
+                attachment_id?: string;
             };
             /**
              * A list of reactions to the element.
@@ -8556,9 +8626,10 @@ export type GetMessageResponses = {
          * 14 : Scheduled Call Cancelled
          * 15 : Scheduled Call Started
          * 16 : Announcement
+         * 17 : Content mention
          *
          */
-        event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
+        event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
         event_metadata?: {
             /**
              * The updated title.
@@ -8773,6 +8844,19 @@ export type GetMessageResponses = {
              * ID of the message to which the reaction was added or removed.
              */
             message_id: string;
+        };
+        /**
+         * Content Relation
+         */
+        content_relation?: {
+            /**
+             * How this message relates to a piece of shared content: a normal reply to it, or a provider-generated notice that the current user was mentioned in it.
+             */
+            type: 'reply_to' | 'mentioned_in';
+            /**
+             * The id of this message's shared-content attachment describing the related content, when the provider still makes it available. Absent once the content is no longer retrievable (e.g. an expired story) but the relation is still known.
+             */
+            attachment_id?: string;
         };
         /**
          * A list of reactions to the element.
@@ -10103,9 +10187,10 @@ export type ModifyMessageResponses = {
          * 14 : Scheduled Call Cancelled
          * 15 : Scheduled Call Started
          * 16 : Announcement
+         * 17 : Content mention
          *
          */
-        event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
+        event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
         event_metadata?: {
             /**
              * The updated title.
@@ -10320,6 +10405,19 @@ export type ModifyMessageResponses = {
              * ID of the message to which the reaction was added or removed.
              */
             message_id: string;
+        };
+        /**
+         * Content Relation
+         */
+        content_relation?: {
+            /**
+             * How this message relates to a piece of shared content: a normal reply to it, or a provider-generated notice that the current user was mentioned in it.
+             */
+            type: 'reply_to' | 'mentioned_in';
+            /**
+             * The id of this message's shared-content attachment describing the related content, when the provider still makes it available. Absent once the content is no longer retrievable (e.g. an expired story) but the relation is still known.
+             */
+            attachment_id?: string;
         };
         /**
          * A list of reactions to the element.
@@ -11294,7 +11392,7 @@ export type GetParticipantsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -11564,7 +11662,7 @@ export type GetMessageReactionsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -11901,7 +11999,7 @@ export type GetEmailsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -12342,7 +12440,7 @@ export type GetFolderEmailsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -14174,7 +14272,7 @@ export type GetDraftsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -15899,7 +15997,7 @@ export type GetFoldersListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -16282,7 +16380,7 @@ export type GetContactsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -18887,23 +18985,23 @@ export type GetUserProfileResponse = GetUserProfileResponses[keyof GetUserProfil
 export type UpdateUserProfileData = {
     body?: {
         /**
-         * The first name of the User.
+         * The first name of the User. Updating this field is not supported by LinkedIn.
          */
         first_name?: string;
         /**
-         * The last name of the User.
+         * The last name of the User. Updating this field is not supported by LinkedIn.
          */
         last_name?: string;
         /**
-         * Description of the User.
+         * Description of the User. Updating this field is not supported by LinkedIn.
          */
         description?: string;
         /**
-         * Location of the User.
+         * Location of the User. Omit it to leave it unchanged.
          */
         location?: string;
         /**
-         * Bio / About section of the profile.
+         * Bio / About section. Omit it to leave it unchanged or use an empty string to clear it.
          */
         bio?: string;
         /**
@@ -18960,11 +19058,11 @@ export type UpdateUserProfileData = {
         };
         specifics?: unknown & {
             /**
-             * Specific options to apply if the provider of the targeted account is Linkedin
+             * LinkedIn profile mutations. Omitted properties remain unchanged; values replace existing values; empty strings clear supported text fields; null deletes nullable singleton resources.
              */
             linkedin?: {
                 /**
-                 * List of skills to add to the profile.
+                 * Skills to add directly to the profile. This field is independent from `experience.skills` and `education.skills`; only send the field that matches the intended target. Existing skills remain untouched and removing skills is not supported by the provider.
                  */
                 skills?: Array<{
                     name: string;
@@ -18974,7 +19072,7 @@ export type UpdateUserProfileData = {
                     id?: string;
                 }>;
                 /**
-                 * Check "Follow this skill to keep up with relevant content."
+                 * Whether to follow the profile-level skills supplied in `skills`. It does not apply to experience or education skills.
                  */
                 skills_follow?: boolean;
                 /**
@@ -18982,7 +19080,7 @@ export type UpdateUserProfileData = {
                  */
                 postal_code?: string;
                 /**
-                 * Headline of the profile.
+                 * Headline. Omit it to leave it unchanged or use an empty string to clear it.
                  */
                 headline?: string;
                 experience?: {
@@ -19063,7 +19161,7 @@ export type UpdateUserProfileData = {
                      */
                     source_of_hire?: 'INDEED' | 'LINKEDIN' | 'COMPANY_WEBSITE' | 'OTHER_JOB_SITES' | 'REFERRAL' | 'CONTACTED_BY_RECRUITER' | 'STAFFING_AGENCY' | 'OTHER';
                     /**
-                     * List of skills. We recommend adding your top 5 used in this role. They’ll also appear in your profile Skills section.
+                     * Skills to associate with this experience. Use this field only inside `experience`; it is independent from the profile-level and education `skills` fields. These skills also appear in the profile Skills section.
                      */
                     skills?: Array<{
                         name: string;
@@ -19228,7 +19326,7 @@ export type UpdateUserProfileData = {
                      */
                     source_of_hire?: 'INDEED' | 'LINKEDIN' | 'COMPANY_WEBSITE' | 'OTHER_JOB_SITES' | 'REFERRAL' | 'CONTACTED_BY_RECRUITER' | 'STAFFING_AGENCY' | 'OTHER';
                     /**
-                     * List of skills. We recommend adding your top 5 used in this role. They’ll also appear in your profile Skills section.
+                     * Skills to associate with this experience. Use this field only inside `experience`; it is independent from the profile-level and education `skills` fields. These skills also appear in the profile Skills section.
                      */
                     skills?: Array<{
                         name: string;
@@ -19319,6 +19417,12 @@ export type UpdateUserProfileData = {
                      * ID of the experience to edit.
                      */
                     id: string;
+                } | {
+                    operation: 'delete';
+                    /**
+                     * ID of the experience to delete.
+                     */
+                    id: string;
                 };
                 education?: {
                     /**
@@ -19394,7 +19498,7 @@ export type UpdateUserProfileData = {
                      */
                     description?: string;
                     /**
-                     * List of skills. We recommend adding your top 5 used in this training. They’ll also appear in your profile Skills section.
+                     * Skills to associate with this education entry. Use this field only inside `education`; it is independent from the profile-level and experience `skills` fields. These skills also appear in the profile Skills section.
                      */
                     skills?: Array<{
                         name: string;
@@ -19555,7 +19659,7 @@ export type UpdateUserProfileData = {
                      */
                     description?: string;
                     /**
-                     * List of skills. We recommend adding your top 5 used in this training. They’ll also appear in your profile Skills section.
+                     * Skills to associate with this education entry. Use this field only inside `education`; it is independent from the profile-level and experience `skills` fields. These skills also appear in the profile Skills section.
                      */
                     skills?: Array<{
                         name: string;
@@ -19644,6 +19748,12 @@ export type UpdateUserProfileData = {
                     operation: 'edit';
                     /**
                      * ID of the education to edit.
+                     */
+                    id: string;
+                } | {
+                    operation: 'delete';
+                    /**
+                     * ID of the education to delete.
                      */
                     id: string;
                 };
@@ -19794,7 +19904,7 @@ export type UpdateUserProfileData = {
                      * Whether the link should be displayed everywhere or only on the profile.
                      */
                     display_on?: 'PROFILE_ONLY' | 'EVERYWHERE';
-                };
+                } | null;
                 open_to_work?: {
                     /**
                      * A list of job titles you would like to hold.
@@ -19834,7 +19944,7 @@ export type UpdateUserProfileData = {
                      * Who can view that you are open to work.
                      */
                     visibility: 'ALL' | 'RECRUITERS_ONLY';
-                };
+                } | null;
             };
         };
     };
@@ -19914,7 +20024,7 @@ export type GetUserRelationsData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -20111,7 +20221,7 @@ export type GetRelationRequestsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -20504,7 +20614,7 @@ export type ListUserFollowersData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -20660,7 +20770,7 @@ export type ListUserFollowingData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -21002,7 +21112,7 @@ export type GetPostsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -22181,6 +22291,20 @@ export type GetPostsListResponses = {
                  * Object containing provider-specific post data.
                  */
                 specifics?: {
+                    mentions?: Array<{
+                        /**
+                         * Public URL targeted by the mention.
+                         */
+                        url: string;
+                        /**
+                         * Start index of the mention in the post text.
+                         */
+                        start: number;
+                        /**
+                         * Length of the mention in the post text.
+                         */
+                        length: number;
+                    }>;
                     /**
                      * A job posting that can be included as an insert in the post.
                      */
@@ -22254,6 +22378,20 @@ export type GetPostsListResponses = {
              * Object containing provider-specific post data.
              */
             specifics?: {
+                mentions?: Array<{
+                    /**
+                     * Public URL targeted by the mention.
+                     */
+                    url: string;
+                    /**
+                     * Start index of the mention in the post text.
+                     */
+                    start: number;
+                    /**
+                     * Length of the mention in the post text.
+                     */
+                    length: number;
+                }>;
                 /**
                  * A job posting that can be included as an insert in the post.
                  */
@@ -23548,6 +23686,20 @@ export type GetPostResponses = {
              * Object containing provider-specific post data.
              */
             specifics?: {
+                mentions?: Array<{
+                    /**
+                     * Public URL targeted by the mention.
+                     */
+                    url: string;
+                    /**
+                     * Start index of the mention in the post text.
+                     */
+                    start: number;
+                    /**
+                     * Length of the mention in the post text.
+                     */
+                    length: number;
+                }>;
                 /**
                  * A job posting that can be included as an insert in the post.
                  */
@@ -23621,6 +23773,20 @@ export type GetPostResponses = {
          * Object containing provider-specific post data.
          */
         specifics?: {
+            mentions?: Array<{
+                /**
+                 * Public URL targeted by the mention.
+                 */
+                url: string;
+                /**
+                 * Start index of the mention in the post text.
+                 */
+                start: number;
+                /**
+                 * Length of the mention in the post text.
+                 */
+                length: number;
+            }>;
             /**
              * A job posting that can be included as an insert in the post.
              */
@@ -25856,7 +26022,7 @@ export type GetPostReactionsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -26056,7 +26222,7 @@ export type GetPostCommentsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
         /**
@@ -27690,7 +27856,7 @@ export type GetPostCommentRepliesListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -28167,7 +28333,7 @@ export type GetPostCommentReactionsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -28371,7 +28537,7 @@ export type GetUserCommentsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -30079,6 +30245,20 @@ export type GetUserCommentsListResponses = {
                      * Object containing provider-specific post data.
                      */
                     specifics?: {
+                        mentions?: Array<{
+                            /**
+                             * Public URL targeted by the mention.
+                             */
+                            url: string;
+                            /**
+                             * Start index of the mention in the post text.
+                             */
+                            start: number;
+                            /**
+                             * Length of the mention in the post text.
+                             */
+                            length: number;
+                        }>;
                         /**
                          * A job posting that can be included as an insert in the post.
                          */
@@ -30152,6 +30332,20 @@ export type GetUserCommentsListResponses = {
                  * Object containing provider-specific post data.
                  */
                 specifics?: {
+                    mentions?: Array<{
+                        /**
+                         * Public URL targeted by the mention.
+                         */
+                        url: string;
+                        /**
+                         * Start index of the mention in the post text.
+                         */
+                        start: number;
+                        /**
+                         * Length of the mention in the post text.
+                         */
+                        length: number;
+                    }>;
                     /**
                      * A job posting that can be included as an insert in the post.
                      */
@@ -30257,7 +30451,7 @@ export type GetUserReactionsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -31692,6 +31886,20 @@ export type GetUserReactionsListResponses = {
                      * Object containing provider-specific post data.
                      */
                     specifics?: {
+                        mentions?: Array<{
+                            /**
+                             * Public URL targeted by the mention.
+                             */
+                            url: string;
+                            /**
+                             * Start index of the mention in the post text.
+                             */
+                            start: number;
+                            /**
+                             * Length of the mention in the post text.
+                             */
+                            length: number;
+                        }>;
                         /**
                          * A job posting that can be included as an insert in the post.
                          */
@@ -31765,6 +31973,20 @@ export type GetUserReactionsListResponses = {
                  * Object containing provider-specific post data.
                  */
                 specifics?: {
+                    mentions?: Array<{
+                        /**
+                         * Public URL targeted by the mention.
+                         */
+                        url: string;
+                        /**
+                         * Start index of the mention in the post text.
+                         */
+                        start: number;
+                        /**
+                         * Length of the mention in the post text.
+                         */
+                        length: number;
+                    }>;
                     /**
                      * A job posting that can be included as an insert in the post.
                      */
@@ -31866,7 +32088,7 @@ export type GetCalendarsListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -32264,7 +32486,7 @@ export type GetCalendarEventListData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -32620,6 +32842,11 @@ export type CreateCalendarEventData = {
              */
             timezone?: string;
         };
+        /**
+         * Whether invited attendees should be notified when the event is created. Defaults to `false`.
+         * - Outlook Calendar: unsupported. Attendees are always notified regardless of this value.
+         */
+        notify?: boolean;
         /**
          * The IANA timezone the event is expressed in (e.g. `Europe/Paris`). Defaults to UTC when omitted.
          */
@@ -34201,7 +34428,7 @@ export type GetClassicSearchParametersData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -34276,7 +34503,7 @@ export type PerformClassicSearchFromUrlData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The maximum number of items to return. Sales Navigator and Recruiter support up to 100 results. For Classic searches, People and Companies are limited to 10 results per page, while Jobs are limited to 50. Post searches default to 3 results, matching LinkedIn's UI, but the limit can technically be increased up to 49.
          */
         limit?: number;
         /**
@@ -35858,13 +36085,9 @@ export type PerformClassicCompaniesSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
-        offset?: number;
-        /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
-         */
-        limit?: number;
+        cursor?: string;
     };
     url: '/v2/{account_id}/linkedin/search/companies';
 };
@@ -36062,11 +36285,11 @@ export type PerformClassicPostsSearchData = {
     };
     query?: {
         /**
-         * An offset used for pagination.
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
          */
-        offset?: number;
+        cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The maximum number of posts to return. Post searches default to 3 results, matching LinkedIn's UI, but the limit can technically be increased up to 49.
          */
         limit?: number;
     };
@@ -37260,7 +37483,7 @@ export type PerformClassicJobsSearchData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -37377,7 +37600,7 @@ export type ListClassicUserJobPostingsData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -38192,7 +38415,7 @@ export type GetClassicApplicantsData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -38694,7 +38917,7 @@ export type GetRecruiterHiringProjectListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -38755,7 +38978,7 @@ export type GetRecruiterHiringProjectListResponses = {
                 /**
                  * The name of the Project owner.
                  */
-                name: string;
+                name?: string;
                 /**
                  * The email address of the Project owner.
                  */
@@ -38763,11 +38986,11 @@ export type GetRecruiterHiringProjectListResponses = {
                 /**
                  * The profile URL of the Project owner.
                  */
-                profile_url: string;
+                profile_url?: string;
                 /**
                  * The profile headline of the Project owner.
                  */
-                profile_headline: string;
+                profile_headline?: string;
                 /**
                  * The profile picture URL of the Project owner.
                  */
@@ -39093,7 +39316,7 @@ export type GetRecruiterHiringProjectResponses = {
             /**
              * The name of the Project owner.
              */
-            name: string;
+            name?: string;
             /**
              * The email address of the Project owner.
              */
@@ -39101,11 +39324,11 @@ export type GetRecruiterHiringProjectResponses = {
             /**
              * The profile URL of the Project owner.
              */
-            profile_url: string;
+            profile_url?: string;
             /**
              * The profile headline of the Project owner.
              */
-            profile_headline: string;
+            profile_headline?: string;
             /**
              * The profile picture URL of the Project owner.
              */
@@ -39592,7 +39815,7 @@ export type GetRecruiterTalentPoolApplicantsData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -41079,7 +41302,7 @@ export type GetRecruiterPipelineCandidatesData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -42303,7 +42526,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -43011,7 +43234,7 @@ export type GetRecruiterJobPostingByProjectIdResponses = {
         /**
          * The budget allocated to the Job posting.
          */
-        workplace_type: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+        workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
         /**
          * The budget allocated to the Job posting.
          */
@@ -43462,7 +43685,7 @@ export type GetRecruiterJobPostingListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -44143,7 +44366,7 @@ export type GetRecruiterJobPostingByIdResponses = {
         /**
          * The budget allocated to the Job posting.
          */
-        workplace_type: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+        workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
         /**
          * The budget allocated to the Job posting.
          */
@@ -46235,7 +46458,7 @@ export type GetRecruiterSearchParametersData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -46831,7 +47054,7 @@ export type PerformRecruiterPeopleSearchData = {
          */
         cursor?: string;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -47567,7 +47790,7 @@ export type PerformSalesSearchFromUrlData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -48828,7 +49051,7 @@ export type GetSalesSearchParametersData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -49320,7 +49543,7 @@ export type PerformSalesPeopleSearchData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -49881,7 +50104,7 @@ export type PerformSalesCompaniesSearchData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -50006,7 +50229,7 @@ export type GetSalesLeadListsData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -50089,7 +50312,7 @@ export type BrowseSalesLeadListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -50526,7 +50749,7 @@ export type GetSalesAccountListsData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
@@ -50619,7 +50842,7 @@ export type BrowseSalesAccountListData = {
          */
         offset?: number;
         /**
-         * The limit of items to be returned. The maximum allowed value depends on the provider.
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
          */
         limit?: number;
     };
