@@ -231,6 +231,12 @@ export type GetChatsListResponses = {
                  */
                 is_mentionned: boolean;
                 /**
+                 * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+                 * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+                 * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+                 */
+                view_mode?: 'once' | 'replayable';
+                /**
                  * The type of message event.
                  * 0 : Unknown (Not implemented)
                  * 1 : Chat name update
@@ -787,6 +793,75 @@ export type GetChatsListResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * List of message hyperlinks.
@@ -1046,6 +1121,75 @@ export type GetChatsListResponses = {
                          * A brief description of the shared content.
                          */
                         description?: string;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'contact_card';
+                        /**
+                         * The name of the shared contact.
+                         */
+                        display_name?: string;
+                        /**
+                         * The organization of the shared contact.
+                         */
+                        organization?: string;
+                        /**
+                         * The phone numbers of the shared contact.
+                         */
+                        phones: Array<{
+                            /**
+                             * The phone number of the shared contact.
+                             */
+                            number: string;
+                            /**
+                             * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
+                        /**
+                         * The email addresses of the shared contact.
+                         */
+                        emails: Array<{
+                            /**
+                             * The email address of the shared contact.
+                             */
+                            address: string;
+                            /**
+                             * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
                     }>;
                     /**
                      * The user who sent the message.
@@ -1339,6 +1483,75 @@ export type GetChatsListResponses = {
                          * A brief description of the shared content.
                          */
                         description?: string;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'contact_card';
+                        /**
+                         * The name of the shared contact.
+                         */
+                        display_name?: string;
+                        /**
+                         * The organization of the shared contact.
+                         */
+                        organization?: string;
+                        /**
+                         * The phone numbers of the shared contact.
+                         */
+                        phones: Array<{
+                            /**
+                             * The phone number of the shared contact.
+                             */
+                            number: string;
+                            /**
+                             * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
+                        /**
+                         * The email addresses of the shared contact.
+                         */
+                        emails: Array<{
+                            /**
+                             * The email address of the shared contact.
+                             */
+                            address: string;
+                            /**
+                             * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
                     }>;
                     /**
                      * The user who sent the message.
@@ -1935,6 +2148,12 @@ export type GetInboxChatsListResponses = {
                  */
                 is_mentionned: boolean;
                 /**
+                 * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+                 * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+                 * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+                 */
+                view_mode?: 'once' | 'replayable';
+                /**
                  * The type of message event.
                  * 0 : Unknown (Not implemented)
                  * 1 : Chat name update
@@ -2491,6 +2710,75 @@ export type GetInboxChatsListResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * List of message hyperlinks.
@@ -2750,6 +3038,75 @@ export type GetInboxChatsListResponses = {
                          * A brief description of the shared content.
                          */
                         description?: string;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'contact_card';
+                        /**
+                         * The name of the shared contact.
+                         */
+                        display_name?: string;
+                        /**
+                         * The organization of the shared contact.
+                         */
+                        organization?: string;
+                        /**
+                         * The phone numbers of the shared contact.
+                         */
+                        phones: Array<{
+                            /**
+                             * The phone number of the shared contact.
+                             */
+                            number: string;
+                            /**
+                             * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
+                        /**
+                         * The email addresses of the shared contact.
+                         */
+                        emails: Array<{
+                            /**
+                             * The email address of the shared contact.
+                             */
+                            address: string;
+                            /**
+                             * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
                     }>;
                     /**
                      * The user who sent the message.
@@ -3043,6 +3400,75 @@ export type GetInboxChatsListResponses = {
                          * A brief description of the shared content.
                          */
                         description?: string;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'contact_card';
+                        /**
+                         * The name of the shared contact.
+                         */
+                        display_name?: string;
+                        /**
+                         * The organization of the shared contact.
+                         */
+                        organization?: string;
+                        /**
+                         * The phone numbers of the shared contact.
+                         */
+                        phones: Array<{
+                            /**
+                             * The phone number of the shared contact.
+                             */
+                            number: string;
+                            /**
+                             * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
+                        /**
+                         * The email addresses of the shared contact.
+                         */
+                        emails: Array<{
+                            /**
+                             * The email address of the shared contact.
+                             */
+                            address: string;
+                            /**
+                             * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
                     }>;
                     /**
                      * The user who sent the message.
@@ -3581,6 +4007,12 @@ export type GetChatResponses = {
              * Is the message mentionning the current user. Usually to notify.
              */
             is_mentionned: boolean;
+            /**
+             * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+             * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+             * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+             */
+            view_mode?: 'once' | 'replayable';
             /**
              * The type of message event.
              * 0 : Unknown (Not implemented)
@@ -4138,6 +4570,75 @@ export type GetChatResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * List of message hyperlinks.
@@ -4397,6 +4898,75 @@ export type GetChatResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * The user who sent the message.
@@ -4690,6 +5260,75 @@ export type GetChatResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * The user who sent the message.
@@ -5287,6 +5926,12 @@ export type UpdateChatResponses = {
              */
             is_mentionned: boolean;
             /**
+             * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+             * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+             * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+             */
+            view_mode?: 'once' | 'replayable';
+            /**
              * The type of message event.
              * 0 : Unknown (Not implemented)
              * 1 : Chat name update
@@ -5843,6 +6488,75 @@ export type UpdateChatResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * List of message hyperlinks.
@@ -6102,6 +6816,75 @@ export type UpdateChatResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * The user who sent the message.
@@ -6395,6 +7178,75 @@ export type UpdateChatResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * The user who sent the message.
@@ -6579,7 +7431,7 @@ export type StartChatData = {
          */
         name?: string;
         /**
-         * Participants of the chat.
+         * Participant(s) of the chat. To start a 1to1 chat, pass a single user id as a string. To start a group, pass an array of user ids. Passing an array with a single user id will attempt to start a group with that user only.
          */
         users_ids: Array<string> | string;
         /**
@@ -6808,7 +7660,7 @@ export type StartChatFromInboxData = {
          */
         name?: string;
         /**
-         * Participants of the chat.
+         * Participant(s) of the chat. To start a 1to1 chat, pass a single user id as a string. To start a group, pass an array of user ids. Passing an array with a single user id will attempt to start a group with that user only.
          */
         users_ids: Array<string> | string;
         /**
@@ -7134,6 +7986,12 @@ export type GetMessagesListResponses = {
              * Is the message mentionning the current user. Usually to notify.
              */
             is_mentionned: boolean;
+            /**
+             * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+             * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+             * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+             */
+            view_mode?: 'once' | 'replayable';
             /**
              * The type of message event.
              * 0 : Unknown (Not implemented)
@@ -7638,6 +8496,75 @@ export type GetMessagesListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * List of message hyperlinks.
@@ -8015,6 +8942,75 @@ export type GetMessagesListResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * The user who sent the message.
@@ -8367,6 +9363,75 @@ export type GetMessagesListResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 object: 'ForwardedMessage';
                 /**
@@ -8607,6 +9672,12 @@ export type GetMessageResponses = {
          * Is the message mentionning the current user. Usually to notify.
          */
         is_mentionned: boolean;
+        /**
+         * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+         * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+         * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+         */
+        view_mode?: 'once' | 'replayable';
         /**
          * The type of message event.
          * 0 : Unknown (Not implemented)
@@ -9111,6 +10182,75 @@ export type GetMessageResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * List of message hyperlinks.
@@ -9488,6 +10628,75 @@ export type GetMessageResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * The user who sent the message.
@@ -9840,6 +11049,75 @@ export type GetMessageResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             object: 'ForwardedMessage';
             /**
@@ -10168,6 +11446,12 @@ export type ModifyMessageResponses = {
          * Is the message mentionning the current user. Usually to notify.
          */
         is_mentionned: boolean;
+        /**
+         * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+         * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+         * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+         */
+        view_mode?: 'once' | 'replayable';
         /**
          * The type of message event.
          * 0 : Unknown (Not implemented)
@@ -10725,6 +12009,75 @@ export type ModifyMessageResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * List of message hyperlinks.
@@ -10984,6 +12337,75 @@ export type ModifyMessageResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * The user who sent the message.
@@ -11277,6 +12699,75 @@ export type ModifyMessageResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * The user who sent the message.
@@ -12347,6 +13838,75 @@ export type GetEmailsListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
@@ -12788,6 +14348,75 @@ export type GetFolderEmailsListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
@@ -13182,6 +14811,75 @@ export type GetThreadResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
@@ -13589,6 +15287,75 @@ export type GetEmailResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
@@ -14006,6 +15773,75 @@ export type ModifyEmailResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
@@ -14599,6 +16435,75 @@ export type GetDraftsListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * The folder the draft is in. For Gmail, the labels assigned to the draft.
@@ -15079,6 +16984,75 @@ export type CreateDraftResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * The folder the draft is in. For Gmail, the labels assigned to the draft.
@@ -15447,6 +17421,75 @@ export type GetDraftResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * The folder the draft is in. For Gmail, the labels assigned to the draft.
@@ -15930,6 +17973,75 @@ export type UpdateDraftResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * The folder the draft is in. For Gmail, the labels assigned to the draft.
@@ -18688,6 +20800,76 @@ export type GetUserProfileResponses = {
             messaging_identifier: string;
         } | {
             /**
+             * Whether the user and the account owner are in each other address book.
+             */
+            is_mutual_contact: boolean;
+            /**
+             * Whether the user is a close friend of the account owner.
+             */
+            is_close_friend: boolean;
+            /**
+             * Whether the user is a bot.
+             */
+            is_bot: boolean;
+            /**
+             * Whether the user is an official Telegram support account.
+             */
+            is_support: boolean;
+            /**
+             * Whether the user has been flagged as a scam by Telegram.
+             */
+            is_scam: boolean;
+            /**
+             * Whether the user has been flagged as impersonating another user by Telegram.
+             */
+            is_fake: boolean;
+            /**
+             * Whether the user is restricted on some platforms.
+             */
+            is_restricted: boolean;
+            /**
+             * Restrictions applied to the user, if any.
+             */
+            restrictions?: Array<{
+                /**
+                 * Platform the restriction applies to (e.g. `ios`, `android`, `all`).
+                 */
+                platform: string;
+                /**
+                 * Machine readable reason of the restriction.
+                 */
+                reason: string;
+                /**
+                 * Human readable reason of the restriction.
+                 */
+                text: string;
+            }>;
+            /**
+             * Last seen status of the user, as exposed by Telegram.
+             */
+            status?: {
+                /**
+                 * Last seen status of the user.
+                 * - `online` the user is currently online, until `expires_at`.
+                 * - `offline` the user is offline, and was last online at `was_online_at`.
+                 * - `recently`, `last_week` and `last_month` are the approximations returned when the user hides its exact last seen date.
+                 */
+                type: 'online' | 'offline' | 'recently' | 'last_week' | 'last_month';
+                /**
+                 * Date and time until when the user is considered online (`online` status only).
+                 */
+                expires_at?: string;
+                /**
+                 * Date and time when the user was last online (`offline` status only).
+                 */
+                was_online_at?: string;
+            };
+            /**
+             * Number of chats shared between the user and the account owner.
+             */
+            common_chats_count?: number;
+        } | {
+            /**
              * Name saved by the connected account owner in their WhatsApp address book.
              */
             contact_name?: string;
@@ -18760,6 +20942,34 @@ export type GetUserProfileResponses = {
          * Whether the user is blocked by the current user.
          */
         is_blocked: boolean;
+        /**
+         * Whether the user is saved in the address book of the account owner (if supported by the provider).
+         */
+        is_contact?: boolean;
+        /**
+         * Whether the user is verified by the provider.
+         */
+        is_verified?: boolean;
+        /**
+         * Whether the user has a premium subscription with the provider.
+         */
+        is_premium?: boolean;
+        /**
+         * Whether the user account was deleted or deactivated.
+         */
+        is_deleted?: boolean;
+        /**
+         * Whether the user is currently online (if supported by the provider).
+         */
+        is_online?: boolean;
+        /**
+         * Date and time when the user was last online (if supported by the provider).
+         */
+        last_online_at?: string;
+        /**
+         * Language of the user, as a lowercase ISO 639-1 code (e.g. `fr`).
+         */
+        language?: string;
         /**
          * The provider's of the Account.
          * - `mock` is mock.
@@ -18989,19 +21199,19 @@ export type GetUserProfileResponse = GetUserProfileResponses[keyof GetUserProfil
 export type UpdateUserProfileData = {
     body?: {
         /**
-         * The first name of the User. Updating this field is not supported by LinkedIn.
+         * The first name of the User. Updating this field is not supported by LinkedIn and Instagram.
          */
         first_name?: string;
         /**
-         * The last name of the User. Updating this field is not supported by LinkedIn.
+         * The last name of the User. Updating this field is not supported by LinkedIn and Instagram.
          */
         last_name?: string;
         /**
-         * Description of the User. Updating this field is not supported by LinkedIn.
+         * Description of the User. Updating this field is not supported by LinkedIn and Instagram.
          */
         description?: string;
         /**
-         * Location of the User. Omit it to leave it unchanged.
+         * Location of the User. Omit it to leave it unchanged. Updating this field is not supported by Instagram.
          */
         location?: string;
         /**
@@ -21500,6 +23710,75 @@ export type GetPostsListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Analytics data of the post.
@@ -22141,6 +24420,75 @@ export type GetPostsListResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * Analytics data of the post.
@@ -22895,6 +25243,75 @@ export type GetPostResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * Analytics data of the post.
@@ -23536,6 +25953,75 @@ export type GetPostResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Analytics data of the post.
@@ -24321,6 +26807,75 @@ export type UpdatePostResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * Analytics data of the post.
@@ -24848,6 +27403,75 @@ export type UpdatePostResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Analytics data of the post.
@@ -25400,6 +28024,75 @@ export type CreatePostResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * Analytics data of the post.
@@ -25927,6 +28620,75 @@ export type CreatePostResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Analytics data of the post.
@@ -25974,6 +28736,100 @@ export type CreatePostResponses = {
 };
 
 export type CreatePostResponse = CreatePostResponses[keyof CreatePostResponses];
+
+export type CreateStoryData = {
+    body: {
+        /**
+         * A file to be uploaded.
+         */
+        attachment: {
+            /**
+             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
+             */
+            content: string;
+            /**
+             * <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME type</a> of the file.
+             */
+            content_type: string;
+            /**
+             * Name of the file (including extension).
+             */
+            filename: string;
+            /**
+             * Metadata of the the file.
+             */
+            metadata?: {
+                /**
+                 * Duration of the media file.
+                 */
+                duration?: number;
+            };
+        };
+        /**
+         * Optional caption for the story. User mentions can be added by inserting an @ followed by the ID or public identifier of the user (example: @JohnDoe), if supported by the provider.
+         */
+        text?: string;
+        specifics?: unknown & {
+            /**
+             * Specific options to apply if the provider of the targeted account is Instagram
+             */
+            instagram?: {
+                /**
+                 * Location sticker to attach to the story.
+                 */
+                location?: {
+                    /**
+                     * The ID of the location (from the Search Locations method) to attach as a sticker.
+                     */
+                    id: string;
+                    /**
+                     * The display name of the location, rendered as the sticker text.
+                     */
+                    name: string;
+                };
+            };
+        };
+    };
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/posts/stories';
+};
+
+export type CreateStoryResponses = {
+    /**
+     * Default Response
+     */
+    201: {
+        object: 'Story';
+        /**
+         * The ID of the story for the provider.
+         */
+        id: string;
+        /**
+         * The story's raw provider-native identifier.
+         */
+        provider_id: string;
+        /**
+         * The type of media attached to the story.
+         */
+        media_type: 'img' | 'video';
+        /**
+         * The creation date of the story. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         */
+        created_at: string;
+        /**
+         * The expiration date of the story (~24h after creation, if supported by the provider). Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         */
+        expires_at?: string;
+    };
+};
+
+export type CreateStoryResponse = CreateStoryResponses[keyof CreateStoryResponses];
 
 export type RemovePostReactionData = {
     body: {
@@ -26488,6 +29344,75 @@ export type GetPostCommentsListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Is the current user the sender of the comment.
@@ -27002,6 +29927,75 @@ export type AddPostCommentResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * Is the current user the sender of the comment.
@@ -27398,6 +30392,75 @@ export type UpdatePostCommentResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * Is the current user the sender of the comment.
@@ -27795,6 +30858,75 @@ export type ReplyToCommentResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * Is the current user the sender of the comment.
@@ -28118,6 +31250,75 @@ export type GetPostCommentRepliesListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Is the current user the sender of the comment.
@@ -28799,6 +32000,75 @@ export type GetUserCommentsListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Is the current user the sender of the comment.
@@ -29454,6 +32724,75 @@ export type GetUserCommentsListResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * Analytics data of the post.
@@ -30095,6 +33434,75 @@ export type GetUserCommentsListResponses = {
                          * A brief description of the shared content.
                          */
                         description?: string;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'contact_card';
+                        /**
+                         * The name of the shared contact.
+                         */
+                        display_name?: string;
+                        /**
+                         * The organization of the shared contact.
+                         */
+                        organization?: string;
+                        /**
+                         * The phone numbers of the shared contact.
+                         */
+                        phones: Array<{
+                            /**
+                             * The phone number of the shared contact.
+                             */
+                            number: string;
+                            /**
+                             * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
+                        /**
+                         * The email addresses of the shared contact.
+                         */
+                        emails: Array<{
+                            /**
+                             * The email address of the shared contact.
+                             */
+                            address: string;
+                            /**
+                             * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
                     }>;
                     /**
                      * Analytics data of the post.
@@ -31095,6 +34503,75 @@ export type GetUserReactionsListResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * Analytics data of the post.
@@ -31736,6 +35213,75 @@ export type GetUserReactionsListResponses = {
                          * A brief description of the shared content.
                          */
                         description?: string;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'contact_card';
+                        /**
+                         * The name of the shared contact.
+                         */
+                        display_name?: string;
+                        /**
+                         * The organization of the shared contact.
+                         */
+                        organization?: string;
+                        /**
+                         * The phone numbers of the shared contact.
+                         */
+                        phones: Array<{
+                            /**
+                             * The phone number of the shared contact.
+                             */
+                            number: string;
+                            /**
+                             * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
+                        /**
+                         * The email addresses of the shared contact.
+                         */
+                        emails: Array<{
+                            /**
+                             * The email address of the shared contact.
+                             */
+                            address: string;
+                            /**
+                             * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
                     }>;
                     /**
                      * Analytics data of the post.
@@ -35254,6 +38800,75 @@ export type PerformClassicSearchFromUrlResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Analytics data of the post.
@@ -35781,6 +39396,75 @@ export type PerformClassicSearchFromUrlResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * Analytics data of the post.
@@ -36790,6 +40474,75 @@ export type PerformClassicPostsSearchResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Analytics data of the post.
@@ -37317,6 +41070,75 @@ export type PerformClassicPostsSearchResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * Analytics data of the post.
