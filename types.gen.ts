@@ -231,6 +231,12 @@ export type GetChatsListResponses = {
                  */
                 is_mentionned: boolean;
                 /**
+                 * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+                 * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+                 * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+                 */
+                view_mode?: 'once' | 'replayable';
+                /**
                  * The type of message event.
                  * 0 : Unknown (Not implemented)
                  * 1 : Chat name update
@@ -254,6 +260,19 @@ export type GetChatsListResponses = {
                  */
                 event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
                 event_metadata?: {
+                    /**
+                     * ID of the participant who left or was removed from the group.
+                     */
+                    user_id?: string;
+                    /**
+                     * Name of the participant who left or was removed from the group.
+                     */
+                    user_name?: string;
+                    /**
+                     * Specifies whether the participant left voluntarily or was removed by an admin.
+                     */
+                    reason: 'left' | 'kicked' | 'unknown';
+                } | {
                     /**
                      * The updated title.
                      */
@@ -427,19 +446,6 @@ export type GetChatsListResponses = {
                      * ID of the participant who joined the group.
                      */
                     user_id: string;
-                } | {
-                    /**
-                     * ID of the participant who left or was removed from the group.
-                     */
-                    user_id?: string;
-                    /**
-                     * Name of the participant who left or was removed from the group.
-                     */
-                    user_name?: string;
-                    /**
-                     * Specifies whether the participant left voluntarily or was removed by an admin.
-                     */
-                    reason: 'left' | 'kicked' | 'unknown';
                 } | {
                     /**
                      * ID of the participant whose role was updated.
@@ -778,7 +784,7 @@ export type GetChatsListResponses = {
                     /**
                      * The type of content being shared.
                      */
-                    media_type: 'post' | 'story' | 'url' | 'reel';
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                     /**
                      * The author of the shared content, if applicable.
                      */
@@ -787,6 +793,75 @@ export type GetChatsListResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * List of message hyperlinks.
@@ -1037,7 +1112,7 @@ export type GetChatsListResponses = {
                         /**
                          * The type of content being shared.
                          */
-                        media_type: 'post' | 'story' | 'url' | 'reel';
+                        media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                         /**
                          * The author of the shared content, if applicable.
                          */
@@ -1046,6 +1121,75 @@ export type GetChatsListResponses = {
                          * A brief description of the shared content.
                          */
                         description?: string;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'contact_card';
+                        /**
+                         * The name of the shared contact.
+                         */
+                        display_name?: string;
+                        /**
+                         * The organization of the shared contact.
+                         */
+                        organization?: string;
+                        /**
+                         * The phone numbers of the shared contact.
+                         */
+                        phones: Array<{
+                            /**
+                             * The phone number of the shared contact.
+                             */
+                            number: string;
+                            /**
+                             * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
+                        /**
+                         * The email addresses of the shared contact.
+                         */
+                        emails: Array<{
+                            /**
+                             * The email address of the shared contact.
+                             */
+                            address: string;
+                            /**
+                             * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
                     }>;
                     /**
                      * The user who sent the message.
@@ -1330,7 +1474,7 @@ export type GetChatsListResponses = {
                         /**
                          * The type of content being shared.
                          */
-                        media_type: 'post' | 'story' | 'url' | 'reel';
+                        media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                         /**
                          * The author of the shared content, if applicable.
                          */
@@ -1339,6 +1483,75 @@ export type GetChatsListResponses = {
                          * A brief description of the shared content.
                          */
                         description?: string;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'contact_card';
+                        /**
+                         * The name of the shared contact.
+                         */
+                        display_name?: string;
+                        /**
+                         * The organization of the shared contact.
+                         */
+                        organization?: string;
+                        /**
+                         * The phone numbers of the shared contact.
+                         */
+                        phones: Array<{
+                            /**
+                             * The phone number of the shared contact.
+                             */
+                            number: string;
+                            /**
+                             * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
+                        /**
+                         * The email addresses of the shared contact.
+                         */
+                        emails: Array<{
+                            /**
+                             * The email address of the shared contact.
+                             */
+                            address: string;
+                            /**
+                             * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
                     }>;
                     /**
                      * The user who sent the message.
@@ -1935,6 +2148,12 @@ export type GetInboxChatsListResponses = {
                  */
                 is_mentionned: boolean;
                 /**
+                 * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+                 * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+                 * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+                 */
+                view_mode?: 'once' | 'replayable';
+                /**
                  * The type of message event.
                  * 0 : Unknown (Not implemented)
                  * 1 : Chat name update
@@ -1958,6 +2177,19 @@ export type GetInboxChatsListResponses = {
                  */
                 event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
                 event_metadata?: {
+                    /**
+                     * ID of the participant who left or was removed from the group.
+                     */
+                    user_id?: string;
+                    /**
+                     * Name of the participant who left or was removed from the group.
+                     */
+                    user_name?: string;
+                    /**
+                     * Specifies whether the participant left voluntarily or was removed by an admin.
+                     */
+                    reason: 'left' | 'kicked' | 'unknown';
+                } | {
                     /**
                      * The updated title.
                      */
@@ -2131,19 +2363,6 @@ export type GetInboxChatsListResponses = {
                      * ID of the participant who joined the group.
                      */
                     user_id: string;
-                } | {
-                    /**
-                     * ID of the participant who left or was removed from the group.
-                     */
-                    user_id?: string;
-                    /**
-                     * Name of the participant who left or was removed from the group.
-                     */
-                    user_name?: string;
-                    /**
-                     * Specifies whether the participant left voluntarily or was removed by an admin.
-                     */
-                    reason: 'left' | 'kicked' | 'unknown';
                 } | {
                     /**
                      * ID of the participant whose role was updated.
@@ -2482,7 +2701,7 @@ export type GetInboxChatsListResponses = {
                     /**
                      * The type of content being shared.
                      */
-                    media_type: 'post' | 'story' | 'url' | 'reel';
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                     /**
                      * The author of the shared content, if applicable.
                      */
@@ -2491,6 +2710,75 @@ export type GetInboxChatsListResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * List of message hyperlinks.
@@ -2741,7 +3029,7 @@ export type GetInboxChatsListResponses = {
                         /**
                          * The type of content being shared.
                          */
-                        media_type: 'post' | 'story' | 'url' | 'reel';
+                        media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                         /**
                          * The author of the shared content, if applicable.
                          */
@@ -2750,6 +3038,75 @@ export type GetInboxChatsListResponses = {
                          * A brief description of the shared content.
                          */
                         description?: string;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'contact_card';
+                        /**
+                         * The name of the shared contact.
+                         */
+                        display_name?: string;
+                        /**
+                         * The organization of the shared contact.
+                         */
+                        organization?: string;
+                        /**
+                         * The phone numbers of the shared contact.
+                         */
+                        phones: Array<{
+                            /**
+                             * The phone number of the shared contact.
+                             */
+                            number: string;
+                            /**
+                             * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
+                        /**
+                         * The email addresses of the shared contact.
+                         */
+                        emails: Array<{
+                            /**
+                             * The email address of the shared contact.
+                             */
+                            address: string;
+                            /**
+                             * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
                     }>;
                     /**
                      * The user who sent the message.
@@ -3034,7 +3391,7 @@ export type GetInboxChatsListResponses = {
                         /**
                          * The type of content being shared.
                          */
-                        media_type: 'post' | 'story' | 'url' | 'reel';
+                        media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                         /**
                          * The author of the shared content, if applicable.
                          */
@@ -3043,6 +3400,75 @@ export type GetInboxChatsListResponses = {
                          * A brief description of the shared content.
                          */
                         description?: string;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'contact_card';
+                        /**
+                         * The name of the shared contact.
+                         */
+                        display_name?: string;
+                        /**
+                         * The organization of the shared contact.
+                         */
+                        organization?: string;
+                        /**
+                         * The phone numbers of the shared contact.
+                         */
+                        phones: Array<{
+                            /**
+                             * The phone number of the shared contact.
+                             */
+                            number: string;
+                            /**
+                             * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
+                        /**
+                         * The email addresses of the shared contact.
+                         */
+                        emails: Array<{
+                            /**
+                             * The email address of the shared contact.
+                             */
+                            address: string;
+                            /**
+                             * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
                     }>;
                     /**
                      * The user who sent the message.
@@ -3582,6 +4008,12 @@ export type GetChatResponses = {
              */
             is_mentionned: boolean;
             /**
+             * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+             * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+             * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+             */
+            view_mode?: 'once' | 'replayable';
+            /**
              * The type of message event.
              * 0 : Unknown (Not implemented)
              * 1 : Chat name update
@@ -3605,6 +4037,19 @@ export type GetChatResponses = {
              */
             event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
             event_metadata?: {
+                /**
+                 * ID of the participant who left or was removed from the group.
+                 */
+                user_id?: string;
+                /**
+                 * Name of the participant who left or was removed from the group.
+                 */
+                user_name?: string;
+                /**
+                 * Specifies whether the participant left voluntarily or was removed by an admin.
+                 */
+                reason: 'left' | 'kicked' | 'unknown';
+            } | {
                 /**
                  * The updated title.
                  */
@@ -3778,19 +4223,6 @@ export type GetChatResponses = {
                  * ID of the participant who joined the group.
                  */
                 user_id: string;
-            } | {
-                /**
-                 * ID of the participant who left or was removed from the group.
-                 */
-                user_id?: string;
-                /**
-                 * Name of the participant who left or was removed from the group.
-                 */
-                user_name?: string;
-                /**
-                 * Specifies whether the participant left voluntarily or was removed by an admin.
-                 */
-                reason: 'left' | 'kicked' | 'unknown';
             } | {
                 /**
                  * ID of the participant whose role was updated.
@@ -4129,7 +4561,7 @@ export type GetChatResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -4138,6 +4570,75 @@ export type GetChatResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * List of message hyperlinks.
@@ -4388,7 +4889,7 @@ export type GetChatResponses = {
                     /**
                      * The type of content being shared.
                      */
-                    media_type: 'post' | 'story' | 'url' | 'reel';
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                     /**
                      * The author of the shared content, if applicable.
                      */
@@ -4397,6 +4898,75 @@ export type GetChatResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * The user who sent the message.
@@ -4681,7 +5251,7 @@ export type GetChatResponses = {
                     /**
                      * The type of content being shared.
                      */
-                    media_type: 'post' | 'story' | 'url' | 'reel';
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                     /**
                      * The author of the shared content, if applicable.
                      */
@@ -4690,6 +5260,75 @@ export type GetChatResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * The user who sent the message.
@@ -5287,6 +5926,12 @@ export type UpdateChatResponses = {
              */
             is_mentionned: boolean;
             /**
+             * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+             * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+             * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+             */
+            view_mode?: 'once' | 'replayable';
+            /**
              * The type of message event.
              * 0 : Unknown (Not implemented)
              * 1 : Chat name update
@@ -5310,6 +5955,19 @@ export type UpdateChatResponses = {
              */
             event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
             event_metadata?: {
+                /**
+                 * ID of the participant who left or was removed from the group.
+                 */
+                user_id?: string;
+                /**
+                 * Name of the participant who left or was removed from the group.
+                 */
+                user_name?: string;
+                /**
+                 * Specifies whether the participant left voluntarily or was removed by an admin.
+                 */
+                reason: 'left' | 'kicked' | 'unknown';
+            } | {
                 /**
                  * The updated title.
                  */
@@ -5483,19 +6141,6 @@ export type UpdateChatResponses = {
                  * ID of the participant who joined the group.
                  */
                 user_id: string;
-            } | {
-                /**
-                 * ID of the participant who left or was removed from the group.
-                 */
-                user_id?: string;
-                /**
-                 * Name of the participant who left or was removed from the group.
-                 */
-                user_name?: string;
-                /**
-                 * Specifies whether the participant left voluntarily or was removed by an admin.
-                 */
-                reason: 'left' | 'kicked' | 'unknown';
             } | {
                 /**
                  * ID of the participant whose role was updated.
@@ -5834,7 +6479,7 @@ export type UpdateChatResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -5843,6 +6488,75 @@ export type UpdateChatResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * List of message hyperlinks.
@@ -6093,7 +6807,7 @@ export type UpdateChatResponses = {
                     /**
                      * The type of content being shared.
                      */
-                    media_type: 'post' | 'story' | 'url' | 'reel';
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                     /**
                      * The author of the shared content, if applicable.
                      */
@@ -6102,6 +6816,75 @@ export type UpdateChatResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * The user who sent the message.
@@ -6386,7 +7169,7 @@ export type UpdateChatResponses = {
                     /**
                      * The type of content being shared.
                      */
-                    media_type: 'post' | 'story' | 'url' | 'reel';
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                     /**
                      * The author of the shared content, if applicable.
                      */
@@ -6395,6 +7178,75 @@ export type UpdateChatResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * The user who sent the message.
@@ -6579,11 +7431,11 @@ export type StartChatData = {
          */
         name?: string;
         /**
-         * Participants of the chat.
+         * Participant(s) of the chat. To start a 1to1 chat, pass a single user id as a string. To start a group, pass an array of user ids. Passing an array with a single user id will attempt to start a group with that user only.
          */
         users_ids: Array<string> | string;
         /**
-         * The list of file attachments to the message to be sent in the chat.
+         * The list of attachments (uploaded files or a shared post or job) to be sent with the message.
          */
         attachments?: Array<{
             /**
@@ -6653,6 +7505,19 @@ export type StartChatData = {
                          * The messaging token to be retrieved using the <a href="https://developer.unipile.com/v2.0/reference/getclassicapplicantbyid">Get an Applicant</a> endpoint.
                          */
                         messaging_token: string;
+                    };
+                    /**
+                     * A specific content to be shared in the current message.
+                     */
+                    shared_content?: {
+                        /**
+                         * The type of content.
+                         */
+                        type: 'POST' | 'JOB_POSTING';
+                        /**
+                         * The ID of the content to be shared.
+                         */
+                        id: string;
                     };
                 };
                 /**
@@ -6808,11 +7673,11 @@ export type StartChatFromInboxData = {
          */
         name?: string;
         /**
-         * Participants of the chat.
+         * Participant(s) of the chat. To start a 1to1 chat, pass a single user id as a string. To start a group, pass an array of user ids. Passing an array with a single user id will attempt to start a group with that user only.
          */
         users_ids: Array<string> | string;
         /**
-         * The list of file attachments to the message to be sent in the chat.
+         * The list of attachments (uploaded files or a shared post or job) to be sent with the message.
          */
         attachments?: Array<{
             /**
@@ -6882,6 +7747,19 @@ export type StartChatFromInboxData = {
                          * The messaging token to be retrieved using the <a href="https://developer.unipile.com/v2.0/reference/getclassicapplicantbyid">Get an Applicant</a> endpoint.
                          */
                         messaging_token: string;
+                    };
+                    /**
+                     * A specific content to be shared in the current message.
+                     */
+                    shared_content?: {
+                        /**
+                         * The type of content.
+                         */
+                        type: 'POST' | 'JOB_POSTING';
+                        /**
+                         * The ID of the content to be shared.
+                         */
+                        id: string;
                     };
                 };
                 /**
@@ -7135,6 +8013,12 @@ export type GetMessagesListResponses = {
              */
             is_mentionned: boolean;
             /**
+             * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+             * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+             * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+             */
+            view_mode?: 'once' | 'replayable';
+            /**
              * The type of message event.
              * 0 : Unknown (Not implemented)
              * 1 : Chat name update
@@ -7158,6 +8042,19 @@ export type GetMessagesListResponses = {
              */
             event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
             event_metadata?: {
+                /**
+                 * ID of the participant who left or was removed from the group.
+                 */
+                user_id?: string;
+                /**
+                 * Name of the participant who left or was removed from the group.
+                 */
+                user_name?: string;
+                /**
+                 * Specifies whether the participant left voluntarily or was removed by an admin.
+                 */
+                reason: 'left' | 'kicked' | 'unknown';
+            } | {
                 /**
                  * The updated title.
                  */
@@ -7331,19 +8228,6 @@ export type GetMessagesListResponses = {
                  * ID of the participant who joined the group.
                  */
                 user_id: string;
-            } | {
-                /**
-                 * ID of the participant who left or was removed from the group.
-                 */
-                user_id?: string;
-                /**
-                 * Name of the participant who left or was removed from the group.
-                 */
-                user_name?: string;
-                /**
-                 * Specifies whether the participant left voluntarily or was removed by an admin.
-                 */
-                reason: 'left' | 'kicked' | 'unknown';
             } | {
                 /**
                  * ID of the participant whose role was updated.
@@ -7629,7 +8513,7 @@ export type GetMessagesListResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -7638,6 +8522,75 @@ export type GetMessagesListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * List of message hyperlinks.
@@ -7657,6 +8610,10 @@ export type GetMessagesListResponses = {
                 length: number;
             }>;
             specifics?: unknown & {
+                /**
+                 * The category of the message: a regular message, an email, a connection invitation, or an InMail lifecycle event.
+                 */
+                type: 'MESSAGE' | 'EMAIL' | 'INVITATION' | 'INMAIL' | 'INMAIL_DECLINE' | 'INMAIL_REPLY' | 'INMAIL_ACCEPT';
                 /**
                  * The subject of the message.
                  */
@@ -8006,7 +8963,7 @@ export type GetMessagesListResponses = {
                     /**
                      * The type of content being shared.
                      */
-                    media_type: 'post' | 'story' | 'url' | 'reel';
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                     /**
                      * The author of the shared content, if applicable.
                      */
@@ -8015,6 +8972,75 @@ export type GetMessagesListResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * The user who sent the message.
@@ -8358,7 +9384,7 @@ export type GetMessagesListResponses = {
                     /**
                      * The type of content being shared.
                      */
-                    media_type: 'post' | 'story' | 'url' | 'reel';
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                     /**
                      * The author of the shared content, if applicable.
                      */
@@ -8367,6 +9393,75 @@ export type GetMessagesListResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 object: 'ForwardedMessage';
                 /**
@@ -8608,6 +9703,12 @@ export type GetMessageResponses = {
          */
         is_mentionned: boolean;
         /**
+         * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+         * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+         * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+         */
+        view_mode?: 'once' | 'replayable';
+        /**
          * The type of message event.
          * 0 : Unknown (Not implemented)
          * 1 : Chat name update
@@ -8631,6 +9732,19 @@ export type GetMessageResponses = {
          */
         event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
         event_metadata?: {
+            /**
+             * ID of the participant who left or was removed from the group.
+             */
+            user_id?: string;
+            /**
+             * Name of the participant who left or was removed from the group.
+             */
+            user_name?: string;
+            /**
+             * Specifies whether the participant left voluntarily or was removed by an admin.
+             */
+            reason: 'left' | 'kicked' | 'unknown';
+        } | {
             /**
              * The updated title.
              */
@@ -8804,19 +9918,6 @@ export type GetMessageResponses = {
              * ID of the participant who joined the group.
              */
             user_id: string;
-        } | {
-            /**
-             * ID of the participant who left or was removed from the group.
-             */
-            user_id?: string;
-            /**
-             * Name of the participant who left or was removed from the group.
-             */
-            user_name?: string;
-            /**
-             * Specifies whether the participant left voluntarily or was removed by an admin.
-             */
-            reason: 'left' | 'kicked' | 'unknown';
         } | {
             /**
              * ID of the participant whose role was updated.
@@ -9102,7 +10203,7 @@ export type GetMessageResponses = {
             /**
              * The type of content being shared.
              */
-            media_type: 'post' | 'story' | 'url' | 'reel';
+            media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
             /**
              * The author of the shared content, if applicable.
              */
@@ -9111,6 +10212,75 @@ export type GetMessageResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * List of message hyperlinks.
@@ -9130,6 +10300,10 @@ export type GetMessageResponses = {
             length: number;
         }>;
         specifics?: unknown & {
+            /**
+             * The category of the message: a regular message, an email, a connection invitation, or an InMail lifecycle event.
+             */
+            type: 'MESSAGE' | 'EMAIL' | 'INVITATION' | 'INMAIL' | 'INMAIL_DECLINE' | 'INMAIL_REPLY' | 'INMAIL_ACCEPT';
             /**
              * The subject of the message.
              */
@@ -9479,7 +10653,7 @@ export type GetMessageResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -9488,6 +10662,75 @@ export type GetMessageResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * The user who sent the message.
@@ -9831,7 +11074,7 @@ export type GetMessageResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -9840,6 +11083,75 @@ export type GetMessageResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             object: 'ForwardedMessage';
             /**
@@ -9971,7 +11283,7 @@ export type SendMessageData = {
          */
         quote_id?: string;
         /**
-         * The list of file attachments to the message to be sent in the chat.
+         * The list of attachments (uploaded files or a shared post or job) to be sent with the message.
          */
         attachments?: Array<{
             /**
@@ -10003,6 +11315,36 @@ export type SendMessageData = {
              */
             send_mode?: 'file' | 'native';
         }>;
+        /**
+         * Object containing provider-specific message data.
+         */
+        specifics?: {
+            /**
+             * Specific options to apply if the provider of the targeted account is Linkedin
+             */
+            linkedin?: {
+                /**
+                 * LinkedIn Classic
+                 *
+                 * Specific options for a LinkedIn classic message.
+                 */
+                classic?: {
+                    /**
+                     * A specific content to be shared in the current message.
+                     */
+                    shared_content?: {
+                        /**
+                         * The type of content.
+                         */
+                        type: 'POST' | 'JOB_POSTING';
+                        /**
+                         * The ID of the content to be shared.
+                         */
+                        id: string;
+                    };
+                };
+            };
+        };
     };
     path: {
         /**
@@ -10169,6 +11511,12 @@ export type ModifyMessageResponses = {
          */
         is_mentionned: boolean;
         /**
+         * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+         * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+         * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+         */
+        view_mode?: 'once' | 'replayable';
+        /**
          * The type of message event.
          * 0 : Unknown (Not implemented)
          * 1 : Chat name update
@@ -10192,6 +11540,19 @@ export type ModifyMessageResponses = {
          */
         event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
         event_metadata?: {
+            /**
+             * ID of the participant who left or was removed from the group.
+             */
+            user_id?: string;
+            /**
+             * Name of the participant who left or was removed from the group.
+             */
+            user_name?: string;
+            /**
+             * Specifies whether the participant left voluntarily or was removed by an admin.
+             */
+            reason: 'left' | 'kicked' | 'unknown';
+        } | {
             /**
              * The updated title.
              */
@@ -10365,19 +11726,6 @@ export type ModifyMessageResponses = {
              * ID of the participant who joined the group.
              */
             user_id: string;
-        } | {
-            /**
-             * ID of the participant who left or was removed from the group.
-             */
-            user_id?: string;
-            /**
-             * Name of the participant who left or was removed from the group.
-             */
-            user_name?: string;
-            /**
-             * Specifies whether the participant left voluntarily or was removed by an admin.
-             */
-            reason: 'left' | 'kicked' | 'unknown';
         } | {
             /**
              * ID of the participant whose role was updated.
@@ -10716,7 +12064,7 @@ export type ModifyMessageResponses = {
             /**
              * The type of content being shared.
              */
-            media_type: 'post' | 'story' | 'url' | 'reel';
+            media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
             /**
              * The author of the shared content, if applicable.
              */
@@ -10725,6 +12073,75 @@ export type ModifyMessageResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * List of message hyperlinks.
@@ -10975,7 +12392,7 @@ export type ModifyMessageResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -10984,6 +12401,75 @@ export type ModifyMessageResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * The user who sent the message.
@@ -11268,7 +12754,7 @@ export type ModifyMessageResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -11277,6 +12763,75 @@ export type ModifyMessageResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * The user who sent the message.
@@ -12338,7 +13893,7 @@ export type GetEmailsListResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -12347,6 +13902,75 @@ export type GetEmailsListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
@@ -12779,7 +14403,7 @@ export type GetFolderEmailsListResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -12788,6 +14412,75 @@ export type GetFolderEmailsListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
@@ -13173,7 +14866,7 @@ export type GetThreadResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -13182,6 +14875,75 @@ export type GetThreadResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
@@ -13580,7 +15342,7 @@ export type GetEmailResponses = {
             /**
              * The type of content being shared.
              */
-            media_type: 'post' | 'story' | 'url' | 'reel';
+            media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
             /**
              * The author of the shared content, if applicable.
              */
@@ -13589,6 +15351,75 @@ export type GetEmailResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
@@ -13997,7 +15828,7 @@ export type ModifyEmailResponses = {
             /**
              * The type of content being shared.
              */
-            media_type: 'post' | 'story' | 'url' | 'reel';
+            media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
             /**
              * The author of the shared content, if applicable.
              */
@@ -14006,6 +15837,75 @@ export type ModifyEmailResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
@@ -14590,7 +16490,7 @@ export type GetDraftsListResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -14599,6 +16499,75 @@ export type GetDraftsListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * The folder the draft is in. For Gmail, the labels assigned to the draft.
@@ -15070,7 +17039,7 @@ export type CreateDraftResponses = {
             /**
              * The type of content being shared.
              */
-            media_type: 'post' | 'story' | 'url' | 'reel';
+            media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
             /**
              * The author of the shared content, if applicable.
              */
@@ -15079,6 +17048,75 @@ export type CreateDraftResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * The folder the draft is in. For Gmail, the labels assigned to the draft.
@@ -15438,7 +17476,7 @@ export type GetDraftResponses = {
             /**
              * The type of content being shared.
              */
-            media_type: 'post' | 'story' | 'url' | 'reel';
+            media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
             /**
              * The author of the shared content, if applicable.
              */
@@ -15447,6 +17485,75 @@ export type GetDraftResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * The folder the draft is in. For Gmail, the labels assigned to the draft.
@@ -15921,7 +18028,7 @@ export type UpdateDraftResponses = {
             /**
              * The type of content being shared.
              */
-            media_type: 'post' | 'story' | 'url' | 'reel';
+            media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
             /**
              * The author of the shared content, if applicable.
              */
@@ -15930,6 +18037,75 @@ export type UpdateDraftResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * The folder the draft is in. For Gmail, the labels assigned to the draft.
@@ -18688,6 +20864,76 @@ export type GetUserProfileResponses = {
             messaging_identifier: string;
         } | {
             /**
+             * Whether the user and the account owner are in each other address book.
+             */
+            is_mutual_contact: boolean;
+            /**
+             * Whether the user is a close friend of the account owner.
+             */
+            is_close_friend: boolean;
+            /**
+             * Whether the user is a bot.
+             */
+            is_bot: boolean;
+            /**
+             * Whether the user is an official Telegram support account.
+             */
+            is_support: boolean;
+            /**
+             * Whether the user has been flagged as a scam by Telegram.
+             */
+            is_scam: boolean;
+            /**
+             * Whether the user has been flagged as impersonating another user by Telegram.
+             */
+            is_fake: boolean;
+            /**
+             * Whether the user is restricted on some platforms.
+             */
+            is_restricted: boolean;
+            /**
+             * Restrictions applied to the user, if any.
+             */
+            restrictions?: Array<{
+                /**
+                 * Platform the restriction applies to (e.g. `ios`, `android`, `all`).
+                 */
+                platform: string;
+                /**
+                 * Machine readable reason of the restriction.
+                 */
+                reason: string;
+                /**
+                 * Human readable reason of the restriction.
+                 */
+                text: string;
+            }>;
+            /**
+             * Last seen status of the user, as exposed by Telegram.
+             */
+            status?: {
+                /**
+                 * Last seen status of the user.
+                 * - `online` the user is currently online, until `expires_at`.
+                 * - `offline` the user is offline, and was last online at `was_online_at`.
+                 * - `recently`, `last_week` and `last_month` are the approximations returned when the user hides its exact last seen date.
+                 */
+                type: 'online' | 'offline' | 'recently' | 'last_week' | 'last_month';
+                /**
+                 * Date and time until when the user is considered online (`online` status only).
+                 */
+                expires_at?: string;
+                /**
+                 * Date and time when the user was last online (`offline` status only).
+                 */
+                was_online_at?: string;
+            };
+            /**
+             * Number of chats shared between the user and the account owner.
+             */
+            common_chats_count?: number;
+        } | {
+            /**
              * Name saved by the connected account owner in their WhatsApp address book.
              */
             contact_name?: string;
@@ -18760,6 +21006,34 @@ export type GetUserProfileResponses = {
          * Whether the user is blocked by the current user.
          */
         is_blocked: boolean;
+        /**
+         * Whether the user is saved in the address book of the account owner (if supported by the provider).
+         */
+        is_contact?: boolean;
+        /**
+         * Whether the user is verified by the provider.
+         */
+        is_verified?: boolean;
+        /**
+         * Whether the user has a premium subscription with the provider.
+         */
+        is_premium?: boolean;
+        /**
+         * Whether the user account was deleted or deactivated.
+         */
+        is_deleted?: boolean;
+        /**
+         * Whether the user is currently online (if supported by the provider).
+         */
+        is_online?: boolean;
+        /**
+         * Date and time when the user was last online (if supported by the provider).
+         */
+        last_online_at?: string;
+        /**
+         * Language of the user, as a lowercase ISO 639-1 code (e.g. `fr`).
+         */
+        language?: string;
         /**
          * The provider's of the Account.
          * - `mock` is mock.
@@ -18989,19 +21263,19 @@ export type GetUserProfileResponse = GetUserProfileResponses[keyof GetUserProfil
 export type UpdateUserProfileData = {
     body?: {
         /**
-         * The first name of the User. Updating this field is not supported by LinkedIn.
+         * The first name of the User. Updating this field is not supported by LinkedIn and Instagram.
          */
         first_name?: string;
         /**
-         * The last name of the User. Updating this field is not supported by LinkedIn.
+         * The last name of the User. Updating this field is not supported by LinkedIn and Instagram.
          */
         last_name?: string;
         /**
-         * Description of the User. Updating this field is not supported by LinkedIn.
+         * Description of the User. Updating this field is not supported by LinkedIn and Instagram.
          */
         description?: string;
         /**
-         * Location of the User. Omit it to leave it unchanged.
+         * Location of the User. Omit it to leave it unchanged. Updating this field is not supported by Instagram.
          */
         location?: string;
         /**
@@ -21491,7 +23765,7 @@ export type GetPostsListResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -21500,6 +23774,75 @@ export type GetPostsListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Analytics data of the post.
@@ -22132,7 +24475,7 @@ export type GetPostsListResponses = {
                     /**
                      * The type of content being shared.
                      */
-                    media_type: 'post' | 'story' | 'url' | 'reel';
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                     /**
                      * The author of the shared content, if applicable.
                      */
@@ -22141,6 +24484,75 @@ export type GetPostsListResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * Analytics data of the post.
@@ -22886,7 +25298,7 @@ export type GetPostResponses = {
             /**
              * The type of content being shared.
              */
-            media_type: 'post' | 'story' | 'url' | 'reel';
+            media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
             /**
              * The author of the shared content, if applicable.
              */
@@ -22895,6 +25307,75 @@ export type GetPostResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * Analytics data of the post.
@@ -23527,7 +26008,7 @@ export type GetPostResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -23536,6 +26017,75 @@ export type GetPostResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Analytics data of the post.
@@ -24312,7 +26862,7 @@ export type UpdatePostResponses = {
             /**
              * The type of content being shared.
              */
-            media_type: 'post' | 'story' | 'url' | 'reel';
+            media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
             /**
              * The author of the shared content, if applicable.
              */
@@ -24321,6 +26871,75 @@ export type UpdatePostResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * Analytics data of the post.
@@ -24839,7 +27458,7 @@ export type UpdatePostResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -24848,6 +27467,75 @@ export type UpdatePostResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Analytics data of the post.
@@ -25391,7 +28079,7 @@ export type CreatePostResponses = {
             /**
              * The type of content being shared.
              */
-            media_type: 'post' | 'story' | 'url' | 'reel';
+            media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
             /**
              * The author of the shared content, if applicable.
              */
@@ -25400,6 +28088,75 @@ export type CreatePostResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * Analytics data of the post.
@@ -25918,7 +28675,7 @@ export type CreatePostResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -25927,6 +28684,75 @@ export type CreatePostResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Analytics data of the post.
@@ -25974,6 +28800,100 @@ export type CreatePostResponses = {
 };
 
 export type CreatePostResponse = CreatePostResponses[keyof CreatePostResponses];
+
+export type CreateStoryData = {
+    body: {
+        /**
+         * A file to be uploaded.
+         */
+        attachment: {
+            /**
+             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
+             */
+            content: string;
+            /**
+             * <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME type</a> of the file.
+             */
+            content_type: string;
+            /**
+             * Name of the file (including extension).
+             */
+            filename: string;
+            /**
+             * Metadata of the the file.
+             */
+            metadata?: {
+                /**
+                 * Duration of the media file.
+                 */
+                duration?: number;
+            };
+        };
+        /**
+         * Optional caption for the story. User mentions can be added by inserting an @ followed by the ID or public identifier of the user (example: @JohnDoe), if supported by the provider.
+         */
+        text?: string;
+        specifics?: unknown & {
+            /**
+             * Specific options to apply if the provider of the targeted account is Instagram
+             */
+            instagram?: {
+                /**
+                 * Location sticker to attach to the story.
+                 */
+                location?: {
+                    /**
+                     * The ID of the location (from the Search Locations method) to attach as a sticker.
+                     */
+                    id: string;
+                    /**
+                     * The display name of the location, rendered as the sticker text.
+                     */
+                    name: string;
+                };
+            };
+        };
+    };
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/posts/stories';
+};
+
+export type CreateStoryResponses = {
+    /**
+     * Default Response
+     */
+    201: {
+        object: 'Story';
+        /**
+         * The ID of the story for the provider.
+         */
+        id: string;
+        /**
+         * The story's raw provider-native identifier.
+         */
+        provider_id: string;
+        /**
+         * The type of media attached to the story.
+         */
+        media_type: 'img' | 'video';
+        /**
+         * The creation date of the story. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         */
+        created_at: string;
+        /**
+         * The expiration date of the story (~24h after creation, if supported by the provider). Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         */
+        expires_at?: string;
+    };
+};
+
+export type CreateStoryResponse = CreateStoryResponses[keyof CreateStoryResponses];
 
 export type RemovePostReactionData = {
     body: {
@@ -26479,7 +29399,7 @@ export type GetPostCommentsListResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -26488,6 +29408,75 @@ export type GetPostCommentsListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Is the current user the sender of the comment.
@@ -26993,7 +29982,7 @@ export type AddPostCommentResponses = {
             /**
              * The type of content being shared.
              */
-            media_type: 'post' | 'story' | 'url' | 'reel';
+            media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
             /**
              * The author of the shared content, if applicable.
              */
@@ -27002,6 +29991,75 @@ export type AddPostCommentResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * Is the current user the sender of the comment.
@@ -27389,7 +30447,7 @@ export type UpdatePostCommentResponses = {
             /**
              * The type of content being shared.
              */
-            media_type: 'post' | 'story' | 'url' | 'reel';
+            media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
             /**
              * The author of the shared content, if applicable.
              */
@@ -27398,6 +30456,75 @@ export type UpdatePostCommentResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * Is the current user the sender of the comment.
@@ -27786,7 +30913,7 @@ export type ReplyToCommentResponses = {
             /**
              * The type of content being shared.
              */
-            media_type: 'post' | 'story' | 'url' | 'reel';
+            media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
             /**
              * The author of the shared content, if applicable.
              */
@@ -27795,6 +30922,75 @@ export type ReplyToCommentResponses = {
              * A brief description of the shared content.
              */
             description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment for the provider.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * Content of the attachement
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
         }>;
         /**
          * Is the current user the sender of the comment.
@@ -28109,7 +31305,7 @@ export type GetPostCommentRepliesListResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -28118,6 +31314,75 @@ export type GetPostCommentRepliesListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Is the current user the sender of the comment.
@@ -28790,7 +32055,7 @@ export type GetUserCommentsListResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -28799,6 +32064,75 @@ export type GetUserCommentsListResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Is the current user the sender of the comment.
@@ -29445,7 +32779,7 @@ export type GetUserCommentsListResponses = {
                     /**
                      * The type of content being shared.
                      */
-                    media_type: 'post' | 'story' | 'url' | 'reel';
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                     /**
                      * The author of the shared content, if applicable.
                      */
@@ -29454,6 +32788,75 @@ export type GetUserCommentsListResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * Analytics data of the post.
@@ -30086,7 +33489,7 @@ export type GetUserCommentsListResponses = {
                         /**
                          * The type of content being shared.
                          */
-                        media_type: 'post' | 'story' | 'url' | 'reel';
+                        media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                         /**
                          * The author of the shared content, if applicable.
                          */
@@ -30095,6 +33498,75 @@ export type GetUserCommentsListResponses = {
                          * A brief description of the shared content.
                          */
                         description?: string;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'contact_card';
+                        /**
+                         * The name of the shared contact.
+                         */
+                        display_name?: string;
+                        /**
+                         * The organization of the shared contact.
+                         */
+                        organization?: string;
+                        /**
+                         * The phone numbers of the shared contact.
+                         */
+                        phones: Array<{
+                            /**
+                             * The phone number of the shared contact.
+                             */
+                            number: string;
+                            /**
+                             * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
+                        /**
+                         * The email addresses of the shared contact.
+                         */
+                        emails: Array<{
+                            /**
+                             * The email address of the shared contact.
+                             */
+                            address: string;
+                            /**
+                             * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
                     }>;
                     /**
                      * Analytics data of the post.
@@ -31086,7 +34558,7 @@ export type GetUserReactionsListResponses = {
                     /**
                      * The type of content being shared.
                      */
-                    media_type: 'post' | 'story' | 'url' | 'reel';
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                     /**
                      * The author of the shared content, if applicable.
                      */
@@ -31095,6 +34567,75 @@ export type GetUserReactionsListResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * Analytics data of the post.
@@ -31727,7 +35268,7 @@ export type GetUserReactionsListResponses = {
                         /**
                          * The type of content being shared.
                          */
-                        media_type: 'post' | 'story' | 'url' | 'reel';
+                        media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                         /**
                          * The author of the shared content, if applicable.
                          */
@@ -31736,6 +35277,75 @@ export type GetUserReactionsListResponses = {
                          * A brief description of the shared content.
                          */
                         description?: string;
+                    } | {
+                        object: 'Attachment';
+                        /**
+                         * The unique identifier of the attachment for the provider.
+                         */
+                        id: string;
+                        /**
+                         * The size of the attachment in bytes.
+                         */
+                        file_size?: number;
+                        /**
+                         * Is the attachment inline in the content.
+                         */
+                        is_inline: boolean;
+                        /**
+                         * The attachment is not available for download because it was removed from provider servers.
+                         */
+                        is_unavailable?: boolean;
+                        /**
+                         * The MIME type of the attachment.
+                         */
+                        mimetype: string;
+                        /**
+                         * The URL to download the attachment.
+                         */
+                        url: string;
+                        /**
+                         * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        url_expires_at?: string;
+                        /**
+                         * Content of the attachement
+                         */
+                        content?: string;
+                        type: 'contact_card';
+                        /**
+                         * The name of the shared contact.
+                         */
+                        display_name?: string;
+                        /**
+                         * The organization of the shared contact.
+                         */
+                        organization?: string;
+                        /**
+                         * The phone numbers of the shared contact.
+                         */
+                        phones: Array<{
+                            /**
+                             * The phone number of the shared contact.
+                             */
+                            number: string;
+                            /**
+                             * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
+                        /**
+                         * The email addresses of the shared contact.
+                         */
+                        emails: Array<{
+                            /**
+                             * The email address of the shared contact.
+                             */
+                            address: string;
+                            /**
+                             * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                             */
+                            type?: string;
+                        }>;
                     }>;
                     /**
                      * Analytics data of the post.
@@ -32569,6 +36179,10 @@ export type GetCalendarEventListResponses = {
                  */
                 is_organizer: boolean;
                 /**
+                 * Is the attendee the connected account.
+                 */
+                is_self: boolean;
+                /**
                  * Is the attendee optional (based on type).
                  */
                 is_optional: boolean;
@@ -32800,6 +36414,12 @@ export type CreateCalendarEventData = {
              * Email of the attendee.
              */
             email: string;
+            /**
+             * The type of the attendee.
+             * - `required` the attendance of the attendee is required.
+             * - `optional` the attendance of the attendee is optional.
+             */
+            type?: 'required' | 'optional';
         }>;
         /**
          * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545.
@@ -32961,6 +36581,10 @@ export type CreateCalendarEventResponses = {
              * Is the attendee the organizer of the event.
              */
             is_organizer: boolean;
+            /**
+             * Is the attendee the connected account.
+             */
+            is_self: boolean;
             /**
              * Is the attendee optional (based on type).
              */
@@ -33242,6 +36866,10 @@ export type GetCalendarEventResponses = {
              */
             is_organizer: boolean;
             /**
+             * Is the attendee the connected account.
+             */
+            is_self: boolean;
+            /**
              * Is the attendee optional (based on type).
              */
             is_optional: boolean;
@@ -33460,6 +37088,12 @@ export type UpdateCalendarEventData = {
              * Email of the attendee.
              */
             email: string;
+            /**
+             * The type of the attendee.
+             * - `required` the attendance of the attendee is required.
+             * - `optional` the attendance of the attendee is optional.
+             */
+            type?: 'required' | 'optional';
         }>;
         /**
          * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545.
@@ -33626,6 +37260,10 @@ export type UpdateCalendarEventResponses = {
              */
             is_organizer: boolean;
             /**
+             * Is the attendee the connected account.
+             */
+            is_self: boolean;
+            /**
              * Is the attendee optional (based on type).
              */
             is_optional: boolean;
@@ -33786,6 +37424,110 @@ export type UpdateCalendarEventResponses = {
 
 export type UpdateCalendarEventResponse = UpdateCalendarEventResponses[keyof UpdateCalendarEventResponses];
 
+export type SetCalendarEventRsvpData = {
+    body: {
+        /**
+         * The response of the connected account to the invitation.
+         * - `yes` accepts the invitation.
+         * - `maybe` accepts the invitation tentatively.
+         * - `no` declines the invitation.
+         */
+        status: 'yes' | 'maybe' | 'no';
+        /**
+         * A comment sent to the organizer along with the response.
+         */
+        comment?: string;
+    };
+    path: {
+        /**
+         * Identifier of the parent calendar.
+         */
+        calendar_id: string;
+        /**
+         * ID of the event to respond to.
+         */
+        event_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/calendars/{calendar_id}/events/{event_id}/rsvp';
+};
+
+export type SetCalendarEventRsvpResponses = {
+    /**
+     * Default Response
+     */
+    204: void;
+};
+
+export type SetCalendarEventRsvpResponse = SetCalendarEventRsvpResponses[keyof SetCalendarEventRsvpResponses];
+
+export type CancelCalendarEventData = {
+    body?: {
+        /**
+         * A message about the cancellation sent to the attendees. Only available for outlook.
+         */
+        comment?: string;
+    };
+    path: {
+        /**
+         * Identifier of the parent calendar.
+         */
+        calendar_id: string;
+        /**
+         * ID of the event to cancel.
+         */
+        event_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/calendars/{calendar_id}/events/{event_id}/cancel';
+};
+
+export type CancelCalendarEventResponses = {
+    /**
+     * Default Response
+     */
+    204: void;
+};
+
+export type CancelCalendarEventResponse = CancelCalendarEventResponses[keyof CancelCalendarEventResponses];
+
+export type RestoreCalendarEventData = {
+    body?: never;
+    path: {
+        /**
+         * Identifier of the parent calendar.
+         */
+        calendar_id: string;
+        /**
+         * ID of the event to restore.
+         */
+        event_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/calendars/{calendar_id}/events/{event_id}/restore';
+};
+
+export type RestoreCalendarEventResponses = {
+    /**
+     * Default Response
+     */
+    204: void;
+};
+
+export type RestoreCalendarEventResponse = RestoreCalendarEventResponses[keyof RestoreCalendarEventResponses];
+
 export type ProxyRequestData = {
     body: {
         /**
@@ -33837,10 +37579,16 @@ export type ProxyRequestData = {
 
 export type ProxyRequestResponses = {
     /**
-     * Default Response
+     * The raw response returned by LinkedIn.
      */
     200: {
         object: 'LinkedInRawResponse';
+        /**
+         * The LinkedIn response headers to your request.
+         */
+        headers: {
+            [key: string]: string | Array<string>;
+        };
         /**
          * The raw response data that your LinkedIn request returned.
          */
@@ -35245,7 +38993,7 @@ export type PerformClassicSearchFromUrlResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -35254,6 +39002,75 @@ export type PerformClassicSearchFromUrlResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Analytics data of the post.
@@ -35772,7 +39589,7 @@ export type PerformClassicSearchFromUrlResponses = {
                     /**
                      * The type of content being shared.
                      */
-                    media_type: 'post' | 'story' | 'url' | 'reel';
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                     /**
                      * The author of the shared content, if applicable.
                      */
@@ -35781,6 +39598,75 @@ export type PerformClassicSearchFromUrlResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * Analytics data of the post.
@@ -36781,7 +40667,7 @@ export type PerformClassicPostsSearchResponses = {
                 /**
                  * The type of content being shared.
                  */
-                media_type: 'post' | 'story' | 'url' | 'reel';
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                 /**
                  * The author of the shared content, if applicable.
                  */
@@ -36790,6 +40676,75 @@ export type PerformClassicPostsSearchResponses = {
                  * A brief description of the shared content.
                  */
                 description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment for the provider.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * Content of the attachement
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
             }>;
             /**
              * Analytics data of the post.
@@ -37308,7 +41263,7 @@ export type PerformClassicPostsSearchResponses = {
                     /**
                      * The type of content being shared.
                      */
-                    media_type: 'post' | 'story' | 'url' | 'reel';
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
                     /**
                      * The author of the shared content, if applicable.
                      */
@@ -37317,6 +41272,75 @@ export type PerformClassicPostsSearchResponses = {
                      * A brief description of the shared content.
                      */
                     description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment for the provider.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * Content of the attachement
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
                 }>;
                 /**
                  * Analytics data of the post.
@@ -51501,6 +55525,12 @@ export type SolveCheckpointResponses = {
         } | {
             type: 'IN_APP_VALIDATION';
         } | {
+            type: 'PAIRING_CODE';
+            /**
+             * The pairing code to enter on the phone to link the device.
+             */
+            code: string;
+        } | {
             type: 'PHONE_REGISTER';
         } | {
             type: '2FA';
@@ -51541,6 +55571,21 @@ export type SolveCheckpointResponses = {
                  * The name of the contract.
                  */
                 name: string;
+            }>;
+        } | {
+            type: 'CONSCENT_SCREEN';
+            /**
+             * A list of products to choose from.
+             */
+            products: Array<{
+                /**
+                 * The ID of the product.
+                 */
+                id: string;
+                /**
+                 * The display name of the product.
+                 */
+                display_name: string;
             }>;
         } | {
             type: 'CHALLENGE_SELECTION';
@@ -51754,6 +55799,12 @@ export type RequestCheckpointResponses = {
         } | {
             type: 'IN_APP_VALIDATION';
         } | {
+            type: 'PAIRING_CODE';
+            /**
+             * The pairing code to enter on the phone to link the device.
+             */
+            code: string;
+        } | {
             type: 'PHONE_REGISTER';
         } | {
             type: '2FA';
@@ -51794,6 +55845,21 @@ export type RequestCheckpointResponses = {
                  * The name of the contract.
                  */
                 name: string;
+            }>;
+        } | {
+            type: 'CONSCENT_SCREEN';
+            /**
+             * A list of products to choose from.
+             */
+            products: Array<{
+                /**
+                 * The ID of the product.
+                 */
+                id: string;
+                /**
+                 * The display name of the product.
+                 */
+                display_name: string;
             }>;
         } | {
             type: 'CHALLENGE_SELECTION';
@@ -52013,6 +56079,11 @@ export type StartAuthIntentData = {
              * This must be set to `true`
              */
             qrcode: boolean;
+        } | {
+            /**
+             * Phone number to link, in international format with digits only (no `+`, spaces or separators), e.g. `33612345678`. A pairing code will be returned to enter on this phone.
+             */
+            phone_number: string;
         };
         /**
          * WhatsApp specific configuration.
@@ -52190,14 +56261,18 @@ export type StartAuthIntentData = {
                 ip?: string;
             };
             /**
-             * Specifies which LinkedIn products to activate. For the premium `recruiter` and `sales_navigator` products, only one can be activated per account. Also, if the account does not have an active subscription, the linking will fail.<br>When reconnecting an account, just omit this field to keep connecting the same products, or provide new values to expand or narrow the products scope. <a href="https://developer.unipile.com/v2.0/docs/linkedin-link-accounts">Learn more about Linkedin products</a>
-             * `classic` : LinkedIn Social network<br>
+             * Specifies which LinkedIn products are allowed to be activated (as long as the account actually has the relevant subscriptions). By default, all products are made available.<br>When reconnecting an account, just omit this field to keep allowing access to the same products, or provide new values to expand or narrow the scope. <a href="https://developer.unipile.com/v2.0/docs/linkedin-link-accounts">Learn more about Linkedin products</a>
+             * `classic` : Personnal Social network<br>
              * `recruiter` : Recruiter<br>
-             * `sales_navigator` : Sales navigator<br>
+             * `sales_navigator` : Sales Navigator<br>
              * `company` : Company Pages
              *
              */
-            products?: Array<'classic' | 'recruiter' | 'company'> | Array<'classic' | 'sales_navigator' | 'company'>;
+            products?: Array<'classic' | 'company' | 'recruiter' | 'sales_navigator'>;
+            /**
+             * When true, return a product selection checkpoint after authentication, even when only one LinkedIn product is available. When false, all available products are selected automatically, except Recruiter when Sales Navigator is also available.
+             */
+            allow_product_selection?: boolean;
             [key: string]: unknown | {
                 /**
                  * The host of the proxy.
@@ -52232,7 +56307,7 @@ export type StartAuthIntentData = {
                  * An IPv4 address to infer proxy's location.
                  */
                 ip?: string;
-            } | Array<'classic' | 'recruiter' | 'company'> | Array<'classic' | 'sales_navigator' | 'company'> | undefined;
+            } | Array<'classic' | 'company' | 'recruiter' | 'sales_navigator'> | boolean | undefined;
         };
     } | {
         /**
@@ -52559,6 +56634,12 @@ export type StartAuthIntentResponses = {
         } | {
             type: 'IN_APP_VALIDATION';
         } | {
+            type: 'PAIRING_CODE';
+            /**
+             * The pairing code to enter on the phone to link the device.
+             */
+            code: string;
+        } | {
             type: 'PHONE_REGISTER';
         } | {
             type: '2FA';
@@ -52599,6 +56680,21 @@ export type StartAuthIntentResponses = {
                  * The name of the contract.
                  */
                 name: string;
+            }>;
+        } | {
+            type: 'CONSCENT_SCREEN';
+            /**
+             * A list of products to choose from.
+             */
+            products: Array<{
+                /**
+                 * The ID of the product.
+                 */
+                id: string;
+                /**
+                 * The display name of the product.
+                 */
+                display_name: string;
             }>;
         } | {
             type: 'CHALLENGE_SELECTION';
@@ -52987,14 +57083,18 @@ export type CreateAuthLinkData = {
                     ip?: string;
                 };
                 /**
-                 * Specifies which LinkedIn products to activate. For the premium `recruiter` and `sales_navigator` products, only one can be activated per account. Also, if the account does not have an active subscription, the linking will fail.<br>When reconnecting an account, just omit this field to keep connecting the same products, or provide new values to expand or narrow the products scope. <a href="https://developer.unipile.com/v2.0/docs/linkedin-link-accounts">Learn more about Linkedin products</a>
-                 * `classic` : LinkedIn Social network<br>
+                 * Specifies which LinkedIn products are allowed to be activated (as long as the account actually has the relevant subscriptions). By default, all products are made available.<br>When reconnecting an account, just omit this field to keep allowing access to the same products, or provide new values to expand or narrow the scope. <a href="https://developer.unipile.com/v2.0/docs/linkedin-link-accounts">Learn more about Linkedin products</a>
+                 * `classic` : Personnal Social network<br>
                  * `recruiter` : Recruiter<br>
-                 * `sales_navigator` : Sales navigator<br>
+                 * `sales_navigator` : Sales Navigator<br>
                  * `company` : Company Pages
                  *
                  */
-                products?: Array<'classic' | 'recruiter' | 'company'> | Array<'classic' | 'sales_navigator' | 'company'>;
+                products?: Array<'classic' | 'company' | 'recruiter' | 'sales_navigator'>;
+                /**
+                 * When true, show the product selection screen after authentication, even when only one LinkedIn product is available; this screen also displays the requested scopes. When false, products are selected automatically and scope consent is collected before authentication.
+                 */
+                allow_product_selection?: boolean;
                 /**
                  * The authentication methods to show in the hosted auth.
                  * `credentials` : Credentials Authentication
@@ -53053,41 +57153,13 @@ export type CreateAuthLinkData = {
                      */
                     ip?: string;
                 };
-                [key: string]: unknown | {
-                    /**
-                     * The host of the proxy.
-                     */
-                    host: string;
-                    /**
-                     * The port of the proxy.
-                     */
-                    port: number;
-                    /**
-                     * The username to connect to the proxy.
-                     */
-                    username?: string;
-                    /**
-                     * The password to connect to the proxy.
-                     */
-                    password?: string;
-                    /**
-                     * The protocol of the proxy. Defaults to `https`.
-                     * - `https` is HTTPS.
-                     * - `http` is HTTP.
-                     * - `socks5` is SOCKS5.
-                     * - `socks4` is SOCKS4.
-                     */
-                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
-                } | {
-                    /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
-                     */
-                    country?: string;
-                    /**
-                     * An IPv4 address to infer proxy's location.
-                     */
-                    ip?: string;
-                } | undefined;
+                /**
+                 * The authentication methods to show in the hosted auth.
+                 * `qr` : QR Code Authentication
+                 * `pairing` : Pairing Code Authentication
+                 *
+                 */
+                allow_methods?: Array<'qr' | 'pairing'>;
             };
             /**
              * Instagram specific configuration.
@@ -53551,14 +57623,18 @@ export type CreateAuthLinkData = {
                     ip?: string;
                 };
                 /**
-                 * Specifies which LinkedIn products to activate. For the premium `recruiter` and `sales_navigator` products, only one can be activated per account. Also, if the account does not have an active subscription, the linking will fail.<br>When reconnecting an account, just omit this field to keep connecting the same products, or provide new values to expand or narrow the products scope. <a href="https://developer.unipile.com/v2.0/docs/linkedin-link-accounts">Learn more about Linkedin products</a>
-                 * `classic` : LinkedIn Social network<br>
+                 * Specifies which LinkedIn products are allowed to be activated (as long as the account actually has the relevant subscriptions). By default, all products are made available.<br>When reconnecting an account, just omit this field to keep allowing access to the same products, or provide new values to expand or narrow the scope. <a href="https://developer.unipile.com/v2.0/docs/linkedin-link-accounts">Learn more about Linkedin products</a>
+                 * `classic` : Personnal Social network<br>
                  * `recruiter` : Recruiter<br>
-                 * `sales_navigator` : Sales navigator<br>
+                 * `sales_navigator` : Sales Navigator<br>
                  * `company` : Company Pages
                  *
                  */
-                products?: Array<'classic' | 'recruiter' | 'company'> | Array<'classic' | 'sales_navigator' | 'company'>;
+                products?: Array<'classic' | 'company' | 'recruiter' | 'sales_navigator'>;
+                /**
+                 * When true, show the product selection screen after authentication, even when only one LinkedIn product is available; this screen also displays the requested scopes. When false, products are selected automatically and scope consent is collected before authentication.
+                 */
+                allow_product_selection?: boolean;
                 /**
                  * The authentication methods to show in the hosted auth.
                  * `credentials` : Credentials Authentication
@@ -53617,41 +57693,13 @@ export type CreateAuthLinkData = {
                      */
                     ip?: string;
                 };
-                [key: string]: unknown | {
-                    /**
-                     * The host of the proxy.
-                     */
-                    host: string;
-                    /**
-                     * The port of the proxy.
-                     */
-                    port: number;
-                    /**
-                     * The username to connect to the proxy.
-                     */
-                    username?: string;
-                    /**
-                     * The password to connect to the proxy.
-                     */
-                    password?: string;
-                    /**
-                     * The protocol of the proxy. Defaults to `https`.
-                     * - `https` is HTTPS.
-                     * - `http` is HTTP.
-                     * - `socks5` is SOCKS5.
-                     * - `socks4` is SOCKS4.
-                     */
-                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
-                } | {
-                    /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
-                     */
-                    country?: string;
-                    /**
-                     * An IPv4 address to infer proxy's location.
-                     */
-                    ip?: string;
-                } | undefined;
+                /**
+                 * The authentication methods to show in the hosted auth.
+                 * `qr` : QR Code Authentication
+                 * `pairing` : Pairing Code Authentication
+                 *
+                 */
+                allow_methods?: Array<'qr' | 'pairing'>;
             };
             /**
              * Instagram specific configuration.
@@ -54993,7 +59041,7 @@ export type ListWebhookConversationsResponses = {
             /**
              * The type of the event that was delivered.
              */
-            event_type: 'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new';
+            event_type: 'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new';
             /**
              * The date and time at which the delivery attempt was made, in ISO 8601 format.
              */
@@ -55059,7 +59107,7 @@ export type ListWebhookEndpointsResponses = {
             enabled: boolean;
             description: string | null;
             url: string;
-            trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new'>;
+            trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new'>;
             secret: string;
             object: 'WebhookEndpoint';
             id: string;
@@ -55096,7 +59144,7 @@ export type CreateWebhookEndpointData = {
          * The events that will trigger the webhook endpoint.
          * Refer to [Events Types](https://developer.unipile.com/v2.0/reference/event-types-1) to see the list of available values.
          */
-        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new'>;
+        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new'>;
         /**
          * Restrict the webhook to specific accounts. Leave empty or omit the field to listen to events from every account in the application.
          */
@@ -55123,7 +59171,7 @@ export type CreateWebhookEndpointResponses = {
         enabled: boolean;
         description: string | null;
         url: string;
-        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new'>;
+        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new'>;
         secret: string;
         object: 'WebhookEndpoint';
         id: string;
@@ -55195,7 +59243,7 @@ export type GetWebhookEndpointResponses = {
         enabled: boolean;
         description: string | null;
         url: string;
-        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new'>;
+        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new'>;
         secret: string;
         object: 'WebhookEndpoint';
         id: string;
@@ -55230,7 +59278,7 @@ export type UpdateWebhookEndpointData = {
          * The events that will trigger the webhook endpoint.
          * Refer to [Events Types](https://developer.unipile.com/v2.0/reference/event-types-1) to see the list of available values.
          */
-        trigger_events?: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new'>;
+        trigger_events?: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new'>;
         /**
          * Restrict the webhook to specific accounts. Leave empty or omit the field to listen to events from every account in the application.
          */
@@ -55266,7 +59314,7 @@ export type UpdateWebhookEndpointResponses = {
         enabled: boolean;
         description: string | null;
         url: string;
-        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new'>;
+        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new'>;
         secret: string;
         object: 'WebhookEndpoint';
         id: string;
