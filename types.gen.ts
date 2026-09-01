@@ -55573,7 +55573,7 @@ export type SolveCheckpointResponses = {
                 name: string;
             }>;
         } | {
-            type: 'CONSCENT_SCREEN';
+            type: 'CONSENT_SCREEN';
             /**
              * A list of products to choose from.
              */
@@ -55847,7 +55847,7 @@ export type RequestCheckpointResponses = {
                 name: string;
             }>;
         } | {
-            type: 'CONSCENT_SCREEN';
+            type: 'CONSENT_SCREEN';
             /**
              * A list of products to choose from.
              */
@@ -56682,7 +56682,7 @@ export type StartAuthIntentResponses = {
                 name: string;
             }>;
         } | {
-            type: 'CONSCENT_SCREEN';
+            type: 'CONSENT_SCREEN';
             /**
              * A list of products to choose from.
              */
