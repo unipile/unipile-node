@@ -19036,7 +19036,7 @@ export type GetUserProfileResponses = {
              * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
              * `OUT_OF_NETWORK`: Unreachable user.'
              */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
             relation_request?: {
                 object: 'RelationRequest';
                 /**
@@ -43961,15 +43961,6 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                  */
                 headline?: string;
                 /**
-                 * Network distance to a User.
-                 * `SELF`: Yourself.
-                 * `FIRST_DEGREE`: 1st degree connection.
-                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-                 * `OUT_OF_NETWORK`: Unreachable user.'
-                 */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
                  * The location of the User.
                  */
                 location?: string;
@@ -43977,6 +43968,15 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                  * Whether it is possible to send an inMail to this User.
                  */
                 can_send_inmail?: boolean;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
                 /**
                  * Indidates that you don't have access to the full profile of this User.
                  */
@@ -44116,6 +44116,10 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                  */
                 headline?: string;
                 /**
+                 * Whether it is possible to send an inMail to this User.
+                 */
+                can_send_inmail?: boolean;
+                /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
                  * `FIRST_DEGREE`: 1st degree connection.
@@ -44123,11 +44127,7 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                  * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
                  * `OUT_OF_NETWORK`: Unreachable user.'
                  */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
-                 * Whether it is possible to send an inMail to this User.
-                 */
-                can_send_inmail?: boolean;
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
                 /**
                  * Indidates that you have access to the full profile of this User.
                  */
@@ -44645,15 +44645,6 @@ export type GetRecruiterApplicantByIdResponses = {
              */
             headline?: string;
             /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
              * The location of the User.
              */
             location?: string;
@@ -44661,6 +44652,15 @@ export type GetRecruiterApplicantByIdResponses = {
              * Whether it is possible to send an inMail to this User.
              */
             can_send_inmail?: boolean;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
             /**
              * Indidates that you don't have access to the full profile of this User.
              */
@@ -44800,6 +44800,10 @@ export type GetRecruiterApplicantByIdResponses = {
              */
             headline?: string;
             /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            /**
              * Network distance to a User.
              * `SELF`: Yourself.
              * `FIRST_DEGREE`: 1st degree connection.
@@ -44807,11 +44811,7 @@ export type GetRecruiterApplicantByIdResponses = {
              * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
              * `OUT_OF_NETWORK`: Unreachable user.'
              */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail?: boolean;
+            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
             /**
              * Indidates that you have access to the full profile of this User.
              */
@@ -45414,15 +45414,6 @@ export type GetRecruiterPipelineCandidatesResponses = {
                  */
                 headline?: string;
                 /**
-                 * Network distance to a User.
-                 * `SELF`: Yourself.
-                 * `FIRST_DEGREE`: 1st degree connection.
-                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-                 * `OUT_OF_NETWORK`: Unreachable user.'
-                 */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
                  * The location of the User.
                  */
                 location?: string;
@@ -45430,6 +45421,15 @@ export type GetRecruiterPipelineCandidatesResponses = {
                  * Whether it is possible to send an inMail to this User.
                  */
                 can_send_inmail?: boolean;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
                 /**
                  * Indidates that you don't have access to the full profile of this User.
                  */
@@ -45569,6 +45569,10 @@ export type GetRecruiterPipelineCandidatesResponses = {
                  */
                 headline?: string;
                 /**
+                 * Whether it is possible to send an inMail to this User.
+                 */
+                can_send_inmail?: boolean;
+                /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
                  * `FIRST_DEGREE`: 1st degree connection.
@@ -45576,11 +45580,7 @@ export type GetRecruiterPipelineCandidatesResponses = {
                  * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
                  * `OUT_OF_NETWORK`: Unreachable user.'
                  */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
-                 * Whether it is possible to send an inMail to this User.
-                 */
-                can_send_inmail?: boolean;
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
                 /**
                  * Indidates that you have access to the full profile of this User.
                  */
@@ -46637,15 +46637,6 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
              */
             headline?: string;
             /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
              * The location of the User.
              */
             location?: string;
@@ -46653,6 +46644,15 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
              * Whether it is possible to send an inMail to this User.
              */
             can_send_inmail?: boolean;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
             product: 'recruiter';
             /**
              * Indidates that you don't have access to the full profile of this User.
@@ -46794,6 +46794,10 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
              */
             headline?: string;
             /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            /**
              * Network distance to a User.
              * `SELF`: Yourself.
              * `FIRST_DEGREE`: 1st degree connection.
@@ -46801,11 +46805,7 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
              * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
              * `OUT_OF_NETWORK`: Unreachable user.'
              */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail?: boolean;
+            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
             product: 'recruiter';
             /**
              * Indidates that you have access to the full profile of this User.
@@ -48584,15 +48584,6 @@ export type PerformRecruiterSearchFromUrlResponses = {
              */
             headline?: string;
             /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
              * The location of the User.
              */
             location?: string;
@@ -48600,6 +48591,15 @@ export type PerformRecruiterSearchFromUrlResponses = {
              * Whether it is possible to send an inMail to this User.
              */
             can_send_inmail?: boolean;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
             product: 'recruiter';
             /**
              * Indidates that you don't have access to the full profile of this User.
@@ -48741,6 +48741,10 @@ export type PerformRecruiterSearchFromUrlResponses = {
              */
             headline?: string;
             /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            /**
              * Network distance to a User.
              * `SELF`: Yourself.
              * `FIRST_DEGREE`: 1st degree connection.
@@ -48748,11 +48752,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
              * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
              * `OUT_OF_NETWORK`: Unreachable user.'
              */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail?: boolean;
+            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
             product: 'recruiter';
             /**
              * Indidates that you have access to the full profile of this User.
@@ -49242,15 +49242,6 @@ export type PerformRecruiterSearchFromUrlResponses = {
                  */
                 headline?: string;
                 /**
-                 * Network distance to a User.
-                 * `SELF`: Yourself.
-                 * `FIRST_DEGREE`: 1st degree connection.
-                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-                 * `OUT_OF_NETWORK`: Unreachable user.'
-                 */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
                  * The location of the User.
                  */
                 location?: string;
@@ -49258,6 +49249,15 @@ export type PerformRecruiterSearchFromUrlResponses = {
                  * Whether it is possible to send an inMail to this User.
                  */
                 can_send_inmail?: boolean;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
                 /**
                  * Indidates that you don't have access to the full profile of this User.
                  */
@@ -49397,6 +49397,10 @@ export type PerformRecruiterSearchFromUrlResponses = {
                  */
                 headline?: string;
                 /**
+                 * Whether it is possible to send an inMail to this User.
+                 */
+                can_send_inmail?: boolean;
+                /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
                  * `FIRST_DEGREE`: 1st degree connection.
@@ -49404,11 +49408,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                  * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
                  * `OUT_OF_NETWORK`: Unreachable user.'
                  */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
-                 * Whether it is possible to send an inMail to this User.
-                 */
-                can_send_inmail?: boolean;
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
                 /**
                  * Indidates that you have access to the full profile of this User.
                  */
@@ -49864,15 +49864,6 @@ export type PerformRecruiterSearchFromUrlResponses = {
                  */
                 headline?: string;
                 /**
-                 * Network distance to a User.
-                 * `SELF`: Yourself.
-                 * `FIRST_DEGREE`: 1st degree connection.
-                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-                 * `OUT_OF_NETWORK`: Unreachable user.'
-                 */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
                  * The location of the User.
                  */
                 location?: string;
@@ -49880,6 +49871,15 @@ export type PerformRecruiterSearchFromUrlResponses = {
                  * Whether it is possible to send an inMail to this User.
                  */
                 can_send_inmail?: boolean;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
                 /**
                  * Indidates that you don't have access to the full profile of this User.
                  */
@@ -50019,6 +50019,10 @@ export type PerformRecruiterSearchFromUrlResponses = {
                  */
                 headline?: string;
                 /**
+                 * Whether it is possible to send an inMail to this User.
+                 */
+                can_send_inmail?: boolean;
+                /**
                  * Network distance to a User.
                  * `SELF`: Yourself.
                  * `FIRST_DEGREE`: 1st degree connection.
@@ -50026,11 +50030,7 @@ export type PerformRecruiterSearchFromUrlResponses = {
                  * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
                  * `OUT_OF_NETWORK`: Unreachable user.'
                  */
-                network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-                /**
-                 * Whether it is possible to send an inMail to this User.
-                 */
-                can_send_inmail?: boolean;
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
                 /**
                  * Indidates that you have access to the full profile of this User.
                  */
@@ -51165,15 +51165,6 @@ export type PerformRecruiterPeopleSearchResponses = {
              */
             headline?: string;
             /**
-             * Network distance to a User.
-             * `SELF`: Yourself.
-             * `FIRST_DEGREE`: 1st degree connection.
-             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
-             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
-             * `OUT_OF_NETWORK`: Unreachable user.'
-             */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
              * The location of the User.
              */
             location?: string;
@@ -51181,6 +51172,15 @@ export type PerformRecruiterPeopleSearchResponses = {
              * Whether it is possible to send an inMail to this User.
              */
             can_send_inmail?: boolean;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
             product: 'recruiter';
             /**
              * Indidates that you don't have access to the full profile of this User.
@@ -51322,6 +51322,10 @@ export type PerformRecruiterPeopleSearchResponses = {
              */
             headline?: string;
             /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            /**
              * Network distance to a User.
              * `SELF`: Yourself.
              * `FIRST_DEGREE`: 1st degree connection.
@@ -51329,11 +51333,7 @@ export type PerformRecruiterPeopleSearchResponses = {
              * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
              * `OUT_OF_NETWORK`: Unreachable user.'
              */
-            network_distance: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
-            /**
-             * Whether it is possible to send an inMail to this User.
-             */
-            can_send_inmail?: boolean;
+            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
             product: 'recruiter';
             /**
              * Indidates that you have access to the full profile of this User.
@@ -55573,7 +55573,7 @@ export type SolveCheckpointResponses = {
                 name: string;
             }>;
         } | {
-            type: 'CONSCENT_SCREEN';
+            type: 'CONSENT_SCREEN';
             /**
              * A list of products to choose from.
              */
@@ -55847,7 +55847,7 @@ export type RequestCheckpointResponses = {
                 name: string;
             }>;
         } | {
-            type: 'CONSCENT_SCREEN';
+            type: 'CONSENT_SCREEN';
             /**
              * A list of products to choose from.
              */
@@ -56682,7 +56682,7 @@ export type StartAuthIntentResponses = {
                 name: string;
             }>;
         } | {
-            type: 'CONSCENT_SCREEN';
+            type: 'CONSENT_SCREEN';
             /**
              * A list of products to choose from.
              */
