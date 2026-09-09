@@ -59063,6 +59063,14 @@ export type ListWebhookConversationsResponses = {
              */
             response_body: string | null;
             /**
+             * The time between the event occurrence and this delivery attempt, in milliseconds.
+             */
+            latency_ms: number | null;
+            /**
+             * The response time of the webhook endpoint for this delivery attempt, in milliseconds.
+             */
+            response_time_ms: number | null;
+            /**
              * The type of the returned object.
              */
             object: 'WebhookConversation';
