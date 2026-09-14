@@ -16108,7 +16108,7 @@ export type SendEmailData = {
              */
             label?: string;
             /**
-             * Your custom domain pointing to https://s2.lnk-fllw.com to handle links tracking.
+             * A custom domain verified for the organization, enabled for the application, and pointing to https://track.lnk-fllw.com.
              */
             custom_domain?: string;
         };
@@ -16714,7 +16714,7 @@ export type CreateDraftData = {
              */
             label?: string;
             /**
-             * Your custom domain pointing to https://s2.lnk-fllw.com to handle links tracking.
+             * A custom domain verified for the organization, enabled for the application, and pointing to https://track.lnk-fllw.com.
              */
             custom_domain?: string;
         };
@@ -17691,7 +17691,7 @@ export type UpdateDraftData = {
              */
             label?: string;
             /**
-             * Your custom domain pointing to https://s2.lnk-fllw.com to handle links tracking.
+             * A custom domain verified for the organization, enabled for the application, and pointing to https://track.lnk-fllw.com.
              */
             custom_domain?: string;
         };
@@ -38272,7 +38272,7 @@ export type GetClassicSearchParametersResponses = {
             metadata?: {
                 object: 'SavedSearchMetadata';
                 product: 'sales_navigator';
-                last_viewed_at: number;
+                last_viewed_at: string;
                 new_results_count: number;
             } | {
                 object: 'SavedSearchMetadata';
@@ -41966,7 +41966,7 @@ export type GetClassicJobPostingResponses = {
         /**
          * The state of the Job posting.
          */
-        state: 'DRAFT' | 'LISTED' | 'CLOSED' | 'REVIEW' | 'SUSPENDED';
+        state: 'DRAFT' | 'OPEN' | 'CLOSED' | 'REVIEW' | 'SUSPENDED';
         /**
          * The type of workplace of the Job posting.
          */
@@ -42418,9 +42418,9 @@ export type PublishClassicJobPostingResponses = {
     200: {
         object: 'JobPostingPublished';
         /**
-         * The current state of the Job posting.
+         * The new state of the Job posting.
          */
-        job_state: 'DRAFT' | 'CLOSED' | 'LISTED' | 'REVIEW' | 'SUSPENDED';
+        job_state: 'DRAFT' | 'OPEN' | 'CLOSED' | 'REVIEW' | 'SUSPENDED';
     };
 };
 
@@ -43927,9 +43927,9 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
              */
             id: string;
             /**
-             * The date on which the Application was submitted. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             * The date on which the Application was submitted, in ISO 8601 format.
              */
-            applied_at: string;
+            applied_at?: string;
             /**
              * Whether the Applicant has a downloadable resume available.
              */
@@ -44611,9 +44611,9 @@ export type GetRecruiterApplicantByIdResponses = {
          */
         id: string;
         /**
-         * The date on which the Application was submitted. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         * The date on which the Application was submitted, in ISO 8601 format.
          */
-        applied_at: string;
+        applied_at?: string;
         /**
          * Whether the Applicant has a downloadable resume available.
          */
@@ -47281,56 +47281,56 @@ export type GetRecruiterJobPostingByProjectIdResponses = {
         object: 'JobPosting';
         product: 'recruiter';
         /**
-         * The budget allocated to the Job posting.
+         * The ID of the Job posting.
          */
         id: string;
         /**
-         * The budget allocated to the Job posting.
+         * The ID of the project associated with the Job posting.
          */
         project_id: string;
         /**
-         * The budget allocated to the Job posting.
+         * The title of the Job posting.
          */
         title: string;
         /**
-         * The budget allocated to the Job posting.
+         * The company on whose behalf the Job posting was published.
          */
         company: {
             /**
-             * The budget allocated to the Job posting.
+             * The ID of the company
              */
             id: string | null;
             /**
-             * The budget allocated to the Job posting.
+             * The name of the company.
              */
             name: string;
             /**
-             * The budget allocated to the Job posting.
+             * A link to the picture of the company.
              */
             public_picture_url?: string;
             /**
-             * The budget allocated to the Job posting.
+             * A link to the public profile of the company.
              */
             profile_url?: string;
         };
         /**
-         * The budget allocated to the Job posting.
+         * The location of the Job posting.
          */
         location: string;
         /**
-         * The budget allocated to the Job posting.
+         * The current state of the Job posting.
          */
-        state: 'DRAFT' | 'LISTED' | 'CLOSED' | 'REVIEW' | 'SUSPENDED';
+        state: 'DRAFT' | 'OPEN' | 'CLOSED' | 'REVIEW' | 'SUSPENDED';
         /**
-         * The budget allocated to the Job posting.
+         * The workplace type of the Job posting.
          */
         workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
         /**
-         * The budget allocated to the Job posting.
+         * A list of industries associated with the Job posting.
          */
         industries: Array<string>;
         /**
-         * The job functions associated with the Job posting.
+         * A list of job functions associated with the Job posting.
          */
         job_functions: Array<string>;
         /**
@@ -47813,7 +47813,7 @@ export type GetRecruiterJobPostingListResponses = {
             /**
              * The current state of the Job posting.
              */
-            state: 'DRAFT' | 'LISTED' | 'CLOSED' | 'REVIEW' | 'SUSPENDED';
+            state: 'DRAFT' | 'OPEN' | 'CLOSED' | 'REVIEW' | 'SUSPENDED';
             /**
              * The number of applications for this Job posting.
              */
@@ -48308,7 +48308,7 @@ export type PublishRecruiterJobPostingData = {
         bypass_email_verification?: boolean;
         mode: 'PROMOTED';
         /**
-         * Leave this field blank if you don't have a choice of budget when posting a job on LinkedIn.
+         * Leave this field blank if you don't have a choice of budget when posting a job on LinkedIn, or if you have available prepaid job slots.
          */
         budget?: {
             /**
@@ -48350,9 +48350,9 @@ export type PublishRecruiterJobPostingResponses = {
     200: {
         object: 'JobPostingPublished';
         /**
-         * The current state of the Job posting.
+         * The new state of the Job posting.
          */
-        job_state: 'DRAFT' | 'CLOSED' | 'LISTED' | 'REVIEW' | 'SUSPENDED';
+        job_state: 'DRAFT' | 'OPEN' | 'CLOSED' | 'REVIEW' | 'SUSPENDED';
     };
 };
 
@@ -48413,56 +48413,56 @@ export type GetRecruiterJobPostingByIdResponses = {
         object: 'JobPosting';
         product: 'recruiter';
         /**
-         * The budget allocated to the Job posting.
+         * The ID of the Job posting.
          */
         id: string;
         /**
-         * The budget allocated to the Job posting.
+         * The ID of the project associated with the Job posting.
          */
         project_id: string;
         /**
-         * The budget allocated to the Job posting.
+         * The title of the Job posting.
          */
         title: string;
         /**
-         * The budget allocated to the Job posting.
+         * The company on whose behalf the Job posting was published.
          */
         company: {
             /**
-             * The budget allocated to the Job posting.
+             * The ID of the company
              */
             id: string | null;
             /**
-             * The budget allocated to the Job posting.
+             * The name of the company.
              */
             name: string;
             /**
-             * The budget allocated to the Job posting.
+             * A link to the picture of the company.
              */
             public_picture_url?: string;
             /**
-             * The budget allocated to the Job posting.
+             * A link to the public profile of the company.
              */
             profile_url?: string;
         };
         /**
-         * The budget allocated to the Job posting.
+         * The location of the Job posting.
          */
         location: string;
         /**
-         * The budget allocated to the Job posting.
+         * The current state of the Job posting.
          */
-        state: 'DRAFT' | 'LISTED' | 'CLOSED' | 'REVIEW' | 'SUSPENDED';
+        state: 'DRAFT' | 'OPEN' | 'CLOSED' | 'REVIEW' | 'SUSPENDED';
         /**
-         * The budget allocated to the Job posting.
+         * The workplace type of the Job posting.
          */
         workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
         /**
-         * The budget allocated to the Job posting.
+         * A list of industries associated with the Job posting.
          */
         industries: Array<string>;
         /**
-         * The job functions associated with the Job posting.
+         * A list of job functions associated with the Job posting.
          */
         job_functions: Array<string>;
         /**
@@ -48543,6 +48543,41 @@ export type GetRecruiterJobPostingByIdResponses = {
 };
 
 export type GetRecruiterJobPostingByIdResponse = GetRecruiterJobPostingByIdResponses[keyof GetRecruiterJobPostingByIdResponses];
+
+export type GetRecruiterJobSlotsCreditsData = {
+    body?: never;
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/linkedin/recruiter/job-slots-credits';
+};
+
+export type GetRecruiterJobSlotsCreditsResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        object: 'JobSlotsCredits';
+        /**
+         * The total amount of Job slots for your Recruiter contract.
+         */
+        total: number;
+        /**
+         * The amount of Job slots currently in use for your Recruiter contract.
+         */
+        used: number;
+        /**
+         * The available amount of Job slots for your Recruiter contract.
+         */
+        available: number;
+    };
+};
+
+export type GetRecruiterJobSlotsCreditsResponse = GetRecruiterJobSlotsCreditsResponses[keyof GetRecruiterJobSlotsCreditsResponses];
 
 export type PerformRecruiterSearchFromUrlData = {
     body: {
@@ -49208,9 +49243,9 @@ export type PerformRecruiterSearchFromUrlResponses = {
              */
             id: string;
             /**
-             * The date on which the Application was submitted. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             * The date on which the Application was submitted, in ISO 8601 format.
              */
-            applied_at: string;
+            applied_at?: string;
             /**
              * Whether the Applicant has a downloadable resume available.
              */
@@ -50578,7 +50613,7 @@ export type GetRecruiterSearchParametersResponses = {
             metadata?: {
                 object: 'SavedSearchMetadata';
                 product: 'sales_navigator';
-                last_viewed_at: number;
+                last_viewed_at: string;
                 new_results_count: number;
             } | {
                 object: 'SavedSearchMetadata';
@@ -52310,7 +52345,7 @@ export type PerformSalesSearchFromUrlResponses = {
              */
             website?: string;
             /**
-             * The date on which the Company was founded. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             * The year in which the Company was founded.
              */
             founded_on?: number;
             /**
@@ -52778,7 +52813,7 @@ export type PerformSalesSearchFromUrlResponses = {
              */
             website?: string;
             /**
-             * The date on which the Company was founded. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             * The year in which the Company was founded.
              */
             founded_on?: number;
             /**
@@ -53183,7 +53218,7 @@ export type GetSalesSearchParametersResponses = {
             metadata?: {
                 object: 'SavedSearchMetadata';
                 product: 'sales_navigator';
-                last_viewed_at: number;
+                last_viewed_at: string;
                 new_results_count: number;
             } | {
                 object: 'SavedSearchMetadata';
@@ -54296,7 +54331,7 @@ export type PerformSalesCompaniesSearchResponses = {
              */
             website?: string;
             /**
-             * The date on which the Company was founded. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             * The year in which the Company was founded.
              */
             founded_on?: number;
             /**
@@ -55036,7 +55071,7 @@ export type BrowseSalesAccountListResponses = {
              */
             website?: string;
             /**
-             * The date on which the Company was founded. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             * The year in which the Company was founded.
              */
             founded_on?: number;
             /**
@@ -59062,6 +59097,14 @@ export type ListWebhookConversationsResponses = {
              * The body of the HTTP response returned by the endpoint.
              */
             response_body: string | null;
+            /**
+             * The time between the event occurrence and this delivery attempt, in milliseconds.
+             */
+            latency_ms: number | null;
+            /**
+             * The response time of the webhook endpoint for this delivery attempt, in milliseconds.
+             */
+            response_time_ms: number | null;
             /**
              * The type of the returned object.
              */
