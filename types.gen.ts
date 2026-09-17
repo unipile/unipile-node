@@ -7466,6 +7466,12 @@ export type StartChatData = {
              * - `native` send as a native media (displayed picture, voice note, recorded video, etc.)
              */
             send_mode?: 'file' | 'native';
+            /**
+             * Deprecated compatibility flag for audio attachments. Use `send_mode: "native"` instead.
+             *
+             * @deprecated
+             */
+            voice_note?: boolean;
         }>;
         /**
          * Object containing provider-specific chat data.
@@ -7605,6 +7611,12 @@ export type StartChatData = {
                              * - `native` send as a native media (displayed picture, voice note, recorded video, etc.)
                              */
                             send_mode?: 'file' | 'native';
+                            /**
+                             * Deprecated compatibility flag for audio attachments. Use `send_mode: "native"` instead.
+                             *
+                             * @deprecated
+                             */
+                            voice_note?: boolean;
                         }>;
                         /**
                          * The time frame within which to send the message.
@@ -7708,6 +7720,12 @@ export type StartChatFromInboxData = {
              * - `native` send as a native media (displayed picture, voice note, recorded video, etc.)
              */
             send_mode?: 'file' | 'native';
+            /**
+             * Deprecated compatibility flag for audio attachments. Use `send_mode: "native"` instead.
+             *
+             * @deprecated
+             */
+            voice_note?: boolean;
         }>;
         /**
          * Object containing provider-specific chat data.
@@ -7847,6 +7865,12 @@ export type StartChatFromInboxData = {
                              * - `native` send as a native media (displayed picture, voice note, recorded video, etc.)
                              */
                             send_mode?: 'file' | 'native';
+                            /**
+                             * Deprecated compatibility flag for audio attachments. Use `send_mode: "native"` instead.
+                             *
+                             * @deprecated
+                             */
+                            voice_note?: boolean;
                         }>;
                         /**
                          * The time frame within which to send the message.
@@ -8609,7 +8633,7 @@ export type GetMessagesListResponses = {
                  */
                 length: number;
             }>;
-            specifics?: unknown & {
+            specifics?: unknown & ({
                 /**
                  * The category of the message: a regular message, an email, a connection invitation, or an InMail lifecycle event.
                  */
@@ -8618,7 +8642,12 @@ export type GetMessagesListResponses = {
                  * The subject of the message.
                  */
                 subject?: string;
-            };
+            } | {
+                /**
+                 * The subject of the mock message.
+                 */
+                subject: string;
+            });
             /**
              * The user who sent the message.
              */
@@ -10299,7 +10328,7 @@ export type GetMessageResponses = {
              */
             length: number;
         }>;
-        specifics?: unknown & {
+        specifics?: unknown & ({
             /**
              * The category of the message: a regular message, an email, a connection invitation, or an InMail lifecycle event.
              */
@@ -10308,7 +10337,12 @@ export type GetMessageResponses = {
              * The subject of the message.
              */
             subject?: string;
-        };
+        } | {
+            /**
+             * The subject of the mock message.
+             */
+            subject: string;
+        });
         /**
          * The user who sent the message.
          */
@@ -11314,6 +11348,12 @@ export type SendMessageData = {
              * - `native` send as a native media (displayed picture, voice note, recorded video, etc.)
              */
             send_mode?: 'file' | 'native';
+            /**
+             * Deprecated compatibility flag for audio attachments. Use `send_mode: "native"` instead.
+             *
+             * @deprecated
+             */
+            voice_note?: boolean;
         }>;
         /**
          * Object containing provider-specific message data.
@@ -36150,6 +36190,10 @@ export type GetCalendarEventListResponses = {
              */
             calendar_id: string;
             /**
+             * The iCalendar UID (RFC5545 UID) of the event. Unlike `id`, it is shared by every copy of the event across the calendars of its attendees, and stays stable when the event is exported or imported.
+             */
+            ical_uid?: string;
+            /**
              * The date the event was created. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             created_at: string;
@@ -36553,6 +36597,10 @@ export type CreateCalendarEventResponses = {
          */
         calendar_id: string;
         /**
+         * The iCalendar UID (RFC5545 UID) of the event. Unlike `id`, it is shared by every copy of the event across the calendars of its attendees, and stays stable when the event is exported or imported.
+         */
+        ical_uid?: string;
+        /**
          * The date the event was created. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
          */
         created_at: string;
@@ -36836,6 +36884,10 @@ export type GetCalendarEventResponses = {
          * The ID of the calendar the event belongs to.
          */
         calendar_id: string;
+        /**
+         * The iCalendar UID (RFC5545 UID) of the event. Unlike `id`, it is shared by every copy of the event across the calendars of its attendees, and stays stable when the event is exported or imported.
+         */
+        ical_uid?: string;
         /**
          * The date the event was created. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
          */
@@ -37230,6 +37282,10 @@ export type UpdateCalendarEventResponses = {
          * The ID of the calendar the event belongs to.
          */
         calendar_id: string;
+        /**
+         * The iCalendar UID (RFC5545 UID) of the event. Unlike `id`, it is shared by every copy of the event across the calendars of its attendees, and stays stable when the event is exported or imported.
+         */
+        ical_uid?: string;
         /**
          * The date the event was created. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
          */
