@@ -36150,6 +36150,10 @@ export type GetCalendarEventListResponses = {
              */
             calendar_id: string;
             /**
+             * The iCalendar UID (RFC5545 UID) of the event. Unlike `id`, it is shared by every copy of the event across the calendars of its attendees, and stays stable when the event is exported or imported.
+             */
+            ical_uid?: string;
+            /**
              * The date the event was created. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
             created_at: string;
@@ -36553,6 +36557,10 @@ export type CreateCalendarEventResponses = {
          */
         calendar_id: string;
         /**
+         * The iCalendar UID (RFC5545 UID) of the event. Unlike `id`, it is shared by every copy of the event across the calendars of its attendees, and stays stable when the event is exported or imported.
+         */
+        ical_uid?: string;
+        /**
          * The date the event was created. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
          */
         created_at: string;
@@ -36836,6 +36844,10 @@ export type GetCalendarEventResponses = {
          * The ID of the calendar the event belongs to.
          */
         calendar_id: string;
+        /**
+         * The iCalendar UID (RFC5545 UID) of the event. Unlike `id`, it is shared by every copy of the event across the calendars of its attendees, and stays stable when the event is exported or imported.
+         */
+        ical_uid?: string;
         /**
          * The date the event was created. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
          */
@@ -37230,6 +37242,10 @@ export type UpdateCalendarEventResponses = {
          * The ID of the calendar the event belongs to.
          */
         calendar_id: string;
+        /**
+         * The iCalendar UID (RFC5545 UID) of the event. Unlike `id`, it is shared by every copy of the event across the calendars of its attendees, and stays stable when the event is exported or imported.
+         */
+        ical_uid?: string;
         /**
          * The date the event was created. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
          */
