@@ -860,7 +860,7 @@ export class UnipileEmails extends HeyApiClient {
     /**
      * Get a Thread
      *
-     * Returns a list of emails belonging to the specific thread. Emails are returned sorted by their `date`, with the most recent appearing first.
+     * Returns a list of emails belonging to the specific thread. Emails are sorted by their `date`. On IMAP servers without native thread IDs, results are inferred from message headers and may be incomplete.
      */
     public getThread<ThrowOnError extends boolean = false>(options: Options<GetThreadData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetThreadResponses, unknown, ThrowOnError>({
