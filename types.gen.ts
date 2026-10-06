@@ -76,7 +76,17 @@ export type GetChatsListResponses = {
              */
             description?: string;
             /**
-             * The URL of the chat image.
+             * Public URL of the chat picture.
+             */
+            public_picture_url?: string;
+            /**
+             * Private URL to download the chat picture. This URL requires authentication.
+             */
+            private_picture_download_url?: string;
+            /**
+             * The URL of the chat image. Use public_picture_url or private_picture_download_url instead.
+             *
+             * @deprecated
              */
             image_url?: string;
             /**
@@ -571,7 +581,7 @@ export type GetChatsListResponses = {
                 attachments: Array<{
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -582,6 +592,10 @@ export type GetChatsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -599,7 +613,7 @@ export type GetChatsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'audio';
@@ -614,7 +628,7 @@ export type GetChatsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -625,6 +639,10 @@ export type GetChatsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -642,7 +660,7 @@ export type GetChatsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'img';
@@ -660,7 +678,7 @@ export type GetChatsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -671,6 +689,10 @@ export type GetChatsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -688,7 +710,7 @@ export type GetChatsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'video';
@@ -710,7 +732,7 @@ export type GetChatsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -721,6 +743,10 @@ export type GetChatsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -738,7 +764,7 @@ export type GetChatsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'file';
@@ -749,7 +775,7 @@ export type GetChatsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -760,6 +786,10 @@ export type GetChatsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -777,7 +807,7 @@ export type GetChatsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'shared_content';
@@ -796,7 +826,7 @@ export type GetChatsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -807,6 +837,10 @@ export type GetChatsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -824,7 +858,7 @@ export type GetChatsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'contact_card';
@@ -899,7 +933,7 @@ export type GetChatsListResponses = {
                     attachments: Array<{
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -910,6 +944,10 @@ export type GetChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -927,7 +965,7 @@ export type GetChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'audio';
@@ -942,7 +980,7 @@ export type GetChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -953,6 +991,10 @@ export type GetChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -970,7 +1012,7 @@ export type GetChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'img';
@@ -988,7 +1030,7 @@ export type GetChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -999,6 +1041,10 @@ export type GetChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -1016,7 +1062,7 @@ export type GetChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'video';
@@ -1038,7 +1084,7 @@ export type GetChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -1049,6 +1095,10 @@ export type GetChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -1066,7 +1116,7 @@ export type GetChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'file';
@@ -1077,7 +1127,7 @@ export type GetChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -1088,6 +1138,10 @@ export type GetChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -1105,7 +1159,7 @@ export type GetChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'shared_content';
@@ -1124,7 +1178,7 @@ export type GetChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -1135,6 +1189,10 @@ export type GetChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -1152,7 +1210,7 @@ export type GetChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'contact_card';
@@ -1261,7 +1319,7 @@ export type GetChatsListResponses = {
                     attachments: Array<{
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -1272,6 +1330,10 @@ export type GetChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -1289,7 +1351,7 @@ export type GetChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'audio';
@@ -1304,7 +1366,7 @@ export type GetChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -1315,6 +1377,10 @@ export type GetChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -1332,7 +1398,7 @@ export type GetChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'img';
@@ -1350,7 +1416,7 @@ export type GetChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -1361,6 +1427,10 @@ export type GetChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -1378,7 +1448,7 @@ export type GetChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'video';
@@ -1400,7 +1470,7 @@ export type GetChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -1411,6 +1481,10 @@ export type GetChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -1428,7 +1502,7 @@ export type GetChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'file';
@@ -1439,7 +1513,7 @@ export type GetChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -1450,6 +1524,10 @@ export type GetChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -1467,7 +1545,7 @@ export type GetChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'shared_content';
@@ -1486,7 +1564,7 @@ export type GetChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -1497,6 +1575,10 @@ export type GetChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -1514,7 +1596,7 @@ export type GetChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'contact_card';
@@ -1993,7 +2075,17 @@ export type GetInboxChatsListResponses = {
              */
             description?: string;
             /**
-             * The URL of the chat image.
+             * Public URL of the chat picture.
+             */
+            public_picture_url?: string;
+            /**
+             * Private URL to download the chat picture. This URL requires authentication.
+             */
+            private_picture_download_url?: string;
+            /**
+             * The URL of the chat image. Use public_picture_url or private_picture_download_url instead.
+             *
+             * @deprecated
              */
             image_url?: string;
             /**
@@ -2488,7 +2580,7 @@ export type GetInboxChatsListResponses = {
                 attachments: Array<{
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -2499,6 +2591,10 @@ export type GetInboxChatsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -2516,7 +2612,7 @@ export type GetInboxChatsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'audio';
@@ -2531,7 +2627,7 @@ export type GetInboxChatsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -2542,6 +2638,10 @@ export type GetInboxChatsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -2559,7 +2659,7 @@ export type GetInboxChatsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'img';
@@ -2577,7 +2677,7 @@ export type GetInboxChatsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -2588,6 +2688,10 @@ export type GetInboxChatsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -2605,7 +2709,7 @@ export type GetInboxChatsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'video';
@@ -2627,7 +2731,7 @@ export type GetInboxChatsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -2638,6 +2742,10 @@ export type GetInboxChatsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -2655,7 +2763,7 @@ export type GetInboxChatsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'file';
@@ -2666,7 +2774,7 @@ export type GetInboxChatsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -2677,6 +2785,10 @@ export type GetInboxChatsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -2694,7 +2806,7 @@ export type GetInboxChatsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'shared_content';
@@ -2713,7 +2825,7 @@ export type GetInboxChatsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -2724,6 +2836,10 @@ export type GetInboxChatsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -2741,7 +2857,7 @@ export type GetInboxChatsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'contact_card';
@@ -2816,7 +2932,7 @@ export type GetInboxChatsListResponses = {
                     attachments: Array<{
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -2827,6 +2943,10 @@ export type GetInboxChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -2844,7 +2964,7 @@ export type GetInboxChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'audio';
@@ -2859,7 +2979,7 @@ export type GetInboxChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -2870,6 +2990,10 @@ export type GetInboxChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -2887,7 +3011,7 @@ export type GetInboxChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'img';
@@ -2905,7 +3029,7 @@ export type GetInboxChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -2916,6 +3040,10 @@ export type GetInboxChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -2933,7 +3061,7 @@ export type GetInboxChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'video';
@@ -2955,7 +3083,7 @@ export type GetInboxChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -2966,6 +3094,10 @@ export type GetInboxChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -2983,7 +3115,7 @@ export type GetInboxChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'file';
@@ -2994,7 +3126,7 @@ export type GetInboxChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -3005,6 +3137,10 @@ export type GetInboxChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -3022,7 +3158,7 @@ export type GetInboxChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'shared_content';
@@ -3041,7 +3177,7 @@ export type GetInboxChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -3052,6 +3188,10 @@ export type GetInboxChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -3069,7 +3209,7 @@ export type GetInboxChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'contact_card';
@@ -3178,7 +3318,7 @@ export type GetInboxChatsListResponses = {
                     attachments: Array<{
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -3189,6 +3329,10 @@ export type GetInboxChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -3206,7 +3350,7 @@ export type GetInboxChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'audio';
@@ -3221,7 +3365,7 @@ export type GetInboxChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -3232,6 +3376,10 @@ export type GetInboxChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -3249,7 +3397,7 @@ export type GetInboxChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'img';
@@ -3267,7 +3415,7 @@ export type GetInboxChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -3278,6 +3426,10 @@ export type GetInboxChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -3295,7 +3447,7 @@ export type GetInboxChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'video';
@@ -3317,7 +3469,7 @@ export type GetInboxChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -3328,6 +3480,10 @@ export type GetInboxChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -3345,7 +3501,7 @@ export type GetInboxChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'file';
@@ -3356,7 +3512,7 @@ export type GetInboxChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -3367,6 +3523,10 @@ export type GetInboxChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -3384,7 +3544,7 @@ export type GetInboxChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'shared_content';
@@ -3403,7 +3563,7 @@ export type GetInboxChatsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -3414,6 +3574,10 @@ export type GetInboxChatsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -3431,7 +3595,7 @@ export type GetInboxChatsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'contact_card';
@@ -3853,7 +4017,17 @@ export type GetChatResponses = {
          */
         description?: string;
         /**
-         * The URL of the chat image.
+         * Public URL of the chat picture.
+         */
+        public_picture_url?: string;
+        /**
+         * Private URL to download the chat picture. This URL requires authentication.
+         */
+        private_picture_download_url?: string;
+        /**
+         * The URL of the chat image. Use public_picture_url or private_picture_download_url instead.
+         *
+         * @deprecated
          */
         image_url?: string;
         /**
@@ -4348,7 +4522,7 @@ export type GetChatResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -4359,6 +4533,10 @@ export type GetChatResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -4376,7 +4554,7 @@ export type GetChatResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -4391,7 +4569,7 @@ export type GetChatResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -4402,6 +4580,10 @@ export type GetChatResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -4419,7 +4601,7 @@ export type GetChatResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -4437,7 +4619,7 @@ export type GetChatResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -4448,6 +4630,10 @@ export type GetChatResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -4465,7 +4651,7 @@ export type GetChatResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -4487,7 +4673,7 @@ export type GetChatResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -4498,6 +4684,10 @@ export type GetChatResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -4515,7 +4705,7 @@ export type GetChatResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -4526,7 +4716,7 @@ export type GetChatResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -4537,6 +4727,10 @@ export type GetChatResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -4554,7 +4748,7 @@ export type GetChatResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -4573,7 +4767,7 @@ export type GetChatResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -4584,6 +4778,10 @@ export type GetChatResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -4601,7 +4799,7 @@ export type GetChatResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -4676,7 +4874,7 @@ export type GetChatResponses = {
                 attachments: Array<{
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -4687,6 +4885,10 @@ export type GetChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -4704,7 +4906,7 @@ export type GetChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'audio';
@@ -4719,7 +4921,7 @@ export type GetChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -4730,6 +4932,10 @@ export type GetChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -4747,7 +4953,7 @@ export type GetChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'img';
@@ -4765,7 +4971,7 @@ export type GetChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -4776,6 +4982,10 @@ export type GetChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -4793,7 +5003,7 @@ export type GetChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'video';
@@ -4815,7 +5025,7 @@ export type GetChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -4826,6 +5036,10 @@ export type GetChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -4843,7 +5057,7 @@ export type GetChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'file';
@@ -4854,7 +5068,7 @@ export type GetChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -4865,6 +5079,10 @@ export type GetChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -4882,7 +5100,7 @@ export type GetChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'shared_content';
@@ -4901,7 +5119,7 @@ export type GetChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -4912,6 +5130,10 @@ export type GetChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -4929,7 +5151,7 @@ export type GetChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'contact_card';
@@ -5038,7 +5260,7 @@ export type GetChatResponses = {
                 attachments: Array<{
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -5049,6 +5271,10 @@ export type GetChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -5066,7 +5292,7 @@ export type GetChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'audio';
@@ -5081,7 +5307,7 @@ export type GetChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -5092,6 +5318,10 @@ export type GetChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -5109,7 +5339,7 @@ export type GetChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'img';
@@ -5127,7 +5357,7 @@ export type GetChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -5138,6 +5368,10 @@ export type GetChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -5155,7 +5389,7 @@ export type GetChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'video';
@@ -5177,7 +5411,7 @@ export type GetChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -5188,6 +5422,10 @@ export type GetChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -5205,7 +5443,7 @@ export type GetChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'file';
@@ -5216,7 +5454,7 @@ export type GetChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -5227,6 +5465,10 @@ export type GetChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -5244,7 +5486,7 @@ export type GetChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'shared_content';
@@ -5263,7 +5505,7 @@ export type GetChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -5274,6 +5516,10 @@ export type GetChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -5291,7 +5537,7 @@ export type GetChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'contact_card';
@@ -5704,7 +5950,17 @@ export type UpdateChatResponses = {
          */
         description?: string;
         /**
-         * The URL of the chat image.
+         * Public URL of the chat picture.
+         */
+        public_picture_url?: string;
+        /**
+         * Private URL to download the chat picture. This URL requires authentication.
+         */
+        private_picture_download_url?: string;
+        /**
+         * The URL of the chat image. Use public_picture_url or private_picture_download_url instead.
+         *
+         * @deprecated
          */
         image_url?: string;
         /**
@@ -6266,7 +6522,7 @@ export type UpdateChatResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -6277,6 +6533,10 @@ export type UpdateChatResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -6294,7 +6554,7 @@ export type UpdateChatResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -6309,7 +6569,7 @@ export type UpdateChatResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -6320,6 +6580,10 @@ export type UpdateChatResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -6337,7 +6601,7 @@ export type UpdateChatResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -6355,7 +6619,7 @@ export type UpdateChatResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -6366,6 +6630,10 @@ export type UpdateChatResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -6383,7 +6651,7 @@ export type UpdateChatResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -6405,7 +6673,7 @@ export type UpdateChatResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -6416,6 +6684,10 @@ export type UpdateChatResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -6433,7 +6705,7 @@ export type UpdateChatResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -6444,7 +6716,7 @@ export type UpdateChatResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -6455,6 +6727,10 @@ export type UpdateChatResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -6472,7 +6748,7 @@ export type UpdateChatResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -6491,7 +6767,7 @@ export type UpdateChatResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -6502,6 +6778,10 @@ export type UpdateChatResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -6519,7 +6799,7 @@ export type UpdateChatResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -6594,7 +6874,7 @@ export type UpdateChatResponses = {
                 attachments: Array<{
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -6605,6 +6885,10 @@ export type UpdateChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -6622,7 +6906,7 @@ export type UpdateChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'audio';
@@ -6637,7 +6921,7 @@ export type UpdateChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -6648,6 +6932,10 @@ export type UpdateChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -6665,7 +6953,7 @@ export type UpdateChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'img';
@@ -6683,7 +6971,7 @@ export type UpdateChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -6694,6 +6982,10 @@ export type UpdateChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -6711,7 +7003,7 @@ export type UpdateChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'video';
@@ -6733,7 +7025,7 @@ export type UpdateChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -6744,6 +7036,10 @@ export type UpdateChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -6761,7 +7057,7 @@ export type UpdateChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'file';
@@ -6772,7 +7068,7 @@ export type UpdateChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -6783,6 +7079,10 @@ export type UpdateChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -6800,7 +7100,7 @@ export type UpdateChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'shared_content';
@@ -6819,7 +7119,7 @@ export type UpdateChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -6830,6 +7130,10 @@ export type UpdateChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -6847,7 +7151,7 @@ export type UpdateChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'contact_card';
@@ -6956,7 +7260,7 @@ export type UpdateChatResponses = {
                 attachments: Array<{
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -6967,6 +7271,10 @@ export type UpdateChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -6984,7 +7292,7 @@ export type UpdateChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'audio';
@@ -6999,7 +7307,7 @@ export type UpdateChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -7010,6 +7318,10 @@ export type UpdateChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -7027,7 +7339,7 @@ export type UpdateChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'img';
@@ -7045,7 +7357,7 @@ export type UpdateChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -7056,6 +7368,10 @@ export type UpdateChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -7073,7 +7389,7 @@ export type UpdateChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'video';
@@ -7095,7 +7411,7 @@ export type UpdateChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -7106,6 +7422,10 @@ export type UpdateChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -7123,7 +7443,7 @@ export type UpdateChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'file';
@@ -7134,7 +7454,7 @@ export type UpdateChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -7145,6 +7465,10 @@ export type UpdateChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -7162,7 +7486,7 @@ export type UpdateChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'shared_content';
@@ -7181,7 +7505,7 @@ export type UpdateChatResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -7192,6 +7516,10 @@ export type UpdateChatResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -7209,7 +7537,7 @@ export type UpdateChatResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'contact_card';
@@ -7376,6 +7704,29 @@ export type UpdateChatResponses = {
 
 export type UpdateChatResponse = UpdateChatResponses[keyof UpdateChatResponses];
 
+export type GetChatPictureData = {
+    body?: never;
+    path: {
+        /**
+         * ID of the Chat whose picture must be downloaded.
+         */
+        chat_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/chats/{chat_id}/picture';
+};
+
+export type GetChatPictureResponses = {
+    /**
+     * Default Response
+     */
+    200: unknown;
+};
+
 export type GetUserChatData = {
     body?: never;
     path: {
@@ -7466,6 +7817,12 @@ export type StartChatData = {
              * - `native` send as a native media (displayed picture, voice note, recorded video, etc.)
              */
             send_mode?: 'file' | 'native';
+            /**
+             * Deprecated compatibility flag for audio attachments. Use `send_mode: "native"` instead.
+             *
+             * @deprecated
+             */
+            voice_note?: boolean;
         }>;
         /**
          * Object containing provider-specific chat data.
@@ -7605,6 +7962,12 @@ export type StartChatData = {
                              * - `native` send as a native media (displayed picture, voice note, recorded video, etc.)
                              */
                             send_mode?: 'file' | 'native';
+                            /**
+                             * Deprecated compatibility flag for audio attachments. Use `send_mode: "native"` instead.
+                             *
+                             * @deprecated
+                             */
+                            voice_note?: boolean;
                         }>;
                         /**
                          * The time frame within which to send the message.
@@ -7708,6 +8071,12 @@ export type StartChatFromInboxData = {
              * - `native` send as a native media (displayed picture, voice note, recorded video, etc.)
              */
             send_mode?: 'file' | 'native';
+            /**
+             * Deprecated compatibility flag for audio attachments. Use `send_mode: "native"` instead.
+             *
+             * @deprecated
+             */
+            voice_note?: boolean;
         }>;
         /**
          * Object containing provider-specific chat data.
@@ -7847,6 +8216,12 @@ export type StartChatFromInboxData = {
                              * - `native` send as a native media (displayed picture, voice note, recorded video, etc.)
                              */
                             send_mode?: 'file' | 'native';
+                            /**
+                             * Deprecated compatibility flag for audio attachments. Use `send_mode: "native"` instead.
+                             *
+                             * @deprecated
+                             */
+                            voice_note?: boolean;
                         }>;
                         /**
                          * The time frame within which to send the message.
@@ -8300,7 +8675,7 @@ export type GetMessagesListResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -8311,6 +8686,10 @@ export type GetMessagesListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -8328,7 +8707,7 @@ export type GetMessagesListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -8343,7 +8722,7 @@ export type GetMessagesListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -8354,6 +8733,10 @@ export type GetMessagesListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -8371,7 +8754,7 @@ export type GetMessagesListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -8389,7 +8772,7 @@ export type GetMessagesListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -8400,6 +8783,10 @@ export type GetMessagesListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -8417,7 +8804,7 @@ export type GetMessagesListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -8439,7 +8826,7 @@ export type GetMessagesListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -8450,6 +8837,10 @@ export type GetMessagesListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -8467,7 +8858,7 @@ export type GetMessagesListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -8478,7 +8869,7 @@ export type GetMessagesListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -8489,6 +8880,10 @@ export type GetMessagesListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -8506,7 +8901,7 @@ export type GetMessagesListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -8525,7 +8920,7 @@ export type GetMessagesListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -8536,6 +8931,10 @@ export type GetMessagesListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -8553,7 +8952,7 @@ export type GetMessagesListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -8609,7 +9008,7 @@ export type GetMessagesListResponses = {
                  */
                 length: number;
             }>;
-            specifics?: unknown & {
+            specifics?: unknown & ({
                 /**
                  * The category of the message: a regular message, an email, a connection invitation, or an InMail lifecycle event.
                  */
@@ -8618,7 +9017,12 @@ export type GetMessagesListResponses = {
                  * The subject of the message.
                  */
                 subject?: string;
-            };
+            } | {
+                /**
+                 * The subject of the mock message.
+                 */
+                subject: string;
+            });
             /**
              * The user who sent the message.
              */
@@ -8750,7 +9154,7 @@ export type GetMessagesListResponses = {
                 attachments: Array<{
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -8761,6 +9165,10 @@ export type GetMessagesListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -8778,7 +9186,7 @@ export type GetMessagesListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'audio';
@@ -8793,7 +9201,7 @@ export type GetMessagesListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -8804,6 +9212,10 @@ export type GetMessagesListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -8821,7 +9233,7 @@ export type GetMessagesListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'img';
@@ -8839,7 +9251,7 @@ export type GetMessagesListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -8850,6 +9262,10 @@ export type GetMessagesListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -8867,7 +9283,7 @@ export type GetMessagesListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'video';
@@ -8889,7 +9305,7 @@ export type GetMessagesListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -8900,6 +9316,10 @@ export type GetMessagesListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -8917,7 +9337,7 @@ export type GetMessagesListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'file';
@@ -8928,7 +9348,7 @@ export type GetMessagesListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -8939,6 +9359,10 @@ export type GetMessagesListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -8956,7 +9380,7 @@ export type GetMessagesListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'shared_content';
@@ -8975,7 +9399,7 @@ export type GetMessagesListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -8986,6 +9410,10 @@ export type GetMessagesListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -9003,7 +9431,7 @@ export type GetMessagesListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'contact_card';
@@ -9171,7 +9599,7 @@ export type GetMessagesListResponses = {
                 attachments: Array<{
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -9182,6 +9610,10 @@ export type GetMessagesListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -9199,7 +9631,7 @@ export type GetMessagesListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'audio';
@@ -9214,7 +9646,7 @@ export type GetMessagesListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -9225,6 +9657,10 @@ export type GetMessagesListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -9242,7 +9678,7 @@ export type GetMessagesListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'img';
@@ -9260,7 +9696,7 @@ export type GetMessagesListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -9271,6 +9707,10 @@ export type GetMessagesListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -9288,7 +9728,7 @@ export type GetMessagesListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'video';
@@ -9310,7 +9750,7 @@ export type GetMessagesListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -9321,6 +9761,10 @@ export type GetMessagesListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -9338,7 +9782,7 @@ export type GetMessagesListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'file';
@@ -9349,7 +9793,7 @@ export type GetMessagesListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -9360,6 +9804,10 @@ export type GetMessagesListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -9377,7 +9825,7 @@ export type GetMessagesListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'shared_content';
@@ -9396,7 +9844,7 @@ export type GetMessagesListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -9407,6 +9855,10 @@ export type GetMessagesListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -9424,7 +9876,7 @@ export type GetMessagesListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'contact_card';
@@ -9990,7 +10442,7 @@ export type GetMessageResponses = {
         attachments: Array<{
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -10001,6 +10453,10 @@ export type GetMessageResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -10018,7 +10474,7 @@ export type GetMessageResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'audio';
@@ -10033,7 +10489,7 @@ export type GetMessageResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -10044,6 +10500,10 @@ export type GetMessageResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -10061,7 +10521,7 @@ export type GetMessageResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'img';
@@ -10079,7 +10539,7 @@ export type GetMessageResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -10090,6 +10550,10 @@ export type GetMessageResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -10107,7 +10571,7 @@ export type GetMessageResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'video';
@@ -10129,7 +10593,7 @@ export type GetMessageResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -10140,6 +10604,10 @@ export type GetMessageResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -10157,7 +10625,7 @@ export type GetMessageResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'file';
@@ -10168,7 +10636,7 @@ export type GetMessageResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -10179,6 +10647,10 @@ export type GetMessageResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -10196,7 +10668,7 @@ export type GetMessageResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'shared_content';
@@ -10215,7 +10687,7 @@ export type GetMessageResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -10226,6 +10698,10 @@ export type GetMessageResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -10243,7 +10719,7 @@ export type GetMessageResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'contact_card';
@@ -10299,7 +10775,7 @@ export type GetMessageResponses = {
              */
             length: number;
         }>;
-        specifics?: unknown & {
+        specifics?: unknown & ({
             /**
              * The category of the message: a regular message, an email, a connection invitation, or an InMail lifecycle event.
              */
@@ -10308,7 +10784,12 @@ export type GetMessageResponses = {
              * The subject of the message.
              */
             subject?: string;
-        };
+        } | {
+            /**
+             * The subject of the mock message.
+             */
+            subject: string;
+        });
         /**
          * The user who sent the message.
          */
@@ -10440,7 +10921,7 @@ export type GetMessageResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -10451,6 +10932,10 @@ export type GetMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -10468,7 +10953,7 @@ export type GetMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -10483,7 +10968,7 @@ export type GetMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -10494,6 +10979,10 @@ export type GetMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -10511,7 +11000,7 @@ export type GetMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -10529,7 +11018,7 @@ export type GetMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -10540,6 +11029,10 @@ export type GetMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -10557,7 +11050,7 @@ export type GetMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -10579,7 +11072,7 @@ export type GetMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -10590,6 +11083,10 @@ export type GetMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -10607,7 +11104,7 @@ export type GetMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -10618,7 +11115,7 @@ export type GetMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -10629,6 +11126,10 @@ export type GetMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -10646,7 +11147,7 @@ export type GetMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -10665,7 +11166,7 @@ export type GetMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -10676,6 +11177,10 @@ export type GetMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -10693,7 +11198,7 @@ export type GetMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -10861,7 +11366,7 @@ export type GetMessageResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -10872,6 +11377,10 @@ export type GetMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -10889,7 +11398,7 @@ export type GetMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -10904,7 +11413,7 @@ export type GetMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -10915,6 +11424,10 @@ export type GetMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -10932,7 +11445,7 @@ export type GetMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -10950,7 +11463,7 @@ export type GetMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -10961,6 +11474,10 @@ export type GetMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -10978,7 +11495,7 @@ export type GetMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -11000,7 +11517,7 @@ export type GetMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -11011,6 +11528,10 @@ export type GetMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -11028,7 +11549,7 @@ export type GetMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -11039,7 +11560,7 @@ export type GetMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -11050,6 +11571,10 @@ export type GetMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -11067,7 +11592,7 @@ export type GetMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -11086,7 +11611,7 @@ export type GetMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -11097,6 +11622,10 @@ export type GetMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -11114,7 +11643,7 @@ export type GetMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -11314,6 +11843,12 @@ export type SendMessageData = {
              * - `native` send as a native media (displayed picture, voice note, recorded video, etc.)
              */
             send_mode?: 'file' | 'native';
+            /**
+             * Deprecated compatibility flag for audio attachments. Use `send_mode: "native"` instead.
+             *
+             * @deprecated
+             */
+            voice_note?: boolean;
         }>;
         /**
          * Object containing provider-specific message data.
@@ -11851,7 +12386,7 @@ export type ModifyMessageResponses = {
         attachments: Array<{
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -11862,6 +12397,10 @@ export type ModifyMessageResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -11879,7 +12418,7 @@ export type ModifyMessageResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'audio';
@@ -11894,7 +12433,7 @@ export type ModifyMessageResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -11905,6 +12444,10 @@ export type ModifyMessageResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -11922,7 +12465,7 @@ export type ModifyMessageResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'img';
@@ -11940,7 +12483,7 @@ export type ModifyMessageResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -11951,6 +12494,10 @@ export type ModifyMessageResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -11968,7 +12515,7 @@ export type ModifyMessageResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'video';
@@ -11990,7 +12537,7 @@ export type ModifyMessageResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -12001,6 +12548,10 @@ export type ModifyMessageResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -12018,7 +12569,7 @@ export type ModifyMessageResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'file';
@@ -12029,7 +12580,7 @@ export type ModifyMessageResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -12040,6 +12591,10 @@ export type ModifyMessageResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -12057,7 +12612,7 @@ export type ModifyMessageResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'shared_content';
@@ -12076,7 +12631,7 @@ export type ModifyMessageResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -12087,6 +12642,10 @@ export type ModifyMessageResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -12104,7 +12663,7 @@ export type ModifyMessageResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'contact_card';
@@ -12179,7 +12738,7 @@ export type ModifyMessageResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -12190,6 +12749,10 @@ export type ModifyMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12207,7 +12770,7 @@ export type ModifyMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -12222,7 +12785,7 @@ export type ModifyMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -12233,6 +12796,10 @@ export type ModifyMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12250,7 +12817,7 @@ export type ModifyMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -12268,7 +12835,7 @@ export type ModifyMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -12279,6 +12846,10 @@ export type ModifyMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12296,7 +12867,7 @@ export type ModifyMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -12318,7 +12889,7 @@ export type ModifyMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -12329,6 +12900,10 @@ export type ModifyMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12346,7 +12921,7 @@ export type ModifyMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -12357,7 +12932,7 @@ export type ModifyMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -12368,6 +12943,10 @@ export type ModifyMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12385,7 +12964,7 @@ export type ModifyMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -12404,7 +12983,7 @@ export type ModifyMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -12415,6 +12994,10 @@ export type ModifyMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12432,7 +13015,7 @@ export type ModifyMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -12541,7 +13124,7 @@ export type ModifyMessageResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -12552,6 +13135,10 @@ export type ModifyMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12569,7 +13156,7 @@ export type ModifyMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -12584,7 +13171,7 @@ export type ModifyMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -12595,6 +13182,10 @@ export type ModifyMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12612,7 +13203,7 @@ export type ModifyMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -12630,7 +13221,7 @@ export type ModifyMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -12641,6 +13232,10 @@ export type ModifyMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12658,7 +13253,7 @@ export type ModifyMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -12680,7 +13275,7 @@ export type ModifyMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -12691,6 +13286,10 @@ export type ModifyMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12708,7 +13307,7 @@ export type ModifyMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -12719,7 +13318,7 @@ export type ModifyMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -12730,6 +13329,10 @@ export type ModifyMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12747,7 +13350,7 @@ export type ModifyMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -12766,7 +13369,7 @@ export type ModifyMessageResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -12777,6 +13380,10 @@ export type ModifyMessageResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -12794,7 +13401,7 @@ export type ModifyMessageResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -13506,7 +14113,7 @@ export type GetEmailsListData = {
          */
         q?: string;
         /**
-         * Speed up the response by only returning the email metadata, excluding the body and attachments metadata.
+         * Speed up the response by only returning the email metadata. body and body_plain are empty strings, and attachments metadata is excluded.
          */
         meta_only?: boolean;
         /**
@@ -13534,7 +14141,7 @@ export type GetEmailsListData = {
          */
         is_unread?: boolean;
         /**
-         * Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
+         * Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
          */
         before?: string;
         /**
@@ -13542,7 +14149,7 @@ export type GetEmailsListData = {
          */
         exclude_folder?: string;
         /**
-         * Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
+         * Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
          */
         after?: string;
         /**
@@ -13577,15 +14184,19 @@ export type GetEmailsListResponses = {
              */
             message_id: string;
             /**
-             * The ID of the thread the email belongs to.
+             * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
              */
             thread_id?: string;
             /**
-             * The body of the email.
+             * The complete body of the email: HTML when available, otherwise plain text. An empty string when the email has no body or meta_only=true.
              */
             body: string;
             /**
-             * The snippet (preview) of the email.
+             * The complete plain-text body of the email. Uses the original plain-text version when available, otherwise text converted from HTML. For Outlook, text is converted from the HTML body returned by Microsoft Graph, or taken directly from its plain-text body. An empty string when the email has no body or meta_only=true.
+             */
+            body_plain: string;
+            /**
+             * A short preview of the email, not its complete plain-text body. Use body_plain for the full text.
              */
             snippet: string;
             /**
@@ -13632,9 +14243,9 @@ export type GetEmailsListResponses = {
                 display_name?: string;
             }>;
             /**
-             * The list of attendees that the email was CC'd to.
+             * The list of attendees that the email was CC'd to. An empty array when none are available.
              */
-            cc?: Array<{
+            cc: Array<{
                 /**
                  * The email address of the attendee.
                  */
@@ -13645,9 +14256,9 @@ export type GetEmailsListResponses = {
                 display_name?: string;
             }>;
             /**
-             * The list of attendees that the email was BCC'd to.
+             * The list of attendees that the email was BCC'd to. An empty array when none are available.
              */
-            bcc?: Array<{
+            bcc: Array<{
                 /**
                  * The email address of the attendee.
                  */
@@ -13658,9 +14269,9 @@ export type GetEmailsListResponses = {
                 display_name?: string;
             }>;
             /**
-             * The list of attendees that the replies should be sent to.
+             * The list of attendees that the replies should be sent to. An empty array when none are available.
              */
-            reply_to?: Array<{
+            reply_to: Array<{
                 /**
                  * The email address of the attendee.
                  */
@@ -13680,7 +14291,7 @@ export type GetEmailsListResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -13691,6 +14302,10 @@ export type GetEmailsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -13708,7 +14323,7 @@ export type GetEmailsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -13723,7 +14338,7 @@ export type GetEmailsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -13734,6 +14349,10 @@ export type GetEmailsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -13751,7 +14370,7 @@ export type GetEmailsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -13769,7 +14388,7 @@ export type GetEmailsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -13780,6 +14399,10 @@ export type GetEmailsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -13797,7 +14420,7 @@ export type GetEmailsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -13819,7 +14442,7 @@ export type GetEmailsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -13830,6 +14453,10 @@ export type GetEmailsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -13847,7 +14474,7 @@ export type GetEmailsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -13858,7 +14485,7 @@ export type GetEmailsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -13869,6 +14496,10 @@ export type GetEmailsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -13886,7 +14517,7 @@ export type GetEmailsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -13905,7 +14536,7 @@ export type GetEmailsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -13916,6 +14547,10 @@ export type GetEmailsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -13933,7 +14568,7 @@ export type GetEmailsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -13973,7 +14608,7 @@ export type GetEmailsListResponses = {
                 }>;
             }>;
             /**
-             * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
+             * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email, excluding the UNREAD system label, which is exposed through is_unread instead.
              */
             folders: Array<string>;
             /**
@@ -13981,7 +14616,7 @@ export type GetEmailsListResponses = {
              */
             categories?: Array<string>;
             /**
-             * Is the email unread.
+             * Is the email unread. For Gmail, this reflects the UNREAD system label.
              */
             is_unread: boolean;
         }>;
@@ -14016,7 +14651,7 @@ export type GetFolderEmailsListData = {
          */
         q?: string;
         /**
-         * Speed up the response by only returning the email metadata, excluding the body and attachments metadata.
+         * Speed up the response by only returning the email metadata. body and body_plain are empty strings, and attachments metadata is excluded.
          */
         meta_only?: boolean;
         /**
@@ -14044,7 +14679,7 @@ export type GetFolderEmailsListData = {
          */
         is_unread?: boolean;
         /**
-         * Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
+         * Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
          */
         before?: string;
         /**
@@ -14052,7 +14687,7 @@ export type GetFolderEmailsListData = {
          */
         exclude_folder?: string;
         /**
-         * Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
+         * Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
          */
         after?: string;
         /**
@@ -14087,15 +14722,19 @@ export type GetFolderEmailsListResponses = {
              */
             message_id: string;
             /**
-             * The ID of the thread the email belongs to.
+             * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
              */
             thread_id?: string;
             /**
-             * The body of the email.
+             * The complete body of the email: HTML when available, otherwise plain text. An empty string when the email has no body or meta_only=true.
              */
             body: string;
             /**
-             * The snippet (preview) of the email.
+             * The complete plain-text body of the email. Uses the original plain-text version when available, otherwise text converted from HTML. For Outlook, text is converted from the HTML body returned by Microsoft Graph, or taken directly from its plain-text body. An empty string when the email has no body or meta_only=true.
+             */
+            body_plain: string;
+            /**
+             * A short preview of the email, not its complete plain-text body. Use body_plain for the full text.
              */
             snippet: string;
             /**
@@ -14142,9 +14781,9 @@ export type GetFolderEmailsListResponses = {
                 display_name?: string;
             }>;
             /**
-             * The list of attendees that the email was CC'd to.
+             * The list of attendees that the email was CC'd to. An empty array when none are available.
              */
-            cc?: Array<{
+            cc: Array<{
                 /**
                  * The email address of the attendee.
                  */
@@ -14155,9 +14794,9 @@ export type GetFolderEmailsListResponses = {
                 display_name?: string;
             }>;
             /**
-             * The list of attendees that the email was BCC'd to.
+             * The list of attendees that the email was BCC'd to. An empty array when none are available.
              */
-            bcc?: Array<{
+            bcc: Array<{
                 /**
                  * The email address of the attendee.
                  */
@@ -14168,9 +14807,9 @@ export type GetFolderEmailsListResponses = {
                 display_name?: string;
             }>;
             /**
-             * The list of attendees that the replies should be sent to.
+             * The list of attendees that the replies should be sent to. An empty array when none are available.
              */
-            reply_to?: Array<{
+            reply_to: Array<{
                 /**
                  * The email address of the attendee.
                  */
@@ -14190,7 +14829,7 @@ export type GetFolderEmailsListResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -14201,6 +14840,10 @@ export type GetFolderEmailsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -14218,7 +14861,7 @@ export type GetFolderEmailsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -14233,7 +14876,7 @@ export type GetFolderEmailsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -14244,6 +14887,10 @@ export type GetFolderEmailsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -14261,7 +14908,7 @@ export type GetFolderEmailsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -14279,7 +14926,7 @@ export type GetFolderEmailsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -14290,6 +14937,10 @@ export type GetFolderEmailsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -14307,7 +14958,7 @@ export type GetFolderEmailsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -14329,7 +14980,7 @@ export type GetFolderEmailsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -14340,6 +14991,10 @@ export type GetFolderEmailsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -14357,7 +15012,7 @@ export type GetFolderEmailsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -14368,7 +15023,7 @@ export type GetFolderEmailsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -14379,6 +15034,10 @@ export type GetFolderEmailsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -14396,7 +15055,7 @@ export type GetFolderEmailsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -14415,7 +15074,7 @@ export type GetFolderEmailsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -14426,6 +15085,10 @@ export type GetFolderEmailsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -14443,7 +15106,7 @@ export type GetFolderEmailsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -14483,7 +15146,7 @@ export type GetFolderEmailsListResponses = {
                 }>;
             }>;
             /**
-             * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
+             * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email, excluding the UNREAD system label, which is exposed through is_unread instead.
              */
             folders: Array<string>;
             /**
@@ -14491,7 +15154,7 @@ export type GetFolderEmailsListResponses = {
              */
             categories?: Array<string>;
             /**
-             * Is the email unread.
+             * Is the email unread. For Gmail, this reflects the UNREAD system label.
              */
             is_unread: boolean;
         }>;
@@ -14512,7 +15175,7 @@ export type GetThreadData = {
     body?: never;
     path: {
         /**
-         * ID of the Thread to retrieve.
+         * ID of the thread to retrieve. For IMAP, use the thread_id returned by an email; results based on header-derived IDs may be incomplete.
          */
         thread_id: string;
         /**
@@ -14522,7 +15185,7 @@ export type GetThreadData = {
     };
     query?: {
         /**
-         * Speed up the response by only returning the email metadata, excluding the body and attachments metadata.
+         * Speed up the response by only returning the email metadata. body and body_plain are empty strings, and attachments metadata is excluded.
          */
         meta_only?: boolean;
     };
@@ -14550,15 +15213,19 @@ export type GetThreadResponses = {
              */
             message_id: string;
             /**
-             * The ID of the thread the email belongs to.
+             * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
              */
             thread_id?: string;
             /**
-             * The body of the email.
+             * The complete body of the email: HTML when available, otherwise plain text. An empty string when the email has no body or meta_only=true.
              */
             body: string;
             /**
-             * The snippet (preview) of the email.
+             * The complete plain-text body of the email. Uses the original plain-text version when available, otherwise text converted from HTML. For Outlook, text is converted from the HTML body returned by Microsoft Graph, or taken directly from its plain-text body. An empty string when the email has no body or meta_only=true.
+             */
+            body_plain: string;
+            /**
+             * A short preview of the email, not its complete plain-text body. Use body_plain for the full text.
              */
             snippet: string;
             /**
@@ -14605,9 +15272,9 @@ export type GetThreadResponses = {
                 display_name?: string;
             }>;
             /**
-             * The list of attendees that the email was CC'd to.
+             * The list of attendees that the email was CC'd to. An empty array when none are available.
              */
-            cc?: Array<{
+            cc: Array<{
                 /**
                  * The email address of the attendee.
                  */
@@ -14618,9 +15285,9 @@ export type GetThreadResponses = {
                 display_name?: string;
             }>;
             /**
-             * The list of attendees that the email was BCC'd to.
+             * The list of attendees that the email was BCC'd to. An empty array when none are available.
              */
-            bcc?: Array<{
+            bcc: Array<{
                 /**
                  * The email address of the attendee.
                  */
@@ -14631,9 +15298,9 @@ export type GetThreadResponses = {
                 display_name?: string;
             }>;
             /**
-             * The list of attendees that the replies should be sent to.
+             * The list of attendees that the replies should be sent to. An empty array when none are available.
              */
-            reply_to?: Array<{
+            reply_to: Array<{
                 /**
                  * The email address of the attendee.
                  */
@@ -14653,7 +15320,7 @@ export type GetThreadResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -14664,6 +15331,10 @@ export type GetThreadResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -14681,7 +15352,7 @@ export type GetThreadResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -14696,7 +15367,7 @@ export type GetThreadResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -14707,6 +15378,10 @@ export type GetThreadResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -14724,7 +15399,7 @@ export type GetThreadResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -14742,7 +15417,7 @@ export type GetThreadResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -14753,6 +15428,10 @@ export type GetThreadResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -14770,7 +15449,7 @@ export type GetThreadResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -14792,7 +15471,7 @@ export type GetThreadResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -14803,6 +15482,10 @@ export type GetThreadResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -14820,7 +15503,7 @@ export type GetThreadResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -14831,7 +15514,7 @@ export type GetThreadResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -14842,6 +15525,10 @@ export type GetThreadResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -14859,7 +15546,7 @@ export type GetThreadResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -14878,7 +15565,7 @@ export type GetThreadResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -14889,6 +15576,10 @@ export type GetThreadResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -14906,7 +15597,7 @@ export type GetThreadResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -14946,7 +15637,7 @@ export type GetThreadResponses = {
                 }>;
             }>;
             /**
-             * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
+             * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email, excluding the UNREAD system label, which is exposed through is_unread instead.
              */
             folders: Array<string>;
             /**
@@ -14954,7 +15645,7 @@ export type GetThreadResponses = {
              */
             categories?: Array<string>;
             /**
-             * Is the email unread.
+             * Is the email unread. For Gmail, this reflects the UNREAD system label.
              */
             is_unread: boolean;
         }>;
@@ -15004,7 +15695,7 @@ export type GetEmailData = {
     };
     query?: {
         /**
-         * Speed up the response by only returning the email metadata, excluding the body and attachments metadata.
+         * Speed up the response by only returning the email metadata. body and body_plain are empty strings, and attachments metadata is excluded.
          */
         meta_only?: boolean;
     };
@@ -15026,15 +15717,19 @@ export type GetEmailResponses = {
          */
         message_id: string;
         /**
-         * The ID of the thread the email belongs to.
+         * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
          */
         thread_id?: string;
         /**
-         * The body of the email.
+         * The complete body of the email: HTML when available, otherwise plain text. An empty string when the email has no body or meta_only=true.
          */
         body: string;
         /**
-         * The snippet (preview) of the email.
+         * The complete plain-text body of the email. Uses the original plain-text version when available, otherwise text converted from HTML. For Outlook, text is converted from the HTML body returned by Microsoft Graph, or taken directly from its plain-text body. An empty string when the email has no body or meta_only=true.
+         */
+        body_plain: string;
+        /**
+         * A short preview of the email, not its complete plain-text body. Use body_plain for the full text.
          */
         snippet: string;
         /**
@@ -15081,9 +15776,9 @@ export type GetEmailResponses = {
             display_name?: string;
         }>;
         /**
-         * The list of attendees that the email was CC'd to.
+         * The list of attendees that the email was CC'd to. An empty array when none are available.
          */
-        cc?: Array<{
+        cc: Array<{
             /**
              * The email address of the attendee.
              */
@@ -15094,9 +15789,9 @@ export type GetEmailResponses = {
             display_name?: string;
         }>;
         /**
-         * The list of attendees that the email was BCC'd to.
+         * The list of attendees that the email was BCC'd to. An empty array when none are available.
          */
-        bcc?: Array<{
+        bcc: Array<{
             /**
              * The email address of the attendee.
              */
@@ -15107,9 +15802,9 @@ export type GetEmailResponses = {
             display_name?: string;
         }>;
         /**
-         * The list of attendees that the replies should be sent to.
+         * The list of attendees that the replies should be sent to. An empty array when none are available.
          */
-        reply_to?: Array<{
+        reply_to: Array<{
             /**
              * The email address of the attendee.
              */
@@ -15129,7 +15824,7 @@ export type GetEmailResponses = {
         attachments: Array<{
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -15140,6 +15835,10 @@ export type GetEmailResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -15157,7 +15856,7 @@ export type GetEmailResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'audio';
@@ -15172,7 +15871,7 @@ export type GetEmailResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -15183,6 +15882,10 @@ export type GetEmailResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -15200,7 +15903,7 @@ export type GetEmailResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'img';
@@ -15218,7 +15921,7 @@ export type GetEmailResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -15229,6 +15932,10 @@ export type GetEmailResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -15246,7 +15953,7 @@ export type GetEmailResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'video';
@@ -15268,7 +15975,7 @@ export type GetEmailResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -15279,6 +15986,10 @@ export type GetEmailResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -15296,7 +16007,7 @@ export type GetEmailResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'file';
@@ -15307,7 +16018,7 @@ export type GetEmailResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -15318,6 +16029,10 @@ export type GetEmailResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -15335,7 +16050,7 @@ export type GetEmailResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'shared_content';
@@ -15354,7 +16069,7 @@ export type GetEmailResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -15365,6 +16080,10 @@ export type GetEmailResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -15382,7 +16101,7 @@ export type GetEmailResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'contact_card';
@@ -15422,7 +16141,7 @@ export type GetEmailResponses = {
             }>;
         }>;
         /**
-         * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
+         * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email, excluding the UNREAD system label, which is exposed through is_unread instead.
          */
         folders: Array<string>;
         /**
@@ -15430,7 +16149,7 @@ export type GetEmailResponses = {
          */
         categories?: Array<string>;
         /**
-         * Is the email unread.
+         * Is the email unread. For Gmail, this reflects the UNREAD system label.
          */
         is_unread: boolean;
     };
@@ -15468,7 +16187,7 @@ export type GetAttachment1Responses = {
 export type ModifyEmailData = {
     body?: {
         /**
-         * The ID(s) of the folder(s) to apply, overwriting all folders previously associated with the Email. Outlook emails can be in a single folder only. Google allows a single email to appear in multiple folders.
+         * The ID(s) of the folder(s) to apply, overwriting all folders previously associated with the Email. Outlook emails can be in a single folder only. Google allows a single email to appear in multiple folders. For Gmail, the UNREAD system label represents read status, so it is excluded from folders and ignored here; use the mark-as-read or mark-as-unread operation to change that status.
          */
         folders_ids?: Array<string>;
         specifics?: unknown & {
@@ -15477,7 +16196,7 @@ export type ModifyEmailData = {
              */
             outlook?: {
                 /**
-                 * List of categories to assign to the email.
+                 * Categories to assign to the email, overwriting all previously assigned categories. An empty array removes all categories.
                  */
                 categories?: Array<string>;
             };
@@ -15512,15 +16231,19 @@ export type ModifyEmailResponses = {
          */
         message_id: string;
         /**
-         * The ID of the thread the email belongs to.
+         * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
          */
         thread_id?: string;
         /**
-         * The body of the email.
+         * The complete body of the email: HTML when available, otherwise plain text. An empty string when the email has no body or meta_only=true.
          */
         body: string;
         /**
-         * The snippet (preview) of the email.
+         * The complete plain-text body of the email. Uses the original plain-text version when available, otherwise text converted from HTML. For Outlook, text is converted from the HTML body returned by Microsoft Graph, or taken directly from its plain-text body. An empty string when the email has no body or meta_only=true.
+         */
+        body_plain: string;
+        /**
+         * A short preview of the email, not its complete plain-text body. Use body_plain for the full text.
          */
         snippet: string;
         /**
@@ -15567,9 +16290,9 @@ export type ModifyEmailResponses = {
             display_name?: string;
         }>;
         /**
-         * The list of attendees that the email was CC'd to.
+         * The list of attendees that the email was CC'd to. An empty array when none are available.
          */
-        cc?: Array<{
+        cc: Array<{
             /**
              * The email address of the attendee.
              */
@@ -15580,9 +16303,9 @@ export type ModifyEmailResponses = {
             display_name?: string;
         }>;
         /**
-         * The list of attendees that the email was BCC'd to.
+         * The list of attendees that the email was BCC'd to. An empty array when none are available.
          */
-        bcc?: Array<{
+        bcc: Array<{
             /**
              * The email address of the attendee.
              */
@@ -15593,9 +16316,9 @@ export type ModifyEmailResponses = {
             display_name?: string;
         }>;
         /**
-         * The list of attendees that the replies should be sent to.
+         * The list of attendees that the replies should be sent to. An empty array when none are available.
          */
-        reply_to?: Array<{
+        reply_to: Array<{
             /**
              * The email address of the attendee.
              */
@@ -15615,7 +16338,7 @@ export type ModifyEmailResponses = {
         attachments: Array<{
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -15626,6 +16349,10 @@ export type ModifyEmailResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -15643,7 +16370,7 @@ export type ModifyEmailResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'audio';
@@ -15658,7 +16385,7 @@ export type ModifyEmailResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -15669,6 +16396,10 @@ export type ModifyEmailResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -15686,7 +16417,7 @@ export type ModifyEmailResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'img';
@@ -15704,7 +16435,7 @@ export type ModifyEmailResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -15715,6 +16446,10 @@ export type ModifyEmailResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -15732,7 +16467,7 @@ export type ModifyEmailResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'video';
@@ -15754,7 +16489,7 @@ export type ModifyEmailResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -15765,6 +16500,10 @@ export type ModifyEmailResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -15782,7 +16521,7 @@ export type ModifyEmailResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'file';
@@ -15793,7 +16532,7 @@ export type ModifyEmailResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -15804,6 +16543,10 @@ export type ModifyEmailResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -15821,7 +16564,7 @@ export type ModifyEmailResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'shared_content';
@@ -15840,7 +16583,7 @@ export type ModifyEmailResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -15851,6 +16594,10 @@ export type ModifyEmailResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -15868,7 +16615,7 @@ export type ModifyEmailResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'contact_card';
@@ -15908,7 +16655,7 @@ export type ModifyEmailResponses = {
             }>;
         }>;
         /**
-         * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.
+         * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email, excluding the UNREAD system label, which is exposed through is_unread instead.
          */
         folders: Array<string>;
         /**
@@ -15916,7 +16663,7 @@ export type ModifyEmailResponses = {
          */
         categories?: Array<string>;
         /**
-         * Is the email unread.
+         * Is the email unread. For Gmail, this reflects the UNREAD system label.
          */
         is_unread: boolean;
     };
@@ -16083,6 +16830,10 @@ export type SendEmailData = {
                  */
                 duration?: number;
             };
+            /**
+             * The Content-ID (CID) to give to the file, without the surrounding angle brackets. When set, the file is sent as an inline attachment and can be referenced from the HTML content with `cid:<content_id>`, for example `<img src="cid:my-logo">`.
+             */
+            content_id?: string;
         }>;
         /**
          * An array of custom headers to add to the email. Each header overrides any existing header with the same name (case-insensitive), including headers set by other fields such as `to`, `cc`, `bcc`, `from`, `subject`, or `reply_to`. A `Reply-To` custom header therefore takes precedence over the `reply_to` field and its value is used verbatim.
@@ -16191,7 +16942,7 @@ export type GetDraftsListResponses = {
              */
             id: string;
             /**
-             * The ID of the thread the draft belongs to.
+             * The ID of the thread the draft belongs to. For IMAP drafts, this field is present only when the server provides a native thread ID.
              */
             thread_id?: string;
             /**
@@ -16277,7 +17028,7 @@ export type GetDraftsListResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -16288,6 +17039,10 @@ export type GetDraftsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -16305,7 +17060,7 @@ export type GetDraftsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -16320,7 +17075,7 @@ export type GetDraftsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -16331,6 +17086,10 @@ export type GetDraftsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -16348,7 +17107,7 @@ export type GetDraftsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -16366,7 +17125,7 @@ export type GetDraftsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -16377,6 +17136,10 @@ export type GetDraftsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -16394,7 +17157,7 @@ export type GetDraftsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -16416,7 +17179,7 @@ export type GetDraftsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -16427,6 +17190,10 @@ export type GetDraftsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -16444,7 +17211,7 @@ export type GetDraftsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -16455,7 +17222,7 @@ export type GetDraftsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -16466,6 +17233,10 @@ export type GetDraftsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -16483,7 +17254,7 @@ export type GetDraftsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -16502,7 +17273,7 @@ export type GetDraftsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -16513,6 +17284,10 @@ export type GetDraftsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -16530,7 +17305,7 @@ export type GetDraftsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -16696,6 +17471,10 @@ export type CreateDraftData = {
                  */
                 duration?: number;
             };
+            /**
+             * The Content-ID (CID) to give to the file, without the surrounding angle brackets. When set, the file is sent as an inline attachment and can be referenced from the HTML content with `cid:<content_id>`, for example `<img src="cid:my-logo">`.
+             */
+            content_id?: string;
         }>;
         /**
          * Configuration of tracking for this email.
@@ -16740,7 +17519,7 @@ export type CreateDraftResponses = {
          */
         id: string;
         /**
-         * The ID of the thread the draft belongs to.
+         * The ID of the thread the draft belongs to. For IMAP drafts, this field is present only when the server provides a native thread ID.
          */
         thread_id?: string;
         /**
@@ -16826,7 +17605,7 @@ export type CreateDraftResponses = {
         attachments: Array<{
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -16837,6 +17616,10 @@ export type CreateDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -16854,7 +17637,7 @@ export type CreateDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'audio';
@@ -16869,7 +17652,7 @@ export type CreateDraftResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -16880,6 +17663,10 @@ export type CreateDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -16897,7 +17684,7 @@ export type CreateDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'img';
@@ -16915,7 +17702,7 @@ export type CreateDraftResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -16926,6 +17713,10 @@ export type CreateDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -16943,7 +17734,7 @@ export type CreateDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'video';
@@ -16965,7 +17756,7 @@ export type CreateDraftResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -16976,6 +17767,10 @@ export type CreateDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -16993,7 +17788,7 @@ export type CreateDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'file';
@@ -17004,7 +17799,7 @@ export type CreateDraftResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -17015,6 +17810,10 @@ export type CreateDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -17032,7 +17831,7 @@ export type CreateDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'shared_content';
@@ -17051,7 +17850,7 @@ export type CreateDraftResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -17062,6 +17861,10 @@ export type CreateDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -17079,7 +17882,7 @@ export type CreateDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'contact_card';
@@ -17177,7 +17980,7 @@ export type GetDraftResponses = {
          */
         id: string;
         /**
-         * The ID of the thread the draft belongs to.
+         * The ID of the thread the draft belongs to. For IMAP drafts, this field is present only when the server provides a native thread ID.
          */
         thread_id?: string;
         /**
@@ -17263,7 +18066,7 @@ export type GetDraftResponses = {
         attachments: Array<{
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -17274,6 +18077,10 @@ export type GetDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -17291,7 +18098,7 @@ export type GetDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'audio';
@@ -17306,7 +18113,7 @@ export type GetDraftResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -17317,6 +18124,10 @@ export type GetDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -17334,7 +18145,7 @@ export type GetDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'img';
@@ -17352,7 +18163,7 @@ export type GetDraftResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -17363,6 +18174,10 @@ export type GetDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -17380,7 +18195,7 @@ export type GetDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'video';
@@ -17402,7 +18217,7 @@ export type GetDraftResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -17413,6 +18228,10 @@ export type GetDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -17430,7 +18249,7 @@ export type GetDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'file';
@@ -17441,7 +18260,7 @@ export type GetDraftResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -17452,6 +18271,10 @@ export type GetDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -17469,7 +18292,7 @@ export type GetDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'shared_content';
@@ -17488,7 +18311,7 @@ export type GetDraftResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -17499,6 +18322,10 @@ export type GetDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -17516,7 +18343,7 @@ export type GetDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'contact_card';
@@ -17673,6 +18500,10 @@ export type UpdateDraftData = {
                  */
                 duration?: number;
             };
+            /**
+             * The Content-ID (CID) to give to the file, without the surrounding angle brackets. When set, the file is sent as an inline attachment and can be referenced from the HTML content with `cid:<content_id>`, for example `<img src="cid:my-logo">`.
+             */
+            content_id?: string;
         }>;
         /**
          * Configuration of tracking for this email.
@@ -17729,7 +18560,7 @@ export type UpdateDraftResponses = {
          */
         id: string;
         /**
-         * The ID of the thread the draft belongs to.
+         * The ID of the thread the draft belongs to. For IMAP drafts, this field is present only when the server provides a native thread ID.
          */
         thread_id?: string;
         /**
@@ -17815,7 +18646,7 @@ export type UpdateDraftResponses = {
         attachments: Array<{
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -17826,6 +18657,10 @@ export type UpdateDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -17843,7 +18678,7 @@ export type UpdateDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'audio';
@@ -17858,7 +18693,7 @@ export type UpdateDraftResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -17869,6 +18704,10 @@ export type UpdateDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -17886,7 +18725,7 @@ export type UpdateDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'img';
@@ -17904,7 +18743,7 @@ export type UpdateDraftResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -17915,6 +18754,10 @@ export type UpdateDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -17932,7 +18775,7 @@ export type UpdateDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'video';
@@ -17954,7 +18797,7 @@ export type UpdateDraftResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -17965,6 +18808,10 @@ export type UpdateDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -17982,7 +18829,7 @@ export type UpdateDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'file';
@@ -17993,7 +18840,7 @@ export type UpdateDraftResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -18004,6 +18851,10 @@ export type UpdateDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -18021,7 +18872,7 @@ export type UpdateDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'shared_content';
@@ -18040,7 +18891,7 @@ export type UpdateDraftResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -18051,6 +18902,10 @@ export type UpdateDraftResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -18068,7 +18923,7 @@ export type UpdateDraftResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'contact_card';
@@ -18196,9 +19051,9 @@ export type GetFoldersListResponses = {
              */
             name: string;
             /**
-             * The system role of the folder.
+             * The folder role represents a supported special-use purpose (based on RFC special-use attributes where applicable); it does not indicate whether the folder is system-created. Gmail can expose system labels beyond the RFC special-use list: these have is_system=true but no role when they do not map to a supported special-use purpose, such as CATEGORY_* labels. For those Gmail labels, use the label ID or name. Outlook does not support folder roles. [Learn more about roles](https://developer.unipile.com/v2.0/docs/manage-mailboxes#about-roles).
              */
-            role?: 'TRASH' | 'INBOX' | 'SENT' | 'DRAFTS' | 'JUNK' | 'ARCHIVE' | 'IMPORTANT' | 'SPAM' | 'ALL';
+            role?: 'TRASH' | 'INBOX' | 'SENT' | 'DRAFTS' | 'JUNK' | 'ARCHIVE' | 'IMPORTANT' | 'STARRED' | 'SPAM' | 'ALL';
             /**
              * The total number of emails in the folder. For Gmail, the total number of emails assigned with this label.
              */
@@ -18281,9 +19136,9 @@ export type CreateFolderResponses = {
          */
         name: string;
         /**
-         * The system role of the folder.
+         * The folder role represents a supported special-use purpose (based on RFC special-use attributes where applicable); it does not indicate whether the folder is system-created. Gmail can expose system labels beyond the RFC special-use list: these have is_system=true but no role when they do not map to a supported special-use purpose, such as CATEGORY_* labels. For those Gmail labels, use the label ID or name. Outlook does not support folder roles. [Learn more about roles](https://developer.unipile.com/v2.0/docs/manage-mailboxes#about-roles).
          */
-        role?: 'TRASH' | 'INBOX' | 'SENT' | 'DRAFTS' | 'JUNK' | 'ARCHIVE' | 'IMPORTANT' | 'SPAM' | 'ALL';
+        role?: 'TRASH' | 'INBOX' | 'SENT' | 'DRAFTS' | 'JUNK' | 'ARCHIVE' | 'IMPORTANT' | 'STARRED' | 'SPAM' | 'ALL';
         /**
          * The total number of emails in the folder. For Gmail, the total number of emails assigned with this label.
          */
@@ -18369,9 +19224,9 @@ export type GetFolderResponses = {
          */
         name: string;
         /**
-         * The system role of the folder.
+         * The folder role represents a supported special-use purpose (based on RFC special-use attributes where applicable); it does not indicate whether the folder is system-created. Gmail can expose system labels beyond the RFC special-use list: these have is_system=true but no role when they do not map to a supported special-use purpose, such as CATEGORY_* labels. For those Gmail labels, use the label ID or name. Outlook does not support folder roles. [Learn more about roles](https://developer.unipile.com/v2.0/docs/manage-mailboxes#about-roles).
          */
-        role?: 'TRASH' | 'INBOX' | 'SENT' | 'DRAFTS' | 'JUNK' | 'ARCHIVE' | 'IMPORTANT' | 'SPAM' | 'ALL';
+        role?: 'TRASH' | 'INBOX' | 'SENT' | 'DRAFTS' | 'JUNK' | 'ARCHIVE' | 'IMPORTANT' | 'STARRED' | 'SPAM' | 'ALL';
         /**
          * The total number of emails in the folder. For Gmail, the total number of emails assigned with this label.
          */
@@ -18449,9 +19304,9 @@ export type UpdateFolderResponses = {
          */
         name: string;
         /**
-         * The system role of the folder.
+         * The folder role represents a supported special-use purpose (based on RFC special-use attributes where applicable); it does not indicate whether the folder is system-created. Gmail can expose system labels beyond the RFC special-use list: these have is_system=true but no role when they do not map to a supported special-use purpose, such as CATEGORY_* labels. For those Gmail labels, use the label ID or name. Outlook does not support folder roles. [Learn more about roles](https://developer.unipile.com/v2.0/docs/manage-mailboxes#about-roles).
          */
-        role?: 'TRASH' | 'INBOX' | 'SENT' | 'DRAFTS' | 'JUNK' | 'ARCHIVE' | 'IMPORTANT' | 'SPAM' | 'ALL';
+        role?: 'TRASH' | 'INBOX' | 'SENT' | 'DRAFTS' | 'JUNK' | 'ARCHIVE' | 'IMPORTANT' | 'STARRED' | 'SPAM' | 'ALL';
         /**
          * The total number of emails in the folder. For Gmail, the total number of emails assigned with this label.
          */
@@ -18631,7 +19486,17 @@ export type GetContactsListResponses = {
                 specifics?: unknown;
             };
             /**
-             * URL of the profile picture of the contact.
+             * Public URL of the profile picture of the contact.
+             */
+            public_picture_url?: string;
+            /**
+             * Private URL to download the profile picture of the contact. This URL requires authentication.
+             */
+            private_picture_download_url?: string;
+            /**
+             * URL of the profile picture of the contact. Use public_picture_url or private_picture_download_url instead.
+             *
+             * @deprecated
              */
             picture_url?: string;
             /**
@@ -22274,6 +23139,60 @@ export type GetUserPictureResponses = {
     200: unknown;
 };
 
+export type GetUserPresenceData = {
+    body?: never;
+    path: {
+        /**
+         * The ID of the User whose presence must be retrieved, as returned by the provider. Use `me` to specify the owner of the connected account, although providers do not always report the presence of the account owner.
+         */
+        user_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/users/{user_id}/presence';
+};
+
+export type GetUserPresenceResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        object: 'UserPresence';
+        /**
+         * The ID of the User this presence belongs to.
+         */
+        user_id: string;
+        /**
+         * Whether the user is currently connected to the provider.
+         * - `online` if the user is connected right now.
+         * - `offline` if the user is not connected. `last_online_at` is set when the provider exposes the exact date.
+         * - `unknown` if the provider reports no presence for this user, which usually means the user hides it.
+         */
+        presence: 'online' | 'offline' | 'unknown';
+        /**
+         * Date and time when the user was last online. Only set when the user is offline and the provider exposes the exact date.
+         */
+        last_online_at?: string;
+        /**
+         * The provider's of the Account.
+         * - `mock` is mock.
+         * - `whatsapp` is WhatsApp.
+         * - `linkedin` is LinkedIn.
+         * - `instagram` is Instagram.
+         * - `google` is Google.
+         * - `outlook` is Outlook.
+         * - `telegram` is Telegram.
+         * - `imap` is IMAP.
+         */
+        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+    };
+};
+
+export type GetUserPresenceResponse = GetUserPresenceResponses[keyof GetUserPresenceResponses];
+
 export type VisitUserProfileData = {
     body?: never;
     path: {
@@ -23575,7 +24494,7 @@ export type GetPostsListResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -23586,6 +24505,10 @@ export type GetPostsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -23603,7 +24526,7 @@ export type GetPostsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -23618,7 +24541,7 @@ export type GetPostsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -23629,6 +24552,10 @@ export type GetPostsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -23646,7 +24573,7 @@ export type GetPostsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -23664,7 +24591,7 @@ export type GetPostsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -23675,6 +24602,10 @@ export type GetPostsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -23692,7 +24623,7 @@ export type GetPostsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -23714,7 +24645,7 @@ export type GetPostsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -23725,6 +24656,10 @@ export type GetPostsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -23742,7 +24677,7 @@ export type GetPostsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -23753,7 +24688,7 @@ export type GetPostsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -23764,6 +24699,10 @@ export type GetPostsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -23781,7 +24720,7 @@ export type GetPostsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -23800,7 +24739,7 @@ export type GetPostsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -23811,6 +24750,10 @@ export type GetPostsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -23828,7 +24771,7 @@ export type GetPostsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -24285,7 +25228,7 @@ export type GetPostsListResponses = {
                 attachments: Array<{
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -24296,6 +25239,10 @@ export type GetPostsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -24313,7 +25260,7 @@ export type GetPostsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'audio';
@@ -24328,7 +25275,7 @@ export type GetPostsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -24339,6 +25286,10 @@ export type GetPostsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -24356,7 +25307,7 @@ export type GetPostsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'img';
@@ -24374,7 +25325,7 @@ export type GetPostsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -24385,6 +25336,10 @@ export type GetPostsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -24402,7 +25357,7 @@ export type GetPostsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'video';
@@ -24424,7 +25379,7 @@ export type GetPostsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -24435,6 +25390,10 @@ export type GetPostsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -24452,7 +25411,7 @@ export type GetPostsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'file';
@@ -24463,7 +25422,7 @@ export type GetPostsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -24474,6 +25433,10 @@ export type GetPostsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -24491,7 +25454,7 @@ export type GetPostsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'shared_content';
@@ -24510,7 +25473,7 @@ export type GetPostsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -24521,6 +25484,10 @@ export type GetPostsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -24538,7 +25505,7 @@ export type GetPostsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'contact_card';
@@ -25108,7 +26075,7 @@ export type GetPostResponses = {
         attachments: Array<{
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -25119,6 +26086,10 @@ export type GetPostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -25136,7 +26107,7 @@ export type GetPostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'audio';
@@ -25151,7 +26122,7 @@ export type GetPostResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -25162,6 +26133,10 @@ export type GetPostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -25179,7 +26154,7 @@ export type GetPostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'img';
@@ -25197,7 +26172,7 @@ export type GetPostResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -25208,6 +26183,10 @@ export type GetPostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -25225,7 +26204,7 @@ export type GetPostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'video';
@@ -25247,7 +26226,7 @@ export type GetPostResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -25258,6 +26237,10 @@ export type GetPostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -25275,7 +26258,7 @@ export type GetPostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'file';
@@ -25286,7 +26269,7 @@ export type GetPostResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -25297,6 +26280,10 @@ export type GetPostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -25314,7 +26301,7 @@ export type GetPostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'shared_content';
@@ -25333,7 +26320,7 @@ export type GetPostResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -25344,6 +26331,10 @@ export type GetPostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -25361,7 +26352,7 @@ export type GetPostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'contact_card';
@@ -25818,7 +26809,7 @@ export type GetPostResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -25829,6 +26820,10 @@ export type GetPostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -25846,7 +26841,7 @@ export type GetPostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -25861,7 +26856,7 @@ export type GetPostResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -25872,6 +26867,10 @@ export type GetPostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -25889,7 +26888,7 @@ export type GetPostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -25907,7 +26906,7 @@ export type GetPostResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -25918,6 +26917,10 @@ export type GetPostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -25935,7 +26938,7 @@ export type GetPostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -25957,7 +26960,7 @@ export type GetPostResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -25968,6 +26971,10 @@ export type GetPostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -25985,7 +26992,7 @@ export type GetPostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -25996,7 +27003,7 @@ export type GetPostResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -26007,6 +27014,10 @@ export type GetPostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -26024,7 +27035,7 @@ export type GetPostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -26043,7 +27054,7 @@ export type GetPostResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -26054,6 +27065,10 @@ export type GetPostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -26071,7 +27086,7 @@ export type GetPostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -26672,7 +27687,7 @@ export type UpdatePostResponses = {
         attachments: Array<{
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -26683,6 +27698,10 @@ export type UpdatePostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -26700,7 +27719,7 @@ export type UpdatePostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'audio';
@@ -26715,7 +27734,7 @@ export type UpdatePostResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -26726,6 +27745,10 @@ export type UpdatePostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -26743,7 +27766,7 @@ export type UpdatePostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'img';
@@ -26761,7 +27784,7 @@ export type UpdatePostResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -26772,6 +27795,10 @@ export type UpdatePostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -26789,7 +27816,7 @@ export type UpdatePostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'video';
@@ -26811,7 +27838,7 @@ export type UpdatePostResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -26822,6 +27849,10 @@ export type UpdatePostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -26839,7 +27870,7 @@ export type UpdatePostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'file';
@@ -26850,7 +27881,7 @@ export type UpdatePostResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -26861,6 +27892,10 @@ export type UpdatePostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -26878,7 +27913,7 @@ export type UpdatePostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'shared_content';
@@ -26897,7 +27932,7 @@ export type UpdatePostResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -26908,6 +27943,10 @@ export type UpdatePostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -26925,7 +27964,7 @@ export type UpdatePostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'contact_card';
@@ -27268,7 +28307,7 @@ export type UpdatePostResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -27279,6 +28318,10 @@ export type UpdatePostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -27296,7 +28339,7 @@ export type UpdatePostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -27311,7 +28354,7 @@ export type UpdatePostResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -27322,6 +28365,10 @@ export type UpdatePostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -27339,7 +28386,7 @@ export type UpdatePostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -27357,7 +28404,7 @@ export type UpdatePostResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -27368,6 +28415,10 @@ export type UpdatePostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -27385,7 +28436,7 @@ export type UpdatePostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -27407,7 +28458,7 @@ export type UpdatePostResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -27418,6 +28469,10 @@ export type UpdatePostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -27435,7 +28490,7 @@ export type UpdatePostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -27446,7 +28501,7 @@ export type UpdatePostResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -27457,6 +28512,10 @@ export type UpdatePostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -27474,7 +28533,7 @@ export type UpdatePostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -27493,7 +28552,7 @@ export type UpdatePostResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -27504,6 +28563,10 @@ export type UpdatePostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -27521,7 +28584,7 @@ export type UpdatePostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -27889,7 +28952,7 @@ export type CreatePostResponses = {
         attachments: Array<{
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -27900,6 +28963,10 @@ export type CreatePostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -27917,7 +28984,7 @@ export type CreatePostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'audio';
@@ -27932,7 +28999,7 @@ export type CreatePostResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -27943,6 +29010,10 @@ export type CreatePostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -27960,7 +29031,7 @@ export type CreatePostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'img';
@@ -27978,7 +29049,7 @@ export type CreatePostResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -27989,6 +29060,10 @@ export type CreatePostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -28006,7 +29081,7 @@ export type CreatePostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'video';
@@ -28028,7 +29103,7 @@ export type CreatePostResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -28039,6 +29114,10 @@ export type CreatePostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -28056,7 +29135,7 @@ export type CreatePostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'file';
@@ -28067,7 +29146,7 @@ export type CreatePostResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -28078,6 +29157,10 @@ export type CreatePostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -28095,7 +29178,7 @@ export type CreatePostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'shared_content';
@@ -28114,7 +29197,7 @@ export type CreatePostResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -28125,6 +29208,10 @@ export type CreatePostResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -28142,7 +29229,7 @@ export type CreatePostResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'contact_card';
@@ -28485,7 +29572,7 @@ export type CreatePostResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -28496,6 +29583,10 @@ export type CreatePostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -28513,7 +29604,7 @@ export type CreatePostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -28528,7 +29619,7 @@ export type CreatePostResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -28539,6 +29630,10 @@ export type CreatePostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -28556,7 +29651,7 @@ export type CreatePostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -28574,7 +29669,7 @@ export type CreatePostResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -28585,6 +29680,10 @@ export type CreatePostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -28602,7 +29701,7 @@ export type CreatePostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -28624,7 +29723,7 @@ export type CreatePostResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -28635,6 +29734,10 @@ export type CreatePostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -28652,7 +29755,7 @@ export type CreatePostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -28663,7 +29766,7 @@ export type CreatePostResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -28674,6 +29777,10 @@ export type CreatePostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -28691,7 +29798,7 @@ export type CreatePostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -28710,7 +29817,7 @@ export type CreatePostResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -28721,6 +29828,10 @@ export type CreatePostResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -28738,7 +29849,7 @@ export type CreatePostResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -29209,7 +30320,7 @@ export type GetPostCommentsListResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -29220,6 +30331,10 @@ export type GetPostCommentsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -29237,7 +30352,7 @@ export type GetPostCommentsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -29252,7 +30367,7 @@ export type GetPostCommentsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -29263,6 +30378,10 @@ export type GetPostCommentsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -29280,7 +30399,7 @@ export type GetPostCommentsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -29298,7 +30417,7 @@ export type GetPostCommentsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -29309,6 +30428,10 @@ export type GetPostCommentsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -29326,7 +30449,7 @@ export type GetPostCommentsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -29348,7 +30471,7 @@ export type GetPostCommentsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -29359,6 +30482,10 @@ export type GetPostCommentsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -29376,7 +30503,7 @@ export type GetPostCommentsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -29387,7 +30514,7 @@ export type GetPostCommentsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -29398,6 +30525,10 @@ export type GetPostCommentsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -29415,7 +30546,7 @@ export type GetPostCommentsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -29434,7 +30565,7 @@ export type GetPostCommentsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -29445,6 +30576,10 @@ export type GetPostCommentsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -29462,7 +30597,7 @@ export type GetPostCommentsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -29792,7 +30927,7 @@ export type AddPostCommentResponses = {
         attachments: Array<{
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -29803,6 +30938,10 @@ export type AddPostCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -29820,7 +30959,7 @@ export type AddPostCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'audio';
@@ -29835,7 +30974,7 @@ export type AddPostCommentResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -29846,6 +30985,10 @@ export type AddPostCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -29863,7 +31006,7 @@ export type AddPostCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'img';
@@ -29881,7 +31024,7 @@ export type AddPostCommentResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -29892,6 +31035,10 @@ export type AddPostCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -29909,7 +31056,7 @@ export type AddPostCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'video';
@@ -29931,7 +31078,7 @@ export type AddPostCommentResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -29942,6 +31089,10 @@ export type AddPostCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -29959,7 +31110,7 @@ export type AddPostCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'file';
@@ -29970,7 +31121,7 @@ export type AddPostCommentResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -29981,6 +31132,10 @@ export type AddPostCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -29998,7 +31153,7 @@ export type AddPostCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'shared_content';
@@ -30017,7 +31172,7 @@ export type AddPostCommentResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -30028,6 +31183,10 @@ export type AddPostCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -30045,7 +31204,7 @@ export type AddPostCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'contact_card';
@@ -30257,7 +31416,7 @@ export type UpdatePostCommentResponses = {
         attachments: Array<{
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -30268,6 +31427,10 @@ export type UpdatePostCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -30285,7 +31448,7 @@ export type UpdatePostCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'audio';
@@ -30300,7 +31463,7 @@ export type UpdatePostCommentResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -30311,6 +31474,10 @@ export type UpdatePostCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -30328,7 +31495,7 @@ export type UpdatePostCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'img';
@@ -30346,7 +31513,7 @@ export type UpdatePostCommentResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -30357,6 +31524,10 @@ export type UpdatePostCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -30374,7 +31545,7 @@ export type UpdatePostCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'video';
@@ -30396,7 +31567,7 @@ export type UpdatePostCommentResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -30407,6 +31578,10 @@ export type UpdatePostCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -30424,7 +31599,7 @@ export type UpdatePostCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'file';
@@ -30435,7 +31610,7 @@ export type UpdatePostCommentResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -30446,6 +31621,10 @@ export type UpdatePostCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -30463,7 +31642,7 @@ export type UpdatePostCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'shared_content';
@@ -30482,7 +31661,7 @@ export type UpdatePostCommentResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -30493,6 +31672,10 @@ export type UpdatePostCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -30510,7 +31693,7 @@ export type UpdatePostCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'contact_card';
@@ -30723,7 +31906,7 @@ export type ReplyToCommentResponses = {
         attachments: Array<{
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -30734,6 +31917,10 @@ export type ReplyToCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -30751,7 +31938,7 @@ export type ReplyToCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'audio';
@@ -30766,7 +31953,7 @@ export type ReplyToCommentResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -30777,6 +31964,10 @@ export type ReplyToCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -30794,7 +31985,7 @@ export type ReplyToCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'img';
@@ -30812,7 +32003,7 @@ export type ReplyToCommentResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -30823,6 +32014,10 @@ export type ReplyToCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -30840,7 +32035,7 @@ export type ReplyToCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'video';
@@ -30862,7 +32057,7 @@ export type ReplyToCommentResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -30873,6 +32068,10 @@ export type ReplyToCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -30890,7 +32089,7 @@ export type ReplyToCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'file';
@@ -30901,7 +32100,7 @@ export type ReplyToCommentResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -30912,6 +32111,10 @@ export type ReplyToCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -30929,7 +32132,7 @@ export type ReplyToCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'shared_content';
@@ -30948,7 +32151,7 @@ export type ReplyToCommentResponses = {
         } | {
             object: 'Attachment';
             /**
-             * The unique identifier of the attachment for the provider.
+             * The unique identifier of the attachment.
              */
             id: string;
             /**
@@ -30959,6 +32162,10 @@ export type ReplyToCommentResponses = {
              * Is the attachment inline in the content.
              */
             is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
             /**
              * The attachment is not available for download because it was removed from provider servers.
              */
@@ -30976,7 +32183,7 @@ export type ReplyToCommentResponses = {
              */
             url_expires_at?: string;
             /**
-             * Content of the attachement
+             * The file content encoded as base64, when available directly without an additional download.
              */
             content?: string;
             type: 'contact_card';
@@ -31115,7 +32322,7 @@ export type GetPostCommentRepliesListResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -31126,6 +32333,10 @@ export type GetPostCommentRepliesListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -31143,7 +32354,7 @@ export type GetPostCommentRepliesListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -31158,7 +32369,7 @@ export type GetPostCommentRepliesListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -31169,6 +32380,10 @@ export type GetPostCommentRepliesListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -31186,7 +32401,7 @@ export type GetPostCommentRepliesListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -31204,7 +32419,7 @@ export type GetPostCommentRepliesListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -31215,6 +32430,10 @@ export type GetPostCommentRepliesListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -31232,7 +32451,7 @@ export type GetPostCommentRepliesListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -31254,7 +32473,7 @@ export type GetPostCommentRepliesListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -31265,6 +32484,10 @@ export type GetPostCommentRepliesListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -31282,7 +32505,7 @@ export type GetPostCommentRepliesListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -31293,7 +32516,7 @@ export type GetPostCommentRepliesListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -31304,6 +32527,10 @@ export type GetPostCommentRepliesListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -31321,7 +32548,7 @@ export type GetPostCommentRepliesListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -31340,7 +32567,7 @@ export type GetPostCommentRepliesListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -31351,6 +32578,10 @@ export type GetPostCommentRepliesListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -31368,7 +32599,7 @@ export type GetPostCommentRepliesListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -31865,7 +33096,7 @@ export type GetUserCommentsListResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -31876,6 +33107,10 @@ export type GetUserCommentsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -31893,7 +33128,7 @@ export type GetUserCommentsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -31908,7 +33143,7 @@ export type GetUserCommentsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -31919,6 +33154,10 @@ export type GetUserCommentsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -31936,7 +33175,7 @@ export type GetUserCommentsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -31954,7 +33193,7 @@ export type GetUserCommentsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -31965,6 +33204,10 @@ export type GetUserCommentsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -31982,7 +33225,7 @@ export type GetUserCommentsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -32004,7 +33247,7 @@ export type GetUserCommentsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -32015,6 +33258,10 @@ export type GetUserCommentsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -32032,7 +33279,7 @@ export type GetUserCommentsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -32043,7 +33290,7 @@ export type GetUserCommentsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -32054,6 +33301,10 @@ export type GetUserCommentsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -32071,7 +33322,7 @@ export type GetUserCommentsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -32090,7 +33341,7 @@ export type GetUserCommentsListResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -32101,6 +33352,10 @@ export type GetUserCommentsListResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -32118,7 +33373,7 @@ export type GetUserCommentsListResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -32589,7 +33844,7 @@ export type GetUserCommentsListResponses = {
                 attachments: Array<{
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -32600,6 +33855,10 @@ export type GetUserCommentsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -32617,7 +33876,7 @@ export type GetUserCommentsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'audio';
@@ -32632,7 +33891,7 @@ export type GetUserCommentsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -32643,6 +33902,10 @@ export type GetUserCommentsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -32660,7 +33923,7 @@ export type GetUserCommentsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'img';
@@ -32678,7 +33941,7 @@ export type GetUserCommentsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -32689,6 +33952,10 @@ export type GetUserCommentsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -32706,7 +33973,7 @@ export type GetUserCommentsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'video';
@@ -32728,7 +33995,7 @@ export type GetUserCommentsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -32739,6 +34006,10 @@ export type GetUserCommentsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -32756,7 +34027,7 @@ export type GetUserCommentsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'file';
@@ -32767,7 +34038,7 @@ export type GetUserCommentsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -32778,6 +34049,10 @@ export type GetUserCommentsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -32795,7 +34070,7 @@ export type GetUserCommentsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'shared_content';
@@ -32814,7 +34089,7 @@ export type GetUserCommentsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -32825,6 +34100,10 @@ export type GetUserCommentsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -32842,7 +34121,7 @@ export type GetUserCommentsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'contact_card';
@@ -33299,7 +34578,7 @@ export type GetUserCommentsListResponses = {
                     attachments: Array<{
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -33310,6 +34589,10 @@ export type GetUserCommentsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -33327,7 +34610,7 @@ export type GetUserCommentsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'audio';
@@ -33342,7 +34625,7 @@ export type GetUserCommentsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -33353,6 +34636,10 @@ export type GetUserCommentsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -33370,7 +34657,7 @@ export type GetUserCommentsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'img';
@@ -33388,7 +34675,7 @@ export type GetUserCommentsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -33399,6 +34686,10 @@ export type GetUserCommentsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -33416,7 +34707,7 @@ export type GetUserCommentsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'video';
@@ -33438,7 +34729,7 @@ export type GetUserCommentsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -33449,6 +34740,10 @@ export type GetUserCommentsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -33466,7 +34761,7 @@ export type GetUserCommentsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'file';
@@ -33477,7 +34772,7 @@ export type GetUserCommentsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -33488,6 +34783,10 @@ export type GetUserCommentsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -33505,7 +34804,7 @@ export type GetUserCommentsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'shared_content';
@@ -33524,7 +34823,7 @@ export type GetUserCommentsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -33535,6 +34834,10 @@ export type GetUserCommentsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -33552,7 +34855,7 @@ export type GetUserCommentsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'contact_card';
@@ -34368,7 +35671,7 @@ export type GetUserReactionsListResponses = {
                 attachments: Array<{
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -34379,6 +35682,10 @@ export type GetUserReactionsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -34396,7 +35703,7 @@ export type GetUserReactionsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'audio';
@@ -34411,7 +35718,7 @@ export type GetUserReactionsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -34422,6 +35729,10 @@ export type GetUserReactionsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -34439,7 +35750,7 @@ export type GetUserReactionsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'img';
@@ -34457,7 +35768,7 @@ export type GetUserReactionsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -34468,6 +35779,10 @@ export type GetUserReactionsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -34485,7 +35800,7 @@ export type GetUserReactionsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'video';
@@ -34507,7 +35822,7 @@ export type GetUserReactionsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -34518,6 +35833,10 @@ export type GetUserReactionsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -34535,7 +35854,7 @@ export type GetUserReactionsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'file';
@@ -34546,7 +35865,7 @@ export type GetUserReactionsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -34557,6 +35876,10 @@ export type GetUserReactionsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -34574,7 +35897,7 @@ export type GetUserReactionsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'shared_content';
@@ -34593,7 +35916,7 @@ export type GetUserReactionsListResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -34604,6 +35927,10 @@ export type GetUserReactionsListResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -34621,7 +35948,7 @@ export type GetUserReactionsListResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'contact_card';
@@ -35078,7 +36405,7 @@ export type GetUserReactionsListResponses = {
                     attachments: Array<{
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -35089,6 +36416,10 @@ export type GetUserReactionsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -35106,7 +36437,7 @@ export type GetUserReactionsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'audio';
@@ -35121,7 +36452,7 @@ export type GetUserReactionsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -35132,6 +36463,10 @@ export type GetUserReactionsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -35149,7 +36484,7 @@ export type GetUserReactionsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'img';
@@ -35167,7 +36502,7 @@ export type GetUserReactionsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -35178,6 +36513,10 @@ export type GetUserReactionsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -35195,7 +36534,7 @@ export type GetUserReactionsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'video';
@@ -35217,7 +36556,7 @@ export type GetUserReactionsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -35228,6 +36567,10 @@ export type GetUserReactionsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -35245,7 +36588,7 @@ export type GetUserReactionsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'file';
@@ -35256,7 +36599,7 @@ export type GetUserReactionsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -35267,6 +36610,10 @@ export type GetUserReactionsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -35284,7 +36631,7 @@ export type GetUserReactionsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'shared_content';
@@ -35303,7 +36650,7 @@ export type GetUserReactionsListResponses = {
                     } | {
                         object: 'Attachment';
                         /**
-                         * The unique identifier of the attachment for the provider.
+                         * The unique identifier of the attachment.
                          */
                         id: string;
                         /**
@@ -35314,6 +36661,10 @@ export type GetUserReactionsListResponses = {
                          * Is the attachment inline in the content.
                          */
                         is_inline: boolean;
+                        /**
+                         * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                         */
+                        content_id?: string;
                         /**
                          * The attachment is not available for download because it was removed from provider servers.
                          */
@@ -35331,7 +36682,7 @@ export type GetUserReactionsListResponses = {
                          */
                         url_expires_at?: string;
                         /**
-                         * Content of the attachement
+                         * The file content encoded as base64, when available directly without an additional download.
                          */
                         content?: string;
                         type: 'contact_card';
@@ -36091,7 +37442,7 @@ export type GetCalendarEventListData = {
          */
         end?: string;
         /**
-         * Filter for events with the status `busy`
+         * Filter for events blocking time on the calendar, i.e. whose `transparency` is `opaque`.
          */
         busy?: boolean;
         /**
@@ -36149,6 +37500,10 @@ export type GetCalendarEventListResponses = {
              * The ID of the calendar the event belongs to.
              */
             calendar_id: string;
+            /**
+             * The iCalendar UID (RFC5545 UID) of the event. Unlike `id`, it is shared by every copy of the event across the calendars of its attendees, and stays stable when the event is exported or imported.
+             */
+            ical_uid?: string;
             /**
              * The date the event was created. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
              */
@@ -36553,6 +37908,10 @@ export type CreateCalendarEventResponses = {
          */
         calendar_id: string;
         /**
+         * The iCalendar UID (RFC5545 UID) of the event. Unlike `id`, it is shared by every copy of the event across the calendars of its attendees, and stays stable when the event is exported or imported.
+         */
+        ical_uid?: string;
+        /**
          * The date the event was created. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
          */
         created_at: string;
@@ -36836,6 +38195,10 @@ export type GetCalendarEventResponses = {
          * The ID of the calendar the event belongs to.
          */
         calendar_id: string;
+        /**
+         * The iCalendar UID (RFC5545 UID) of the event. Unlike `id`, it is shared by every copy of the event across the calendars of its attendees, and stays stable when the event is exported or imported.
+         */
+        ical_uid?: string;
         /**
          * The date the event was created. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
          */
@@ -37230,6 +38593,10 @@ export type UpdateCalendarEventResponses = {
          * The ID of the calendar the event belongs to.
          */
         calendar_id: string;
+        /**
+         * The iCalendar UID (RFC5545 UID) of the event. Unlike `id`, it is shared by every copy of the event across the calendars of its attendees, and stays stable when the event is exported or imported.
+         */
+        ical_uid?: string;
         /**
          * The date the event was created. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
          */
@@ -37750,6 +39117,114 @@ export type SelectContractResponses = {
 };
 
 export type SelectContractResponse = SelectContractResponses[keyof SelectContractResponses];
+
+export type GetProfileViewsData = {
+    body?: never;
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: {
+        /**
+         * The sort method.
+         */
+        sort_by?: 'DATE' | 'RELEVANCE';
+        /**
+         * The number of days over which to retrieve profile views.
+         *
+         * Native filter : Date range
+         *
+         */
+        date_range?: 14 | 28 | 90 | 365;
+        /**
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+         *
+         * Native filter : Industry
+         *
+         */
+        industry?: Array<string>;
+        /**
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+         *
+         * Native filter : Company
+         *
+         */
+        company?: Array<string>;
+        /**
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+         *
+         * Native filter : Location
+         *
+         */
+        location?: Array<string>;
+        /**
+         * A list of additionnal sections to be included in the response analytics.
+         */
+        details_sections?: Array<'COMPANIES' | 'INDUSTRIES' | 'LOCATIONS'>;
+        /**
+         * An offset used for pagination.
+         */
+        offset?: number;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
+         */
+        limit?: number;
+    };
+    url: '/v2/{account_id}/linkedin/analytics/profile-views';
+};
+
+export type GetProfileViewsResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        object: 'ProfileViews';
+        /**
+         * A collection of profile view entities.
+         */
+        entities: Array<{
+            object: 'ProfileViewsEntity';
+            id: string | null;
+            public_identifier: string;
+            name: string;
+            picture_url?: string;
+            network_distance?: 'SELF' | 'DISTANCE_1' | 'DISTANCE_2' | 'DISTANCE_3' | 'OUT_OF_NETWORK';
+            premium?: boolean;
+            verified?: boolean;
+            last_visited: {
+                unit: 'MINUTE' | 'HOUR' | 'DAY' | 'WEEK' | 'MONTH' | 'YEAR';
+                value: number;
+            } | null;
+        }>;
+        /**
+         * Profile views analytics will only be present in the first request of a series of paginated requests.
+         */
+        analytics?: {
+            object: 'ProfileViewsAnalytics';
+            views_count: number;
+            highlights?: {
+                top_location?: string;
+                top_company?: string;
+                top_industry?: string;
+            };
+            details?: {
+                locations?: {
+                    [key: string]: string;
+                };
+                companies?: {
+                    [key: string]: string;
+                };
+                industries?: {
+                    [key: string]: string;
+                };
+            };
+        };
+    };
+};
+
+export type GetProfileViewsResponse = GetProfileViewsResponses[keyof GetProfileViewsResponses];
 
 export type GetManagedCompanyPagesData = {
     body?: never;
@@ -38807,7 +40282,7 @@ export type PerformClassicSearchFromUrlResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -38818,6 +40293,10 @@ export type PerformClassicSearchFromUrlResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -38835,7 +40314,7 @@ export type PerformClassicSearchFromUrlResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -38850,7 +40329,7 @@ export type PerformClassicSearchFromUrlResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -38861,6 +40340,10 @@ export type PerformClassicSearchFromUrlResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -38878,7 +40361,7 @@ export type PerformClassicSearchFromUrlResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -38896,7 +40379,7 @@ export type PerformClassicSearchFromUrlResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -38907,6 +40390,10 @@ export type PerformClassicSearchFromUrlResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -38924,7 +40411,7 @@ export type PerformClassicSearchFromUrlResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -38946,7 +40433,7 @@ export type PerformClassicSearchFromUrlResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -38957,6 +40444,10 @@ export type PerformClassicSearchFromUrlResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -38974,7 +40465,7 @@ export type PerformClassicSearchFromUrlResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -38985,7 +40476,7 @@ export type PerformClassicSearchFromUrlResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -38996,6 +40487,10 @@ export type PerformClassicSearchFromUrlResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -39013,7 +40508,7 @@ export type PerformClassicSearchFromUrlResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -39032,7 +40527,7 @@ export type PerformClassicSearchFromUrlResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -39043,6 +40538,10 @@ export type PerformClassicSearchFromUrlResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -39060,7 +40559,7 @@ export type PerformClassicSearchFromUrlResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -39403,7 +40902,7 @@ export type PerformClassicSearchFromUrlResponses = {
                 attachments: Array<{
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -39414,6 +40913,10 @@ export type PerformClassicSearchFromUrlResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -39431,7 +40934,7 @@ export type PerformClassicSearchFromUrlResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'audio';
@@ -39446,7 +40949,7 @@ export type PerformClassicSearchFromUrlResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -39457,6 +40960,10 @@ export type PerformClassicSearchFromUrlResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -39474,7 +40981,7 @@ export type PerformClassicSearchFromUrlResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'img';
@@ -39492,7 +40999,7 @@ export type PerformClassicSearchFromUrlResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -39503,6 +41010,10 @@ export type PerformClassicSearchFromUrlResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -39520,7 +41031,7 @@ export type PerformClassicSearchFromUrlResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'video';
@@ -39542,7 +41053,7 @@ export type PerformClassicSearchFromUrlResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -39553,6 +41064,10 @@ export type PerformClassicSearchFromUrlResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -39570,7 +41085,7 @@ export type PerformClassicSearchFromUrlResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'file';
@@ -39581,7 +41096,7 @@ export type PerformClassicSearchFromUrlResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -39592,6 +41107,10 @@ export type PerformClassicSearchFromUrlResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -39609,7 +41128,7 @@ export type PerformClassicSearchFromUrlResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'shared_content';
@@ -39628,7 +41147,7 @@ export type PerformClassicSearchFromUrlResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -39639,6 +41158,10 @@ export type PerformClassicSearchFromUrlResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -39656,7 +41179,7 @@ export type PerformClassicSearchFromUrlResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'contact_card';
@@ -39763,7 +41286,7 @@ export type PerformClassicPeopleSearchData = {
          * Native filter : Connections
          *
          */
-        network_distance?: Array<1 | 2 | 3>;
+        network_distance?: 1 | 2 | 3;
         /**
          * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getclassicsearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
          *
@@ -40481,7 +42004,7 @@ export type PerformClassicPostsSearchResponses = {
             attachments: Array<{
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -40492,6 +42015,10 @@ export type PerformClassicPostsSearchResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -40509,7 +42036,7 @@ export type PerformClassicPostsSearchResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'audio';
@@ -40524,7 +42051,7 @@ export type PerformClassicPostsSearchResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -40535,6 +42062,10 @@ export type PerformClassicPostsSearchResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -40552,7 +42083,7 @@ export type PerformClassicPostsSearchResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'img';
@@ -40570,7 +42101,7 @@ export type PerformClassicPostsSearchResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -40581,6 +42112,10 @@ export type PerformClassicPostsSearchResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -40598,7 +42133,7 @@ export type PerformClassicPostsSearchResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'video';
@@ -40620,7 +42155,7 @@ export type PerformClassicPostsSearchResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -40631,6 +42166,10 @@ export type PerformClassicPostsSearchResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -40648,7 +42187,7 @@ export type PerformClassicPostsSearchResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'file';
@@ -40659,7 +42198,7 @@ export type PerformClassicPostsSearchResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -40670,6 +42209,10 @@ export type PerformClassicPostsSearchResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -40687,7 +42230,7 @@ export type PerformClassicPostsSearchResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'shared_content';
@@ -40706,7 +42249,7 @@ export type PerformClassicPostsSearchResponses = {
             } | {
                 object: 'Attachment';
                 /**
-                 * The unique identifier of the attachment for the provider.
+                 * The unique identifier of the attachment.
                  */
                 id: string;
                 /**
@@ -40717,6 +42260,10 @@ export type PerformClassicPostsSearchResponses = {
                  * Is the attachment inline in the content.
                  */
                 is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
                 /**
                  * The attachment is not available for download because it was removed from provider servers.
                  */
@@ -40734,7 +42281,7 @@ export type PerformClassicPostsSearchResponses = {
                  */
                 url_expires_at?: string;
                 /**
-                 * Content of the attachement
+                 * The file content encoded as base64, when available directly without an additional download.
                  */
                 content?: string;
                 type: 'contact_card';
@@ -41077,7 +42624,7 @@ export type PerformClassicPostsSearchResponses = {
                 attachments: Array<{
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -41088,6 +42635,10 @@ export type PerformClassicPostsSearchResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -41105,7 +42656,7 @@ export type PerformClassicPostsSearchResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'audio';
@@ -41120,7 +42671,7 @@ export type PerformClassicPostsSearchResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -41131,6 +42682,10 @@ export type PerformClassicPostsSearchResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -41148,7 +42703,7 @@ export type PerformClassicPostsSearchResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'img';
@@ -41166,7 +42721,7 @@ export type PerformClassicPostsSearchResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -41177,6 +42732,10 @@ export type PerformClassicPostsSearchResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -41194,7 +42753,7 @@ export type PerformClassicPostsSearchResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'video';
@@ -41216,7 +42775,7 @@ export type PerformClassicPostsSearchResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -41227,6 +42786,10 @@ export type PerformClassicPostsSearchResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -41244,7 +42807,7 @@ export type PerformClassicPostsSearchResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'file';
@@ -41255,7 +42818,7 @@ export type PerformClassicPostsSearchResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -41266,6 +42829,10 @@ export type PerformClassicPostsSearchResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -41283,7 +42850,7 @@ export type PerformClassicPostsSearchResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'shared_content';
@@ -41302,7 +42869,7 @@ export type PerformClassicPostsSearchResponses = {
                 } | {
                     object: 'Attachment';
                     /**
-                     * The unique identifier of the attachment for the provider.
+                     * The unique identifier of the attachment.
                      */
                     id: string;
                     /**
@@ -41313,6 +42880,10 @@ export type PerformClassicPostsSearchResponses = {
                      * Is the attachment inline in the content.
                      */
                     is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
                     /**
                      * The attachment is not available for download because it was removed from provider servers.
                      */
@@ -41330,7 +42901,7 @@ export type PerformClassicPostsSearchResponses = {
                      */
                     url_expires_at?: string;
                     /**
-                     * Content of the attachement
+                     * The file content encoded as base64, when available directly without an additional download.
                      */
                     content?: string;
                     type: 'contact_card';
@@ -55656,7 +57227,7 @@ export type SolveCheckpointResponses = {
              */
             challenges: Array<{
                 /**
-                 * Identifier of the method (EMAIL, SMS or WHATSAPP). Send it back as the `challenge` field of Request Checkpoint to switch to this method.
+                 * Identifier of the method (EMAIL, SMS, WHATSAPP or any agnostic ID). Send it back as the `challenge` field of Request Checkpoint to switch to this method.
                  */
                 id: string;
                 /**
@@ -55755,13 +57326,21 @@ export type SolveCheckpointResponses = {
          */
         metadata: {
             /**
-             * The chosen country for the automatic proxy selection.
+             * The rotation country for automatic proxy selection.
              */
             auto_proxy_country?: string;
+            /**
+             * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
+             */
+            allow_country_fallback?: boolean;
             /**
              * The ID of the account in the v1 if the account is migrated from v1.
              */
             v1_account_id?: string;
+            /**
+             * The port of the v1 instance from which the account was migrated.
+             */
+            v1_instance_port?: number;
             /**
              * The status of the connection to a product, if the account is connected to multiple products.
              */
@@ -55836,7 +57415,7 @@ export type RequestCheckpointData = {
         /**
          * The alternative verification method to switch to. Must be one of the `id`s listed in the CHALLENGE_SELECTION checkpoint.
          */
-        challenge?: 'EMAIL' | 'SMS' | 'WHATSAPP';
+        challenge?: string;
     };
     path?: never;
     query?: never;
@@ -55930,7 +57509,7 @@ export type RequestCheckpointResponses = {
              */
             challenges: Array<{
                 /**
-                 * Identifier of the method (EMAIL, SMS or WHATSAPP). Send it back as the `challenge` field of Request Checkpoint to switch to this method.
+                 * Identifier of the method (EMAIL, SMS, WHATSAPP or any agnostic ID). Send it back as the `challenge` field of Request Checkpoint to switch to this method.
                  */
                 id: string;
                 /**
@@ -56196,6 +57775,10 @@ export type StartAuthIntentData = {
                  * An IPv4 address to infer proxy's location.
                  */
                 ip?: string;
+                /**
+                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 */
+                allow_country_fallback?: boolean;
             };
             [key: string]: unknown | {
                 /**
@@ -56231,6 +57814,10 @@ export type StartAuthIntentData = {
                  * An IPv4 address to infer proxy's location.
                  */
                 ip?: string;
+                /**
+                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 */
+                allow_country_fallback?: boolean;
             } | undefined;
         };
     } | {
@@ -56321,6 +57908,10 @@ export type StartAuthIntentData = {
                  * An IPv4 address to infer proxy's location.
                  */
                 ip?: string;
+                /**
+                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 */
+                allow_country_fallback?: boolean;
             };
             /**
              * Specifies which LinkedIn products are allowed to be activated (as long as the account actually has the relevant subscriptions). By default, all products are made available.<br>When reconnecting an account, just omit this field to keep allowing access to the same products, or provide new values to expand or narrow the scope. <a href="https://developer.unipile.com/v2.0/docs/linkedin-link-accounts">Learn more about Linkedin products</a>
@@ -56369,6 +57960,10 @@ export type StartAuthIntentData = {
                  * An IPv4 address to infer proxy's location.
                  */
                 ip?: string;
+                /**
+                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 */
+                allow_country_fallback?: boolean;
             } | Array<'classic' | 'company' | 'recruiter' | 'sales_navigator'> | boolean | undefined;
         };
     } | {
@@ -56615,6 +58210,10 @@ export type StartAuthIntentData = {
                  * An IPv4 address to infer proxy's location.
                  */
                 ip?: string;
+                /**
+                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 */
+                allow_country_fallback?: boolean;
             };
             /**
              * The authentication methods to show in the hosted auth.
@@ -56657,6 +58256,10 @@ export type StartAuthIntentData = {
                  * An IPv4 address to infer proxy's location.
                  */
                 ip?: string;
+                /**
+                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 */
+                allow_country_fallback?: boolean;
             } | Array<'credentials' | 'cookies'> | undefined;
         };
     }) & {
@@ -56765,7 +58368,7 @@ export type StartAuthIntentResponses = {
              */
             challenges: Array<{
                 /**
-                 * Identifier of the method (EMAIL, SMS or WHATSAPP). Send it back as the `challenge` field of Request Checkpoint to switch to this method.
+                 * Identifier of the method (EMAIL, SMS, WHATSAPP or any agnostic ID). Send it back as the `challenge` field of Request Checkpoint to switch to this method.
                  */
                 id: string;
                 /**
@@ -56864,13 +58467,21 @@ export type StartAuthIntentResponses = {
          */
         metadata: {
             /**
-             * The chosen country for the automatic proxy selection.
+             * The rotation country for automatic proxy selection.
              */
             auto_proxy_country?: string;
+            /**
+             * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
+             */
+            allow_country_fallback?: boolean;
             /**
              * The ID of the account in the v1 if the account is migrated from v1.
              */
             v1_account_id?: string;
+            /**
+             * The port of the v1 instance from which the account was migrated.
+             */
+            v1_instance_port?: number;
             /**
              * The status of the connection to a product, if the account is connected to multiple products.
              */
@@ -57143,6 +58754,10 @@ export type CreateAuthLinkData = {
                      * An IPv4 address to infer proxy's location.
                      */
                     ip?: string;
+                    /**
+                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     */
+                    allow_country_fallback?: boolean;
                 };
                 /**
                  * Specifies which LinkedIn products are allowed to be activated (as long as the account actually has the relevant subscriptions). By default, all products are made available.<br>When reconnecting an account, just omit this field to keep allowing access to the same products, or provide new values to expand or narrow the scope. <a href="https://developer.unipile.com/v2.0/docs/linkedin-link-accounts">Learn more about Linkedin products</a>
@@ -57214,6 +58829,10 @@ export type CreateAuthLinkData = {
                      * An IPv4 address to infer proxy's location.
                      */
                     ip?: string;
+                    /**
+                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     */
+                    allow_country_fallback?: boolean;
                 };
                 /**
                  * The authentication methods to show in the hosted auth.
@@ -57272,6 +58891,10 @@ export type CreateAuthLinkData = {
                      * An IPv4 address to infer proxy's location.
                      */
                     ip?: string;
+                    /**
+                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     */
+                    allow_country_fallback?: boolean;
                 };
                 /**
                  * The authentication methods to show in the hosted auth.
@@ -57314,6 +58937,10 @@ export type CreateAuthLinkData = {
                      * An IPv4 address to infer proxy's location.
                      */
                     ip?: string;
+                    /**
+                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     */
+                    allow_country_fallback?: boolean;
                 } | Array<'credentials' | 'cookies'> | undefined;
             };
             /**
@@ -57683,6 +59310,10 @@ export type CreateAuthLinkData = {
                      * An IPv4 address to infer proxy's location.
                      */
                     ip?: string;
+                    /**
+                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     */
+                    allow_country_fallback?: boolean;
                 };
                 /**
                  * Specifies which LinkedIn products are allowed to be activated (as long as the account actually has the relevant subscriptions). By default, all products are made available.<br>When reconnecting an account, just omit this field to keep allowing access to the same products, or provide new values to expand or narrow the scope. <a href="https://developer.unipile.com/v2.0/docs/linkedin-link-accounts">Learn more about Linkedin products</a>
@@ -57754,6 +59385,10 @@ export type CreateAuthLinkData = {
                      * An IPv4 address to infer proxy's location.
                      */
                     ip?: string;
+                    /**
+                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     */
+                    allow_country_fallback?: boolean;
                 };
                 /**
                  * The authentication methods to show in the hosted auth.
@@ -57812,6 +59447,10 @@ export type CreateAuthLinkData = {
                      * An IPv4 address to infer proxy's location.
                      */
                     ip?: string;
+                    /**
+                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     */
+                    allow_country_fallback?: boolean;
                 };
                 /**
                  * The authentication methods to show in the hosted auth.
@@ -57854,6 +59493,10 @@ export type CreateAuthLinkData = {
                      * An IPv4 address to infer proxy's location.
                      */
                     ip?: string;
+                    /**
+                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     */
+                    allow_country_fallback?: boolean;
                 } | Array<'credentials' | 'cookies'> | undefined;
             };
             /**
@@ -58133,13 +59776,21 @@ export type GetAccountResponses = {
          */
         metadata: {
             /**
-             * The chosen country for the automatic proxy selection.
+             * The rotation country for automatic proxy selection.
              */
             auto_proxy_country?: string;
+            /**
+             * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
+             */
+            allow_country_fallback?: boolean;
             /**
              * The ID of the account in the v1 if the account is migrated from v1.
              */
             v1_account_id?: string;
+            /**
+             * The port of the v1 instance from which the account was migrated.
+             */
+            v1_instance_port?: number;
             /**
              * The status of the connection to a product, if the account is connected to multiple products.
              */
@@ -58218,9 +59869,13 @@ export type UpdateAccountData = {
             [key: string]: string;
         };
         /**
-         * The country to use for Automatic Proxy Protection.
+         * The rotation country to use for Automatic Proxy Protection.
          */
         auto_proxy_country?: string;
+        /**
+         * Whether Automatic Proxy Protection may use a proxy from another country when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country; if the selected proxy later fails without a replacement there, the account enters Service interruption.
+         */
+        allow_country_fallback?: boolean;
         /**
          * A new proxy configuration for the account. This will restart the account. Set to `null` to remove the proxy. Removing the proxy will revert the account to using Automatic Proxy Protection if required for the provider.
          */
@@ -58331,13 +59986,21 @@ export type UpdateAccountResponses = {
          */
         metadata: {
             /**
-             * The chosen country for the automatic proxy selection.
+             * The rotation country for automatic proxy selection.
              */
             auto_proxy_country?: string;
+            /**
+             * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
+             */
+            allow_country_fallback?: boolean;
             /**
              * The ID of the account in the v1 if the account is migrated from v1.
              */
             v1_account_id?: string;
+            /**
+             * The port of the v1 instance from which the account was migrated.
+             */
+            v1_instance_port?: number;
             /**
              * The status of the connection to a product, if the account is connected to multiple products.
              */
@@ -58513,13 +60176,21 @@ export type ListAccountsResponses = {
              */
             metadata: {
                 /**
-                 * The chosen country for the automatic proxy selection.
+                 * The rotation country for automatic proxy selection.
                  */
                 auto_proxy_country?: string;
+                /**
+                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
+                 */
+                allow_country_fallback?: boolean;
                 /**
                  * The ID of the account in the v1 if the account is migrated from v1.
                  */
                 v1_account_id?: string;
+                /**
+                 * The port of the v1 instance from which the account was migrated.
+                 */
+                v1_instance_port?: number;
                 /**
                  * The status of the connection to a product, if the account is connected to multiple products.
                  */
