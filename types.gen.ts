@@ -45739,6 +45739,26 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                  */
                 is_hidden_candidate: boolean;
                 /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_recently_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_active_talent: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_closer_in_network: boolean;
+                /**
+                 * The interest level of the User.
+                 */
+                interest_level?: string;
+                /**
                  * The hiring project where the User is a candidate.
                  */
                 hiring_project?: {
@@ -46422,6 +46442,26 @@ export type GetRecruiterApplicantByIdResponses = {
              * Whether the User has been set as hidden candidate.
              */
             is_hidden_candidate: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_recently_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_active_talent: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_closer_in_network: boolean;
+            /**
+             * The interest level of the User.
+             */
+            interest_level?: string;
             /**
              * The hiring project where the User is a candidate.
              */
@@ -47191,6 +47231,26 @@ export type GetRecruiterPipelineCandidatesResponses = {
                  * Whether the User has been set as hidden candidate.
                  */
                 is_hidden_candidate: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_recently_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_active_talent: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_closer_in_network: boolean;
+                /**
+                 * The interest level of the User.
+                 */
+                interest_level?: string;
                 /**
                  * The hiring project where the User is a candidate.
                  */
@@ -48417,6 +48477,26 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
              * Whether the User has been set as hidden candidate.
              */
             is_hidden_candidate: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_recently_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_active_talent: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_closer_in_network: boolean;
+            /**
+             * The interest level of the User.
+             */
+            interest_level?: string;
             /**
              * The hiring project where the User is a candidate.
              */
@@ -50400,6 +50480,26 @@ export type PerformRecruiterSearchFromUrlResponses = {
              */
             is_hidden_candidate: boolean;
             /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_recently_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_active_talent: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_closer_in_network: boolean;
+            /**
+             * The interest level of the User.
+             */
+            interest_level?: string;
+            /**
              * The hiring project where the User is a candidate.
              */
             hiring_project?: {
@@ -51055,6 +51155,26 @@ export type PerformRecruiterSearchFromUrlResponses = {
                  */
                 is_hidden_candidate: boolean;
                 /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_recently_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_active_talent: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_closer_in_network: boolean;
+                /**
+                 * The interest level of the User.
+                 */
+                interest_level?: string;
+                /**
                  * The hiring project where the User is a candidate.
                  */
                 hiring_project?: {
@@ -51676,6 +51796,26 @@ export type PerformRecruiterSearchFromUrlResponses = {
                  * Whether the User has been set as hidden candidate.
                  */
                 is_hidden_candidate: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_recently_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_active_talent: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_closer_in_network: boolean;
+                /**
+                 * The interest level of the User.
+                 */
+                interest_level?: string;
                 /**
                  * The hiring project where the User is a candidate.
                  */
@@ -52980,6 +53120,26 @@ export type PerformRecruiterPeopleSearchResponses = {
              * Whether the User has been set as hidden candidate.
              */
             is_hidden_candidate: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_recently_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_active_talent: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_closer_in_network: boolean;
+            /**
+             * The interest level of the User.
+             */
+            interest_level?: string;
             /**
              * The hiring project where the User is a candidate.
              */
@@ -60749,6 +60909,10 @@ export type ListWebhookConversationsData = {
          */
         event_id?: string;
         /**
+         * Filter to return only conversations for events from the given account.
+         */
+        account_id?: string;
+        /**
          * An offset used for pagination.
          */
         offset?: string;
@@ -61083,3 +61247,30 @@ export type UpdateWebhookEndpointResponses = {
 };
 
 export type UpdateWebhookEndpointResponse = UpdateWebhookEndpointResponses[keyof UpdateWebhookEndpointResponses];
+
+export type ReplayWebhookEventData = {
+    body?: never;
+    path: {
+        id: string;
+    };
+    query?: {
+        /**
+         * Replay only to this original endpoint. Omit to replay to all currently enabled endpoints listening to this event and matching its account.
+         */
+        endpoint_id?: string;
+    };
+    url: '/v2/webhooks/events/{id}/replay';
+};
+
+export type ReplayWebhookEventResponses = {
+    /**
+     * Default Response
+     */
+    202: {
+        object: 'EventReplay';
+        event_id: string;
+        endpoint_ids: Array<string>;
+    };
+};
+
+export type ReplayWebhookEventResponse = ReplayWebhookEventResponses[keyof ReplayWebhookEventResponses];
