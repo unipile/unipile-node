@@ -33,11 +33,11 @@ export type GetChatsListData = {
          */
         type?: '1to1' | 'group' | 'channel';
         /**
-         * A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         * A filter to target items created before the datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         before?: string;
         /**
-         * A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..
+         * A filter to target items created after the datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         after?: string;
         /**
@@ -927,6 +927,7 @@ export type GetChatsListResponses = {
                      * The text content of the message.
                      */
                     text?: string;
+                    specifics?: unknown;
                     /**
                      * List of message attachments.
                      */
@@ -1313,6 +1314,7 @@ export type GetChatsListResponses = {
                      * The text content of the message.
                      */
                     text?: string;
+                    specifics?: unknown;
                     /**
                      * List of message attachments.
                      */
@@ -2032,11 +2034,11 @@ export type GetInboxChatsListData = {
          */
         type?: '1to1' | 'group' | 'channel';
         /**
-         * A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         * A filter to target items created before the datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         before?: string;
         /**
-         * A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..
+         * A filter to target items created after the datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         after?: string;
         /**
@@ -2926,6 +2928,7 @@ export type GetInboxChatsListResponses = {
                      * The text content of the message.
                      */
                     text?: string;
+                    specifics?: unknown;
                     /**
                      * List of message attachments.
                      */
@@ -3312,6 +3315,7 @@ export type GetInboxChatsListResponses = {
                      * The text content of the message.
                      */
                     text?: string;
+                    specifics?: unknown;
                     /**
                      * List of message attachments.
                      */
@@ -4868,6 +4872,7 @@ export type GetChatResponses = {
                  * The text content of the message.
                  */
                 text?: string;
+                specifics?: unknown;
                 /**
                  * List of message attachments.
                  */
@@ -5254,6 +5259,7 @@ export type GetChatResponses = {
                  * The text content of the message.
                  */
                 text?: string;
+                specifics?: unknown;
                 /**
                  * List of message attachments.
                  */
@@ -6868,6 +6874,7 @@ export type UpdateChatResponses = {
                  * The text content of the message.
                  */
                 text?: string;
+                specifics?: unknown;
                 /**
                  * List of message attachments.
                  */
@@ -7254,6 +7261,7 @@ export type UpdateChatResponses = {
                  * The text content of the message.
                  */
                 text?: string;
+                specifics?: unknown;
                 /**
                  * List of message attachments.
                  */
@@ -8297,11 +8305,11 @@ export type GetMessagesListData = {
     };
     query?: {
         /**
-         * Filter to only return messages sent before the given timestamp (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         * Filter to only return messages sent before the given timestamp (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         before?: string;
         /**
-         * Filter to only return messages sent after the given timestamp (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         * Filter to only return messages sent after the given timestamp (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         after?: string;
         /**
@@ -9022,6 +9030,49 @@ export type GetMessagesListResponses = {
                  * The subject of the mock message.
                  */
                 subject: string;
+            } | {
+                /**
+                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                 */
+                interactive?: {
+                    type: 'buttons' | 'template' | 'native_flow' | 'response';
+                    title?: string;
+                    footer?: string;
+                    buttons: Array<{
+                        type: 'reply' | 'url' | 'call' | 'native_flow';
+                        /**
+                         * Provider button identifier, when available.
+                         */
+                        id?: string;
+                        /**
+                         * Button label, when available.
+                         */
+                        text?: string;
+                        url?: string;
+                        phone_number?: string;
+                        /**
+                         * Native flow action name. Unknown actions are not interpreted.
+                         */
+                        name?: string;
+                    }>;
+                    selected_button?: {
+                        type: 'reply' | 'url' | 'call' | 'native_flow';
+                        /**
+                         * Provider button identifier, when available.
+                         */
+                        id?: string;
+                        /**
+                         * Button label, when available.
+                         */
+                        text?: string;
+                        url?: string;
+                        phone_number?: string;
+                        /**
+                         * Native flow action name. Unknown actions are not interpreted.
+                         */
+                        name?: string;
+                    };
+                };
             });
             /**
              * The user who sent the message.
@@ -9582,6 +9633,53 @@ export type GetMessagesListResponses = {
                         is_verified?: boolean;
                     };
                 };
+                /**
+                 * WhatsApp
+                 */
+                specifics?: {
+                    /**
+                     * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                     */
+                    interactive?: {
+                        type: 'buttons' | 'template' | 'native_flow' | 'response';
+                        title?: string;
+                        footer?: string;
+                        buttons: Array<{
+                            type: 'reply' | 'url' | 'call' | 'native_flow';
+                            /**
+                             * Provider button identifier, when available.
+                             */
+                            id?: string;
+                            /**
+                             * Button label, when available.
+                             */
+                            text?: string;
+                            url?: string;
+                            phone_number?: string;
+                            /**
+                             * Native flow action name. Unknown actions are not interpreted.
+                             */
+                            name?: string;
+                        }>;
+                        selected_button?: {
+                            type: 'reply' | 'url' | 'call' | 'native_flow';
+                            /**
+                             * Provider button identifier, when available.
+                             */
+                            id?: string;
+                            /**
+                             * Button label, when available.
+                             */
+                            text?: string;
+                            url?: string;
+                            phone_number?: string;
+                            /**
+                             * Native flow action name. Unknown actions are not interpreted.
+                             */
+                            name?: string;
+                        };
+                    };
+                };
             };
             /**
              * Contains the original message if this message was forwarded from another chat, depending on provider support.
@@ -10026,6 +10124,53 @@ export type GetMessagesListResponses = {
                          * Whether the User has a verified account.
                          */
                         is_verified?: boolean;
+                    };
+                };
+                /**
+                 * WhatsApp
+                 */
+                specifics?: {
+                    /**
+                     * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                     */
+                    interactive?: {
+                        type: 'buttons' | 'template' | 'native_flow' | 'response';
+                        title?: string;
+                        footer?: string;
+                        buttons: Array<{
+                            type: 'reply' | 'url' | 'call' | 'native_flow';
+                            /**
+                             * Provider button identifier, when available.
+                             */
+                            id?: string;
+                            /**
+                             * Button label, when available.
+                             */
+                            text?: string;
+                            url?: string;
+                            phone_number?: string;
+                            /**
+                             * Native flow action name. Unknown actions are not interpreted.
+                             */
+                            name?: string;
+                        }>;
+                        selected_button?: {
+                            type: 'reply' | 'url' | 'call' | 'native_flow';
+                            /**
+                             * Provider button identifier, when available.
+                             */
+                            id?: string;
+                            /**
+                             * Button label, when available.
+                             */
+                            text?: string;
+                            url?: string;
+                            phone_number?: string;
+                            /**
+                             * Native flow action name. Unknown actions are not interpreted.
+                             */
+                            name?: string;
+                        };
                     };
                 };
             };
@@ -10789,6 +10934,49 @@ export type GetMessageResponses = {
              * The subject of the mock message.
              */
             subject: string;
+        } | {
+            /**
+             * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+             */
+            interactive?: {
+                type: 'buttons' | 'template' | 'native_flow' | 'response';
+                title?: string;
+                footer?: string;
+                buttons: Array<{
+                    type: 'reply' | 'url' | 'call' | 'native_flow';
+                    /**
+                     * Provider button identifier, when available.
+                     */
+                    id?: string;
+                    /**
+                     * Button label, when available.
+                     */
+                    text?: string;
+                    url?: string;
+                    phone_number?: string;
+                    /**
+                     * Native flow action name. Unknown actions are not interpreted.
+                     */
+                    name?: string;
+                }>;
+                selected_button?: {
+                    type: 'reply' | 'url' | 'call' | 'native_flow';
+                    /**
+                     * Provider button identifier, when available.
+                     */
+                    id?: string;
+                    /**
+                     * Button label, when available.
+                     */
+                    text?: string;
+                    url?: string;
+                    phone_number?: string;
+                    /**
+                     * Native flow action name. Unknown actions are not interpreted.
+                     */
+                    name?: string;
+                };
+            };
         });
         /**
          * The user who sent the message.
@@ -11349,6 +11537,53 @@ export type GetMessageResponses = {
                     is_verified?: boolean;
                 };
             };
+            /**
+             * WhatsApp
+             */
+            specifics?: {
+                /**
+                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                 */
+                interactive?: {
+                    type: 'buttons' | 'template' | 'native_flow' | 'response';
+                    title?: string;
+                    footer?: string;
+                    buttons: Array<{
+                        type: 'reply' | 'url' | 'call' | 'native_flow';
+                        /**
+                         * Provider button identifier, when available.
+                         */
+                        id?: string;
+                        /**
+                         * Button label, when available.
+                         */
+                        text?: string;
+                        url?: string;
+                        phone_number?: string;
+                        /**
+                         * Native flow action name. Unknown actions are not interpreted.
+                         */
+                        name?: string;
+                    }>;
+                    selected_button?: {
+                        type: 'reply' | 'url' | 'call' | 'native_flow';
+                        /**
+                         * Provider button identifier, when available.
+                         */
+                        id?: string;
+                        /**
+                         * Button label, when available.
+                         */
+                        text?: string;
+                        url?: string;
+                        phone_number?: string;
+                        /**
+                         * Native flow action name. Unknown actions are not interpreted.
+                         */
+                        name?: string;
+                    };
+                };
+            };
         };
         /**
          * Contains the original message if this message was forwarded from another chat, depending on provider support.
@@ -11793,6 +12028,53 @@ export type GetMessageResponses = {
                      * Whether the User has a verified account.
                      */
                     is_verified?: boolean;
+                };
+            };
+            /**
+             * WhatsApp
+             */
+            specifics?: {
+                /**
+                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                 */
+                interactive?: {
+                    type: 'buttons' | 'template' | 'native_flow' | 'response';
+                    title?: string;
+                    footer?: string;
+                    buttons: Array<{
+                        type: 'reply' | 'url' | 'call' | 'native_flow';
+                        /**
+                         * Provider button identifier, when available.
+                         */
+                        id?: string;
+                        /**
+                         * Button label, when available.
+                         */
+                        text?: string;
+                        url?: string;
+                        phone_number?: string;
+                        /**
+                         * Native flow action name. Unknown actions are not interpreted.
+                         */
+                        name?: string;
+                    }>;
+                    selected_button?: {
+                        type: 'reply' | 'url' | 'call' | 'native_flow';
+                        /**
+                         * Provider button identifier, when available.
+                         */
+                        id?: string;
+                        /**
+                         * Button label, when available.
+                         */
+                        text?: string;
+                        url?: string;
+                        phone_number?: string;
+                        /**
+                         * Native flow action name. Unknown actions are not interpreted.
+                         */
+                        name?: string;
+                    };
                 };
             };
         };
@@ -12732,6 +13014,7 @@ export type ModifyMessageResponses = {
              * The text content of the message.
              */
             text?: string;
+            specifics?: unknown;
             /**
              * List of message attachments.
              */
@@ -13118,6 +13401,7 @@ export type ModifyMessageResponses = {
              * The text content of the message.
              */
             text?: string;
+            specifics?: unknown;
             /**
              * List of message attachments.
              */
@@ -14141,7 +14425,7 @@ export type GetEmailsListData = {
          */
         is_unread?: boolean;
         /**
-         * Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         * Filter to only return emails sent before the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         before?: string;
         /**
@@ -14149,7 +14433,7 @@ export type GetEmailsListData = {
          */
         exclude_folder?: string;
         /**
-         * Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         * Filter to only return emails sent after the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         after?: string;
         /**
@@ -14679,7 +14963,7 @@ export type GetFolderEmailsListData = {
          */
         is_unread?: boolean;
         /**
-         * Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         * Filter to only return emails sent before the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         before?: string;
         /**
@@ -14687,7 +14971,7 @@ export type GetFolderEmailsListData = {
          */
         exclude_folder?: string;
         /**
-         * Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         * Filter to only return emails sent after the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         after?: string;
         /**
@@ -19051,7 +19335,7 @@ export type GetFoldersListResponses = {
              */
             name: string;
             /**
-             * The folder role represents a supported special-use purpose (based on RFC special-use attributes where applicable); it does not indicate whether the folder is system-created. Gmail can expose system labels beyond the RFC special-use list: these have is_system=true but no role when they do not map to a supported special-use purpose, such as CATEGORY_* labels. For those Gmail labels, use the label ID or name. Outlook does not support folder roles. [Learn more about roles](https://developer.unipile.com/v2.0/docs/manage-mailboxes#about-roles).
+             * The folder role represents a supported special-use purpose (based on RFC special-use attributes where applicable); it does not indicate whether the folder is system-created. Gmail can expose system labels beyond the RFC special-use list: these have is_system=true but no role when they do not map to a supported special-use purpose, such as CATEGORY_* labels. For those Gmail labels, use the label ID or name. Outlook supports INBOX, SENT, DRAFTS, TRASH, SPAM, and ARCHIVE for its corresponding default folders; custom folders have no role. [Learn more about roles](https://developer.unipile.com/v2.0/docs/manage-mailboxes#about-roles).
              */
             role?: 'TRASH' | 'INBOX' | 'SENT' | 'DRAFTS' | 'JUNK' | 'ARCHIVE' | 'IMPORTANT' | 'STARRED' | 'SPAM' | 'ALL';
             /**
@@ -19136,7 +19420,7 @@ export type CreateFolderResponses = {
          */
         name: string;
         /**
-         * The folder role represents a supported special-use purpose (based on RFC special-use attributes where applicable); it does not indicate whether the folder is system-created. Gmail can expose system labels beyond the RFC special-use list: these have is_system=true but no role when they do not map to a supported special-use purpose, such as CATEGORY_* labels. For those Gmail labels, use the label ID or name. Outlook does not support folder roles. [Learn more about roles](https://developer.unipile.com/v2.0/docs/manage-mailboxes#about-roles).
+         * The folder role represents a supported special-use purpose (based on RFC special-use attributes where applicable); it does not indicate whether the folder is system-created. Gmail can expose system labels beyond the RFC special-use list: these have is_system=true but no role when they do not map to a supported special-use purpose, such as CATEGORY_* labels. For those Gmail labels, use the label ID or name. Outlook supports INBOX, SENT, DRAFTS, TRASH, SPAM, and ARCHIVE for its corresponding default folders; custom folders have no role. [Learn more about roles](https://developer.unipile.com/v2.0/docs/manage-mailboxes#about-roles).
          */
         role?: 'TRASH' | 'INBOX' | 'SENT' | 'DRAFTS' | 'JUNK' | 'ARCHIVE' | 'IMPORTANT' | 'STARRED' | 'SPAM' | 'ALL';
         /**
@@ -19224,7 +19508,7 @@ export type GetFolderResponses = {
          */
         name: string;
         /**
-         * The folder role represents a supported special-use purpose (based on RFC special-use attributes where applicable); it does not indicate whether the folder is system-created. Gmail can expose system labels beyond the RFC special-use list: these have is_system=true but no role when they do not map to a supported special-use purpose, such as CATEGORY_* labels. For those Gmail labels, use the label ID or name. Outlook does not support folder roles. [Learn more about roles](https://developer.unipile.com/v2.0/docs/manage-mailboxes#about-roles).
+         * The folder role represents a supported special-use purpose (based on RFC special-use attributes where applicable); it does not indicate whether the folder is system-created. Gmail can expose system labels beyond the RFC special-use list: these have is_system=true but no role when they do not map to a supported special-use purpose, such as CATEGORY_* labels. For those Gmail labels, use the label ID or name. Outlook supports INBOX, SENT, DRAFTS, TRASH, SPAM, and ARCHIVE for its corresponding default folders; custom folders have no role. [Learn more about roles](https://developer.unipile.com/v2.0/docs/manage-mailboxes#about-roles).
          */
         role?: 'TRASH' | 'INBOX' | 'SENT' | 'DRAFTS' | 'JUNK' | 'ARCHIVE' | 'IMPORTANT' | 'STARRED' | 'SPAM' | 'ALL';
         /**
@@ -19304,7 +19588,7 @@ export type UpdateFolderResponses = {
          */
         name: string;
         /**
-         * The folder role represents a supported special-use purpose (based on RFC special-use attributes where applicable); it does not indicate whether the folder is system-created. Gmail can expose system labels beyond the RFC special-use list: these have is_system=true but no role when they do not map to a supported special-use purpose, such as CATEGORY_* labels. For those Gmail labels, use the label ID or name. Outlook does not support folder roles. [Learn more about roles](https://developer.unipile.com/v2.0/docs/manage-mailboxes#about-roles).
+         * The folder role represents a supported special-use purpose (based on RFC special-use attributes where applicable); it does not indicate whether the folder is system-created. Gmail can expose system labels beyond the RFC special-use list: these have is_system=true but no role when they do not map to a supported special-use purpose, such as CATEGORY_* labels. For those Gmail labels, use the label ID or name. Outlook supports INBOX, SENT, DRAFTS, TRASH, SPAM, and ARCHIVE for its corresponding default folders; custom folders have no role. [Learn more about roles](https://developer.unipile.com/v2.0/docs/manage-mailboxes#about-roles).
          */
         role?: 'TRASH' | 'INBOX' | 'SENT' | 'DRAFTS' | 'JUNK' | 'ARCHIVE' | 'IMPORTANT' | 'STARRED' | 'SPAM' | 'ALL';
         /**
@@ -21359,6 +21643,127 @@ export type GetUserProfileResponses = {
                      * The type of event.
                      */
                     event: 'PROFILE_VIEW';
+                } | {
+                    /**
+                     * The time at which the activity was updated. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    last_updated_at: string;
+                    last_updated_by: {
+                        /**
+                         * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                         */
+                        id: string;
+                        object: 'User';
+                        /**
+                         * Type of the user
+                         * - `individual` is an individual user.
+                         * - `organization` is an organization / business entity.
+                         * - `other` is an other type of entity.
+                         */
+                        type: 'individual' | 'organization' | 'other';
+                        /**
+                         * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                         */
+                        public_identifier?: string;
+                        /**
+                         * Display name of the user as exposed by the provider.
+                         */
+                        display_name: string;
+                        /**
+                         * First name of the user.
+                         */
+                        first_name?: string;
+                        /**
+                         * Last name of the user.
+                         */
+                        last_name?: string;
+                        /**
+                         * Public url to the profile of the user.
+                         */
+                        profile_url?: string;
+                        /**
+                         * Public url to the profile picture of the user.
+                         */
+                        public_picture_url?: string;
+                        /**
+                         * Private url to download the profile picture of the user. This url require authentication.
+                         */
+                        private_picture_download_url?: string;
+                        /**
+                         * Description of the user.
+                         */
+                        description?: string;
+                        /**
+                         * LinkedIn
+                         */
+                        specifics?: {
+                            /**
+                             * The geographical location of the user.
+                             */
+                            location?: string;
+                            /**
+                             * Network distance to a User.
+                             * `SELF`: Yourself.
+                             * `FIRST_DEGREE`: 1st degree connection.
+                             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                             * `OUT_OF_NETWORK`: Unreachable user.'
+                             */
+                            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                            /**
+                             * The user's industry.
+                             */
+                            industry?: string;
+                            /**
+                             * Whether the current user follows the user.
+                             */
+                            is_following?: boolean;
+                            /**
+                             * The number of followers of the user.
+                             */
+                            followers_count?: number;
+                            /**
+                             * The number of relations of the user.
+                             */
+                            relations_count?: number;
+                            /**
+                             * The number of relations that you share with the user.
+                             */
+                            shared_relations_count?: number;
+                            /**
+                             * The URL of the website provided by the user.
+                             */
+                            website_url?: string;
+                            /**
+                             * The URL of the portfolio provided by the user.
+                             */
+                            portfolio_url?: string;
+                            /**
+                             * The LinkedIn internal URL of the user's services page.
+                             */
+                            services_page_url?: string;
+                            /**
+                             * Whether the User has a premium account.
+                             */
+                            is_premium?: boolean;
+                            /**
+                             * Whether the User has a verified account.
+                             */
+                            is_verified?: boolean;
+                        };
+                    };
+                    /**
+                     * Whether the resume was added, edited, or deleted.
+                     */
+                    event: 'RESUME_ADDED' | 'RESUME_EDITED' | 'RESUME_DELETED';
+                    /**
+                     * The LinkedIn ID of the resume document.
+                     */
+                    resume_id: string;
+                    /**
+                     * The name of the resume file, including the extension.
+                     */
+                    filename: string;
                 } | {
                     /**
                      * The time at which the activity was updated. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
@@ -37434,11 +37839,11 @@ export type GetCalendarEventListData = {
          */
         location?: string;
         /**
-         * Filter events starting after this date.
+         * Filter events starting after this date. Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         start?: string;
         /**
-         * Filter events ending before this date.
+         * Filter events ending before this date. Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         end?: string;
         /**
@@ -37446,11 +37851,11 @@ export type GetCalendarEventListData = {
          */
         busy?: boolean;
         /**
-         * Filter events updated before this date.
+         * Filter events updated before this date. Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         updated_before?: string;
         /**
-         * Filter events updated after this date.
+         * Filter events updated after this date. Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         updated_after?: string;
         /**
@@ -37593,11 +37998,11 @@ export type GetCalendarEventListResponses = {
                  */
                 type: 'datetime';
                 /**
-                 * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
+                 * The date and time. May include a UTC offset, or be expressed as a local date and time without an offset (e.g. `2026-10-08T10:00:00`). When no offset is provided, the value is interpreted in `timezone`, or in the event-level timezone when set; otherwise it defaults to UTC.
                  */
                 date_time: string;
                 /**
-                 * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+                 * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). When omitted, uses the event-level timezone if set; otherwise defaults to UTC.
                  */
                 timezone?: string;
             } | {
@@ -37606,7 +38011,7 @@ export type GetCalendarEventListResponses = {
                  */
                 type: 'date';
                 /**
-                 * The date. Uses ISO 8601 date format (YYYY-MM-DD).
+                 * The date. Must use a supported date format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
                  */
                 date: string;
                 /**
@@ -37623,11 +38028,11 @@ export type GetCalendarEventListResponses = {
                  */
                 type: 'datetime';
                 /**
-                 * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
+                 * The date and time. May include a UTC offset, or be expressed as a local date and time without an offset (e.g. `2026-10-08T10:00:00`). When no offset is provided, the value is interpreted in `timezone`, or in the event-level timezone when set; otherwise it defaults to UTC.
                  */
                 date_time: string;
                 /**
-                 * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+                 * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). When omitted, uses the event-level timezone if set; otherwise defaults to UTC.
                  */
                 timezone?: string;
             } | {
@@ -37636,7 +38041,7 @@ export type GetCalendarEventListResponses = {
                  */
                 type: 'date';
                 /**
-                 * The date. Uses ISO 8601 date format (YYYY-MM-DD).
+                 * The date. Must use a supported date format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
                  */
                 date: string;
                 /**
@@ -37812,11 +38217,11 @@ export type CreateCalendarEventData = {
              */
             type: 'datetime';
             /**
-             * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
+             * The date and time. May include a UTC offset, or be expressed as a local date and time without an offset (e.g. `2026-10-08T10:00:00`). When no offset is provided, the value is interpreted in `timezone`, or in the event-level timezone when set; otherwise it defaults to UTC.
              */
             date_time: string;
             /**
-             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). When omitted, uses the event-level timezone if set; otherwise defaults to UTC.
              */
             timezone?: string;
         } | {
@@ -37825,7 +38230,7 @@ export type CreateCalendarEventData = {
              */
             type: 'date';
             /**
-             * The date. Uses ISO 8601 date format (YYYY-MM-DD).
+             * The date. Must use a supported date format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
              */
             date: string;
             /**
@@ -37842,11 +38247,11 @@ export type CreateCalendarEventData = {
              */
             type: 'datetime';
             /**
-             * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
+             * The date and time. May include a UTC offset, or be expressed as a local date and time without an offset (e.g. `2026-10-08T10:00:00`). When no offset is provided, the value is interpreted in `timezone`, or in the event-level timezone when set; otherwise it defaults to UTC.
              */
             date_time: string;
             /**
-             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). When omitted, uses the event-level timezone if set; otherwise defaults to UTC.
              */
             timezone?: string;
         } | {
@@ -37855,7 +38260,7 @@ export type CreateCalendarEventData = {
              */
             type: 'date';
             /**
-             * The date. Uses ISO 8601 date format (YYYY-MM-DD).
+             * The date. Must use a supported date format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
              */
             date: string;
             /**
@@ -38000,11 +38405,11 @@ export type CreateCalendarEventResponses = {
              */
             type: 'datetime';
             /**
-             * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
+             * The date and time. May include a UTC offset, or be expressed as a local date and time without an offset (e.g. `2026-10-08T10:00:00`). When no offset is provided, the value is interpreted in `timezone`, or in the event-level timezone when set; otherwise it defaults to UTC.
              */
             date_time: string;
             /**
-             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). When omitted, uses the event-level timezone if set; otherwise defaults to UTC.
              */
             timezone?: string;
         } | {
@@ -38013,7 +38418,7 @@ export type CreateCalendarEventResponses = {
              */
             type: 'date';
             /**
-             * The date. Uses ISO 8601 date format (YYYY-MM-DD).
+             * The date. Must use a supported date format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
              */
             date: string;
             /**
@@ -38030,11 +38435,11 @@ export type CreateCalendarEventResponses = {
              */
             type: 'datetime';
             /**
-             * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
+             * The date and time. May include a UTC offset, or be expressed as a local date and time without an offset (e.g. `2026-10-08T10:00:00`). When no offset is provided, the value is interpreted in `timezone`, or in the event-level timezone when set; otherwise it defaults to UTC.
              */
             date_time: string;
             /**
-             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). When omitted, uses the event-level timezone if set; otherwise defaults to UTC.
              */
             timezone?: string;
         } | {
@@ -38043,7 +38448,7 @@ export type CreateCalendarEventResponses = {
              */
             type: 'date';
             /**
-             * The date. Uses ISO 8601 date format (YYYY-MM-DD).
+             * The date. Must use a supported date format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
              */
             date: string;
             /**
@@ -38288,11 +38693,11 @@ export type GetCalendarEventResponses = {
              */
             type: 'datetime';
             /**
-             * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
+             * The date and time. May include a UTC offset, or be expressed as a local date and time without an offset (e.g. `2026-10-08T10:00:00`). When no offset is provided, the value is interpreted in `timezone`, or in the event-level timezone when set; otherwise it defaults to UTC.
              */
             date_time: string;
             /**
-             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). When omitted, uses the event-level timezone if set; otherwise defaults to UTC.
              */
             timezone?: string;
         } | {
@@ -38301,7 +38706,7 @@ export type GetCalendarEventResponses = {
              */
             type: 'date';
             /**
-             * The date. Uses ISO 8601 date format (YYYY-MM-DD).
+             * The date. Must use a supported date format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
              */
             date: string;
             /**
@@ -38318,11 +38723,11 @@ export type GetCalendarEventResponses = {
              */
             type: 'datetime';
             /**
-             * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
+             * The date and time. May include a UTC offset, or be expressed as a local date and time without an offset (e.g. `2026-10-08T10:00:00`). When no offset is provided, the value is interpreted in `timezone`, or in the event-level timezone when set; otherwise it defaults to UTC.
              */
             date_time: string;
             /**
-             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). When omitted, uses the event-level timezone if set; otherwise defaults to UTC.
              */
             timezone?: string;
         } | {
@@ -38331,7 +38736,7 @@ export type GetCalendarEventResponses = {
              */
             type: 'date';
             /**
-             * The date. Uses ISO 8601 date format (YYYY-MM-DD).
+             * The date. Must use a supported date format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
              */
             date: string;
             /**
@@ -38494,11 +38899,11 @@ export type UpdateCalendarEventData = {
              */
             type: 'datetime';
             /**
-             * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
+             * The date and time. May include a UTC offset, or be expressed as a local date and time without an offset (e.g. `2026-10-08T10:00:00`). When no offset is provided, the value is interpreted in `timezone`, or in the event-level timezone when set; otherwise it defaults to UTC.
              */
             date_time: string;
             /**
-             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). When omitted, uses the event-level timezone if set; otherwise defaults to UTC.
              */
             timezone?: string;
         } | {
@@ -38507,7 +38912,7 @@ export type UpdateCalendarEventData = {
              */
             type: 'date';
             /**
-             * The date. Uses ISO 8601 date format (YYYY-MM-DD).
+             * The date. Must use a supported date format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
              */
             date: string;
             /**
@@ -38524,11 +38929,11 @@ export type UpdateCalendarEventData = {
              */
             type: 'datetime';
             /**
-             * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
+             * The date and time. May include a UTC offset, or be expressed as a local date and time without an offset (e.g. `2026-10-08T10:00:00`). When no offset is provided, the value is interpreted in `timezone`, or in the event-level timezone when set; otherwise it defaults to UTC.
              */
             date_time: string;
             /**
-             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). When omitted, uses the event-level timezone if set; otherwise defaults to UTC.
              */
             timezone?: string;
         } | {
@@ -38537,7 +38942,7 @@ export type UpdateCalendarEventData = {
              */
             type: 'date';
             /**
-             * The date. Uses ISO 8601 date format (YYYY-MM-DD).
+             * The date. Must use a supported date format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
              */
             date: string;
             /**
@@ -38686,11 +39091,11 @@ export type UpdateCalendarEventResponses = {
              */
             type: 'datetime';
             /**
-             * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
+             * The date and time. May include a UTC offset, or be expressed as a local date and time without an offset (e.g. `2026-10-08T10:00:00`). When no offset is provided, the value is interpreted in `timezone`, or in the event-level timezone when set; otherwise it defaults to UTC.
              */
             date_time: string;
             /**
-             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). When omitted, uses the event-level timezone if set; otherwise defaults to UTC.
              */
             timezone?: string;
         } | {
@@ -38699,7 +39104,7 @@ export type UpdateCalendarEventResponses = {
              */
             type: 'date';
             /**
-             * The date. Uses ISO 8601 date format (YYYY-MM-DD).
+             * The date. Must use a supported date format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
              */
             date: string;
             /**
@@ -38716,11 +39121,11 @@ export type UpdateCalendarEventResponses = {
              */
             type: 'datetime';
             /**
-             * The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ).
+             * The date and time. May include a UTC offset, or be expressed as a local date and time without an offset (e.g. `2026-10-08T10:00:00`). When no offset is provided, the value is interpreted in `timezone`, or in the event-level timezone when set; otherwise it defaults to UTC.
              */
             date_time: string;
             /**
-             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). Defaults to UTC when omitted.
+             * The IANA timezone in which the date and time is expressed (e.g. `Europe/Paris`). When omitted, uses the event-level timezone if set; otherwise defaults to UTC.
              */
             timezone?: string;
         } | {
@@ -38729,7 +39134,7 @@ export type UpdateCalendarEventResponses = {
              */
             type: 'date';
             /**
-             * The date. Uses ISO 8601 date format (YYYY-MM-DD).
+             * The date. Must use a supported date format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
              */
             date: string;
             /**
@@ -45739,6 +46144,26 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                  */
                 is_hidden_candidate: boolean;
                 /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_recently_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_active_talent: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_closer_in_network: boolean;
+                /**
+                 * The interest level of the User.
+                 */
+                interest_level?: string;
+                /**
                  * The hiring project where the User is a candidate.
                  */
                 hiring_project?: {
@@ -46422,6 +46847,26 @@ export type GetRecruiterApplicantByIdResponses = {
              * Whether the User has been set as hidden candidate.
              */
             is_hidden_candidate: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_recently_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_active_talent: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_closer_in_network: boolean;
+            /**
+             * The interest level of the User.
+             */
+            interest_level?: string;
             /**
              * The hiring project where the User is a candidate.
              */
@@ -47191,6 +47636,26 @@ export type GetRecruiterPipelineCandidatesResponses = {
                  * Whether the User has been set as hidden candidate.
                  */
                 is_hidden_candidate: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_recently_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_active_talent: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_closer_in_network: boolean;
+                /**
+                 * The interest level of the User.
+                 */
+                interest_level?: string;
                 /**
                  * The hiring project where the User is a candidate.
                  */
@@ -48417,6 +48882,26 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
              * Whether the User has been set as hidden candidate.
              */
             is_hidden_candidate: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_recently_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_active_talent: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_closer_in_network: boolean;
+            /**
+             * The interest level of the User.
+             */
+            interest_level?: string;
             /**
              * The hiring project where the User is a candidate.
              */
@@ -50400,6 +50885,26 @@ export type PerformRecruiterSearchFromUrlResponses = {
              */
             is_hidden_candidate: boolean;
             /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_recently_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_active_talent: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_closer_in_network: boolean;
+            /**
+             * The interest level of the User.
+             */
+            interest_level?: string;
+            /**
              * The hiring project where the User is a candidate.
              */
             hiring_project?: {
@@ -51055,6 +51560,26 @@ export type PerformRecruiterSearchFromUrlResponses = {
                  */
                 is_hidden_candidate: boolean;
                 /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_recently_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_active_talent: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_closer_in_network: boolean;
+                /**
+                 * The interest level of the User.
+                 */
+                interest_level?: string;
+                /**
                  * The hiring project where the User is a candidate.
                  */
                 hiring_project?: {
@@ -51676,6 +52201,26 @@ export type PerformRecruiterSearchFromUrlResponses = {
                  * Whether the User has been set as hidden candidate.
                  */
                 is_hidden_candidate: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_recently_open_to_work: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_active_talent: boolean;
+                /**
+                 * Whether the User has an `Open to work` flag.
+                 */
+                is_closer_in_network: boolean;
+                /**
+                 * The interest level of the User.
+                 */
+                interest_level?: string;
                 /**
                  * The hiring project where the User is a candidate.
                  */
@@ -52980,6 +53525,26 @@ export type PerformRecruiterPeopleSearchResponses = {
              * Whether the User has been set as hidden candidate.
              */
             is_hidden_candidate: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_recently_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_active_talent: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_closer_in_network: boolean;
+            /**
+             * The interest level of the User.
+             */
+            interest_level?: string;
             /**
              * The hiring project where the User is a candidate.
              */
@@ -57334,6 +57899,10 @@ export type SolveCheckpointResponses = {
              */
             allow_country_fallback?: boolean;
             /**
+             * The authentication method that currently owns the account session lifecycle.
+             */
+            connection_method?: 'credentials' | 'cookies' | 'unilogin';
+            /**
              * The ID of the account in the v1 if the account is migrated from v1.
              */
             v1_account_id?: string;
@@ -57565,7 +58134,7 @@ export type ResendCheckpointResponses = {
 export type ResendCheckpointResponse = ResendCheckpointResponses[keyof ResendCheckpointResponses];
 
 export type StartAuthIntentData = {
-    body?: ({
+    body?: (({
         /**
          * The provider to authenticate with.
          */
@@ -57829,6 +58398,14 @@ export type StartAuthIntentData = {
          * The time zone of the current user can be used on a few specific features (e.g. scheduled actions). Setting it at authentication avoids having to do it on a case-by-case basis later on.
          */
         user_timezone?: string;
+        /**
+         * Primary browser language captured with the session cookies.
+         */
+        user_language?: string;
+        /**
+         * Ordered browser language preferences captured with the session cookies.
+         */
+        user_languages?: Array<string>;
         /**
          * The user credentials required by the provider to authenticate with.
          */
@@ -58219,9 +58796,10 @@ export type StartAuthIntentData = {
              * The authentication methods to show in the hosted auth.
              * `credentials` : Credentials Authentication
              * `cookies` : Cookies Authentication
+             * `unilogin` : Connect the active browser session through the UniLogin extension
              *
              */
-            allow_methods?: Array<'credentials' | 'cookies'>;
+            allow_methods?: Array<'credentials' | 'cookies' | 'unilogin'>;
             [key: string]: unknown | {
                 /**
                  * The host of the proxy.
@@ -58260,7 +58838,7 @@ export type StartAuthIntentData = {
                  * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
-            } | Array<'credentials' | 'cookies'> | undefined;
+            } | Array<'credentials' | 'cookies' | 'unilogin'> | undefined;
         };
     }) & {
         /**
@@ -58275,6 +58853,54 @@ export type StartAuthIntentData = {
          * The ID of the Account to re-authenticate or reconfigure. The account may be running, partially connected, or disconnected, and `provider` must match its provider. Reconnecting always refreshes the entire account and restarts all configured products. If not specified, a new account is linked.
          */
         account_id?: string;
+    } & {
+        unilogin?: unknown;
+    }) | {
+        /**
+         * The provider to connect with UniLogin.
+         */
+        provider: 'linkedin' | 'instagram';
+        /**
+         * The existing LinkedIn or Instagram Account to reconnect. Omit it to link a new Account.
+         */
+        account_id?: string;
+        /**
+         * The Scope assigned to a newly linked Account.
+         */
+        account_scope_id?: string;
+        /**
+         * State data sent in the account.add or account.reconnect webhook after completion.
+         */
+        state?: string;
+        /**
+         * LinkedIn products and managed proxy selection. Credential-bearing custom_proxy configuration is not accepted in this asynchronous flow.
+         */
+        config?: {
+            products?: Array<'classic' | 'company' | 'recruiter' | 'sales_navigator'>;
+            /**
+             * Automatic proxy configuration
+             *
+             * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+             */
+            auto_proxy_config?: {
+                /**
+                 * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                 */
+                country?: string;
+                /**
+                 * An IPv4 address to infer proxy's location.
+                 */
+                ip?: string;
+                /**
+                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 */
+                allow_country_fallback?: boolean;
+            };
+        };
+        /**
+         * Use the UniLogin extension instead of submitting credentials.
+         */
+        unilogin: true;
     };
     path?: never;
     query?: never;
@@ -58475,6 +59101,10 @@ export type StartAuthIntentResponses = {
              */
             allow_country_fallback?: boolean;
             /**
+             * The authentication method that currently owns the account session lifecycle.
+             */
+            connection_method?: 'credentials' | 'cookies' | 'unilogin';
+            /**
              * The ID of the account in the v1 if the account is migrated from v1.
              */
             v1_account_id?: string;
@@ -58541,6 +59171,26 @@ export type StartAuthIntentResponses = {
              * The protocol of the custom proxy.
              */
             protocol?: string;
+        };
+    } | {
+        object: 'AuthenticationCheckpoint';
+        account_id: string;
+        intent_id: string;
+        checkpoint: {
+            type: 'UNILOGIN';
+            extension_code: string;
+            extension_code_expires_at: string;
+            expires_at: string;
+            extension_store_urls: {
+                chrome?: string;
+                edge?: string;
+                firefox?: string;
+                safari?: string;
+            };
+            extension_download_urls: {
+                edge?: string;
+                safari?: string;
+            };
         };
     };
 };
@@ -58776,9 +59426,10 @@ export type CreateAuthLinkData = {
                  * The authentication methods to show in the hosted auth.
                  * `credentials` : Credentials Authentication
                  * `cookies` : Cookies Authentication
+                 * `unilogin` : Connect the active browser session through the UniLogin extension
                  *
                  */
-                allow_methods?: Array<'credentials' | 'cookies'>;
+                allow_methods?: Array<'credentials' | 'cookies' | 'unilogin'>;
             };
             /**
              * WhatsApp specific configuration.
@@ -58900,9 +59551,10 @@ export type CreateAuthLinkData = {
                  * The authentication methods to show in the hosted auth.
                  * `credentials` : Credentials Authentication
                  * `cookies` : Cookies Authentication
+                 * `unilogin` : Connect the active browser session through the UniLogin extension
                  *
                  */
-                allow_methods?: Array<'credentials' | 'cookies'>;
+                allow_methods?: Array<'credentials' | 'cookies' | 'unilogin'>;
                 [key: string]: unknown | {
                     /**
                      * The host of the proxy.
@@ -58941,7 +59593,7 @@ export type CreateAuthLinkData = {
                      * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
-                } | Array<'credentials' | 'cookies'> | undefined;
+                } | Array<'credentials' | 'cookies' | 'unilogin'> | undefined;
             };
             /**
              * IMAP specific configuration.
@@ -59332,9 +59984,10 @@ export type CreateAuthLinkData = {
                  * The authentication methods to show in the hosted auth.
                  * `credentials` : Credentials Authentication
                  * `cookies` : Cookies Authentication
+                 * `unilogin` : Connect the active browser session through the UniLogin extension
                  *
                  */
-                allow_methods?: Array<'credentials' | 'cookies'>;
+                allow_methods?: Array<'credentials' | 'cookies' | 'unilogin'>;
             };
             /**
              * WhatsApp specific configuration.
@@ -59456,9 +60109,10 @@ export type CreateAuthLinkData = {
                  * The authentication methods to show in the hosted auth.
                  * `credentials` : Credentials Authentication
                  * `cookies` : Cookies Authentication
+                 * `unilogin` : Connect the active browser session through the UniLogin extension
                  *
                  */
-                allow_methods?: Array<'credentials' | 'cookies'>;
+                allow_methods?: Array<'credentials' | 'cookies' | 'unilogin'>;
                 [key: string]: unknown | {
                     /**
                      * The host of the proxy.
@@ -59497,7 +60151,7 @@ export type CreateAuthLinkData = {
                      * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
-                } | Array<'credentials' | 'cookies'> | undefined;
+                } | Array<'credentials' | 'cookies' | 'unilogin'> | undefined;
             };
             /**
              * IMAP specific configuration.
@@ -59784,6 +60438,10 @@ export type GetAccountResponses = {
              */
             allow_country_fallback?: boolean;
             /**
+             * The authentication method that currently owns the account session lifecycle.
+             */
+            connection_method?: 'credentials' | 'cookies' | 'unilogin';
+            /**
              * The ID of the account in the v1 if the account is migrated from v1.
              */
             v1_account_id?: string;
@@ -59994,6 +60652,10 @@ export type UpdateAccountResponses = {
              */
             allow_country_fallback?: boolean;
             /**
+             * The authentication method that currently owns the account session lifecycle.
+             */
+            connection_method?: 'credentials' | 'cookies' | 'unilogin';
+            /**
              * The ID of the account in the v1 if the account is migrated from v1.
              */
             v1_account_id?: string;
@@ -60095,11 +60757,11 @@ export type ListAccountsData = {
          */
         search?: string;
         /**
-         * An offset used for pagination.
+         * A non-negative integer offset used for pagination.
          */
         offset?: string;
         /**
-         * The limit of items to be returned.
+         * A positive integer limit of items to be returned.
          */
         limit?: string;
     };
@@ -60183,6 +60845,10 @@ export type ListAccountsResponses = {
                  * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
+                /**
+                 * The authentication method that currently owns the account session lifecycle.
+                 */
+                connection_method?: 'credentials' | 'cookies' | 'unilogin';
                 /**
                  * The ID of the account in the v1 if the account is migrated from v1.
                  */
@@ -60351,7 +61017,7 @@ export type CreateApiKeyData = {
          */
         name: string;
         /**
-         * The date and time when the API Key expires, in ISO 8601 format.
+         * The date and time when the API Key expires. Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         expires_at: string;
         /**
@@ -60369,7 +61035,7 @@ export type CreateApiKeyData = {
          */
         name: string;
         /**
-         * The date and time when the API Key expires, in ISO 8601 format.
+         * The date and time when the API Key expires. Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
          */
         expires_at: string;
         /**
@@ -60749,6 +61415,10 @@ export type ListWebhookConversationsData = {
          */
         event_id?: string;
         /**
+         * Filter to return only conversations for events from the given account.
+         */
+        account_id?: string;
+        /**
          * An offset used for pagination.
          */
         offset?: string;
@@ -61083,3 +61753,30 @@ export type UpdateWebhookEndpointResponses = {
 };
 
 export type UpdateWebhookEndpointResponse = UpdateWebhookEndpointResponses[keyof UpdateWebhookEndpointResponses];
+
+export type ReplayWebhookEventData = {
+    body?: never;
+    path: {
+        id: string;
+    };
+    query?: {
+        /**
+         * Replay only to this original endpoint. Omit to replay to all currently enabled endpoints listening to this event and matching its account.
+         */
+        endpoint_id?: string;
+    };
+    url: '/v2/webhooks/events/{id}/replay';
+};
+
+export type ReplayWebhookEventResponses = {
+    /**
+     * Default Response
+     */
+    202: {
+        object: 'EventReplay';
+        event_id: string;
+        endpoint_ids: Array<string>;
+    };
+};
+
+export type ReplayWebhookEventResponse = ReplayWebhookEventResponses[keyof ReplayWebhookEventResponses];
