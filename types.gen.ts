@@ -13816,6 +13816,54 @@ export type ReadMessageResponses = {
 
 export type ReadMessageResponse = ReadMessageResponses[keyof ReadMessageResponses];
 
+export type PinMessageData = {
+    body: {
+        /**
+         * Set to `true` to pin the message in the chat, or `false` to unpin it.
+         */
+        pin_status: boolean;
+        /**
+         * Object containing provider-specific pin data.
+         */
+        specifics?: {
+            /**
+             * How long the message should stay pinned, Whatsapp unpinning it by itself once elapsed.
+             * - `24_hours` for a day.
+             * - `7_days` for a week.
+             * - `30_days` for a month.
+             */
+            pin_duration?: '24_hours' | '7_days' | '30_days';
+        };
+    };
+    path: {
+        /**
+         * The ID of the Chat where the message is.
+         */
+        chat_id: string;
+        /**
+         * The ID of the Message to pin or unpin.
+         */
+        message_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/pin';
+};
+
+export type PinMessageResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        object: 'MessagePinUpdated';
+    };
+};
+
+export type PinMessageResponse = PinMessageResponses[keyof PinMessageResponses];
+
 export type GetParticipantsListData = {
     body?: never;
     path: {
@@ -17675,7 +17723,7 @@ export type CreateDraftData = {
             display_name?: string;
         };
         /**
-         * List of attendees to set in `to` header.
+         * List of attendees to set in `to` header. An empty list clears the header.
          */
         to: Array<{
             /**
@@ -17688,7 +17736,7 @@ export type CreateDraftData = {
             display_name?: string;
         }>;
         /**
-         * List of attendees to set in `cc` header.
+         * List of attendees to set in `cc` header. An empty list clears the header.
          */
         cc?: Array<{
             /**
@@ -17701,7 +17749,7 @@ export type CreateDraftData = {
             display_name?: string;
         }>;
         /**
-         * List of attendees to set in `bcc` header.
+         * List of attendees to set in `bcc` header. An empty list clears the header.
          */
         bcc?: Array<{
             /**
@@ -17727,11 +17775,11 @@ export type CreateDraftData = {
             display_name?: string;
         }>;
         /**
-         * The ID of the email message that you're replying to. For Gmail, this is the provider ID for the email message that you're replying to. For IMAP, this is the RFC822 Message-ID header of the email message that you're replying to. Outlook draft replies are not supported.
+         * The ID of the email message that you're replying to. For Gmail and Outlook, use the provider message ID. For IMAP, use the RFC822 Message-ID header. Outlook creates a native reply draft in the original conversation; omitted content preserves the quoted body.
          */
         reply_to_message_id?: string;
         /**
-         * The list of file attachments to the draft.
+         * The list of file attachments to the draft. For Outlook, each attachment must be smaller than 3 MB.
          */
         attachments?: Array<{
             /**
@@ -18756,11 +18804,11 @@ export type UpdateDraftData = {
             display_name?: string;
         }>;
         /**
-         * The ID of the email message that you're replying to. For Gmail, this is the provider ID for the email message that you're replying to. For IMAP, this is the RFC822 Message-ID header of the email message that you're replying to. Outlook draft replies are not supported.
+         * The ID of the email message that you're replying to. For Gmail, use the provider message ID. For IMAP, use the RFC822 Message-ID header. Outlook cannot change the parent of an existing draft: omit this field when updating a native reply draft to preserve its conversation. Set it when creating the draft instead.
          */
         reply_to_message_id?: string;
         /**
-         * The list of file attachments to the draft. Any attachment already existing will be removed and replaced by the new ones.
+         * The list of file attachments to the draft. Any attachment already existing will be removed and replaced by the new ones. For Outlook, each attachment must be smaller than 3 MB.
          */
         attachments?: Array<{
             /**
@@ -20312,6 +20360,23 @@ export type GetUserProfileResponses = {
              * Whether the user is a CRM imported user.
              */
             is_crm_imported?: boolean;
+            /**
+             * Verification details for verified profiles retrieved with the linkedin_classic variant.
+             */
+            verifications?: Array<{
+                /**
+                 * The verification category displayed by LinkedIn, such as Identity or Workplace, in the account locale.
+                 */
+                type: string;
+                /**
+                 * The verification details displayed by LinkedIn, including the verification method if available.
+                 */
+                description?: string;
+                /**
+                 * The relative time since verification displayed by LinkedIn, such as "Over 1 year ago", in the account locale.
+                 */
+                verified_since?: string;
+            }>;
             /**
              * A collection of the user's skills.
              */
@@ -39679,6 +39744,93 @@ export type GetManagedCompanyPagesResponses = {
 };
 
 export type GetManagedCompanyPagesResponse = GetManagedCompanyPagesResponses[keyof GetManagedCompanyPagesResponses];
+
+export type SendCompanyFollowInvitationData = {
+    body: {
+        /**
+         * A list of member profile IDs (ACo...) identifying the members to invite to follow the company page.
+         */
+        member_ids: Array<string>;
+    };
+    path: {
+        /**
+         * The numeric LinkedIn company ID. The owner of the account must be an administrator of the page.
+         */
+        company_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/linkedin/company/{company_id}/follow-requests';
+};
+
+export type SendCompanyFollowInvitationResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        object: 'CompanyFollowInvitationsSent';
+        result: {
+            /**
+             * The IDs of the successfully sent invitations.
+             */
+            invitations_ids: Array<string>;
+            invitations_count: {
+                /**
+                 * The amount of successful invitations.
+                 */
+                success: number;
+                /**
+                 * The amount of failed invitations.
+                 */
+                failed: number;
+            };
+        };
+    };
+};
+
+export type SendCompanyFollowInvitationResponse = SendCompanyFollowInvitationResponses[keyof SendCompanyFollowInvitationResponses];
+
+export type GetCompanyFollowInvitationCreditsData = {
+    body?: never;
+    path: {
+        /**
+         * The numeric LinkedIn company ID. The owner of the account must be an administrator of the page.
+         */
+        company_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/linkedin/company/{company_id}/follow-requests/credits';
+};
+
+export type GetCompanyFollowInvitationCreditsResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        object: 'CompanyFollowInvitationCredits';
+        /**
+         * The remaining credit for inviting members to follow the company page.
+         */
+        remaining_credit: number;
+        /**
+         * The credit that is granted to you on each reset.
+         */
+        credit_grant: number;
+        /**
+         * The next reset date of the credits. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         */
+        resets_on: string;
+    };
+};
+
+export type GetCompanyFollowInvitationCreditsResponse = GetCompanyFollowInvitationCreditsResponses[keyof GetCompanyFollowInvitationCreditsResponses];
 
 export type GetClassicCompanyProfileData = {
     body?: never;
