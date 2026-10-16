@@ -13827,12 +13827,17 @@ export type PinMessageData = {
          */
         specifics?: {
             /**
-             * How long the message should stay pinned, Whatsapp unpinning it by itself once elapsed.
-             * - `24_hours` for a day.
-             * - `7_days` for a week.
-             * - `30_days` for a month.
+             * Specific options for pinning a WhatsApp message.
              */
-            pin_duration?: '24_hours' | '7_days' | '30_days';
+            whatsapp?: {
+                /**
+                 * How long the message should stay pinned, Whatsapp unpinning it by itself once elapsed.
+                 * - `24_hours` for a day.
+                 * - `7_days` for a week.
+                 * - `30_days` for a month.
+                 */
+                pin_duration?: '24_hours' | '7_days' | '30_days';
+            };
         };
     };
     path: {
