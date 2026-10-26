@@ -1765,6 +1765,11 @@ export type GetChatsListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -1885,6 +1890,11 @@ export type GetChatsListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -3766,6 +3776,11 @@ export type GetInboxChatsListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -3886,6 +3901,11 @@ export type GetInboxChatsListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -5710,6 +5730,11 @@ export type GetChatResponses = {
                 contact_name: string;
             } | {
                 /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
+            } | {
+                /**
                  * The geographical location of the user.
                  */
                 location?: string;
@@ -5830,6 +5855,11 @@ export type GetChatResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -7919,9 +7949,13 @@ export type StartChatData = {
                      */
                     intent?: 'HIRE_FOR_CLIENT' | 'HIRE_FOR_OWN_COMPANY';
                     /**
-                     * Whether you want to send the message via InMail or email using profile data.
+                     * Whether to send the message via InMail or email.
                      */
                     send_as?: 'INMAIL' | 'EMAIL';
+                    /**
+                     * The recipient email address to use when send_as is EMAIL. Takes precedence over the primary email from the recipient profile.
+                     */
+                    email?: string;
                     /**
                      * The channel from the hiring project talent pool from which to start the chat.
                      */
@@ -8173,9 +8207,13 @@ export type StartChatFromInboxData = {
                      */
                     intent?: 'HIRE_FOR_CLIENT' | 'HIRE_FOR_OWN_COMPANY';
                     /**
-                     * Whether you want to send the message via InMail or email using profile data.
+                     * Whether to send the message via InMail or email.
                      */
                     send_as?: 'INMAIL' | 'EMAIL';
+                    /**
+                     * The recipient email address to use when send_as is EMAIL. Takes precedence over the primary email from the recipient profile.
+                     */
+                    email?: string;
                     /**
                      * The channel from the hiring project talent pool from which to start the chat.
                      */
@@ -9132,6 +9170,11 @@ export type GetMessagesListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -9577,6 +9620,11 @@ export type GetMessagesListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -10070,6 +10118,11 @@ export type GetMessagesListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -11036,6 +11089,11 @@ export type GetMessageResponses = {
                 contact_name: string;
             } | {
                 /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
+            } | {
+                /**
                  * The geographical location of the user.
                  */
                 location?: string;
@@ -11481,6 +11539,11 @@ export type GetMessageResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -11974,6 +12037,11 @@ export type GetMessageResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -13827,12 +13895,17 @@ export type PinMessageData = {
          */
         specifics?: {
             /**
-             * How long the message should stay pinned, Whatsapp unpinning it by itself once elapsed.
-             * - `24_hours` for a day.
-             * - `7_days` for a week.
-             * - `30_days` for a month.
+             * Specific options for pinning a WhatsApp message.
              */
-            pin_duration?: '24_hours' | '7_days' | '30_days';
+            whatsapp?: {
+                /**
+                 * How long the message should stay pinned, Whatsapp unpinning it by itself once elapsed.
+                 * - `24_hours` for a day.
+                 * - `7_days` for a week.
+                 * - `30_days` for a month.
+                 */
+                pin_duration?: '24_hours' | '7_days' | '30_days';
+            };
         };
     };
     path: {
@@ -13961,6 +14034,11 @@ export type GetParticipantsListResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -14231,6 +14309,11 @@ export type GetMessageReactionsListResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -20214,6 +20297,78 @@ export type GetUserProfileResponses = {
         description?: string;
         specifics: unknown & ({
             /**
+             * Whether the user and the account owner are in each other address book.
+             */
+            is_mutual_contact: boolean;
+            /**
+             * Whether the user is a close friend of the account owner.
+             */
+            is_close_friend: boolean;
+            /**
+             * Whether the user is a bot.
+             */
+            is_bot: boolean;
+            /**
+             * Whether the user is an official Telegram support account.
+             */
+            is_support: boolean;
+            /**
+             * Whether the user has been flagged as a scam by Telegram.
+             */
+            is_scam: boolean;
+            /**
+             * Whether the user has been flagged as impersonating another user by Telegram.
+             */
+            is_fake: boolean;
+            /**
+             * Whether the user is restricted on some platforms.
+             */
+            is_restricted: boolean;
+            /**
+             * Restrictions applied to the user, if any.
+             */
+            restrictions?: Array<{
+                /**
+                 * Platform the restriction applies to (e.g. `ios`, `android`, `all`).
+                 */
+                platform: string;
+                /**
+                 * Machine readable reason of the restriction.
+                 */
+                reason: string;
+                /**
+                 * Human readable reason of the restriction.
+                 */
+                text: string;
+            }>;
+            /**
+             * Last seen status of the user, as exposed by Telegram.
+             */
+            status?: {
+                /**
+                 * Last seen status of the user.
+                 * - `online` the user is currently online, until `expires_at`.
+                 * - `offline` the user is offline, and was last online at `was_online_at`.
+                 * - `recently`, `last_week` and `last_month` are the approximations returned when the user hides its exact last seen date.
+                 */
+                type: 'online' | 'offline' | 'recently' | 'last_week' | 'last_month';
+                /**
+                 * Date and time until when the user is considered online (`online` status only).
+                 */
+                expires_at?: string;
+                /**
+                 * Date and time when the user was last online (`offline` status only).
+                 */
+                was_online_at?: string;
+            };
+            /**
+             * Number of chats shared between the user and the account owner.
+             */
+            common_chats_count?: number;
+        } | {
+            messaging_identifier: string;
+        } | {
+            /**
              * LinkedIn internal member ID of the user.
              */
             member_id?: string;
@@ -22196,78 +22351,6 @@ export type GetUserProfileResponses = {
                 }>;
             };
         } | {
-            messaging_identifier: string;
-        } | {
-            /**
-             * Whether the user and the account owner are in each other address book.
-             */
-            is_mutual_contact: boolean;
-            /**
-             * Whether the user is a close friend of the account owner.
-             */
-            is_close_friend: boolean;
-            /**
-             * Whether the user is a bot.
-             */
-            is_bot: boolean;
-            /**
-             * Whether the user is an official Telegram support account.
-             */
-            is_support: boolean;
-            /**
-             * Whether the user has been flagged as a scam by Telegram.
-             */
-            is_scam: boolean;
-            /**
-             * Whether the user has been flagged as impersonating another user by Telegram.
-             */
-            is_fake: boolean;
-            /**
-             * Whether the user is restricted on some platforms.
-             */
-            is_restricted: boolean;
-            /**
-             * Restrictions applied to the user, if any.
-             */
-            restrictions?: Array<{
-                /**
-                 * Platform the restriction applies to (e.g. `ios`, `android`, `all`).
-                 */
-                platform: string;
-                /**
-                 * Machine readable reason of the restriction.
-                 */
-                reason: string;
-                /**
-                 * Human readable reason of the restriction.
-                 */
-                text: string;
-            }>;
-            /**
-             * Last seen status of the user, as exposed by Telegram.
-             */
-            status?: {
-                /**
-                 * Last seen status of the user.
-                 * - `online` the user is currently online, until `expires_at`.
-                 * - `offline` the user is offline, and was last online at `was_online_at`.
-                 * - `recently`, `last_week` and `last_month` are the approximations returned when the user hides its exact last seen date.
-                 */
-                type: 'online' | 'offline' | 'recently' | 'last_week' | 'last_month';
-                /**
-                 * Date and time until when the user is considered online (`online` status only).
-                 */
-                expires_at?: string;
-                /**
-                 * Date and time when the user was last online (`offline` status only).
-                 */
-                was_online_at?: string;
-            };
-            /**
-             * Number of chats shared between the user and the account owner.
-             */
-            common_chats_count?: number;
-        } | {
             /**
              * Name saved by the connected account owner in their WhatsApp address book.
              */
@@ -23794,6 +23877,11 @@ export type GetUserRelationsResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -24001,6 +24089,11 @@ export type GetRelationRequestsListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -24167,6 +24260,11 @@ export type CreateRelationRequestResponses = {
                  * Name saved by the connected account owner in their WhatsApp address book.
                  */
                 contact_name: string;
+            } | {
+                /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
             } | {
                 /**
                  * The geographical location of the user.
@@ -24371,6 +24469,11 @@ export type ListUserFollowersResponses = {
                 contact_name: string;
             } | {
                 /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
+            } | {
+                /**
                  * The geographical location of the user.
                  */
                 location?: string;
@@ -24525,6 +24628,11 @@ export type ListUserFollowingResponses = {
                  * Name saved by the connected account owner in their WhatsApp address book.
                  */
                 contact_name: string;
+            } | {
+                /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
             } | {
                 /**
                  * The geographical location of the user.
@@ -24692,6 +24800,11 @@ export type FollowUserResponses = {
                  * Name saved by the connected account owner in their WhatsApp address book.
                  */
                 contact_name: string;
+            } | {
+                /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
             } | {
                 /**
                  * The geographical location of the user.
@@ -25379,6 +25492,11 @@ export type GetPostsListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -25489,6 +25607,11 @@ export type GetPostsListResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -26107,6 +26230,11 @@ export type GetPostsListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -26960,6 +27088,11 @@ export type GetPostResponses = {
                 contact_name: string;
             } | {
                 /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
+            } | {
+                /**
                  * The geographical location of the user.
                  */
                 location?: string;
@@ -27070,6 +27203,11 @@ export type GetPostResponses = {
                  * Name saved by the connected account owner in their WhatsApp address book.
                  */
                 contact_name: string;
+            } | {
+                /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
             } | {
                 /**
                  * The geographical location of the user.
@@ -27688,6 +27826,11 @@ export type GetPostResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -30627,6 +30770,11 @@ export type GetPostReactionsListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -31195,6 +31343,11 @@ export type GetPostCommentsListResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -33199,6 +33352,11 @@ export type GetPostCommentRepliesListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -33401,6 +33559,11 @@ export type GetPostCommentReactionsListResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -33973,6 +34136,11 @@ export type GetUserCommentsListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -34108,6 +34276,11 @@ export type GetUserCommentsListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -34729,6 +34902,11 @@ export type GetUserCommentsListResponses = {
                         contact_name: string;
                     } | {
                         /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
+                    } | {
+                        /**
                          * The geographical location of the user.
                          */
                         location?: string;
@@ -34839,6 +35017,11 @@ export type GetUserCommentsListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -35459,6 +35642,11 @@ export type GetUserCommentsListResponses = {
                             contact_name: string;
                         } | {
                             /**
+                             * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                             */
+                            messaging_identifier: string;
+                        } | {
+                            /**
                              * The geographical location of the user.
                              */
                             location?: string;
@@ -35800,6 +35988,11 @@ export type GetUserReactionsListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -35935,6 +36128,11 @@ export type GetUserReactionsListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -36556,6 +36754,11 @@ export type GetUserReactionsListResponses = {
                         contact_name: string;
                     } | {
                         /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
+                    } | {
+                        /**
                          * The geographical location of the user.
                          */
                         location?: string;
@@ -36666,6 +36869,11 @@ export type GetUserReactionsListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -37284,6 +37492,11 @@ export type GetUserReactionsListResponses = {
                              * Name saved by the connected account owner in their WhatsApp address book.
                              */
                             contact_name: string;
+                        } | {
+                            /**
+                             * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                             */
+                            messaging_identifier: string;
                         } | {
                             /**
                              * The geographical location of the user.
@@ -58043,11 +58256,11 @@ export type SolveCheckpointResponses = {
          */
         metadata: {
             /**
-             * The rotation country for automatic proxy selection.
+             * The preferred country for automatic proxy selection. A country inferred from an IP may be outside Unipile’s proxy offering. The current proxy may be in another country when fallback is allowed and no proxy is available in the preferred country.
              */
             auto_proxy_country?: string;
             /**
-             * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
+             * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. A country included in Unipile’s proxy offering may still have no proxy currently available. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
              */
             allow_country_fallback?: boolean;
             /**
@@ -58369,7 +58582,7 @@ export type StartAuthIntentData = {
             /**
              * Custom proxy
              *
-             * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+             * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
              */
             custom_proxy?: {
                 /**
@@ -58454,7 +58667,7 @@ export type StartAuthIntentData = {
             /**
              * Custom proxy
              *
-             * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+             * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
              */
             custom_proxy?: {
                 /**
@@ -58485,19 +58698,19 @@ export type StartAuthIntentData = {
             /**
              * Automatic proxy configuration
              *
-             * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+             * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
              */
             auto_proxy_config?: {
                 /**
-                 * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                  */
                 country?: string;
                 /**
-                 * An IPv4 address to infer proxy's location.
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                  */
                 ip?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
             };
@@ -58528,15 +58741,15 @@ export type StartAuthIntentData = {
                 protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             } | {
                 /**
-                 * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                  */
                 country?: string;
                 /**
-                 * An IPv4 address to infer proxy's location.
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                  */
                 ip?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
             } | undefined;
@@ -58595,7 +58808,7 @@ export type StartAuthIntentData = {
             /**
              * Custom proxy
              *
-             * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+             * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
              */
             custom_proxy?: {
                 /**
@@ -58626,19 +58839,19 @@ export type StartAuthIntentData = {
             /**
              * Automatic proxy configuration
              *
-             * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+             * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
              */
             auto_proxy_config?: {
                 /**
-                 * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                  */
                 country?: string;
                 /**
-                 * An IPv4 address to infer proxy's location.
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                  */
                 ip?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
             };
@@ -58682,15 +58895,15 @@ export type StartAuthIntentData = {
                 protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             } | {
                 /**
-                 * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                  */
                 country?: string;
                 /**
-                 * An IPv4 address to infer proxy's location.
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                  */
                 ip?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
             } | Array<'classic' | 'company' | 'recruiter' | 'sales_navigator'> | boolean | undefined;
@@ -58728,7 +58941,7 @@ export type StartAuthIntentData = {
             /**
              * Custom proxy
              *
-             * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+             * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
              */
             custom_proxy?: {
                 /**
@@ -58812,7 +59025,7 @@ export type StartAuthIntentData = {
             /**
              * Custom proxy
              *
-             * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+             * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
              */
             custom_proxy?: {
                 /**
@@ -58897,7 +59110,7 @@ export type StartAuthIntentData = {
             /**
              * Custom proxy
              *
-             * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+             * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
              */
             custom_proxy?: {
                 /**
@@ -58928,19 +59141,19 @@ export type StartAuthIntentData = {
             /**
              * Automatic proxy configuration
              *
-             * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+             * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
              */
             auto_proxy_config?: {
                 /**
-                 * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                  */
                 country?: string;
                 /**
-                 * An IPv4 address to infer proxy's location.
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                  */
                 ip?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
             };
@@ -58979,15 +59192,15 @@ export type StartAuthIntentData = {
                 protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             } | {
                 /**
-                 * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                  */
                 country?: string;
                 /**
-                 * An IPv4 address to infer proxy's location.
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                  */
                 ip?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
             } | Array<'credentials' | 'cookies' | 'unilogin'> | undefined;
@@ -59032,19 +59245,19 @@ export type StartAuthIntentData = {
             /**
              * Automatic proxy configuration
              *
-             * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+             * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
              */
             auto_proxy_config?: {
                 /**
-                 * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                  */
                 country?: string;
                 /**
-                 * An IPv4 address to infer proxy's location.
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                  */
                 ip?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
             };
@@ -59245,11 +59458,11 @@ export type StartAuthIntentResponses = {
          */
         metadata: {
             /**
-             * The rotation country for automatic proxy selection.
+             * The preferred country for automatic proxy selection. A country inferred from an IP may be outside Unipile’s proxy offering. The current proxy may be in another country when fallback is allowed and no proxy is available in the preferred country.
              */
             auto_proxy_country?: string;
             /**
-             * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
+             * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. A country included in Unipile’s proxy offering may still have no proxy currently available. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
              */
             allow_country_fallback?: boolean;
             /**
@@ -59382,7 +59595,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -59448,7 +59661,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -59514,7 +59727,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -59545,19 +59758,19 @@ export type CreateAuthLinkData = {
                 /**
                  * Automatic proxy configuration
                  *
-                 * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+                 * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
                  */
                 auto_proxy_config?: {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 };
@@ -59590,7 +59803,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -59621,19 +59834,19 @@ export type CreateAuthLinkData = {
                 /**
                  * Automatic proxy configuration
                  *
-                 * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+                 * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
                  */
                 auto_proxy_config?: {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 };
@@ -59652,7 +59865,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -59683,19 +59896,19 @@ export type CreateAuthLinkData = {
                 /**
                  * Automatic proxy configuration
                  *
-                 * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+                 * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
                  */
                 auto_proxy_config?: {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 };
@@ -59734,15 +59947,15 @@ export type CreateAuthLinkData = {
                     protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 } | Array<'credentials' | 'cookies' | 'unilogin'> | undefined;
@@ -59754,7 +59967,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -59820,7 +60033,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -59888,11 +60101,11 @@ export type CreateAuthLinkData = {
                  */
                 allow_user_proxy_override?: boolean;
                 /**
-                 * If true, the Hosted Auth UI will allow the user to manually select a country for automatic proxy configuration (when supported by the provider). This selection overrides the detected country and any auto_proxy_config value. Note: if a custom_proxy is explicitly configured for a provider, this option has no effect for that provider (no country selection will be shown).
+                 * If true, the Hosted Auth UI will allow the user to manually select a country where Unipile offers automatic proxies for the provider. A proxy may still be temporarily unavailable in the selected country. This selection overrides the detected country and any auto_proxy_config value. Note: if a custom_proxy is explicitly configured for a provider, this option has no effect for that provider (no country selection will be shown).
                  */
                 allow_user_country_override?: boolean;
                 /**
-                 * When true, the hosted authentication will wait for the initial sync to complete before redirecting. Only supported for providers with initial sync capability (whatsapp and imap). The hosted UI will display a loading screen until the initial sync is completed.
+                 * When true, the hosted authentication will wait for the initial sync to complete before redirecting. Only supported for providers with initial sync capability (whatsapp and imap). After authentication succeeds, the session can only poll the linked account for up to 24 hours, independently of the original link expiration, and cannot authenticate another account.
                  */
                 wait_initial_sync?: boolean;
             };
@@ -59940,7 +60153,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -60006,7 +60219,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -60072,7 +60285,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -60103,19 +60316,19 @@ export type CreateAuthLinkData = {
                 /**
                  * Automatic proxy configuration
                  *
-                 * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+                 * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
                  */
                 auto_proxy_config?: {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 };
@@ -60148,7 +60361,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -60179,19 +60392,19 @@ export type CreateAuthLinkData = {
                 /**
                  * Automatic proxy configuration
                  *
-                 * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+                 * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
                  */
                 auto_proxy_config?: {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 };
@@ -60210,7 +60423,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -60241,19 +60454,19 @@ export type CreateAuthLinkData = {
                 /**
                  * Automatic proxy configuration
                  *
-                 * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+                 * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
                  */
                 auto_proxy_config?: {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 };
@@ -60292,15 +60505,15 @@ export type CreateAuthLinkData = {
                     protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 } | Array<'credentials' | 'cookies' | 'unilogin'> | undefined;
@@ -60312,7 +60525,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -60378,7 +60591,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -60446,11 +60659,11 @@ export type CreateAuthLinkData = {
                  */
                 allow_user_proxy_override?: boolean;
                 /**
-                 * If true, the Hosted Auth UI will allow the user to manually select a country for automatic proxy configuration (when supported by the provider). This selection overrides the detected country and any auto_proxy_config value. Note: if a custom_proxy is explicitly configured for a provider, this option has no effect for that provider (no country selection will be shown).
+                 * If true, the Hosted Auth UI will allow the user to manually select a country where Unipile offers automatic proxies for the provider. A proxy may still be temporarily unavailable in the selected country. This selection overrides the detected country and any auto_proxy_config value. Note: if a custom_proxy is explicitly configured for a provider, this option has no effect for that provider (no country selection will be shown).
                  */
                 allow_user_country_override?: boolean;
                 /**
-                 * When true, the hosted authentication will wait for the initial sync to complete before redirecting. Only supported for providers with initial sync capability (whatsapp and imap). The hosted UI will display a loading screen until the initial sync is completed.
+                 * When true, the hosted authentication will wait for the initial sync to complete before redirecting. Only supported for providers with initial sync capability (whatsapp and imap). After authentication succeeds, the session can only poll the linked account for up to 24 hours, independently of the original link expiration, and cannot authenticate another account.
                  */
                 wait_initial_sync?: boolean;
             };
@@ -60582,11 +60795,11 @@ export type GetAccountResponses = {
          */
         metadata: {
             /**
-             * The rotation country for automatic proxy selection.
+             * The preferred country for automatic proxy selection. A country inferred from an IP may be outside Unipile’s proxy offering. The current proxy may be in another country when fallback is allowed and no proxy is available in the preferred country.
              */
             auto_proxy_country?: string;
             /**
-             * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
+             * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. A country included in Unipile’s proxy offering may still have no proxy currently available. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
              */
             allow_country_fallback?: boolean;
             /**
@@ -60679,11 +60892,11 @@ export type UpdateAccountData = {
             [key: string]: string;
         };
         /**
-         * The rotation country to use for Automatic Proxy Protection.
+         * The rotation country to use for Automatic Proxy Protection. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
          */
         auto_proxy_country?: string;
         /**
-         * Whether Automatic Proxy Protection may use a proxy from another country when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country; if the selected proxy later fails without a replacement there, the account enters Service interruption.
+         * Whether Automatic Proxy Protection may use an available proxy from another country when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected rotation country must be part of Unipile’s proxy offering for the provider, but a proxy may still be temporarily unavailable there. If false, authentication fails when no proxy is available in the rotation country; if the selected proxy later fails without an available replacement there, the account enters Service interruption.
          */
         allow_country_fallback?: boolean;
         /**
@@ -60796,11 +61009,11 @@ export type UpdateAccountResponses = {
          */
         metadata: {
             /**
-             * The rotation country for automatic proxy selection.
+             * The preferred country for automatic proxy selection. A country inferred from an IP may be outside Unipile’s proxy offering. The current proxy may be in another country when fallback is allowed and no proxy is available in the preferred country.
              */
             auto_proxy_country?: string;
             /**
-             * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
+             * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. A country included in Unipile’s proxy offering may still have no proxy currently available. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
              */
             allow_country_fallback?: boolean;
             /**
@@ -60990,11 +61203,11 @@ export type ListAccountsResponses = {
              */
             metadata: {
                 /**
-                 * The rotation country for automatic proxy selection.
+                 * The preferred country for automatic proxy selection. A country inferred from an IP may be outside Unipile’s proxy offering. The current proxy may be in another country when fallback is allowed and no proxy is available in the preferred country.
                  */
                 auto_proxy_country?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. A country included in Unipile’s proxy offering may still have no proxy currently available. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
                 /**
@@ -61570,6 +61783,22 @@ export type ListWebhookConversationsData = {
          * Filter to return only conversations for events from the given account.
          */
         account_id?: string;
+        /**
+         * Filter to return only conversations for events of the given type.
+         */
+        event_type?: 'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new';
+        /**
+         * The delivery status of an event, based on its latest delivery attempt to the endpoint. `success` means the endpoint returned a 2xx HTTP status; `failed` means it returned another status or did not respond.
+         */
+        status?: 'success' | 'failed';
+        /**
+         * Filter to return only conversations created at or after the given date and time, in ISO 8601 format.
+         */
+        created_after?: string;
+        /**
+         * Filter to return only conversations created before the given date and time, in ISO 8601 format.
+         */
+        created_before?: string;
         /**
          * An offset used for pagination.
          */

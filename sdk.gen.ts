@@ -3106,7 +3106,7 @@ export class UnipileAccounts extends HeyApiClient {
     /**
      * Get an Account
      *
-     * Retrieve an Account.
+     * Retrieve an Account. After successful Hosted Auth authentication with initial sync waiting enabled, the consumed session can retrieve only its linked account until its polling deadline.
      */
     public getAccount<ThrowOnError extends boolean = false>(options: Options<GetAccountData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetAccountResponses, unknown, ThrowOnError>({
