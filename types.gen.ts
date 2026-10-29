@@ -569,12 +569,13 @@ export type GetChatsListResponses = {
                  * - `whatsapp` is WhatsApp.
                  * - `linkedin` is LinkedIn.
                  * - `instagram` is Instagram.
+                 * - `facebook` is Facebook.
                  * - `google` is Google.
                  * - `outlook` is Outlook.
                  * - `telegram` is Telegram.
                  * - `imap` is IMAP.
                  */
-                provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+                provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
                 /**
                  * List of message attachments.
                  */
@@ -1700,12 +1701,13 @@ export type GetChatsListResponses = {
              * - `whatsapp` is WhatsApp.
              * - `linkedin` is LinkedIn.
              * - `instagram` is Instagram.
+             * - `facebook` is Facebook.
              * - `google` is Google.
              * - `outlook` is Outlook.
              * - `telegram` is Telegram.
              * - `imap` is IMAP.
              */
-            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
             specifics?: unknown;
             /**
              * The other participant if 1to1 chat.
@@ -1763,6 +1765,11 @@ export type GetChatsListResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -1885,6 +1892,11 @@ export type GetChatsListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -2570,12 +2582,13 @@ export type GetInboxChatsListResponses = {
                  * - `whatsapp` is WhatsApp.
                  * - `linkedin` is LinkedIn.
                  * - `instagram` is Instagram.
+                 * - `facebook` is Facebook.
                  * - `google` is Google.
                  * - `outlook` is Outlook.
                  * - `telegram` is Telegram.
                  * - `imap` is IMAP.
                  */
-                provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+                provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
                 /**
                  * List of message attachments.
                  */
@@ -3701,12 +3714,13 @@ export type GetInboxChatsListResponses = {
              * - `whatsapp` is WhatsApp.
              * - `linkedin` is LinkedIn.
              * - `instagram` is Instagram.
+             * - `facebook` is Facebook.
              * - `google` is Google.
              * - `outlook` is Outlook.
              * - `telegram` is Telegram.
              * - `imap` is IMAP.
              */
-            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
             specifics?: unknown;
             /**
              * The other participant if 1to1 chat.
@@ -3764,6 +3778,11 @@ export type GetInboxChatsListResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -3886,6 +3905,11 @@ export type GetInboxChatsListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -4514,12 +4538,13 @@ export type GetChatResponses = {
              * - `whatsapp` is WhatsApp.
              * - `linkedin` is LinkedIn.
              * - `instagram` is Instagram.
+             * - `facebook` is Facebook.
              * - `google` is Google.
              * - `outlook` is Outlook.
              * - `telegram` is Telegram.
              * - `imap` is IMAP.
              */
-            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
             /**
              * List of message attachments.
              */
@@ -5645,12 +5670,13 @@ export type GetChatResponses = {
          * - `whatsapp` is WhatsApp.
          * - `linkedin` is LinkedIn.
          * - `instagram` is Instagram.
+         * - `facebook` is Facebook.
          * - `google` is Google.
          * - `outlook` is Outlook.
          * - `telegram` is Telegram.
          * - `imap` is IMAP.
          */
-        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
         specifics?: unknown;
         /**
          * The other participant if 1to1 chat.
@@ -5708,6 +5734,11 @@ export type GetChatResponses = {
                  * Name saved by the connected account owner in their WhatsApp address book.
                  */
                 contact_name: string;
+            } | {
+                /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
             } | {
                 /**
                  * The geographical location of the user.
@@ -5832,6 +5863,11 @@ export type GetChatResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -5898,6 +5934,32 @@ export type UpdateChatData = {
          * A custom name for the chat. Some providers allow custom names only on groups.
          */
         name?: string;
+        /**
+         * A file to be uploaded.
+         */
+        picture?: {
+            /**
+             * Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files
+             */
+            content: string;
+            /**
+             * <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME type</a> of the file.
+             */
+            content_type: string;
+            /**
+             * Name of the file (including extension).
+             */
+            filename: string;
+            /**
+             * Metadata of the the file.
+             */
+            metadata?: {
+                /**
+                 * Duration of the media file.
+                 */
+                duration?: number;
+            };
+        };
         /**
          * If supported, set to `true` to pin the chat at the top of the list, or `false` to unpin it.
          */
@@ -6516,12 +6578,13 @@ export type UpdateChatResponses = {
              * - `whatsapp` is WhatsApp.
              * - `linkedin` is LinkedIn.
              * - `instagram` is Instagram.
+             * - `facebook` is Facebook.
              * - `google` is Google.
              * - `outlook` is Outlook.
              * - `telegram` is Telegram.
              * - `imap` is IMAP.
              */
-            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
             /**
              * List of message attachments.
              */
@@ -7700,12 +7763,13 @@ export type UpdateChatResponses = {
          * - `whatsapp` is WhatsApp.
          * - `linkedin` is LinkedIn.
          * - `instagram` is Instagram.
+         * - `facebook` is Facebook.
          * - `google` is Google.
          * - `outlook` is Outlook.
          * - `telegram` is Telegram.
          * - `imap` is IMAP.
          */
-        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
         specifics?: unknown;
     };
 };
@@ -7919,9 +7983,13 @@ export type StartChatData = {
                      */
                     intent?: 'HIRE_FOR_CLIENT' | 'HIRE_FOR_OWN_COMPANY';
                     /**
-                     * Whether you want to send the message via InMail or email using profile data.
+                     * Whether to send the message via InMail or email.
                      */
                     send_as?: 'INMAIL' | 'EMAIL';
+                    /**
+                     * The recipient email address to use when send_as is EMAIL. Takes precedence over the primary email from the recipient profile.
+                     */
+                    email?: string;
                     /**
                      * The channel from the hiring project talent pool from which to start the chat.
                      */
@@ -8173,9 +8241,13 @@ export type StartChatFromInboxData = {
                      */
                     intent?: 'HIRE_FOR_CLIENT' | 'HIRE_FOR_OWN_COMPANY';
                     /**
-                     * Whether you want to send the message via InMail or email using profile data.
+                     * Whether to send the message via InMail or email.
                      */
                     send_as?: 'INMAIL' | 'EMAIL';
+                    /**
+                     * The recipient email address to use when send_as is EMAIL. Takes precedence over the primary email from the recipient profile.
+                     */
+                    email?: string;
                     /**
                      * The channel from the hiring project talent pool from which to start the chat.
                      */
@@ -8290,6 +8362,1807 @@ export type StartChatFromInboxResponses = {
 };
 
 export type StartChatFromInboxResponse = StartChatFromInboxResponses[keyof StartChatFromInboxResponses];
+
+export type AcceptChatRequestData = {
+    body?: never;
+    path: {
+        /**
+         * ID of the Inbox where the chat request currently lives. Use <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes">List all Inboxes</a> to get the ID of an inbox.
+         */
+        inbox_id: string;
+        /**
+         * ID of the Chat request to accept.
+         */
+        chat_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/inboxes/{inbox_id}/chats/{chat_id}/accept';
+};
+
+export type AcceptChatRequestResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        object: 'Chat';
+        /**
+         * The unique identifier of the chat for the provider.
+         */
+        id: string;
+        /**
+         * The name / title of the chat. If the provider does not provide a name, name is built out of participants usernames.
+         */
+        name: string;
+        /**
+         * If supported by the provider, a label associated with the chat.
+         */
+        label?: string;
+        /**
+         * The description / subject of the chat.
+         */
+        description?: string;
+        /**
+         * Public URL of the chat picture.
+         */
+        public_picture_url?: string;
+        /**
+         * Private URL to download the chat picture. This URL requires authentication.
+         */
+        private_picture_download_url?: string;
+        /**
+         * The URL of the chat image. Use public_picture_url or private_picture_download_url instead.
+         *
+         * @deprecated
+         */
+        image_url?: string;
+        /**
+         * The creation date of the chat. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         */
+        created_at?: string;
+        /**
+         * The last update date of the chat. Use ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). Some providers update this field on new messages.
+         */
+        updated_at?: string;
+        /**
+         * The timestamp of the last message in the chat. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         */
+        last_message_timestamp?: string;
+        /**
+         * The date until the chat is muted. Use ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). Is `true` if muted indefinitely.
+         */
+        muted_until: string | boolean;
+        /**
+         * The ID of the user who created the chat.
+         */
+        creator_id?: string;
+        /**
+         * The ID of the other participant in the chat if 1to1 chat.
+         */
+        user_id?: string;
+        /**
+         * Is the chat a group chat.
+         */
+        is_group: boolean;
+        /**
+         * Is the chat a 1to1 chat.
+         */
+        is_1to1: boolean;
+        /**
+         * Is the chat a channel chat.
+         */
+        is_channel: boolean;
+        /**
+         * The type of the chat.
+         * - `group` is a group chat.
+         * - `1to1` is a 1to1 chat.
+         * - `channel` is a channel chat.
+         */
+        type: 'group' | '1to1' | 'channel';
+        /**
+         * Is the chat pinned at the top of the list, if supported by the provider.
+         */
+        is_pinned: boolean;
+        /**
+         * Is the chat read-only for the current user. Trying to send messages in read-only chats will fail.
+         */
+        is_readonly: boolean;
+        /**
+         * Is the chat archived. Archived chats are usually hidden from the chat list.
+         */
+        is_archived: boolean;
+        /**
+         * A list of folders the chat belongs to.
+         */
+        folders: Array<string>;
+        /**
+         * The number of participants in the chat if the chat is a group.
+         */
+        participants_count?: number;
+        /**
+         * The number of unread messages in the chat. `0` if the chat is read, `-1` if the chat was manually marked as unread by the user and does not have any unread messages.
+         */
+        unread_count: number;
+        /**
+         * List of action restrictions of the chat.
+         * - `send_message` is the permission to send messages.
+         */
+        restrictions?: Array<'send_message'>;
+        /**
+         * List of participants in the chat if group chat.
+         */
+        participants?: Array<{
+            object: 'GroupParticipant';
+            /**
+             * The user who is a participant of the group.
+             */
+            user: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user as exposed by the provider.
+                 */
+                display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+                /**
+                 * Provider-specific user data.
+                 */
+                specifics?: unknown;
+            };
+            /**
+             * Is the current user the participant.
+             */
+            is_self: boolean;
+            /**
+             * Is the participant an admin of the group.
+             */
+            is_admin: boolean;
+        }>;
+        /**
+         * The last message in the chat.
+         */
+        last_message?: {
+            object: 'MessagePreview';
+            /**
+             * The ID of the message.
+             */
+            id?: string;
+            /**
+             * The text content of the message.
+             */
+            text: string;
+            /**
+             * The display name of the sender of the message.
+             */
+            sender_display_name?: string;
+            /**
+             * Is the message sent by the current user.
+             */
+            is_sender?: boolean;
+        } | {
+            object: 'Message';
+            /**
+             * The unique identifier of the message for the provider.
+             */
+            id: string;
+            /**
+             * The text content of the message.
+             */
+            text?: string;
+            /**
+             * The ID of the user who sent the message.
+             */
+            sender_id: string;
+            /**
+             * The ID of the chat where the message was sent.
+             */
+            chat_id: string;
+            /**
+             * The timestamp of the message. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            timestamp: string;
+            /**
+             * Is the current user the sender of the message.
+             */
+            is_sender: boolean;
+            /**
+             * Is the message hidden. Hidden messages are usually not displayed in the chat but can be as last message is chats list.
+             */
+            is_hidden: boolean;
+            /**
+             * Is the message seen by other participants.
+             */
+            is_seen: boolean;
+            /**
+             * Is the message delivered to the other participants.
+             */
+            is_delivered: boolean;
+            /**
+             * Is the message deleted. Some providers show the message as deleted in the chat.
+             */
+            is_deleted: boolean;
+            /**
+             * Is the message edited. Some providers adds an "edited" mark on the message in the chat.
+             */
+            is_edited: boolean;
+            /**
+             * Is the message pinned. Pinned messages are usually displayed at the top of the chat.
+             */
+            is_pinned: boolean;
+            /**
+             * Is the message an event. Events are special messages that are not displayed in the chat but can be used to trigger actions.
+             */
+            is_event: boolean;
+            /**
+             * Is the message mentionning the current user. Usually to notify.
+             */
+            is_mentionned: boolean;
+            /**
+             * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+             * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+             * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+             */
+            view_mode?: 'once' | 'replayable';
+            /**
+             * The type of message event.
+             * 0 : Unknown (Not implemented)
+             * 1 : Chat name update
+             * 2 : Chat description update
+             * 3 : New participant added to the chat group
+             * 4 : Participant kicked or left the chat group
+             * 5 : A message is pinned
+             * 6 : Permissions have been updated
+             * 7 : Participant was promoted or demoted
+             * 8 : Reaction
+             * 9 : Call Missed
+             * 10 : Call Started
+             * 11 : Call Ended
+             * 12 : Call Rejected
+             * 13 : Scheduled Call Created
+             * 14 : Scheduled Call Cancelled
+             * 15 : Scheduled Call Started
+             * 16 : Announcement
+             * 17 : Content mention
+             *
+             */
+            event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
+            event_metadata?: {
+                /**
+                 * ID of the participant who left or was removed from the group.
+                 */
+                user_id?: string;
+                /**
+                 * Name of the participant who left or was removed from the group.
+                 */
+                user_name?: string;
+                /**
+                 * Specifies whether the participant left voluntarily or was removed by an admin.
+                 */
+                reason: 'left' | 'kicked' | 'unknown';
+            } | {
+                /**
+                 * The updated title.
+                 */
+                title: string;
+            } | {
+                /**
+                 * The updated description.
+                 */
+                description?: string;
+            } | {
+                /**
+                 * Unique identifier of the call.
+                 */
+                call_id?: string;
+                /**
+                 * Indicates whether the call is a video call.
+                 */
+                is_video: boolean;
+                /**
+                 * The link used to join the call.
+                 */
+                link?: string;
+                /**
+                 * Start date and time of the call in ISO format.
+                 */
+                start?: string;
+                /**
+                 * End date and time of the call in ISO format.
+                 */
+                end?: string;
+                /**
+                 * Duration of the call in seconds (if applicable).
+                 */
+                duration?: number;
+            } | {
+                /**
+                 * Unique identifier of the call.
+                 */
+                call_id?: string;
+                /**
+                 * Indicates whether the call is a video call.
+                 */
+                is_video: boolean;
+                /**
+                 * The link used to join the call.
+                 */
+                link?: string;
+                /**
+                 * Start date and time of the call in ISO format.
+                 */
+                start?: string;
+                /**
+                 * End date and time of the call in ISO format.
+                 */
+                end?: string;
+                /**
+                 * Duration of the call in seconds (if available).
+                 */
+                duration?: number;
+            } | {
+                /**
+                 * Unique identifier of the call.
+                 */
+                call_id?: string;
+                /**
+                 * Indicates whether the call is a video call.
+                 */
+                is_video: boolean;
+                /**
+                 * The link used to join the call.
+                 */
+                link?: string;
+                /**
+                 * Start date and time of the call in ISO 8601 format.
+                 */
+                start?: string;
+            } | {
+                /**
+                 * Unique identifier of the call.
+                 */
+                call_id?: string;
+                /**
+                 * Indicates whether the call is a video call.
+                 */
+                is_video: boolean;
+                /**
+                 * The link used to join the call.
+                 */
+                link?: string;
+                /**
+                 * Expected start date and time of the call in ISO format.
+                 */
+                start: string;
+                /**
+                 * Expected end date and time of the call in ISO format.
+                 */
+                end?: string;
+                /**
+                 * Expected call duration in seconds.
+                 */
+                duration?: number;
+            } | {
+                /**
+                 * Unique identifier of the call.
+                 */
+                call_id?: string;
+                /**
+                 * Indicates whether the call is a video call.
+                 */
+                is_video: boolean;
+                /**
+                 * The link used to join the call.
+                 */
+                link?: string;
+                /**
+                 * Expected start date and time of the call in ISO format.
+                 */
+                start: string;
+                /**
+                 * Expected end date and time of the call in ISO format.
+                 */
+                end?: string;
+                /**
+                 * Expected duration of the call in seconds
+                 */
+                duration?: number;
+            } | {
+                /**
+                 * Unique identifier of the call.
+                 */
+                call_id?: string;
+                /**
+                 * Indicates whether the call is a video call.
+                 */
+                is_video: boolean;
+                /**
+                 * The link used to join the call.
+                 */
+                link?: string;
+                /**
+                 * Start date and time of the call in ISO format.
+                 */
+                start: string;
+                /**
+                 * Expected end date and time of the call in ISO format.
+                 */
+                end?: string;
+                /**
+                 * Duration of the call in seconds
+                 */
+                duration?: number;
+            } | {
+                /**
+                 * ID of the message that was pinned or unpinned.
+                 */
+                message_id?: string;
+                /**
+                 * Indicates whether the message is pinned (true) or unpinned (false).
+                 */
+                is_pin: boolean;
+                /**
+                 * Duration for which the message remains pinned, if applicable.
+                 */
+                duration?: number;
+            } | {
+                /**
+                 * The invitation link used to join the group.
+                 */
+                link?: string;
+                /**
+                 * ID of the participant who joined the group.
+                 */
+                user_id: string;
+            } | {
+                /**
+                 * ID of the participant whose role was updated.
+                 */
+                user_id: string;
+                /**
+                 * The type of role change applied to the participant.
+                 */
+                reason: 'promoted' | 'demoted' | 'unknown';
+            } | {
+                /**
+                 * The updated subject.
+                 */
+                subject?: string;
+            } | {
+                /**
+                 * The reaction added or removed.
+                 */
+                reaction: string;
+                /**
+                 * Specifies whether the reaction was added or removed.
+                 */
+                reason: 'added' | 'removed';
+                /**
+                 * ID of the message to which the reaction was added or removed.
+                 */
+                message_id: string;
+            };
+            /**
+             * Content Relation
+             */
+            content_relation?: {
+                /**
+                 * How this message relates to a piece of shared content: a normal reply to it, or a provider-generated notice that the current user was mentioned in it.
+                 */
+                type: 'reply_to' | 'mentioned_in';
+                /**
+                 * The id of this message's shared-content attachment describing the related content, when the provider still makes it available. Absent once the content is no longer retrievable (e.g. an expired story) but the relation is still known.
+                 */
+                attachment_id?: string;
+            };
+            /**
+             * A list of reactions to the element.
+             */
+            reactions_counter: Array<{
+                /**
+                 * Value of the reaction. Usually an emoji unicode.
+                 */
+                reaction: string;
+                /**
+                 * The total count of this reaction.
+                 */
+                count: number;
+            }>;
+            /**
+             * The user who sent the message.
+             */
+            sender?: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user as exposed by the provider.
+                 */
+                display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+                /**
+                 * Provider-specific user data.
+                 */
+                specifics?: unknown;
+            };
+            /**
+             * The provider's of the Account.
+             * - `mock` is mock.
+             * - `whatsapp` is WhatsApp.
+             * - `linkedin` is LinkedIn.
+             * - `instagram` is Instagram.
+             * - `facebook` is Facebook.
+             * - `google` is Google.
+             * - `outlook` is Outlook.
+             * - `telegram` is Telegram.
+             * - `imap` is IMAP.
+             */
+            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
+            /**
+             * List of message attachments.
+             */
+            attachments: Array<{
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'audio';
+                /**
+                 * The duration of the audio in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The audio is a voice note (should be displayed differently)
+                 */
+                voice_note: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'img';
+                /**
+                 * The size of the image in pixels.
+                 */
+                size?: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The image is a sticker (should be displayed differently)
+                 */
+                sticker: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'video';
+                /**
+                 * The duration of the video in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The size of the video in pixels.
+                 */
+                size: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The video is a GIF (should be displayed differently)
+                 */
+                gif: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'file';
+                /**
+                 * The name of the file, including the extension.
+                 */
+                filename: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL of the shared content.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'shared_content';
+                /**
+                 * The type of content being shared.
+                 */
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
+                /**
+                 * The author of the shared content, if applicable.
+                 */
+                author?: string;
+                /**
+                 * A brief description of the shared content.
+                 */
+                description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+            }>;
+            /**
+             * List of message hyperlinks.
+             */
+            hyperlinks: Array<{
+                /**
+                 * The URL the link points to.
+                 */
+                url: string;
+                /**
+                 * The index in the body where the link starts.
+                 */
+                starts_at: number;
+                /**
+                 * The number of characters in the body that make up the link, starting at the `starts_at` index.
+                 */
+                length: number;
+            }>;
+            /**
+             * The quoted message.
+             */
+            quoted?: {
+                object: 'QuotedMessage';
+                /**
+                 * The unique identifier of the message for the provider.
+                 */
+                id: string;
+                /**
+                 * The text content of the message.
+                 */
+                text?: string;
+                specifics?: unknown;
+                /**
+                 * List of message attachments.
+                 */
+                attachments: Array<{
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'audio';
+                    /**
+                     * The duration of the audio in seconds.
+                     */
+                    duration?: number;
+                    /**
+                     * The audio is a voice note (should be displayed differently)
+                     */
+                    voice_note: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'img';
+                    /**
+                     * The size of the image in pixels.
+                     */
+                    size?: {
+                        height: number;
+                        width: number;
+                    };
+                    /**
+                     * The image is a sticker (should be displayed differently)
+                     */
+                    sticker: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'video';
+                    /**
+                     * The duration of the video in seconds.
+                     */
+                    duration?: number;
+                    /**
+                     * The size of the video in pixels.
+                     */
+                    size: {
+                        height: number;
+                        width: number;
+                    };
+                    /**
+                     * The video is a GIF (should be displayed differently)
+                     */
+                    gif: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'file';
+                    /**
+                     * The name of the file, including the extension.
+                     */
+                    filename: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL of the shared content.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'shared_content';
+                    /**
+                     * The type of content being shared.
+                     */
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
+                    /**
+                     * The author of the shared content, if applicable.
+                     */
+                    author?: string;
+                    /**
+                     * A brief description of the shared content.
+                     */
+                    description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                }>;
+                /**
+                 * The user who sent the message.
+                 */
+                sender?: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user as exposed by the provider.
+                     */
+                    display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
+                    specifics?: unknown;
+                };
+            };
+            /**
+             * Contains the original message if this message was forwarded from another chat, depending on provider support.
+             * Some providers preserve the original sender and content, treating it as if it were sent by the account owner.
+             * Others wrap the forwarded message within a new message (similar to a quote or attachment), in which case the original message appears here.
+             */
+            forwarded?: {
+                /**
+                 * The text content of the message.
+                 */
+                text?: string;
+                specifics?: unknown;
+                /**
+                 * List of message attachments.
+                 */
+                attachments: Array<{
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'audio';
+                    /**
+                     * The duration of the audio in seconds.
+                     */
+                    duration?: number;
+                    /**
+                     * The audio is a voice note (should be displayed differently)
+                     */
+                    voice_note: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'img';
+                    /**
+                     * The size of the image in pixels.
+                     */
+                    size?: {
+                        height: number;
+                        width: number;
+                    };
+                    /**
+                     * The image is a sticker (should be displayed differently)
+                     */
+                    sticker: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'video';
+                    /**
+                     * The duration of the video in seconds.
+                     */
+                    duration?: number;
+                    /**
+                     * The size of the video in pixels.
+                     */
+                    size: {
+                        height: number;
+                        width: number;
+                    };
+                    /**
+                     * The video is a GIF (should be displayed differently)
+                     */
+                    gif: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'file';
+                    /**
+                     * The name of the file, including the extension.
+                     */
+                    filename: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL of the shared content.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'shared_content';
+                    /**
+                     * The type of content being shared.
+                     */
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
+                    /**
+                     * The author of the shared content, if applicable.
+                     */
+                    author?: string;
+                    /**
+                     * A brief description of the shared content.
+                     */
+                    description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                }>;
+                /**
+                 * The user who sent the message.
+                 */
+                sender?: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user as exposed by the provider.
+                     */
+                    display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
+                    specifics?: unknown;
+                };
+                object: 'ForwardedMessage';
+            };
+            specifics?: unknown;
+        };
+        /**
+         * The other participant if 1to1 chat.
+         */
+        user?: {
+            /**
+             * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+             */
+            id: string;
+            object: 'User';
+            /**
+             * Type of the user
+             * - `individual` is an individual user.
+             * - `organization` is an organization / business entity.
+             * - `other` is an other type of entity.
+             */
+            type: 'individual' | 'organization' | 'other';
+            /**
+             * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+             */
+            public_identifier?: string;
+            /**
+             * Display name of the user as exposed by the provider.
+             */
+            display_name: string;
+            /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
+            /**
+             * Public url to the profile of the user.
+             */
+            profile_url?: string;
+            /**
+             * Public url to the profile picture of the user.
+             */
+            public_picture_url?: string;
+            /**
+             * Private url to download the profile picture of the user. This url require authentication.
+             */
+            private_picture_download_url?: string;
+            /**
+             * Description of the user.
+             */
+            description?: string;
+            /**
+             * Provider-specific user data.
+             */
+            specifics?: unknown;
+        };
+        /**
+         * The provider's of the Account.
+         * - `mock` is mock.
+         * - `whatsapp` is WhatsApp.
+         * - `linkedin` is LinkedIn.
+         * - `instagram` is Instagram.
+         * - `facebook` is Facebook.
+         * - `google` is Google.
+         * - `outlook` is Outlook.
+         * - `telegram` is Telegram.
+         * - `imap` is IMAP.
+         */
+        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
+        specifics?: unknown;
+    };
+};
+
+export type AcceptChatRequestResponse = AcceptChatRequestResponses[keyof AcceptChatRequestResponses];
 
 export type GetMessagesListData = {
     body?: never;
@@ -8671,12 +10544,13 @@ export type GetMessagesListResponses = {
              * - `whatsapp` is WhatsApp.
              * - `linkedin` is LinkedIn.
              * - `instagram` is Instagram.
+             * - `facebook` is Facebook.
              * - `google` is Google.
              * - `outlook` is Outlook.
              * - `telegram` is Telegram.
              * - `imap` is IMAP.
              */
-            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
             /**
              * List of message attachments.
              */
@@ -9073,6 +10947,10 @@ export type GetMessagesListResponses = {
                         name?: string;
                     };
                 };
+                /**
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 */
+                album_id?: string;
             });
             /**
              * The user who sent the message.
@@ -9130,6 +11008,11 @@ export type GetMessagesListResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -9579,6 +11462,11 @@ export type GetMessagesListResponses = {
                         contact_name: string;
                     } | {
                         /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
+                    } | {
+                        /**
                          * The geographical location of the user.
                          */
                         location?: string;
@@ -9679,6 +11567,10 @@ export type GetMessagesListResponses = {
                             name?: string;
                         };
                     };
+                    /**
+                     * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                     */
+                    album_id?: string;
                 };
             };
             /**
@@ -10072,6 +11964,11 @@ export type GetMessagesListResponses = {
                         contact_name: string;
                     } | {
                         /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
+                    } | {
+                        /**
                          * The geographical location of the user.
                          */
                         location?: string;
@@ -10172,6 +12069,10 @@ export type GetMessagesListResponses = {
                             name?: string;
                         };
                     };
+                    /**
+                     * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                     */
+                    album_id?: string;
                 };
             };
         }>;
@@ -10575,12 +12476,13 @@ export type GetMessageResponses = {
          * - `whatsapp` is WhatsApp.
          * - `linkedin` is LinkedIn.
          * - `instagram` is Instagram.
+         * - `facebook` is Facebook.
          * - `google` is Google.
          * - `outlook` is Outlook.
          * - `telegram` is Telegram.
          * - `imap` is IMAP.
          */
-        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
         /**
          * List of message attachments.
          */
@@ -10977,6 +12879,10 @@ export type GetMessageResponses = {
                     name?: string;
                 };
             };
+            /**
+             * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+             */
+            album_id?: string;
         });
         /**
          * The user who sent the message.
@@ -11034,6 +12940,11 @@ export type GetMessageResponses = {
                  * Name saved by the connected account owner in their WhatsApp address book.
                  */
                 contact_name: string;
+            } | {
+                /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
             } | {
                 /**
                  * The geographical location of the user.
@@ -11483,6 +13394,11 @@ export type GetMessageResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -11583,6 +13499,10 @@ export type GetMessageResponses = {
                         name?: string;
                     };
                 };
+                /**
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 */
+                album_id?: string;
             };
         };
         /**
@@ -11976,6 +13896,11 @@ export type GetMessageResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -12076,6 +14001,10 @@ export type GetMessageResponses = {
                         name?: string;
                     };
                 };
+                /**
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 */
+                album_id?: string;
             };
         };
     };
@@ -12656,12 +14585,13 @@ export type ModifyMessageResponses = {
          * - `whatsapp` is WhatsApp.
          * - `linkedin` is LinkedIn.
          * - `instagram` is Instagram.
+         * - `facebook` is Facebook.
          * - `google` is Google.
          * - `outlook` is Outlook.
          * - `telegram` is Telegram.
          * - `imap` is IMAP.
          */
-        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
         /**
          * List of message attachments.
          */
@@ -13827,12 +15757,17 @@ export type PinMessageData = {
          */
         specifics?: {
             /**
-             * How long the message should stay pinned, Whatsapp unpinning it by itself once elapsed.
-             * - `24_hours` for a day.
-             * - `7_days` for a week.
-             * - `30_days` for a month.
+             * Specific options for pinning a WhatsApp message.
              */
-            pin_duration?: '24_hours' | '7_days' | '30_days';
+            whatsapp?: {
+                /**
+                 * How long the message should stay pinned, Whatsapp unpinning it by itself once elapsed.
+                 * - `24_hours` for a day.
+                 * - `7_days` for a week.
+                 * - `30_days` for a month.
+                 */
+                pin_duration?: '24_hours' | '7_days' | '30_days';
+            };
         };
     };
     path: {
@@ -13961,6 +15896,11 @@ export type GetParticipantsListResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -14231,6 +16171,11 @@ export type GetMessageReactionsListResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -17121,7 +19066,7 @@ export type SendEmailData = {
             display_name?: string;
         }>;
         /**
-         * List of attendees to set in the standard `Reply-To` header. Recipients answering the email will reply to these addresses instead of `from`. To reply inside an existing conversation, use `reply_to_message_id` instead.
+         * List of attendees to set in the standard `Reply-To` header. Recipients answering the email will reply to these addresses instead of `from`. To reply inside an existing conversation, use `reply_to_provider_id` instead.
          */
         reply_to?: Array<{
             /**
@@ -17134,7 +19079,13 @@ export type SendEmailData = {
             display_name?: string;
         }>;
         /**
-         * The ID of the email message that you're replying to. For Gmail and Outlook, this is the provider ID for the email message that you're replying to. For IMAP Send, this is the RFC822 Message-ID header of the email message that you're replying to.
+         * The provider ID of the email to reply to. Use the `id` returned when listing or retrieving the original email. Takes precedence over the deprecated `reply_to_message_id` field when both are provided.
+         */
+        reply_to_provider_id?: string;
+        /**
+         * Deprecated: use reply_to_provider_id instead. The ID of the email message that you're replying to. For Gmail and Outlook, this is the provider ID. For IMAP Send, this is the RFC822 Message-ID header and does not mark the original email as answered. Ignored when reply_to_provider_id is provided.
+         *
+         * @deprecated
          */
         reply_to_message_id?: string;
         /**
@@ -17179,7 +19130,7 @@ export type SendEmailData = {
          */
         tracking_options?: {
             /**
-             * If `true`, trigger webhooks listening to `tracking.open` when the email is opened by the recipient.
+             * If `true`, trigger webhooks listening to `tracking.open` when the email is opened by the recipient. Opens rely on a tracking pixel, which mail clients, privacy proxies and security scanners can also load without the recipient reading the email. Each event carries `potentially_bot` and `bot_reasons` so you can exclude these automated opens.
              */
             opens?: boolean;
             /**
@@ -17813,7 +19764,7 @@ export type CreateDraftData = {
          */
         tracking_options?: {
             /**
-             * If `true`, trigger webhooks listening to `tracking.open` when the email is opened by the recipient.
+             * If `true`, trigger webhooks listening to `tracking.open` when the email is opened by the recipient. Opens rely on a tracking pixel, which mail clients, privacy proxies and security scanners can also load without the recipient reading the email. Each event carries `potentially_bot` and `bot_reasons` so you can exclude these automated opens.
              */
             opens?: boolean;
             /**
@@ -18842,7 +20793,7 @@ export type UpdateDraftData = {
          */
         tracking_options?: {
             /**
-             * If `true`, trigger webhooks listening to `tracking.open` when the email is opened by the recipient.
+             * If `true`, trigger webhooks listening to `tracking.open` when the email is opened by the recipient. Opens rely on a tracking pixel, which mail clients, privacy proxies and security scanners can also load without the recipient reading the email. Each event carries `potentially_bot` and `bot_reasons` so you can exclude these automated opens.
              */
             opens?: boolean;
             /**
@@ -20213,6 +22164,78 @@ export type GetUserProfileResponses = {
          */
         description?: string;
         specifics: unknown & ({
+            /**
+             * Whether the user and the account owner are in each other address book.
+             */
+            is_mutual_contact: boolean;
+            /**
+             * Whether the user is a close friend of the account owner.
+             */
+            is_close_friend: boolean;
+            /**
+             * Whether the user is a bot.
+             */
+            is_bot: boolean;
+            /**
+             * Whether the user is an official Telegram support account.
+             */
+            is_support: boolean;
+            /**
+             * Whether the user has been flagged as a scam by Telegram.
+             */
+            is_scam: boolean;
+            /**
+             * Whether the user has been flagged as impersonating another user by Telegram.
+             */
+            is_fake: boolean;
+            /**
+             * Whether the user is restricted on some platforms.
+             */
+            is_restricted: boolean;
+            /**
+             * Restrictions applied to the user, if any.
+             */
+            restrictions?: Array<{
+                /**
+                 * Platform the restriction applies to (e.g. `ios`, `android`, `all`).
+                 */
+                platform: string;
+                /**
+                 * Machine readable reason of the restriction.
+                 */
+                reason: string;
+                /**
+                 * Human readable reason of the restriction.
+                 */
+                text: string;
+            }>;
+            /**
+             * Last seen status of the user, as exposed by Telegram.
+             */
+            status?: {
+                /**
+                 * Last seen status of the user.
+                 * - `online` the user is currently online, until `expires_at`.
+                 * - `offline` the user is offline, and was last online at `was_online_at`.
+                 * - `recently`, `last_week` and `last_month` are the approximations returned when the user hides its exact last seen date.
+                 */
+                type: 'online' | 'offline' | 'recently' | 'last_week' | 'last_month';
+                /**
+                 * Date and time until when the user is considered online (`online` status only).
+                 */
+                expires_at?: string;
+                /**
+                 * Date and time when the user was last online (`offline` status only).
+                 */
+                was_online_at?: string;
+            };
+            /**
+             * Number of chats shared between the user and the account owner.
+             */
+            common_chats_count?: number;
+        } | {
+            messaging_identifier: string;
+        } | {
             /**
              * LinkedIn internal member ID of the user.
              */
@@ -22196,78 +24219,6 @@ export type GetUserProfileResponses = {
                 }>;
             };
         } | {
-            messaging_identifier: string;
-        } | {
-            /**
-             * Whether the user and the account owner are in each other address book.
-             */
-            is_mutual_contact: boolean;
-            /**
-             * Whether the user is a close friend of the account owner.
-             */
-            is_close_friend: boolean;
-            /**
-             * Whether the user is a bot.
-             */
-            is_bot: boolean;
-            /**
-             * Whether the user is an official Telegram support account.
-             */
-            is_support: boolean;
-            /**
-             * Whether the user has been flagged as a scam by Telegram.
-             */
-            is_scam: boolean;
-            /**
-             * Whether the user has been flagged as impersonating another user by Telegram.
-             */
-            is_fake: boolean;
-            /**
-             * Whether the user is restricted on some platforms.
-             */
-            is_restricted: boolean;
-            /**
-             * Restrictions applied to the user, if any.
-             */
-            restrictions?: Array<{
-                /**
-                 * Platform the restriction applies to (e.g. `ios`, `android`, `all`).
-                 */
-                platform: string;
-                /**
-                 * Machine readable reason of the restriction.
-                 */
-                reason: string;
-                /**
-                 * Human readable reason of the restriction.
-                 */
-                text: string;
-            }>;
-            /**
-             * Last seen status of the user, as exposed by Telegram.
-             */
-            status?: {
-                /**
-                 * Last seen status of the user.
-                 * - `online` the user is currently online, until `expires_at`.
-                 * - `offline` the user is offline, and was last online at `was_online_at`.
-                 * - `recently`, `last_week` and `last_month` are the approximations returned when the user hides its exact last seen date.
-                 */
-                type: 'online' | 'offline' | 'recently' | 'last_week' | 'last_month';
-                /**
-                 * Date and time until when the user is considered online (`online` status only).
-                 */
-                expires_at?: string;
-                /**
-                 * Date and time when the user was last online (`offline` status only).
-                 */
-                was_online_at?: string;
-            };
-            /**
-             * Number of chats shared between the user and the account owner.
-             */
-            common_chats_count?: number;
-        } | {
             /**
              * Name saved by the connected account owner in their WhatsApp address book.
              */
@@ -22375,12 +24326,13 @@ export type GetUserProfileResponses = {
          * - `whatsapp` is WhatsApp.
          * - `linkedin` is LinkedIn.
          * - `instagram` is Instagram.
+         * - `facebook` is Facebook.
          * - `google` is Google.
          * - `outlook` is Outlook.
          * - `telegram` is Telegram.
          * - `imap` is IMAP.
          */
-        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
         /**
          * List of user social handles.
          */
@@ -23652,12 +25604,13 @@ export type GetUserPresenceResponses = {
          * - `whatsapp` is WhatsApp.
          * - `linkedin` is LinkedIn.
          * - `instagram` is Instagram.
+         * - `facebook` is Facebook.
          * - `google` is Google.
          * - `outlook` is Outlook.
          * - `telegram` is Telegram.
          * - `imap` is IMAP.
          */
-        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
     };
 };
 
@@ -23792,6 +25745,11 @@ export type GetUserRelationsResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -24001,6 +25959,11 @@ export type GetRelationRequestsListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -24167,6 +26130,11 @@ export type CreateRelationRequestResponses = {
                  * Name saved by the connected account owner in their WhatsApp address book.
                  */
                 contact_name: string;
+            } | {
+                /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
             } | {
                 /**
                  * The geographical location of the user.
@@ -24371,6 +26339,11 @@ export type ListUserFollowersResponses = {
                 contact_name: string;
             } | {
                 /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
+            } | {
+                /**
                  * The geographical location of the user.
                  */
                 location?: string;
@@ -24525,6 +26498,11 @@ export type ListUserFollowingResponses = {
                  * Name saved by the connected account owner in their WhatsApp address book.
                  */
                 contact_name: string;
+            } | {
+                /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
             } | {
                 /**
                  * The geographical location of the user.
@@ -24692,6 +26670,11 @@ export type FollowUserResponses = {
                  * Name saved by the connected account owner in their WhatsApp address book.
                  */
                 contact_name: string;
+            } | {
+                /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
             } | {
                 /**
                  * The geographical location of the user.
@@ -25379,6 +27362,11 @@ export type GetPostsListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -25489,6 +27477,11 @@ export type GetPostsListResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -26107,6 +28100,11 @@ export type GetPostsListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -26960,6 +28958,11 @@ export type GetPostResponses = {
                 contact_name: string;
             } | {
                 /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
+            } | {
+                /**
                  * The geographical location of the user.
                  */
                 location?: string;
@@ -27070,6 +29073,11 @@ export type GetPostResponses = {
                  * Name saved by the connected account owner in their WhatsApp address book.
                  */
                 contact_name: string;
+            } | {
+                /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
             } | {
                 /**
                  * The geographical location of the user.
@@ -27688,6 +29696,11 @@ export type GetPostResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -30501,7 +32514,11 @@ export type CreateStoryResponse = CreateStoryResponses[keyof CreateStoryResponse
 
 export type RemovePostReactionData = {
     body: {
-        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
+        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like' | 'facebook_like' | 'facebook_love' | 'facebook_care' | 'facebook_haha' | 'facebook_wow' | 'facebook_sad' | 'facebook_angry');
+        /**
+         * The ID of the User on whose behalf the reaction was published and should be removed (if supported by the provider).
+         */
+        react_as?: string;
     };
     path: {
         /**
@@ -30627,6 +32644,11 @@ export type GetPostReactionsListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -30697,7 +32719,7 @@ export type GetPostReactionsListResponse = GetPostReactionsListResponses[keyof G
 
 export type AddPostReactionData = {
     body: {
-        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
+        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like' | 'facebook_like' | 'facebook_love' | 'facebook_care' | 'facebook_haha' | 'facebook_wow' | 'facebook_sad' | 'facebook_angry');
         /**
          * The ID of the User on whose behalf the reaction should be published (if supported by the provider).
          */
@@ -31195,6 +33217,11 @@ export type GetPostCommentsListResponses = {
                      * Name saved by the connected account owner in their WhatsApp address book.
                      */
                     contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
                 } | {
                     /**
                      * The geographical location of the user.
@@ -33199,6 +35226,11 @@ export type GetPostCommentRepliesListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -33269,7 +35301,11 @@ export type GetPostCommentRepliesListResponse = GetPostCommentRepliesListRespons
 
 export type RemovePostCommentReactionData = {
     body: {
-        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
+        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like' | 'facebook_like' | 'facebook_love' | 'facebook_care' | 'facebook_haha' | 'facebook_wow' | 'facebook_sad' | 'facebook_angry');
+        /**
+         * The ID of the User on whose behalf the reaction was published and should be removed (if supported by the provider).
+         */
+        react_as?: string;
     };
     path: {
         /**
@@ -33403,6 +35439,11 @@ export type GetPostCommentReactionsListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -33473,7 +35514,7 @@ export type GetPostCommentReactionsListResponse = GetPostCommentReactionsListRes
 
 export type AddPostCommentReactionData = {
     body: {
-        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like');
+        reaction: string & (string | 'linkedin_like' | 'linkedin_celebrate' | 'linkedin_support' | 'linkedin_love' | 'linkedin_insightful' | 'linkedin_funny' | 'instagram_like' | 'facebook_like' | 'facebook_love' | 'facebook_care' | 'facebook_haha' | 'facebook_wow' | 'facebook_sad' | 'facebook_angry');
         /**
          * The ID of the User on whose behalf the reaction should be published (if supported by the provider).
          */
@@ -33973,6 +36014,11 @@ export type GetUserCommentsListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -34108,6 +36154,11 @@ export type GetUserCommentsListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -34729,6 +36780,11 @@ export type GetUserCommentsListResponses = {
                         contact_name: string;
                     } | {
                         /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
+                    } | {
+                        /**
                          * The geographical location of the user.
                          */
                         location?: string;
@@ -34839,6 +36895,11 @@ export type GetUserCommentsListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -35459,6 +37520,11 @@ export type GetUserCommentsListResponses = {
                             contact_name: string;
                         } | {
                             /**
+                             * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                             */
+                            messaging_identifier: string;
+                        } | {
+                            /**
                              * The geographical location of the user.
                              */
                             location?: string;
@@ -35800,6 +37866,11 @@ export type GetUserReactionsListResponses = {
                     contact_name: string;
                 } | {
                     /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
                      * The geographical location of the user.
                      */
                     location?: string;
@@ -35935,6 +38006,11 @@ export type GetUserReactionsListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -36556,6 +38632,11 @@ export type GetUserReactionsListResponses = {
                         contact_name: string;
                     } | {
                         /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
+                    } | {
+                        /**
                          * The geographical location of the user.
                          */
                         location?: string;
@@ -36666,6 +38747,11 @@ export type GetUserReactionsListResponses = {
                          * Name saved by the connected account owner in their WhatsApp address book.
                          */
                         contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
                     } | {
                         /**
                          * The geographical location of the user.
@@ -37284,6 +39370,11 @@ export type GetUserReactionsListResponses = {
                              * Name saved by the connected account owner in their WhatsApp address book.
                              */
                             contact_name: string;
+                        } | {
+                            /**
+                             * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                             */
+                            messaging_identifier: string;
                         } | {
                             /**
                              * The geographical location of the user.
@@ -54207,6 +56298,48 @@ export type SubmitRecruiterOtpCodeResponses = {
 
 export type SubmitRecruiterOtpCodeResponse = SubmitRecruiterOtpCodeResponses[keyof SubmitRecruiterOtpCodeResponses];
 
+export type SignOutRecruiterSessionData = {
+    body?: never;
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/linkedin/recruiter/sessions/sign-out';
+};
+
+export type SignOutRecruiterSessionResponses = {
+    /**
+     * Default Response
+     */
+    204: void;
+};
+
+export type SignOutRecruiterSessionResponse = SignOutRecruiterSessionResponses[keyof SignOutRecruiterSessionResponses];
+
+export type SignOutOtherRecruiterSessionsData = {
+    body?: never;
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/linkedin/recruiter/sessions/sign-out-others';
+};
+
+export type SignOutOtherRecruiterSessionsResponses = {
+    /**
+     * Default Response
+     */
+    204: void;
+};
+
+export type SignOutOtherRecruiterSessionsResponse = SignOutOtherRecruiterSessionsResponses[keyof SignOutOtherRecruiterSessionsResponses];
+
 export type PerformSalesSearchFromUrlData = {
     body: {
         /**
@@ -57848,6 +59981,10 @@ export type SolveCheckpointData = {
          */
         code: string;
         /**
+         * The secret that goes with the chosen option, when the checkpoint asks for one. On ENCRYPTED_HISTORY, `code` names the option and this carries the PIN or the recovery code; it is left out when the option needs no secret.
+         */
+        credential?: string;
+        /**
          * The ID of the intent for which a checkpoint must be solved.
          */
         intent_id: string;
@@ -57874,6 +60011,10 @@ export type SolveCheckpointResponses = {
             channel?: 'EMAIL' | 'SMS' | 'WHATSAPP';
         } | {
             type: 'IN_APP_VALIDATION';
+            /**
+             * For number-matching approvals: the digits shown here that the user must select among the choices in their notification.
+             */
+            code?: string;
         } | {
             type: 'PAIRING_CODE';
             /**
@@ -57936,6 +60077,14 @@ export type SolveCheckpointResponses = {
                  * The display name of the product.
                  */
                 display_name: string;
+                /**
+                 * What the product gives access to, shown under its name.
+                 */
+                description?: string;
+                /**
+                 * An image of the product's own (e.g. a Page's picture), shown instead of the provider icon.
+                 */
+                icon_url?: string;
             }>;
         } | {
             type: 'CHALLENGE_SELECTION';
@@ -57958,6 +60107,50 @@ export type SolveCheckpointResponses = {
             }>;
         } | {
             type: 'LOADING';
+        } | {
+            type: 'ENCRYPTED_HISTORY';
+            /**
+             * The ways the user can answer. Send the chosen `id` as the `code` of Solve Checkpoint.
+             */
+            options: Array<{
+                /**
+                 * PIN and RECOVERY_CODE unlock the end-to-end encrypted message history; SKIP leaves it off, and the account then only reports new messages as they arrive.
+                 */
+                id: 'PIN' | 'RECOVERY_CODE' | 'SKIP';
+                /**
+                 * Human-readable name of the option.
+                 */
+                label: string;
+                /**
+                 * Extra detail about what the option entails.
+                 */
+                description?: string;
+                /**
+                 * How many more times this credential may be submitted. Each credential has a budget of its own, starting at 3, so running one out leaves the others open. A PIN is further capped at half of what the provider still allows, so the user can be wrong here without ever being the reason the backup locks. `0` means the option cannot be used any more; absent on options that take no credential.
+                 */
+                attempts_remaining?: number;
+            }>;
+            /**
+             * The most submissions any credential still has — what the user has left overall. `0` means every credential is spent and only skipping remains. The detail per credential is in `options[].attempts_remaining`; a credential the provider refuses to even try does not consume one.
+             */
+            attempts_remaining: number;
+            /**
+             * For a PIN, how many attempts the provider itself still allows before it locks the backup. This budget is the provider's own and is never spent on the user's behalf: when it is unknown or too low, the PIN is refused rather than tried.
+             */
+            provider_attempts_remaining?: number;
+            /**
+             * Why the previous submission did not unlock the history. Absent the first time this checkpoint is served, so its presence is what tells the user their last answer failed.
+             */
+            last_attempt?: {
+                /**
+                 * PIN and RECOVERY_CODE unlock the end-to-end encrypted message history; SKIP leaves it off, and the account then only reports new messages as they arrive.
+                 */
+                option: 'PIN' | 'RECOVERY_CODE' | 'SKIP';
+                /**
+                 * INVALID_CREDENTIAL: the PIN or recovery code was wrong, and one attempt was spent. REFUSED_TO_PROTECT_BACKUP: the PIN was not even submitted, because the provider had too few attempts left to risk one — no attempt was spent, and only the recovery code can unlock the history now.
+                 */
+                error: 'INVALID_CREDENTIAL' | 'REFUSED_TO_PROTECT_BACKUP';
+            };
         };
         /**
          * The ID of the auth intent. This should be used in Solve Checkpoint.
@@ -58028,12 +60221,13 @@ export type SolveCheckpointResponses = {
          * - `whatsapp` is WhatsApp.
          * - `linkedin` is LinkedIn.
          * - `instagram` is Instagram.
+         * - `facebook` is Facebook.
          * - `google` is Google.
          * - `outlook` is Outlook.
          * - `telegram` is Telegram.
          * - `imap` is IMAP.
          */
-        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
         /**
          * If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.
          */
@@ -58043,11 +60237,11 @@ export type SolveCheckpointResponses = {
          */
         metadata: {
             /**
-             * The rotation country for automatic proxy selection.
+             * The preferred country for automatic proxy selection. A country inferred from an IP may be outside Unipile’s proxy offering. The current proxy may be in another country when fallback is allowed and no proxy is available in the preferred country.
              */
             auto_proxy_country?: string;
             /**
-             * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
+             * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. A country included in Unipile’s proxy offering may still have no proxy currently available. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
              */
             allow_country_fallback?: boolean;
             /**
@@ -58067,6 +60261,12 @@ export type SolveCheckpointResponses = {
              */
             products_connection_status?: {
                 [key: string]: 'running' | 'disconnected' | 'errored';
+            };
+            /**
+             * The human-readable name of a product, keyed like products_connection_status, when the product has one (e.g. the name of a Facebook Page).
+             */
+            products_display_names?: {
+                [key: string]: string;
             };
             /**
              * Custom data of the account. This is where you can store custom data using "Update an account" method.
@@ -58160,6 +60360,10 @@ export type RequestCheckpointResponses = {
             channel?: 'EMAIL' | 'SMS' | 'WHATSAPP';
         } | {
             type: 'IN_APP_VALIDATION';
+            /**
+             * For number-matching approvals: the digits shown here that the user must select among the choices in their notification.
+             */
+            code?: string;
         } | {
             type: 'PAIRING_CODE';
             /**
@@ -58222,6 +60426,14 @@ export type RequestCheckpointResponses = {
                  * The display name of the product.
                  */
                 display_name: string;
+                /**
+                 * What the product gives access to, shown under its name.
+                 */
+                description?: string;
+                /**
+                 * An image of the product's own (e.g. a Page's picture), shown instead of the provider icon.
+                 */
+                icon_url?: string;
             }>;
         } | {
             type: 'CHALLENGE_SELECTION';
@@ -58244,6 +60456,50 @@ export type RequestCheckpointResponses = {
             }>;
         } | {
             type: 'LOADING';
+        } | {
+            type: 'ENCRYPTED_HISTORY';
+            /**
+             * The ways the user can answer. Send the chosen `id` as the `code` of Solve Checkpoint.
+             */
+            options: Array<{
+                /**
+                 * PIN and RECOVERY_CODE unlock the end-to-end encrypted message history; SKIP leaves it off, and the account then only reports new messages as they arrive.
+                 */
+                id: 'PIN' | 'RECOVERY_CODE' | 'SKIP';
+                /**
+                 * Human-readable name of the option.
+                 */
+                label: string;
+                /**
+                 * Extra detail about what the option entails.
+                 */
+                description?: string;
+                /**
+                 * How many more times this credential may be submitted. Each credential has a budget of its own, starting at 3, so running one out leaves the others open. A PIN is further capped at half of what the provider still allows, so the user can be wrong here without ever being the reason the backup locks. `0` means the option cannot be used any more; absent on options that take no credential.
+                 */
+                attempts_remaining?: number;
+            }>;
+            /**
+             * The most submissions any credential still has — what the user has left overall. `0` means every credential is spent and only skipping remains. The detail per credential is in `options[].attempts_remaining`; a credential the provider refuses to even try does not consume one.
+             */
+            attempts_remaining: number;
+            /**
+             * For a PIN, how many attempts the provider itself still allows before it locks the backup. This budget is the provider's own and is never spent on the user's behalf: when it is unknown or too low, the PIN is refused rather than tried.
+             */
+            provider_attempts_remaining?: number;
+            /**
+             * Why the previous submission did not unlock the history. Absent the first time this checkpoint is served, so its presence is what tells the user their last answer failed.
+             */
+            last_attempt?: {
+                /**
+                 * PIN and RECOVERY_CODE unlock the end-to-end encrypted message history; SKIP leaves it off, and the account then only reports new messages as they arrive.
+                 */
+                option: 'PIN' | 'RECOVERY_CODE' | 'SKIP';
+                /**
+                 * INVALID_CREDENTIAL: the PIN or recovery code was wrong, and one attempt was spent. REFUSED_TO_PROTECT_BACKUP: the PIN was not even submitted, because the provider had too few attempts left to risk one — no attempt was spent, and only the recovery code can unlock the history now.
+                 */
+                error: 'INVALID_CREDENTIAL' | 'REFUSED_TO_PROTECT_BACKUP';
+            };
         };
         /**
          * The ID of the auth intent. This should be used in Solve Checkpoint.
@@ -58369,7 +60625,7 @@ export type StartAuthIntentData = {
             /**
              * Custom proxy
              *
-             * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+             * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
              */
             custom_proxy?: {
                 /**
@@ -58454,7 +60710,7 @@ export type StartAuthIntentData = {
             /**
              * Custom proxy
              *
-             * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+             * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
              */
             custom_proxy?: {
                 /**
@@ -58485,19 +60741,19 @@ export type StartAuthIntentData = {
             /**
              * Automatic proxy configuration
              *
-             * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+             * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
              */
             auto_proxy_config?: {
                 /**
-                 * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                  */
                 country?: string;
                 /**
-                 * An IPv4 address to infer proxy's location.
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                  */
                 ip?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
             };
@@ -58528,15 +60784,15 @@ export type StartAuthIntentData = {
                 protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             } | {
                 /**
-                 * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                  */
                 country?: string;
                 /**
-                 * An IPv4 address to infer proxy's location.
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                  */
                 ip?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
             } | undefined;
@@ -58595,7 +60851,7 @@ export type StartAuthIntentData = {
             /**
              * Custom proxy
              *
-             * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+             * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
              */
             custom_proxy?: {
                 /**
@@ -58626,19 +60882,19 @@ export type StartAuthIntentData = {
             /**
              * Automatic proxy configuration
              *
-             * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+             * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
              */
             auto_proxy_config?: {
                 /**
-                 * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                  */
                 country?: string;
                 /**
-                 * An IPv4 address to infer proxy's location.
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                  */
                 ip?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
             };
@@ -58682,15 +60938,15 @@ export type StartAuthIntentData = {
                 protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             } | {
                 /**
-                 * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                  */
                 country?: string;
                 /**
-                 * An IPv4 address to infer proxy's location.
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                  */
                 ip?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
             } | Array<'classic' | 'company' | 'recruiter' | 'sales_navigator'> | boolean | undefined;
@@ -58728,7 +60984,7 @@ export type StartAuthIntentData = {
             /**
              * Custom proxy
              *
-             * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+             * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
              */
             custom_proxy?: {
                 /**
@@ -58812,7 +61068,7 @@ export type StartAuthIntentData = {
             /**
              * Custom proxy
              *
-             * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+             * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
              */
             custom_proxy?: {
                 /**
@@ -58897,7 +61153,7 @@ export type StartAuthIntentData = {
             /**
              * Custom proxy
              *
-             * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+             * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
              */
             custom_proxy?: {
                 /**
@@ -58928,19 +61184,19 @@ export type StartAuthIntentData = {
             /**
              * Automatic proxy configuration
              *
-             * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+             * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
              */
             auto_proxy_config?: {
                 /**
-                 * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                  */
                 country?: string;
                 /**
-                 * An IPv4 address to infer proxy's location.
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                  */
                 ip?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
             };
@@ -58979,18 +61235,194 @@ export type StartAuthIntentData = {
                 protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             } | {
                 /**
-                 * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                  */
                 country?: string;
                 /**
-                 * An IPv4 address to infer proxy's location.
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                  */
                 ip?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
             } | Array<'credentials' | 'cookies' | 'unilogin'> | undefined;
+        };
+    } | {
+        /**
+         * The provider to authenticate with.
+         */
+        provider: 'facebook';
+        /**
+         * The exact user agent of the browser used to retrieve the cookies. In Hosted Auth, this is collected automatically from the user's browser.
+         */
+        user_agent?: string;
+        /**
+         * The user credentials required by the provider to authenticate with.
+         */
+        credentials: {
+            /**
+             * Email or username of the Facebook account.
+             */
+            username: string;
+            /**
+             * Password of the Facebook account.
+             */
+            password: string;
+        } | {
+            /**
+             * The `xs` cookie value.
+             */
+            xs: string;
+            /**
+             * The `c_user` cookie value.
+             */
+            c_user: string;
+            /**
+             * The `datr` cookie value.
+             */
+            datr: string;
+            /**
+             * Optional `sb` cookie value.
+             */
+            sb?: string;
+            /**
+             * Optional `fr` cookie value.
+             */
+            fr?: string;
+            /**
+             * Optional `wd` cookie value.
+             */
+            wd?: string;
+            /**
+             * Optional `presence` cookie value.
+             */
+            presence?: string;
+            /**
+             * Optional `oo` cookie value.
+             */
+            oo?: string;
+        };
+        /**
+         * Facebook provider specific configuration.
+         */
+        config?: {
+            /**
+             * Custom proxy
+             *
+             * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
+             */
+            custom_proxy?: {
+                /**
+                 * The host of the proxy.
+                 */
+                host: string;
+                /**
+                 * The port of the proxy.
+                 */
+                port: number;
+                /**
+                 * The username to connect to the proxy.
+                 */
+                username?: string;
+                /**
+                 * The password to connect to the proxy.
+                 */
+                password?: string;
+                /**
+                 * The protocol of the proxy. Defaults to `https`.
+                 * - `https` is HTTPS.
+                 * - `http` is HTTP.
+                 * - `socks5` is SOCKS5.
+                 * - `socks4` is SOCKS4.
+                 */
+                protocol?: 'https' | 'http' | 'socks5' | 'socks4';
+            };
+            /**
+             * Automatic proxy configuration
+             *
+             * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
+             */
+            auto_proxy_config?: {
+                /**
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
+                 */
+                country?: string;
+                /**
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
+                 */
+                ip?: string;
+                /**
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
+                 */
+                allow_country_fallback?: boolean;
+            };
+            /**
+             * Meta web surface used to bootstrap the session. `facebook` uses facebook.com/messages (default), `messenger` uses messenger.com.
+             */
+            surface?: 'facebook' | 'messenger';
+            /**
+             * Specifies which Facebook products are allowed to be activated (as long as the account actually has access to them). By default, all products are made available. `messaging` is always activated.
+             * `messaging` : Messenger inbox of the account<br>
+             * `page` : Facebook Pages administered by the account — each Page is an inbox (`PAGE_<page_id>_INBOX`) whose chats are answered as the Page
+             *
+             */
+            products?: Array<'messaging' | 'page'>;
+            /**
+             * With the `page` product: the Facebook Pages that can be activated, by id (the Page messaging id, as in `PAGE_<page_id>_INBOX`). By default, every Page the account administers. Without `allow_product_selection` they are all activated; with it, they are the ones offered for selection. Each activated Page runs as its own product `page_<page_id>`, with its own connection status.
+             */
+            page_ids?: Array<string>;
+            /**
+             * When true, return a product selection checkpoint after authentication, even when the account administers no Facebook Page. When false, all available products are selected automatically.
+             */
+            allow_product_selection?: boolean;
+            /**
+             * The authentication methods to show in Hosted Auth.
+             * `credentials`: Credentials authentication
+             * `cookies`: Cookie authentication
+             * `unilogin`: Connect the active browser session through the UniLogin extension
+             *
+             */
+            allow_methods?: Array<'credentials' | 'cookies' | 'unilogin'>;
+            [key: string]: unknown | {
+                /**
+                 * The host of the proxy.
+                 */
+                host: string;
+                /**
+                 * The port of the proxy.
+                 */
+                port: number;
+                /**
+                 * The username to connect to the proxy.
+                 */
+                username?: string;
+                /**
+                 * The password to connect to the proxy.
+                 */
+                password?: string;
+                /**
+                 * The protocol of the proxy. Defaults to `https`.
+                 * - `https` is HTTPS.
+                 * - `http` is HTTP.
+                 * - `socks5` is SOCKS5.
+                 * - `socks4` is SOCKS4.
+                 */
+                protocol?: 'https' | 'http' | 'socks5' | 'socks4';
+            } | {
+                /**
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
+                 */
+                country?: string;
+                /**
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
+                 */
+                ip?: string;
+                /**
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
+                 */
+                allow_country_fallback?: boolean;
+            } | 'facebook' | 'messenger' | Array<'messaging' | 'page'> | Array<string> | boolean | Array<'credentials' | 'cookies' | 'unilogin'> | undefined;
         };
     }) & {
         /**
@@ -59011,9 +61443,9 @@ export type StartAuthIntentData = {
         /**
          * The provider to connect with UniLogin.
          */
-        provider: 'linkedin' | 'instagram';
+        provider: 'linkedin' | 'instagram' | 'facebook';
         /**
-         * The existing LinkedIn or Instagram Account to reconnect. Omit it to link a new Account.
+         * The existing LinkedIn, Instagram or Facebook Account to reconnect. Omit it to link a new Account.
          */
         account_id?: string;
         /**
@@ -59032,19 +61464,19 @@ export type StartAuthIntentData = {
             /**
              * Automatic proxy configuration
              *
-             * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+             * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
              */
             auto_proxy_config?: {
                 /**
-                 * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                 * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                  */
                 country?: string;
                 /**
-                 * An IPv4 address to infer proxy's location.
+                 * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                  */
                 ip?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
             };
@@ -59076,6 +61508,10 @@ export type StartAuthIntentResponses = {
             channel?: 'EMAIL' | 'SMS' | 'WHATSAPP';
         } | {
             type: 'IN_APP_VALIDATION';
+            /**
+             * For number-matching approvals: the digits shown here that the user must select among the choices in their notification.
+             */
+            code?: string;
         } | {
             type: 'PAIRING_CODE';
             /**
@@ -59138,6 +61574,14 @@ export type StartAuthIntentResponses = {
                  * The display name of the product.
                  */
                 display_name: string;
+                /**
+                 * What the product gives access to, shown under its name.
+                 */
+                description?: string;
+                /**
+                 * An image of the product's own (e.g. a Page's picture), shown instead of the provider icon.
+                 */
+                icon_url?: string;
             }>;
         } | {
             type: 'CHALLENGE_SELECTION';
@@ -59160,6 +61604,50 @@ export type StartAuthIntentResponses = {
             }>;
         } | {
             type: 'LOADING';
+        } | {
+            type: 'ENCRYPTED_HISTORY';
+            /**
+             * The ways the user can answer. Send the chosen `id` as the `code` of Solve Checkpoint.
+             */
+            options: Array<{
+                /**
+                 * PIN and RECOVERY_CODE unlock the end-to-end encrypted message history; SKIP leaves it off, and the account then only reports new messages as they arrive.
+                 */
+                id: 'PIN' | 'RECOVERY_CODE' | 'SKIP';
+                /**
+                 * Human-readable name of the option.
+                 */
+                label: string;
+                /**
+                 * Extra detail about what the option entails.
+                 */
+                description?: string;
+                /**
+                 * How many more times this credential may be submitted. Each credential has a budget of its own, starting at 3, so running one out leaves the others open. A PIN is further capped at half of what the provider still allows, so the user can be wrong here without ever being the reason the backup locks. `0` means the option cannot be used any more; absent on options that take no credential.
+                 */
+                attempts_remaining?: number;
+            }>;
+            /**
+             * The most submissions any credential still has — what the user has left overall. `0` means every credential is spent and only skipping remains. The detail per credential is in `options[].attempts_remaining`; a credential the provider refuses to even try does not consume one.
+             */
+            attempts_remaining: number;
+            /**
+             * For a PIN, how many attempts the provider itself still allows before it locks the backup. This budget is the provider's own and is never spent on the user's behalf: when it is unknown or too low, the PIN is refused rather than tried.
+             */
+            provider_attempts_remaining?: number;
+            /**
+             * Why the previous submission did not unlock the history. Absent the first time this checkpoint is served, so its presence is what tells the user their last answer failed.
+             */
+            last_attempt?: {
+                /**
+                 * PIN and RECOVERY_CODE unlock the end-to-end encrypted message history; SKIP leaves it off, and the account then only reports new messages as they arrive.
+                 */
+                option: 'PIN' | 'RECOVERY_CODE' | 'SKIP';
+                /**
+                 * INVALID_CREDENTIAL: the PIN or recovery code was wrong, and one attempt was spent. REFUSED_TO_PROTECT_BACKUP: the PIN was not even submitted, because the provider had too few attempts left to risk one — no attempt was spent, and only the recovery code can unlock the history now.
+                 */
+                error: 'INVALID_CREDENTIAL' | 'REFUSED_TO_PROTECT_BACKUP';
+            };
         };
         /**
          * The ID of the auth intent. This should be used in Solve Checkpoint.
@@ -59230,12 +61718,13 @@ export type StartAuthIntentResponses = {
          * - `whatsapp` is WhatsApp.
          * - `linkedin` is LinkedIn.
          * - `instagram` is Instagram.
+         * - `facebook` is Facebook.
          * - `google` is Google.
          * - `outlook` is Outlook.
          * - `telegram` is Telegram.
          * - `imap` is IMAP.
          */
-        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
         /**
          * If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.
          */
@@ -59245,11 +61734,11 @@ export type StartAuthIntentResponses = {
          */
         metadata: {
             /**
-             * The rotation country for automatic proxy selection.
+             * The preferred country for automatic proxy selection. A country inferred from an IP may be outside Unipile’s proxy offering. The current proxy may be in another country when fallback is allowed and no proxy is available in the preferred country.
              */
             auto_proxy_country?: string;
             /**
-             * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
+             * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. A country included in Unipile’s proxy offering may still have no proxy currently available. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
              */
             allow_country_fallback?: boolean;
             /**
@@ -59269,6 +61758,12 @@ export type StartAuthIntentResponses = {
              */
             products_connection_status?: {
                 [key: string]: 'running' | 'disconnected' | 'errored';
+            };
+            /**
+             * The human-readable name of a product, keyed like products_connection_status, when the product has one (e.g. the name of a Facebook Page).
+             */
+            products_display_names?: {
+                [key: string]: string;
             };
             /**
              * Custom data of the account. This is where you can store custom data using "Update an account" method.
@@ -59382,7 +61877,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -59448,7 +61943,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -59514,7 +62009,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -59545,19 +62040,19 @@ export type CreateAuthLinkData = {
                 /**
                  * Automatic proxy configuration
                  *
-                 * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+                 * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
                  */
                 auto_proxy_config?: {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 };
@@ -59590,7 +62085,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -59621,19 +62116,19 @@ export type CreateAuthLinkData = {
                 /**
                  * Automatic proxy configuration
                  *
-                 * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+                 * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
                  */
                 auto_proxy_config?: {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 };
@@ -59652,7 +62147,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -59683,19 +62178,19 @@ export type CreateAuthLinkData = {
                 /**
                  * Automatic proxy configuration
                  *
-                 * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+                 * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
                  */
                 auto_proxy_config?: {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 };
@@ -59734,18 +62229,139 @@ export type CreateAuthLinkData = {
                     protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 } | Array<'credentials' | 'cookies' | 'unilogin'> | undefined;
+            };
+            /**
+             * Facebook specific configuration.
+             */
+            facebook?: {
+                /**
+                 * Custom proxy
+                 *
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
+                 */
+                custom_proxy?: {
+                    /**
+                     * The host of the proxy.
+                     */
+                    host: string;
+                    /**
+                     * The port of the proxy.
+                     */
+                    port: number;
+                    /**
+                     * The username to connect to the proxy.
+                     */
+                    username?: string;
+                    /**
+                     * The password to connect to the proxy.
+                     */
+                    password?: string;
+                    /**
+                     * The protocol of the proxy. Defaults to `https`.
+                     * - `https` is HTTPS.
+                     * - `http` is HTTP.
+                     * - `socks5` is SOCKS5.
+                     * - `socks4` is SOCKS4.
+                     */
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
+                };
+                /**
+                 * Automatic proxy configuration
+                 *
+                 * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
+                 */
+                auto_proxy_config?: {
+                    /**
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
+                     */
+                    country?: string;
+                    /**
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
+                     */
+                    ip?: string;
+                    /**
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
+                     */
+                    allow_country_fallback?: boolean;
+                };
+                /**
+                 * Meta web surface used to bootstrap the session. `facebook` uses facebook.com/messages (default), `messenger` uses messenger.com.
+                 */
+                surface?: 'facebook' | 'messenger';
+                /**
+                 * Specifies which Facebook products are allowed to be activated (as long as the account actually has access to them). By default, all products are made available. `messaging` is always activated.
+                 * `messaging` : Messenger inbox of the account<br>
+                 * `page` : Facebook Pages administered by the account — each Page is an inbox (`PAGE_<page_id>_INBOX`) whose chats are answered as the Page
+                 *
+                 */
+                products?: Array<'messaging' | 'page'>;
+                /**
+                 * With the `page` product: the Facebook Pages that can be activated, by id (the Page messaging id, as in `PAGE_<page_id>_INBOX`). By default, every Page the account administers. Without `allow_product_selection` they are all activated; with it, they are the ones offered for selection. Each activated Page runs as its own product `page_<page_id>`, with its own connection status.
+                 */
+                page_ids?: Array<string>;
+                /**
+                 * The authentication methods to show in Hosted Auth.
+                 * `credentials`: Credentials authentication
+                 * `cookies`: Cookie authentication
+                 * `unilogin`: Connect the active browser session through the UniLogin extension
+                 *
+                 */
+                allow_methods?: Array<'credentials' | 'cookies' | 'unilogin'>;
+                /**
+                 * When true, show the product selection screen after authentication, even when the account administers no Facebook Page; this screen also displays the requested scopes. When false, products are selected automatically and scope consent is collected before authentication.
+                 */
+                allow_product_selection?: boolean;
+                [key: string]: unknown | {
+                    /**
+                     * The host of the proxy.
+                     */
+                    host: string;
+                    /**
+                     * The port of the proxy.
+                     */
+                    port: number;
+                    /**
+                     * The username to connect to the proxy.
+                     */
+                    username?: string;
+                    /**
+                     * The password to connect to the proxy.
+                     */
+                    password?: string;
+                    /**
+                     * The protocol of the proxy. Defaults to `https`.
+                     * - `https` is HTTPS.
+                     * - `http` is HTTP.
+                     * - `socks5` is SOCKS5.
+                     * - `socks4` is SOCKS4.
+                     */
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
+                } | {
+                    /**
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
+                     */
+                    country?: string;
+                    /**
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
+                     */
+                    ip?: string;
+                    /**
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
+                     */
+                    allow_country_fallback?: boolean;
+                } | 'facebook' | 'messenger' | Array<'messaging' | 'page'> | Array<string> | Array<'credentials' | 'cookies' | 'unilogin'> | boolean | undefined;
             };
             /**
              * IMAP specific configuration.
@@ -59754,7 +62370,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -59820,7 +62436,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -59888,11 +62504,11 @@ export type CreateAuthLinkData = {
                  */
                 allow_user_proxy_override?: boolean;
                 /**
-                 * If true, the Hosted Auth UI will allow the user to manually select a country for automatic proxy configuration (when supported by the provider). This selection overrides the detected country and any auto_proxy_config value. Note: if a custom_proxy is explicitly configured for a provider, this option has no effect for that provider (no country selection will be shown).
+                 * If true, the Hosted Auth UI will allow the user to manually select a country where Unipile offers automatic proxies for the provider. A proxy may still be temporarily unavailable in the selected country. This selection overrides the detected country and any auto_proxy_config value. Note: if a custom_proxy is explicitly configured for a provider, this option has no effect for that provider (no country selection will be shown).
                  */
                 allow_user_country_override?: boolean;
                 /**
-                 * When true, the hosted authentication will wait for the initial sync to complete before redirecting. Only supported for providers with initial sync capability (whatsapp and imap). The hosted UI will display a loading screen until the initial sync is completed.
+                 * When true, the hosted authentication will wait for the initial sync to complete before redirecting. Only supported for providers with initial sync capability (whatsapp and imap). After authentication succeeds, the session can only poll the linked account for up to 24 hours, independently of the original link expiration, and cannot authenticate another account.
                  */
                 wait_initial_sync?: boolean;
             };
@@ -59907,7 +62523,7 @@ export type CreateAuthLinkData = {
          * - a specific provider to list only that provider.
          * - give an array of specific providers.
          */
-        providers: '*' | '*:MESSAGING' | '*:EMAILS' | '*:CALENDAR' | '*:SOCIAL' | 'linkedin' | 'mock' | 'whatsapp' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | Array<'linkedin' | 'mock' | 'whatsapp' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram'>;
+        providers: '*' | '*:MESSAGING' | '*:EMAILS' | '*:CALENDAR' | '*:SOCIAL' | 'linkedin' | 'mock' | 'whatsapp' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook' | Array<'linkedin' | 'mock' | 'whatsapp' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook'>;
     } | {
         /**
          * The Scope the account will be assigned to once authentication is complete.
@@ -59940,7 +62556,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -60006,7 +62622,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -60072,7 +62688,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -60103,19 +62719,19 @@ export type CreateAuthLinkData = {
                 /**
                  * Automatic proxy configuration
                  *
-                 * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+                 * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
                  */
                 auto_proxy_config?: {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 };
@@ -60148,7 +62764,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -60179,19 +62795,19 @@ export type CreateAuthLinkData = {
                 /**
                  * Automatic proxy configuration
                  *
-                 * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+                 * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
                  */
                 auto_proxy_config?: {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 };
@@ -60210,7 +62826,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -60241,19 +62857,19 @@ export type CreateAuthLinkData = {
                 /**
                  * Automatic proxy configuration
                  *
-                 * Configuration to infer the automatically allocated proxy's location. If not provided, Unipile will dynamically infer the proxy's location based on the public IP of the service, when a problem is detected with another proxy, and it would not be possible to automatically infer the proxy's location from the public IP.
+                 * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
                  */
                 auto_proxy_config?: {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 };
@@ -60292,18 +62908,139 @@ export type CreateAuthLinkData = {
                     protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 } | {
                     /**
-                     * An ISO 3166-1 A-2 country code to be set as automatic proxy's location.
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
                      */
                     country?: string;
                     /**
-                     * An IPv4 address to infer proxy's location.
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
                      */
                     ip?: string;
                     /**
-                     * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed.
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                      */
                     allow_country_fallback?: boolean;
                 } | Array<'credentials' | 'cookies' | 'unilogin'> | undefined;
+            };
+            /**
+             * Facebook specific configuration.
+             */
+            facebook?: {
+                /**
+                 * Custom proxy
+                 *
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
+                 */
+                custom_proxy?: {
+                    /**
+                     * The host of the proxy.
+                     */
+                    host: string;
+                    /**
+                     * The port of the proxy.
+                     */
+                    port: number;
+                    /**
+                     * The username to connect to the proxy.
+                     */
+                    username?: string;
+                    /**
+                     * The password to connect to the proxy.
+                     */
+                    password?: string;
+                    /**
+                     * The protocol of the proxy. Defaults to `https`.
+                     * - `https` is HTTPS.
+                     * - `http` is HTTP.
+                     * - `socks5` is SOCKS5.
+                     * - `socks4` is SOCKS4.
+                     */
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
+                };
+                /**
+                 * Automatic proxy configuration
+                 *
+                 * Country preferences for automatic proxy assignment. Explicitly selected countries must be part of Unipile’s proxy offering for the provider. If omitted, Unipile determines the preferred country automatically. The fallback setting determines whether an available proxy from another country may be used when no proxy is available in the preferred country.
+                 */
+                auto_proxy_config?: {
+                    /**
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
+                     */
+                    country?: string;
+                    /**
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
+                     */
+                    ip?: string;
+                    /**
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
+                     */
+                    allow_country_fallback?: boolean;
+                };
+                /**
+                 * Meta web surface used to bootstrap the session. `facebook` uses facebook.com/messages (default), `messenger` uses messenger.com.
+                 */
+                surface?: 'facebook' | 'messenger';
+                /**
+                 * Specifies which Facebook products are allowed to be activated (as long as the account actually has access to them). By default, all products are made available. `messaging` is always activated.
+                 * `messaging` : Messenger inbox of the account<br>
+                 * `page` : Facebook Pages administered by the account — each Page is an inbox (`PAGE_<page_id>_INBOX`) whose chats are answered as the Page
+                 *
+                 */
+                products?: Array<'messaging' | 'page'>;
+                /**
+                 * With the `page` product: the Facebook Pages that can be activated, by id (the Page messaging id, as in `PAGE_<page_id>_INBOX`). By default, every Page the account administers. Without `allow_product_selection` they are all activated; with it, they are the ones offered for selection. Each activated Page runs as its own product `page_<page_id>`, with its own connection status.
+                 */
+                page_ids?: Array<string>;
+                /**
+                 * The authentication methods to show in Hosted Auth.
+                 * `credentials`: Credentials authentication
+                 * `cookies`: Cookie authentication
+                 * `unilogin`: Connect the active browser session through the UniLogin extension
+                 *
+                 */
+                allow_methods?: Array<'credentials' | 'cookies' | 'unilogin'>;
+                /**
+                 * When true, show the product selection screen after authentication, even when the account administers no Facebook Page; this screen also displays the requested scopes. When false, products are selected automatically and scope consent is collected before authentication.
+                 */
+                allow_product_selection?: boolean;
+                [key: string]: unknown | {
+                    /**
+                     * The host of the proxy.
+                     */
+                    host: string;
+                    /**
+                     * The port of the proxy.
+                     */
+                    port: number;
+                    /**
+                     * The username to connect to the proxy.
+                     */
+                    username?: string;
+                    /**
+                     * The password to connect to the proxy.
+                     */
+                    password?: string;
+                    /**
+                     * The protocol of the proxy. Defaults to `https`.
+                     * - `https` is HTTPS.
+                     * - `http` is HTTP.
+                     * - `socks5` is SOCKS5.
+                     * - `socks4` is SOCKS4.
+                     */
+                    protocol?: 'https' | 'http' | 'socks5' | 'socks4';
+                } | {
+                    /**
+                     * An ISO 3166-1 alpha-2 country code for the automatic proxy location, normalized to uppercase. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
+                     */
+                    country?: string;
+                    /**
+                     * An IPv4 address used to infer the automatic proxy location. If Unipile does not offer proxies in the inferred country, or no proxy is currently available there, allow_country_fallback controls whether an available proxy from another country may be used.
+                     */
+                    ip?: string;
+                    /**
+                     * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected country must be part of Unipile’s proxy offering for the provider, even when fallback is allowed. A proxy may be temporarily unavailable in a country included in the offering. Authentication fails if no proxy is available in any allowed country. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
+                     */
+                    allow_country_fallback?: boolean;
+                } | 'facebook' | 'messenger' | Array<'messaging' | 'page'> | Array<string> | Array<'credentials' | 'cookies' | 'unilogin'> | boolean | undefined;
             };
             /**
              * IMAP specific configuration.
@@ -60312,7 +63049,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -60378,7 +63115,7 @@ export type CreateAuthLinkData = {
                 /**
                  * Custom proxy
                  *
-                 * A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+                 * A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
                  */
                 custom_proxy?: {
                     /**
@@ -60446,11 +63183,11 @@ export type CreateAuthLinkData = {
                  */
                 allow_user_proxy_override?: boolean;
                 /**
-                 * If true, the Hosted Auth UI will allow the user to manually select a country for automatic proxy configuration (when supported by the provider). This selection overrides the detected country and any auto_proxy_config value. Note: if a custom_proxy is explicitly configured for a provider, this option has no effect for that provider (no country selection will be shown).
+                 * If true, the Hosted Auth UI will allow the user to manually select a country where Unipile offers automatic proxies for the provider. A proxy may still be temporarily unavailable in the selected country. This selection overrides the detected country and any auto_proxy_config value. Note: if a custom_proxy is explicitly configured for a provider, this option has no effect for that provider (no country selection will be shown).
                  */
                 allow_user_country_override?: boolean;
                 /**
-                 * When true, the hosted authentication will wait for the initial sync to complete before redirecting. Only supported for providers with initial sync capability (whatsapp and imap). The hosted UI will display a loading screen until the initial sync is completed.
+                 * When true, the hosted authentication will wait for the initial sync to complete before redirecting. Only supported for providers with initial sync capability (whatsapp and imap). After authentication succeeds, the session can only poll the linked account for up to 24 hours, independently of the original link expiration, and cannot authenticate another account.
                  */
                 wait_initial_sync?: boolean;
             };
@@ -60567,12 +63304,13 @@ export type GetAccountResponses = {
          * - `whatsapp` is WhatsApp.
          * - `linkedin` is LinkedIn.
          * - `instagram` is Instagram.
+         * - `facebook` is Facebook.
          * - `google` is Google.
          * - `outlook` is Outlook.
          * - `telegram` is Telegram.
          * - `imap` is IMAP.
          */
-        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
         /**
          * If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.
          */
@@ -60582,11 +63320,11 @@ export type GetAccountResponses = {
          */
         metadata: {
             /**
-             * The rotation country for automatic proxy selection.
+             * The preferred country for automatic proxy selection. A country inferred from an IP may be outside Unipile’s proxy offering. The current proxy may be in another country when fallback is allowed and no proxy is available in the preferred country.
              */
             auto_proxy_country?: string;
             /**
-             * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
+             * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. A country included in Unipile’s proxy offering may still have no proxy currently available. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
              */
             allow_country_fallback?: boolean;
             /**
@@ -60606,6 +63344,12 @@ export type GetAccountResponses = {
              */
             products_connection_status?: {
                 [key: string]: 'running' | 'disconnected' | 'errored';
+            };
+            /**
+             * The human-readable name of a product, keyed like products_connection_status, when the product has one (e.g. the name of a Facebook Page).
+             */
+            products_display_names?: {
+                [key: string]: string;
             };
             /**
              * Custom data of the account. This is where you can store custom data using "Update an account" method.
@@ -60679,11 +63423,11 @@ export type UpdateAccountData = {
             [key: string]: string;
         };
         /**
-         * The rotation country to use for Automatic Proxy Protection.
+         * The rotation country to use for Automatic Proxy Protection. Choose from the <a href="https://developer.unipile.com/v2.0/docs/proxys#countries">countries where Unipile offers automatic proxies</a>. A proxy may be temporarily unavailable even in a country included in the offering.
          */
         auto_proxy_country?: string;
         /**
-         * Whether Automatic Proxy Protection may use a proxy from another country when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country; if the selected proxy later fails without a replacement there, the account enters Service interruption.
+         * Whether Automatic Proxy Protection may use an available proxy from another country when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected rotation country must be part of Unipile’s proxy offering for the provider, but a proxy may still be temporarily unavailable there. If false, authentication fails when no proxy is available in the rotation country; if the selected proxy later fails without an available replacement there, the account enters Service interruption.
          */
         allow_country_fallback?: boolean;
         /**
@@ -60781,12 +63525,13 @@ export type UpdateAccountResponses = {
          * - `whatsapp` is WhatsApp.
          * - `linkedin` is LinkedIn.
          * - `instagram` is Instagram.
+         * - `facebook` is Facebook.
          * - `google` is Google.
          * - `outlook` is Outlook.
          * - `telegram` is Telegram.
          * - `imap` is IMAP.
          */
-        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
         /**
          * If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.
          */
@@ -60796,11 +63541,11 @@ export type UpdateAccountResponses = {
          */
         metadata: {
             /**
-             * The rotation country for automatic proxy selection.
+             * The preferred country for automatic proxy selection. A country inferred from an IP may be outside Unipile’s proxy offering. The current proxy may be in another country when fallback is allowed and no proxy is available in the preferred country.
              */
             auto_proxy_country?: string;
             /**
-             * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
+             * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. A country included in Unipile’s proxy offering may still have no proxy currently available. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
              */
             allow_country_fallback?: boolean;
             /**
@@ -60820,6 +63565,12 @@ export type UpdateAccountResponses = {
              */
             products_connection_status?: {
                 [key: string]: 'running' | 'disconnected' | 'errored';
+            };
+            /**
+             * The human-readable name of a product, keyed like products_connection_status, when the product has one (e.g. the name of a Facebook Page).
+             */
+            products_display_names?: {
+                [key: string]: string;
             };
             /**
              * Custom data of the account. This is where you can store custom data using "Update an account" method.
@@ -60898,12 +63649,13 @@ export type ListAccountsData = {
          * - `whatsapp` is WhatsApp.
          * - `linkedin` is LinkedIn.
          * - `instagram` is Instagram.
+         * - `facebook` is Facebook.
          * - `google` is Google.
          * - `outlook` is Outlook.
          * - `telegram` is Telegram.
          * - `imap` is IMAP.
          */
-        provider?: 'linkedin' | 'mock' | 'whatsapp' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+        provider?: 'linkedin' | 'mock' | 'whatsapp' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
         /**
          * Filter to return only accounts matching the given search term on `name` or `id`.
          */
@@ -60975,12 +63727,13 @@ export type ListAccountsResponses = {
              * - `whatsapp` is WhatsApp.
              * - `linkedin` is LinkedIn.
              * - `instagram` is Instagram.
+             * - `facebook` is Facebook.
              * - `google` is Google.
              * - `outlook` is Outlook.
              * - `telegram` is Telegram.
              * - `imap` is IMAP.
              */
-            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+            provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
             /**
              * If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.
              */
@@ -60990,11 +63743,11 @@ export type ListAccountsResponses = {
              */
             metadata: {
                 /**
-                 * The rotation country for automatic proxy selection.
+                 * The preferred country for automatic proxy selection. A country inferred from an IP may be outside Unipile’s proxy offering. The current proxy may be in another country when fallback is allowed and no proxy is available in the preferred country.
                  */
                 auto_proxy_country?: string;
                 /**
-                 * Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation within that country remains allowed.
+                 * Whether an available proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. A country included in Unipile’s proxy offering may still have no proxy currently available. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another available proxy in that country remains allowed.
                  */
                 allow_country_fallback?: boolean;
                 /**
@@ -61014,6 +63767,12 @@ export type ListAccountsResponses = {
                  */
                 products_connection_status?: {
                     [key: string]: 'running' | 'disconnected' | 'errored';
+                };
+                /**
+                 * The human-readable name of a product, keyed like products_connection_status, when the product has one (e.g. the name of a Facebook Page).
+                 */
+                products_display_names?: {
+                    [key: string]: string;
                 };
                 /**
                  * Custom data of the account. This is where you can store custom data using "Update an account" method.
@@ -61078,6 +63837,36 @@ export type ListAccountsResponses = {
 };
 
 export type ListAccountsResponse = ListAccountsResponses[keyof ListAccountsResponses];
+
+export type SyncAccountData = {
+    body?: never;
+    path: {
+        /**
+         * The ID of the Account to synchronize.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/accounts/{account_id}/sync';
+};
+
+export type SyncAccountResponses = {
+    /**
+     * Confirmation that a full history synchronization was requested. Completion is asynchronous.
+     */
+    202: {
+        /**
+         * Object type identifier, always "AccountSyncRequested".
+         */
+        object: 'AccountSyncRequested';
+        /**
+         * Identifier of the history synchronization request sent to the provider.
+         */
+        request_id: string;
+    };
+};
+
+export type SyncAccountResponse = SyncAccountResponses[keyof SyncAccountResponses];
 
 export type ListApiKeysData = {
     body?: never;
@@ -61571,6 +64360,22 @@ export type ListWebhookConversationsData = {
          */
         account_id?: string;
         /**
+         * Filter to return only conversations for events of the given type.
+         */
+        event_type?: 'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new';
+        /**
+         * The delivery status of an event, based on its latest delivery attempt to the endpoint. `success` means the endpoint returned a 2xx HTTP status; `failed` means it returned another status or did not respond.
+         */
+        status?: 'success' | 'failed';
+        /**
+         * Filter to return only conversations created at or after the given date and time, in ISO 8601 format.
+         */
+        created_after?: string;
+        /**
+         * Filter to return only conversations created before the given date and time, in ISO 8601 format.
+         */
+        created_before?: string;
+        /**
          * An offset used for pagination.
          */
         offset?: string;
@@ -61684,12 +64489,13 @@ export type ListWebhookEndpointsResponses = {
                  * - `whatsapp` is WhatsApp.
                  * - `linkedin` is LinkedIn.
                  * - `instagram` is Instagram.
+                 * - `facebook` is Facebook.
                  * - `google` is Google.
                  * - `outlook` is Outlook.
                  * - `telegram` is Telegram.
                  * - `imap` is IMAP.
                  */
-                account_provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+                account_provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
                 object: 'WebhookEndpointAccountTarget';
                 id: string;
                 status: 'active' | 'deleted';
@@ -61748,12 +64554,13 @@ export type CreateWebhookEndpointResponses = {
              * - `whatsapp` is WhatsApp.
              * - `linkedin` is LinkedIn.
              * - `instagram` is Instagram.
+             * - `facebook` is Facebook.
              * - `google` is Google.
              * - `outlook` is Outlook.
              * - `telegram` is Telegram.
              * - `imap` is IMAP.
              */
-            account_provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+            account_provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
             object: 'WebhookEndpointAccountTarget';
             id: string;
             status: 'active' | 'deleted';
@@ -61820,12 +64627,13 @@ export type GetWebhookEndpointResponses = {
              * - `whatsapp` is WhatsApp.
              * - `linkedin` is LinkedIn.
              * - `instagram` is Instagram.
+             * - `facebook` is Facebook.
              * - `google` is Google.
              * - `outlook` is Outlook.
              * - `telegram` is Telegram.
              * - `imap` is IMAP.
              */
-            account_provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+            account_provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
             object: 'WebhookEndpointAccountTarget';
             id: string;
             status: 'active' | 'deleted';
@@ -61891,12 +64699,13 @@ export type UpdateWebhookEndpointResponses = {
              * - `whatsapp` is WhatsApp.
              * - `linkedin` is LinkedIn.
              * - `instagram` is Instagram.
+             * - `facebook` is Facebook.
              * - `google` is Google.
              * - `outlook` is Outlook.
              * - `telegram` is Telegram.
              * - `imap` is IMAP.
              */
-            account_provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram';
+            account_provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
             object: 'WebhookEndpointAccountTarget';
             id: string;
             status: 'active' | 'deleted';
