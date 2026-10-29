@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { AcceptRelationRequestData, AcceptRelationRequestResponses, AddMessageReactionData, AddMessageReactionResponses, AddParticipantData, AddParticipantResponses, AddPostCommentData, AddPostCommentReactionData, AddPostCommentReactionResponses, AddPostCommentResponses, AddPostReactionData, AddPostReactionResponses, BrowseSalesAccountListData, BrowseSalesAccountListResponses, BrowseSalesLeadListData, BrowseSalesLeadListResponses, CancelCalendarEventData, CancelCalendarEventResponses, CancelRelationRequestData, CancelRelationRequestResponses, CloseClassicJobPostingData, CloseClassicJobPostingResponses, CloseRecruiterJobPostingData, CloseRecruiterJobPostingResponses, CreateApiKeyData, CreateApiKeyResponses, CreateAuthLinkData, CreateAuthLinkResponses, CreateCalendarData, CreateCalendarEventData, CreateCalendarEventResponses, CreateCalendarResponses, CreateClassicJobPostingDraftData, CreateClassicJobPostingDraftResponses, CreateDraftData, CreateDraftResponses, CreateFolderData, CreateFolderResponses, CreatePostData, CreatePostResponses, CreateRecruiterHiringProjectData, CreateRecruiterHiringProjectResponses, CreateRecruiterJobPostingDraftInExistingProjectData, CreateRecruiterJobPostingDraftInExistingProjectResponses, CreateRecruiterJobPostingDraftInNewProjectData, CreateRecruiterJobPostingDraftInNewProjectResponses, CreateRelationRequestData, CreateRelationRequestResponses, CreateScopeData, CreateScopeResponses, CreateStoryData, CreateStoryResponses, CreateWebhookEndpointData, CreateWebhookEndpointResponses, DeleteApiKeyData, DeleteApiKeyResponses, DeleteCalendarData, DeleteCalendarEventData, DeleteCalendarEventResponses, DeleteCalendarResponses, DeleteChatData, DeleteChatResponses, DeleteDraftData, DeleteDraftResponses, DeleteFolderData, DeleteFolderResponses, DeleteMessageData, DeleteMessageResponses, DeletePostCommentData, DeletePostCommentResponses, DeletePostData, DeletePostResponses, DeleteRelationData, DeleteRelationResponses, DeleteScopeData, DeleteScopeResponses, DeleteWebhookEndpointData, DeleteWebhookEndpointResponses, EditClassicJobPostingData, EditClassicJobPostingResponses, EditRecruiterHiringProjectData, EditRecruiterHiringProjectResponses, EditRecruiterJobPostingData, EditRecruiterJobPostingResponses, EndorseClassicMemberSkillData, EndorseClassicMemberSkillResponses, FollowUserData, FollowUserResponses, ForwardMessageData, ForwardMessageResponses, GetAccountData, GetAccountResponses, GetAttachment1Data, GetAttachment1Responses, GetAttachmentData, GetAttachmentResponses, GetAvailableContractsData, GetAvailableContractsResponses, GetCalendarData, GetCalendarEventData, GetCalendarEventListData, GetCalendarEventListResponses, GetCalendarEventResponses, GetCalendarResponses, GetCalendarsListData, GetCalendarsListResponses, GetChatData, GetChatPictureData, GetChatPictureResponses, GetChatResponses, GetChatsListData, GetChatsListResponses, GetClassicApplicantByIdData, GetClassicApplicantByIdResponses, GetClassicApplicantResumeData, GetClassicApplicantResumeResponses, GetClassicApplicantsData, GetClassicApplicantsResponses, GetClassicCompanyProfileData, GetClassicCompanyProfileResponses, GetClassicJobPostingBudgetData, GetClassicJobPostingBudgetResponses, GetClassicJobPostingData, GetClassicJobPostingResponses, GetClassicSearchParametersData, GetClassicSearchParametersResponses, GetCompanyFollowInvitationCreditsData, GetCompanyFollowInvitationCreditsResponses, GetContactsListData, GetContactsListResponses, GetDraftData, GetDraftResponses, GetDraftsListData, GetDraftsListResponses, GetEmailData, GetEmailResponses, GetEmailSendersData, GetEmailSendersResponses, GetEmailsListData, GetEmailsListResponses, GetFolderData, GetFolderEmailsListData, GetFolderEmailsListResponses, GetFolderResponses, GetFoldersListData, GetFoldersListResponses, GetInboxChatsListData, GetInboxChatsListResponses, GetInboxesListData, GetInboxesListResponses, GetInmailCreditsData, GetInmailCreditsResponses, GetManagedCompanyPagesData, GetManagedCompanyPagesResponses, GetMessageData, GetMessageReactionsListData, GetMessageReactionsListResponses, GetMessageResponses, GetMessagesListData, GetMessagesListResponses, GetParticipantsListData, GetParticipantsListResponses, GetPostCommentReactionsListData, GetPostCommentReactionsListResponses, GetPostCommentRepliesListData, GetPostCommentRepliesListResponses, GetPostCommentsListData, GetPostCommentsListResponses, GetPostData, GetPostReactionsListData, GetPostReactionsListResponses, GetPostResponses, GetPostsListData, GetPostsListResponses, GetProfileViewsData, GetProfileViewsResponses, GetRecruiterApplicantByIdData, GetRecruiterApplicantByIdResponses, GetRecruiterApplicantResumeData, GetRecruiterApplicantResumeResponses, GetRecruiterHiringProjectData, GetRecruiterHiringProjectListData, GetRecruiterHiringProjectListResponses, GetRecruiterHiringProjectResponses, GetRecruiterJobPostingBudgetData, GetRecruiterJobPostingBudgetResponses, GetRecruiterJobPostingByIdData, GetRecruiterJobPostingByIdResponses, GetRecruiterJobPostingByProjectIdData, GetRecruiterJobPostingByProjectIdResponses, GetRecruiterJobPostingListData, GetRecruiterJobPostingListResponses, GetRecruiterJobSlotsCreditsData, GetRecruiterJobSlotsCreditsResponses, GetRecruiterPipelineCandidatesData, GetRecruiterPipelineCandidatesResponses, GetRecruiterSearchParametersData, GetRecruiterSearchParametersResponses, GetRecruiterTalentPoolApplicantsData, GetRecruiterTalentPoolApplicantsResponses, GetRelationRequestsListData, GetRelationRequestsListResponses, GetSalesAccountListsData, GetSalesAccountListsResponses, GetSalesLeadListsData, GetSalesLeadListsResponses, GetSalesSearchParametersData, GetSalesSearchParametersResponses, GetScopeData, GetScopeResponses, GetThreadData, GetThreadResponses, GetUserChatData, GetUserChatResponses, GetUserCommentsListData, GetUserCommentsListResponses, GetUserPictureData, GetUserPictureResponses, GetUserPresenceData, GetUserPresenceResponses, GetUserProfileData, GetUserProfileResponses, GetUserReactionsListData, GetUserReactionsListResponses, GetUserRelationsData, GetUserRelationsResponses, GetV2Data, GetV2Responses, GetWebhookEndpointData, GetWebhookEndpointResponses, ListAccountsData, ListAccountsResponses, ListApiKeysData, ListApiKeysResponses, ListClassicUserJobPostingsData, ListClassicUserJobPostingsResponses, ListScopesData, ListScopesResponses, ListUserFollowersData, ListUserFollowersResponses, ListUserFollowingData, ListUserFollowingResponses, ListWebhookConversationsData, ListWebhookConversationsResponses, ListWebhookEndpointsData, ListWebhookEndpointsResponses, ModifyEmailData, ModifyEmailResponses, ModifyMessageData, ModifyMessageResponses, PerformClassicCompaniesSearchData, PerformClassicCompaniesSearchResponses, PerformClassicJobsSearchData, PerformClassicJobsSearchResponses, PerformClassicPeopleSearchData, PerformClassicPeopleSearchResponses, PerformClassicPostsSearchData, PerformClassicPostsSearchResponses, PerformClassicSearchFromUrlData, PerformClassicSearchFromUrlResponses, PerformRecruiterPeopleSearchData, PerformRecruiterPeopleSearchFromTalentPoolData, PerformRecruiterPeopleSearchFromTalentPoolResponses, PerformRecruiterPeopleSearchResponses, PerformRecruiterSearchFromUrlData, PerformRecruiterSearchFromUrlResponses, PerformSalesCompaniesSearchData, PerformSalesCompaniesSearchResponses, PerformSalesPeopleSearchData, PerformSalesPeopleSearchResponses, PerformSalesSearchFromUrlData, PerformSalesSearchFromUrlResponses, PinMessageData, PinMessageResponses, ProxyRequestData, ProxyRequestResponses, PublishClassicJobPostingData, PublishClassicJobPostingResponses, PublishRecruiterJobPostingData, PublishRecruiterJobPostingResponses, ReadEmailData, ReadEmailResponses, ReadMessageData, ReadMessageResponses, RemoveAccountData, RemoveAccountResponses, RemoveMessageReactionData, RemoveMessageReactionResponses, RemoveParticipantData, RemoveParticipantResponses, RemovePostCommentReactionData, RemovePostCommentReactionResponses, RemovePostReactionData, RemovePostReactionResponses, ReplayWebhookEventData, ReplayWebhookEventResponses, ReplyToCommentData, ReplyToCommentResponses, RequestCheckpointData, RequestCheckpointResponses, ResendCheckpointData, ResendCheckpointResponses, RestoreCalendarEventData, RestoreCalendarEventResponses, SaveRecruiterCandidateToPipelineData, SaveRecruiterCandidateToPipelineResponses, SaveSalesAccountToListData, SaveSalesAccountToListResponses, SaveSalesLeadToListData, SaveSalesLeadToListResponses, SearchLocationsData, SearchLocationsResponses, SelectContractData, SelectContractResponses, SendCompanyFollowInvitationData, SendCompanyFollowInvitationResponses, SendDraftData, SendDraftResponses, SendEmailData, SendEmailResponses, SendMessageData, SendMessageResponses, SetCalendarEventRsvpData, SetCalendarEventRsvpResponses, SetComposingStatusData, SetComposingStatusResponses, SetPresenceData, SetPresenceResponses, SolveCheckpointData, SolveCheckpointResponses, StartAuthIntentData, StartAuthIntentResponses, StartChatData, StartChatFromInboxData, StartChatFromInboxResponses, StartChatResponses, SubmitClassicCompanyOtpCodeData, SubmitClassicCompanyOtpCodeResponses, SubmitRecruiterOtpCodeData, SubmitRecruiterOtpCodeResponses, TrashEmailData, TrashEmailResponses, UnfollowUserData, UnfollowUserResponses, UnreadEmailData, UnreadEmailResponses, UpdateAccountData, UpdateAccountResponses, UpdateCalendarData, UpdateCalendarEventData, UpdateCalendarEventResponses, UpdateCalendarResponses, UpdateChatData, UpdateChatResponses, UpdateDraftData, UpdateDraftResponses, UpdateFolderData, UpdateFolderResponses, UpdatePostCommentData, UpdatePostCommentResponses, UpdatePostData, UpdatePostResponses, UpdateScopeData, UpdateScopeResponses, UpdateUserProfileData, UpdateUserProfileResponses, UpdateWebhookEndpointData, UpdateWebhookEndpointResponses, VerifyClassicCompanyMemberIdentityData, VerifyClassicCompanyMemberIdentityResponses, VerifyRecruiterCompanyMemberIdentityData, VerifyRecruiterCompanyMemberIdentityResponses, VisitUserProfileData, VisitUserProfileResponses } from './types.gen';
+import type { AcceptChatRequestData, AcceptChatRequestResponses, AcceptRelationRequestData, AcceptRelationRequestResponses, AddMessageReactionData, AddMessageReactionResponses, AddParticipantData, AddParticipantResponses, AddPostCommentData, AddPostCommentReactionData, AddPostCommentReactionResponses, AddPostCommentResponses, AddPostReactionData, AddPostReactionResponses, BrowseSalesAccountListData, BrowseSalesAccountListResponses, BrowseSalesLeadListData, BrowseSalesLeadListResponses, CancelCalendarEventData, CancelCalendarEventResponses, CancelRelationRequestData, CancelRelationRequestResponses, CloseClassicJobPostingData, CloseClassicJobPostingResponses, CloseRecruiterJobPostingData, CloseRecruiterJobPostingResponses, CreateApiKeyData, CreateApiKeyResponses, CreateAuthLinkData, CreateAuthLinkResponses, CreateCalendarData, CreateCalendarEventData, CreateCalendarEventResponses, CreateCalendarResponses, CreateClassicJobPostingDraftData, CreateClassicJobPostingDraftResponses, CreateDraftData, CreateDraftResponses, CreateFolderData, CreateFolderResponses, CreatePostData, CreatePostResponses, CreateRecruiterHiringProjectData, CreateRecruiterHiringProjectResponses, CreateRecruiterJobPostingDraftInExistingProjectData, CreateRecruiterJobPostingDraftInExistingProjectResponses, CreateRecruiterJobPostingDraftInNewProjectData, CreateRecruiterJobPostingDraftInNewProjectResponses, CreateRelationRequestData, CreateRelationRequestResponses, CreateScopeData, CreateScopeResponses, CreateStoryData, CreateStoryResponses, CreateWebhookEndpointData, CreateWebhookEndpointResponses, DeleteApiKeyData, DeleteApiKeyResponses, DeleteCalendarData, DeleteCalendarEventData, DeleteCalendarEventResponses, DeleteCalendarResponses, DeleteChatData, DeleteChatResponses, DeleteDraftData, DeleteDraftResponses, DeleteFolderData, DeleteFolderResponses, DeleteMessageData, DeleteMessageResponses, DeletePostCommentData, DeletePostCommentResponses, DeletePostData, DeletePostResponses, DeleteRelationData, DeleteRelationResponses, DeleteScopeData, DeleteScopeResponses, DeleteWebhookEndpointData, DeleteWebhookEndpointResponses, EditClassicJobPostingData, EditClassicJobPostingResponses, EditRecruiterHiringProjectData, EditRecruiterHiringProjectResponses, EditRecruiterJobPostingData, EditRecruiterJobPostingResponses, EndorseClassicMemberSkillData, EndorseClassicMemberSkillResponses, FollowUserData, FollowUserResponses, ForwardMessageData, ForwardMessageResponses, GetAccountData, GetAccountResponses, GetAttachment1Data, GetAttachment1Responses, GetAttachmentData, GetAttachmentResponses, GetAvailableContractsData, GetAvailableContractsResponses, GetCalendarData, GetCalendarEventData, GetCalendarEventListData, GetCalendarEventListResponses, GetCalendarEventResponses, GetCalendarResponses, GetCalendarsListData, GetCalendarsListResponses, GetChatData, GetChatPictureData, GetChatPictureResponses, GetChatResponses, GetChatsListData, GetChatsListResponses, GetClassicApplicantByIdData, GetClassicApplicantByIdResponses, GetClassicApplicantResumeData, GetClassicApplicantResumeResponses, GetClassicApplicantsData, GetClassicApplicantsResponses, GetClassicCompanyProfileData, GetClassicCompanyProfileResponses, GetClassicJobPostingBudgetData, GetClassicJobPostingBudgetResponses, GetClassicJobPostingData, GetClassicJobPostingResponses, GetClassicSearchParametersData, GetClassicSearchParametersResponses, GetCompanyFollowInvitationCreditsData, GetCompanyFollowInvitationCreditsResponses, GetContactsListData, GetContactsListResponses, GetDraftData, GetDraftResponses, GetDraftsListData, GetDraftsListResponses, GetEmailData, GetEmailResponses, GetEmailSendersData, GetEmailSendersResponses, GetEmailsListData, GetEmailsListResponses, GetFolderData, GetFolderEmailsListData, GetFolderEmailsListResponses, GetFolderResponses, GetFoldersListData, GetFoldersListResponses, GetInboxChatsListData, GetInboxChatsListResponses, GetInboxesListData, GetInboxesListResponses, GetInmailCreditsData, GetInmailCreditsResponses, GetManagedCompanyPagesData, GetManagedCompanyPagesResponses, GetMessageData, GetMessageReactionsListData, GetMessageReactionsListResponses, GetMessageResponses, GetMessagesListData, GetMessagesListResponses, GetParticipantsListData, GetParticipantsListResponses, GetPostCommentReactionsListData, GetPostCommentReactionsListResponses, GetPostCommentRepliesListData, GetPostCommentRepliesListResponses, GetPostCommentsListData, GetPostCommentsListResponses, GetPostData, GetPostReactionsListData, GetPostReactionsListResponses, GetPostResponses, GetPostsListData, GetPostsListResponses, GetProfileViewsData, GetProfileViewsResponses, GetRecruiterApplicantByIdData, GetRecruiterApplicantByIdResponses, GetRecruiterApplicantResumeData, GetRecruiterApplicantResumeResponses, GetRecruiterHiringProjectData, GetRecruiterHiringProjectListData, GetRecruiterHiringProjectListResponses, GetRecruiterHiringProjectResponses, GetRecruiterJobPostingBudgetData, GetRecruiterJobPostingBudgetResponses, GetRecruiterJobPostingByIdData, GetRecruiterJobPostingByIdResponses, GetRecruiterJobPostingByProjectIdData, GetRecruiterJobPostingByProjectIdResponses, GetRecruiterJobPostingListData, GetRecruiterJobPostingListResponses, GetRecruiterJobSlotsCreditsData, GetRecruiterJobSlotsCreditsResponses, GetRecruiterPipelineCandidatesData, GetRecruiterPipelineCandidatesResponses, GetRecruiterSearchParametersData, GetRecruiterSearchParametersResponses, GetRecruiterTalentPoolApplicantsData, GetRecruiterTalentPoolApplicantsResponses, GetRelationRequestsListData, GetRelationRequestsListResponses, GetSalesAccountListsData, GetSalesAccountListsResponses, GetSalesLeadListsData, GetSalesLeadListsResponses, GetSalesSearchParametersData, GetSalesSearchParametersResponses, GetScopeData, GetScopeResponses, GetThreadData, GetThreadResponses, GetUserChatData, GetUserChatResponses, GetUserCommentsListData, GetUserCommentsListResponses, GetUserPictureData, GetUserPictureResponses, GetUserPresenceData, GetUserPresenceResponses, GetUserProfileData, GetUserProfileResponses, GetUserReactionsListData, GetUserReactionsListResponses, GetUserRelationsData, GetUserRelationsResponses, GetV2Data, GetV2Responses, GetWebhookEndpointData, GetWebhookEndpointResponses, ListAccountsData, ListAccountsResponses, ListApiKeysData, ListApiKeysResponses, ListClassicUserJobPostingsData, ListClassicUserJobPostingsResponses, ListScopesData, ListScopesResponses, ListUserFollowersData, ListUserFollowersResponses, ListUserFollowingData, ListUserFollowingResponses, ListWebhookConversationsData, ListWebhookConversationsResponses, ListWebhookEndpointsData, ListWebhookEndpointsResponses, ModifyEmailData, ModifyEmailResponses, ModifyMessageData, ModifyMessageResponses, PerformClassicCompaniesSearchData, PerformClassicCompaniesSearchResponses, PerformClassicJobsSearchData, PerformClassicJobsSearchResponses, PerformClassicPeopleSearchData, PerformClassicPeopleSearchResponses, PerformClassicPostsSearchData, PerformClassicPostsSearchResponses, PerformClassicSearchFromUrlData, PerformClassicSearchFromUrlResponses, PerformRecruiterPeopleSearchData, PerformRecruiterPeopleSearchFromTalentPoolData, PerformRecruiterPeopleSearchFromTalentPoolResponses, PerformRecruiterPeopleSearchResponses, PerformRecruiterSearchFromUrlData, PerformRecruiterSearchFromUrlResponses, PerformSalesCompaniesSearchData, PerformSalesCompaniesSearchResponses, PerformSalesPeopleSearchData, PerformSalesPeopleSearchResponses, PerformSalesSearchFromUrlData, PerformSalesSearchFromUrlResponses, PinMessageData, PinMessageResponses, ProxyRequestData, ProxyRequestResponses, PublishClassicJobPostingData, PublishClassicJobPostingResponses, PublishRecruiterJobPostingData, PublishRecruiterJobPostingResponses, ReadEmailData, ReadEmailResponses, ReadMessageData, ReadMessageResponses, RemoveAccountData, RemoveAccountResponses, RemoveMessageReactionData, RemoveMessageReactionResponses, RemoveParticipantData, RemoveParticipantResponses, RemovePostCommentReactionData, RemovePostCommentReactionResponses, RemovePostReactionData, RemovePostReactionResponses, ReplayWebhookEventData, ReplayWebhookEventResponses, ReplyToCommentData, ReplyToCommentResponses, RequestCheckpointData, RequestCheckpointResponses, ResendCheckpointData, ResendCheckpointResponses, RestoreCalendarEventData, RestoreCalendarEventResponses, SaveRecruiterCandidateToPipelineData, SaveRecruiterCandidateToPipelineResponses, SaveSalesAccountToListData, SaveSalesAccountToListResponses, SaveSalesLeadToListData, SaveSalesLeadToListResponses, SearchLocationsData, SearchLocationsResponses, SelectContractData, SelectContractResponses, SendCompanyFollowInvitationData, SendCompanyFollowInvitationResponses, SendDraftData, SendDraftResponses, SendEmailData, SendEmailResponses, SendMessageData, SendMessageResponses, SetCalendarEventRsvpData, SetCalendarEventRsvpResponses, SetComposingStatusData, SetComposingStatusResponses, SetPresenceData, SetPresenceResponses, SignOutOtherRecruiterSessionsData, SignOutOtherRecruiterSessionsResponses, SignOutRecruiterSessionData, SignOutRecruiterSessionResponses, SolveCheckpointData, SolveCheckpointResponses, StartAuthIntentData, StartAuthIntentResponses, StartChatData, StartChatFromInboxData, StartChatFromInboxResponses, StartChatResponses, SubmitClassicCompanyOtpCodeData, SubmitClassicCompanyOtpCodeResponses, SubmitRecruiterOtpCodeData, SubmitRecruiterOtpCodeResponses, SyncAccountData, SyncAccountResponses, TrashEmailData, TrashEmailResponses, UnfollowUserData, UnfollowUserResponses, UnreadEmailData, UnreadEmailResponses, UpdateAccountData, UpdateAccountResponses, UpdateCalendarData, UpdateCalendarEventData, UpdateCalendarEventResponses, UpdateCalendarResponses, UpdateChatData, UpdateChatResponses, UpdateDraftData, UpdateDraftResponses, UpdateFolderData, UpdateFolderResponses, UpdatePostCommentData, UpdatePostCommentResponses, UpdatePostData, UpdatePostResponses, UpdateScopeData, UpdateScopeResponses, UpdateUserProfileData, UpdateUserProfileResponses, UpdateWebhookEndpointData, UpdateWebhookEndpointResponses, VerifyClassicCompanyMemberIdentityData, VerifyClassicCompanyMemberIdentityResponses, VerifyRecruiterCompanyMemberIdentityData, VerifyRecruiterCompanyMemberIdentityResponses, VisitUserProfileData, VisitUserProfileResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -570,6 +570,19 @@ export class UnipileMessaging extends HeyApiClient {
                 'Content-Type': 'application/json',
                 ...options.headers
             }
+        });
+    }
+    
+    /**
+     * Accept a Chat Request
+     *
+     * Accepts a chat request from an inbox that contains pending conversations.
+     */
+    public acceptChatRequest<ThrowOnError extends boolean = false>(options: Options<AcceptChatRequestData, ThrowOnError>) {
+        return (options.client ?? this.client).post<AcceptChatRequestResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/inboxes/{inbox_id}/chats/{chat_id}/accept',
+            ...options
         });
     }
     
@@ -1231,7 +1244,7 @@ export class UnipileUsers extends HeyApiClient {
     /**
      * Get a User Picture
      *
-     * Downloads the profile picture of the specified User, for the providers that publish no public url for it. Use `me` as `user_id` to specify the owner of the connected account. The url of this endpoint is given by the `private_picture_download_url` field of a User.
+     * Downloads the profile picture of the specified User. Use `me` as `user_id` to specify the owner of the connected account. For the providers that publish no public url for it, the url of this endpoint is given by the `private_picture_download_url` field of a User; for Facebook, it serves the current picture, whose `public_picture_url` expires within days.
      */
     public getUserPicture<ThrowOnError extends boolean = false>(options: Options<GetUserPictureData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetUserPictureResponses, unknown, ThrowOnError>({
@@ -1405,6 +1418,8 @@ export class UnipileUsers extends HeyApiClient {
      * List all User's Posts
      *
      * Returns a list of posts created or shared by a user. Use `me` as `user_id` to specify the owner of the connected account.
+     * LIMITATIONS: On Facebook, the page size is set by Facebook: each page holds up to 3 posts whatever the `limit`. Use `next_cursor` to get more.
+     *
      */
     public getPostsList<ThrowOnError extends boolean = false>(options: Options<GetPostsListData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetPostsListResponses, unknown, ThrowOnError>({
@@ -1430,6 +1445,8 @@ export class UnipilePosts extends HeyApiClient {
      * List all User's Posts
      *
      * Returns a list of posts created or shared by a user. Use `me` as `user_id` to specify the owner of the connected account.
+     * LIMITATIONS: On Facebook, the page size is set by Facebook: each page holds up to 3 posts whatever the `limit`. Use `next_cursor` to get more.
+     *
      */
     public getPostsList<ThrowOnError extends boolean = false>(options: Options<GetPostsListData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetPostsListResponses, unknown, ThrowOnError>({
@@ -1538,6 +1555,7 @@ export class UnipilePosts extends HeyApiClient {
      *
      * Returns the list of reactions made to a post. Reaction counts are given with the Post object. This is useful to show a detailed list of all reactions and their author.
      * LIMITATIONS: On Instagram, the list is always limited to a maximum of 100 reactions.
+     * On Facebook, each page holds at most 10 reactions: a higher `limit` returns 10. Use `next_cursor` to get more. Some posts (often from very large Pages) only show the account's friends among the people who reacted, so the list can be partial or empty while the post's reaction counters are not.
      *
      */
     public getPostReactionsList<ThrowOnError extends boolean = false>(options: Options<GetPostReactionsListData, ThrowOnError>) {
@@ -1569,6 +1587,8 @@ export class UnipilePosts extends HeyApiClient {
      * List all Post's Comments
      *
      * Returns a list of post comments. The comments are returned sorted by their creation date, with the most recent appearing first.
+     * LIMITATIONS: On Facebook, the page size is set by Facebook: each page holds up to 10 comments whatever the `limit`. Use `next_cursor` to get more.
+     *
      */
     public getPostCommentsList<ThrowOnError extends boolean = false>(options: Options<GetPostCommentsListData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetPostCommentsListResponses, unknown, ThrowOnError>({
@@ -1581,7 +1601,8 @@ export class UnipilePosts extends HeyApiClient {
     /**
      * Add Comment to a Post
      *
-     * Adds a comment to a post.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+     * Adds a comment to a post.
+     * LIMITATIONS: On Facebook, a comment takes one image; an animated GIF file is published as a still image.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
      */
     public addPostComment<ThrowOnError extends boolean = false>(options: Options<AddPostCommentData, ThrowOnError>) {
         return (options.client ?? this.client).post<AddPostCommentResponses, unknown, ThrowOnError>({
@@ -1628,7 +1649,8 @@ export class UnipilePosts extends HeyApiClient {
     /**
      * Reply to a Comment
      *
-     * Replies to a particular comment.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+     * Replies to a particular comment.
+     * LIMITATIONS: On Facebook, a comment takes one image; an animated GIF file is published as a still image.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
      */
     public replyToComment<ThrowOnError extends boolean = false>(options: Options<ReplyToCommentData, ThrowOnError>) {
         return (options.client ?? this.client).post<ReplyToCommentResponses, unknown, ThrowOnError>({
@@ -1646,6 +1668,8 @@ export class UnipilePosts extends HeyApiClient {
      * List all Comment's Replies
      *
      * Returns the list of replies to a comment. The replies are returned sorted by their creation date, with the most recent appearing first.
+     * LIMITATIONS: On Facebook, the page size is set by Facebook: each page holds up to 10 replies whatever the `limit`. Use `next_cursor` to get more.
+     *
      */
     public getPostCommentRepliesList<ThrowOnError extends boolean = false>(options: Options<GetPostCommentRepliesListData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetPostCommentRepliesListResponses, unknown, ThrowOnError>({
@@ -1676,6 +1700,8 @@ export class UnipilePosts extends HeyApiClient {
      * List all Comment's Reactions
      *
      * Returns the list of reactions made to a comment. Reaction counts are given with the Comment object. This is useful to show a detailed list of all reactions and their author.
+     * LIMITATIONS: On Facebook, each page holds at most 10 reactions: a higher `limit` returns 10. Use `next_cursor` to get more.
+     *
      */
     public getPostCommentReactionsList<ThrowOnError extends boolean = false>(options: Options<GetPostCommentReactionsListData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetPostCommentReactionsListResponses, unknown, ThrowOnError>({
@@ -1706,6 +1732,8 @@ export class UnipilePosts extends HeyApiClient {
      * List all User Comments
      *
      * Returns the list of comments made by a user to posts. Use `me` as `user_id` to specify the owner of the connected account.
+     * LIMITATIONS: On Facebook, only the account itself (`me`) or one of its activated Pages can be listed, with at most 25 comments per page.
+     *
      */
     public getUserCommentsList<ThrowOnError extends boolean = false>(options: Options<GetUserCommentsListData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetUserCommentsListResponses, unknown, ThrowOnError>({
@@ -1719,6 +1747,8 @@ export class UnipilePosts extends HeyApiClient {
      * List all User Reactions
      *
      * Returns the list of reactions made by a user to posts. Use `me` as `user_id` to specify the owner of the connected account.
+     * LIMITATIONS: On Facebook, only the account itself (`me`) or one of its activated Pages can be listed, with at most 25 reactions per page.
+     *
      */
     public getUserReactionsList<ThrowOnError extends boolean = false>(options: Options<GetUserReactionsListData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetUserReactionsListResponses, unknown, ThrowOnError>({
@@ -2767,6 +2797,32 @@ export class UnipileLinkedIn extends HeyApiClient {
     }
     
     /**
+     * Sign Out of the Current Recruiter Session
+     *
+     * Signs out the current session for the selected LinkedIn Recruiter contract.
+     */
+    public signOutRecruiterSession<ThrowOnError extends boolean = false>(options: Options<SignOutRecruiterSessionData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SignOutRecruiterSessionResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/linkedin/recruiter/sessions/sign-out',
+            ...options
+        });
+    }
+    
+    /**
+     * Sign Out of Other Recruiter Sessions
+     *
+     * Signs out the other sessions for the selected LinkedIn Recruiter seat while preserving the current session. This can disconnect other browsers using the same seat. Use this endpoint to solve any session_conflict error you would get.
+     */
+    public signOutOtherRecruiterSessions<ThrowOnError extends boolean = false>(options: Options<SignOutOtherRecruiterSessionsData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SignOutOtherRecruiterSessionsResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/linkedin/recruiter/sessions/sign-out-others',
+            ...options
+        });
+    }
+    
+    /**
      * Perform Search from URL
      *
      * Returns a list of results from a LinkedIn Sales navigator search URL.
@@ -3106,7 +3162,7 @@ export class UnipileAccounts extends HeyApiClient {
     /**
      * Get an Account
      *
-     * Retrieve an Account.
+     * Retrieve an Account. After successful Hosted Auth authentication with initial sync waiting enabled, the consumed session can retrieve only its linked account until its polling deadline.
      */
     public getAccount<ThrowOnError extends boolean = false>(options: Options<GetAccountData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetAccountResponses, unknown, ThrowOnError>({
@@ -3142,6 +3198,19 @@ export class UnipileAccounts extends HeyApiClient {
         return (options?.client ?? this.client).get<ListAccountsResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/accounts/',
+            ...options
+        });
+    }
+    
+    /**
+     * Synchronize an Account
+     *
+     * Request a full history synchronization for an Account, including after an earlier synchronization completed. Currently supported for WhatsApp accounts. The response confirms that the request was sent; completion is asynchronous and the history returned depends on the provider. An active synchronization prevents another request until it completes or an error is detected.
+     */
+    public syncAccount<ThrowOnError extends boolean = false>(options: Options<SyncAccountData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SyncAccountResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/accounts/{account_id}/sync',
             ...options
         });
     }
