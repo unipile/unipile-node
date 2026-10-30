@@ -10906,7 +10906,7 @@ export type GetMessagesListResponses = {
                 subject: string;
             } | {
                 /**
-                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
                  */
                 interactive?: {
                     type: 'buttons' | 'template' | 'native_flow' | 'response';
@@ -11526,7 +11526,7 @@ export type GetMessagesListResponses = {
                  */
                 specifics?: {
                     /**
-                     * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                     * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
                      */
                     interactive?: {
                         type: 'buttons' | 'template' | 'native_flow' | 'response';
@@ -12028,7 +12028,7 @@ export type GetMessagesListResponses = {
                  */
                 specifics?: {
                     /**
-                     * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                     * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
                      */
                     interactive?: {
                         type: 'buttons' | 'template' | 'native_flow' | 'response';
@@ -12838,7 +12838,7 @@ export type GetMessageResponses = {
             subject: string;
         } | {
             /**
-             * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+             * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
              */
             interactive?: {
                 type: 'buttons' | 'template' | 'native_flow' | 'response';
@@ -13458,7 +13458,7 @@ export type GetMessageResponses = {
              */
             specifics?: {
                 /**
-                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
                  */
                 interactive?: {
                     type: 'buttons' | 'template' | 'native_flow' | 'response';
@@ -13960,7 +13960,7 @@ export type GetMessageResponses = {
              */
             specifics?: {
                 /**
-                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
                  */
                 interactive?: {
                     type: 'buttons' | 'template' | 'native_flow' | 'response';
