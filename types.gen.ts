@@ -916,6 +916,27 @@ export type GetChatsListResponses = {
                     length: number;
                 }>;
                 /**
+                 * List of the users mentioned in the message body. A mention the provider delivered as plain text is not listed.
+                 */
+                mentions: Array<{
+                    /**
+                     * ID of the mentioned user, which can be used to mention them when sending a message. Absent when the provider reports the mention without an identifier, or when the mention addresses the whole chat rather than a user.
+                     */
+                    user_id?: string;
+                    /**
+                     * Public profile URL of the mentioned user. Absent when the provider exposes no public profile for them.
+                     */
+                    url?: string;
+                    /**
+                     * The index in the body where the mention starts.
+                     */
+                    start: number;
+                    /**
+                     * The number of characters in the body that make up the mention, starting at the `start` index.
+                     */
+                    length: number;
+                }>;
+                /**
                  * The quoted message.
                  */
                 quoted?: {
@@ -2929,6 +2950,27 @@ export type GetInboxChatsListResponses = {
                     length: number;
                 }>;
                 /**
+                 * List of the users mentioned in the message body. A mention the provider delivered as plain text is not listed.
+                 */
+                mentions: Array<{
+                    /**
+                     * ID of the mentioned user, which can be used to mention them when sending a message. Absent when the provider reports the mention without an identifier, or when the mention addresses the whole chat rather than a user.
+                     */
+                    user_id?: string;
+                    /**
+                     * Public profile URL of the mentioned user. Absent when the provider exposes no public profile for them.
+                     */
+                    url?: string;
+                    /**
+                     * The index in the body where the mention starts.
+                     */
+                    start: number;
+                    /**
+                     * The number of characters in the body that make up the mention, starting at the `start` index.
+                     */
+                    length: number;
+                }>;
+                /**
                  * The quoted message.
                  */
                 quoted?: {
@@ -4881,6 +4923,27 @@ export type GetChatResponses = {
                 starts_at: number;
                 /**
                  * The number of characters in the body that make up the link, starting at the `starts_at` index.
+                 */
+                length: number;
+            }>;
+            /**
+             * List of the users mentioned in the message body. A mention the provider delivered as plain text is not listed.
+             */
+            mentions: Array<{
+                /**
+                 * ID of the mentioned user, which can be used to mention them when sending a message. Absent when the provider reports the mention without an identifier, or when the mention addresses the whole chat rather than a user.
+                 */
+                user_id?: string;
+                /**
+                 * Public profile URL of the mentioned user. Absent when the provider exposes no public profile for them.
+                 */
+                url?: string;
+                /**
+                 * The index in the body where the mention starts.
+                 */
+                start: number;
+                /**
+                 * The number of characters in the body that make up the mention, starting at the `start` index.
                  */
                 length: number;
             }>;
@@ -6921,6 +6984,27 @@ export type UpdateChatResponses = {
                 starts_at: number;
                 /**
                  * The number of characters in the body that make up the link, starting at the `starts_at` index.
+                 */
+                length: number;
+            }>;
+            /**
+             * List of the users mentioned in the message body. A mention the provider delivered as plain text is not listed.
+             */
+            mentions: Array<{
+                /**
+                 * ID of the mentioned user, which can be used to mention them when sending a message. Absent when the provider reports the mention without an identifier, or when the mention addresses the whole chat rather than a user.
+                 */
+                user_id?: string;
+                /**
+                 * Public profile URL of the mentioned user. Absent when the provider exposes no public profile for them.
+                 */
+                url?: string;
+                /**
+                 * The index in the body where the mention starts.
+                 */
+                start: number;
+                /**
+                 * The number of characters in the body that make up the mention, starting at the `start` index.
                  */
                 length: number;
             }>;
@@ -9313,6 +9397,27 @@ export type AcceptChatRequestResponses = {
                 length: number;
             }>;
             /**
+             * List of the users mentioned in the message body. A mention the provider delivered as plain text is not listed.
+             */
+            mentions: Array<{
+                /**
+                 * ID of the mentioned user, which can be used to mention them when sending a message. Absent when the provider reports the mention without an identifier, or when the mention addresses the whole chat rather than a user.
+                 */
+                user_id?: string;
+                /**
+                 * Public profile URL of the mentioned user. Absent when the provider exposes no public profile for them.
+                 */
+                url?: string;
+                /**
+                 * The index in the body where the mention starts.
+                 */
+                start: number;
+                /**
+                 * The number of characters in the body that make up the mention, starting at the `start` index.
+                 */
+                length: number;
+            }>;
+            /**
              * The quoted message.
              */
             quoted?: {
@@ -10890,6 +10995,27 @@ export type GetMessagesListResponses = {
                  */
                 length: number;
             }>;
+            /**
+             * List of the users mentioned in the message body. A mention the provider delivered as plain text is not listed.
+             */
+            mentions: Array<{
+                /**
+                 * ID of the mentioned user, which can be used to mention them when sending a message. Absent when the provider reports the mention without an identifier, or when the mention addresses the whole chat rather than a user.
+                 */
+                user_id?: string;
+                /**
+                 * Public profile URL of the mentioned user. Absent when the provider exposes no public profile for them.
+                 */
+                url?: string;
+                /**
+                 * The index in the body where the mention starts.
+                 */
+                start: number;
+                /**
+                 * The number of characters in the body that make up the mention, starting at the `start` index.
+                 */
+                length: number;
+            }>;
             specifics?: unknown & ({
                 /**
                  * The category of the message: a regular message, an email, a connection invitation, or an InMail lifecycle event.
@@ -10906,7 +11032,7 @@ export type GetMessagesListResponses = {
                 subject: string;
             } | {
                 /**
-                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
                  */
                 interactive?: {
                     type: 'buttons' | 'template' | 'native_flow' | 'response';
@@ -11526,7 +11652,7 @@ export type GetMessagesListResponses = {
                  */
                 specifics?: {
                     /**
-                     * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                     * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
                      */
                     interactive?: {
                         type: 'buttons' | 'template' | 'native_flow' | 'response';
@@ -12028,7 +12154,7 @@ export type GetMessagesListResponses = {
                  */
                 specifics?: {
                     /**
-                     * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                     * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
                      */
                     interactive?: {
                         type: 'buttons' | 'template' | 'native_flow' | 'response';
@@ -12822,6 +12948,27 @@ export type GetMessageResponses = {
              */
             length: number;
         }>;
+        /**
+         * List of the users mentioned in the message body. A mention the provider delivered as plain text is not listed.
+         */
+        mentions: Array<{
+            /**
+             * ID of the mentioned user, which can be used to mention them when sending a message. Absent when the provider reports the mention without an identifier, or when the mention addresses the whole chat rather than a user.
+             */
+            user_id?: string;
+            /**
+             * Public profile URL of the mentioned user. Absent when the provider exposes no public profile for them.
+             */
+            url?: string;
+            /**
+             * The index in the body where the mention starts.
+             */
+            start: number;
+            /**
+             * The number of characters in the body that make up the mention, starting at the `start` index.
+             */
+            length: number;
+        }>;
         specifics?: unknown & ({
             /**
              * The category of the message: a regular message, an email, a connection invitation, or an InMail lifecycle event.
@@ -12838,7 +12985,7 @@ export type GetMessageResponses = {
             subject: string;
         } | {
             /**
-             * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+             * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
              */
             interactive?: {
                 type: 'buttons' | 'template' | 'native_flow' | 'response';
@@ -13458,7 +13605,7 @@ export type GetMessageResponses = {
              */
             specifics?: {
                 /**
-                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
                  */
                 interactive?: {
                     type: 'buttons' | 'template' | 'native_flow' | 'response';
@@ -13960,7 +14107,7 @@ export type GetMessageResponses = {
              */
             specifics?: {
                 /**
-                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
                  */
                 interactive?: {
                     type: 'buttons' | 'template' | 'native_flow' | 'response';
@@ -14015,7 +14162,7 @@ export type GetMessageResponse = GetMessageResponses[keyof GetMessageResponses];
 export type SendMessageData = {
     body: {
         /**
-         * The textual content of first message to be sent. It's recommended not to use HTML or Markdown.
+         * The textual content of first message to be sent. It's recommended not to use HTML or Markdown. To mention a chat participant, write `@` followed by their user ID, as found in `sender_id` or the chat attendees: it is replaced with their name and notifies them where the provider supports mentions. A provider may still deliver the mention as plain text.
          */
         text: string;
         /**
@@ -14172,7 +14319,7 @@ export type ForwardMessageResponse = ForwardMessageResponses[keyof ForwardMessag
 export type ModifyMessageData = {
     body: {
         /**
-         * The new textual content of the message. It's recommended not to use HTML or Markdown.
+         * The new textual content of the message. It's recommended not to use HTML or Markdown. To mention a chat participant, write `@` followed by their user ID, as found in `sender_id` or the chat attendees: it is replaced with their name and notifies them where the provider supports mentions. A provider may still deliver the mention as plain text.
          */
         text: string;
     };
@@ -14928,6 +15075,27 @@ export type ModifyMessageResponses = {
             starts_at: number;
             /**
              * The number of characters in the body that make up the link, starting at the `starts_at` index.
+             */
+            length: number;
+        }>;
+        /**
+         * List of the users mentioned in the message body. A mention the provider delivered as plain text is not listed.
+         */
+        mentions: Array<{
+            /**
+             * ID of the mentioned user, which can be used to mention them when sending a message. Absent when the provider reports the mention without an identifier, or when the mention addresses the whole chat rather than a user.
+             */
+            user_id?: string;
+            /**
+             * Public profile URL of the mentioned user. Absent when the provider exposes no public profile for them.
+             */
+            url?: string;
+            /**
+             * The index in the body where the mention starts.
+             */
+            start: number;
+            /**
+             * The number of characters in the body that make up the mention, starting at the `start` index.
              */
             length: number;
         }>;
@@ -26762,6 +26930,74 @@ export type UnfollowUserResponses = {
 };
 
 export type UnfollowUserResponse = UnfollowUserResponses[keyof UnfollowUserResponses];
+
+export type BlockUserData = {
+    body?: never;
+    path: {
+        /**
+         * The ID of the User to block.
+         */
+        user_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/users/me/block/{user_id}';
+};
+
+export type BlockUserResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        object: 'UserBlocked';
+    };
+};
+
+export type BlockUserResponse = BlockUserResponses[keyof BlockUserResponses];
+
+export type UnblockUserData = {
+    body?: {
+        specifics?: unknown & {
+            /**
+             * LinkedIn
+             *
+             * Specific options to apply if the provider of the targeted account is Linkedin.
+             */
+            linkedin?: {
+                /**
+                 * The password of the account. LinkedIn asks for it on every unblock and rejects the operation without it. It is only forwarded to the provider and never stored.
+                 */
+                password: string;
+            };
+        };
+    };
+    path: {
+        /**
+         * The ID of the User to unblock.
+         */
+        user_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/users/me/unblock/{user_id}';
+};
+
+export type UnblockUserResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        object: 'UserUnblocked';
+    };
+};
+
+export type UnblockUserResponse = UnblockUserResponses[keyof UnblockUserResponses];
 
 export type GetPostsListData = {
     body?: never;
@@ -59960,6 +60196,664 @@ export type SearchLocationsResponses = {
 
 export type SearchLocationsResponse = SearchLocationsResponses[keyof SearchLocationsResponses];
 
+export type GetEmailCategoriesData = {
+    body?: never;
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/outlook/email-categories';
+};
+
+export type GetEmailCategoriesResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        data: Array<{
+            /**
+             * Object type identifier, always "EmailCategory".
+             */
+            object: 'OutlookEmailCategory';
+            /**
+             * The ID of the category for the provider.
+             */
+            id: string;
+            /**
+             * The name of the category. This is the value carried by the `categories` field of an email, and the value to pass when assigning categories to an email.
+             */
+            name: string;
+            /**
+             * The color identifier the provider assigns to the category, when one is set.
+             */
+            color?: string;
+        }>;
+        /**
+         * Total number of results if supported by the provider.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type GetEmailCategoriesResponse = GetEmailCategoriesResponses[keyof GetEmailCategoriesResponses];
+
+export type CreateEmailCategoryData = {
+    body: {
+        /**
+         * Name of the category. A category name is unique within a mailbox, so it must not already be used by another category.
+         */
+        name: string;
+        /**
+         * Color identifier to assign to the category. Outlook accepts `none` and `preset0` to `preset24`; any other value is rejected with an error listing the accepted values. Defaults to no color. See the <a href="https://learn.microsoft.com/en-us/graph/api/resources/outlookcategory#properties">color mapped to each preset</a>.
+         */
+        color?: string;
+    };
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/outlook/email-categories';
+};
+
+export type CreateEmailCategoryResponses = {
+    /**
+     * Default Response
+     */
+    201: {
+        /**
+         * Object type identifier, always "EmailCategory".
+         */
+        object: 'OutlookEmailCategory';
+        /**
+         * The ID of the category for the provider.
+         */
+        id: string;
+        /**
+         * The name of the category. This is the value carried by the `categories` field of an email, and the value to pass when assigning categories to an email.
+         */
+        name: string;
+        /**
+         * The color identifier the provider assigns to the category, when one is set.
+         */
+        color?: string;
+    };
+};
+
+export type CreateEmailCategoryResponse = CreateEmailCategoryResponses[keyof CreateEmailCategoryResponses];
+
+export type DeleteEmailCategoryData = {
+    body?: never;
+    path: {
+        /**
+         * Name of the Category to delete, as returned by the categories list endpoint.
+         */
+        category_name: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/outlook/email-categories/{category_name}';
+};
+
+export type DeleteEmailCategoryResponses = {
+    /**
+     * Default Response
+     */
+    204: void;
+};
+
+export type DeleteEmailCategoryResponse = DeleteEmailCategoryResponses[keyof DeleteEmailCategoryResponses];
+
+export type GetCategoryEmailsListData = {
+    body?: never;
+    path: {
+        /**
+         * Name of the Category to retrieve emails from, as carried by the emails themselves and returned by the categories list endpoint. A category name is unique within a mailbox.
+         */
+        category_name: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: {
+        /**
+         * Full-text search in the email subject and body (case-insensitive, partial match). Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). Combine with `from`, `to`, or `any_email` to narrow by participant address.
+         */
+        q?: string;
+        /**
+         * Speed up the response by only returning the email metadata. body and body_plain are empty strings, and attachments metadata is excluded.
+         */
+        meta_only?: boolean;
+        /**
+         * Return messages sent to the given email address. For Outlook, some messages matching this filter may be missing due to a provider limitation. Use `GET /threads/:thread_id` to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook).
+         */
+        to?: string;
+        /**
+         * Return messages sent from the given email address. For Outlook, some messages matching this filter may be missing due to a provider limitation. Use `GET /threads/:thread_id` to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook).
+         */
+        from?: string;
+        /**
+         * Return messages where at least one of the given comma-separated email addresses appears as a participant (from, to, cc, or bcc). For Outlook, some messages matching this filter may be missing due to a provider limitation. Use `GET /threads/:thread_id` to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook).
+         */
+        any_email?: string;
+        /**
+         * Filter to only return emails with or without attachments. For Outlook with `meta_only=true`, this uses the provider attachment flag, which excludes inline attachments.
+         */
+        has_attachment?: boolean;
+        /**
+         * Filter to only return starred or unstarred emails.
+         */
+        is_starred?: boolean;
+        /**
+         * Filter to only return unread or read emails.
+         */
+        is_unread?: boolean;
+        /**
+         * Filter to only return emails sent before the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
+         */
+        before?: string;
+        /**
+         * Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs.
+         */
+        exclude_folder?: string;
+        /**
+         * Filter to only return emails sent after the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
+         */
+        after?: string;
+        /**
+         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         */
+        offset?: number;
+        /**
+         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+         */
+        cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
+         */
+        limit?: number;
+    };
+    url: '/v2/{account_id}/outlook/email-categories/{category_name}/emails';
+};
+
+export type GetCategoryEmailsListResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        data: Array<{
+            object: 'Email';
+            /**
+             * The ID of the email.
+             */
+            id: string;
+            /**
+             * The Message-ID header value of the email. Use `id` in Unipile requests.
+             */
+            message_id: string;
+            /**
+             * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
+             */
+            thread_id?: string;
+            /**
+             * The complete body of the email: HTML when available, otherwise plain text. An empty string when the email has no body or meta_only=true.
+             */
+            body: string;
+            /**
+             * The complete plain-text body of the email. Uses the original plain-text version when available, otherwise text converted from HTML. For Outlook, text is converted from the HTML body returned by Microsoft Graph, or taken directly from its plain-text body. An empty string when the email has no body or meta_only=true.
+             */
+            body_plain: string;
+            /**
+             * A short preview of the email, not its complete plain-text body. Use body_plain for the full text.
+             */
+            snippet: string;
+            /**
+             * The subject of the email.
+             */
+            subject: string;
+            /**
+             * List of headers. A single email can sometimes have multiple headers with the same key name. Unipile adds all of the headers to the headers array without merging or de-duplicating the data. When the headers contain encoded data, Unipile adds it to the headers array without decoding it.
+             */
+            headers: Array<{
+                /**
+                 * Name of the header.
+                 */
+                name: string;
+                /**
+                 * Value of the header
+                 */
+                value: string;
+            }>;
+            /**
+             * The list of attendees that the email was sent from.
+             */
+            from?: Array<{
+                /**
+                 * The email address of the attendee.
+                 */
+                email: string;
+                /**
+                 * The display name of the attendee if any.
+                 */
+                display_name?: string;
+            }>;
+            /**
+             * The list of attendees that the email was sent to.
+             */
+            to?: Array<{
+                /**
+                 * The email address of the attendee.
+                 */
+                email: string;
+                /**
+                 * The display name of the attendee if any.
+                 */
+                display_name?: string;
+            }>;
+            /**
+             * The list of attendees that the email was CC'd to. An empty array when none are available.
+             */
+            cc: Array<{
+                /**
+                 * The email address of the attendee.
+                 */
+                email: string;
+                /**
+                 * The display name of the attendee if any.
+                 */
+                display_name?: string;
+            }>;
+            /**
+             * The list of attendees that the email was BCC'd to. An empty array when none are available.
+             */
+            bcc: Array<{
+                /**
+                 * The email address of the attendee.
+                 */
+                email: string;
+                /**
+                 * The display name of the attendee if any.
+                 */
+                display_name?: string;
+            }>;
+            /**
+             * The list of attendees that the replies should be sent to. An empty array when none are available.
+             */
+            reply_to: Array<{
+                /**
+                 * The email address of the attendee.
+                 */
+                email: string;
+                /**
+                 * The display name of the attendee if any.
+                 */
+                display_name?: string;
+            }>;
+            /**
+             * The date the email was sent. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            date: string;
+            /**
+             * The attachments of the email.
+             */
+            attachments: Array<{
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'audio';
+                /**
+                 * The duration of the audio in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The audio is a voice note (should be displayed differently)
+                 */
+                voice_note: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'img';
+                /**
+                 * The size of the image in pixels.
+                 */
+                size?: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The image is a sticker (should be displayed differently)
+                 */
+                sticker: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'video';
+                /**
+                 * The duration of the video in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The size of the video in pixels.
+                 */
+                size: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The video is a GIF (should be displayed differently)
+                 */
+                gif: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'file';
+                /**
+                 * The name of the file, including the extension.
+                 */
+                filename: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL of the shared content.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'shared_content';
+                /**
+                 * The type of content being shared.
+                 */
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
+                /**
+                 * The author of the shared content, if applicable.
+                 */
+                author?: string;
+                /**
+                 * A brief description of the shared content.
+                 */
+                description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+            }>;
+            /**
+             * The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email, excluding the UNREAD system label, which is exposed through is_unread instead.
+             */
+            folders: Array<string>;
+            /**
+             * List of categories assigned to the email.
+             */
+            categories?: Array<string>;
+            /**
+             * Is the email unread. For Gmail, this reflects the UNREAD system label.
+             */
+            is_unread: boolean;
+        }>;
+        /**
+         * Total number of results if supported by the provider.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type GetCategoryEmailsListResponse = GetCategoryEmailsListResponses[keyof GetCategoryEmailsListResponses];
+
 export type GetV2Data = {
     body?: never;
     path?: never;
@@ -60542,6 +61436,9 @@ export type ResendCheckpointResponses = {
 export type ResendCheckpointResponse = ResendCheckpointResponses[keyof ResendCheckpointResponses];
 
 export type StartAuthIntentData = {
+    /**
+     * Start provider authentication or connect an active browser session with UniLogin.
+     */
     body?: (({
         /**
          * The provider to authenticate with.
@@ -60690,7 +61587,7 @@ export type StartAuthIntentData = {
          */
         provider: 'whatsapp';
         /**
-         * The user credentials required by the provider to authenticate with.
+         * Choose QR code or pairing code authentication.
          */
         credentials: {
             /**
@@ -61049,7 +61946,9 @@ export type StartAuthIntentData = {
          */
         provider: 'telegram';
         /**
-         * The user credentials required by the provider to authenticate with.
+         * QR code
+         *
+         * Start authentication by scanning a QR code with the Telegram mobile app.
          */
         credentials: {
             /**
@@ -61140,11 +62039,19 @@ export type StartAuthIntentData = {
              * The password of the Instagram account.
              */
             password: string;
+            /**
+             * A custom user agent if you need the session to be started from a specific desktop browser. You can get it in the browser's console with `console.log(navigator.userAgent)`. In Hosted Auth, this is collected automatically from the user's browser. When reconnecting an Account, the user agent it already uses is kept.
+             */
+            user_agent?: string;
         } | {
             /**
              * The sessionid cookie value.
              */
             sessionid: string;
+            /**
+             * The exact user agent of the browser on which the session has been started. You can get it in the browser's console with `console.log(navigator.userAgent)`. In Hosted Auth, this is collected automatically from the user's browser. When reconnecting an Account, the user agent it already uses is kept.
+             */
+            user_agent?: string;
         };
         /**
          * Instagram specific configuration.
@@ -61254,7 +62161,7 @@ export type StartAuthIntentData = {
          */
         provider: 'facebook';
         /**
-         * The exact user agent of the browser used to retrieve the cookies. In Hosted Auth, this is collected automatically from the user's browser.
+         * The exact user agent of the browser used to retrieve the cookies. You can get it in the browser's console with `console.log(navigator.userAgent)`. In Hosted Auth, this is collected automatically from the user's browser. When reconnecting an Account, the user agent it already uses is kept.
          */
         user_agent?: string;
         /**
@@ -61438,7 +62345,7 @@ export type StartAuthIntentData = {
          */
         account_id?: string;
     } & {
-        unilogin?: unknown;
+        [key: string]: unknown;
     }) | {
         /**
          * The provider to connect with UniLogin.
@@ -64362,7 +65269,7 @@ export type ListWebhookConversationsData = {
         /**
          * Filter to return only conversations for events of the given type.
          */
-        event_type?: 'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new';
+        event_type?: 'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.update' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new' | 'blocked.new';
         /**
          * The delivery status of an event, based on its latest delivery attempt to the endpoint. `success` means the endpoint returned a 2xx HTTP status; `failed` means it returned another status or did not respond.
          */
@@ -64401,7 +65308,7 @@ export type ListWebhookConversationsResponses = {
             /**
              * The type of the event that was delivered.
              */
-            event_type: 'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new';
+            event_type: 'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.update' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new' | 'blocked.new';
             /**
              * The date and time at which the delivery attempt was made, in ISO 8601 format.
              */
@@ -64475,7 +65382,7 @@ export type ListWebhookEndpointsResponses = {
             enabled: boolean;
             description: string | null;
             url: string;
-            trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new'>;
+            trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.update' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new' | 'blocked.new'>;
             secret: string;
             object: 'WebhookEndpoint';
             id: string;
@@ -64513,7 +65420,7 @@ export type CreateWebhookEndpointData = {
          * The events that will trigger the webhook endpoint.
          * Refer to [Events Types](https://developer.unipile.com/v2.0/reference/event-types-1) to see the list of available values.
          */
-        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new'>;
+        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.update' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new' | 'blocked.new'>;
         /**
          * Restrict the webhook to specific accounts. Leave empty or omit the field to listen to events from every account in the application.
          */
@@ -64540,7 +65447,7 @@ export type CreateWebhookEndpointResponses = {
         enabled: boolean;
         description: string | null;
         url: string;
-        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new'>;
+        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.update' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new' | 'blocked.new'>;
         secret: string;
         object: 'WebhookEndpoint';
         id: string;
@@ -64613,7 +65520,7 @@ export type GetWebhookEndpointResponses = {
         enabled: boolean;
         description: string | null;
         url: string;
-        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new'>;
+        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.update' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new' | 'blocked.new'>;
         secret: string;
         object: 'WebhookEndpoint';
         id: string;
@@ -64649,7 +65556,7 @@ export type UpdateWebhookEndpointData = {
          * The events that will trigger the webhook endpoint.
          * Refer to [Events Types](https://developer.unipile.com/v2.0/reference/event-types-1) to see the list of available values.
          */
-        trigger_events?: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new'>;
+        trigger_events?: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.update' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new' | 'blocked.new'>;
         /**
          * Restrict the webhook to specific accounts. Leave empty or omit the field to listen to events from every account in the application.
          */
@@ -64685,7 +65592,7 @@ export type UpdateWebhookEndpointResponses = {
         enabled: boolean;
         description: string | null;
         url: string;
-        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new'>;
+        trigger_events: Array<'account.status.disconnected' | 'account.status.running' | 'account.status.errored' | 'account.status.degraded' | 'account.status.partial' | 'account.locked' | 'account.unlocked' | 'account.add' | 'account.reconnect' | 'account.remove' | 'account.initial_sync.running' | 'account.initial_sync.failed' | 'account.initial_sync.completed' | 'message.new' | 'message.update' | 'message.delete' | 'message.receipt.read' | 'message.receipt.delivery' | 'message.reaction.new' | 'message.reaction.delete' | 'chat.delete' | 'chat.update' | 'email.new' | 'email.new.bounce' | 'email.update' | 'email.delete' | 'email.draft.new' | 'email.draft.delete' | 'email.folder.create' | 'email.folder.update' | 'email.folder.delete' | 'calendar.create' | 'calendar.update' | 'calendar.delete' | 'calendar.event.new' | 'calendar.event.update' | 'calendar.event.delete' | 'tracking.open' | 'tracking.click' | 'relation.new' | 'follower.new' | 'blocked.new'>;
         secret: string;
         object: 'WebhookEndpoint';
         id: string;
