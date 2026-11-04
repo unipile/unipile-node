@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { AcceptChatRequestData, AcceptChatRequestResponses, AcceptRelationRequestData, AcceptRelationRequestResponses, AddMessageReactionData, AddMessageReactionResponses, AddParticipantData, AddParticipantResponses, AddPostCommentData, AddPostCommentReactionData, AddPostCommentReactionResponses, AddPostCommentResponses, AddPostReactionData, AddPostReactionResponses, BrowseSalesAccountListData, BrowseSalesAccountListResponses, BrowseSalesLeadListData, BrowseSalesLeadListResponses, CancelCalendarEventData, CancelCalendarEventResponses, CancelRelationRequestData, CancelRelationRequestResponses, CloseClassicJobPostingData, CloseClassicJobPostingResponses, CloseRecruiterJobPostingData, CloseRecruiterJobPostingResponses, CreateApiKeyData, CreateApiKeyResponses, CreateAuthLinkData, CreateAuthLinkResponses, CreateCalendarData, CreateCalendarEventData, CreateCalendarEventResponses, CreateCalendarResponses, CreateClassicJobPostingDraftData, CreateClassicJobPostingDraftResponses, CreateDraftData, CreateDraftResponses, CreateFolderData, CreateFolderResponses, CreatePostData, CreatePostResponses, CreateRecruiterHiringProjectData, CreateRecruiterHiringProjectResponses, CreateRecruiterJobPostingDraftInExistingProjectData, CreateRecruiterJobPostingDraftInExistingProjectResponses, CreateRecruiterJobPostingDraftInNewProjectData, CreateRecruiterJobPostingDraftInNewProjectResponses, CreateRelationRequestData, CreateRelationRequestResponses, CreateScopeData, CreateScopeResponses, CreateStoryData, CreateStoryResponses, CreateWebhookEndpointData, CreateWebhookEndpointResponses, DeleteApiKeyData, DeleteApiKeyResponses, DeleteCalendarData, DeleteCalendarEventData, DeleteCalendarEventResponses, DeleteCalendarResponses, DeleteChatData, DeleteChatResponses, DeleteDraftData, DeleteDraftResponses, DeleteFolderData, DeleteFolderResponses, DeleteMessageData, DeleteMessageResponses, DeletePostCommentData, DeletePostCommentResponses, DeletePostData, DeletePostResponses, DeleteRelationData, DeleteRelationResponses, DeleteScopeData, DeleteScopeResponses, DeleteWebhookEndpointData, DeleteWebhookEndpointResponses, EditClassicJobPostingData, EditClassicJobPostingResponses, EditRecruiterHiringProjectData, EditRecruiterHiringProjectResponses, EditRecruiterJobPostingData, EditRecruiterJobPostingResponses, EndorseClassicMemberSkillData, EndorseClassicMemberSkillResponses, FollowUserData, FollowUserResponses, ForwardMessageData, ForwardMessageResponses, GetAccountData, GetAccountResponses, GetAttachment1Data, GetAttachment1Responses, GetAttachmentData, GetAttachmentResponses, GetAvailableContractsData, GetAvailableContractsResponses, GetCalendarData, GetCalendarEventData, GetCalendarEventListData, GetCalendarEventListResponses, GetCalendarEventResponses, GetCalendarResponses, GetCalendarsListData, GetCalendarsListResponses, GetChatData, GetChatPictureData, GetChatPictureResponses, GetChatResponses, GetChatsListData, GetChatsListResponses, GetClassicApplicantByIdData, GetClassicApplicantByIdResponses, GetClassicApplicantResumeData, GetClassicApplicantResumeResponses, GetClassicApplicantsData, GetClassicApplicantsResponses, GetClassicCompanyProfileData, GetClassicCompanyProfileResponses, GetClassicJobPostingBudgetData, GetClassicJobPostingBudgetResponses, GetClassicJobPostingData, GetClassicJobPostingResponses, GetClassicSearchParametersData, GetClassicSearchParametersResponses, GetCompanyFollowInvitationCreditsData, GetCompanyFollowInvitationCreditsResponses, GetContactsListData, GetContactsListResponses, GetDraftData, GetDraftResponses, GetDraftsListData, GetDraftsListResponses, GetEmailData, GetEmailResponses, GetEmailSendersData, GetEmailSendersResponses, GetEmailsListData, GetEmailsListResponses, GetFolderData, GetFolderEmailsListData, GetFolderEmailsListResponses, GetFolderResponses, GetFoldersListData, GetFoldersListResponses, GetInboxChatsListData, GetInboxChatsListResponses, GetInboxesListData, GetInboxesListResponses, GetInmailCreditsData, GetInmailCreditsResponses, GetManagedCompanyPagesData, GetManagedCompanyPagesResponses, GetMessageData, GetMessageReactionsListData, GetMessageReactionsListResponses, GetMessageResponses, GetMessagesListData, GetMessagesListResponses, GetParticipantsListData, GetParticipantsListResponses, GetPostCommentReactionsListData, GetPostCommentReactionsListResponses, GetPostCommentRepliesListData, GetPostCommentRepliesListResponses, GetPostCommentsListData, GetPostCommentsListResponses, GetPostData, GetPostReactionsListData, GetPostReactionsListResponses, GetPostResponses, GetPostsListData, GetPostsListResponses, GetProfileViewsData, GetProfileViewsResponses, GetRecruiterApplicantByIdData, GetRecruiterApplicantByIdResponses, GetRecruiterApplicantResumeData, GetRecruiterApplicantResumeResponses, GetRecruiterHiringProjectData, GetRecruiterHiringProjectListData, GetRecruiterHiringProjectListResponses, GetRecruiterHiringProjectResponses, GetRecruiterJobPostingBudgetData, GetRecruiterJobPostingBudgetResponses, GetRecruiterJobPostingByIdData, GetRecruiterJobPostingByIdResponses, GetRecruiterJobPostingByProjectIdData, GetRecruiterJobPostingByProjectIdResponses, GetRecruiterJobPostingListData, GetRecruiterJobPostingListResponses, GetRecruiterJobSlotsCreditsData, GetRecruiterJobSlotsCreditsResponses, GetRecruiterPipelineCandidatesData, GetRecruiterPipelineCandidatesResponses, GetRecruiterSearchParametersData, GetRecruiterSearchParametersResponses, GetRecruiterTalentPoolApplicantsData, GetRecruiterTalentPoolApplicantsResponses, GetRelationRequestsListData, GetRelationRequestsListResponses, GetSalesAccountListsData, GetSalesAccountListsResponses, GetSalesLeadListsData, GetSalesLeadListsResponses, GetSalesSearchParametersData, GetSalesSearchParametersResponses, GetScopeData, GetScopeResponses, GetThreadData, GetThreadResponses, GetUserChatData, GetUserChatResponses, GetUserCommentsListData, GetUserCommentsListResponses, GetUserPictureData, GetUserPictureResponses, GetUserPresenceData, GetUserPresenceResponses, GetUserProfileData, GetUserProfileResponses, GetUserReactionsListData, GetUserReactionsListResponses, GetUserRelationsData, GetUserRelationsResponses, GetV2Data, GetV2Responses, GetWebhookEndpointData, GetWebhookEndpointResponses, ListAccountsData, ListAccountsResponses, ListApiKeysData, ListApiKeysResponses, ListClassicUserJobPostingsData, ListClassicUserJobPostingsResponses, ListScopesData, ListScopesResponses, ListUserFollowersData, ListUserFollowersResponses, ListUserFollowingData, ListUserFollowingResponses, ListWebhookConversationsData, ListWebhookConversationsResponses, ListWebhookEndpointsData, ListWebhookEndpointsResponses, ModifyEmailData, ModifyEmailResponses, ModifyMessageData, ModifyMessageResponses, PerformClassicCompaniesSearchData, PerformClassicCompaniesSearchResponses, PerformClassicJobsSearchData, PerformClassicJobsSearchResponses, PerformClassicPeopleSearchData, PerformClassicPeopleSearchResponses, PerformClassicPostsSearchData, PerformClassicPostsSearchResponses, PerformClassicSearchFromUrlData, PerformClassicSearchFromUrlResponses, PerformRecruiterPeopleSearchData, PerformRecruiterPeopleSearchFromTalentPoolData, PerformRecruiterPeopleSearchFromTalentPoolResponses, PerformRecruiterPeopleSearchResponses, PerformRecruiterSearchFromUrlData, PerformRecruiterSearchFromUrlResponses, PerformSalesCompaniesSearchData, PerformSalesCompaniesSearchResponses, PerformSalesPeopleSearchData, PerformSalesPeopleSearchResponses, PerformSalesSearchFromUrlData, PerformSalesSearchFromUrlResponses, PinMessageData, PinMessageResponses, ProxyRequestData, ProxyRequestResponses, PublishClassicJobPostingData, PublishClassicJobPostingResponses, PublishRecruiterJobPostingData, PublishRecruiterJobPostingResponses, ReadEmailData, ReadEmailResponses, ReadMessageData, ReadMessageResponses, RemoveAccountData, RemoveAccountResponses, RemoveMessageReactionData, RemoveMessageReactionResponses, RemoveParticipantData, RemoveParticipantResponses, RemovePostCommentReactionData, RemovePostCommentReactionResponses, RemovePostReactionData, RemovePostReactionResponses, ReplayWebhookEventData, ReplayWebhookEventResponses, ReplyToCommentData, ReplyToCommentResponses, RequestCheckpointData, RequestCheckpointResponses, ResendCheckpointData, ResendCheckpointResponses, RestoreCalendarEventData, RestoreCalendarEventResponses, SaveRecruiterCandidateToPipelineData, SaveRecruiterCandidateToPipelineResponses, SaveSalesAccountToListData, SaveSalesAccountToListResponses, SaveSalesLeadToListData, SaveSalesLeadToListResponses, SearchLocationsData, SearchLocationsResponses, SelectContractData, SelectContractResponses, SendCompanyFollowInvitationData, SendCompanyFollowInvitationResponses, SendDraftData, SendDraftResponses, SendEmailData, SendEmailResponses, SendMessageData, SendMessageResponses, SetCalendarEventRsvpData, SetCalendarEventRsvpResponses, SetComposingStatusData, SetComposingStatusResponses, SetPresenceData, SetPresenceResponses, SignOutOtherRecruiterSessionsData, SignOutOtherRecruiterSessionsResponses, SignOutRecruiterSessionData, SignOutRecruiterSessionResponses, SolveCheckpointData, SolveCheckpointResponses, StartAuthIntentData, StartAuthIntentResponses, StartChatData, StartChatFromInboxData, StartChatFromInboxResponses, StartChatResponses, SubmitClassicCompanyOtpCodeData, SubmitClassicCompanyOtpCodeResponses, SubmitRecruiterOtpCodeData, SubmitRecruiterOtpCodeResponses, SyncAccountData, SyncAccountResponses, TrashEmailData, TrashEmailResponses, UnfollowUserData, UnfollowUserResponses, UnreadEmailData, UnreadEmailResponses, UpdateAccountData, UpdateAccountResponses, UpdateCalendarData, UpdateCalendarEventData, UpdateCalendarEventResponses, UpdateCalendarResponses, UpdateChatData, UpdateChatResponses, UpdateDraftData, UpdateDraftResponses, UpdateFolderData, UpdateFolderResponses, UpdatePostCommentData, UpdatePostCommentResponses, UpdatePostData, UpdatePostResponses, UpdateScopeData, UpdateScopeResponses, UpdateUserProfileData, UpdateUserProfileResponses, UpdateWebhookEndpointData, UpdateWebhookEndpointResponses, VerifyClassicCompanyMemberIdentityData, VerifyClassicCompanyMemberIdentityResponses, VerifyRecruiterCompanyMemberIdentityData, VerifyRecruiterCompanyMemberIdentityResponses, VisitUserProfileData, VisitUserProfileResponses } from './types.gen';
+import type { AcceptChatRequestData, AcceptChatRequestResponses, AcceptRelationRequestData, AcceptRelationRequestResponses, AddMessageReactionData, AddMessageReactionResponses, AddParticipantData, AddParticipantResponses, AddPostCommentData, AddPostCommentReactionData, AddPostCommentReactionResponses, AddPostCommentResponses, AddPostReactionData, AddPostReactionResponses, BlockUserData, BlockUserResponses, BrowseSalesAccountListData, BrowseSalesAccountListResponses, BrowseSalesLeadListData, BrowseSalesLeadListResponses, CancelCalendarEventData, CancelCalendarEventResponses, CancelRelationRequestData, CancelRelationRequestResponses, CloseClassicJobPostingData, CloseClassicJobPostingResponses, CloseRecruiterJobPostingData, CloseRecruiterJobPostingResponses, CreateApiKeyData, CreateApiKeyResponses, CreateAuthLinkData, CreateAuthLinkResponses, CreateCalendarData, CreateCalendarEventData, CreateCalendarEventResponses, CreateCalendarResponses, CreateClassicJobPostingDraftData, CreateClassicJobPostingDraftResponses, CreateDraftData, CreateDraftResponses, CreateEmailCategoryData, CreateEmailCategoryResponses, CreateFolderData, CreateFolderResponses, CreatePostData, CreatePostResponses, CreateRecruiterHiringProjectData, CreateRecruiterHiringProjectResponses, CreateRecruiterJobPostingDraftInExistingProjectData, CreateRecruiterJobPostingDraftInExistingProjectResponses, CreateRecruiterJobPostingDraftInNewProjectData, CreateRecruiterJobPostingDraftInNewProjectResponses, CreateRelationRequestData, CreateRelationRequestResponses, CreateScopeData, CreateScopeResponses, CreateStoryData, CreateStoryResponses, CreateWebhookEndpointData, CreateWebhookEndpointResponses, DeleteApiKeyData, DeleteApiKeyResponses, DeleteCalendarData, DeleteCalendarEventData, DeleteCalendarEventResponses, DeleteCalendarResponses, DeleteChatData, DeleteChatResponses, DeleteDraftData, DeleteDraftResponses, DeleteEmailCategoryData, DeleteEmailCategoryResponses, DeleteFolderData, DeleteFolderResponses, DeleteMessageData, DeleteMessageResponses, DeletePostCommentData, DeletePostCommentResponses, DeletePostData, DeletePostResponses, DeleteRelationData, DeleteRelationResponses, DeleteScopeData, DeleteScopeResponses, DeleteWebhookEndpointData, DeleteWebhookEndpointResponses, EditClassicJobPostingData, EditClassicJobPostingResponses, EditRecruiterHiringProjectData, EditRecruiterHiringProjectResponses, EditRecruiterJobPostingData, EditRecruiterJobPostingResponses, EndorseClassicMemberSkillData, EndorseClassicMemberSkillResponses, FollowUserData, FollowUserResponses, ForwardMessageData, ForwardMessageResponses, GetAccountData, GetAccountResponses, GetAttachment1Data, GetAttachment1Responses, GetAttachmentData, GetAttachmentResponses, GetAvailableContractsData, GetAvailableContractsResponses, GetCalendarData, GetCalendarEventData, GetCalendarEventListData, GetCalendarEventListResponses, GetCalendarEventResponses, GetCalendarResponses, GetCalendarsListData, GetCalendarsListResponses, GetCategoryEmailsListData, GetCategoryEmailsListResponses, GetChatData, GetChatPictureData, GetChatPictureResponses, GetChatResponses, GetChatsListData, GetChatsListResponses, GetClassicApplicantByIdData, GetClassicApplicantByIdResponses, GetClassicApplicantResumeData, GetClassicApplicantResumeResponses, GetClassicApplicantsData, GetClassicApplicantsResponses, GetClassicCompanyProfileData, GetClassicCompanyProfileResponses, GetClassicJobPostingBudgetData, GetClassicJobPostingBudgetResponses, GetClassicJobPostingData, GetClassicJobPostingResponses, GetClassicSearchParametersData, GetClassicSearchParametersResponses, GetCompanyFollowInvitationCreditsData, GetCompanyFollowInvitationCreditsResponses, GetContactsListData, GetContactsListResponses, GetDraftData, GetDraftResponses, GetDraftsListData, GetDraftsListResponses, GetEmailCategoriesData, GetEmailCategoriesResponses, GetEmailData, GetEmailResponses, GetEmailSendersData, GetEmailSendersResponses, GetEmailsListData, GetEmailsListResponses, GetFolderData, GetFolderEmailsListData, GetFolderEmailsListResponses, GetFolderResponses, GetFoldersListData, GetFoldersListResponses, GetInboxChatsListData, GetInboxChatsListResponses, GetInboxesListData, GetInboxesListResponses, GetInmailCreditsData, GetInmailCreditsResponses, GetManagedCompanyPagesData, GetManagedCompanyPagesResponses, GetMessageData, GetMessageReactionsListData, GetMessageReactionsListResponses, GetMessageResponses, GetMessagesListData, GetMessagesListResponses, GetParticipantsListData, GetParticipantsListResponses, GetPostCommentReactionsListData, GetPostCommentReactionsListResponses, GetPostCommentRepliesListData, GetPostCommentRepliesListResponses, GetPostCommentsListData, GetPostCommentsListResponses, GetPostData, GetPostReactionsListData, GetPostReactionsListResponses, GetPostResponses, GetPostsListData, GetPostsListResponses, GetProfileViewsData, GetProfileViewsResponses, GetRecruiterApplicantByIdData, GetRecruiterApplicantByIdResponses, GetRecruiterApplicantResumeData, GetRecruiterApplicantResumeResponses, GetRecruiterHiringProjectData, GetRecruiterHiringProjectListData, GetRecruiterHiringProjectListResponses, GetRecruiterHiringProjectResponses, GetRecruiterJobPostingBudgetData, GetRecruiterJobPostingBudgetResponses, GetRecruiterJobPostingByIdData, GetRecruiterJobPostingByIdResponses, GetRecruiterJobPostingByProjectIdData, GetRecruiterJobPostingByProjectIdResponses, GetRecruiterJobPostingListData, GetRecruiterJobPostingListResponses, GetRecruiterJobSlotsCreditsData, GetRecruiterJobSlotsCreditsResponses, GetRecruiterPipelineCandidatesData, GetRecruiterPipelineCandidatesResponses, GetRecruiterSearchParametersData, GetRecruiterSearchParametersResponses, GetRecruiterTalentPoolApplicantsData, GetRecruiterTalentPoolApplicantsResponses, GetRelationRequestsListData, GetRelationRequestsListResponses, GetSalesAccountListsData, GetSalesAccountListsResponses, GetSalesLeadListsData, GetSalesLeadListsResponses, GetSalesSearchParametersData, GetSalesSearchParametersResponses, GetScopeData, GetScopeResponses, GetThreadData, GetThreadResponses, GetUserChatData, GetUserChatResponses, GetUserCommentsListData, GetUserCommentsListResponses, GetUserPictureData, GetUserPictureResponses, GetUserPresenceData, GetUserPresenceResponses, GetUserProfileData, GetUserProfileResponses, GetUserReactionsListData, GetUserReactionsListResponses, GetUserRelationsData, GetUserRelationsResponses, GetV2Data, GetV2Responses, GetWebhookEndpointData, GetWebhookEndpointResponses, ListAccountsData, ListAccountsResponses, ListApiKeysData, ListApiKeysResponses, ListClassicUserJobPostingsData, ListClassicUserJobPostingsResponses, ListScopesData, ListScopesResponses, ListUserFollowersData, ListUserFollowersResponses, ListUserFollowingData, ListUserFollowingResponses, ListWebhookConversationsData, ListWebhookConversationsResponses, ListWebhookEndpointsData, ListWebhookEndpointsResponses, ModifyEmailData, ModifyEmailResponses, ModifyMessageData, ModifyMessageResponses, PerformClassicCompaniesSearchData, PerformClassicCompaniesSearchResponses, PerformClassicJobsSearchData, PerformClassicJobsSearchResponses, PerformClassicPeopleSearchData, PerformClassicPeopleSearchResponses, PerformClassicPostsSearchData, PerformClassicPostsSearchResponses, PerformClassicSearchFromUrlData, PerformClassicSearchFromUrlResponses, PerformRecruiterPeopleSearchData, PerformRecruiterPeopleSearchFromTalentPoolData, PerformRecruiterPeopleSearchFromTalentPoolResponses, PerformRecruiterPeopleSearchResponses, PerformRecruiterSearchFromUrlData, PerformRecruiterSearchFromUrlResponses, PerformSalesCompaniesSearchData, PerformSalesCompaniesSearchResponses, PerformSalesPeopleSearchData, PerformSalesPeopleSearchResponses, PerformSalesSearchFromUrlData, PerformSalesSearchFromUrlResponses, PinMessageData, PinMessageResponses, ProxyRequestData, ProxyRequestResponses, PublishClassicJobPostingData, PublishClassicJobPostingResponses, PublishRecruiterJobPostingData, PublishRecruiterJobPostingResponses, ReadEmailData, ReadEmailResponses, ReadMessageData, ReadMessageResponses, RemoveAccountData, RemoveAccountResponses, RemoveMessageReactionData, RemoveMessageReactionResponses, RemoveParticipantData, RemoveParticipantResponses, RemovePostCommentReactionData, RemovePostCommentReactionResponses, RemovePostReactionData, RemovePostReactionResponses, ReplayWebhookEventData, ReplayWebhookEventResponses, ReplyToCommentData, ReplyToCommentResponses, RequestCheckpointData, RequestCheckpointResponses, ResendCheckpointData, ResendCheckpointResponses, RestoreCalendarEventData, RestoreCalendarEventResponses, SaveRecruiterCandidateToPipelineData, SaveRecruiterCandidateToPipelineResponses, SaveSalesAccountToListData, SaveSalesAccountToListResponses, SaveSalesLeadToListData, SaveSalesLeadToListResponses, SearchLocationsData, SearchLocationsResponses, SelectContractData, SelectContractResponses, SendCompanyFollowInvitationData, SendCompanyFollowInvitationResponses, SendDraftData, SendDraftResponses, SendEmailData, SendEmailResponses, SendMessageData, SendMessageResponses, SetCalendarEventRsvpData, SetCalendarEventRsvpResponses, SetComposingStatusData, SetComposingStatusResponses, SetPresenceData, SetPresenceResponses, SignOutOtherRecruiterSessionsData, SignOutOtherRecruiterSessionsResponses, SignOutRecruiterSessionData, SignOutRecruiterSessionResponses, SolveCheckpointData, SolveCheckpointResponses, StartAuthIntentData, StartAuthIntentResponses, StartChatData, StartChatFromInboxData, StartChatFromInboxResponses, StartChatResponses, SubmitClassicCompanyOtpCodeData, SubmitClassicCompanyOtpCodeResponses, SubmitRecruiterOtpCodeData, SubmitRecruiterOtpCodeResponses, SyncAccountData, SyncAccountResponses, TrashEmailData, TrashEmailResponses, UnblockUserData, UnblockUserResponses, UnfollowUserData, UnfollowUserResponses, UnreadEmailData, UnreadEmailResponses, UpdateAccountData, UpdateAccountResponses, UpdateCalendarData, UpdateCalendarEventData, UpdateCalendarEventResponses, UpdateCalendarResponses, UpdateChatData, UpdateChatResponses, UpdateDraftData, UpdateDraftResponses, UpdateFolderData, UpdateFolderResponses, UpdatePostCommentData, UpdatePostCommentResponses, UpdatePostData, UpdatePostResponses, UpdateScopeData, UpdateScopeResponses, UpdateUserProfileData, UpdateUserProfileResponses, UpdateWebhookEndpointData, UpdateWebhookEndpointResponses, VerifyClassicCompanyMemberIdentityData, VerifyClassicCompanyMemberIdentityResponses, VerifyRecruiterCompanyMemberIdentityData, VerifyRecruiterCompanyMemberIdentityResponses, VisitUserProfileData, VisitUserProfileResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -232,7 +232,7 @@ class HeyApiRegistry8<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileDefault()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileOutlook()" to fix this error.`);
         }
         return instance;
     }
@@ -260,7 +260,7 @@ class HeyApiRegistry9<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileCustomAuth()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileDefault()" to fix this error.`);
         }
         return instance;
     }
@@ -288,7 +288,7 @@ class HeyApiRegistry10<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileHostedAuth()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileCustomAuth()" to fix this error.`);
         }
         return instance;
     }
@@ -316,7 +316,7 @@ class HeyApiRegistry11<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileAccounts()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileHostedAuth()" to fix this error.`);
         }
         return instance;
     }
@@ -344,7 +344,7 @@ class HeyApiRegistry12<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileApiKeys()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileAccounts()" to fix this error.`);
         }
         return instance;
     }
@@ -372,7 +372,7 @@ class HeyApiRegistry13<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileScopes()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileApiKeys()" to fix this error.`);
         }
         return instance;
     }
@@ -393,6 +393,34 @@ class HeyApiClient14 {
 }
 
 class HeyApiRegistry14<T> {
+    private readonly defaultKey = 'default';
+    
+    private readonly instances: Map<string, T> = new Map();
+    
+    get(key?: string): T {
+        const instance = this.instances.get(key ?? this.defaultKey);
+        if (!instance) {
+            throw new Error(`No SDK client found. Create one with "new UnipileScopes()" to fix this error.`);
+        }
+        return instance;
+    }
+    
+    set(value: T, key?: string): void {
+        this.instances.set(key ?? this.defaultKey, value);
+    }
+}
+
+class HeyApiClient15 {
+    protected client: Client;
+    
+    constructor(args?: {
+        client?: Client;
+    }) {
+        this.client = args?.client ?? client;
+    }
+}
+
+class HeyApiRegistry15<T> {
     private readonly defaultKey = 'default';
     
     private readonly instances: Map<string, T> = new Map();
@@ -1411,6 +1439,37 @@ export class UnipileUsers extends HeyApiClient {
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/users/me/unfollow/{user_id}',
             ...options
+        });
+    }
+    
+    /**
+     * Block a User
+     *
+     * Blocks a user on behalf of the account owner. A blocked User can no longer contact the account owner. Blocking an already blocked User has no effect. The `is_blocked` field of the User profile reflects the result.
+     */
+    public blockUser<ThrowOnError extends boolean = false>(options: Options<BlockUserData, ThrowOnError>) {
+        return (options.client ?? this.client).post<BlockUserResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/users/me/block/{user_id}',
+            ...options
+        });
+    }
+    
+    /**
+     * Unblock a User
+     *
+     * Unblocks a user previously blocked by the account owner. Unblocking a User that is not blocked has no effect. The `is_blocked` field of the User profile reflects the result.
+     * LIMITATIONS: On LinkedIn, the password of the account must be provided in the specifics and the same User cannot be blocked again for 48 hours.
+     */
+    public unblockUser<ThrowOnError extends boolean = false>(options: Options<UnblockUserData, ThrowOnError>) {
+        return (options.client ?? this.client).post<UnblockUserResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/users/me/unblock/{user_id}',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
         });
     }
     
@@ -3006,8 +3065,76 @@ export class UnipileInstagram extends HeyApiClient {
     }
 }
 
+export class UnipileOutlook extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry8<UnipileOutlook>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipileOutlook.__registry.set(this, args?.key);
+    }
+    
+    /**
+     * List email categories
+     *
+     * Returns the categories defined in the account mailbox, so you can discover the valid values to assign to an email through the `categories` field. Categories are a mailbox-wide list, independent from folders: assigning one does not move the email. Subscribe to the `email.update` webhook event to be notified when the categories of an email change.
+     */
+    public getEmailCategories<ThrowOnError extends boolean = false>(options: Options<GetEmailCategoriesData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetEmailCategoriesResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/outlook/email-categories',
+            ...options
+        });
+    }
+    
+    /**
+     * Create an email category
+     *
+     * Creates a new category in the account mailbox, which can then be assigned to emails through the `categories` field. A category name is unique within a mailbox: creating one with a name already in use returns a conflict.
+     */
+    public createEmailCategory<ThrowOnError extends boolean = false>(options: Options<CreateEmailCategoryData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateEmailCategoryResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/outlook/email-categories',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Delete an email category
+     *
+     * Deletes the specific category from the account mailbox. Emails already carrying it keep the category name, which is no longer part of the mailbox list.
+     */
+    public deleteEmailCategory<ThrowOnError extends boolean = false>(options: Options<DeleteEmailCategoryData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<DeleteEmailCategoryResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/outlook/email-categories/{category_name}',
+            ...options
+        });
+    }
+    
+    /**
+     * List category Emails
+     *
+     * Returns a list of emails carrying the specific category, across all the folders of the account mailbox. Emails are returned sorted by their `date`, with the most recent appearing first. Search mode applies when `q`, `from`, `to`, or `any_email` is set. Filter mode applies for browse-only queries (dates, folder scope, read/starred/attachment status).
+     */
+    public getCategoryEmailsList<ThrowOnError extends boolean = false>(options: Options<GetCategoryEmailsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetCategoryEmailsListResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/outlook/email-categories/{category_name}/emails',
+            ...options
+        });
+    }
+}
+
 export class UnipileDefault extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry8<UnipileDefault>();
+    public static readonly __registry = new HeyApiRegistry9<UnipileDefault>();
     
     constructor(args?: {
         client?: Client;
@@ -3027,7 +3154,7 @@ export class UnipileDefault extends HeyApiClient {
 }
 
 export class UnipileCustomAuth extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry9<UnipileCustomAuth>();
+    public static readonly __registry = new HeyApiRegistry10<UnipileCustomAuth>();
     
     constructor(args?: {
         client?: Client;
@@ -3107,7 +3234,7 @@ export class UnipileCustomAuth extends HeyApiClient {
 }
 
 export class UnipileHostedAuth extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry10<UnipileHostedAuth>();
+    public static readonly __registry = new HeyApiRegistry11<UnipileHostedAuth>();
     
     constructor(args?: {
         client?: Client;
@@ -3136,7 +3263,7 @@ export class UnipileHostedAuth extends HeyApiClient {
 }
 
 export class UnipileAccounts extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry11<UnipileAccounts>();
+    public static readonly __registry = new HeyApiRegistry12<UnipileAccounts>();
     
     constructor(args?: {
         client?: Client;
@@ -3217,7 +3344,7 @@ export class UnipileAccounts extends HeyApiClient {
 }
 
 export class UnipileApiKeys extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry12<UnipileApiKeys>();
+    public static readonly __registry = new HeyApiRegistry13<UnipileApiKeys>();
     
     constructor(args?: {
         client?: Client;
@@ -3272,7 +3399,7 @@ export class UnipileApiKeys extends HeyApiClient {
 }
 
 export class UnipileScopes extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry13<UnipileScopes>();
+    public static readonly __registry = new HeyApiRegistry14<UnipileScopes>();
     
     constructor(args?: {
         client?: Client;
@@ -3357,7 +3484,7 @@ export class UnipileScopes extends HeyApiClient {
 }
 
 export class UnipileWebhooks extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry14<UnipileWebhooks>();
+    public static readonly __registry = new HeyApiRegistry15<UnipileWebhooks>();
     
     constructor(args?: {
         client?: Client;
