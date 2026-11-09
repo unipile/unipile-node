@@ -145,6 +145,12 @@ export type GetChatsListResponses = {
              */
             is_archived: boolean;
             /**
+             * The disappearing-message setting for the conversation: `off` when disabled, `seen` when messages disappear after they are seen, or a retention delay in seconds.
+             * Absent when the provider does not expose the setting.
+             * This describes the retention of the whole conversation, and is distinct from a message `view_mode`, which describes a single piece of content the recipient may only open a limited number of times.
+             */
+            disappearing_messages_timer?: 'off' | 'seen' | number;
+            /**
              * A list of folders the chat belongs to.
              */
             folders: Array<string>;
@@ -233,6 +239,10 @@ export type GetChatsListResponses = {
                  */
                 is_pinned: boolean;
                 /**
+                 * Whether the account has starred the message. This state is private to the account. Absent when unavailable or unsupported.
+                 */
+                is_starred?: boolean;
+                /**
                  * Is the message an event. Events are special messages that are not displayed in the chat but can be used to trigger actions.
                  */
                 is_event: boolean;
@@ -246,6 +256,17 @@ export type GetChatsListResponses = {
                  * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
                  */
                 view_mode?: 'once' | 'replayable';
+                /**
+                 * Is the message part of a disappearing conversation, where the provider automatically deletes messages for every participant once the conversation retention delay has elapsed.
+                 * Absent when the provider does not expose the notion.
+                 * This describes the retention of the conversation the message belongs to, and is distinct from `view_mode`, which describes a single piece of content the recipient may only open a limited number of times.
+                 */
+                is_disappearing?: boolean;
+                /**
+                 * The date at which a disappearing message is automatically deleted. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 * Absent when the message is not disappearing, or when the provider does not expose enough information to determine the date.
+                 */
+                expires_at?: string;
                 /**
                  * The type of message event.
                  * 0 : Unknown (Not implemented)
@@ -626,6 +647,10 @@ export type GetChatsListResponses = {
                      * The audio is a voice note (should be displayed differently)
                      */
                     voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
                 } | {
                     object: 'Attachment';
                     /**
@@ -1000,6 +1025,10 @@ export type GetChatsListResponses = {
                          * The audio is a voice note (should be displayed differently)
                          */
                         voice_note: boolean;
+                        /**
+                         * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                         */
+                        waveform?: Array<number>;
                     } | {
                         object: 'Attachment';
                         /**
@@ -1387,6 +1416,10 @@ export type GetChatsListResponses = {
                          * The audio is a voice note (should be displayed differently)
                          */
                         voice_note: boolean;
+                        /**
+                         * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                         */
+                        waveform?: Array<number>;
                     } | {
                         object: 'Attachment';
                         /**
@@ -2179,6 +2212,12 @@ export type GetInboxChatsListResponses = {
              */
             is_archived: boolean;
             /**
+             * The disappearing-message setting for the conversation: `off` when disabled, `seen` when messages disappear after they are seen, or a retention delay in seconds.
+             * Absent when the provider does not expose the setting.
+             * This describes the retention of the whole conversation, and is distinct from a message `view_mode`, which describes a single piece of content the recipient may only open a limited number of times.
+             */
+            disappearing_messages_timer?: 'off' | 'seen' | number;
+            /**
              * A list of folders the chat belongs to.
              */
             folders: Array<string>;
@@ -2267,6 +2306,10 @@ export type GetInboxChatsListResponses = {
                  */
                 is_pinned: boolean;
                 /**
+                 * Whether the account has starred the message. This state is private to the account. Absent when unavailable or unsupported.
+                 */
+                is_starred?: boolean;
+                /**
                  * Is the message an event. Events are special messages that are not displayed in the chat but can be used to trigger actions.
                  */
                 is_event: boolean;
@@ -2280,6 +2323,17 @@ export type GetInboxChatsListResponses = {
                  * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
                  */
                 view_mode?: 'once' | 'replayable';
+                /**
+                 * Is the message part of a disappearing conversation, where the provider automatically deletes messages for every participant once the conversation retention delay has elapsed.
+                 * Absent when the provider does not expose the notion.
+                 * This describes the retention of the conversation the message belongs to, and is distinct from `view_mode`, which describes a single piece of content the recipient may only open a limited number of times.
+                 */
+                is_disappearing?: boolean;
+                /**
+                 * The date at which a disappearing message is automatically deleted. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 * Absent when the message is not disappearing, or when the provider does not expose enough information to determine the date.
+                 */
+                expires_at?: string;
                 /**
                  * The type of message event.
                  * 0 : Unknown (Not implemented)
@@ -2660,6 +2714,10 @@ export type GetInboxChatsListResponses = {
                      * The audio is a voice note (should be displayed differently)
                      */
                     voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
                 } | {
                     object: 'Attachment';
                     /**
@@ -3034,6 +3092,10 @@ export type GetInboxChatsListResponses = {
                          * The audio is a voice note (should be displayed differently)
                          */
                         voice_note: boolean;
+                        /**
+                         * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                         */
+                        waveform?: Array<number>;
                     } | {
                         object: 'Attachment';
                         /**
@@ -3421,6 +3483,10 @@ export type GetInboxChatsListResponses = {
                          * The audio is a voice note (should be displayed differently)
                          */
                         voice_note: boolean;
+                        /**
+                         * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                         */
+                        waveform?: Array<number>;
                     } | {
                         object: 'Attachment';
                         /**
@@ -4156,6 +4222,12 @@ export type GetChatResponses = {
          */
         is_archived: boolean;
         /**
+         * The disappearing-message setting for the conversation: `off` when disabled, `seen` when messages disappear after they are seen, or a retention delay in seconds.
+         * Absent when the provider does not expose the setting.
+         * This describes the retention of the whole conversation, and is distinct from a message `view_mode`, which describes a single piece of content the recipient may only open a limited number of times.
+         */
+        disappearing_messages_timer?: 'off' | 'seen' | number;
+        /**
          * A list of folders the chat belongs to.
          */
         folders: Array<string>;
@@ -4244,6 +4316,10 @@ export type GetChatResponses = {
              */
             is_pinned: boolean;
             /**
+             * Whether the account has starred the message. This state is private to the account. Absent when unavailable or unsupported.
+             */
+            is_starred?: boolean;
+            /**
              * Is the message an event. Events are special messages that are not displayed in the chat but can be used to trigger actions.
              */
             is_event: boolean;
@@ -4257,6 +4333,17 @@ export type GetChatResponses = {
              * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
              */
             view_mode?: 'once' | 'replayable';
+            /**
+             * Is the message part of a disappearing conversation, where the provider automatically deletes messages for every participant once the conversation retention delay has elapsed.
+             * Absent when the provider does not expose the notion.
+             * This describes the retention of the conversation the message belongs to, and is distinct from `view_mode`, which describes a single piece of content the recipient may only open a limited number of times.
+             */
+            is_disappearing?: boolean;
+            /**
+             * The date at which a disappearing message is automatically deleted. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             * Absent when the message is not disappearing, or when the provider does not expose enough information to determine the date.
+             */
+            expires_at?: string;
             /**
              * The type of message event.
              * 0 : Unknown (Not implemented)
@@ -4637,6 +4724,10 @@ export type GetChatResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -5011,6 +5102,10 @@ export type GetChatResponses = {
                      * The audio is a voice note (should be displayed differently)
                      */
                     voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
                 } | {
                     object: 'Attachment';
                     /**
@@ -5398,6 +5493,10 @@ export type GetChatResponses = {
                      * The audio is a voice note (should be displayed differently)
                      */
                     voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
                 } | {
                     object: 'Attachment';
                     /**
@@ -6021,6 +6120,10 @@ export type UpdateChatData = {
                  * Duration of the media file.
                  */
                 duration?: number;
+                /**
+                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                 */
+                waveform?: Array<number>;
             };
         };
         /**
@@ -6043,6 +6146,15 @@ export type UpdateChatData = {
          * Set to `true` to mark the chat as read. This is useful when displaying the list of messages in your app. Set to `false` to mark the chat as unread.
          */
         read_status?: boolean;
+        /**
+         * If supported, set to `off` to disable disappearing messages, `seen` to make messages disappear after they are seen, or provide the retention delay in seconds.
+         * Accepted values by provider:
+         * - WhatsApp: `off`, `86400` (24 hours), `604800` (7 days), `7776000` (90 days).
+         * - Telegram: `off`, `86400` (24 hours), `604800` (7 days), `2678400` (31 days).
+         * - Instagram and LinkedIn: updating this setting is not supported.
+         * The `seen` mode is not currently supported by any provider for this operation.
+         */
+        disappearing_messages_timer?: 'off' | 'seen' | number;
     };
     path: {
         /**
@@ -6149,6 +6261,12 @@ export type UpdateChatResponses = {
          * Is the chat archived. Archived chats are usually hidden from the chat list.
          */
         is_archived: boolean;
+        /**
+         * The disappearing-message setting for the conversation: `off` when disabled, `seen` when messages disappear after they are seen, or a retention delay in seconds.
+         * Absent when the provider does not expose the setting.
+         * This describes the retention of the whole conversation, and is distinct from a message `view_mode`, which describes a single piece of content the recipient may only open a limited number of times.
+         */
+        disappearing_messages_timer?: 'off' | 'seen' | number;
         /**
          * A list of folders the chat belongs to.
          */
@@ -6305,6 +6423,10 @@ export type UpdateChatResponses = {
              */
             is_pinned: boolean;
             /**
+             * Whether the account has starred the message. This state is private to the account. Absent when unavailable or unsupported.
+             */
+            is_starred?: boolean;
+            /**
              * Is the message an event. Events are special messages that are not displayed in the chat but can be used to trigger actions.
              */
             is_event: boolean;
@@ -6318,6 +6440,17 @@ export type UpdateChatResponses = {
              * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
              */
             view_mode?: 'once' | 'replayable';
+            /**
+             * Is the message part of a disappearing conversation, where the provider automatically deletes messages for every participant once the conversation retention delay has elapsed.
+             * Absent when the provider does not expose the notion.
+             * This describes the retention of the conversation the message belongs to, and is distinct from `view_mode`, which describes a single piece of content the recipient may only open a limited number of times.
+             */
+            is_disappearing?: boolean;
+            /**
+             * The date at which a disappearing message is automatically deleted. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             * Absent when the message is not disappearing, or when the provider does not expose enough information to determine the date.
+             */
+            expires_at?: string;
             /**
              * The type of message event.
              * 0 : Unknown (Not implemented)
@@ -6698,6 +6831,10 @@ export type UpdateChatResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -7072,6 +7209,10 @@ export type UpdateChatResponses = {
                      * The audio is a voice note (should be displayed differently)
                      */
                     voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
                 } | {
                     object: 'Attachment';
                     /**
@@ -7459,6 +7600,10 @@ export type UpdateChatResponses = {
                      * The audio is a voice note (should be displayed differently)
                      */
                     voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
                 } | {
                     object: 'Attachment';
                     /**
@@ -7965,6 +8110,10 @@ export type StartChatData = {
                  * Duration of the media file.
                  */
                 duration?: number;
+                /**
+                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                 */
+                waveform?: Array<number>;
             };
             /**
              * Defines how the attachment should be sent, if the provider supports multiple modes.
@@ -8114,6 +8263,10 @@ export type StartChatData = {
                                  * Duration of the media file.
                                  */
                                 duration?: number;
+                                /**
+                                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                                 */
+                                waveform?: Array<number>;
                             };
                             /**
                              * Defines how the attachment should be sent, if the provider supports multiple modes.
@@ -8223,6 +8376,10 @@ export type StartChatFromInboxData = {
                  * Duration of the media file.
                  */
                 duration?: number;
+                /**
+                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                 */
+                waveform?: Array<number>;
             };
             /**
              * Defines how the attachment should be sent, if the provider supports multiple modes.
@@ -8372,6 +8529,10 @@ export type StartChatFromInboxData = {
                                  * Duration of the media file.
                                  */
                                 duration?: number;
+                                /**
+                                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                                 */
+                                waveform?: Array<number>;
                             };
                             /**
                              * Defines how the attachment should be sent, if the provider supports multiple modes.
@@ -8559,6 +8720,12 @@ export type AcceptChatRequestResponses = {
          */
         is_archived: boolean;
         /**
+         * The disappearing-message setting for the conversation: `off` when disabled, `seen` when messages disappear after they are seen, or a retention delay in seconds.
+         * Absent when the provider does not expose the setting.
+         * This describes the retention of the whole conversation, and is distinct from a message `view_mode`, which describes a single piece of content the recipient may only open a limited number of times.
+         */
+        disappearing_messages_timer?: 'off' | 'seen' | number;
+        /**
          * A list of folders the chat belongs to.
          */
         folders: Array<string>;
@@ -8714,6 +8881,10 @@ export type AcceptChatRequestResponses = {
              */
             is_pinned: boolean;
             /**
+             * Whether the account has starred the message. This state is private to the account. Absent when unavailable or unsupported.
+             */
+            is_starred?: boolean;
+            /**
              * Is the message an event. Events are special messages that are not displayed in the chat but can be used to trigger actions.
              */
             is_event: boolean;
@@ -8727,6 +8898,17 @@ export type AcceptChatRequestResponses = {
              * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
              */
             view_mode?: 'once' | 'replayable';
+            /**
+             * Is the message part of a disappearing conversation, where the provider automatically deletes messages for every participant once the conversation retention delay has elapsed.
+             * Absent when the provider does not expose the notion.
+             * This describes the retention of the conversation the message belongs to, and is distinct from `view_mode`, which describes a single piece of content the recipient may only open a limited number of times.
+             */
+            is_disappearing?: boolean;
+            /**
+             * The date at which a disappearing message is automatically deleted. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             * Absent when the message is not disappearing, or when the provider does not expose enough information to determine the date.
+             */
+            expires_at?: string;
             /**
              * The type of message event.
              * 0 : Unknown (Not implemented)
@@ -9107,6 +9289,10 @@ export type AcceptChatRequestResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -9481,6 +9667,10 @@ export type AcceptChatRequestResponses = {
                      * The audio is a voice note (should be displayed differently)
                      */
                     voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
                 } | {
                     object: 'Attachment';
                     /**
@@ -9868,6 +10058,10 @@ export type AcceptChatRequestResponses = {
                      * The audio is a voice note (should be displayed differently)
                      */
                     voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
                 } | {
                     object: 'Attachment';
                     /**
@@ -10366,6 +10560,10 @@ export type GetMessagesListResponses = {
              */
             is_pinned: boolean;
             /**
+             * Whether the account has starred the message. This state is private to the account. Absent when unavailable or unsupported.
+             */
+            is_starred?: boolean;
+            /**
              * Is the message an event. Events are special messages that are not displayed in the chat but can be used to trigger actions.
              */
             is_event: boolean;
@@ -10379,6 +10577,17 @@ export type GetMessagesListResponses = {
              * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
              */
             view_mode?: 'once' | 'replayable';
+            /**
+             * Is the message part of a disappearing conversation, where the provider automatically deletes messages for every participant once the conversation retention delay has elapsed.
+             * Absent when the provider does not expose the notion.
+             * This describes the retention of the conversation the message belongs to, and is distinct from `view_mode`, which describes a single piece of content the recipient may only open a limited number of times.
+             */
+            is_disappearing?: boolean;
+            /**
+             * The date at which a disappearing message is automatically deleted. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             * Absent when the message is not disappearing, or when the provider does not expose enough information to determine the date.
+             */
+            expires_at?: string;
             /**
              * The type of message event.
              * 0 : Unknown (Not implemented)
@@ -10706,6 +10915,10 @@ export type GetMessagesListResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -11258,6 +11471,10 @@ export type GetMessagesListResponses = {
                      * The audio is a voice note (should be displayed differently)
                      */
                     voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
                 } | {
                     object: 'Attachment';
                     /**
@@ -11759,6 +11976,10 @@ export type GetMessagesListResponses = {
                      * The audio is a voice note (should be displayed differently)
                      */
                     voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
                 } | {
                     object: 'Attachment';
                     /**
@@ -12319,6 +12540,10 @@ export type GetMessageResponses = {
          */
         is_pinned: boolean;
         /**
+         * Whether the account has starred the message. This state is private to the account. Absent when unavailable or unsupported.
+         */
+        is_starred?: boolean;
+        /**
          * Is the message an event. Events are special messages that are not displayed in the chat but can be used to trigger actions.
          */
         is_event: boolean;
@@ -12332,6 +12557,17 @@ export type GetMessageResponses = {
          * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
          */
         view_mode?: 'once' | 'replayable';
+        /**
+         * Is the message part of a disappearing conversation, where the provider automatically deletes messages for every participant once the conversation retention delay has elapsed.
+         * Absent when the provider does not expose the notion.
+         * This describes the retention of the conversation the message belongs to, and is distinct from `view_mode`, which describes a single piece of content the recipient may only open a limited number of times.
+         */
+        is_disappearing?: boolean;
+        /**
+         * The date at which a disappearing message is automatically deleted. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         * Absent when the message is not disappearing, or when the provider does not expose enough information to determine the date.
+         */
+        expires_at?: string;
         /**
          * The type of message event.
          * 0 : Unknown (Not implemented)
@@ -12659,6 +12895,10 @@ export type GetMessageResponses = {
              * The audio is a voice note (should be displayed differently)
              */
             voice_note: boolean;
+            /**
+             * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+             */
+            waveform?: Array<number>;
         } | {
             object: 'Attachment';
             /**
@@ -13211,6 +13451,10 @@ export type GetMessageResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -13712,6 +13956,10 @@ export type GetMessageResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -14193,6 +14441,10 @@ export type SendMessageData = {
                  * Duration of the media file.
                  */
                 duration?: number;
+                /**
+                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                 */
+                waveform?: Array<number>;
             };
             /**
              * Defines how the attachment should be sent, if the provider supports multiple modes.
@@ -14396,6 +14648,10 @@ export type ModifyMessageResponses = {
          */
         is_pinned: boolean;
         /**
+         * Whether the account has starred the message. This state is private to the account. Absent when unavailable or unsupported.
+         */
+        is_starred?: boolean;
+        /**
          * Is the message an event. Events are special messages that are not displayed in the chat but can be used to trigger actions.
          */
         is_event: boolean;
@@ -14409,6 +14665,17 @@ export type ModifyMessageResponses = {
          * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
          */
         view_mode?: 'once' | 'replayable';
+        /**
+         * Is the message part of a disappearing conversation, where the provider automatically deletes messages for every participant once the conversation retention delay has elapsed.
+         * Absent when the provider does not expose the notion.
+         * This describes the retention of the conversation the message belongs to, and is distinct from `view_mode`, which describes a single piece of content the recipient may only open a limited number of times.
+         */
+        is_disappearing?: boolean;
+        /**
+         * The date at which a disappearing message is automatically deleted. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         * Absent when the message is not disappearing, or when the provider does not expose enough information to determine the date.
+         */
+        expires_at?: string;
         /**
          * The type of message event.
          * 0 : Unknown (Not implemented)
@@ -14789,6 +15056,10 @@ export type ModifyMessageResponses = {
              * The audio is a voice note (should be displayed differently)
              */
             voice_note: boolean;
+            /**
+             * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+             */
+            waveform?: Array<number>;
         } | {
             object: 'Attachment';
             /**
@@ -15163,6 +15434,10 @@ export type ModifyMessageResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -15550,6 +15825,10 @@ export type ModifyMessageResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -15882,6 +16161,1955 @@ export type ModifyMessageResponses = {
 };
 
 export type ModifyMessageResponse = ModifyMessageResponses[keyof ModifyMessageResponses];
+
+export type StarMessageData = {
+    body: {
+        /**
+         * If supported, set to `true` to mark the message as starred (favorite), or `false` to unmark it.
+         * The message can be one of the account's own or one received from another participant.
+         * This state is private to the account and is not visible to the other participants of the chat.
+         */
+        star_status: boolean;
+    };
+    path: {
+        /**
+         * The ID of the Chat where the message is.
+         */
+        chat_id: string;
+        /**
+         * The ID of the Message to star or unstar.
+         */
+        message_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: never;
+    url: '/v2/{account_id}/chats/{chat_id}/messages/{message_id}/star';
+};
+
+export type StarMessageResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        object: 'Message';
+        /**
+         * The unique identifier of the message for the provider.
+         */
+        id: string;
+        /**
+         * The text content of the message.
+         */
+        text?: string;
+        /**
+         * The ID of the user who sent the message.
+         */
+        sender_id: string;
+        /**
+         * The ID of the chat where the message was sent.
+         */
+        chat_id: string;
+        /**
+         * The timestamp of the message. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         */
+        timestamp: string;
+        /**
+         * Is the current user the sender of the message.
+         */
+        is_sender: boolean;
+        /**
+         * Is the message hidden. Hidden messages are usually not displayed in the chat but can be as last message is chats list.
+         */
+        is_hidden: boolean;
+        /**
+         * Is the message seen by other participants.
+         */
+        is_seen: boolean;
+        /**
+         * Is the message delivered to the other participants.
+         */
+        is_delivered: boolean;
+        /**
+         * Is the message deleted. Some providers show the message as deleted in the chat.
+         */
+        is_deleted: boolean;
+        /**
+         * Is the message edited. Some providers adds an "edited" mark on the message in the chat.
+         */
+        is_edited: boolean;
+        /**
+         * Is the message pinned. Pinned messages are usually displayed at the top of the chat.
+         */
+        is_pinned: boolean;
+        /**
+         * Whether the account has starred the message. This state is private to the account. Absent when unavailable or unsupported.
+         */
+        is_starred?: boolean;
+        /**
+         * Is the message an event. Events are special messages that are not displayed in the chat but can be used to trigger actions.
+         */
+        is_event: boolean;
+        /**
+         * Is the message mentionning the current user. Usually to notify.
+         */
+        is_mentionned: boolean;
+        /**
+         * How the ephemeral content of this message may be viewed: `once` for a single opening, `replayable` when the sender allowed it to be opened again.
+         * Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.
+         * Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with `is_unavailable` and cannot be downloaded.
+         */
+        view_mode?: 'once' | 'replayable';
+        /**
+         * Is the message part of a disappearing conversation, where the provider automatically deletes messages for every participant once the conversation retention delay has elapsed.
+         * Absent when the provider does not expose the notion.
+         * This describes the retention of the conversation the message belongs to, and is distinct from `view_mode`, which describes a single piece of content the recipient may only open a limited number of times.
+         */
+        is_disappearing?: boolean;
+        /**
+         * The date at which a disappearing message is automatically deleted. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+         * Absent when the message is not disappearing, or when the provider does not expose enough information to determine the date.
+         */
+        expires_at?: string;
+        /**
+         * The type of message event.
+         * 0 : Unknown (Not implemented)
+         * 1 : Chat name update
+         * 2 : Chat description update
+         * 3 : New participant added to the chat group
+         * 4 : Participant kicked or left the chat group
+         * 5 : A message is pinned
+         * 6 : Permissions have been updated
+         * 7 : Participant was promoted or demoted
+         * 8 : Reaction
+         * 9 : Call Missed
+         * 10 : Call Started
+         * 11 : Call Ended
+         * 12 : Call Rejected
+         * 13 : Scheduled Call Created
+         * 14 : Scheduled Call Cancelled
+         * 15 : Scheduled Call Started
+         * 16 : Announcement
+         * 17 : Content mention
+         *
+         */
+        event_type?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
+        event_metadata?: {
+            /**
+             * ID of the participant who left or was removed from the group.
+             */
+            user_id?: string;
+            /**
+             * Name of the participant who left or was removed from the group.
+             */
+            user_name?: string;
+            /**
+             * Specifies whether the participant left voluntarily or was removed by an admin.
+             */
+            reason: 'left' | 'kicked' | 'unknown';
+        } | {
+            /**
+             * The updated title.
+             */
+            title: string;
+        } | {
+            /**
+             * The updated description.
+             */
+            description?: string;
+        } | {
+            /**
+             * Unique identifier of the call.
+             */
+            call_id?: string;
+            /**
+             * Indicates whether the call is a video call.
+             */
+            is_video: boolean;
+            /**
+             * The link used to join the call.
+             */
+            link?: string;
+            /**
+             * Start date and time of the call in ISO format.
+             */
+            start?: string;
+            /**
+             * End date and time of the call in ISO format.
+             */
+            end?: string;
+            /**
+             * Duration of the call in seconds (if applicable).
+             */
+            duration?: number;
+        } | {
+            /**
+             * Unique identifier of the call.
+             */
+            call_id?: string;
+            /**
+             * Indicates whether the call is a video call.
+             */
+            is_video: boolean;
+            /**
+             * The link used to join the call.
+             */
+            link?: string;
+            /**
+             * Start date and time of the call in ISO format.
+             */
+            start?: string;
+            /**
+             * End date and time of the call in ISO format.
+             */
+            end?: string;
+            /**
+             * Duration of the call in seconds (if available).
+             */
+            duration?: number;
+        } | {
+            /**
+             * Unique identifier of the call.
+             */
+            call_id?: string;
+            /**
+             * Indicates whether the call is a video call.
+             */
+            is_video: boolean;
+            /**
+             * The link used to join the call.
+             */
+            link?: string;
+            /**
+             * Start date and time of the call in ISO 8601 format.
+             */
+            start?: string;
+        } | {
+            /**
+             * Unique identifier of the call.
+             */
+            call_id?: string;
+            /**
+             * Indicates whether the call is a video call.
+             */
+            is_video: boolean;
+            /**
+             * The link used to join the call.
+             */
+            link?: string;
+            /**
+             * Expected start date and time of the call in ISO format.
+             */
+            start: string;
+            /**
+             * Expected end date and time of the call in ISO format.
+             */
+            end?: string;
+            /**
+             * Expected call duration in seconds.
+             */
+            duration?: number;
+        } | {
+            /**
+             * Unique identifier of the call.
+             */
+            call_id?: string;
+            /**
+             * Indicates whether the call is a video call.
+             */
+            is_video: boolean;
+            /**
+             * The link used to join the call.
+             */
+            link?: string;
+            /**
+             * Expected start date and time of the call in ISO format.
+             */
+            start: string;
+            /**
+             * Expected end date and time of the call in ISO format.
+             */
+            end?: string;
+            /**
+             * Expected duration of the call in seconds
+             */
+            duration?: number;
+        } | {
+            /**
+             * Unique identifier of the call.
+             */
+            call_id?: string;
+            /**
+             * Indicates whether the call is a video call.
+             */
+            is_video: boolean;
+            /**
+             * The link used to join the call.
+             */
+            link?: string;
+            /**
+             * Start date and time of the call in ISO format.
+             */
+            start: string;
+            /**
+             * Expected end date and time of the call in ISO format.
+             */
+            end?: string;
+            /**
+             * Duration of the call in seconds
+             */
+            duration?: number;
+        } | {
+            /**
+             * ID of the message that was pinned or unpinned.
+             */
+            message_id?: string;
+            /**
+             * Indicates whether the message is pinned (true) or unpinned (false).
+             */
+            is_pin: boolean;
+            /**
+             * Duration for which the message remains pinned, if applicable.
+             */
+            duration?: number;
+        } | {
+            /**
+             * The invitation link used to join the group.
+             */
+            link?: string;
+            /**
+             * ID of the participant who joined the group.
+             */
+            user_id: string;
+        } | {
+            /**
+             * ID of the participant whose role was updated.
+             */
+            user_id: string;
+            /**
+             * The type of role change applied to the participant.
+             */
+            reason: 'promoted' | 'demoted' | 'unknown';
+        } | {
+            /**
+             * The updated subject.
+             */
+            subject?: string;
+        } | {
+            /**
+             * The reaction added or removed.
+             */
+            reaction: string;
+            /**
+             * Specifies whether the reaction was added or removed.
+             */
+            reason: 'added' | 'removed';
+            /**
+             * ID of the message to which the reaction was added or removed.
+             */
+            message_id: string;
+        };
+        /**
+         * Content Relation
+         */
+        content_relation?: {
+            /**
+             * How this message relates to a piece of shared content: a normal reply to it, or a provider-generated notice that the current user was mentioned in it.
+             */
+            type: 'reply_to' | 'mentioned_in';
+            /**
+             * The id of this message's shared-content attachment describing the related content, when the provider still makes it available. Absent once the content is no longer retrievable (e.g. an expired story) but the relation is still known.
+             */
+            attachment_id?: string;
+        };
+        /**
+         * A list of reactions to the element.
+         */
+        reactions_counter: Array<{
+            /**
+             * Value of the reaction. Usually an emoji unicode.
+             */
+            reaction: string;
+            /**
+             * The total count of this reaction.
+             */
+            count: number;
+        }>;
+        /**
+         * The provider's of the Account.
+         * - `mock` is mock.
+         * - `whatsapp` is WhatsApp.
+         * - `linkedin` is LinkedIn.
+         * - `instagram` is Instagram.
+         * - `facebook` is Facebook.
+         * - `google` is Google.
+         * - `outlook` is Outlook.
+         * - `telegram` is Telegram.
+         * - `imap` is IMAP.
+         */
+        provider: 'mock' | 'whatsapp' | 'linkedin' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook';
+        /**
+         * List of message attachments.
+         */
+        attachments: Array<{
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * The file content encoded as base64, when available directly without an additional download.
+             */
+            content?: string;
+            type: 'audio';
+            /**
+             * The duration of the audio in seconds.
+             */
+            duration?: number;
+            /**
+             * The audio is a voice note (should be displayed differently)
+             */
+            voice_note: boolean;
+            /**
+             * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+             */
+            waveform?: Array<number>;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * The file content encoded as base64, when available directly without an additional download.
+             */
+            content?: string;
+            type: 'img';
+            /**
+             * The size of the image in pixels.
+             */
+            size?: {
+                height: number;
+                width: number;
+            };
+            /**
+             * The image is a sticker (should be displayed differently)
+             */
+            sticker: boolean;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * The file content encoded as base64, when available directly without an additional download.
+             */
+            content?: string;
+            type: 'video';
+            /**
+             * The duration of the video in seconds.
+             */
+            duration?: number;
+            /**
+             * The size of the video in pixels.
+             */
+            size: {
+                height: number;
+                width: number;
+            };
+            /**
+             * The video is a GIF (should be displayed differently)
+             */
+            gif: boolean;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * The file content encoded as base64, when available directly without an additional download.
+             */
+            content?: string;
+            type: 'file';
+            /**
+             * The name of the file, including the extension.
+             */
+            filename: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL of the shared content.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * The file content encoded as base64, when available directly without an additional download.
+             */
+            content?: string;
+            type: 'shared_content';
+            /**
+             * The type of content being shared.
+             */
+            media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
+            /**
+             * The author of the shared content, if applicable.
+             */
+            author?: string;
+            /**
+             * A brief description of the shared content.
+             */
+            description?: string;
+        } | {
+            object: 'Attachment';
+            /**
+             * The unique identifier of the attachment.
+             */
+            id: string;
+            /**
+             * The size of the attachment in bytes.
+             */
+            file_size?: number;
+            /**
+             * Is the attachment inline in the content.
+             */
+            is_inline: boolean;
+            /**
+             * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+             */
+            content_id?: string;
+            /**
+             * The attachment is not available for download because it was removed from provider servers.
+             */
+            is_unavailable?: boolean;
+            /**
+             * The MIME type of the attachment.
+             */
+            mimetype: string;
+            /**
+             * The URL to download the attachment.
+             */
+            url: string;
+            /**
+             * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            url_expires_at?: string;
+            /**
+             * The file content encoded as base64, when available directly without an additional download.
+             */
+            content?: string;
+            type: 'contact_card';
+            /**
+             * The name of the shared contact.
+             */
+            display_name?: string;
+            /**
+             * The organization of the shared contact.
+             */
+            organization?: string;
+            /**
+             * The phone numbers of the shared contact.
+             */
+            phones: Array<{
+                /**
+                 * The phone number of the shared contact.
+                 */
+                number: string;
+                /**
+                 * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                 */
+                type?: string;
+            }>;
+            /**
+             * The email addresses of the shared contact.
+             */
+            emails: Array<{
+                /**
+                 * The email address of the shared contact.
+                 */
+                address: string;
+                /**
+                 * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                 */
+                type?: string;
+            }>;
+        }>;
+        /**
+         * List of message hyperlinks.
+         */
+        hyperlinks: Array<{
+            /**
+             * The URL the link points to.
+             */
+            url: string;
+            /**
+             * The index in the body where the link starts.
+             */
+            starts_at: number;
+            /**
+             * The number of characters in the body that make up the link, starting at the `starts_at` index.
+             */
+            length: number;
+        }>;
+        /**
+         * List of the users mentioned in the message body. A mention the provider delivered as plain text is not listed.
+         */
+        mentions: Array<{
+            /**
+             * ID of the mentioned user, which can be used to mention them when sending a message. Absent when the provider reports the mention without an identifier, or when the mention addresses the whole chat rather than a user.
+             */
+            user_id?: string;
+            /**
+             * Public profile URL of the mentioned user. Absent when the provider exposes no public profile for them.
+             */
+            url?: string;
+            /**
+             * The index in the body where the mention starts.
+             */
+            start: number;
+            /**
+             * The number of characters in the body that make up the mention, starting at the `start` index.
+             */
+            length: number;
+        }>;
+        specifics?: unknown & ({
+            /**
+             * The category of the message: a regular message, an email, a connection invitation, or an InMail lifecycle event.
+             */
+            type: 'MESSAGE' | 'EMAIL' | 'INVITATION' | 'INMAIL' | 'INMAIL_DECLINE' | 'INMAIL_REPLY' | 'INMAIL_ACCEPT';
+            /**
+             * The subject of the message.
+             */
+            subject?: string;
+        } | {
+            /**
+             * The subject of the mock message.
+             */
+            subject: string;
+        } | {
+            /**
+             * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+             */
+            interactive?: {
+                type: 'buttons' | 'template' | 'native_flow' | 'response';
+                title?: string;
+                footer?: string;
+                buttons: Array<{
+                    type: 'reply' | 'url' | 'call' | 'native_flow';
+                    /**
+                     * Provider button identifier, when available.
+                     */
+                    id?: string;
+                    /**
+                     * Button label, when available.
+                     */
+                    text?: string;
+                    url?: string;
+                    phone_number?: string;
+                    /**
+                     * Native flow action name. Unknown actions are not interpreted.
+                     */
+                    name?: string;
+                }>;
+                selected_button?: {
+                    type: 'reply' | 'url' | 'call' | 'native_flow';
+                    /**
+                     * Provider button identifier, when available.
+                     */
+                    id?: string;
+                    /**
+                     * Button label, when available.
+                     */
+                    text?: string;
+                    url?: string;
+                    phone_number?: string;
+                    /**
+                     * Native flow action name. Unknown actions are not interpreted.
+                     */
+                    name?: string;
+                };
+            };
+            /**
+             * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+             */
+            album_id?: string;
+        });
+        /**
+         * The user who sent the message.
+         */
+        sender?: {
+            /**
+             * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+             */
+            id: string;
+            object: 'User';
+            /**
+             * Type of the user
+             * - `individual` is an individual user.
+             * - `organization` is an organization / business entity.
+             * - `other` is an other type of entity.
+             */
+            type: 'individual' | 'organization' | 'other';
+            /**
+             * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+             */
+            public_identifier?: string;
+            /**
+             * Display name of the user as exposed by the provider.
+             */
+            display_name: string;
+            /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
+            /**
+             * Public url to the profile of the user.
+             */
+            profile_url?: string;
+            /**
+             * Public url to the profile picture of the user.
+             */
+            public_picture_url?: string;
+            /**
+             * Private url to download the profile picture of the user. This url require authentication.
+             */
+            private_picture_download_url?: string;
+            /**
+             * Description of the user.
+             */
+            description?: string;
+            /**
+             * Object containing provider-specific user profile data.
+             */
+            specifics?: {
+                /**
+                 * Name saved by the connected account owner in their WhatsApp address book.
+                 */
+                contact_name: string;
+            } | {
+                /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
+            } | {
+                /**
+                 * The geographical location of the user.
+                 */
+                location?: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * The user's industry.
+                 */
+                industry?: string;
+                /**
+                 * Whether the current user follows the user.
+                 */
+                is_following?: boolean;
+                /**
+                 * The number of followers of the user.
+                 */
+                followers_count?: number;
+                /**
+                 * The number of relations of the user.
+                 */
+                relations_count?: number;
+                /**
+                 * The number of relations that you share with the user.
+                 */
+                shared_relations_count?: number;
+                /**
+                 * The URL of the website provided by the user.
+                 */
+                website_url?: string;
+                /**
+                 * The URL of the portfolio provided by the user.
+                 */
+                portfolio_url?: string;
+                /**
+                 * The LinkedIn internal URL of the user's services page.
+                 */
+                services_page_url?: string;
+                /**
+                 * Whether the User has a premium account.
+                 */
+                is_premium?: boolean;
+                /**
+                 * Whether the User has a verified account.
+                 */
+                is_verified?: boolean;
+            };
+        };
+        /**
+         * The quoted message.
+         */
+        quoted?: {
+            object: 'QuotedMessage';
+            /**
+             * The unique identifier of the message for the provider.
+             */
+            id: string;
+            /**
+             * The text content of the message.
+             */
+            text?: string;
+            /**
+             * List of message attachments.
+             */
+            attachments: Array<{
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'audio';
+                /**
+                 * The duration of the audio in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The audio is a voice note (should be displayed differently)
+                 */
+                voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'img';
+                /**
+                 * The size of the image in pixels.
+                 */
+                size?: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The image is a sticker (should be displayed differently)
+                 */
+                sticker: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'video';
+                /**
+                 * The duration of the video in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The size of the video in pixels.
+                 */
+                size: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The video is a GIF (should be displayed differently)
+                 */
+                gif: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'file';
+                /**
+                 * The name of the file, including the extension.
+                 */
+                filename: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL of the shared content.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'shared_content';
+                /**
+                 * The type of content being shared.
+                 */
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
+                /**
+                 * The author of the shared content, if applicable.
+                 */
+                author?: string;
+                /**
+                 * A brief description of the shared content.
+                 */
+                description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+            }>;
+            /**
+             * The user who sent the message.
+             */
+            sender?: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user as exposed by the provider.
+                 */
+                display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the current user follows the user.
+                     */
+                    is_following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
+            };
+            /**
+             * WhatsApp
+             */
+            specifics?: {
+                /**
+                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                 */
+                interactive?: {
+                    type: 'buttons' | 'template' | 'native_flow' | 'response';
+                    title?: string;
+                    footer?: string;
+                    buttons: Array<{
+                        type: 'reply' | 'url' | 'call' | 'native_flow';
+                        /**
+                         * Provider button identifier, when available.
+                         */
+                        id?: string;
+                        /**
+                         * Button label, when available.
+                         */
+                        text?: string;
+                        url?: string;
+                        phone_number?: string;
+                        /**
+                         * Native flow action name. Unknown actions are not interpreted.
+                         */
+                        name?: string;
+                    }>;
+                    selected_button?: {
+                        type: 'reply' | 'url' | 'call' | 'native_flow';
+                        /**
+                         * Provider button identifier, when available.
+                         */
+                        id?: string;
+                        /**
+                         * Button label, when available.
+                         */
+                        text?: string;
+                        url?: string;
+                        phone_number?: string;
+                        /**
+                         * Native flow action name. Unknown actions are not interpreted.
+                         */
+                        name?: string;
+                    };
+                };
+                /**
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 */
+                album_id?: string;
+            };
+        };
+        /**
+         * Contains the original message if this message was forwarded from another chat, depending on provider support.
+         * Some providers preserve the original sender and content, treating it as if it were sent by the account owner.
+         * Others wrap the forwarded message within a new message (similar to a quote or attachment), in which case the original message appears here.
+         */
+        forwarded?: {
+            /**
+             * The text content of the message.
+             */
+            text?: string;
+            /**
+             * List of message attachments.
+             */
+            attachments: Array<{
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'audio';
+                /**
+                 * The duration of the audio in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The audio is a voice note (should be displayed differently)
+                 */
+                voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'img';
+                /**
+                 * The size of the image in pixels.
+                 */
+                size?: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The image is a sticker (should be displayed differently)
+                 */
+                sticker: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'video';
+                /**
+                 * The duration of the video in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The size of the video in pixels.
+                 */
+                size: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The video is a GIF (should be displayed differently)
+                 */
+                gif: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'file';
+                /**
+                 * The name of the file, including the extension.
+                 */
+                filename: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL of the shared content.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'shared_content';
+                /**
+                 * The type of content being shared.
+                 */
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
+                /**
+                 * The author of the shared content, if applicable.
+                 */
+                author?: string;
+                /**
+                 * A brief description of the shared content.
+                 */
+                description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+            }>;
+            object: 'ForwardedMessage';
+            /**
+             * The user who sent the message.
+             */
+            sender?: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user as exposed by the provider.
+                 */
+                display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the current user follows the user.
+                     */
+                    is_following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
+            };
+            /**
+             * WhatsApp
+             */
+            specifics?: {
+                /**
+                 * WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+                 */
+                interactive?: {
+                    type: 'buttons' | 'template' | 'native_flow' | 'response';
+                    title?: string;
+                    footer?: string;
+                    buttons: Array<{
+                        type: 'reply' | 'url' | 'call' | 'native_flow';
+                        /**
+                         * Provider button identifier, when available.
+                         */
+                        id?: string;
+                        /**
+                         * Button label, when available.
+                         */
+                        text?: string;
+                        url?: string;
+                        phone_number?: string;
+                        /**
+                         * Native flow action name. Unknown actions are not interpreted.
+                         */
+                        name?: string;
+                    }>;
+                    selected_button?: {
+                        type: 'reply' | 'url' | 'call' | 'native_flow';
+                        /**
+                         * Provider button identifier, when available.
+                         */
+                        id?: string;
+                        /**
+                         * Button label, when available.
+                         */
+                        text?: string;
+                        url?: string;
+                        phone_number?: string;
+                        /**
+                         * Native flow action name. Unknown actions are not interpreted.
+                         */
+                        name?: string;
+                    };
+                };
+                /**
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 */
+                album_id?: string;
+            };
+        };
+    };
+};
+
+export type StarMessageResponse = StarMessageResponses[keyof StarMessageResponses];
 
 export type ReadMessageData = {
     body?: never;
@@ -16780,6 +19008,10 @@ export type GetEmailsListResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -17318,6 +19550,10 @@ export type GetFolderEmailsListResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -17809,6 +20045,10 @@ export type GetThreadResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -18313,6 +20553,10 @@ export type GetEmailResponses = {
              * The audio is a voice note (should be displayed differently)
              */
             voice_note: boolean;
+            /**
+             * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+             */
+            waveform?: Array<number>;
         } | {
             object: 'Attachment';
             /**
@@ -18632,7 +20876,7 @@ export type GetAttachment1Responses = {
 export type ModifyEmailData = {
     body?: {
         /**
-         * The ID(s) of the folder(s) to apply, overwriting all folders previously associated with the Email. Outlook emails can be in a single folder only. Google allows a single email to appear in multiple folders. For Gmail, SENT is ignored: this operation cannot add or remove it, and its existing membership is preserved whether SENT is included or omitted. UNREAD is also ignored and read status is preserved; use the mark-as-read or mark-as-unread operation to change it.
+         * The ID(s) of the folder(s) to apply, overwriting all folders previously associated with the Email. Outlook emails can be in a single folder only. Google allows a single email to appear in multiple folders. For Gmail, SENT and DRAFT are ignored: this operation cannot add or remove them, and their existing membership is preserved whether they are included or omitted. UNREAD is also ignored and read status is preserved; use the mark-as-read or mark-as-unread operation to change it. Gmail accepts an empty list to remove all labels except UNREAD, SENT and DRAFT and thus "archive" the email.
          */
         folders_ids?: Array<string>;
         specifics?: unknown & {
@@ -18827,6 +21071,10 @@ export type ModifyEmailResponses = {
              * The audio is a voice note (should be displayed differently)
              */
             voice_note: boolean;
+            /**
+             * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+             */
+            waveform?: Array<number>;
         } | {
             object: 'Attachment';
             /**
@@ -19280,6 +21528,10 @@ export type SendEmailData = {
                  * Duration of the media file.
                  */
                 duration?: number;
+                /**
+                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                 */
+                waveform?: Array<number>;
             };
             /**
              * The Content-ID (CID) to give to the file, without the surrounding angle brackets. When set, the file is sent as an inline attachment and can be referenced from the HTML content with `cid:<content_id>`, for example `<img src="cid:my-logo">`.
@@ -19523,6 +21775,10 @@ export type GetDraftsListResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -19921,6 +22177,10 @@ export type CreateDraftData = {
                  * Duration of the media file.
                  */
                 duration?: number;
+                /**
+                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                 */
+                waveform?: Array<number>;
             };
             /**
              * The Content-ID (CID) to give to the file, without the surrounding angle brackets. When set, the file is sent as an inline attachment and can be referenced from the HTML content with `cid:<content_id>`, for example `<img src="cid:my-logo">`.
@@ -20100,6 +22360,10 @@ export type CreateDraftResponses = {
              * The audio is a voice note (should be displayed differently)
              */
             voice_note: boolean;
+            /**
+             * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+             */
+            waveform?: Array<number>;
         } | {
             object: 'Attachment';
             /**
@@ -20561,6 +22825,10 @@ export type GetDraftResponses = {
              * The audio is a voice note (should be displayed differently)
              */
             voice_note: boolean;
+            /**
+             * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+             */
+            waveform?: Array<number>;
         } | {
             object: 'Attachment';
             /**
@@ -20950,6 +23218,10 @@ export type UpdateDraftData = {
                  * Duration of the media file.
                  */
                 duration?: number;
+                /**
+                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                 */
+                waveform?: Array<number>;
             };
             /**
              * The Content-ID (CID) to give to the file, without the surrounding angle brackets. When set, the file is sent as an inline attachment and can be referenced from the HTML content with `cid:<content_id>`, for example `<img src="cid:my-logo">`.
@@ -21141,6 +23413,10 @@ export type UpdateDraftResponses = {
              * The audio is a voice note (should be displayed differently)
              */
             voice_note: boolean;
+            /**
+             * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+             */
+            waveform?: Array<number>;
         } | {
             object: 'Attachment';
             /**
@@ -24761,6 +27037,10 @@ export type UpdateUserProfileData = {
                  * Duration of the media file.
                  */
                 duration?: number;
+                /**
+                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                 */
+                waveform?: Array<number>;
             };
         };
         /**
@@ -24787,6 +27067,10 @@ export type UpdateUserProfileData = {
                  * Duration of the media file.
                  */
                 duration?: number;
+                /**
+                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                 */
+                waveform?: Array<number>;
             };
         };
         specifics?: unknown & {
@@ -24937,6 +27221,10 @@ export type UpdateUserProfileData = {
                                  * Duration of the media file.
                                  */
                                 duration?: number;
+                                /**
+                                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                                 */
+                                waveform?: Array<number>;
                             };
                         };
                     } | {
@@ -24977,6 +27265,10 @@ export type UpdateUserProfileData = {
                                  * Duration of the media file.
                                  */
                                 duration?: number;
+                                /**
+                                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                                 */
+                                waveform?: Array<number>;
                             };
                         };
                     };
@@ -25102,6 +27394,10 @@ export type UpdateUserProfileData = {
                                  * Duration of the media file.
                                  */
                                 duration?: number;
+                                /**
+                                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                                 */
+                                waveform?: Array<number>;
                             };
                         };
                     } | {
@@ -25142,6 +27438,10 @@ export type UpdateUserProfileData = {
                                  * Duration of the media file.
                                  */
                                 duration?: number;
+                                /**
+                                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                                 */
+                                waveform?: Array<number>;
                             };
                         };
                     };
@@ -25274,6 +27574,10 @@ export type UpdateUserProfileData = {
                                  * Duration of the media file.
                                  */
                                 duration?: number;
+                                /**
+                                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                                 */
+                                waveform?: Array<number>;
                             };
                         };
                     } | {
@@ -25314,6 +27618,10 @@ export type UpdateUserProfileData = {
                                  * Duration of the media file.
                                  */
                                 duration?: number;
+                                /**
+                                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                                 */
+                                waveform?: Array<number>;
                             };
                         };
                     };
@@ -25435,6 +27743,10 @@ export type UpdateUserProfileData = {
                                  * Duration of the media file.
                                  */
                                 duration?: number;
+                                /**
+                                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                                 */
+                                waveform?: Array<number>;
                             };
                         };
                     } | {
@@ -25475,6 +27787,10 @@ export type UpdateUserProfileData = {
                                  * Duration of the media file.
                                  */
                                 duration?: number;
+                                /**
+                                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                                 */
+                                waveform?: Array<number>;
                             };
                         };
                     };
@@ -27227,6 +29543,10 @@ export type GetPostsListResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -27971,6 +30291,10 @@ export type GetPostsListResponses = {
                      * The audio is a voice note (should be displayed differently)
                      */
                     voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
                 } | {
                     object: 'Attachment';
                     /**
@@ -28823,6 +31147,10 @@ export type GetPostResponses = {
              * The audio is a voice note (should be displayed differently)
              */
             voice_note: boolean;
+            /**
+             * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+             */
+            waveform?: Array<number>;
         } | {
             object: 'Attachment';
             /**
@@ -29567,6 +31895,10 @@ export type GetPostResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -30450,6 +32782,10 @@ export type UpdatePostResponses = {
              * The audio is a voice note (should be displayed differently)
              */
             voice_note: boolean;
+            /**
+             * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+             */
+            waveform?: Array<number>;
         } | {
             object: 'Attachment';
             /**
@@ -31070,6 +33406,10 @@ export type UpdatePostResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -31419,6 +33759,10 @@ export type CreatePostData = {
                  * Duration of the media file.
                  */
                 duration?: number;
+                /**
+                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                 */
+                waveform?: Array<number>;
             };
         }>;
         /**
@@ -31715,6 +34059,10 @@ export type CreatePostResponses = {
              * The audio is a voice note (should be displayed differently)
              */
             voice_note: boolean;
+            /**
+             * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+             */
+            waveform?: Array<number>;
         } | {
             object: 'Attachment';
             /**
@@ -32335,6 +34683,10 @@ export type CreatePostResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -32680,6 +35032,10 @@ export type CreateStoryData = {
                  * Duration of the media file.
                  */
                 duration?: number;
+                /**
+                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                 */
+                waveform?: Array<number>;
             };
         };
         /**
@@ -33092,6 +35448,10 @@ export type GetPostCommentsListResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -33562,6 +35922,10 @@ export type AddPostCommentData = {
                  * Duration of the media file.
                  */
                 duration?: number;
+                /**
+                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                 */
+                waveform?: Array<number>;
             };
         }>;
     };
@@ -33704,6 +36068,10 @@ export type AddPostCommentResponses = {
              * The audio is a voice note (should be displayed differently)
              */
             voice_note: boolean;
+            /**
+             * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+             */
+            waveform?: Array<number>;
         } | {
             object: 'Attachment';
             /**
@@ -34193,6 +36561,10 @@ export type UpdatePostCommentResponses = {
              * The audio is a voice note (should be displayed differently)
              */
             voice_note: boolean;
+            /**
+             * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+             */
+            waveform?: Array<number>;
         } | {
             object: 'Attachment';
             /**
@@ -34537,6 +36909,10 @@ export type ReplyToCommentData = {
                  * Duration of the media file.
                  */
                 duration?: number;
+                /**
+                 * Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one.
+                 */
+                waveform?: Array<number>;
             };
         }>;
     };
@@ -34683,6 +37059,10 @@ export type ReplyToCommentResponses = {
              * The audio is a voice note (should be displayed differently)
              */
             voice_note: boolean;
+            /**
+             * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+             */
+            waveform?: Array<number>;
         } | {
             object: 'Attachment';
             /**
@@ -35099,6 +37479,10 @@ export type GetPostCommentRepliesListResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -35887,6 +38271,10 @@ export type GetUserCommentsListResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -36645,6 +39033,10 @@ export type GetUserCommentsListResponses = {
                      * The audio is a voice note (should be displayed differently)
                      */
                     voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
                 } | {
                     object: 'Attachment';
                     /**
@@ -37389,6 +39781,10 @@ export type GetUserCommentsListResponses = {
                          * The audio is a voice note (should be displayed differently)
                          */
                         voice_note: boolean;
+                        /**
+                         * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                         */
+                        waveform?: Array<number>;
                     } | {
                         object: 'Attachment';
                         /**
@@ -38497,6 +40893,10 @@ export type GetUserReactionsListResponses = {
                      * The audio is a voice note (should be displayed differently)
                      */
                     voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
                 } | {
                     object: 'Attachment';
                     /**
@@ -39241,6 +41641,10 @@ export type GetUserReactionsListResponses = {
                          * The audio is a voice note (should be displayed differently)
                          */
                         voice_note: boolean;
+                        /**
+                         * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                         */
+                        waveform?: Array<number>;
                     } | {
                         object: 'Attachment';
                         /**
@@ -43210,6 +45614,10 @@ export type PerformClassicSearchFromUrlResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -43830,6 +46238,10 @@ export type PerformClassicSearchFromUrlResponses = {
                      * The audio is a voice note (should be displayed differently)
                      */
                     voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
                 } | {
                     object: 'Attachment';
                     /**
@@ -44932,6 +47344,10 @@ export type PerformClassicPostsSearchResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
@@ -45552,6 +47968,10 @@ export type PerformClassicPostsSearchResponses = {
                      * The audio is a voice note (should be displayed differently)
                      */
                     voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
                 } | {
                     object: 'Attachment';
                     /**
@@ -60556,6 +62976,10 @@ export type GetCategoryEmailsListResponses = {
                  * The audio is a voice note (should be displayed differently)
                  */
                 voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
             } | {
                 object: 'Attachment';
                 /**
