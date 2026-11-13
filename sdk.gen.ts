@@ -540,7 +540,7 @@ export class UnipileMessaging extends HeyApiClient {
     /**
      * Get a Chat Picture
      *
-     * Downloads the picture of the specified Chat, for the providers that publish no public url for it. The url of this endpoint is given by the `private_picture_download_url` field of a Chat.
+     * Downloads the picture of the specified Chat. The `private_picture_download_url` field of a Chat, when present, points to this endpoint. For Facebook and WhatsApp, it serves the current picture, whose `public_picture_url` expires.
      */
     public getChatPicture<ThrowOnError extends boolean = false>(options: Options<GetChatPictureData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetChatPictureResponses, unknown, ThrowOnError>({
@@ -1289,7 +1289,7 @@ export class UnipileUsers extends HeyApiClient {
     /**
      * Get a User Picture
      *
-     * Downloads the profile picture of the specified User. Use `me` as `user_id` to specify the owner of the connected account. For the providers that publish no public url for it, the url of this endpoint is given by the `private_picture_download_url` field of a User; for Facebook, it serves the current picture, whose `public_picture_url` expires within days.
+     * Downloads the profile picture of the specified User. Use `me` as `user_id` to specify the owner of the connected account. The `private_picture_download_url` field of a User, when present, points to this endpoint. For Facebook and WhatsApp, it serves the current picture, whose `public_picture_url` expires.
      */
     public getUserPicture<ThrowOnError extends boolean = false>(options: Options<GetUserPictureData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetUserPictureResponses, unknown, ThrowOnError>({

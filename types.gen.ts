@@ -24899,6 +24899,19 @@ export type GetUserProfileResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Job title of the experience.
@@ -25040,6 +25053,19 @@ export type GetUserProfileResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Date the certification was issued in MM/DD/YYYY format.
@@ -25092,6 +25118,19 @@ export type GetUserProfileResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Role in the experience.
@@ -30912,7 +30951,7 @@ export type DeletePostData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post to delete.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         * The ID of the Post to delete.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -30937,7 +30976,7 @@ export type GetPostData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post to retrieve.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         * The ID of the Post to retrieve.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -32519,7 +32558,7 @@ export type UpdatePostData = {
     };
     path: {
         /**
-         * The ID of the Post to update.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         * The ID of the Post to update.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -35114,7 +35153,7 @@ export type RemovePostReactionData = {
     };
     path: {
         /**
-         * The ID of the Post where the reaction is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         * The ID of the Post where the reaction is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -35141,7 +35180,7 @@ export type GetPostReactionsListData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post to retrieve reactions from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         * The ID of the Post to retrieve reactions from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -35319,7 +35358,7 @@ export type AddPostReactionData = {
     };
     path: {
         /**
-         * The ID of the Post to add the reaction to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         * The ID of the Post to add the reaction to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -35346,7 +35385,7 @@ export type GetPostCommentsListData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post to retrieve comments from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         * The ID of the Post to retrieve comments from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -35931,7 +35970,7 @@ export type AddPostCommentData = {
     };
     path: {
         /**
-         * The ID of the Post to add the comment to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         * The ID of the Post to add the comment to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -36386,7 +36425,7 @@ export type DeletePostCommentData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -36420,7 +36459,7 @@ export type UpdatePostCommentData = {
     };
     path: {
         /**
-         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -36918,7 +36957,7 @@ export type ReplyToCommentData = {
     };
     path: {
         /**
-         * The ID of the Post to add the comment to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         * The ID of the Post to add the comment to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -37377,7 +37416,7 @@ export type GetPostCommentRepliesListData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -37929,7 +37968,7 @@ export type RemovePostCommentReactionData = {
     };
     path: {
         /**
-         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -37960,7 +37999,7 @@ export type GetPostCommentReactionsListData = {
     body?: never;
     path: {
         /**
-         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -38142,7 +38181,7 @@ export type AddPostCommentReactionData = {
     };
     path: {
         /**
-         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         * The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
          */
         post_id: string;
         /**
@@ -49541,6 +49580,19 @@ export type GetClassicApplicantsResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * The position name in the experience.
@@ -49776,6 +49828,19 @@ export type GetClassicApplicantByIdResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * The position name in the experience.
@@ -50938,6 +51003,19 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Job title of the experience.
@@ -51109,6 +51187,19 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Job title of the experience.
@@ -51268,6 +51359,19 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Date the certification was issued in MM/DD/YYYY format.
@@ -51396,6 +51500,19 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Role in the experience.
@@ -51642,6 +51759,19 @@ export type GetRecruiterApplicantByIdResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Job title of the experience.
@@ -51813,6 +51943,19 @@ export type GetRecruiterApplicantByIdResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Job title of the experience.
@@ -51972,6 +52115,19 @@ export type GetRecruiterApplicantByIdResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Date the certification was issued in MM/DD/YYYY format.
@@ -52100,6 +52256,19 @@ export type GetRecruiterApplicantByIdResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Role in the experience.
@@ -52431,6 +52600,19 @@ export type GetRecruiterPipelineCandidatesResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Job title of the experience.
@@ -52602,6 +52784,19 @@ export type GetRecruiterPipelineCandidatesResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Job title of the experience.
@@ -52761,6 +52956,19 @@ export type GetRecruiterPipelineCandidatesResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Date the certification was issued in MM/DD/YYYY format.
@@ -52889,6 +53097,19 @@ export type GetRecruiterPipelineCandidatesResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Role in the experience.
@@ -53675,6 +53896,19 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Job title of the experience.
@@ -53848,6 +54082,19 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Job title of the experience.
@@ -54007,6 +54254,19 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Date the certification was issued in MM/DD/YYYY format.
@@ -54135,6 +54395,19 @@ export type PerformRecruiterPeopleSearchFromTalentPoolResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Role in the experience.
@@ -55677,6 +55950,19 @@ export type PerformRecruiterSearchFromUrlResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Job title of the experience.
@@ -55850,6 +56136,19 @@ export type PerformRecruiterSearchFromUrlResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Job title of the experience.
@@ -56009,6 +56308,19 @@ export type PerformRecruiterSearchFromUrlResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Date the certification was issued in MM/DD/YYYY format.
@@ -56137,6 +56449,19 @@ export type PerformRecruiterSearchFromUrlResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Role in the experience.
@@ -56354,6 +56679,19 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Job title of the experience.
@@ -56525,6 +56863,19 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Job title of the experience.
@@ -56684,6 +57035,19 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Date the certification was issued in MM/DD/YYYY format.
@@ -56812,6 +57176,19 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Role in the experience.
@@ -56996,6 +57373,19 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Job title of the experience.
@@ -57167,6 +57557,19 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Job title of the experience.
@@ -57326,6 +57729,19 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Date the certification was issued in MM/DD/YYYY format.
@@ -57454,6 +57870,19 @@ export type PerformRecruiterSearchFromUrlResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Role in the experience.
@@ -58318,6 +58747,19 @@ export type PerformRecruiterPeopleSearchResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Job title of the experience.
@@ -58491,6 +58933,19 @@ export type PerformRecruiterPeopleSearchResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Job title of the experience.
@@ -58650,6 +59105,19 @@ export type PerformRecruiterPeopleSearchResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Date the certification was issued in MM/DD/YYYY format.
@@ -58778,6 +59246,19 @@ export type PerformRecruiterPeopleSearchResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Role in the experience.
@@ -59270,6 +59751,19 @@ export type PerformSalesSearchFromUrlResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Job title of the experience.
@@ -59341,6 +59835,19 @@ export type PerformSalesSearchFromUrlResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Role in the experience.
@@ -59699,6 +60206,19 @@ export type PerformSalesSearchFromUrlResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Job title of the experience.
@@ -59770,6 +60290,19 @@ export type PerformSalesSearchFromUrlResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Role in the experience.
@@ -60157,6 +60690,19 @@ export type PerformSalesSearchFromUrlResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Job title of the experience.
@@ -60228,6 +60774,19 @@ export type PerformSalesSearchFromUrlResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Role in the experience.
@@ -61037,6 +61596,19 @@ export type PerformSalesPeopleSearchResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Job title of the experience.
@@ -61108,6 +61680,19 @@ export type PerformSalesPeopleSearchResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Role in the experience.
@@ -61800,6 +62385,19 @@ export type BrowseSalesLeadListResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Job title of the experience.
@@ -61871,6 +62469,19 @@ export type BrowseSalesLeadListResponses = {
                      * Industry types of the company.
                      */
                     industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
                 };
                 /**
                  * Role in the experience.
@@ -62415,6 +63026,19 @@ export type BrowseSalesAccountListResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Job title of the experience.
@@ -62486,6 +63110,19 @@ export type BrowseSalesAccountListResponses = {
                          * Industry types of the company.
                          */
                         industries?: Array<string>;
+                        /**
+                         * The employee count range reported for the company, when available.
+                         */
+                        headcount_range?: {
+                            /**
+                             * The lower bound of the employee count range.
+                             */
+                            from?: number;
+                            /**
+                             * The upper bound of the employee count range.
+                             */
+                            to?: number;
+                        };
                     };
                     /**
                      * Role in the experience.
@@ -63426,6 +64063,141 @@ export type SolveCheckpointResponses = {
         } | {
             type: 'LOADING';
         } | {
+            /**
+             * An owner-authorized browser verification is required.
+             */
+            type: 'PASSKEY';
+            /**
+             * Whether to verify in the browser or compare and approve the mobile confirmation.
+             */
+            stage: 'SIGN' | 'CONFIRM';
+            /**
+             * Opaque identifier of this single-use verification step.
+             */
+            request_id: string;
+            /**
+             * Expiry of this verification attempt, in ISO 8601 format.
+             */
+            expires_at: string;
+            /**
+             * Compare this code with the code on your phone before approving.
+             */
+            comparison_code?: string;
+            /**
+             * Install or update UniLogin, then authorize this browser verification. No provider session is exported.
+             */
+            handoff?: {
+                /**
+                 * Identifier used by the extension bridge.
+                 */
+                request_id: string;
+                /**
+                 * Short-lived capability for this verification; pass only to the trusted extension bridge.
+                 */
+                handoff_token: string;
+                /**
+                 * Code to enter in UniLogin when automatic extension detection is unavailable.
+                 */
+                extension_code: string;
+                /**
+                 * Expiry of the extension handoff, in ISO 8601 format.
+                 */
+                expires_at: string;
+                /**
+                 * Trusted UniLogin bridge URL for this attempt.
+                 */
+                extension_bridge_url: string;
+                /**
+                 * Official extension store links.
+                 */
+                extension_store_urls: {
+                    /**
+                     * Chrome extension store URL.
+                     */
+                    chrome?: string;
+                    /**
+                     * Edge extension store URL.
+                     */
+                    edge?: string;
+                    /**
+                     * Firefox extension store URL.
+                     */
+                    firefox?: string;
+                    /**
+                     * Safari extension store URL.
+                     */
+                    safari?: string;
+                };
+                /**
+                 * Official extension download links, for browsers without a store listing.
+                 */
+                extension_download_urls: {
+                    /**
+                     * Edge extension download URL.
+                     */
+                    edge?: string;
+                    /**
+                     * Safari extension download URL.
+                     */
+                    safari?: string;
+                };
+            };
+            /**
+             * The verification service is not ready; retry after its update. Ordinary authentication methods remain available.
+             */
+            unavailable?: 'UPDATE_REQUIRED';
+        } | {
+            /**
+             * Authentication must be completed through the browser extension.
+             */
+            type: 'UNILOGIN';
+            /**
+             * Temporary code to enter in the browser extension to authorize this connection.
+             */
+            extension_code: string;
+            /**
+             * Expiry of the extension code, in ISO 8601 format.
+             */
+            extension_code_expires_at: string;
+            /**
+             * Expiry of this connection attempt, in ISO 8601 format.
+             */
+            expires_at: string;
+            /**
+             * Official extension store links.
+             */
+            extension_store_urls: {
+                /**
+                 * Chrome extension store URL.
+                 */
+                chrome?: string;
+                /**
+                 * Edge extension store URL.
+                 */
+                edge?: string;
+                /**
+                 * Firefox extension store URL.
+                 */
+                firefox?: string;
+                /**
+                 * Safari extension store URL.
+                 */
+                safari?: string;
+            };
+            /**
+             * Official extension download links, for browsers without a store listing.
+             */
+            extension_download_urls: {
+                /**
+                 * Edge extension download URL.
+                 */
+                edge?: string;
+                /**
+                 * Safari extension download URL.
+                 */
+                safari?: string;
+            };
+        } | {
             type: 'ENCRYPTED_HISTORY';
             /**
              * The ways the user can answer. Send the chosen `id` as the `code` of Solve Checkpoint.
@@ -63471,7 +64243,7 @@ export type SolveCheckpointResponses = {
             };
         };
         /**
-         * The ID of the auth intent. This should be used in Solve Checkpoint.
+         * The ID of the auth intent. Use it to continue authentication.
          */
         intent_id: string;
     } | {
@@ -63775,6 +64547,141 @@ export type RequestCheckpointResponses = {
         } | {
             type: 'LOADING';
         } | {
+            /**
+             * An owner-authorized browser verification is required.
+             */
+            type: 'PASSKEY';
+            /**
+             * Whether to verify in the browser or compare and approve the mobile confirmation.
+             */
+            stage: 'SIGN' | 'CONFIRM';
+            /**
+             * Opaque identifier of this single-use verification step.
+             */
+            request_id: string;
+            /**
+             * Expiry of this verification attempt, in ISO 8601 format.
+             */
+            expires_at: string;
+            /**
+             * Compare this code with the code on your phone before approving.
+             */
+            comparison_code?: string;
+            /**
+             * Install or update UniLogin, then authorize this browser verification. No provider session is exported.
+             */
+            handoff?: {
+                /**
+                 * Identifier used by the extension bridge.
+                 */
+                request_id: string;
+                /**
+                 * Short-lived capability for this verification; pass only to the trusted extension bridge.
+                 */
+                handoff_token: string;
+                /**
+                 * Code to enter in UniLogin when automatic extension detection is unavailable.
+                 */
+                extension_code: string;
+                /**
+                 * Expiry of the extension handoff, in ISO 8601 format.
+                 */
+                expires_at: string;
+                /**
+                 * Trusted UniLogin bridge URL for this attempt.
+                 */
+                extension_bridge_url: string;
+                /**
+                 * Official extension store links.
+                 */
+                extension_store_urls: {
+                    /**
+                     * Chrome extension store URL.
+                     */
+                    chrome?: string;
+                    /**
+                     * Edge extension store URL.
+                     */
+                    edge?: string;
+                    /**
+                     * Firefox extension store URL.
+                     */
+                    firefox?: string;
+                    /**
+                     * Safari extension store URL.
+                     */
+                    safari?: string;
+                };
+                /**
+                 * Official extension download links, for browsers without a store listing.
+                 */
+                extension_download_urls: {
+                    /**
+                     * Edge extension download URL.
+                     */
+                    edge?: string;
+                    /**
+                     * Safari extension download URL.
+                     */
+                    safari?: string;
+                };
+            };
+            /**
+             * The verification service is not ready; retry after its update. Ordinary authentication methods remain available.
+             */
+            unavailable?: 'UPDATE_REQUIRED';
+        } | {
+            /**
+             * Authentication must be completed through the browser extension.
+             */
+            type: 'UNILOGIN';
+            /**
+             * Temporary code to enter in the browser extension to authorize this connection.
+             */
+            extension_code: string;
+            /**
+             * Expiry of the extension code, in ISO 8601 format.
+             */
+            extension_code_expires_at: string;
+            /**
+             * Expiry of this connection attempt, in ISO 8601 format.
+             */
+            expires_at: string;
+            /**
+             * Official extension store links.
+             */
+            extension_store_urls: {
+                /**
+                 * Chrome extension store URL.
+                 */
+                chrome?: string;
+                /**
+                 * Edge extension store URL.
+                 */
+                edge?: string;
+                /**
+                 * Firefox extension store URL.
+                 */
+                firefox?: string;
+                /**
+                 * Safari extension store URL.
+                 */
+                safari?: string;
+            };
+            /**
+             * Official extension download links, for browsers without a store listing.
+             */
+            extension_download_urls: {
+                /**
+                 * Edge extension download URL.
+                 */
+                edge?: string;
+                /**
+                 * Safari extension download URL.
+                 */
+                safari?: string;
+            };
+        } | {
             type: 'ENCRYPTED_HISTORY';
             /**
              * The ways the user can answer. Send the chosen `id` as the `code` of Solve Checkpoint.
@@ -63820,7 +64727,7 @@ export type RequestCheckpointResponses = {
             };
         };
         /**
-         * The ID of the auth intent. This should be used in Solve Checkpoint.
+         * The ID of the auth intent. Use it to continue authentication.
          */
         intent_id: string;
     } | {
@@ -64757,7 +65664,7 @@ export type StartAuthIntentData = {
         };
     }) & {
         /**
-         * The Scope the account will be assigned to once authentication is complete.
+         * The Scope assigned to a newly linked account. Cannot be specified when reconnecting an existing account.
          */
         account_scope_id?: string;
         /**
@@ -64780,7 +65687,7 @@ export type StartAuthIntentData = {
          */
         account_id?: string;
         /**
-         * The Scope assigned to a newly linked Account.
+         * The Scope assigned to a newly linked account. Cannot be specified when reconnecting an existing account.
          */
         account_scope_id?: string;
         /**
@@ -64936,6 +65843,141 @@ export type StartAuthIntentResponses = {
         } | {
             type: 'LOADING';
         } | {
+            /**
+             * An owner-authorized browser verification is required.
+             */
+            type: 'PASSKEY';
+            /**
+             * Whether to verify in the browser or compare and approve the mobile confirmation.
+             */
+            stage: 'SIGN' | 'CONFIRM';
+            /**
+             * Opaque identifier of this single-use verification step.
+             */
+            request_id: string;
+            /**
+             * Expiry of this verification attempt, in ISO 8601 format.
+             */
+            expires_at: string;
+            /**
+             * Compare this code with the code on your phone before approving.
+             */
+            comparison_code?: string;
+            /**
+             * Install or update UniLogin, then authorize this browser verification. No provider session is exported.
+             */
+            handoff?: {
+                /**
+                 * Identifier used by the extension bridge.
+                 */
+                request_id: string;
+                /**
+                 * Short-lived capability for this verification; pass only to the trusted extension bridge.
+                 */
+                handoff_token: string;
+                /**
+                 * Code to enter in UniLogin when automatic extension detection is unavailable.
+                 */
+                extension_code: string;
+                /**
+                 * Expiry of the extension handoff, in ISO 8601 format.
+                 */
+                expires_at: string;
+                /**
+                 * Trusted UniLogin bridge URL for this attempt.
+                 */
+                extension_bridge_url: string;
+                /**
+                 * Official extension store links.
+                 */
+                extension_store_urls: {
+                    /**
+                     * Chrome extension store URL.
+                     */
+                    chrome?: string;
+                    /**
+                     * Edge extension store URL.
+                     */
+                    edge?: string;
+                    /**
+                     * Firefox extension store URL.
+                     */
+                    firefox?: string;
+                    /**
+                     * Safari extension store URL.
+                     */
+                    safari?: string;
+                };
+                /**
+                 * Official extension download links, for browsers without a store listing.
+                 */
+                extension_download_urls: {
+                    /**
+                     * Edge extension download URL.
+                     */
+                    edge?: string;
+                    /**
+                     * Safari extension download URL.
+                     */
+                    safari?: string;
+                };
+            };
+            /**
+             * The verification service is not ready; retry after its update. Ordinary authentication methods remain available.
+             */
+            unavailable?: 'UPDATE_REQUIRED';
+        } | {
+            /**
+             * Authentication must be completed through the browser extension.
+             */
+            type: 'UNILOGIN';
+            /**
+             * Temporary code to enter in the browser extension to authorize this connection.
+             */
+            extension_code: string;
+            /**
+             * Expiry of the extension code, in ISO 8601 format.
+             */
+            extension_code_expires_at: string;
+            /**
+             * Expiry of this connection attempt, in ISO 8601 format.
+             */
+            expires_at: string;
+            /**
+             * Official extension store links.
+             */
+            extension_store_urls: {
+                /**
+                 * Chrome extension store URL.
+                 */
+                chrome?: string;
+                /**
+                 * Edge extension store URL.
+                 */
+                edge?: string;
+                /**
+                 * Firefox extension store URL.
+                 */
+                firefox?: string;
+                /**
+                 * Safari extension store URL.
+                 */
+                safari?: string;
+            };
+            /**
+             * Official extension download links, for browsers without a store listing.
+             */
+            extension_download_urls: {
+                /**
+                 * Edge extension download URL.
+                 */
+                edge?: string;
+                /**
+                 * Safari extension download URL.
+                 */
+                safari?: string;
+            };
+        } | {
             type: 'ENCRYPTED_HISTORY';
             /**
              * The ways the user can answer. Send the chosen `id` as the `code` of Solve Checkpoint.
@@ -64981,7 +66023,7 @@ export type StartAuthIntentResponses = {
             };
         };
         /**
-         * The ID of the auth intent. This should be used in Solve Checkpoint.
+         * The ID of the auth intent. Use it to continue authentication.
          */
         intent_id: string;
     } | {
@@ -65150,26 +66192,6 @@ export type StartAuthIntentResponses = {
              */
             protocol?: string;
         };
-    } | {
-        object: 'AuthenticationCheckpoint';
-        account_id: string;
-        intent_id: string;
-        checkpoint: {
-            type: 'UNILOGIN';
-            extension_code: string;
-            extension_code_expires_at: string;
-            expires_at: string;
-            extension_store_urls: {
-                chrome?: string;
-                edge?: string;
-                firefox?: string;
-                safari?: string;
-            };
-            extension_download_urls: {
-                edge?: string;
-                safari?: string;
-            };
-        };
     };
 };
 
@@ -65177,10 +66199,6 @@ export type StartAuthIntentResponse = StartAuthIntentResponses[keyof StartAuthIn
 
 export type CreateAuthLinkData = {
     body?: {
-        /**
-         * The Scope the account will be assigned to once authentication is complete.
-         */
-        account_scope_id?: string;
         /**
          * The expiration date of the link. Use ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
          */
@@ -65855,11 +66873,11 @@ export type CreateAuthLinkData = {
          * - give an array of specific providers.
          */
         providers: '*' | '*:MESSAGING' | '*:EMAILS' | '*:CALENDAR' | '*:SOCIAL' | 'linkedin' | 'mock' | 'whatsapp' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook' | Array<'linkedin' | 'mock' | 'whatsapp' | 'google' | 'outlook' | 'imap' | 'telegram' | 'instagram' | 'facebook'>;
-    } | {
         /**
-         * The Scope the account will be assigned to once authentication is complete.
+         * The Scope assigned to the newly linked account.
          */
         account_scope_id?: string;
+    } | {
         /**
          * The expiration date of the link. Use ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
          */
