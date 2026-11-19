@@ -11287,7 +11287,7 @@ export type GetMessagesListResponses = {
                     };
                 };
                 /**
-                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                  */
                 album_id?: string;
             });
@@ -11911,7 +11911,7 @@ export type GetMessagesListResponses = {
                         };
                     };
                     /**
-                     * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                     * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                      */
                     album_id?: string;
                 };
@@ -12417,7 +12417,7 @@ export type GetMessagesListResponses = {
                         };
                     };
                     /**
-                     * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                     * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                      */
                     album_id?: string;
                 };
@@ -13267,7 +13267,7 @@ export type GetMessageResponses = {
                 };
             };
             /**
-             * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+             * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
              */
             album_id?: string;
         });
@@ -13891,7 +13891,7 @@ export type GetMessageResponses = {
                     };
                 };
                 /**
-                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                  */
                 album_id?: string;
             };
@@ -14397,7 +14397,7 @@ export type GetMessageResponses = {
                     };
                 };
                 /**
-                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                  */
                 album_id?: string;
             };
@@ -16971,7 +16971,7 @@ export type StarMessageResponses = {
                 };
             };
             /**
-             * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+             * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
              */
             album_id?: string;
         });
@@ -17595,7 +17595,7 @@ export type StarMessageResponses = {
                     };
                 };
                 /**
-                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                  */
                 album_id?: string;
             };
@@ -18101,7 +18101,7 @@ export type StarMessageResponses = {
                     };
                 };
                 /**
-                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                  */
                 album_id?: string;
             };
@@ -24701,6 +24701,9 @@ export type GetUserProfileResponses = {
              * `OUT_OF_NETWORK`: Unreachable user.'
              */
             network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            /**
+             * Relation request
+             */
             relation_request?: {
                 object: 'RelationRequest';
                 /**
@@ -30990,6 +30993,8 @@ export type GetPostData = {
 
 export type GetPostResponses = {
     /**
+     * Post
+     *
      * Default Response
      */
     200: {
@@ -32572,6 +32577,8 @@ export type UpdatePostData = {
 
 export type UpdatePostResponses = {
     /**
+     * Post
+     *
      * Default Response
      */
     200: {
@@ -33849,6 +33856,8 @@ export type CreatePostData = {
 
 export type CreatePostResponses = {
     /**
+     * Post
+     *
      * Default Response
      */
     201: {
@@ -43001,6 +43010,8 @@ export type CreateCalendarEventData = {
          */
         visibility?: 'public' | 'private';
         /**
+         * Conference
+         *
          * A conference to generate or attach to the event.
          * The way the conference is associated with the event may vary depending on the calendar and the selected provider:
          * it can be generated and hosted natively by the provider (e.g. Google Meet on Google, Microsoft Teams or Skype on
@@ -63956,7 +63967,7 @@ export type SolveCheckpointResponses = {
     200: {
         object: 'AuthenticationCheckpoint';
         /**
-         * The details of the checkpoint that user needs to solve.
+         * The next authentication step, or a notice that the current attempt cannot continue.
          */
         checkpoint: {
             type: 'OTP';
@@ -64241,9 +64252,35 @@ export type SolveCheckpointResponses = {
                  */
                 error: 'INVALID_CREDENTIAL' | 'REFUSED_TO_PROTECT_BACKUP';
             };
+        } | {
+            /**
+             * The current authentication attempt has stopped and cannot be continued or resolved.
+             */
+            type: 'PROCESS_STOPPED';
+            /**
+             * The reason why the authentication attempt cannot continue.
+             */
+            message: string;
+            /**
+             * Additional context or instructions for the account owner, supplementing the main message.
+             */
+            description?: string;
+            /**
+             * An optional resource or action to present to the account owner alongside the message.
+             */
+            link?: {
+                /**
+                 * An absolute HTTP or HTTPS URL providing information or actions relevant to the stopped attempt.
+                 */
+                url: string;
+                /**
+                 * The label describing the linked resource or action.
+                 */
+                label: string;
+            };
         };
         /**
-         * The ID of the auth intent. Use it to continue authentication.
+         * The ID of the authentication intent. Use it for the next step required by the checkpoint. For PROCESS_STOPPED, it only identifies the stopped attempt and must not be used to resume or resolve it.
          */
         intent_id: string;
     } | {
@@ -64440,7 +64477,7 @@ export type RequestCheckpointResponses = {
     200: {
         object: 'AuthenticationCheckpoint';
         /**
-         * The details of the checkpoint that user needs to solve.
+         * The next authentication step, or a notice that the current attempt cannot continue.
          */
         checkpoint: {
             type: 'OTP';
@@ -64725,9 +64762,35 @@ export type RequestCheckpointResponses = {
                  */
                 error: 'INVALID_CREDENTIAL' | 'REFUSED_TO_PROTECT_BACKUP';
             };
+        } | {
+            /**
+             * The current authentication attempt has stopped and cannot be continued or resolved.
+             */
+            type: 'PROCESS_STOPPED';
+            /**
+             * The reason why the authentication attempt cannot continue.
+             */
+            message: string;
+            /**
+             * Additional context or instructions for the account owner, supplementing the main message.
+             */
+            description?: string;
+            /**
+             * An optional resource or action to present to the account owner alongside the message.
+             */
+            link?: {
+                /**
+                 * An absolute HTTP or HTTPS URL providing information or actions relevant to the stopped attempt.
+                 */
+                url: string;
+                /**
+                 * The label describing the linked resource or action.
+                 */
+                label: string;
+            };
         };
         /**
-         * The ID of the auth intent. Use it to continue authentication.
+         * The ID of the authentication intent. Use it for the next step required by the checkpoint. For PROCESS_STOPPED, it only identifies the stopped attempt and must not be used to resume or resolve it.
          */
         intent_id: string;
     } | {
@@ -65736,7 +65799,7 @@ export type StartAuthIntentResponses = {
     200: {
         object: 'AuthenticationCheckpoint';
         /**
-         * The details of the checkpoint that user needs to solve.
+         * The next authentication step, or a notice that the current attempt cannot continue.
          */
         checkpoint: {
             type: 'OTP';
@@ -66021,9 +66084,35 @@ export type StartAuthIntentResponses = {
                  */
                 error: 'INVALID_CREDENTIAL' | 'REFUSED_TO_PROTECT_BACKUP';
             };
+        } | {
+            /**
+             * The current authentication attempt has stopped and cannot be continued or resolved.
+             */
+            type: 'PROCESS_STOPPED';
+            /**
+             * The reason why the authentication attempt cannot continue.
+             */
+            message: string;
+            /**
+             * Additional context or instructions for the account owner, supplementing the main message.
+             */
+            description?: string;
+            /**
+             * An optional resource or action to present to the account owner alongside the message.
+             */
+            link?: {
+                /**
+                 * An absolute HTTP or HTTPS URL providing information or actions relevant to the stopped attempt.
+                 */
+                url: string;
+                /**
+                 * The label describing the linked resource or action.
+                 */
+                label: string;
+            };
         };
         /**
-         * The ID of the auth intent. Use it to continue authentication.
+         * The ID of the authentication intent. Use it for the next step required by the checkpoint. For PROCESS_STOPPED, it only identifies the stopped attempt and must not be used to resume or resolve it.
          */
         intent_id: string;
     } | {
