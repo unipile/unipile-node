@@ -8083,7 +8083,7 @@ export type StartChatData = {
          */
         name?: string;
         /**
-         * Participant(s) of the chat. To start a 1to1 chat, pass a single user id as a string. To start a group, pass an array of user ids. Passing an array with a single user id will attempt to start a group with that user only.
+         * Participant(s) of the chat. To start a 1to1 chat, pass a single user ID as a string, for example `"users_ids": "user_id"`. To start a group (if supported by the provider), pass an array of user IDs, for example `"users_ids": ["user_id_1", "user_id_2"]`. Passing an array with a single user ID will attempt to start a group with that user only. These formats apply to both Start a Chat and Start a Chat from Inbox.
          */
         users_ids: Array<string> | string;
         /**
@@ -8349,7 +8349,7 @@ export type StartChatFromInboxData = {
          */
         name?: string;
         /**
-         * Participant(s) of the chat. To start a 1to1 chat, pass a single user id as a string. To start a group, pass an array of user ids. Passing an array with a single user id will attempt to start a group with that user only.
+         * Participant(s) of the chat. To start a 1to1 chat, pass a single user ID as a string, for example `"users_ids": "user_id"`. To start a group (if supported by the provider), pass an array of user IDs, for example `"users_ids": ["user_id_1", "user_id_2"]`. Passing an array with a single user ID will attempt to start a group with that user only. These formats apply to both Start a Chat and Start a Chat from Inbox.
          */
         users_ids: Array<string> | string;
         /**
@@ -11287,7 +11287,7 @@ export type GetMessagesListResponses = {
                     };
                 };
                 /**
-                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                  */
                 album_id?: string;
             });
@@ -11911,7 +11911,7 @@ export type GetMessagesListResponses = {
                         };
                     };
                     /**
-                     * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                     * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                      */
                     album_id?: string;
                 };
@@ -12417,7 +12417,7 @@ export type GetMessagesListResponses = {
                         };
                     };
                     /**
-                     * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                     * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                      */
                     album_id?: string;
                 };
@@ -13267,7 +13267,7 @@ export type GetMessageResponses = {
                 };
             };
             /**
-             * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+             * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
              */
             album_id?: string;
         });
@@ -13891,7 +13891,7 @@ export type GetMessageResponses = {
                     };
                 };
                 /**
-                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                  */
                 album_id?: string;
             };
@@ -14397,7 +14397,7 @@ export type GetMessageResponses = {
                     };
                 };
                 /**
-                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                  */
                 album_id?: string;
             };
@@ -16971,7 +16971,7 @@ export type StarMessageResponses = {
                 };
             };
             /**
-             * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+             * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
              */
             album_id?: string;
         });
@@ -17595,7 +17595,7 @@ export type StarMessageResponses = {
                     };
                 };
                 /**
-                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                  */
                 album_id?: string;
             };
@@ -18101,7 +18101,7 @@ export type StarMessageResponses = {
                     };
                 };
                 /**
-                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                  */
                 album_id?: string;
             };
@@ -18857,7 +18857,7 @@ export type GetEmailsListResponses = {
              */
             message_id: string;
             /**
-             * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
+             * The thread identifier. Native identifiers are preserved. Header-derived identifiers use the first Message-ID from References, In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
              */
             thread_id?: string;
             /**
@@ -19399,7 +19399,7 @@ export type GetFolderEmailsListResponses = {
              */
             message_id: string;
             /**
-             * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
+             * The thread identifier. Native identifiers are preserved. Header-derived identifiers use the first Message-ID from References, In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
              */
             thread_id?: string;
             /**
@@ -19856,7 +19856,7 @@ export type GetThreadData = {
     body?: never;
     path: {
         /**
-         * ID of the thread to retrieve. For IMAP, use the thread_id returned by an email; results based on header-derived IDs may be incomplete.
+         * The thread_id returned by an email. Legacy header-derived identifiers containing multiple Message-IDs are accepted using their first reference.
          */
         thread_id: string;
         /**
@@ -19894,7 +19894,7 @@ export type GetThreadResponses = {
              */
             message_id: string;
             /**
-             * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
+             * The thread identifier. Native identifiers are preserved. Header-derived identifiers use the first Message-ID from References, In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
              */
             thread_id?: string;
             /**
@@ -20402,7 +20402,7 @@ export type GetEmailResponses = {
          */
         message_id: string;
         /**
-         * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
+         * The thread identifier. Native identifiers are preserved. Header-derived identifiers use the first Message-ID from References, In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
          */
         thread_id?: string;
         /**
@@ -20920,7 +20920,7 @@ export type ModifyEmailResponses = {
          */
         message_id: string;
         /**
-         * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
+         * The thread identifier. Native identifiers are preserved. Header-derived identifiers use the first Message-ID from References, In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
          */
         thread_id?: string;
         /**
@@ -24701,6 +24701,9 @@ export type GetUserProfileResponses = {
              * `OUT_OF_NETWORK`: Unreachable user.'
              */
             network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            /**
+             * Relation request
+             */
             relation_request?: {
                 object: 'RelationRequest';
                 /**
@@ -28556,15 +28559,31 @@ export type GetRelationRequestsListResponses = {
 export type GetRelationRequestsListResponse = GetRelationRequestsListResponses[keyof GetRelationRequestsListResponses];
 
 export type CreateRelationRequestData = {
+    /**
+     * Options for sending a bi-directional relation request to a user.
+     */
     body: {
         /**
-         * A message to send to the user along with the request (if supported by the provider).
+         * An optional message to send along with the request (if supported by the provider).
          */
         message?: string;
         /**
          * The ID of the User to request a bi-directional relation with.
          */
         user_id: string;
+        specifics?: unknown & {
+            /**
+             * LinkedIn
+             *
+             * LinkedIn-specific options for sending a relation request.
+             */
+            linkedin?: {
+                /**
+                 * The recipient's email address, required when LinkedIn requests it for a Sales Navigator invitation. Only supported for Sales Navigator user IDs (ACw...).
+                 */
+                user_email?: string;
+            };
+        };
     };
     path: {
         account_id: string;
@@ -30990,6 +31009,8 @@ export type GetPostData = {
 
 export type GetPostResponses = {
     /**
+     * Post
+     *
      * Default Response
      */
     200: {
@@ -32572,6 +32593,8 @@ export type UpdatePostData = {
 
 export type UpdatePostResponses = {
     /**
+     * Post
+     *
      * Default Response
      */
     200: {
@@ -33835,6 +33858,15 @@ export type CreatePostData = {
                  */
                 location_id?: string;
             };
+            /**
+             * Specific options to apply if the provider of the targeted account is LinkedIn.
+             */
+            linkedin?: {
+                /**
+                 * Display title of the document published with the post. Defaults to the attachment's file name when omitted. Only applies when a single document is attached.
+                 */
+                document_title?: string;
+            };
         };
     };
     path: {
@@ -33849,6 +33881,8 @@ export type CreatePostData = {
 
 export type CreatePostResponses = {
     /**
+     * Post
+     *
      * Default Response
      */
     201: {
@@ -43001,6 +43035,8 @@ export type CreateCalendarEventData = {
          */
         visibility?: 'public' | 'private';
         /**
+         * Conference
+         *
          * A conference to generate or attach to the event.
          * The way the conference is associated with the event may vary depending on the calendar and the selected provider:
          * it can be generated and hosted natively by the provider (e.g. Google Meet on Google, Microsoft Teams or Skype on
@@ -50645,7 +50681,7 @@ export type GetRecruiterTalentPoolApplicantsData = {
         /**
          * A list of spotlights.
          */
-        spotlights?: Array<'ACTIVE_TALENT'>;
+        spotlights?: Array<'ACTIVE_TALENT' | 'OPEN_TO_WORK' | 'VERIFIED_APPLICANTS' | 'HIGHLIGHTED_FOR_REVIEW'>;
         /**
          * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
          *
@@ -51613,6 +51649,961 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
 };
 
 export type GetRecruiterTalentPoolApplicantsResponse = GetRecruiterTalentPoolApplicantsResponses[keyof GetRecruiterTalentPoolApplicantsResponses];
+
+export type GetRecruiterTalentPoolApplyStartersData = {
+    /**
+     * Filters for people who started applying to a job posting in the project talent pool.
+     */
+    body?: {
+        /**
+         * A keyword or group of keywords.
+         */
+        keywords?: string;
+        /**
+         * A list of spotlights.
+         */
+        spotlights?: Array<'ACTIVE_TALENT' | 'OPEN_TO_WORK' | 'VERIFIED_APPLICANTS' | 'HIGHLIGHTED_FOR_REVIEW'>;
+        /**
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+         *
+         * Native filter : Current locations
+         *
+         */
+        location?: Array<string>;
+        /**
+         *
+         *
+         * Native filter : Companies
+         *
+         */
+        company?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
+        /**
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+         *
+         * Native filter : Skills
+         *
+         */
+        skills?: Array<string>;
+        /**
+         *
+         *
+         * Native filter : Schools
+         *
+         */
+        school?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
+        /**
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+         *
+         * Native filter : Industries
+         *
+         */
+        industry?: Array<string>;
+        /**
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+         *
+         * Native filter : Job titles
+         *
+         */
+        job_title?: Array<string>;
+        /**
+         * A list of languages. Only available to Recruiter PRO contracts.
+         *
+         * Native filter : Spoken languages
+         *
+         */
+        spoken_language?: Array<{
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SPOKEN_LANGUAGE` type to find out the possible values.
+             */
+            id: string;
+            /**
+             * Whether the user can, must or shouldn't have the value.
+             *
+             * Native filter : Priority
+             *
+             */
+            priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
+        }>;
+        /**
+         * The level of proficiency for the spoken languages.
+         *
+         * Native filter : Spoken languages proficiency
+         *
+         */
+        spoken_language_proficiency?: 'ELEMENTARY' | 'LIMITED_WORKING' | 'PROFESSIONAL_WORKING' | 'FULL_PROFESSIONAL' | 'NATIVE_OR_BILINGUAL';
+        /**
+         * A list of connection degrees (1 for First, 2 for Second, 3 for Third+ and GROUP for Common group members).
+         *
+         * Native filter : Network relationships
+         *
+         */
+        network_distance?: Array<1 | 2 | 3 | 'GROUP'>;
+        /**
+         *
+         *
+         * Native filter : Years of experience
+         *
+         */
+        years_of_experience?: {
+            min: number;
+            max: number;
+        };
+        /**
+         *
+         *
+         * Native filter : Years in current position
+         *
+         */
+        years_in_current_position?: {
+            min: number;
+            max: number;
+        };
+        /**
+         *
+         *
+         * Native filter : Years in current company
+         *
+         */
+        years_in_current_company?: {
+            min: number;
+            max: number;
+        };
+        /**
+         *
+         *
+         * Native filter : Degrees
+         *
+         */
+        degree?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
+        /**
+         *
+         *
+         * Native filter : Fields of study
+         *
+         */
+        field_of_study?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
+        /**
+         * A list of experience levels.
+         */
+        seniority?: Array<'UNPAID' | 'TRAINING' | 'ENTRY' | 'SENIOR' | 'MANAGER' | 'DIRECTOR' | 'VP' | 'CXO' | 'PARTNER' | 'OWNER'>;
+        /**
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
+         *
+         * Native filter : Job functions
+         *
+         */
+        job_function?: Array<string>;
+        /**
+         *
+         *
+         * Native filter : Current companies
+         *
+         */
+        current_company?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `CURRENT_COMPANY` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `CURRENT_COMPANY` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
+        /**
+         * A list of company size ranges.
+         */
+        company_size?: Array<{
+            min?: 1 | 51 | 201 | 501 | 1001 | 5001 | 10001;
+            max?: 0 | 10 | 200 | 500 | 1000 | 5000 | 10000;
+        }>;
+        /**
+         *
+         *
+         * Native filter : Tags
+         *
+         */
+        tags?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `TAG` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `TAG` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
+        /**
+         * The sort method.
+         *
+         * Native filter : Sort by
+         *
+         */
+        sort_by?: 'NEWEST_FIRST' | 'ALPHABETICAL';
+    };
+    path: {
+        /**
+         * The ID of the Hiring Project from which to browse the Talent Pool.
+         */
+        project_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: {
+        /**
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
+         */
+        cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
+         */
+        limit?: number;
+    };
+    url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/apply-starters';
+};
+
+export type GetRecruiterTalentPoolApplyStartersResponses = {
+    /**
+     * People Search
+     *
+     * Default Response
+     */
+    200: {
+        data: Array<{
+            object: 'PeopleSearchResult';
+            /**
+             * The ID of the user.
+             */
+            id: string;
+            /**
+             * The headline of the User.
+             */
+            headline?: string;
+            /**
+             * The location of the User.
+             */
+            location?: string;
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            product: 'recruiter';
+            /**
+             * Indidates that you don't have access to the full profile of this User.
+             */
+            visibility: 'partial';
+            /**
+             * The candidate ID of the User.
+             */
+            candidate_id: string;
+            /**
+             * Whether the User has been set as hidden candidate.
+             */
+            is_hidden_candidate: boolean;
+            /**
+             * The hiring project where the User is a candidate.
+             */
+            hiring_project?: {
+                /**
+                 * The ID of the project.
+                 */
+                id: string;
+                /**
+                 * The name of the project.
+                 */
+                name: string;
+                /**
+                 * The pipeline stage at which the User is (contacted, replied, etc.).
+                 */
+                pipeline_stage: string;
+            };
+            /**
+             * A list of the User's work experiences.
+             */
+            work_experience: Array<{
+                /**
+                 * Id of the work experience entry.
+                 */
+                id?: string;
+                company: {
+                    /**
+                     * Name of the company.
+                     */
+                    name?: string;
+                    id: string | null;
+                    /**
+                     * Public identifier of the company.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Public url to the profile picture of the company.
+                     */
+                    picture_url?: string;
+                    /**
+                     * Public url to the profile of the company.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Industry types of the company.
+                     */
+                    industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
+                };
+                /**
+                 * Job title of the experience.
+                 */
+                job_title: string;
+                /**
+                 * Start date of the experience in MM/DD/YYYY format.
+                 */
+                started_on?: string;
+                /**
+                 * End date of the experience in MM/DD/YYYY format.
+                 */
+                ended_on?: string;
+                /**
+                 * Location of the experience.
+                 */
+                location?: string;
+                /**
+                 * Description of the experience.
+                 */
+                description?: string;
+                /**
+                 * Employment type of the experience.
+                 */
+                employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
+                /**
+                 * Workplace type of the experience.
+                 */
+                workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+                /**
+                 * Skills acquired with experience.
+                 */
+                skills?: Array<string>;
+                /**
+                 * Insight of the skills acquired with experience.
+                 */
+                skills_preview?: string;
+            }>;
+        } | {
+            object: 'PeopleSearchResult';
+            /**
+             * The ID of the user.
+             */
+            id: string;
+            /**
+             * The LinkedIn internal member ID of the user.
+             */
+            member_id?: string;
+            /**
+             * The display name of the User.
+             */
+            display_name: string;
+            /**
+             * The public identifier of the User.
+             */
+            public_identifier?: string;
+            /**
+             * The profile URL of the User.
+             */
+            profile_url?: string;
+            /**
+             * The public picture URL of the User.
+             */
+            public_picture_url?: string;
+            /**
+             * The public picture URL of the User in large size.
+             */
+            public_picture_url_large?: string;
+            /**
+             * The number of relations of the User.
+             */
+            relations_count?: number;
+            /**
+             * The location of the User.
+             */
+            location?: string;
+            /**
+             * The headline of the User.
+             */
+            headline?: string;
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            product: 'recruiter';
+            /**
+             * Indidates that you have access to the full profile of this User.
+             */
+            visibility: 'full';
+            /**
+             * The candidate ID of the User.
+             */
+            candidate_id: string;
+            /**
+             * Whether the User has been set as hidden candidate.
+             */
+            is_hidden_candidate: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_recently_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_active_talent: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_closer_in_network: boolean;
+            /**
+             * The interest level of the User.
+             */
+            interest_level?: string;
+            /**
+             * The hiring project where the User is a candidate.
+             */
+            hiring_project?: {
+                /**
+                 * The ID of the project.
+                 */
+                id: string;
+                /**
+                 * The name of the project.
+                 */
+                name: string;
+                /**
+                 * The pipeline stage at which the User is (contacted, replied, etc.).
+                 */
+                pipeline_stage: string;
+            };
+            /**
+             * A list of the User's work experiences.
+             */
+            work_experience: Array<{
+                /**
+                 * Id of the work experience entry.
+                 */
+                id?: string;
+                company: {
+                    /**
+                     * Name of the company.
+                     */
+                    name?: string;
+                    id: string | null;
+                    /**
+                     * Public identifier of the company.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Public url to the profile picture of the company.
+                     */
+                    picture_url?: string;
+                    /**
+                     * Public url to the profile of the company.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Industry types of the company.
+                     */
+                    industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
+                };
+                /**
+                 * Job title of the experience.
+                 */
+                job_title: string;
+                /**
+                 * Start date of the experience in MM/DD/YYYY format.
+                 */
+                started_on?: string;
+                /**
+                 * End date of the experience in MM/DD/YYYY format.
+                 */
+                ended_on?: string;
+                /**
+                 * Location of the experience.
+                 */
+                location?: string;
+                /**
+                 * Description of the experience.
+                 */
+                description?: string;
+                /**
+                 * Employment type of the experience.
+                 */
+                employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
+                /**
+                 * Workplace type of the experience.
+                 */
+                workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+                /**
+                 * Skills acquired with experience.
+                 */
+                skills?: Array<string>;
+                /**
+                 * Insight of the skills acquired with experience.
+                 */
+                skills_preview?: string;
+            }>;
+            /**
+             * The industry in which the User works.
+             */
+            industry?: string;
+            /**
+             * The number of the followers of the User.
+             */
+            followers_count?: number;
+            /**
+             * A list of skills.
+             */
+            skills: Array<{
+                /**
+                 * Name of the skill.
+                 */
+                name: string;
+                /**
+                 * Number of people who endorsed the skill.
+                 */
+                endorsement_count: number;
+            }>;
+            /**
+             * The summary of the User.
+             */
+            summary?: string;
+            emails?: Array<string>;
+            phone_numbers?: Array<string>;
+            education: Array<{
+                /**
+                 * Id of the education entry.
+                 */
+                id?: string;
+                school: {
+                    id: string | null;
+                    /**
+                     * Name of the school.
+                     */
+                    name?: string;
+                    /**
+                     * Public url to the profile picture of the school.
+                     */
+                    picture_url?: string;
+                    /**
+                     * Public url to the profile of the school.
+                     */
+                    profile_url?: string;
+                };
+                /**
+                 * Name of the degree.
+                 */
+                degree?: string;
+                /**
+                 * Description of the education.
+                 */
+                description?: string;
+                /**
+                 * Activities carried out during education.
+                 */
+                activities?: string;
+                /**
+                 * Skills acquired through training.
+                 */
+                skills?: Array<string>;
+                /**
+                 * Insight of the skills acquired through training.
+                 */
+                skills_preview?: string;
+                /**
+                 * Reached academic level of the education.
+                 */
+                grade?: string;
+                /**
+                 * Fields of study of the education.
+                 */
+                fields_of_study?: Array<string>;
+                /**
+                 * Start date of the education in MM/DD/YYYY format.
+                 */
+                started_on?: string;
+                /**
+                 * End date of the education in MM/DD/YYYY format.
+                 */
+                ended_on?: string;
+            }>;
+            languages: Array<{
+                /**
+                 * Name of the language.
+                 */
+                language: string;
+                /**
+                 * Level of fluency in the language.
+                 */
+                proficiency?: 'ELEMENTARY' | 'LIMITED_WORKING' | 'PROFESSIONAL_WORKING' | 'FULL_PROFESSIONAL' | 'NATIVE_OR_BILINGUAL';
+            }>;
+            certifications: Array<{
+                /**
+                 * Name of the certification.
+                 */
+                title: string;
+                organization: {
+                    /**
+                     * Name of the company.
+                     */
+                    name?: string;
+                    id: string | null;
+                    /**
+                     * Public identifier of the company.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Public url to the profile picture of the company.
+                     */
+                    picture_url?: string;
+                    /**
+                     * Public url to the profile of the company.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Industry types of the company.
+                     */
+                    industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
+                };
+                /**
+                 * Date the certification was issued in MM/DD/YYYY format.
+                 */
+                issued_on?: string;
+                /**
+                 * Expiration date of the certification in MM/DD/YYYY format.
+                 */
+                expires_on?: string;
+                /**
+                 * License identifier.
+                 */
+                license?: string;
+                /**
+                 * Skills acquired through certification.
+                 */
+                skills?: Array<string>;
+                /**
+                 * Insight of the skills acquired through certification.
+                 */
+                skills_preview?: string;
+                /**
+                 * Public URL to the certification.
+                 */
+                url?: string;
+            }>;
+            projects: Array<{
+                /**
+                 * Name of the project.
+                 */
+                name: string;
+                /**
+                 * Description of the project.
+                 */
+                description?: string;
+                /**
+                 * Contributors to the project.
+                 */
+                contributors: Array<{
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user as exposed by the provider.
+                     */
+                    display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
+                    specifics?: unknown;
+                }>;
+                /**
+                 * Skills related to the project.
+                 */
+                skills?: Array<string>;
+                /**
+                 * Insight of the skills related to the project.
+                 */
+                skills_preview?: string;
+                /**
+                 * Start date of the project in MM/DD/YYYY format.
+                 */
+                started_on?: string;
+                /**
+                 * End date of the project in MM/DD/YYYY format.
+                 */
+                ended_on?: string;
+            }>;
+            volunteering: Array<{
+                organization?: {
+                    /**
+                     * Name of the company.
+                     */
+                    name?: string;
+                    id: string | null;
+                    /**
+                     * Public identifier of the company.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Public url to the profile picture of the company.
+                     */
+                    picture_url?: string;
+                    /**
+                     * Public url to the profile of the company.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Industry types of the company.
+                     */
+                    industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
+                };
+                /**
+                 * Role in the experience.
+                 */
+                role: string;
+                /**
+                 * Cause of the experience.
+                 */
+                cause?: string;
+                /**
+                 * Description of the experience.
+                 */
+                description?: string;
+                /**
+                 * Start date of the experience in MM/DD/YYYY format.
+                 */
+                started_on?: string;
+                /**
+                 * End date of the experience in MM/DD/YYYY format.
+                 */
+                ended_on?: string;
+            }>;
+            recommendations: Array<{
+                /**
+                 * Recommendation details, including date and actors relationship.
+                 */
+                caption?: string;
+                /**
+                 * Creation date of the recommendation.
+                 */
+                created_on?: string;
+                /**
+                 * Content of the recommendation.
+                 */
+                text: string;
+                user: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user as exposed by the provider.
+                     */
+                    display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
+                    specifics?: unknown;
+                } | null;
+            }>;
+        }>;
+        /**
+         * Total number of results if supported by the provider.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type GetRecruiterTalentPoolApplyStartersResponse = GetRecruiterTalentPoolApplyStartersResponses[keyof GetRecruiterTalentPoolApplyStartersResponses];
 
 export type GetRecruiterApplicantByIdData = {
     body?: never;
@@ -59932,6 +60923,19 @@ export type PerformSalesSearchFromUrlResponses = {
              */
             headcount?: number;
             /**
+             * The employees count range the Company falls into.
+             */
+            headcount_range?: {
+                /**
+                 * The lower bound of the range.
+                 */
+                from?: number;
+                /**
+                 * The higher bound of the range.
+                 */
+                to?: number;
+            };
+            /**
              * A list of the company's activities.
              */
             specialties?: Array<string>;
@@ -60425,6 +61429,19 @@ export type PerformSalesSearchFromUrlResponses = {
              * The number of employees of the Company.
              */
             headcount?: number;
+            /**
+             * The employees count range the Company falls into.
+             */
+            headcount_range?: {
+                /**
+                 * The lower bound of the range.
+                 */
+                from?: number;
+                /**
+                 * The higher bound of the range.
+                 */
+                to?: number;
+            };
             /**
              * A list of the company's activities.
              */
@@ -61996,6 +63013,19 @@ export type PerformSalesCompaniesSearchResponses = {
              */
             headcount?: number;
             /**
+             * The employees count range the Company falls into.
+             */
+            headcount_range?: {
+                /**
+                 * The lower bound of the range.
+                 */
+                from?: number;
+                /**
+                 * The higher bound of the range.
+                 */
+                to?: number;
+            };
+            /**
              * A list of the company's activities.
              */
             specialties?: Array<string>;
@@ -62762,6 +63792,19 @@ export type BrowseSalesAccountListResponses = {
              */
             headcount?: number;
             /**
+             * The employees count range the Company falls into.
+             */
+            headcount_range?: {
+                /**
+                 * The lower bound of the range.
+                 */
+                from?: number;
+                /**
+                 * The higher bound of the range.
+                 */
+                to?: number;
+            };
+            /**
              * A list of the company's activities.
              */
             specialties?: Array<string>;
@@ -63462,7 +64505,7 @@ export type GetCategoryEmailsListResponses = {
              */
             message_id: string;
             /**
-             * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
+             * The thread identifier. Native identifiers are preserved. Header-derived identifiers use the first Message-ID from References, In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
              */
             thread_id?: string;
             /**
@@ -63956,7 +64999,7 @@ export type SolveCheckpointResponses = {
     200: {
         object: 'AuthenticationCheckpoint';
         /**
-         * The details of the checkpoint that user needs to solve.
+         * The next authentication step, or a notice that the current attempt cannot continue.
          */
         checkpoint: {
             type: 'OTP';
@@ -64241,9 +65284,35 @@ export type SolveCheckpointResponses = {
                  */
                 error: 'INVALID_CREDENTIAL' | 'REFUSED_TO_PROTECT_BACKUP';
             };
+        } | {
+            /**
+             * The current authentication attempt has stopped and cannot be continued or resolved.
+             */
+            type: 'PROCESS_STOPPED';
+            /**
+             * The reason why the authentication attempt cannot continue.
+             */
+            message: string;
+            /**
+             * Additional context or instructions for the account owner, supplementing the main message.
+             */
+            description?: string;
+            /**
+             * An optional resource or action to present to the account owner alongside the message.
+             */
+            link?: {
+                /**
+                 * An absolute HTTP or HTTPS URL providing information or actions relevant to the stopped attempt.
+                 */
+                url: string;
+                /**
+                 * The label describing the linked resource or action.
+                 */
+                label: string;
+            };
         };
         /**
-         * The ID of the auth intent. Use it to continue authentication.
+         * The ID of the authentication intent. Use it for the next step required by the checkpoint. For PROCESS_STOPPED, it only identifies the stopped attempt and must not be used to resume or resolve it.
          */
         intent_id: string;
     } | {
@@ -64440,7 +65509,7 @@ export type RequestCheckpointResponses = {
     200: {
         object: 'AuthenticationCheckpoint';
         /**
-         * The details of the checkpoint that user needs to solve.
+         * The next authentication step, or a notice that the current attempt cannot continue.
          */
         checkpoint: {
             type: 'OTP';
@@ -64725,9 +65794,35 @@ export type RequestCheckpointResponses = {
                  */
                 error: 'INVALID_CREDENTIAL' | 'REFUSED_TO_PROTECT_BACKUP';
             };
+        } | {
+            /**
+             * The current authentication attempt has stopped and cannot be continued or resolved.
+             */
+            type: 'PROCESS_STOPPED';
+            /**
+             * The reason why the authentication attempt cannot continue.
+             */
+            message: string;
+            /**
+             * Additional context or instructions for the account owner, supplementing the main message.
+             */
+            description?: string;
+            /**
+             * An optional resource or action to present to the account owner alongside the message.
+             */
+            link?: {
+                /**
+                 * An absolute HTTP or HTTPS URL providing information or actions relevant to the stopped attempt.
+                 */
+                url: string;
+                /**
+                 * The label describing the linked resource or action.
+                 */
+                label: string;
+            };
         };
         /**
-         * The ID of the auth intent. Use it to continue authentication.
+         * The ID of the authentication intent. Use it for the next step required by the checkpoint. For PROCESS_STOPPED, it only identifies the stopped attempt and must not be used to resume or resolve it.
          */
         intent_id: string;
     } | {
@@ -64882,7 +65977,7 @@ export type StartAuthIntentData = {
                 protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             };
             /**
-             * Whether the initial sync should be enabled. The initial sync is required to perform advanced search. Read more in the Synced Accounts guide.
+             * Whether initial sync is enabled. Defaults to false for new accounts. When reconnecting, omitting this field preserves the current setting. Re-enabling starts a fresh initial sync. Initial sync is required for advanced search. Read more in the Synced Accounts guide.
              */
             initial_sync_enable?: boolean;
             [key: string]: unknown | {
@@ -65736,7 +66831,7 @@ export type StartAuthIntentResponses = {
     200: {
         object: 'AuthenticationCheckpoint';
         /**
-         * The details of the checkpoint that user needs to solve.
+         * The next authentication step, or a notice that the current attempt cannot continue.
          */
         checkpoint: {
             type: 'OTP';
@@ -66021,9 +67116,35 @@ export type StartAuthIntentResponses = {
                  */
                 error: 'INVALID_CREDENTIAL' | 'REFUSED_TO_PROTECT_BACKUP';
             };
+        } | {
+            /**
+             * The current authentication attempt has stopped and cannot be continued or resolved.
+             */
+            type: 'PROCESS_STOPPED';
+            /**
+             * The reason why the authentication attempt cannot continue.
+             */
+            message: string;
+            /**
+             * Additional context or instructions for the account owner, supplementing the main message.
+             */
+            description?: string;
+            /**
+             * An optional resource or action to present to the account owner alongside the message.
+             */
+            link?: {
+                /**
+                 * An absolute HTTP or HTTPS URL providing information or actions relevant to the stopped attempt.
+                 */
+                url: string;
+                /**
+                 * The label describing the linked resource or action.
+                 */
+                label: string;
+            };
         };
         /**
-         * The ID of the auth intent. Use it to continue authentication.
+         * The ID of the authentication intent. Use it for the next step required by the checkpoint. For PROCESS_STOPPED, it only identifies the stopped attempt and must not be used to resume or resolve it.
          */
         intent_id: string;
     } | {
@@ -66748,7 +67869,7 @@ export type CreateAuthLinkData = {
                     protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
-                 * Whether the initial sync should be enabled. The initial sync is required to perform advanced search. Read more in the Synced Accounts guide.
+                 * Whether initial sync is enabled. Defaults to false for new accounts. When reconnecting, omitting this field preserves the current setting. Re-enabling starts a fresh initial sync. Initial sync is required for advanced search. Read more in the Synced Accounts guide.
                  */
                 initial_sync_enable?: boolean;
                 [key: string]: unknown | {
@@ -67427,7 +68548,7 @@ export type CreateAuthLinkData = {
                     protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
-                 * Whether the initial sync should be enabled. The initial sync is required to perform advanced search. Read more in the Synced Accounts guide.
+                 * Whether initial sync is enabled. Defaults to false for new accounts. When reconnecting, omitting this field preserves the current setting. Re-enabling starts a fresh initial sync. Initial sync is required for advanced search. Read more in the Synced Accounts guide.
                  */
                 initial_sync_enable?: boolean;
                 [key: string]: unknown | {
