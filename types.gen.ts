@@ -8083,7 +8083,7 @@ export type StartChatData = {
          */
         name?: string;
         /**
-         * Participant(s) of the chat. To start a 1to1 chat, pass a single user id as a string. To start a group, pass an array of user ids. Passing an array with a single user id will attempt to start a group with that user only.
+         * Participant(s) of the chat. To start a 1to1 chat, pass a single user ID as a string, for example `"users_ids": "user_id"`. To start a group (if supported by the provider), pass an array of user IDs, for example `"users_ids": ["user_id_1", "user_id_2"]`. Passing an array with a single user ID will attempt to start a group with that user only. These formats apply to both Start a Chat and Start a Chat from Inbox.
          */
         users_ids: Array<string> | string;
         /**
@@ -8119,9 +8119,10 @@ export type StartChatData = {
              * Defines how the attachment should be sent, if the provider supports multiple modes.
              * Omitted: use the provider’s native default behavior.
              * - `file` send as a regular uploaded file.
-             * - `native` send as a native media (displayed picture, voice note, recorded video, etc.)
+             * - `native` send as a native media (displayed picture, animated GIF, voice note, recorded video, etc.)
+             * - `sticker` send an image as a sticker.
              */
-            send_mode?: 'file' | 'native';
+            send_mode?: 'file' | 'native' | 'sticker';
             /**
              * Deprecated compatibility flag for audio attachments. Use `send_mode: "native"` instead.
              *
@@ -8272,9 +8273,10 @@ export type StartChatData = {
                              * Defines how the attachment should be sent, if the provider supports multiple modes.
                              * Omitted: use the provider’s native default behavior.
                              * - `file` send as a regular uploaded file.
-                             * - `native` send as a native media (displayed picture, voice note, recorded video, etc.)
+                             * - `native` send as a native media (displayed picture, animated GIF, voice note, recorded video, etc.)
+                             * - `sticker` send an image as a sticker.
                              */
-                            send_mode?: 'file' | 'native';
+                            send_mode?: 'file' | 'native' | 'sticker';
                             /**
                              * Deprecated compatibility flag for audio attachments. Use `send_mode: "native"` instead.
                              *
@@ -8349,7 +8351,7 @@ export type StartChatFromInboxData = {
          */
         name?: string;
         /**
-         * Participant(s) of the chat. To start a 1to1 chat, pass a single user id as a string. To start a group, pass an array of user ids. Passing an array with a single user id will attempt to start a group with that user only.
+         * Participant(s) of the chat. To start a 1to1 chat, pass a single user ID as a string, for example `"users_ids": "user_id"`. To start a group (if supported by the provider), pass an array of user IDs, for example `"users_ids": ["user_id_1", "user_id_2"]`. Passing an array with a single user ID will attempt to start a group with that user only. These formats apply to both Start a Chat and Start a Chat from Inbox.
          */
         users_ids: Array<string> | string;
         /**
@@ -8385,9 +8387,10 @@ export type StartChatFromInboxData = {
              * Defines how the attachment should be sent, if the provider supports multiple modes.
              * Omitted: use the provider’s native default behavior.
              * - `file` send as a regular uploaded file.
-             * - `native` send as a native media (displayed picture, voice note, recorded video, etc.)
+             * - `native` send as a native media (displayed picture, animated GIF, voice note, recorded video, etc.)
+             * - `sticker` send an image as a sticker.
              */
-            send_mode?: 'file' | 'native';
+            send_mode?: 'file' | 'native' | 'sticker';
             /**
              * Deprecated compatibility flag for audio attachments. Use `send_mode: "native"` instead.
              *
@@ -8538,9 +8541,10 @@ export type StartChatFromInboxData = {
                              * Defines how the attachment should be sent, if the provider supports multiple modes.
                              * Omitted: use the provider’s native default behavior.
                              * - `file` send as a regular uploaded file.
-                             * - `native` send as a native media (displayed picture, voice note, recorded video, etc.)
+                             * - `native` send as a native media (displayed picture, animated GIF, voice note, recorded video, etc.)
+                             * - `sticker` send an image as a sticker.
                              */
-                            send_mode?: 'file' | 'native';
+                            send_mode?: 'file' | 'native' | 'sticker';
                             /**
                              * Deprecated compatibility flag for audio attachments. Use `send_mode: "native"` instead.
                              *
@@ -11287,7 +11291,7 @@ export type GetMessagesListResponses = {
                     };
                 };
                 /**
-                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                  */
                 album_id?: string;
             });
@@ -11911,7 +11915,7 @@ export type GetMessagesListResponses = {
                         };
                     };
                     /**
-                     * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                     * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                      */
                     album_id?: string;
                 };
@@ -12417,7 +12421,7 @@ export type GetMessagesListResponses = {
                         };
                     };
                     /**
-                     * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                     * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                      */
                     album_id?: string;
                 };
@@ -13267,7 +13271,7 @@ export type GetMessageResponses = {
                 };
             };
             /**
-             * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+             * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
              */
             album_id?: string;
         });
@@ -13891,7 +13895,7 @@ export type GetMessageResponses = {
                     };
                 };
                 /**
-                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                  */
                 album_id?: string;
             };
@@ -14397,7 +14401,7 @@ export type GetMessageResponses = {
                     };
                 };
                 /**
-                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                  */
                 album_id?: string;
             };
@@ -14450,9 +14454,10 @@ export type SendMessageData = {
              * Defines how the attachment should be sent, if the provider supports multiple modes.
              * Omitted: use the provider’s native default behavior.
              * - `file` send as a regular uploaded file.
-             * - `native` send as a native media (displayed picture, voice note, recorded video, etc.)
+             * - `native` send as a native media (displayed picture, animated GIF, voice note, recorded video, etc.)
+             * - `sticker` send an image as a sticker.
              */
-            send_mode?: 'file' | 'native';
+            send_mode?: 'file' | 'native' | 'sticker';
             /**
              * Deprecated compatibility flag for audio attachments. Use `send_mode: "native"` instead.
              *
@@ -16971,7 +16976,7 @@ export type StarMessageResponses = {
                 };
             };
             /**
-             * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+             * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
              */
             album_id?: string;
         });
@@ -17595,7 +17600,7 @@ export type StarMessageResponses = {
                     };
                 };
                 /**
-                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                  */
                 album_id?: string;
             };
@@ -18101,7 +18106,7 @@ export type StarMessageResponses = {
                     };
                 };
                 /**
-                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album.
+                 * Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as `quote_id` to reply to the whole album. Absent when the message is not part of an album.
                  */
                 album_id?: string;
             };
@@ -18857,7 +18862,7 @@ export type GetEmailsListResponses = {
              */
             message_id: string;
             /**
-             * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
+             * The thread identifier. Native identifiers are preserved. Header-derived identifiers use the first Message-ID from References, In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
              */
             thread_id?: string;
             /**
@@ -19399,7 +19404,7 @@ export type GetFolderEmailsListResponses = {
              */
             message_id: string;
             /**
-             * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
+             * The thread identifier. Native identifiers are preserved. Header-derived identifiers use the first Message-ID from References, In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
              */
             thread_id?: string;
             /**
@@ -19856,7 +19861,7 @@ export type GetThreadData = {
     body?: never;
     path: {
         /**
-         * ID of the thread to retrieve. For IMAP, use the thread_id returned by an email; results based on header-derived IDs may be incomplete.
+         * The thread_id returned by an email. Legacy header-derived identifiers containing multiple Message-IDs are accepted using their first reference.
          */
         thread_id: string;
         /**
@@ -19894,7 +19899,7 @@ export type GetThreadResponses = {
              */
             message_id: string;
             /**
-             * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
+             * The thread identifier. Native identifiers are preserved. Header-derived identifiers use the first Message-ID from References, In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
              */
             thread_id?: string;
             /**
@@ -20402,7 +20407,7 @@ export type GetEmailResponses = {
          */
         message_id: string;
         /**
-         * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
+         * The thread identifier. Native identifiers are preserved. Header-derived identifiers use the first Message-ID from References, In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
          */
         thread_id?: string;
         /**
@@ -20920,7 +20925,7 @@ export type ModifyEmailResponses = {
          */
         message_id: string;
         /**
-         * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
+         * The thread identifier. Native identifiers are preserved. Header-derived identifiers use the first Message-ID from References, In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
          */
         thread_id?: string;
         /**
@@ -24679,6 +24684,17 @@ export type GetUserProfileResponses = {
             common_chats_count?: number;
         } | {
             messaging_identifier: string;
+            /**
+             * Type of the account.
+             * - `personal` is a regular personal account.
+             * - `business` is a professional account for a business or brand.
+             * - `creator` is a professional account for a creator or public figure.
+             */
+            account_type?: 'personal' | 'business' | 'creator';
+            /**
+             * Category displayed on the profile of a professional account. Absent when the profile has none.
+             */
+            category?: string;
         } | {
             /**
              * LinkedIn internal member ID of the user.
@@ -24701,6 +24717,9 @@ export type GetUserProfileResponses = {
              * `OUT_OF_NETWORK`: Unreachable user.'
              */
             network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            /**
+             * Relation request
+             */
             relation_request?: {
                 object: 'RelationRequest';
                 /**
@@ -25741,7 +25760,7 @@ export type GetUserProfileResponses = {
                     /**
                      * The current status of the message.
                      */
-                    message_status: 'PENDING' | 'ACCEPTED' | 'DECLINED' | 'AWAITING_REPLY';
+                    message_status: 'PENDING' | 'ACCEPTED' | 'DECLINED' | 'REJECTED' | 'AWAITING_REPLY';
                 } | {
                     /**
                      * The time at which the activity was updated. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
@@ -26760,6 +26779,10 @@ export type GetUserProfileResponses = {
          */
         following_count?: number;
         /**
+         * Number of posts on the profile (if supported by the provider).
+         */
+        posts_count?: number;
+        /**
          * Number of relations of the user.
          */
         relations_count?: number;
@@ -26783,6 +26806,10 @@ export type GetUserProfileResponses = {
          * Whether the user is verified by the provider.
          */
         is_verified?: boolean;
+        /**
+         * Whether the profile content is only visible to its approved followers (if supported by the provider).
+         */
+        is_private?: boolean;
         /**
          * Whether the user has a premium subscription with the provider.
          */
@@ -28556,15 +28583,31 @@ export type GetRelationRequestsListResponses = {
 export type GetRelationRequestsListResponse = GetRelationRequestsListResponses[keyof GetRelationRequestsListResponses];
 
 export type CreateRelationRequestData = {
+    /**
+     * Options for sending a bi-directional relation request to a user.
+     */
     body: {
         /**
-         * A message to send to the user along with the request (if supported by the provider).
+         * An optional message to send along with the request (if supported by the provider).
          */
         message?: string;
         /**
          * The ID of the User to request a bi-directional relation with.
          */
         user_id: string;
+        specifics?: unknown & {
+            /**
+             * LinkedIn
+             *
+             * LinkedIn-specific options for sending a relation request.
+             */
+            linkedin?: {
+                /**
+                 * The recipient's email address, required when LinkedIn requests it for a Sales Navigator invitation. Only supported for Sales Navigator user IDs (ACw...).
+                 */
+                user_email?: string;
+            };
+        };
     };
     path: {
         account_id: string;
@@ -29859,7 +29902,7 @@ export type GetPostsListResponses = {
                 }>;
             }>;
             /**
-             * Analytics data of the post.
+             * Analytics data of the post. Metrics not provided by the provider are omitted.
              */
             analytics?: {
                 /**
@@ -30607,7 +30650,7 @@ export type GetPostsListResponses = {
                     }>;
                 }>;
                 /**
-                 * Analytics data of the post.
+                 * Analytics data of the post. Metrics not provided by the provider are omitted.
                  */
                 analytics?: {
                     /**
@@ -30990,6 +31033,8 @@ export type GetPostData = {
 
 export type GetPostResponses = {
     /**
+     * Post
+     *
      * Default Response
      */
     200: {
@@ -31463,7 +31508,7 @@ export type GetPostResponses = {
             }>;
         }>;
         /**
-         * Analytics data of the post.
+         * Analytics data of the post. Metrics not provided by the provider are omitted.
          */
         analytics?: {
             /**
@@ -32211,7 +32256,7 @@ export type GetPostResponses = {
                 }>;
             }>;
             /**
-             * Analytics data of the post.
+             * Analytics data of the post. Metrics not provided by the provider are omitted.
              */
             analytics?: {
                 /**
@@ -32572,6 +32617,8 @@ export type UpdatePostData = {
 
 export type UpdatePostResponses = {
     /**
+     * Post
+     *
      * Default Response
      */
     200: {
@@ -33098,7 +33145,7 @@ export type UpdatePostResponses = {
             }>;
         }>;
         /**
-         * Analytics data of the post.
+         * Analytics data of the post. Metrics not provided by the provider are omitted.
          */
         analytics?: {
             /**
@@ -33722,7 +33769,7 @@ export type UpdatePostResponses = {
                 }>;
             }>;
             /**
-             * Analytics data of the post.
+             * Analytics data of the post. Metrics not provided by the provider are omitted.
              */
             analytics?: {
                 /**
@@ -33835,6 +33882,15 @@ export type CreatePostData = {
                  */
                 location_id?: string;
             };
+            /**
+             * Specific options to apply if the provider of the targeted account is LinkedIn.
+             */
+            linkedin?: {
+                /**
+                 * Display title of the document published with the post. Defaults to the attachment's file name when omitted. Only applies when a single document is attached.
+                 */
+                document_title?: string;
+            };
         };
     };
     path: {
@@ -33849,6 +33905,8 @@ export type CreatePostData = {
 
 export type CreatePostResponses = {
     /**
+     * Post
+     *
      * Default Response
      */
     201: {
@@ -34375,7 +34433,7 @@ export type CreatePostResponses = {
             }>;
         }>;
         /**
-         * Analytics data of the post.
+         * Analytics data of the post. Metrics not provided by the provider are omitted.
          */
         analytics?: {
             /**
@@ -34999,7 +35057,7 @@ export type CreatePostResponses = {
                 }>;
             }>;
             /**
-             * Analytics data of the post.
+             * Analytics data of the post. Metrics not provided by the provider are omitted.
              */
             analytics?: {
                 /**
@@ -35380,6 +35438,1599 @@ export type AddPostReactionResponses = {
 };
 
 export type AddPostReactionResponse = AddPostReactionResponses[keyof AddPostReactionResponses];
+
+export type GetPostRepostsListData = {
+    body?: never;
+    path: {
+        /**
+         * The ID of the Post to retrieve reposts from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
+         */
+        post_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: {
+        /**
+         * An offset used for pagination, if supported by the provider, else use `cursor`.
+         */
+        offset?: number;
+        /**
+         * A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+         */
+        cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
+         */
+        limit?: number;
+    };
+    url: '/v2/{account_id}/posts/{post_id}/reposts';
+};
+
+export type GetPostRepostsListResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        data: Array<{
+            object: 'Post';
+            /**
+             * The ID of the post for the provider.
+             */
+            id: string;
+            /**
+             * The URL to share the post.
+             */
+            share_url: string;
+            /**
+             * The creation date of the post. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            created_at: string;
+            /**
+             * The title of the post.
+             */
+            title?: string;
+            /**
+             * The text content of the post.
+             */
+            text: string;
+            /**
+             * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
+             */
+            user_reacted: boolean | string;
+            /**
+             * The permissions for the account owner on the post.
+             */
+            permissions: {
+                /**
+                 * Whether the account owner can share the post.
+                 */
+                can_share: boolean;
+                /**
+                 * Whether the account owner can react to the post.
+                 */
+                can_react: boolean;
+                /**
+                 * Whether the account owner can comment on the post.
+                 */
+                can_post_comments: boolean;
+            };
+            /**
+             * The counter of reactions to the post. `null` if counter is hidden.
+             */
+            reactions_counter: Array<{
+                /**
+                 * Value of the reaction. Usually an emoji unicode.
+                 */
+                reaction: string;
+                /**
+                 * The total count of this reaction.
+                 */
+                count: number;
+            }> | null;
+            /**
+             * The number of comments to the post. `null` if counter is hidden.
+             */
+            comments_counter: number | null;
+            /**
+             * The number of reposts of the post. `null` if counter is hidden.
+             */
+            reposts_counter: number | null;
+            /**
+             * Data about the poll if the post is a poll.
+             */
+            poll?: {
+                /**
+                 * The ID of the poll.
+                 */
+                id: string;
+                /**
+                 * The total number of votes for the poll.
+                 */
+                total_votes_count: number;
+                /**
+                 * The question of the poll.
+                 */
+                question: string;
+                /**
+                 * Whether the poll is open. If the poll is closed, the user can only see the results.
+                 */
+                is_open: boolean;
+                options: Array<{
+                    /**
+                     * The ID of the option.
+                     */
+                    id: string;
+                    /**
+                     * The displayed text of the option.
+                     */
+                    text: string;
+                    /**
+                     * Whether the option is the winning option.
+                     */
+                    win: boolean;
+                    /**
+                     * The number of votes for this option.
+                     */
+                    votes_count: number;
+                }>;
+            };
+            /**
+             * Data about the event if the post is an event.
+             */
+            event?: {
+                /**
+                 * The ID of the event.
+                 */
+                id: string;
+                /**
+                 * The name of the event.
+                 */
+                name: string;
+                /**
+                 * The link to the event.
+                 */
+                url?: string;
+                /**
+                 * Whether the event is an online event.
+                 */
+                online: boolean;
+                /**
+                 * The location of the event.
+                 */
+                location?: string;
+                /**
+                 * The description of the event.
+                 */
+                description?: string;
+                /**
+                 * Public url to the picture of the event.
+                 */
+                public_picture_url?: string;
+                /**
+                 * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                starts_on?: string;
+                /**
+                 * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                ends_on?: string;
+            };
+            /**
+             * List of post attachments.
+             */
+            attachments: Array<{
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'audio';
+                /**
+                 * The duration of the audio in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The audio is a voice note (should be displayed differently)
+                 */
+                voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'img';
+                /**
+                 * The size of the image in pixels.
+                 */
+                size?: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The image is a sticker (should be displayed differently)
+                 */
+                sticker: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'video';
+                /**
+                 * The duration of the video in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The size of the video in pixels.
+                 */
+                size: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The video is a GIF (should be displayed differently)
+                 */
+                gif: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'file';
+                /**
+                 * The name of the file, including the extension.
+                 */
+                filename: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL of the shared content.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'shared_content';
+                /**
+                 * The type of content being shared.
+                 */
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
+                /**
+                 * The author of the shared content, if applicable.
+                 */
+                author?: string;
+                /**
+                 * A brief description of the shared content.
+                 */
+                description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+            }>;
+            /**
+             * Analytics data of the post. Metrics not provided by the provider are omitted.
+             */
+            analytics?: {
+                /**
+                 * The number of impressions of the post.
+                 */
+                impressions_counter?: number;
+                /**
+                 * The number of engagements of the post.
+                 */
+                engagements_counter?: number;
+                /**
+                 * The engagement rate of the post.
+                 */
+                engagement_rate?: number;
+                /**
+                 * The number of clicks of the post.
+                 */
+                clicks_counter?: number;
+                /**
+                 * The clickthrough rate of the post.
+                 */
+                clickthrough_rate?: number;
+                /**
+                 * The number of page viewers from this post.
+                 */
+                page_viewers_from_this_post_counter?: number;
+                /**
+                 * The number of followers gained from this post.
+                 */
+                followers_gained_from_this_post_counter?: number;
+                /**
+                 * The number of users reached from this post.
+                 */
+                users_reached_counter?: number;
+            };
+            /**
+             * `true` if this post is reposted by someone without quote. Quoted post does not qualify as a repost.
+             */
+            is_repost: boolean;
+            /**
+             * The author of the post.
+             */
+            author: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user as exposed by the provider.
+                 */
+                display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the current user follows the user.
+                     */
+                    is_following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
+            };
+            /**
+             * The user who reposted the post if `is_repost` is `true`.
+             */
+            reposted_by?: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user as exposed by the provider.
+                 */
+                display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the current user follows the user.
+                     */
+                    is_following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
+            };
+            /**
+             * The post that is quoted in this post.
+             */
+            quoted_post?: {
+                object: 'Post';
+                /**
+                 * The ID of the post for the provider.
+                 */
+                id: string;
+                /**
+                 * The URL to share the post.
+                 */
+                share_url: string;
+                /**
+                 * The creation date of the post. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                created_at: string;
+                /**
+                 * The title of the post.
+                 */
+                title?: string;
+                /**
+                 * The text content of the post.
+                 */
+                text: string;
+                /**
+                 * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
+                 */
+                user_reacted: boolean | string;
+                /**
+                 * The permissions for the account owner on the post.
+                 */
+                permissions: {
+                    /**
+                     * Whether the account owner can share the post.
+                     */
+                    can_share: boolean;
+                    /**
+                     * Whether the account owner can react to the post.
+                     */
+                    can_react: boolean;
+                    /**
+                     * Whether the account owner can comment on the post.
+                     */
+                    can_post_comments: boolean;
+                };
+                /**
+                 * The counter of reactions to the post. `null` if counter is hidden.
+                 */
+                reactions_counter: Array<{
+                    /**
+                     * Value of the reaction. Usually an emoji unicode.
+                     */
+                    reaction: string;
+                    /**
+                     * The total count of this reaction.
+                     */
+                    count: number;
+                }> | null;
+                /**
+                 * The number of comments to the post. `null` if counter is hidden.
+                 */
+                comments_counter: number | null;
+                /**
+                 * The number of reposts of the post. `null` if counter is hidden.
+                 */
+                reposts_counter: number | null;
+                /**
+                 * Data about the poll if the post is a poll.
+                 */
+                poll?: {
+                    /**
+                     * The ID of the poll.
+                     */
+                    id: string;
+                    /**
+                     * The total number of votes for the poll.
+                     */
+                    total_votes_count: number;
+                    /**
+                     * The question of the poll.
+                     */
+                    question: string;
+                    /**
+                     * Whether the poll is open. If the poll is closed, the user can only see the results.
+                     */
+                    is_open: boolean;
+                    options: Array<{
+                        /**
+                         * The ID of the option.
+                         */
+                        id: string;
+                        /**
+                         * The displayed text of the option.
+                         */
+                        text: string;
+                        /**
+                         * Whether the option is the winning option.
+                         */
+                        win: boolean;
+                        /**
+                         * The number of votes for this option.
+                         */
+                        votes_count: number;
+                    }>;
+                };
+                /**
+                 * Data about the event if the post is an event.
+                 */
+                event?: {
+                    /**
+                     * The ID of the event.
+                     */
+                    id: string;
+                    /**
+                     * The name of the event.
+                     */
+                    name: string;
+                    /**
+                     * The link to the event.
+                     */
+                    url?: string;
+                    /**
+                     * Whether the event is an online event.
+                     */
+                    online: boolean;
+                    /**
+                     * The location of the event.
+                     */
+                    location?: string;
+                    /**
+                     * The description of the event.
+                     */
+                    description?: string;
+                    /**
+                     * Public url to the picture of the event.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    starts_on?: string;
+                    /**
+                     * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    ends_on?: string;
+                };
+                /**
+                 * List of post attachments.
+                 */
+                attachments: Array<{
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'audio';
+                    /**
+                     * The duration of the audio in seconds.
+                     */
+                    duration?: number;
+                    /**
+                     * The audio is a voice note (should be displayed differently)
+                     */
+                    voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'img';
+                    /**
+                     * The size of the image in pixels.
+                     */
+                    size?: {
+                        height: number;
+                        width: number;
+                    };
+                    /**
+                     * The image is a sticker (should be displayed differently)
+                     */
+                    sticker: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'video';
+                    /**
+                     * The duration of the video in seconds.
+                     */
+                    duration?: number;
+                    /**
+                     * The size of the video in pixels.
+                     */
+                    size: {
+                        height: number;
+                        width: number;
+                    };
+                    /**
+                     * The video is a GIF (should be displayed differently)
+                     */
+                    gif: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'file';
+                    /**
+                     * The name of the file, including the extension.
+                     */
+                    filename: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL of the shared content.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'shared_content';
+                    /**
+                     * The type of content being shared.
+                     */
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
+                    /**
+                     * The author of the shared content, if applicable.
+                     */
+                    author?: string;
+                    /**
+                     * A brief description of the shared content.
+                     */
+                    description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                }>;
+                /**
+                 * Analytics data of the post. Metrics not provided by the provider are omitted.
+                 */
+                analytics?: {
+                    /**
+                     * The number of impressions of the post.
+                     */
+                    impressions_counter?: number;
+                    /**
+                     * The number of engagements of the post.
+                     */
+                    engagements_counter?: number;
+                    /**
+                     * The engagement rate of the post.
+                     */
+                    engagement_rate?: number;
+                    /**
+                     * The number of clicks of the post.
+                     */
+                    clicks_counter?: number;
+                    /**
+                     * The clickthrough rate of the post.
+                     */
+                    clickthrough_rate?: number;
+                    /**
+                     * The number of page viewers from this post.
+                     */
+                    page_viewers_from_this_post_counter?: number;
+                    /**
+                     * The number of followers gained from this post.
+                     */
+                    followers_gained_from_this_post_counter?: number;
+                    /**
+                     * The number of users reached from this post.
+                     */
+                    users_reached_counter?: number;
+                };
+                /**
+                 * The author of the post.
+                 */
+                author: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user as exposed by the provider.
+                     */
+                    display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                    /**
+                     * Object containing provider-specific user profile data.
+                     */
+                    specifics?: {
+                        /**
+                         * Name saved by the connected account owner in their WhatsApp address book.
+                         */
+                        contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
+                    } | {
+                        /**
+                         * The geographical location of the user.
+                         */
+                        location?: string;
+                        /**
+                         * Network distance to a User.
+                         * `SELF`: Yourself.
+                         * `FIRST_DEGREE`: 1st degree connection.
+                         * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                         * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                         * `OUT_OF_NETWORK`: Unreachable user.'
+                         */
+                        network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                        /**
+                         * The user's industry.
+                         */
+                        industry?: string;
+                        /**
+                         * Whether the current user follows the user.
+                         */
+                        is_following?: boolean;
+                        /**
+                         * The number of followers of the user.
+                         */
+                        followers_count?: number;
+                        /**
+                         * The number of relations of the user.
+                         */
+                        relations_count?: number;
+                        /**
+                         * The number of relations that you share with the user.
+                         */
+                        shared_relations_count?: number;
+                        /**
+                         * The URL of the website provided by the user.
+                         */
+                        website_url?: string;
+                        /**
+                         * The URL of the portfolio provided by the user.
+                         */
+                        portfolio_url?: string;
+                        /**
+                         * The LinkedIn internal URL of the user's services page.
+                         */
+                        services_page_url?: string;
+                        /**
+                         * Whether the User has a premium account.
+                         */
+                        is_premium?: boolean;
+                        /**
+                         * Whether the User has a verified account.
+                         */
+                        is_verified?: boolean;
+                    };
+                };
+                /**
+                 * Object containing provider-specific post data.
+                 */
+                specifics?: {
+                    mentions?: Array<{
+                        /**
+                         * Public URL targeted by the mention.
+                         */
+                        url: string;
+                        /**
+                         * Start index of the mention in the post text.
+                         */
+                        start: number;
+                        /**
+                         * Length of the mention in the post text.
+                         */
+                        length: number;
+                    }>;
+                    /**
+                     * A job posting that can be included as an insert in the post.
+                     */
+                    job_posting?: {
+                        /**
+                         * Unique identifier of the job posting.
+                         */
+                        id: string | null;
+                        /**
+                         * Title of the job posting.
+                         */
+                        title: string;
+                        /**
+                         * Location of the job posting.
+                         */
+                        location: string;
+                        /**
+                         * The company that published the job posting.
+                         */
+                        company: {
+                            /**
+                             * Unique identifier of the company.
+                             */
+                            id: string | null;
+                            /**
+                             * Name of the company.
+                             */
+                            name: string | null;
+                            /**
+                             * Public url to the profile picture of the company.
+                             */
+                            picture_url?: string;
+                        };
+                    };
+                    /**
+                     * An article that can be included as an insert in the post.
+                     */
+                    article?: {
+                        /**
+                         * Unique identifier of the article.
+                         */
+                        id: string | null;
+                        /**
+                         * Title of the article.
+                         */
+                        title: string;
+                        /**
+                         * Author of the article.
+                         */
+                        author?: string;
+                        /**
+                         * Public url to the article.
+                         */
+                        url?: string;
+                        /**
+                         * The publication date of the article. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        published_at?: string;
+                        /**
+                         * A short excerpt of the article content.
+                         */
+                        excerpt?: string;
+                        /**
+                         * Public url to the cover picture of the article.
+                         */
+                        picture_url?: string;
+                    };
+                };
+            };
+            /**
+             * Object containing provider-specific post data.
+             */
+            specifics?: {
+                mentions?: Array<{
+                    /**
+                     * Public URL targeted by the mention.
+                     */
+                    url: string;
+                    /**
+                     * Start index of the mention in the post text.
+                     */
+                    start: number;
+                    /**
+                     * Length of the mention in the post text.
+                     */
+                    length: number;
+                }>;
+                /**
+                 * A job posting that can be included as an insert in the post.
+                 */
+                job_posting?: {
+                    /**
+                     * Unique identifier of the job posting.
+                     */
+                    id: string | null;
+                    /**
+                     * Title of the job posting.
+                     */
+                    title: string;
+                    /**
+                     * Location of the job posting.
+                     */
+                    location: string;
+                    /**
+                     * The company that published the job posting.
+                     */
+                    company: {
+                        /**
+                         * Unique identifier of the company.
+                         */
+                        id: string | null;
+                        /**
+                         * Name of the company.
+                         */
+                        name: string | null;
+                        /**
+                         * Public url to the profile picture of the company.
+                         */
+                        picture_url?: string;
+                    };
+                };
+                /**
+                 * An article that can be included as an insert in the post.
+                 */
+                article?: {
+                    /**
+                     * Unique identifier of the article.
+                     */
+                    id: string | null;
+                    /**
+                     * Title of the article.
+                     */
+                    title: string;
+                    /**
+                     * Author of the article.
+                     */
+                    author?: string;
+                    /**
+                     * Public url to the article.
+                     */
+                    url?: string;
+                    /**
+                     * The publication date of the article. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    published_at?: string;
+                    /**
+                     * A short excerpt of the article content.
+                     */
+                    excerpt?: string;
+                    /**
+                     * Public url to the cover picture of the article.
+                     */
+                    picture_url?: string;
+                };
+            };
+        }>;
+        /**
+         * Total number of results if supported by the provider.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type GetPostRepostsListResponse = GetPostRepostsListResponses[keyof GetPostRepostsListResponses];
 
 export type GetPostCommentsListData = {
     body?: never;
@@ -39349,7 +41000,7 @@ export type GetUserCommentsListResponses = {
                     }>;
                 }>;
                 /**
-                 * Analytics data of the post.
+                 * Analytics data of the post. Metrics not provided by the provider are omitted.
                  */
                 analytics?: {
                     /**
@@ -40097,7 +41748,7 @@ export type GetUserCommentsListResponses = {
                         }>;
                     }>;
                     /**
-                     * Analytics data of the post.
+                     * Analytics data of the post. Metrics not provided by the provider are omitted.
                      */
                     analytics?: {
                         /**
@@ -41209,7 +42860,7 @@ export type GetUserReactionsListResponses = {
                     }>;
                 }>;
                 /**
-                 * Analytics data of the post.
+                 * Analytics data of the post. Metrics not provided by the provider are omitted.
                  */
                 analytics?: {
                     /**
@@ -41957,7 +43608,7 @@ export type GetUserReactionsListResponses = {
                         }>;
                     }>;
                     /**
-                     * Analytics data of the post.
+                     * Analytics data of the post. Metrics not provided by the provider are omitted.
                      */
                     analytics?: {
                         /**
@@ -42297,6 +43948,2067 @@ export type GetUserReactionsListResponses = {
 };
 
 export type GetUserReactionsListResponse = GetUserReactionsListResponses[keyof GetUserReactionsListResponses];
+
+export type PerformPeopleSearchData = {
+    /**
+     * The criteria of the search.
+     */
+    body: {
+        /**
+         * The keywords to search people for.
+         */
+        keywords: string;
+        /**
+         * A degree of connection.
+         */
+        network_distance?: 1 | 2 | 3;
+        /**
+         * Only return the relations of this user, given by their ID.
+         */
+        connections_of?: string;
+        /**
+         * Only return the people living in one of these cities. Use the IDs of `location` search parameters.
+         */
+        location?: Array<string>;
+        /**
+         * Only return the people who went to one of these schools. Use the IDs of `school` search parameters.
+         */
+        school?: Array<string>;
+        /**
+         * Only return the people who work or worked at one of these companies. Use the IDs of `company` search parameters.
+         */
+        company?: Array<string>;
+    };
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: {
+        /**
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
+         */
+        cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
+         */
+        limit?: number;
+    };
+    url: '/v2/{account_id}/search/people';
+};
+
+export type PerformPeopleSearchResponses = {
+    /**
+     * People search results
+     *
+     * The people found, as users.
+     */
+    200: {
+        data: Array<{
+            /**
+             * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+             */
+            id: string;
+            object: 'User';
+            /**
+             * Type of the user
+             * - `individual` is an individual user.
+             * - `organization` is an organization / business entity.
+             * - `other` is an other type of entity.
+             */
+            type: 'individual' | 'organization' | 'other';
+            /**
+             * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+             */
+            public_identifier?: string;
+            /**
+             * Display name of the user as exposed by the provider.
+             */
+            display_name: string;
+            /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
+            /**
+             * Public url to the profile of the user.
+             */
+            profile_url?: string;
+            /**
+             * Public url to the profile picture of the user.
+             */
+            public_picture_url?: string;
+            /**
+             * Private url to download the profile picture of the user. This url require authentication.
+             */
+            private_picture_download_url?: string;
+            /**
+             * Description of the user.
+             */
+            description?: string;
+            /**
+             * Object containing provider-specific user profile data.
+             */
+            specifics?: {
+                /**
+                 * Name saved by the connected account owner in their WhatsApp address book.
+                 */
+                contact_name: string;
+            } | {
+                /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
+            } | {
+                /**
+                 * The geographical location of the user.
+                 */
+                location?: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * The user's industry.
+                 */
+                industry?: string;
+                /**
+                 * Whether the current user follows the user.
+                 */
+                is_following?: boolean;
+                /**
+                 * The number of followers of the user.
+                 */
+                followers_count?: number;
+                /**
+                 * The number of relations of the user.
+                 */
+                relations_count?: number;
+                /**
+                 * The number of relations that you share with the user.
+                 */
+                shared_relations_count?: number;
+                /**
+                 * The URL of the website provided by the user.
+                 */
+                website_url?: string;
+                /**
+                 * The URL of the portfolio provided by the user.
+                 */
+                portfolio_url?: string;
+                /**
+                 * The LinkedIn internal URL of the user's services page.
+                 */
+                services_page_url?: string;
+                /**
+                 * Whether the User has a premium account.
+                 */
+                is_premium?: boolean;
+                /**
+                 * Whether the User has a verified account.
+                 */
+                is_verified?: boolean;
+            };
+        }>;
+        /**
+         * Total number of results if supported by the provider.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type PerformPeopleSearchResponse = PerformPeopleSearchResponses[keyof PerformPeopleSearchResponses];
+
+export type PerformPagesSearchData = {
+    /**
+     * The criteria of the search.
+     */
+    body: {
+        /**
+         * The keywords to search pages for.
+         */
+        keywords: string;
+        /**
+         * Only return the pages located in one of these cities. Use the IDs of `location` search parameters.
+         */
+        location?: Array<string>;
+    };
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: {
+        /**
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
+         */
+        cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
+         */
+        limit?: number;
+    };
+    url: '/v2/{account_id}/search/pages';
+};
+
+export type PerformPagesSearchResponses = {
+    /**
+     * Pages search results
+     *
+     * The pages found, as users of type `organization`.
+     */
+    200: {
+        data: Array<{
+            /**
+             * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+             */
+            id: string;
+            object: 'User';
+            /**
+             * Type of the user
+             * - `individual` is an individual user.
+             * - `organization` is an organization / business entity.
+             * - `other` is an other type of entity.
+             */
+            type: 'individual' | 'organization' | 'other';
+            /**
+             * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+             */
+            public_identifier?: string;
+            /**
+             * Display name of the user as exposed by the provider.
+             */
+            display_name: string;
+            /**
+             * First name of the user.
+             */
+            first_name?: string;
+            /**
+             * Last name of the user.
+             */
+            last_name?: string;
+            /**
+             * Public url to the profile of the user.
+             */
+            profile_url?: string;
+            /**
+             * Public url to the profile picture of the user.
+             */
+            public_picture_url?: string;
+            /**
+             * Private url to download the profile picture of the user. This url require authentication.
+             */
+            private_picture_download_url?: string;
+            /**
+             * Description of the user.
+             */
+            description?: string;
+            /**
+             * Object containing provider-specific user profile data.
+             */
+            specifics?: {
+                /**
+                 * Name saved by the connected account owner in their WhatsApp address book.
+                 */
+                contact_name: string;
+            } | {
+                /**
+                 * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                 */
+                messaging_identifier: string;
+            } | {
+                /**
+                 * The geographical location of the user.
+                 */
+                location?: string;
+                /**
+                 * Network distance to a User.
+                 * `SELF`: Yourself.
+                 * `FIRST_DEGREE`: 1st degree connection.
+                 * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                 * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                 * `OUT_OF_NETWORK`: Unreachable user.'
+                 */
+                network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                /**
+                 * The user's industry.
+                 */
+                industry?: string;
+                /**
+                 * Whether the current user follows the user.
+                 */
+                is_following?: boolean;
+                /**
+                 * The number of followers of the user.
+                 */
+                followers_count?: number;
+                /**
+                 * The number of relations of the user.
+                 */
+                relations_count?: number;
+                /**
+                 * The number of relations that you share with the user.
+                 */
+                shared_relations_count?: number;
+                /**
+                 * The URL of the website provided by the user.
+                 */
+                website_url?: string;
+                /**
+                 * The URL of the portfolio provided by the user.
+                 */
+                portfolio_url?: string;
+                /**
+                 * The LinkedIn internal URL of the user's services page.
+                 */
+                services_page_url?: string;
+                /**
+                 * Whether the User has a premium account.
+                 */
+                is_premium?: boolean;
+                /**
+                 * Whether the User has a verified account.
+                 */
+                is_verified?: boolean;
+            };
+        }>;
+        /**
+         * Total number of results if supported by the provider.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type PerformPagesSearchResponse = PerformPagesSearchResponses[keyof PerformPagesSearchResponses];
+
+export type PerformPostsSearchData = {
+    /**
+     * The criteria of the search.
+     */
+    body: {
+        /**
+         * The keywords to search posts for.
+         */
+        keywords: string;
+        /**
+         * The order of the posts.
+         * - `most_relevant` the most relevant first.
+         * - `most_recent` the most recent first.
+         */
+        sort_by?: 'most_relevant' | 'most_recent';
+        /**
+         * Only return the posts the account owner has already seen.
+         */
+        seen?: boolean;
+        /**
+         * Only return the posts published on or after this day. Must use a supported date format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
+         */
+        start_date?: string;
+        /**
+         * Only return the posts published on or before this day. Must use a supported date format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates).
+         */
+        end_date?: string;
+        /**
+         * Only return the posts of these authors, if supported by the provider.
+         */
+        posted_by?: {
+            /**
+             * The posts of the account owner.
+             */
+            me?: boolean;
+            /**
+             * The posts of these users, given by their IDs.
+             */
+            member?: Array<string>;
+            /**
+             * The posts of these pages (companies, brands, public figures...), given by their IDs.
+             */
+            company?: Array<string>;
+            /**
+             * The posts published in these groups, given by their IDs.
+             */
+            group?: Array<string>;
+            /**
+             * The posts of the groups and pages of the account owner.
+             */
+            my_groups_and_pages?: boolean;
+            /**
+             * Public posts.
+             */
+            public?: boolean;
+        };
+        /**
+         * Only return the posts tagged in one of these cities. Use the IDs of `location` search parameters.
+         */
+        location?: Array<string>;
+    };
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: {
+        /**
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
+         */
+        cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
+         */
+        limit?: number;
+    };
+    url: '/v2/{account_id}/search/posts';
+};
+
+export type PerformPostsSearchResponses = {
+    /**
+     * Default Response
+     */
+    200: {
+        data: Array<{
+            object: 'Post';
+            /**
+             * The ID of the post for the provider.
+             */
+            id: string;
+            /**
+             * The URL to share the post.
+             */
+            share_url: string;
+            /**
+             * The creation date of the post. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+             */
+            created_at: string;
+            /**
+             * The title of the post.
+             */
+            title?: string;
+            /**
+             * The text content of the post.
+             */
+            text: string;
+            /**
+             * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
+             */
+            user_reacted: boolean | string;
+            /**
+             * The permissions for the account owner on the post.
+             */
+            permissions: {
+                /**
+                 * Whether the account owner can share the post.
+                 */
+                can_share: boolean;
+                /**
+                 * Whether the account owner can react to the post.
+                 */
+                can_react: boolean;
+                /**
+                 * Whether the account owner can comment on the post.
+                 */
+                can_post_comments: boolean;
+            };
+            /**
+             * The counter of reactions to the post. `null` if counter is hidden.
+             */
+            reactions_counter: Array<{
+                /**
+                 * Value of the reaction. Usually an emoji unicode.
+                 */
+                reaction: string;
+                /**
+                 * The total count of this reaction.
+                 */
+                count: number;
+            }> | null;
+            /**
+             * The number of comments to the post. `null` if counter is hidden.
+             */
+            comments_counter: number | null;
+            /**
+             * The number of reposts of the post. `null` if counter is hidden.
+             */
+            reposts_counter: number | null;
+            /**
+             * Data about the poll if the post is a poll.
+             */
+            poll?: {
+                /**
+                 * The ID of the poll.
+                 */
+                id: string;
+                /**
+                 * The total number of votes for the poll.
+                 */
+                total_votes_count: number;
+                /**
+                 * The question of the poll.
+                 */
+                question: string;
+                /**
+                 * Whether the poll is open. If the poll is closed, the user can only see the results.
+                 */
+                is_open: boolean;
+                options: Array<{
+                    /**
+                     * The ID of the option.
+                     */
+                    id: string;
+                    /**
+                     * The displayed text of the option.
+                     */
+                    text: string;
+                    /**
+                     * Whether the option is the winning option.
+                     */
+                    win: boolean;
+                    /**
+                     * The number of votes for this option.
+                     */
+                    votes_count: number;
+                }>;
+            };
+            /**
+             * Data about the event if the post is an event.
+             */
+            event?: {
+                /**
+                 * The ID of the event.
+                 */
+                id: string;
+                /**
+                 * The name of the event.
+                 */
+                name: string;
+                /**
+                 * The link to the event.
+                 */
+                url?: string;
+                /**
+                 * Whether the event is an online event.
+                 */
+                online: boolean;
+                /**
+                 * The location of the event.
+                 */
+                location?: string;
+                /**
+                 * The description of the event.
+                 */
+                description?: string;
+                /**
+                 * Public url to the picture of the event.
+                 */
+                public_picture_url?: string;
+                /**
+                 * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                starts_on?: string;
+                /**
+                 * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                ends_on?: string;
+            };
+            /**
+             * List of post attachments.
+             */
+            attachments: Array<{
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'audio';
+                /**
+                 * The duration of the audio in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The audio is a voice note (should be displayed differently)
+                 */
+                voice_note: boolean;
+                /**
+                 * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                 */
+                waveform?: Array<number>;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'img';
+                /**
+                 * The size of the image in pixels.
+                 */
+                size?: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The image is a sticker (should be displayed differently)
+                 */
+                sticker: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'video';
+                /**
+                 * The duration of the video in seconds.
+                 */
+                duration?: number;
+                /**
+                 * The size of the video in pixels.
+                 */
+                size: {
+                    height: number;
+                    width: number;
+                };
+                /**
+                 * The video is a GIF (should be displayed differently)
+                 */
+                gif: boolean;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'file';
+                /**
+                 * The name of the file, including the extension.
+                 */
+                filename: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL of the shared content.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'shared_content';
+                /**
+                 * The type of content being shared.
+                 */
+                media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
+                /**
+                 * The author of the shared content, if applicable.
+                 */
+                author?: string;
+                /**
+                 * A brief description of the shared content.
+                 */
+                description?: string;
+            } | {
+                object: 'Attachment';
+                /**
+                 * The unique identifier of the attachment.
+                 */
+                id: string;
+                /**
+                 * The size of the attachment in bytes.
+                 */
+                file_size?: number;
+                /**
+                 * Is the attachment inline in the content.
+                 */
+                is_inline: boolean;
+                /**
+                 * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                 */
+                content_id?: string;
+                /**
+                 * The attachment is not available for download because it was removed from provider servers.
+                 */
+                is_unavailable?: boolean;
+                /**
+                 * The MIME type of the attachment.
+                 */
+                mimetype: string;
+                /**
+                 * The URL to download the attachment.
+                 */
+                url: string;
+                /**
+                 * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                url_expires_at?: string;
+                /**
+                 * The file content encoded as base64, when available directly without an additional download.
+                 */
+                content?: string;
+                type: 'contact_card';
+                /**
+                 * The name of the shared contact.
+                 */
+                display_name?: string;
+                /**
+                 * The organization of the shared contact.
+                 */
+                organization?: string;
+                /**
+                 * The phone numbers of the shared contact.
+                 */
+                phones: Array<{
+                    /**
+                     * The phone number of the shared contact.
+                     */
+                    number: string;
+                    /**
+                     * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+                /**
+                 * The email addresses of the shared contact.
+                 */
+                emails: Array<{
+                    /**
+                     * The email address of the shared contact.
+                     */
+                    address: string;
+                    /**
+                     * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                     */
+                    type?: string;
+                }>;
+            }>;
+            /**
+             * Analytics data of the post. Metrics not provided by the provider are omitted.
+             */
+            analytics?: {
+                /**
+                 * The number of impressions of the post.
+                 */
+                impressions_counter?: number;
+                /**
+                 * The number of engagements of the post.
+                 */
+                engagements_counter?: number;
+                /**
+                 * The engagement rate of the post.
+                 */
+                engagement_rate?: number;
+                /**
+                 * The number of clicks of the post.
+                 */
+                clicks_counter?: number;
+                /**
+                 * The clickthrough rate of the post.
+                 */
+                clickthrough_rate?: number;
+                /**
+                 * The number of page viewers from this post.
+                 */
+                page_viewers_from_this_post_counter?: number;
+                /**
+                 * The number of followers gained from this post.
+                 */
+                followers_gained_from_this_post_counter?: number;
+                /**
+                 * The number of users reached from this post.
+                 */
+                users_reached_counter?: number;
+            };
+            /**
+             * `true` if this post is reposted by someone without quote. Quoted post does not qualify as a repost.
+             */
+            is_repost: boolean;
+            /**
+             * The author of the post.
+             */
+            author: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user as exposed by the provider.
+                 */
+                display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the current user follows the user.
+                     */
+                    is_following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
+            };
+            /**
+             * The user who reposted the post if `is_repost` is `true`.
+             */
+            reposted_by?: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user as exposed by the provider.
+                 */
+                display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+                /**
+                 * Object containing provider-specific user profile data.
+                 */
+                specifics?: {
+                    /**
+                     * Name saved by the connected account owner in their WhatsApp address book.
+                     */
+                    contact_name: string;
+                } | {
+                    /**
+                     * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                     */
+                    messaging_identifier: string;
+                } | {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the current user follows the user.
+                     */
+                    is_following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
+            };
+            /**
+             * The post that is quoted in this post.
+             */
+            quoted_post?: {
+                object: 'Post';
+                /**
+                 * The ID of the post for the provider.
+                 */
+                id: string;
+                /**
+                 * The URL to share the post.
+                 */
+                share_url: string;
+                /**
+                 * The creation date of the post. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                 */
+                created_at: string;
+                /**
+                 * The title of the post.
+                 */
+                title?: string;
+                /**
+                 * The text content of the post.
+                 */
+                text: string;
+                /**
+                 * If the account owner has reacted to this post, the value of the reaction (emoji unicode or reaction type), `true` if no details on the reaction, else `false`.
+                 */
+                user_reacted: boolean | string;
+                /**
+                 * The permissions for the account owner on the post.
+                 */
+                permissions: {
+                    /**
+                     * Whether the account owner can share the post.
+                     */
+                    can_share: boolean;
+                    /**
+                     * Whether the account owner can react to the post.
+                     */
+                    can_react: boolean;
+                    /**
+                     * Whether the account owner can comment on the post.
+                     */
+                    can_post_comments: boolean;
+                };
+                /**
+                 * The counter of reactions to the post. `null` if counter is hidden.
+                 */
+                reactions_counter: Array<{
+                    /**
+                     * Value of the reaction. Usually an emoji unicode.
+                     */
+                    reaction: string;
+                    /**
+                     * The total count of this reaction.
+                     */
+                    count: number;
+                }> | null;
+                /**
+                 * The number of comments to the post. `null` if counter is hidden.
+                 */
+                comments_counter: number | null;
+                /**
+                 * The number of reposts of the post. `null` if counter is hidden.
+                 */
+                reposts_counter: number | null;
+                /**
+                 * Data about the poll if the post is a poll.
+                 */
+                poll?: {
+                    /**
+                     * The ID of the poll.
+                     */
+                    id: string;
+                    /**
+                     * The total number of votes for the poll.
+                     */
+                    total_votes_count: number;
+                    /**
+                     * The question of the poll.
+                     */
+                    question: string;
+                    /**
+                     * Whether the poll is open. If the poll is closed, the user can only see the results.
+                     */
+                    is_open: boolean;
+                    options: Array<{
+                        /**
+                         * The ID of the option.
+                         */
+                        id: string;
+                        /**
+                         * The displayed text of the option.
+                         */
+                        text: string;
+                        /**
+                         * Whether the option is the winning option.
+                         */
+                        win: boolean;
+                        /**
+                         * The number of votes for this option.
+                         */
+                        votes_count: number;
+                    }>;
+                };
+                /**
+                 * Data about the event if the post is an event.
+                 */
+                event?: {
+                    /**
+                     * The ID of the event.
+                     */
+                    id: string;
+                    /**
+                     * The name of the event.
+                     */
+                    name: string;
+                    /**
+                     * The link to the event.
+                     */
+                    url?: string;
+                    /**
+                     * Whether the event is an online event.
+                     */
+                    online: boolean;
+                    /**
+                     * The location of the event.
+                     */
+                    location?: string;
+                    /**
+                     * The description of the event.
+                     */
+                    description?: string;
+                    /**
+                     * Public url to the picture of the event.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    starts_on?: string;
+                    /**
+                     * The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    ends_on?: string;
+                };
+                /**
+                 * List of post attachments.
+                 */
+                attachments: Array<{
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'audio';
+                    /**
+                     * The duration of the audio in seconds.
+                     */
+                    duration?: number;
+                    /**
+                     * The audio is a voice note (should be displayed differently)
+                     */
+                    voice_note: boolean;
+                    /**
+                     * The waveform of the voice note, as a list of amplitude values between 0 and 100.
+                     */
+                    waveform?: Array<number>;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'img';
+                    /**
+                     * The size of the image in pixels.
+                     */
+                    size?: {
+                        height: number;
+                        width: number;
+                    };
+                    /**
+                     * The image is a sticker (should be displayed differently)
+                     */
+                    sticker: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'video';
+                    /**
+                     * The duration of the video in seconds.
+                     */
+                    duration?: number;
+                    /**
+                     * The size of the video in pixels.
+                     */
+                    size: {
+                        height: number;
+                        width: number;
+                    };
+                    /**
+                     * The video is a GIF (should be displayed differently)
+                     */
+                    gif: boolean;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'file';
+                    /**
+                     * The name of the file, including the extension.
+                     */
+                    filename: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL of the shared content.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'shared_content';
+                    /**
+                     * The type of content being shared.
+                     */
+                    media_type: 'post' | 'story' | 'url' | 'reel' | 'job_posting';
+                    /**
+                     * The author of the shared content, if applicable.
+                     */
+                    author?: string;
+                    /**
+                     * A brief description of the shared content.
+                     */
+                    description?: string;
+                } | {
+                    object: 'Attachment';
+                    /**
+                     * The unique identifier of the attachment.
+                     */
+                    id: string;
+                    /**
+                     * The size of the attachment in bytes.
+                     */
+                    file_size?: number;
+                    /**
+                     * Is the attachment inline in the content.
+                     */
+                    is_inline: boolean;
+                    /**
+                     * Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via `cid:`. Provided without the surrounding angle brackets.
+                     */
+                    content_id?: string;
+                    /**
+                     * The attachment is not available for download because it was removed from provider servers.
+                     */
+                    is_unavailable?: boolean;
+                    /**
+                     * The MIME type of the attachment.
+                     */
+                    mimetype: string;
+                    /**
+                     * The URL to download the attachment.
+                     */
+                    url: string;
+                    /**
+                     * The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    url_expires_at?: string;
+                    /**
+                     * The file content encoded as base64, when available directly without an additional download.
+                     */
+                    content?: string;
+                    type: 'contact_card';
+                    /**
+                     * The name of the shared contact.
+                     */
+                    display_name?: string;
+                    /**
+                     * The organization of the shared contact.
+                     */
+                    organization?: string;
+                    /**
+                     * The phone numbers of the shared contact.
+                     */
+                    phones: Array<{
+                        /**
+                         * The phone number of the shared contact.
+                         */
+                        number: string;
+                        /**
+                         * The label of the phone number, as set by the contact owner (CELL, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                    /**
+                     * The email addresses of the shared contact.
+                     */
+                    emails: Array<{
+                        /**
+                         * The email address of the shared contact.
+                         */
+                        address: string;
+                        /**
+                         * The label of the email address, as set by the contact owner (HOME, WORK, ...).
+                         */
+                        type?: string;
+                    }>;
+                }>;
+                /**
+                 * Analytics data of the post. Metrics not provided by the provider are omitted.
+                 */
+                analytics?: {
+                    /**
+                     * The number of impressions of the post.
+                     */
+                    impressions_counter?: number;
+                    /**
+                     * The number of engagements of the post.
+                     */
+                    engagements_counter?: number;
+                    /**
+                     * The engagement rate of the post.
+                     */
+                    engagement_rate?: number;
+                    /**
+                     * The number of clicks of the post.
+                     */
+                    clicks_counter?: number;
+                    /**
+                     * The clickthrough rate of the post.
+                     */
+                    clickthrough_rate?: number;
+                    /**
+                     * The number of page viewers from this post.
+                     */
+                    page_viewers_from_this_post_counter?: number;
+                    /**
+                     * The number of followers gained from this post.
+                     */
+                    followers_gained_from_this_post_counter?: number;
+                    /**
+                     * The number of users reached from this post.
+                     */
+                    users_reached_counter?: number;
+                };
+                /**
+                 * The author of the post.
+                 */
+                author: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user as exposed by the provider.
+                     */
+                    display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                    /**
+                     * Object containing provider-specific user profile data.
+                     */
+                    specifics?: {
+                        /**
+                         * Name saved by the connected account owner in their WhatsApp address book.
+                         */
+                        contact_name: string;
+                    } | {
+                        /**
+                         * Messaging identifier of the user. Messages sent by this user carry it as their sender_id.
+                         */
+                        messaging_identifier: string;
+                    } | {
+                        /**
+                         * The geographical location of the user.
+                         */
+                        location?: string;
+                        /**
+                         * Network distance to a User.
+                         * `SELF`: Yourself.
+                         * `FIRST_DEGREE`: 1st degree connection.
+                         * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                         * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                         * `OUT_OF_NETWORK`: Unreachable user.'
+                         */
+                        network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                        /**
+                         * The user's industry.
+                         */
+                        industry?: string;
+                        /**
+                         * Whether the current user follows the user.
+                         */
+                        is_following?: boolean;
+                        /**
+                         * The number of followers of the user.
+                         */
+                        followers_count?: number;
+                        /**
+                         * The number of relations of the user.
+                         */
+                        relations_count?: number;
+                        /**
+                         * The number of relations that you share with the user.
+                         */
+                        shared_relations_count?: number;
+                        /**
+                         * The URL of the website provided by the user.
+                         */
+                        website_url?: string;
+                        /**
+                         * The URL of the portfolio provided by the user.
+                         */
+                        portfolio_url?: string;
+                        /**
+                         * The LinkedIn internal URL of the user's services page.
+                         */
+                        services_page_url?: string;
+                        /**
+                         * Whether the User has a premium account.
+                         */
+                        is_premium?: boolean;
+                        /**
+                         * Whether the User has a verified account.
+                         */
+                        is_verified?: boolean;
+                    };
+                };
+                /**
+                 * Object containing provider-specific post data.
+                 */
+                specifics?: {
+                    mentions?: Array<{
+                        /**
+                         * Public URL targeted by the mention.
+                         */
+                        url: string;
+                        /**
+                         * Start index of the mention in the post text.
+                         */
+                        start: number;
+                        /**
+                         * Length of the mention in the post text.
+                         */
+                        length: number;
+                    }>;
+                    /**
+                     * A job posting that can be included as an insert in the post.
+                     */
+                    job_posting?: {
+                        /**
+                         * Unique identifier of the job posting.
+                         */
+                        id: string | null;
+                        /**
+                         * Title of the job posting.
+                         */
+                        title: string;
+                        /**
+                         * Location of the job posting.
+                         */
+                        location: string;
+                        /**
+                         * The company that published the job posting.
+                         */
+                        company: {
+                            /**
+                             * Unique identifier of the company.
+                             */
+                            id: string | null;
+                            /**
+                             * Name of the company.
+                             */
+                            name: string | null;
+                            /**
+                             * Public url to the profile picture of the company.
+                             */
+                            picture_url?: string;
+                        };
+                    };
+                    /**
+                     * An article that can be included as an insert in the post.
+                     */
+                    article?: {
+                        /**
+                         * Unique identifier of the article.
+                         */
+                        id: string | null;
+                        /**
+                         * Title of the article.
+                         */
+                        title: string;
+                        /**
+                         * Author of the article.
+                         */
+                        author?: string;
+                        /**
+                         * Public url to the article.
+                         */
+                        url?: string;
+                        /**
+                         * The publication date of the article. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                         */
+                        published_at?: string;
+                        /**
+                         * A short excerpt of the article content.
+                         */
+                        excerpt?: string;
+                        /**
+                         * Public url to the cover picture of the article.
+                         */
+                        picture_url?: string;
+                    };
+                };
+            };
+            /**
+             * Object containing provider-specific post data.
+             */
+            specifics?: {
+                mentions?: Array<{
+                    /**
+                     * Public URL targeted by the mention.
+                     */
+                    url: string;
+                    /**
+                     * Start index of the mention in the post text.
+                     */
+                    start: number;
+                    /**
+                     * Length of the mention in the post text.
+                     */
+                    length: number;
+                }>;
+                /**
+                 * A job posting that can be included as an insert in the post.
+                 */
+                job_posting?: {
+                    /**
+                     * Unique identifier of the job posting.
+                     */
+                    id: string | null;
+                    /**
+                     * Title of the job posting.
+                     */
+                    title: string;
+                    /**
+                     * Location of the job posting.
+                     */
+                    location: string;
+                    /**
+                     * The company that published the job posting.
+                     */
+                    company: {
+                        /**
+                         * Unique identifier of the company.
+                         */
+                        id: string | null;
+                        /**
+                         * Name of the company.
+                         */
+                        name: string | null;
+                        /**
+                         * Public url to the profile picture of the company.
+                         */
+                        picture_url?: string;
+                    };
+                };
+                /**
+                 * An article that can be included as an insert in the post.
+                 */
+                article?: {
+                    /**
+                     * Unique identifier of the article.
+                     */
+                    id: string | null;
+                    /**
+                     * Title of the article.
+                     */
+                    title: string;
+                    /**
+                     * Author of the article.
+                     */
+                    author?: string;
+                    /**
+                     * Public url to the article.
+                     */
+                    url?: string;
+                    /**
+                     * The publication date of the article. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+                     */
+                    published_at?: string;
+                    /**
+                     * A short excerpt of the article content.
+                     */
+                    excerpt?: string;
+                    /**
+                     * Public url to the cover picture of the article.
+                     */
+                    picture_url?: string;
+                };
+            };
+        }>;
+        /**
+         * Total number of results if supported by the provider.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type PerformPostsSearchResponse = PerformPostsSearchResponses[keyof PerformPostsSearchResponses];
+
+export type GetSearchParametersData = {
+    body?: never;
+    path: {
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query: {
+        /**
+         * The filter to look values up for.
+         * - `location` cities, for the `location` filters of the searches.
+         * - `school` schools, for the `school` filter of the people search.
+         * - `company` companies, for the `company` filter of the people search.
+         * - `event_category` event categories, for the `category` filter of the events search.
+         */
+        type: 'location' | 'school' | 'company' | 'event_category';
+        /**
+         * The name, or part of the name, to look for. Required, except for `event_category`: without it, every category is returned.
+         */
+        keywords?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
+         */
+        limit?: number;
+    };
+    url: '/v2/{account_id}/search/parameters';
+};
+
+export type GetSearchParametersResponses = {
+    /**
+     * Search parameters list
+     *
+     * The values found for the filter.
+     */
+    200: {
+        data: Array<{
+            /**
+             * The type of the object: `SearchParameter`.
+             */
+            object: 'SearchParameter';
+            /**
+             * The ID to give to the matching filter of a search.
+             */
+            id: string;
+            /**
+             * The display name of the search parameter.
+             */
+            name: string;
+            /**
+             * The URL of the picture of the search parameter.
+             */
+            picture_url?: string;
+        }>;
+        /**
+         * Total number of results if supported by the provider.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type GetSearchParametersResponse = GetSearchParametersResponses[keyof GetSearchParametersResponses];
 
 export type GetCalendarsListData = {
     body?: never;
@@ -43001,6 +46713,8 @@ export type CreateCalendarEventData = {
          */
         visibility?: 'public' | 'private';
         /**
+         * Conference
+         *
          * A conference to generate or attach to the event.
          * The way the conference is associated with the event may vary depending on the calendar and the selected provider:
          * it can be generated and hosted natively by the provider (e.g. Google Meet on Google, Microsoft Teams or Skype on
@@ -45930,7 +49644,7 @@ export type PerformClassicSearchFromUrlResponses = {
                 }>;
             }>;
             /**
-             * Analytics data of the post.
+             * Analytics data of the post. Metrics not provided by the provider are omitted.
              */
             analytics?: {
                 /**
@@ -46554,7 +50268,7 @@ export type PerformClassicSearchFromUrlResponses = {
                     }>;
                 }>;
                 /**
-                 * Analytics data of the post.
+                 * Analytics data of the post. Metrics not provided by the provider are omitted.
                  */
                 analytics?: {
                     /**
@@ -47660,7 +51374,7 @@ export type PerformClassicPostsSearchResponses = {
                 }>;
             }>;
             /**
-             * Analytics data of the post.
+             * Analytics data of the post. Metrics not provided by the provider are omitted.
              */
             analytics?: {
                 /**
@@ -48284,7 +51998,7 @@ export type PerformClassicPostsSearchResponses = {
                     }>;
                 }>;
                 /**
-                 * Analytics data of the post.
+                 * Analytics data of the post. Metrics not provided by the provider are omitted.
                  */
                 analytics?: {
                     /**
@@ -49944,6 +53658,170 @@ export type GetClassicApplicantResumeResponses = {
     200: unknown;
 };
 
+export type ListPollVotesData = {
+    body?: never;
+    path: {
+        /**
+         * The ID of the post containing the poll.
+         */
+        post_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: {
+        /**
+         * The ID of a poll option (`poll.options[].id` of the post) to only list its voters.
+         */
+        option_id?: string;
+        /**
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
+         */
+        cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
+         */
+        limit?: number;
+    };
+    url: '/v2/{account_id}/linkedin/posts/{post_id}/poll/votes';
+};
+
+export type ListPollVotesResponses = {
+    /**
+     * A list of votes on a poll.
+     */
+    200: {
+        data: Array<{
+            /**
+             * The type of the object.
+             */
+            object: 'PollVote';
+            /**
+             * The ID of the chosen option, matching the `poll.options[].id` of the post.
+             */
+            option_id: string;
+            /**
+             * The user who voted.
+             */
+            voter: {
+                /**
+                 * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                 */
+                id: string;
+                object: 'User';
+                /**
+                 * Type of the user
+                 * - `individual` is an individual user.
+                 * - `organization` is an organization / business entity.
+                 * - `other` is an other type of entity.
+                 */
+                type: 'individual' | 'organization' | 'other';
+                /**
+                 * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                 */
+                public_identifier?: string;
+                /**
+                 * Display name of the user as exposed by the provider.
+                 */
+                display_name: string;
+                /**
+                 * First name of the user.
+                 */
+                first_name?: string;
+                /**
+                 * Last name of the user.
+                 */
+                last_name?: string;
+                /**
+                 * Public url to the profile of the user.
+                 */
+                profile_url?: string;
+                /**
+                 * Public url to the profile picture of the user.
+                 */
+                public_picture_url?: string;
+                /**
+                 * Private url to download the profile picture of the user. This url require authentication.
+                 */
+                private_picture_download_url?: string;
+                /**
+                 * Description of the user.
+                 */
+                description?: string;
+                /**
+                 * LinkedIn
+                 */
+                specifics?: {
+                    /**
+                     * The geographical location of the user.
+                     */
+                    location?: string;
+                    /**
+                     * Network distance to a User.
+                     * `SELF`: Yourself.
+                     * `FIRST_DEGREE`: 1st degree connection.
+                     * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+                     * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+                     * `OUT_OF_NETWORK`: Unreachable user.'
+                     */
+                    network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+                    /**
+                     * The user's industry.
+                     */
+                    industry?: string;
+                    /**
+                     * Whether the current user follows the user.
+                     */
+                    is_following?: boolean;
+                    /**
+                     * The number of followers of the user.
+                     */
+                    followers_count?: number;
+                    /**
+                     * The number of relations of the user.
+                     */
+                    relations_count?: number;
+                    /**
+                     * The number of relations that you share with the user.
+                     */
+                    shared_relations_count?: number;
+                    /**
+                     * The URL of the website provided by the user.
+                     */
+                    website_url?: string;
+                    /**
+                     * The URL of the portfolio provided by the user.
+                     */
+                    portfolio_url?: string;
+                    /**
+                     * The LinkedIn internal URL of the user's services page.
+                     */
+                    services_page_url?: string;
+                    /**
+                     * Whether the User has a premium account.
+                     */
+                    is_premium?: boolean;
+                    /**
+                     * Whether the User has a verified account.
+                     */
+                    is_verified?: boolean;
+                };
+            };
+        }>;
+        /**
+         * Total number of results if supported by the provider.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type ListPollVotesResponse = ListPollVotesResponses[keyof ListPollVotesResponses];
+
 export type GetRecruiterHiringProjectListData = {
     body?: never;
     path: {
@@ -50645,7 +54523,7 @@ export type GetRecruiterTalentPoolApplicantsData = {
         /**
          * A list of spotlights.
          */
-        spotlights?: Array<'ACTIVE_TALENT'>;
+        spotlights?: Array<'ACTIVE_TALENT' | 'OPEN_TO_WORK' | 'VERIFIED_APPLICANTS' | 'HIGHLIGHTED_FOR_REVIEW'>;
         /**
          * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
          *
@@ -51613,6 +55491,961 @@ export type GetRecruiterTalentPoolApplicantsResponses = {
 };
 
 export type GetRecruiterTalentPoolApplicantsResponse = GetRecruiterTalentPoolApplicantsResponses[keyof GetRecruiterTalentPoolApplicantsResponses];
+
+export type GetRecruiterTalentPoolApplyStartersData = {
+    /**
+     * Filters for people who started applying to a job posting in the project talent pool.
+     */
+    body?: {
+        /**
+         * A keyword or group of keywords.
+         */
+        keywords?: string;
+        /**
+         * A list of spotlights.
+         */
+        spotlights?: Array<'ACTIVE_TALENT' | 'OPEN_TO_WORK' | 'VERIFIED_APPLICANTS' | 'HIGHLIGHTED_FOR_REVIEW'>;
+        /**
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `LOCATION` type to find out the possible values.
+         *
+         * Native filter : Current locations
+         *
+         */
+        location?: Array<string>;
+        /**
+         *
+         *
+         * Native filter : Companies
+         *
+         */
+        company?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `COMPANY` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
+        /**
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SKILL` type to find out the possible values.
+         *
+         * Native filter : Skills
+         *
+         */
+        skills?: Array<string>;
+        /**
+         *
+         *
+         * Native filter : Schools
+         *
+         */
+        school?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SCHOOL` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
+        /**
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.
+         *
+         * Native filter : Industries
+         *
+         */
+        industry?: Array<string>;
+        /**
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.
+         *
+         * Native filter : Job titles
+         *
+         */
+        job_title?: Array<string>;
+        /**
+         * A list of languages. Only available to Recruiter PRO contracts.
+         *
+         * Native filter : Spoken languages
+         *
+         */
+        spoken_language?: Array<{
+            /**
+             * A parameter ID. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `SPOKEN_LANGUAGE` type to find out the possible values.
+             */
+            id: string;
+            /**
+             * Whether the user can, must or shouldn't have the value.
+             *
+             * Native filter : Priority
+             *
+             */
+            priority?: 'CAN_HAVE' | 'MUST_HAVE' | 'DOESNT_HAVE';
+        }>;
+        /**
+         * The level of proficiency for the spoken languages.
+         *
+         * Native filter : Spoken languages proficiency
+         *
+         */
+        spoken_language_proficiency?: 'ELEMENTARY' | 'LIMITED_WORKING' | 'PROFESSIONAL_WORKING' | 'FULL_PROFESSIONAL' | 'NATIVE_OR_BILINGUAL';
+        /**
+         * A list of connection degrees (1 for First, 2 for Second, 3 for Third+ and GROUP for Common group members).
+         *
+         * Native filter : Network relationships
+         *
+         */
+        network_distance?: Array<1 | 2 | 3 | 'GROUP'>;
+        /**
+         *
+         *
+         * Native filter : Years of experience
+         *
+         */
+        years_of_experience?: {
+            min: number;
+            max: number;
+        };
+        /**
+         *
+         *
+         * Native filter : Years in current position
+         *
+         */
+        years_in_current_position?: {
+            min: number;
+            max: number;
+        };
+        /**
+         *
+         *
+         * Native filter : Years in current company
+         *
+         */
+        years_in_current_company?: {
+            min: number;
+            max: number;
+        };
+        /**
+         *
+         *
+         * Native filter : Degrees
+         *
+         */
+        degree?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `DEGREE` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
+        /**
+         *
+         *
+         * Native filter : Fields of study
+         *
+         */
+        field_of_study?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `FIELD_OF_STUDY` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
+        /**
+         * A list of experience levels.
+         */
+        seniority?: Array<'UNPAID' | 'TRAINING' | 'ENTRY' | 'SENIOR' | 'MANAGER' | 'DIRECTOR' | 'VP' | 'CXO' | 'PARTNER' | 'OWNER'>;
+        /**
+         * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.
+         *
+         * Native filter : Job functions
+         *
+         */
+        job_function?: Array<string>;
+        /**
+         *
+         *
+         * Native filter : Current companies
+         *
+         */
+        current_company?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `CURRENT_COMPANY` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `CURRENT_COMPANY` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
+        /**
+         * A list of company size ranges.
+         */
+        company_size?: Array<{
+            min?: 1 | 51 | 201 | 501 | 1001 | 5001 | 10001;
+            max?: 0 | 10 | 200 | 500 | 1000 | 5000 | 10000;
+        }>;
+        /**
+         *
+         *
+         * Native filter : Tags
+         *
+         */
+        tags?: {
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `TAG` type to find out the possible values.
+             */
+            include?: Array<string>;
+            /**
+             * A list of parameter IDs. Use <a href="https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters">List Search Parameters</a> with `TAG` type to find out the possible values.
+             */
+            exclude?: Array<string>;
+        };
+        /**
+         * The sort method.
+         *
+         * Native filter : Sort by
+         *
+         */
+        sort_by?: 'NEWEST_FIRST' | 'ALPHABETICAL';
+    };
+    path: {
+        /**
+         * The ID of the Hiring Project from which to browse the Talent Pool.
+         */
+        project_id: string;
+        /**
+         * ID of the Account (acc_xxx) to call the method on behalf of.
+         */
+        account_id: string;
+    };
+    query?: {
+        /**
+         * A cursor used for pagination. Use `next_cursor` given by the previous page of the list.
+         */
+        cursor?: string;
+        /**
+         * The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page.
+         */
+        limit?: number;
+    };
+    url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/apply-starters';
+};
+
+export type GetRecruiterTalentPoolApplyStartersResponses = {
+    /**
+     * People Search
+     *
+     * Default Response
+     */
+    200: {
+        data: Array<{
+            object: 'PeopleSearchResult';
+            /**
+             * The ID of the user.
+             */
+            id: string;
+            /**
+             * The headline of the User.
+             */
+            headline?: string;
+            /**
+             * The location of the User.
+             */
+            location?: string;
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            product: 'recruiter';
+            /**
+             * Indidates that you don't have access to the full profile of this User.
+             */
+            visibility: 'partial';
+            /**
+             * The candidate ID of the User.
+             */
+            candidate_id: string;
+            /**
+             * Whether the User has been set as hidden candidate.
+             */
+            is_hidden_candidate: boolean;
+            /**
+             * The hiring project where the User is a candidate.
+             */
+            hiring_project?: {
+                /**
+                 * The ID of the project.
+                 */
+                id: string;
+                /**
+                 * The name of the project.
+                 */
+                name: string;
+                /**
+                 * The pipeline stage at which the User is (contacted, replied, etc.).
+                 */
+                pipeline_stage: string;
+            };
+            /**
+             * A list of the User's work experiences.
+             */
+            work_experience: Array<{
+                /**
+                 * Id of the work experience entry.
+                 */
+                id?: string;
+                company: {
+                    /**
+                     * Name of the company.
+                     */
+                    name?: string;
+                    id: string | null;
+                    /**
+                     * Public identifier of the company.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Public url to the profile picture of the company.
+                     */
+                    picture_url?: string;
+                    /**
+                     * Public url to the profile of the company.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Industry types of the company.
+                     */
+                    industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
+                };
+                /**
+                 * Job title of the experience.
+                 */
+                job_title: string;
+                /**
+                 * Start date of the experience in MM/DD/YYYY format.
+                 */
+                started_on?: string;
+                /**
+                 * End date of the experience in MM/DD/YYYY format.
+                 */
+                ended_on?: string;
+                /**
+                 * Location of the experience.
+                 */
+                location?: string;
+                /**
+                 * Description of the experience.
+                 */
+                description?: string;
+                /**
+                 * Employment type of the experience.
+                 */
+                employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
+                /**
+                 * Workplace type of the experience.
+                 */
+                workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+                /**
+                 * Skills acquired with experience.
+                 */
+                skills?: Array<string>;
+                /**
+                 * Insight of the skills acquired with experience.
+                 */
+                skills_preview?: string;
+            }>;
+        } | {
+            object: 'PeopleSearchResult';
+            /**
+             * The ID of the user.
+             */
+            id: string;
+            /**
+             * The LinkedIn internal member ID of the user.
+             */
+            member_id?: string;
+            /**
+             * The display name of the User.
+             */
+            display_name: string;
+            /**
+             * The public identifier of the User.
+             */
+            public_identifier?: string;
+            /**
+             * The profile URL of the User.
+             */
+            profile_url?: string;
+            /**
+             * The public picture URL of the User.
+             */
+            public_picture_url?: string;
+            /**
+             * The public picture URL of the User in large size.
+             */
+            public_picture_url_large?: string;
+            /**
+             * The number of relations of the User.
+             */
+            relations_count?: number;
+            /**
+             * The location of the User.
+             */
+            location?: string;
+            /**
+             * The headline of the User.
+             */
+            headline?: string;
+            /**
+             * Whether it is possible to send an inMail to this User.
+             */
+            can_send_inmail?: boolean;
+            /**
+             * Network distance to a User.
+             * `SELF`: Yourself.
+             * `FIRST_DEGREE`: 1st degree connection.
+             * `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).
+             * `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).
+             * `OUT_OF_NETWORK`: Unreachable user.'
+             */
+            network_distance?: 'SELF' | 'FIRST_DEGREE' | 'SECOND_DEGREE' | 'THIRD_DEGREE' | 'OUT_OF_NETWORK';
+            product: 'recruiter';
+            /**
+             * Indidates that you have access to the full profile of this User.
+             */
+            visibility: 'full';
+            /**
+             * The candidate ID of the User.
+             */
+            candidate_id: string;
+            /**
+             * Whether the User has been set as hidden candidate.
+             */
+            is_hidden_candidate: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_recently_open_to_work: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_active_talent: boolean;
+            /**
+             * Whether the User has an `Open to work` flag.
+             */
+            is_closer_in_network: boolean;
+            /**
+             * The interest level of the User.
+             */
+            interest_level?: string;
+            /**
+             * The hiring project where the User is a candidate.
+             */
+            hiring_project?: {
+                /**
+                 * The ID of the project.
+                 */
+                id: string;
+                /**
+                 * The name of the project.
+                 */
+                name: string;
+                /**
+                 * The pipeline stage at which the User is (contacted, replied, etc.).
+                 */
+                pipeline_stage: string;
+            };
+            /**
+             * A list of the User's work experiences.
+             */
+            work_experience: Array<{
+                /**
+                 * Id of the work experience entry.
+                 */
+                id?: string;
+                company: {
+                    /**
+                     * Name of the company.
+                     */
+                    name?: string;
+                    id: string | null;
+                    /**
+                     * Public identifier of the company.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Public url to the profile picture of the company.
+                     */
+                    picture_url?: string;
+                    /**
+                     * Public url to the profile of the company.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Industry types of the company.
+                     */
+                    industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
+                };
+                /**
+                 * Job title of the experience.
+                 */
+                job_title: string;
+                /**
+                 * Start date of the experience in MM/DD/YYYY format.
+                 */
+                started_on?: string;
+                /**
+                 * End date of the experience in MM/DD/YYYY format.
+                 */
+                ended_on?: string;
+                /**
+                 * Location of the experience.
+                 */
+                location?: string;
+                /**
+                 * Description of the experience.
+                 */
+                description?: string;
+                /**
+                 * Employment type of the experience.
+                 */
+                employment_type?: 'SELF_EMPLOYED' | 'CONTRACT' | 'CONTRACT_PART_TIME' | 'PERMANENT' | 'PERMANENT_PART_TIME' | 'INTERNSHIP' | 'APPRENTICESHIP' | 'FREELANCE' | 'FREELANCE_ARTS_WORKER' | 'CIVIL_SERVICE_INTERNSHIP' | 'VOLUNTEERING' | 'CIVIL_SERVANT' | 'TEMPORARY';
+                /**
+                 * Workplace type of the experience.
+                 */
+                workplace_type?: 'ON_SITE' | 'HYBRID' | 'REMOTE';
+                /**
+                 * Skills acquired with experience.
+                 */
+                skills?: Array<string>;
+                /**
+                 * Insight of the skills acquired with experience.
+                 */
+                skills_preview?: string;
+            }>;
+            /**
+             * The industry in which the User works.
+             */
+            industry?: string;
+            /**
+             * The number of the followers of the User.
+             */
+            followers_count?: number;
+            /**
+             * A list of skills.
+             */
+            skills: Array<{
+                /**
+                 * Name of the skill.
+                 */
+                name: string;
+                /**
+                 * Number of people who endorsed the skill.
+                 */
+                endorsement_count: number;
+            }>;
+            /**
+             * The summary of the User.
+             */
+            summary?: string;
+            emails?: Array<string>;
+            phone_numbers?: Array<string>;
+            education: Array<{
+                /**
+                 * Id of the education entry.
+                 */
+                id?: string;
+                school: {
+                    id: string | null;
+                    /**
+                     * Name of the school.
+                     */
+                    name?: string;
+                    /**
+                     * Public url to the profile picture of the school.
+                     */
+                    picture_url?: string;
+                    /**
+                     * Public url to the profile of the school.
+                     */
+                    profile_url?: string;
+                };
+                /**
+                 * Name of the degree.
+                 */
+                degree?: string;
+                /**
+                 * Description of the education.
+                 */
+                description?: string;
+                /**
+                 * Activities carried out during education.
+                 */
+                activities?: string;
+                /**
+                 * Skills acquired through training.
+                 */
+                skills?: Array<string>;
+                /**
+                 * Insight of the skills acquired through training.
+                 */
+                skills_preview?: string;
+                /**
+                 * Reached academic level of the education.
+                 */
+                grade?: string;
+                /**
+                 * Fields of study of the education.
+                 */
+                fields_of_study?: Array<string>;
+                /**
+                 * Start date of the education in MM/DD/YYYY format.
+                 */
+                started_on?: string;
+                /**
+                 * End date of the education in MM/DD/YYYY format.
+                 */
+                ended_on?: string;
+            }>;
+            languages: Array<{
+                /**
+                 * Name of the language.
+                 */
+                language: string;
+                /**
+                 * Level of fluency in the language.
+                 */
+                proficiency?: 'ELEMENTARY' | 'LIMITED_WORKING' | 'PROFESSIONAL_WORKING' | 'FULL_PROFESSIONAL' | 'NATIVE_OR_BILINGUAL';
+            }>;
+            certifications: Array<{
+                /**
+                 * Name of the certification.
+                 */
+                title: string;
+                organization: {
+                    /**
+                     * Name of the company.
+                     */
+                    name?: string;
+                    id: string | null;
+                    /**
+                     * Public identifier of the company.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Public url to the profile picture of the company.
+                     */
+                    picture_url?: string;
+                    /**
+                     * Public url to the profile of the company.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Industry types of the company.
+                     */
+                    industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
+                };
+                /**
+                 * Date the certification was issued in MM/DD/YYYY format.
+                 */
+                issued_on?: string;
+                /**
+                 * Expiration date of the certification in MM/DD/YYYY format.
+                 */
+                expires_on?: string;
+                /**
+                 * License identifier.
+                 */
+                license?: string;
+                /**
+                 * Skills acquired through certification.
+                 */
+                skills?: Array<string>;
+                /**
+                 * Insight of the skills acquired through certification.
+                 */
+                skills_preview?: string;
+                /**
+                 * Public URL to the certification.
+                 */
+                url?: string;
+            }>;
+            projects: Array<{
+                /**
+                 * Name of the project.
+                 */
+                name: string;
+                /**
+                 * Description of the project.
+                 */
+                description?: string;
+                /**
+                 * Contributors to the project.
+                 */
+                contributors: Array<{
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user as exposed by the provider.
+                     */
+                    display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
+                    specifics?: unknown;
+                }>;
+                /**
+                 * Skills related to the project.
+                 */
+                skills?: Array<string>;
+                /**
+                 * Insight of the skills related to the project.
+                 */
+                skills_preview?: string;
+                /**
+                 * Start date of the project in MM/DD/YYYY format.
+                 */
+                started_on?: string;
+                /**
+                 * End date of the project in MM/DD/YYYY format.
+                 */
+                ended_on?: string;
+            }>;
+            volunteering: Array<{
+                organization?: {
+                    /**
+                     * Name of the company.
+                     */
+                    name?: string;
+                    id: string | null;
+                    /**
+                     * Public identifier of the company.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Public url to the profile picture of the company.
+                     */
+                    picture_url?: string;
+                    /**
+                     * Public url to the profile of the company.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Industry types of the company.
+                     */
+                    industries?: Array<string>;
+                    /**
+                     * The employee count range reported for the company, when available.
+                     */
+                    headcount_range?: {
+                        /**
+                         * The lower bound of the employee count range.
+                         */
+                        from?: number;
+                        /**
+                         * The upper bound of the employee count range.
+                         */
+                        to?: number;
+                    };
+                };
+                /**
+                 * Role in the experience.
+                 */
+                role: string;
+                /**
+                 * Cause of the experience.
+                 */
+                cause?: string;
+                /**
+                 * Description of the experience.
+                 */
+                description?: string;
+                /**
+                 * Start date of the experience in MM/DD/YYYY format.
+                 */
+                started_on?: string;
+                /**
+                 * End date of the experience in MM/DD/YYYY format.
+                 */
+                ended_on?: string;
+            }>;
+            recommendations: Array<{
+                /**
+                 * Recommendation details, including date and actors relationship.
+                 */
+                caption?: string;
+                /**
+                 * Creation date of the recommendation.
+                 */
+                created_on?: string;
+                /**
+                 * Content of the recommendation.
+                 */
+                text: string;
+                user: {
+                    /**
+                     * Unique identifier of the user for the provider. Usually an internal identifier used by the API only.
+                     */
+                    id: string;
+                    object: 'User';
+                    /**
+                     * Type of the user
+                     * - `individual` is an individual user.
+                     * - `organization` is an organization / business entity.
+                     * - `other` is an other type of entity.
+                     */
+                    type: 'individual' | 'organization' | 'other';
+                    /**
+                     * Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.
+                     */
+                    public_identifier?: string;
+                    /**
+                     * Display name of the user as exposed by the provider.
+                     */
+                    display_name: string;
+                    /**
+                     * First name of the user.
+                     */
+                    first_name?: string;
+                    /**
+                     * Last name of the user.
+                     */
+                    last_name?: string;
+                    /**
+                     * Public url to the profile of the user.
+                     */
+                    profile_url?: string;
+                    /**
+                     * Public url to the profile picture of the user.
+                     */
+                    public_picture_url?: string;
+                    /**
+                     * Private url to download the profile picture of the user. This url require authentication.
+                     */
+                    private_picture_download_url?: string;
+                    /**
+                     * Description of the user.
+                     */
+                    description?: string;
+                    /**
+                     * Provider-specific user data.
+                     */
+                    specifics?: unknown;
+                } | null;
+            }>;
+        }>;
+        /**
+         * Total number of results if supported by the provider.
+         */
+        total_count?: number;
+        /**
+         * Cursor to get the next page of results if supported. Else use `offset`.
+         */
+        next_cursor?: string;
+    };
+};
+
+export type GetRecruiterTalentPoolApplyStartersResponse = GetRecruiterTalentPoolApplyStartersResponses[keyof GetRecruiterTalentPoolApplyStartersResponses];
 
 export type GetRecruiterApplicantByIdData = {
     body?: never;
@@ -59932,6 +64765,19 @@ export type PerformSalesSearchFromUrlResponses = {
              */
             headcount?: number;
             /**
+             * The employees count range the Company falls into.
+             */
+            headcount_range?: {
+                /**
+                 * The lower bound of the range.
+                 */
+                from?: number;
+                /**
+                 * The higher bound of the range.
+                 */
+                to?: number;
+            };
+            /**
              * A list of the company's activities.
              */
             specialties?: Array<string>;
@@ -60425,6 +65271,19 @@ export type PerformSalesSearchFromUrlResponses = {
              * The number of employees of the Company.
              */
             headcount?: number;
+            /**
+             * The employees count range the Company falls into.
+             */
+            headcount_range?: {
+                /**
+                 * The lower bound of the range.
+                 */
+                from?: number;
+                /**
+                 * The higher bound of the range.
+                 */
+                to?: number;
+            };
             /**
              * A list of the company's activities.
              */
@@ -61996,6 +66855,19 @@ export type PerformSalesCompaniesSearchResponses = {
              */
             headcount?: number;
             /**
+             * The employees count range the Company falls into.
+             */
+            headcount_range?: {
+                /**
+                 * The lower bound of the range.
+                 */
+                from?: number;
+                /**
+                 * The higher bound of the range.
+                 */
+                to?: number;
+            };
+            /**
              * A list of the company's activities.
              */
             specialties?: Array<string>;
@@ -62762,6 +67634,19 @@ export type BrowseSalesAccountListResponses = {
              */
             headcount?: number;
             /**
+             * The employees count range the Company falls into.
+             */
+            headcount_range?: {
+                /**
+                 * The lower bound of the range.
+                 */
+                from?: number;
+                /**
+                 * The higher bound of the range.
+                 */
+                to?: number;
+            };
+            /**
              * A list of the company's activities.
              */
             specialties?: Array<string>;
@@ -63462,7 +68347,7 @@ export type GetCategoryEmailsListResponses = {
              */
             message_id: string;
             /**
-             * The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
+             * The thread identifier. Native identifiers are preserved. Header-derived identifiers use the first Message-ID from References, In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists.
              */
             thread_id?: string;
             /**
@@ -63956,7 +68841,7 @@ export type SolveCheckpointResponses = {
     200: {
         object: 'AuthenticationCheckpoint';
         /**
-         * The details of the checkpoint that user needs to solve.
+         * The next authentication step, or a notice that the current attempt cannot continue.
          */
         checkpoint: {
             type: 'OTP';
@@ -63997,6 +68882,10 @@ export type SolveCheckpointResponses = {
              * The data of the CAPTCHA. This is used to verify the CAPTCHA.
              */
             data: string | null;
+            /**
+             * For image captchas: the challenge image as a base64 data URL. Show it to the user and send their answer as the checkpoint `code`. A wrong answer may return a new CAPTCHA checkpoint with a new image, and requesting a checkpoint for the same intent may return one too.
+             */
+            image?: string;
         } | {
             type: 'OTP_OR_IN_APP_VALIDATION';
             /**
@@ -64241,9 +69130,35 @@ export type SolveCheckpointResponses = {
                  */
                 error: 'INVALID_CREDENTIAL' | 'REFUSED_TO_PROTECT_BACKUP';
             };
+        } | {
+            /**
+             * The current authentication attempt has stopped and cannot be continued or resolved.
+             */
+            type: 'PROCESS_STOPPED';
+            /**
+             * The reason why the authentication attempt cannot continue.
+             */
+            message: string;
+            /**
+             * Additional context or instructions for the account owner, supplementing the main message.
+             */
+            description?: string;
+            /**
+             * An optional resource or action to present to the account owner alongside the message.
+             */
+            link?: {
+                /**
+                 * An absolute HTTP or HTTPS URL providing information or actions relevant to the stopped attempt.
+                 */
+                url: string;
+                /**
+                 * The label describing the linked resource or action.
+                 */
+                label: string;
+            };
         };
         /**
-         * The ID of the auth intent. Use it to continue authentication.
+         * The ID of the authentication intent. Use it for the next step required by the checkpoint. For PROCESS_STOPPED, it only identifies the stopped attempt and must not be used to resume or resolve it.
          */
         intent_id: string;
     } | {
@@ -64440,7 +69355,7 @@ export type RequestCheckpointResponses = {
     200: {
         object: 'AuthenticationCheckpoint';
         /**
-         * The details of the checkpoint that user needs to solve.
+         * The next authentication step, or a notice that the current attempt cannot continue.
          */
         checkpoint: {
             type: 'OTP';
@@ -64481,6 +69396,10 @@ export type RequestCheckpointResponses = {
              * The data of the CAPTCHA. This is used to verify the CAPTCHA.
              */
             data: string | null;
+            /**
+             * For image captchas: the challenge image as a base64 data URL. Show it to the user and send their answer as the checkpoint `code`. A wrong answer may return a new CAPTCHA checkpoint with a new image, and requesting a checkpoint for the same intent may return one too.
+             */
+            image?: string;
         } | {
             type: 'OTP_OR_IN_APP_VALIDATION';
             /**
@@ -64725,9 +69644,35 @@ export type RequestCheckpointResponses = {
                  */
                 error: 'INVALID_CREDENTIAL' | 'REFUSED_TO_PROTECT_BACKUP';
             };
+        } | {
+            /**
+             * The current authentication attempt has stopped and cannot be continued or resolved.
+             */
+            type: 'PROCESS_STOPPED';
+            /**
+             * The reason why the authentication attempt cannot continue.
+             */
+            message: string;
+            /**
+             * Additional context or instructions for the account owner, supplementing the main message.
+             */
+            description?: string;
+            /**
+             * An optional resource or action to present to the account owner alongside the message.
+             */
+            link?: {
+                /**
+                 * An absolute HTTP or HTTPS URL providing information or actions relevant to the stopped attempt.
+                 */
+                url: string;
+                /**
+                 * The label describing the linked resource or action.
+                 */
+                label: string;
+            };
         };
         /**
-         * The ID of the auth intent. Use it to continue authentication.
+         * The ID of the authentication intent. Use it for the next step required by the checkpoint. For PROCESS_STOPPED, it only identifies the stopped attempt and must not be used to resume or resolve it.
          */
         intent_id: string;
     } | {
@@ -64882,7 +69827,7 @@ export type StartAuthIntentData = {
                 protocol?: 'https' | 'http' | 'socks5' | 'socks4';
             };
             /**
-             * Whether the initial sync should be enabled. The initial sync is required to perform advanced search. Read more in the Synced Accounts guide.
+             * Whether initial sync is enabled. Defaults to false for new accounts. When reconnecting, omitting this field preserves the current setting. Re-enabling starts a fresh initial sync. Initial sync is required for advanced search. Read more in the Synced Accounts guide.
              */
             initial_sync_enable?: boolean;
             [key: string]: unknown | {
@@ -65500,7 +70445,7 @@ export type StartAuthIntentData = {
          */
         credentials: {
             /**
-             * Email or username of the Facebook account.
+             * Email address, phone number with its country code (for example +33612345678) or username of the account.
              */
             username: string;
             /**
@@ -65736,7 +70681,7 @@ export type StartAuthIntentResponses = {
     200: {
         object: 'AuthenticationCheckpoint';
         /**
-         * The details of the checkpoint that user needs to solve.
+         * The next authentication step, or a notice that the current attempt cannot continue.
          */
         checkpoint: {
             type: 'OTP';
@@ -65777,6 +70722,10 @@ export type StartAuthIntentResponses = {
              * The data of the CAPTCHA. This is used to verify the CAPTCHA.
              */
             data: string | null;
+            /**
+             * For image captchas: the challenge image as a base64 data URL. Show it to the user and send their answer as the checkpoint `code`. A wrong answer may return a new CAPTCHA checkpoint with a new image, and requesting a checkpoint for the same intent may return one too.
+             */
+            image?: string;
         } | {
             type: 'OTP_OR_IN_APP_VALIDATION';
             /**
@@ -66021,9 +70970,35 @@ export type StartAuthIntentResponses = {
                  */
                 error: 'INVALID_CREDENTIAL' | 'REFUSED_TO_PROTECT_BACKUP';
             };
+        } | {
+            /**
+             * The current authentication attempt has stopped and cannot be continued or resolved.
+             */
+            type: 'PROCESS_STOPPED';
+            /**
+             * The reason why the authentication attempt cannot continue.
+             */
+            message: string;
+            /**
+             * Additional context or instructions for the account owner, supplementing the main message.
+             */
+            description?: string;
+            /**
+             * An optional resource or action to present to the account owner alongside the message.
+             */
+            link?: {
+                /**
+                 * An absolute HTTP or HTTPS URL providing information or actions relevant to the stopped attempt.
+                 */
+                url: string;
+                /**
+                 * The label describing the linked resource or action.
+                 */
+                label: string;
+            };
         };
         /**
-         * The ID of the auth intent. Use it to continue authentication.
+         * The ID of the authentication intent. Use it for the next step required by the checkpoint. For PROCESS_STOPPED, it only identifies the stopped attempt and must not be used to resume or resolve it.
          */
         intent_id: string;
     } | {
@@ -66748,7 +71723,7 @@ export type CreateAuthLinkData = {
                     protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
-                 * Whether the initial sync should be enabled. The initial sync is required to perform advanced search. Read more in the Synced Accounts guide.
+                 * Whether initial sync is enabled. Defaults to false for new accounts. When reconnecting, omitting this field preserves the current setting. Re-enabling starts a fresh initial sync. Initial sync is required for advanced search. Read more in the Synced Accounts guide.
                  */
                 initial_sync_enable?: boolean;
                 [key: string]: unknown | {
@@ -67427,7 +72402,7 @@ export type CreateAuthLinkData = {
                     protocol?: 'https' | 'http' | 'socks5' | 'socks4';
                 };
                 /**
-                 * Whether the initial sync should be enabled. The initial sync is required to perform advanced search. Read more in the Synced Accounts guide.
+                 * Whether initial sync is enabled. Defaults to false for new accounts. When reconnecting, omitting this field preserves the current setting. Re-enabling starts a fresh initial sync. Initial sync is required for advanced search. Read more in the Synced Accounts guide.
                  */
                 initial_sync_enable?: boolean;
                 [key: string]: unknown | {
@@ -68730,11 +73705,11 @@ export type ListWebhookConversationsData = {
          */
         created_before?: string;
         /**
-         * An offset used for pagination.
+         * A non-negative integer offset used for pagination, up to 100000. Defaults to 0. Larger values are rejected.
          */
         offset?: string;
         /**
-         * A limit used for pagination.
+         * A positive integer page size, up to 1000. Defaults to 20. Invalid or larger values are rejected.
          */
         limit?: string;
     };
