@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { AcceptChatRequestData, AcceptChatRequestResponses, AcceptRelationRequestData, AcceptRelationRequestResponses, AddMessageReactionData, AddMessageReactionResponses, AddParticipantData, AddParticipantResponses, AddPostCommentData, AddPostCommentReactionData, AddPostCommentReactionResponses, AddPostCommentResponses, AddPostReactionData, AddPostReactionResponses, BlockUserData, BlockUserResponses, BrowseSalesAccountListData, BrowseSalesAccountListResponses, BrowseSalesLeadListData, BrowseSalesLeadListResponses, CancelCalendarEventData, CancelCalendarEventResponses, CancelRelationRequestData, CancelRelationRequestResponses, CloseClassicJobPostingData, CloseClassicJobPostingResponses, CloseRecruiterJobPostingData, CloseRecruiterJobPostingResponses, CreateApiKeyData, CreateApiKeyResponses, CreateAuthLinkData, CreateAuthLinkResponses, CreateCalendarData, CreateCalendarEventData, CreateCalendarEventResponses, CreateCalendarResponses, CreateClassicJobPostingDraftData, CreateClassicJobPostingDraftResponses, CreateDraftData, CreateDraftResponses, CreateEmailCategoryData, CreateEmailCategoryResponses, CreateFolderData, CreateFolderResponses, CreatePostData, CreatePostResponses, CreateRecruiterHiringProjectData, CreateRecruiterHiringProjectResponses, CreateRecruiterJobPostingDraftInExistingProjectData, CreateRecruiterJobPostingDraftInExistingProjectResponses, CreateRecruiterJobPostingDraftInNewProjectData, CreateRecruiterJobPostingDraftInNewProjectResponses, CreateRelationRequestData, CreateRelationRequestResponses, CreateScopeData, CreateScopeResponses, CreateStoryData, CreateStoryResponses, CreateWebhookEndpointData, CreateWebhookEndpointResponses, DeleteApiKeyData, DeleteApiKeyResponses, DeleteCalendarData, DeleteCalendarEventData, DeleteCalendarEventResponses, DeleteCalendarResponses, DeleteChatData, DeleteChatResponses, DeleteDraftData, DeleteDraftResponses, DeleteEmailCategoryData, DeleteEmailCategoryResponses, DeleteFolderData, DeleteFolderResponses, DeleteMessageData, DeleteMessageResponses, DeletePostCommentData, DeletePostCommentResponses, DeletePostData, DeletePostResponses, DeleteRelationData, DeleteRelationResponses, DeleteScopeData, DeleteScopeResponses, DeleteWebhookEndpointData, DeleteWebhookEndpointResponses, EditClassicJobPostingData, EditClassicJobPostingResponses, EditRecruiterHiringProjectData, EditRecruiterHiringProjectResponses, EditRecruiterJobPostingData, EditRecruiterJobPostingResponses, EndorseClassicMemberSkillData, EndorseClassicMemberSkillResponses, FollowUserData, FollowUserResponses, ForwardMessageData, ForwardMessageResponses, GetAccountData, GetAccountResponses, GetAvailableContractsData, GetAvailableContractsResponses, GetCalendarData, GetCalendarEventData, GetCalendarEventListData, GetCalendarEventListResponses, GetCalendarEventResponses, GetCalendarResponses, GetCalendarsListData, GetCalendarsListResponses, GetCategoryEmailsListData, GetCategoryEmailsListResponses, GetChatData, GetChatPictureData, GetChatPictureResponses, GetChatResponses, GetChatsListData, GetChatsListResponses, GetClassicApplicantByIdData, GetClassicApplicantByIdResponses, GetClassicApplicantResumeData, GetClassicApplicantResumeResponses, GetClassicApplicantsData, GetClassicApplicantsResponses, GetClassicCompanyProfileData, GetClassicCompanyProfileResponses, GetClassicJobPostingBudgetData, GetClassicJobPostingBudgetResponses, GetClassicJobPostingData, GetClassicJobPostingResponses, GetClassicSearchParametersData, GetClassicSearchParametersResponses, GetCompanyFollowInvitationCreditsData, GetCompanyFollowInvitationCreditsResponses, GetContactsListData, GetContactsListResponses, GetDraftData, GetDraftResponses, GetDraftsListData, GetDraftsListResponses, GetEmailAttachmentData, GetEmailAttachmentResponses, GetEmailCategoriesData, GetEmailCategoriesResponses, GetEmailData, GetEmailResponses, GetEmailSendersData, GetEmailSendersResponses, GetEmailsListData, GetEmailsListResponses, GetFolderData, GetFolderEmailsListData, GetFolderEmailsListResponses, GetFolderResponses, GetFoldersListData, GetFoldersListResponses, GetInboxChatsListData, GetInboxChatsListResponses, GetInboxesListData, GetInboxesListResponses, GetInmailCreditsData, GetInmailCreditsResponses, GetManagedCompanyPagesData, GetManagedCompanyPagesResponses, GetMessageAttachmentData, GetMessageAttachmentResponses, GetMessageData, GetMessageReactionsListData, GetMessageReactionsListResponses, GetMessageResponses, GetMessagesListData, GetMessagesListResponses, GetParticipantsListData, GetParticipantsListResponses, GetPostCommentReactionsListData, GetPostCommentReactionsListResponses, GetPostCommentRepliesListData, GetPostCommentRepliesListResponses, GetPostCommentsListData, GetPostCommentsListResponses, GetPostData, GetPostReactionsListData, GetPostReactionsListResponses, GetPostResponses, GetPostsListData, GetPostsListResponses, GetProfileViewsData, GetProfileViewsResponses, GetRecruiterApplicantByIdData, GetRecruiterApplicantByIdResponses, GetRecruiterApplicantResumeData, GetRecruiterApplicantResumeResponses, GetRecruiterHiringProjectData, GetRecruiterHiringProjectListData, GetRecruiterHiringProjectListResponses, GetRecruiterHiringProjectResponses, GetRecruiterJobPostingBudgetData, GetRecruiterJobPostingBudgetResponses, GetRecruiterJobPostingByIdData, GetRecruiterJobPostingByIdResponses, GetRecruiterJobPostingByProjectIdData, GetRecruiterJobPostingByProjectIdResponses, GetRecruiterJobPostingListData, GetRecruiterJobPostingListResponses, GetRecruiterJobSlotsCreditsData, GetRecruiterJobSlotsCreditsResponses, GetRecruiterPipelineCandidatesData, GetRecruiterPipelineCandidatesResponses, GetRecruiterSearchParametersData, GetRecruiterSearchParametersResponses, GetRecruiterTalentPoolApplicantsData, GetRecruiterTalentPoolApplicantsResponses, GetRelationRequestsListData, GetRelationRequestsListResponses, GetSalesAccountListsData, GetSalesAccountListsResponses, GetSalesLeadListsData, GetSalesLeadListsResponses, GetSalesSearchParametersData, GetSalesSearchParametersResponses, GetScopeData, GetScopeResponses, GetThreadData, GetThreadResponses, GetUserChatData, GetUserChatResponses, GetUserCommentsListData, GetUserCommentsListResponses, GetUserPictureData, GetUserPictureResponses, GetUserPresenceData, GetUserPresenceResponses, GetUserProfileData, GetUserProfileResponses, GetUserReactionsListData, GetUserReactionsListResponses, GetUserRelationsData, GetUserRelationsResponses, GetV2Data, GetV2Responses, GetWebhookEndpointData, GetWebhookEndpointResponses, ListAccountsData, ListAccountsResponses, ListApiKeysData, ListApiKeysResponses, ListClassicUserJobPostingsData, ListClassicUserJobPostingsResponses, ListScopesData, ListScopesResponses, ListUserFollowersData, ListUserFollowersResponses, ListUserFollowingData, ListUserFollowingResponses, ListWebhookConversationsData, ListWebhookConversationsResponses, ListWebhookEndpointsData, ListWebhookEndpointsResponses, ModifyEmailData, ModifyEmailResponses, ModifyMessageData, ModifyMessageResponses, PerformClassicCompaniesSearchData, PerformClassicCompaniesSearchResponses, PerformClassicJobsSearchData, PerformClassicJobsSearchResponses, PerformClassicPeopleSearchData, PerformClassicPeopleSearchResponses, PerformClassicPostsSearchData, PerformClassicPostsSearchResponses, PerformClassicSearchFromUrlData, PerformClassicSearchFromUrlResponses, PerformRecruiterPeopleSearchData, PerformRecruiterPeopleSearchFromTalentPoolData, PerformRecruiterPeopleSearchFromTalentPoolResponses, PerformRecruiterPeopleSearchResponses, PerformRecruiterSearchFromUrlData, PerformRecruiterSearchFromUrlResponses, PerformSalesCompaniesSearchData, PerformSalesCompaniesSearchResponses, PerformSalesPeopleSearchData, PerformSalesPeopleSearchResponses, PerformSalesSearchFromUrlData, PerformSalesSearchFromUrlResponses, PinMessageData, PinMessageResponses, ProxyRequestData, ProxyRequestResponses, PublishClassicJobPostingData, PublishClassicJobPostingResponses, PublishRecruiterJobPostingData, PublishRecruiterJobPostingResponses, ReadEmailData, ReadEmailResponses, ReadMessageData, ReadMessageResponses, RemoveAccountData, RemoveAccountResponses, RemoveMessageReactionData, RemoveMessageReactionResponses, RemoveParticipantData, RemoveParticipantResponses, RemovePostCommentReactionData, RemovePostCommentReactionResponses, RemovePostReactionData, RemovePostReactionResponses, ReplayWebhookEventData, ReplayWebhookEventResponses, ReplyToCommentData, ReplyToCommentResponses, RequestCheckpointData, RequestCheckpointResponses, ResendCheckpointData, ResendCheckpointResponses, RestoreCalendarEventData, RestoreCalendarEventResponses, SaveRecruiterCandidateToPipelineData, SaveRecruiterCandidateToPipelineResponses, SaveSalesAccountToListData, SaveSalesAccountToListResponses, SaveSalesLeadToListData, SaveSalesLeadToListResponses, SearchLocationsData, SearchLocationsResponses, SelectContractData, SelectContractResponses, SendCompanyFollowInvitationData, SendCompanyFollowInvitationResponses, SendDraftData, SendDraftResponses, SendEmailData, SendEmailResponses, SendMessageData, SendMessageResponses, SetCalendarEventRsvpData, SetCalendarEventRsvpResponses, SetComposingStatusData, SetComposingStatusResponses, SetPresenceData, SetPresenceResponses, SignOutOtherRecruiterSessionsData, SignOutOtherRecruiterSessionsResponses, SignOutRecruiterSessionData, SignOutRecruiterSessionResponses, SolveCheckpointData, SolveCheckpointResponses, StarMessageData, StarMessageResponses, StartAuthIntentData, StartAuthIntentResponses, StartChatData, StartChatFromInboxData, StartChatFromInboxResponses, StartChatResponses, SubmitClassicCompanyOtpCodeData, SubmitClassicCompanyOtpCodeResponses, SubmitRecruiterOtpCodeData, SubmitRecruiterOtpCodeResponses, SyncAccountData, SyncAccountResponses, TrashEmailData, TrashEmailResponses, UnblockUserData, UnblockUserResponses, UnfollowUserData, UnfollowUserResponses, UnreadEmailData, UnreadEmailResponses, UpdateAccountData, UpdateAccountResponses, UpdateCalendarData, UpdateCalendarEventData, UpdateCalendarEventResponses, UpdateCalendarResponses, UpdateChatData, UpdateChatResponses, UpdateDraftData, UpdateDraftResponses, UpdateFolderData, UpdateFolderResponses, UpdatePostCommentData, UpdatePostCommentResponses, UpdatePostData, UpdatePostResponses, UpdateScopeData, UpdateScopeResponses, UpdateUserProfileData, UpdateUserProfileResponses, UpdateWebhookEndpointData, UpdateWebhookEndpointResponses, VerifyClassicCompanyMemberIdentityData, VerifyClassicCompanyMemberIdentityResponses, VerifyRecruiterCompanyMemberIdentityData, VerifyRecruiterCompanyMemberIdentityResponses, VisitUserProfileData, VisitUserProfileResponses } from './types.gen';
+import type { AcceptChatRequestData, AcceptChatRequestResponses, AcceptCommunityJoinRequestData, AcceptCommunityJoinRequestResponses, AcceptRelationRequestData, AcceptRelationRequestResponses, AddCommunityChatData, AddCommunityChatResponses, AddCommunityMemberData, AddCommunityMemberResponses, AddEventAttendeeData, AddEventAttendeeResponses, AddGroupMemberData, AddGroupMemberResponses, AddMessageReactionData, AddMessageReactionResponses, AddParticipantData, AddParticipantResponses, AddPostCommentData, AddPostCommentReactionData, AddPostCommentReactionResponses, AddPostCommentResponses, AddPostReactionData, AddPostReactionResponses, BlockUserData, BlockUserResponses, BrowseSalesAccountListData, BrowseSalesAccountListResponses, BrowseSalesLeadListData, BrowseSalesLeadListResponses, CancelCalendarEventData, CancelCalendarEventResponses, CancelCommunityJoinRequestData, CancelCommunityJoinRequestResponses, CancelRelationRequestData, CancelRelationRequestResponses, CloseClassicJobPostingData, CloseClassicJobPostingResponses, CloseRecruiterJobPostingData, CloseRecruiterJobPostingResponses, CreateApiKeyData, CreateApiKeyResponses, CreateAuthLinkData, CreateAuthLinkResponses, CreateCalendarData, CreateCalendarEventData, CreateCalendarEventResponses, CreateCalendarResponses, CreateClassicJobPostingDraftData, CreateClassicJobPostingDraftResponses, CreateCommunityData, CreateCommunityResponses, CreateDraftData, CreateDraftResponses, CreateEmailCategoryData, CreateEmailCategoryResponses, CreateEventData, CreateEventResponses, CreateFolderData, CreateFolderResponses, CreateGroupData, CreateGroupPostData, CreateGroupPostResponses, CreateGroupResponses, CreatePostData, CreatePostResponses, CreateRecruiterHiringProjectData, CreateRecruiterHiringProjectResponses, CreateRecruiterJobPostingDraftInExistingProjectData, CreateRecruiterJobPostingDraftInExistingProjectResponses, CreateRecruiterJobPostingDraftInNewProjectData, CreateRecruiterJobPostingDraftInNewProjectResponses, CreateRelationRequestData, CreateRelationRequestResponses, CreateScopeData, CreateScopeResponses, CreateStoryData, CreateStoryResponses, CreateWebhookEndpointData, CreateWebhookEndpointResponses, DeleteApiKeyData, DeleteApiKeyResponses, DeleteCalendarData, DeleteCalendarEventData, DeleteCalendarEventResponses, DeleteCalendarResponses, DeleteChatData, DeleteChatResponses, DeleteDraftData, DeleteDraftResponses, DeleteEmailCategoryData, DeleteEmailCategoryResponses, DeleteEventData, DeleteEventResponses, DeleteFolderData, DeleteFolderResponses, DeleteMessageData, DeleteMessageResponses, DeletePostCommentData, DeletePostCommentResponses, DeletePostData, DeletePostResponses, DeleteRelationData, DeleteRelationResponses, DeleteScopeData, DeleteScopeResponses, DeleteWebhookEndpointData, DeleteWebhookEndpointResponses, EditClassicJobPostingData, EditClassicJobPostingResponses, EditRecruiterHiringProjectData, EditRecruiterHiringProjectResponses, EditRecruiterJobPostingData, EditRecruiterJobPostingResponses, EndorseClassicMemberSkillData, EndorseClassicMemberSkillResponses, FollowUserData, FollowUserResponses, ForwardMessageData, ForwardMessageResponses, GetAccountData, GetAccountResponses, GetAvailableContractsData, GetAvailableContractsResponses, GetCalendarData, GetCalendarEventData, GetCalendarEventListData, GetCalendarEventListResponses, GetCalendarEventResponses, GetCalendarResponses, GetCalendarsListData, GetCalendarsListResponses, GetCategoryEmailsListData, GetCategoryEmailsListResponses, GetChatData, GetChatInviteLinkData, GetChatInviteLinkResponses, GetChatPictureData, GetChatPictureResponses, GetChatResponses, GetChatsListData, GetChatsListResponses, GetClassicApplicantByIdData, GetClassicApplicantByIdResponses, GetClassicApplicantResumeData, GetClassicApplicantResumeResponses, GetClassicApplicantsData, GetClassicApplicantsResponses, GetClassicCompanyProfileData, GetClassicCompanyProfileResponses, GetClassicJobPostingBudgetData, GetClassicJobPostingBudgetResponses, GetClassicJobPostingData, GetClassicJobPostingResponses, GetClassicSearchParametersData, GetClassicSearchParametersResponses, GetCommunityChatsListData, GetCommunityChatsListResponses, GetCommunityData, GetCommunityInviteLinkData, GetCommunityInviteLinkResponses, GetCommunityJoinRequestsListData, GetCommunityJoinRequestsListResponses, GetCommunityMembersListData, GetCommunityMembersListResponses, GetCommunityResponses, GetCompanyFollowInvitationCreditsData, GetCompanyFollowInvitationCreditsResponses, GetContactsListData, GetContactsListResponses, GetDraftData, GetDraftResponses, GetDraftsListData, GetDraftsListResponses, GetEmailAttachmentData, GetEmailAttachmentResponses, GetEmailCategoriesData, GetEmailCategoriesResponses, GetEmailData, GetEmailResponses, GetEmailSendersData, GetEmailSendersResponses, GetEmailsListData, GetEmailsListResponses, GetEventAttendeesListData, GetEventAttendeesListResponses, GetEventData, GetEventResponses, GetFolderData, GetFolderEmailsListData, GetFolderEmailsListResponses, GetFolderResponses, GetFoldersListData, GetFoldersListResponses, GetGroupData, GetGroupEventsListData, GetGroupEventsListResponses, GetGroupMembersListData, GetGroupMembersListResponses, GetGroupPostsListData, GetGroupPostsListResponses, GetGroupResponses, GetInboxChatsListData, GetInboxChatsListResponses, GetInboxesListData, GetInboxesListResponses, GetInmailCreditsData, GetInmailCreditsResponses, GetManagedCompanyPagesData, GetManagedCompanyPagesResponses, GetMessageAttachmentData, GetMessageAttachmentResponses, GetMessageData, GetMessageReactionsListData, GetMessageReactionsListResponses, GetMessageResponses, GetMessagesListData, GetMessagesListResponses, GetParticipantsListData, GetParticipantsListResponses, GetPostCommentReactionsListData, GetPostCommentReactionsListResponses, GetPostCommentRepliesListData, GetPostCommentRepliesListResponses, GetPostCommentsListData, GetPostCommentsListResponses, GetPostData, GetPostReactionsListData, GetPostReactionsListResponses, GetPostRepostsListData, GetPostRepostsListResponses, GetPostResponses, GetPostsListData, GetPostsListResponses, GetProfileViewsData, GetProfileViewsResponses, GetRecruiterApplicantByIdData, GetRecruiterApplicantByIdResponses, GetRecruiterApplicantResumeData, GetRecruiterApplicantResumeResponses, GetRecruiterHiringProjectData, GetRecruiterHiringProjectListData, GetRecruiterHiringProjectListResponses, GetRecruiterHiringProjectResponses, GetRecruiterJobPostingBudgetData, GetRecruiterJobPostingBudgetResponses, GetRecruiterJobPostingByIdData, GetRecruiterJobPostingByIdResponses, GetRecruiterJobPostingByProjectIdData, GetRecruiterJobPostingByProjectIdResponses, GetRecruiterJobPostingListData, GetRecruiterJobPostingListResponses, GetRecruiterJobSlotsCreditsData, GetRecruiterJobSlotsCreditsResponses, GetRecruiterPipelineCandidatesData, GetRecruiterPipelineCandidatesResponses, GetRecruiterSearchParametersData, GetRecruiterSearchParametersResponses, GetRecruiterTalentPoolApplicantsData, GetRecruiterTalentPoolApplicantsResponses, GetRecruiterTalentPoolApplyStartersData, GetRecruiterTalentPoolApplyStartersResponses, GetRelationRequestsListData, GetRelationRequestsListResponses, GetSalesAccountListsData, GetSalesAccountListsResponses, GetSalesLeadListsData, GetSalesLeadListsResponses, GetSalesSearchParametersData, GetSalesSearchParametersResponses, GetScopeData, GetScopeResponses, GetSearchParametersData, GetSearchParametersResponses, GetThreadData, GetThreadResponses, GetUserChatData, GetUserChatResponses, GetUserCommentsListData, GetUserCommentsListResponses, GetUserPictureData, GetUserPictureResponses, GetUserPresenceData, GetUserPresenceResponses, GetUserProfileData, GetUserProfileResponses, GetUserReactionsListData, GetUserReactionsListResponses, GetUserRelationsData, GetUserRelationsResponses, GetV2Data, GetV2Responses, GetWebhookEndpointData, GetWebhookEndpointResponses, JoinChatData, JoinChatResponses, JoinCommunityData, JoinCommunityResponses, JoinGroupData, JoinGroupResponses, LeaveCommunityData, LeaveCommunityResponses, ListAccountsData, ListAccountsResponses, ListApiKeysData, ListApiKeysResponses, ListClassicUserJobPostingsData, ListClassicUserJobPostingsResponses, ListPollVotesData, ListPollVotesResponses, ListScopesData, ListScopesResponses, ListUserFollowersData, ListUserFollowersResponses, ListUserFollowingData, ListUserFollowingResponses, ListWebhookConversationsData, ListWebhookConversationsResponses, ListWebhookEndpointsData, ListWebhookEndpointsResponses, ModifyEmailData, ModifyEmailResponses, ModifyMessageData, ModifyMessageResponses, PerformClassicCompaniesSearchData, PerformClassicCompaniesSearchResponses, PerformClassicJobsSearchData, PerformClassicJobsSearchResponses, PerformClassicPeopleSearchData, PerformClassicPeopleSearchResponses, PerformClassicPostsSearchData, PerformClassicPostsSearchResponses, PerformClassicSearchFromUrlData, PerformClassicSearchFromUrlResponses, PerformCommunitiesSearchData, PerformCommunitiesSearchResponses, PerformEventsSearchData, PerformEventsSearchResponses, PerformGroupsSearchData, PerformGroupsSearchResponses, PerformPagesSearchData, PerformPagesSearchResponses, PerformPeopleSearchData, PerformPeopleSearchResponses, PerformPostsSearchData, PerformPostsSearchResponses, PerformRecruiterPeopleSearchData, PerformRecruiterPeopleSearchFromTalentPoolData, PerformRecruiterPeopleSearchFromTalentPoolResponses, PerformRecruiterPeopleSearchResponses, PerformRecruiterSearchFromUrlData, PerformRecruiterSearchFromUrlResponses, PerformSalesCompaniesSearchData, PerformSalesCompaniesSearchResponses, PerformSalesPeopleSearchData, PerformSalesPeopleSearchResponses, PerformSalesSearchFromUrlData, PerformSalesSearchFromUrlResponses, PinMessageData, PinMessageResponses, PinPostCommentData, PinPostCommentResponses, ProxyRequestData, ProxyRequestResponses, PublishClassicJobPostingData, PublishClassicJobPostingResponses, PublishRecruiterJobPostingData, PublishRecruiterJobPostingResponses, ReadEmailData, ReadEmailResponses, ReadMessageData, ReadMessageResponses, RemoveAccountData, RemoveAccountResponses, RemoveCommunityChatData, RemoveCommunityChatResponses, RemoveCommunityMemberData, RemoveCommunityMemberResponses, RemoveMessageReactionData, RemoveMessageReactionResponses, RemoveParticipantData, RemoveParticipantResponses, RemovePostCommentReactionData, RemovePostCommentReactionResponses, RemovePostReactionData, RemovePostReactionResponses, ReplayWebhookEventData, ReplayWebhookEventResponses, ReplyToCommentData, ReplyToCommentResponses, RequestCheckpointData, RequestCheckpointResponses, ResendCheckpointData, ResendCheckpointResponses, ResetChatInviteLinkData, ResetChatInviteLinkResponses, ResetCommunityInviteLinkData, ResetCommunityInviteLinkResponses, RestoreCalendarEventData, RestoreCalendarEventResponses, SaveRecruiterCandidateToPipelineData, SaveRecruiterCandidateToPipelineResponses, SaveSalesAccountToListData, SaveSalesAccountToListResponses, SaveSalesLeadToListData, SaveSalesLeadToListResponses, SearchLocationsData, SearchLocationsResponses, SelectContractData, SelectContractResponses, SendCompanyFollowInvitationData, SendCompanyFollowInvitationResponses, SendDraftData, SendDraftResponses, SendEmailData, SendEmailResponses, SendMessageData, SendMessageResponses, SetCalendarEventRsvpData, SetCalendarEventRsvpResponses, SetComposingStatusData, SetComposingStatusResponses, SetEventRsvpData, SetEventRsvpResponses, SetPresenceData, SetPresenceResponses, SignOutOtherRecruiterSessionsData, SignOutOtherRecruiterSessionsResponses, SignOutRecruiterSessionData, SignOutRecruiterSessionResponses, SolveCheckpointData, SolveCheckpointResponses, StarMessageData, StarMessageResponses, StartAuthIntentData, StartAuthIntentResponses, StartChatData, StartChatFromInboxData, StartChatFromInboxResponses, StartChatResponses, SubmitClassicCompanyOtpCodeData, SubmitClassicCompanyOtpCodeResponses, SubmitRecruiterOtpCodeData, SubmitRecruiterOtpCodeResponses, SyncAccountData, SyncAccountResponses, TrashEmailData, TrashEmailResponses, UnblockUserData, UnblockUserResponses, UnfollowUserData, UnfollowUserResponses, UnpinPostCommentData, UnpinPostCommentResponses, UnreadEmailData, UnreadEmailResponses, UpdateAccountData, UpdateAccountResponses, UpdateCalendarData, UpdateCalendarEventData, UpdateCalendarEventResponses, UpdateCalendarResponses, UpdateChatData, UpdateChatResponses, UpdateCommunityData, UpdateCommunityMemberData, UpdateCommunityMemberResponses, UpdateCommunityResponses, UpdateDraftData, UpdateDraftResponses, UpdateFolderData, UpdateFolderResponses, UpdatePostCommentData, UpdatePostCommentResponses, UpdatePostData, UpdatePostResponses, UpdateScopeData, UpdateScopeResponses, UpdateUserProfileData, UpdateUserProfileResponses, UpdateWebhookEndpointData, UpdateWebhookEndpointResponses, VerifyClassicCompanyMemberIdentityData, VerifyClassicCompanyMemberIdentityResponses, VerifyRecruiterCompanyMemberIdentityData, VerifyRecruiterCompanyMemberIdentityResponses, VisitUserProfileData, VisitUserProfileResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -148,7 +148,7 @@ class HeyApiRegistry5<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileCalendar()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileGroups()" to fix this error.`);
         }
         return instance;
     }
@@ -176,7 +176,7 @@ class HeyApiRegistry6<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileLinkedIn()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileCommunities()" to fix this error.`);
         }
         return instance;
     }
@@ -204,7 +204,7 @@ class HeyApiRegistry7<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileInstagram()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileSocialEvents()" to fix this error.`);
         }
         return instance;
     }
@@ -232,7 +232,7 @@ class HeyApiRegistry8<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileOutlook()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileSearch()" to fix this error.`);
         }
         return instance;
     }
@@ -260,7 +260,7 @@ class HeyApiRegistry9<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileDefault()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileCalendar()" to fix this error.`);
         }
         return instance;
     }
@@ -288,7 +288,7 @@ class HeyApiRegistry10<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileCustomAuth()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileLinkedIn()" to fix this error.`);
         }
         return instance;
     }
@@ -316,7 +316,7 @@ class HeyApiRegistry11<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileHostedAuth()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileInstagram()" to fix this error.`);
         }
         return instance;
     }
@@ -344,7 +344,7 @@ class HeyApiRegistry12<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileAccounts()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileOutlook()" to fix this error.`);
         }
         return instance;
     }
@@ -372,7 +372,7 @@ class HeyApiRegistry13<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileApiKeys()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileDefault()" to fix this error.`);
         }
         return instance;
     }
@@ -400,7 +400,7 @@ class HeyApiRegistry14<T> {
     get(key?: string): T {
         const instance = this.instances.get(key ?? this.defaultKey);
         if (!instance) {
-            throw new Error(`No SDK client found. Create one with "new UnipileScopes()" to fix this error.`);
+            throw new Error(`No SDK client found. Create one with "new UnipileCustomAuth()" to fix this error.`);
         }
         return instance;
     }
@@ -421,6 +421,118 @@ class HeyApiClient15 {
 }
 
 class HeyApiRegistry15<T> {
+    private readonly defaultKey = 'default';
+    
+    private readonly instances: Map<string, T> = new Map();
+    
+    get(key?: string): T {
+        const instance = this.instances.get(key ?? this.defaultKey);
+        if (!instance) {
+            throw new Error(`No SDK client found. Create one with "new UnipileHostedAuth()" to fix this error.`);
+        }
+        return instance;
+    }
+    
+    set(value: T, key?: string): void {
+        this.instances.set(key ?? this.defaultKey, value);
+    }
+}
+
+class HeyApiClient16 {
+    protected client: Client;
+    
+    constructor(args?: {
+        client?: Client;
+    }) {
+        this.client = args?.client ?? client;
+    }
+}
+
+class HeyApiRegistry16<T> {
+    private readonly defaultKey = 'default';
+    
+    private readonly instances: Map<string, T> = new Map();
+    
+    get(key?: string): T {
+        const instance = this.instances.get(key ?? this.defaultKey);
+        if (!instance) {
+            throw new Error(`No SDK client found. Create one with "new UnipileAccounts()" to fix this error.`);
+        }
+        return instance;
+    }
+    
+    set(value: T, key?: string): void {
+        this.instances.set(key ?? this.defaultKey, value);
+    }
+}
+
+class HeyApiClient17 {
+    protected client: Client;
+    
+    constructor(args?: {
+        client?: Client;
+    }) {
+        this.client = args?.client ?? client;
+    }
+}
+
+class HeyApiRegistry17<T> {
+    private readonly defaultKey = 'default';
+    
+    private readonly instances: Map<string, T> = new Map();
+    
+    get(key?: string): T {
+        const instance = this.instances.get(key ?? this.defaultKey);
+        if (!instance) {
+            throw new Error(`No SDK client found. Create one with "new UnipileApiKeys()" to fix this error.`);
+        }
+        return instance;
+    }
+    
+    set(value: T, key?: string): void {
+        this.instances.set(key ?? this.defaultKey, value);
+    }
+}
+
+class HeyApiClient18 {
+    protected client: Client;
+    
+    constructor(args?: {
+        client?: Client;
+    }) {
+        this.client = args?.client ?? client;
+    }
+}
+
+class HeyApiRegistry18<T> {
+    private readonly defaultKey = 'default';
+    
+    private readonly instances: Map<string, T> = new Map();
+    
+    get(key?: string): T {
+        const instance = this.instances.get(key ?? this.defaultKey);
+        if (!instance) {
+            throw new Error(`No SDK client found. Create one with "new UnipileScopes()" to fix this error.`);
+        }
+        return instance;
+    }
+    
+    set(value: T, key?: string): void {
+        this.instances.set(key ?? this.defaultKey, value);
+    }
+}
+
+class HeyApiClient19 {
+    protected client: Client;
+    
+    constructor(args?: {
+        client?: Client;
+    }) {
+        this.client = args?.client ?? client;
+    }
+}
+
+class HeyApiRegistry19<T> {
     private readonly defaultKey = 'default';
     
     private readonly instances: Map<string, T> = new Map();
@@ -455,6 +567,7 @@ export class UnipileMessaging extends HeyApiClient {
      * Returns a list of account's chats, whatever the inbox they belong to. The chats are returned sorted by their last message date, with the most recent appearing first.
      * You might want to use the <a href="https://developer.unipile.com/v2.0/reference/getinboxchatslist">List inbox Chats</a> instead if not supported by the provider.
      * Filters are applied with an AND logic if supported by the provider.
+     * LIMITATIONS: On WhatsApp, the conversations in a community have `type=group`. Their `community_id` identifies the community in the Communities API, and `specifics.community_role` is `announcement_group` or `group_chat`.
      *
      */
     public getChatsList<ThrowOnError extends boolean = false>(options: Options<GetChatsListData, ThrowOnError>) {
@@ -466,9 +579,56 @@ export class UnipileMessaging extends HeyApiClient {
     }
     
     /**
+     * Join a Chat
+     *
+     * Joins a group conversation using its invitation code or link. Available for WhatsApp. If the conversation requires approval, the membership stays `pending` until an admin approves the request. Use *Join a Community* for community invitations.
+     */
+    public joinChat<ThrowOnError extends boolean = false>(options: Options<JoinChatData, ThrowOnError>) {
+        return (options.client ?? this.client).post<JoinChatResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/chats/join',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Get a Chat's Invite Link
+     *
+     * Returns the link that invites people to join a group chat the account owner administers. Its `code` is accepted by *Join a Chat*.
+     * LIMITATIONS: Available for WhatsApp group chats. Only an admin of the group gets its link (403 otherwise). For a WhatsApp community, use *Get a Community's Invite Link*.
+     *
+     */
+    public getChatInviteLink<ThrowOnError extends boolean = false>(options: Options<GetChatInviteLinkData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetChatInviteLinkResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/chats/{chat_id}/invite-link',
+            ...options
+        });
+    }
+    
+    /**
+     * Reset a Chat's Invite Link
+     *
+     * Replaces the invite link of a group chat the account owner administers, and returns the new one. The previous link stops working.
+     * LIMITATIONS: Available for WhatsApp group chats. Only an admin of the group can reset its link (403 otherwise). For a WhatsApp community, use *Reset a Community's Invite Link*.
+     *
+     */
+    public resetChatInviteLink<ThrowOnError extends boolean = false>(options: Options<ResetChatInviteLinkData, ThrowOnError>) {
+        return (options.client ?? this.client).post<ResetChatInviteLinkResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/chats/{chat_id}/invite-link/reset',
+            ...options
+        });
+    }
+    
+    /**
      * List all Inboxes
      *
-     * Returns a list of the account's Inboxes.
+     * Returns a list of the account's Inboxes. For Telegram, these are the custom chat folders; the default All chats view is not included.
      */
     public getInboxesList<ThrowOnError extends boolean = false>(options: Options<GetInboxesListData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetInboxesListResponses, unknown, ThrowOnError>({
@@ -484,6 +644,9 @@ export class UnipileMessaging extends HeyApiClient {
      * Returns a list of account's chats from a specific inbox.
      * The chats are returned sorted by their last message date, with the most recent appearing first.
      * Filters are applied with an AND logic if supported by the provider.
+     * For LinkedIn Classic, Company and Sales Navigator inboxes, before and after use last activity time and are preserved in continuation cursors. Send only cursor and optionally limit on subsequent pages. Legacy native cursors remain accepted but cannot restore omitted date filters; restart the filtered listing to obtain a continuation that preserves them. LinkedIn Recruiter supports after using last activity time with offset pagination; repeat the same after on each page. Recruiter does not support before.
+     * For Telegram, use cursor-based pagination; offset-based pagination is not supported. The before and after filters use the last message date.
+     * A filtered page may be short or empty and still contain a next_cursor. Continue with that cursor until no next_cursor is returned.
      *
      */
     public getInboxChatsList<ThrowOnError extends boolean = false>(options: Options<GetInboxChatsListData, ThrowOnError>) {
@@ -511,6 +674,8 @@ export class UnipileMessaging extends HeyApiClient {
      * Get a Chat
      *
      * Retrieves a Chat object.
+     * LIMITATIONS: On WhatsApp, the conversations in a community have `type=group`. Their `community_id` identifies the community in the Communities API, and `specifics.community_role` is `announcement_group` or `group_chat`.
+     *
      */
     public getChat<ThrowOnError extends boolean = false>(options: Options<GetChatData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetChatResponses, unknown, ThrowOnError>({
@@ -618,6 +783,7 @@ export class UnipileMessaging extends HeyApiClient {
      * List all Chat Messages
      *
      * Returns a list of messages in a chat. The messages are returned sorted by their timestamp, with the most recent appearing first.
+     * LinkedIn Classic and Company continuation cursors preserve before and after. Send only cursor and optionally limit on subsequent pages. Legacy native cursors remain accepted but cannot restore omitted date filters; restart the filtered listing to obtain a continuation that preserves them. LinkedIn does not support filtering messages by user_id. Recruiter uses offset pagination and does not support before.
      */
     public getMessagesList<ThrowOnError extends boolean = false>(options: Options<GetMessagesListData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetMessagesListResponses, unknown, ThrowOnError>({
@@ -762,7 +928,7 @@ export class UnipileMessaging extends HeyApiClient {
      * List all Chat Participants
      *
      * Returns a list of participants in the specified group chat. For 1to1 chats, the unique participant is given in the chat object.
-     * Trying to retrieve the list of participants of a 1to1 chat will fail.
+     * Trying to retrieve the list of participants of a 1to1 chat will fail. For a WhatsApp community conversation, use one of the IDs in the community's `chat_ids` array.
      */
     public getParticipantsList<ThrowOnError extends boolean = false>(options: Options<GetParticipantsListData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetParticipantsListResponses, unknown, ThrowOnError>({
@@ -776,7 +942,8 @@ export class UnipileMessaging extends HeyApiClient {
      * Add a Chat Participant
      *
      * Adds a new user as participant of chat if you have the rights to. Providers might requires an admin role or some permissions.
-     * Trying to add a participant into a 1to1 chat can fail depending on the provider.
+     * Trying to add a participant into a 1to1 chat can fail depending on the provider. For a WhatsApp community conversation, use the conversation's `chat_id`.
+     * LIMITATIONS: Only WhatsApp supports `fallback_to_invite`: other providers ignore it. On WhatsApp, only the admins of the group can add participants, unless the group lets all its members do it, otherwise the request fails with a 403. A user whose privacy settings do not allow being added also fails with a 403: with `fallback_to_invite`, the account sends them instead a private invitation to the group in their 1to1 chat, as WhatsApp's "Invite to group" option does, and the response is `ParticipantInvited`. The invitation expires after the delay set by WhatsApp, and each such call sends a new one. A user already in the group fails with a 409.
      */
     public addParticipant<ThrowOnError extends boolean = false>(options: Options<AddParticipantData, ThrowOnError>) {
         return (options.client ?? this.client).post<AddParticipantResponses, unknown, ThrowOnError>({
@@ -794,7 +961,7 @@ export class UnipileMessaging extends HeyApiClient {
      * Remove a Chat Participant
      *
      * Removes a participant user from a chat if you have the rights to. Providers might requires an admin role or some permissions.
-     * Trying to remove a participant from a 1to1 chat will fail.
+     * Trying to remove a participant from a 1to1 chat will fail. For a WhatsApp community conversation, use the conversation's `chat_id`.
      */
     public removeParticipant<ThrowOnError extends boolean = false>(options: Options<RemoveParticipantData, ThrowOnError>) {
         return (options.client ?? this.client).delete<RemoveParticipantResponses, unknown, ThrowOnError>({
@@ -937,7 +1104,7 @@ export class UnipileEmails extends HeyApiClient {
     /**
      * List folder Emails
      *
-     * Returns a list of emails in the specific folder of the account mailbox. Emails are returned sorted by their `date`, with the most recent appearing first. Search mode applies when `q`, `from`, `to`, or `any_email` is set. Filter mode applies for browse-only queries (dates, read/starred/attachment status).
+     * Returns a list of emails in the specific folder of the account mailbox. Emails are returned sorted by their `date`, with the most recent appearing first. For IMAP accounts without indexed history, date ordering requires server SORT support; otherwise emails are returned in descending UID order. Search mode applies when `q`, `from`, `to`, or `any_email` is set. Filter mode applies for browse-only queries (dates, read/starred/attachment status).
      */
     public getFolderEmailsList<ThrowOnError extends boolean = false>(options: Options<GetFolderEmailsListData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetFolderEmailsListResponses, unknown, ThrowOnError>({
@@ -950,7 +1117,7 @@ export class UnipileEmails extends HeyApiClient {
     /**
      * Get a Thread
      *
-     * Returns a list of emails belonging to the specific thread. Emails are sorted by their `date`. On IMAP servers without native thread IDs, results are inferred from message headers and may be incomplete.
+     * Returns emails belonging to the specified thread, sorted by their `date`. For IMAP accounts with indexing enabled, results will use synchronized messages; no matches return 404. Without indexing, IMAP results are inferred from searches across available folders and may be incomplete.
      */
     public getThread<ThrowOnError extends boolean = false>(options: Options<GetThreadData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetThreadResponses, unknown, ThrowOnError>({
@@ -1328,7 +1495,7 @@ export class UnipileUsers extends HeyApiClient {
     /**
      * List Relations of a User
      *
-     * Returns a list of bi-directional relations for the specified User. Use `me` as `user_id` to specify the owner of the connected account.
+     * Returns a list of bi-directional relations for the specified User. Use `me` as `user_id` to specify the owner of the connected account. For LinkedIn, continuation cursors preserve the initial search filter. Send only cursor and optionally limit on subsequent pages. Legacy cursors remain accepted but cannot restore a search omitted from the original cursor; restart the filtered listing to obtain a continuation that preserves it.
      */
     public getUserRelations<ThrowOnError extends boolean = false>(options: Options<GetUserRelationsData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetUserRelationsResponses, unknown, ThrowOnError>({
@@ -1367,7 +1534,7 @@ export class UnipileUsers extends HeyApiClient {
     /**
      * Send a Relation request
      *
-     * Sends a bi-directional relation request to a user. Trying to send a relation request to an existing relation will fail. For uni-directional relations, use `Follow User` instead.
+     * Sends a bi-directional relation request to a user, with an optional message where supported. Not all providers necessarily reject requests sent to users with whom a connection already exists. For uni-directional relations, use `Follow User` instead.
      */
     public createRelationRequest<ThrowOnError extends boolean = false>(options: Options<CreateRelationRequestData, ThrowOnError>) {
         return (options.client ?? this.client).post<CreateRelationRequestResponses, unknown, ThrowOnError>({
@@ -1494,6 +1661,7 @@ export class UnipileUsers extends HeyApiClient {
      * List all User's Posts
      *
      * Returns a list of posts created or shared by a user. Use `me` as `user_id` to specify the owner of the connected account.
+     * On LinkedIn, the posts of a company page are listed with the page's numeric ID as `user_id` (its profile `id`, or the author `id` of its posts), not the ID of its messaging inbox (`COMPANY_<id>_PRIMARY`). A page the account administers returns its admin view, with analytics. A page without posts returns an empty list.
      * LIMITATIONS: On Facebook, the page size is set by Facebook: each page holds up to 3 posts whatever the `limit`. Use `next_cursor` to get more.
      *
      */
@@ -1521,6 +1689,7 @@ export class UnipilePosts extends HeyApiClient {
      * List all User's Posts
      *
      * Returns a list of posts created or shared by a user. Use `me` as `user_id` to specify the owner of the connected account.
+     * On LinkedIn, the posts of a company page are listed with the page's numeric ID as `user_id` (its profile `id`, or the author `id` of its posts), not the ID of its messaging inbox (`COMPANY_<id>_PRIMARY`). A page the account administers returns its admin view, with analytics. A page without posts returns an empty list.
      * LIMITATIONS: On Facebook, the page size is set by Facebook: each page holds up to 3 posts whatever the `limit`. Use `next_cursor` to get more.
      *
      */
@@ -1660,6 +1829,21 @@ export class UnipilePosts extends HeyApiClient {
     }
     
     /**
+     * List all Post's Reposts
+     *
+     * Returns the reposts of a post, each one as a Post of the user who reposted it: a repost without text of its own has `is_repost` set to `true` and names its user in `reposted_by`; a repost with text of its own is a post of that user quoting the post. Repost counts are given with the Post object.
+     * LIMITATIONS: Only available on LinkedIn. The list only holds the reposts the account can see.
+     *
+     */
+    public getPostRepostsList<ThrowOnError extends boolean = false>(options: Options<GetPostRepostsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetPostRepostsListResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/posts/{post_id}/reposts',
+            ...options
+        });
+    }
+    
+    /**
      * List all Post's Comments
      *
      * Returns a list of post comments. The comments are returned sorted by their creation date, with the most recent appearing first.
@@ -1737,6 +1921,34 @@ export class UnipilePosts extends HeyApiClient {
                 'Content-Type': 'application/json',
                 ...options.headers
             }
+        });
+    }
+    
+    /**
+     * Unpin a Comment
+     *
+     * Unpins a comment from a post owned by the account's owner.
+     * LIMITATIONS: Only on LinkedIn and Instagram, with the same restrictions as pinning a comment.
+     */
+    public unpinPostComment<ThrowOnError extends boolean = false>(options: Options<UnpinPostCommentData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<UnpinPostCommentResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}/pin',
+            ...options
+        });
+    }
+    
+    /**
+     * Pin a Comment
+     *
+     * Pins a comment at the top of the comments of a post owned by the account's owner.
+     * LIMITATIONS: Only on LinkedIn and Instagram, and only for comments of the account owner's own posts. On LinkedIn, a post holds a single pinned comment: pinning another one replaces it. On Instagram, the number of pinned comments per post is limited by Instagram.
+     */
+    public pinPostComment<ThrowOnError extends boolean = false>(options: Options<PinPostCommentData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PinPostCommentResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/posts/{post_id}/comments/{comment_id}/pin',
+            ...options
         });
     }
     
@@ -1833,10 +2045,728 @@ export class UnipilePosts extends HeyApiClient {
             ...options
         });
     }
+    
+    /**
+     * List all Group's Posts
+     *
+     * Returns the posts published in a social group, newest first. Comment and react to them with the Posts methods.
+     * LIMITATIONS: The posts of a private group are returned to its members only: on Facebook, a non-member gets an empty list. On Facebook, each page holds a few posts whatever the `limit`: use `next_cursor` to get more. On LinkedIn, the comments of these posts are returned only once the account owner is a member. Available for Facebook and LinkedIn.
+     *
+     */
+    public getGroupPostsList<ThrowOnError extends boolean = false>(options: Options<GetGroupPostsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetGroupPostsListResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/groups/{group_id}/posts',
+            ...options
+        });
+    }
+    
+    /**
+     * Create a Post in a Group
+     *
+     * Publishes a new post in a social group the account owner is a member of. The post is visible to whoever can see the group's posts.
+     * LIMITATIONS: The post is published by the account owner: publishing as a company page is not supported. Available for Facebook and LinkedIn.
+     * <br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+     */
+    public createGroupPost<ThrowOnError extends boolean = false>(options: Options<CreateGroupPostData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateGroupPostResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/groups/{group_id}/posts',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Perform Posts Search
+     *
+     * Returns the posts matching the given keywords and filters that the account owner can see. Send the same body with `cursor` to get the next pages.
+     * LIMITATIONS: Available on Facebook. On Facebook, the page size is set by Facebook whatever the `limit` (usually 10 to 20 results), a list filter takes one ID, and an ID Facebook does not know is ignored. `start_date` and `end_date` are days of the account's time zone, from 2004 on. `posted_by` takes one option at a time (`me`, `my_groups_and_pages`, `public`, or one ID in `member`, `company` or `group`), and `seen` only `true`. LinkedIn post searches have their own route (`/linkedin/search/posts`).
+     *
+     */
+    public performPostsSearch<ThrowOnError extends boolean = false>(options: Options<PerformPostsSearchData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformPostsSearchResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/search/posts',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+}
+
+export class UnipileGroups extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry5<UnipileGroups>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipileGroups.__registry.set(this, args?.key);
+    }
+    
+    /**
+     * List all Group's Posts
+     *
+     * Returns the posts published in a social group, newest first. Comment and react to them with the Posts methods.
+     * LIMITATIONS: The posts of a private group are returned to its members only: on Facebook, a non-member gets an empty list. On Facebook, each page holds a few posts whatever the `limit`: use `next_cursor` to get more. On LinkedIn, the comments of these posts are returned only once the account owner is a member. Available for Facebook and LinkedIn.
+     *
+     */
+    public getGroupPostsList<ThrowOnError extends boolean = false>(options: Options<GetGroupPostsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetGroupPostsListResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/groups/{group_id}/posts',
+            ...options
+        });
+    }
+    
+    /**
+     * Create a Post in a Group
+     *
+     * Publishes a new post in a social group the account owner is a member of. The post is visible to whoever can see the group's posts.
+     * LIMITATIONS: The post is published by the account owner: publishing as a company page is not supported. Available for Facebook and LinkedIn.
+     * <br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+     */
+    public createGroupPost<ThrowOnError extends boolean = false>(options: Options<CreateGroupPostData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateGroupPostResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/groups/{group_id}/posts',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Perform Groups Search
+     *
+     * Returns the social groups matching the given keywords that the account owner can see, with its membership in each of them. Send the same body with `cursor` to get the next pages.
+     * LIMITATIONS: On Facebook, `is_member` and `is_public` only accept `true`. On LinkedIn, groups are searched by keywords only (`is_member` and `is_public` get a 400), up to 1000 results. Facebook and LinkedIn may return fewer results than `limit` per page: follow `next_cursor`.
+     *
+     */
+    public performGroupsSearch<ThrowOnError extends boolean = false>(options: Options<PerformGroupsSearchData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformGroupsSearchResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/search/groups',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Create a Group
+     *
+     * Creates a social group administered by the account owner, private unless `is_public`, and returns it. Use the Messaging API to start a group conversation. If the full group is temporarily unavailable after creation, the response still includes its ID, name and the account owner's membership.
+     * LIMITATIONS: On Facebook, `description` is not supported (400). On LinkedIn, members can invite their relations and admins review new posts; a private group (the default) does not appear in LinkedIn's search, and only its members see its posts.
+     *
+     */
+    public createGroup<ThrowOnError extends boolean = false>(options: Options<CreateGroupData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateGroupResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/groups',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Get a Group
+     *
+     * Returns the details of a social group, with the membership of the account owner in it.
+     * LIMITATIONS: On Facebook, `is_admin` is also true for moderators, the description is returned when the account can see it, and `public_picture_url` is only returned by *Perform Groups Search*.
+     *
+     */
+    public getGroup<ThrowOnError extends boolean = false>(options: Options<GetGroupData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetGroupResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/groups/{group_id}',
+            ...options
+        });
+    }
+    
+    /**
+     * Join a Group
+     *
+     * Joins the specified social group. When the group approves its members, a request to join is sent and the membership stays `pending` until it is approved.
+     * LIMITATIONS: On LinkedIn, the comments of a group's posts are visible to its members only.
+     *
+     */
+    public joinGroup<ThrowOnError extends boolean = false>(options: Options<JoinGroupData, ThrowOnError>) {
+        return (options.client ?? this.client).post<JoinGroupResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/groups/{group_id}/join',
+            ...options
+        });
+    }
+    
+    /**
+     * List all Group's Members
+     *
+     * Returns the members of a social group and indicates whether each member is an admin.
+     * LIMITATIONS: On Facebook, the newest members come first, up to 10 per page whatever the `limit`; `is_admin` also marks moderators and can take a few minutes to update. On LinkedIn, only members can list the members (403 otherwise); owners and managers are admins.
+     *
+     */
+    public getGroupMembersList<ThrowOnError extends boolean = false>(options: Options<GetGroupMembersListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetGroupMembersListResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/groups/{group_id}/members',
+            ...options
+        });
+    }
+    
+    /**
+     * Add a Member to a Group
+     *
+     * Adds a user to a social group the account owner administers, or invites them to it.
+     * LIMITATIONS: On Facebook and LinkedIn, the user must be a relation of the account owner (a friend on Facebook) and is invited: they join once they accept. On Facebook, a user already invited gets a 409. On LinkedIn, a refused invitation gets a 403 when the account cannot invite to the group, a 400 otherwise.
+     *
+     */
+    public addGroupMember<ThrowOnError extends boolean = false>(options: Options<AddGroupMemberData, ThrowOnError>) {
+        return (options.client ?? this.client).post<AddGroupMemberResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/groups/{group_id}/members',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * List all Group's Events
+     *
+     * Returns the upcoming social events of a group. Use `period` to list past events. Set `period` on the first request only. For later pages, pass `next_cursor` as `cursor`. The cursor carries the selected period.
+     * LIMITATIONS: On Facebook, the list has no dates and places (use *Get an Event*). Not supported on LinkedIn, whose groups have no events.
+     *
+     */
+    public getGroupEventsList<ThrowOnError extends boolean = false>(options: Options<GetGroupEventsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetGroupEventsListResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/groups/{group_id}/events',
+            ...options
+        });
+    }
+}
+
+export class UnipileCommunities extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry6<UnipileCommunities>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipileCommunities.__registry.set(this, args?.key);
+    }
+    
+    /**
+     * Perform Communities Search
+     *
+     * Searches by name among the communities the account owner belongs to. Send the same body with `cursor` to get the next page. Available for WhatsApp.
+     */
+    public performCommunitiesSearch<ThrowOnError extends boolean = false>(options: Options<PerformCommunitiesSearchData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformCommunitiesSearchResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/search/communities',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Create a Community
+     *
+     * Creates a community administered by the account owner. WhatsApp also creates an announcement chat and a General chat. Their IDs are included in `chat_ids` when available. The name has 1 to 100 characters and the description has at most 2048.
+     */
+    public createCommunity<ThrowOnError extends boolean = false>(options: Options<CreateCommunityData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateCommunityResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Get a Community
+     *
+     * Returns a community and the account owner’s membership. The `chat_ids` array contains the known announcement and linked chat IDs. An invitation code or URL-encoded link in `community_id` previews a community before joining.
+     */
+    public getCommunity<ThrowOnError extends boolean = false>(options: Options<GetCommunityData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetCommunityResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}',
+            ...options
+        });
+    }
+    
+    /**
+     * Update a Community
+     *
+     * Updates a community the account owner administers and returns it. On WhatsApp, names have 1 to 100 characters and descriptions have at most 2048.
+     */
+    public updateCommunity<ThrowOnError extends boolean = false>(options: Options<UpdateCommunityData, ThrowOnError>) {
+        return (options.client ?? this.client).patch<UpdateCommunityResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Join a Community
+     *
+     * Joins a community using its invitation code or URL-encoded link as `community_id`. If approval is required, the membership stays `pending` until an admin approves it. WhatsApp also joins the announcement chat. WhatsApp may return 403 if an admin previously removed the account from the community. Use *Join a Chat* for invitations to individual conversations.
+     */
+    public joinCommunity<ThrowOnError extends boolean = false>(options: Options<JoinCommunityData, ThrowOnError>) {
+        return (options.client ?? this.client).post<JoinCommunityResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}/join',
+            ...options
+        });
+    }
+    
+    /**
+     * Leave a Community
+     *
+     * Leaves a community and its linked conversations. On WhatsApp, the creator cannot leave the community (403).
+     */
+    public leaveCommunity<ThrowOnError extends boolean = false>(options: Options<LeaveCommunityData, ThrowOnError>) {
+        return (options.client ?? this.client).post<LeaveCommunityResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}/leave',
+            ...options
+        });
+    }
+    
+    /**
+     * List all Community's Members
+     *
+     * Returns community members and their admin status. Use *List all Chat Participants* for the members of an individual conversation.
+     */
+    public getCommunityMembersList<ThrowOnError extends boolean = false>(options: Options<GetCommunityMembersListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetCommunityMembersListResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}/members',
+            ...options
+        });
+    }
+    
+    /**
+     * Add a Member to a Community
+     *
+     * Adds a member to a community the account owner administers. WhatsApp returns 409 for an existing member, 422 for a number without a WhatsApp account, or 403 when the user’s privacy settings prevent adding them. Send the invite link when the user’s settings require it.
+     */
+    public addCommunityMember<ThrowOnError extends boolean = false>(options: Options<AddCommunityMemberData, ThrowOnError>) {
+        return (options.client ?? this.client).post<AddCommunityMemberResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}/members',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Remove a Member from a Community
+     *
+     * Removes a member from a community the account owner administers and from its linked conversations.
+     */
+    public removeCommunityMember<ThrowOnError extends boolean = false>(options: Options<RemoveCommunityMemberData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<RemoveCommunityMemberResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}/members/{user_id}',
+            ...options
+        });
+    }
+    
+    /**
+     * Update a Member of a Community
+     *
+     * Grants or revokes admin status for a community member.
+     */
+    public updateCommunityMember<ThrowOnError extends boolean = false>(options: Options<UpdateCommunityMemberData, ThrowOnError>) {
+        return (options.client ?? this.client).patch<UpdateCommunityMemberResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}/members/{user_id}',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * List all Community's Join Requests
+     *
+     * Returns all pending requests in one page for a community the account owner administers when `join_approval` is enabled.
+     */
+    public getCommunityJoinRequestsList<ThrowOnError extends boolean = false>(options: Options<GetCommunityJoinRequestsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetCommunityJoinRequestsListResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}/join-requests',
+            ...options
+        });
+    }
+    
+    /**
+     * Accept a Community's Join Request
+     *
+     * Accepts a request to join a community the account owner administers. The requester becomes a member.
+     */
+    public acceptCommunityJoinRequest<ThrowOnError extends boolean = false>(options: Options<AcceptCommunityJoinRequestData, ThrowOnError>) {
+        return (options.client ?? this.client).post<AcceptCommunityJoinRequestResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}/join-requests/{request_id}/accept',
+            ...options
+        });
+    }
+    
+    /**
+     * Refuse a Community's Join Request
+     *
+     * Refuses a request to join a community the account owner administers.
+     */
+    public cancelCommunityJoinRequest<ThrowOnError extends boolean = false>(options: Options<CancelCommunityJoinRequestData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CancelCommunityJoinRequestResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}/join-requests/{request_id}/cancel',
+            ...options
+        });
+    }
+    
+    /**
+     * Get a Community's Invite Link
+     *
+     * Returns the invitation link for a community the account owner administers. Use its `code` or link to preview or join the community.
+     */
+    public getCommunityInviteLink<ThrowOnError extends boolean = false>(options: Options<GetCommunityInviteLinkData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetCommunityInviteLinkResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}/invite-link',
+            ...options
+        });
+    }
+    
+    /**
+     * Reset a Community's Invite Link
+     *
+     * Replaces the invitation link for a community the account owner administers. The previous link stops working.
+     */
+    public resetCommunityInviteLink<ThrowOnError extends boolean = false>(options: Options<ResetCommunityInviteLinkData, ThrowOnError>) {
+        return (options.client ?? this.client).post<ResetCommunityInviteLinkResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}/invite-link/reset',
+            ...options
+        });
+    }
+    
+    /**
+     * List all Community's Chats
+     *
+     * Lists the announcement chat and other linked conversations in one page. Use the returned `id` in the Messaging API once the account has access to the conversation.
+     */
+    public getCommunityChatsList<ThrowOnError extends boolean = false>(options: Options<GetCommunityChatsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetCommunityChatsListResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}/chats',
+            ...options
+        });
+    }
+    
+    /**
+     * Add a Chat to a Community
+     *
+     * Links an existing group chat the account owner administers (`chat_id`), or creates a group chat in the community (`name`). Returns the chat with its Messaging API ID.
+     */
+    public addCommunityChat<ThrowOnError extends boolean = false>(options: Options<AddCommunityChatData, ThrowOnError>) {
+        return (options.client ?? this.client).post<AddCommunityChatResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}/chats',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Remove a Chat from a Community
+     *
+     * Detaches a conversation from a community the account owner administers. The chat and its members are retained. The announcement chat remains linked.
+     */
+    public removeCommunityChat<ThrowOnError extends boolean = false>(options: Options<RemoveCommunityChatData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<RemoveCommunityChatResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/communities/{community_id}/chats/{chat_id}',
+            ...options
+        });
+    }
+}
+
+export class UnipileSocialEvents extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry7<UnipileSocialEvents>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipileSocialEvents.__registry.set(this, args?.key);
+    }
+    
+    /**
+     * Perform Events Search
+     *
+     * Searches for social events that the account owner can see and that match the given keywords. When the provider supports date filters, `start_date` and `end_date` limit the search period (from today by default). Send the same body with `cursor` to get the next pages.
+     * LIMITATIONS: On Facebook, without dates the search covers the next 12 months, and with `end_date` alone it starts today (a past `end_date` gets a 400); the same day as `start_date` and `end_date` searches that day. `location` takes one city ID and `category` one or more category IDs; an ID Facebook does not know is ignored. Facebook sets the page size whatever the `limit`. On LinkedIn, events are searched by keywords only (the filters get a 400) and sorted by relevance, at most 10 per page (`limit` up to 10), up to 1000 results; a page may hold fewer events, or none: follow `next_cursor`. LinkedIn results have no dates: use *Get an Event*.
+     *
+     */
+    public performEventsSearch<ThrowOnError extends boolean = false>(options: Options<PerformEventsSearchData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformEventsSearchResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/search/events',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Create an Event
+     *
+     * Creates and returns an event on the account's social network with the account owner as organizer. If the full event is temporarily unavailable after creation, the response includes its ID, name and URL. An online event takes a link to join it (`online_url`). An in-person event takes a `location`. Set `start_at` in the future and `end_at` after it. The event is displayed in the specified IANA `timezone` (UTC by default).
+     * LIMITATIONS: On Facebook, an event is `private` by default; `group_id` creates it in a group (visibility `group`). `invite_group_members` without `group_id`, and `can_attendees_invite` for an event that is not `private`, get a 400. An `online_url` Facebook blocks is refused, and the event may still be created without it. On LinkedIn, events are public: an online event requires an http or https `online_url`, an in-person one a `location`; without `end_at`, the event lasts one hour; details LinkedIn refuses get a 400 with its reason. LinkedIn removes events that no post announces, so a post announcing the event is also published on the account's feed. `group_id`, `invite_group_members`, `co_host_ids`, `can_attendees_invite`, `is_attendees_list_hidden` and a visibility other than `public` get a 400 on LinkedIn.
+     *
+     */
+    public createEvent<ThrowOnError extends boolean = false>(options: Options<CreateEventData, ThrowOnError>) {
+        return (options.client ?? this.client).post<CreateEventResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/events',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Delete an Event
+     *
+     * Deletes a social event organized by the account owner. An event the account does not organize gets a 403.
+     * LIMITATIONS: On LinkedIn, the post announcing the event is deleted with it (an event without one gets a 422), and *Get an Event* may still return the event for a few seconds.
+     *
+     */
+    public deleteEvent<ThrowOnError extends boolean = false>(options: Options<DeleteEventData, ThrowOnError>) {
+        return (options.client ?? this.client).delete<DeleteEventResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/events/{event_id}',
+            ...options
+        });
+    }
+    
+    /**
+     * Get an Event
+     *
+     * Returns the details of a social event and the account owner's response to it.
+     * LIMITATIONS: LinkedIn may omit `timezone`. It returns the exact timestamps in `start.date_time` and `end.date_time` when available.
+     *
+     */
+    public getEvent<ThrowOnError extends boolean = false>(options: Options<GetEventData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetEventResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/events/{event_id}',
+            ...options
+        });
+    }
+    
+    /**
+     * List all Event's Attendees
+     *
+     * Lists guests of a social event by response. Use `yes` for going (the default), `maybe` for interested, `noreply` for invited, or `no` for declined.
+     * LIMITATIONS: On Facebook, only the first page is returned, up to `limit` (a `cursor` gets a 400). On LinkedIn, only the people attending are listed (a `status` other than `yes` gets a 400), LinkedIn sets the page size (follow `next_cursor`), and an unknown event gets a 404.
+     *
+     */
+    public getEventAttendeesList<ThrowOnError extends boolean = false>(options: Options<GetEventAttendeesListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetEventAttendeesListResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/events/{event_id}/attendees',
+            ...options
+        });
+    }
+    
+    /**
+     * Invite a User to an Event
+     *
+     * Sends a user an invitation to a social event that they can accept or ignore. Inviting someone already invited succeeds without sending a new invitation.
+     * LIMITATIONS: The user must be a relation of the account owner (a friend on Facebook). On LinkedIn, only the organizers can invite, within a limit LinkedIn sets; a refused invitation gets a 403 when the account cannot invite to the event, a 400 otherwise. An unknown event gets a 404.
+     *
+     */
+    public addEventAttendee<ThrowOnError extends boolean = false>(options: Options<AddEventAttendeeData, ThrowOnError>) {
+        return (options.client ?? this.client).post<AddEventAttendeeResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/events/{event_id}/attendees',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Respond to an Event
+     *
+     * Sets the account owner's response to a social event. Use `yes` for going, `maybe` for interested, or `no` for not going.
+     * LIMITATIONS: On Facebook, a public event is followed: `maybe` marks it as interested and `no` stops following it. The organizer of an event always attends it: its response gets a 400. Not supported on LinkedIn.
+     *
+     */
+    public setEventRsvp<ThrowOnError extends boolean = false>(options: Options<SetEventRsvpData, ThrowOnError>) {
+        return (options.client ?? this.client).post<SetEventRsvpResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/events/{event_id}/rsvp',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * List all Group's Events
+     *
+     * Returns the upcoming social events of a group. Use `period` to list past events. Set `period` on the first request only. For later pages, pass `next_cursor` as `cursor`. The cursor carries the selected period.
+     * LIMITATIONS: On Facebook, the list has no dates and places (use *Get an Event*). Not supported on LinkedIn, whose groups have no events.
+     *
+     */
+    public getGroupEventsList<ThrowOnError extends boolean = false>(options: Options<GetGroupEventsListData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetGroupEventsListResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/groups/{group_id}/events',
+            ...options
+        });
+    }
+}
+
+export class UnipileSearch extends HeyApiClient {
+    public static readonly __registry = new HeyApiRegistry8<UnipileSearch>();
+    
+    constructor(args?: {
+        client?: Client;
+        key?: string;
+    }) {
+        super(args);
+        UnipileSearch.__registry.set(this, args?.key);
+    }
+    
+    /**
+     * Perform People Search
+     *
+     * Returns the people matching the given keywords and filters, as users described by what the search shows about them (where they live, study or work...). Send the same body with `cursor` to get the next pages.
+     * LIMITATIONS: Available on Facebook. On Facebook, the page size is set by Facebook whatever the `limit` (usually 10 to 20 results), a list filter takes one ID, and an ID Facebook does not know is ignored. `network_distance` takes one degree, `[1]` (friends) or `[2]` (friends of friends), and cannot be combined with `connections_of`. LinkedIn people searches have their own routes (`/linkedin/search/people`).
+     *
+     */
+    public performPeopleSearch<ThrowOnError extends boolean = false>(options: Options<PerformPeopleSearchData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformPeopleSearchResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/search/people',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Perform Pages Search
+     *
+     * Returns the pages (businesses, brands, public figures...) matching the given keywords and filters, as users of type `organization` described by what the search shows about them (category, address, audience...). Send the same body with `cursor` to get the next pages.
+     * LIMITATIONS: Available on Facebook. On Facebook, the page size is set by Facebook whatever the `limit` (usually 10 to 20 results), a list filter takes one ID, and an ID Facebook does not know is ignored. LinkedIn company searches have their own route (`/linkedin/search/companies`).
+     *
+     */
+    public performPagesSearch<ThrowOnError extends boolean = false>(options: Options<PerformPagesSearchData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformPagesSearchResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/search/pages',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Perform Posts Search
+     *
+     * Returns the posts matching the given keywords and filters that the account owner can see. Send the same body with `cursor` to get the next pages.
+     * LIMITATIONS: Available on Facebook. On Facebook, the page size is set by Facebook whatever the `limit` (usually 10 to 20 results), a list filter takes one ID, and an ID Facebook does not know is ignored. `start_date` and `end_date` are days of the account's time zone, from 2004 on. `posted_by` takes one option at a time (`me`, `my_groups_and_pages`, `public`, or one ID in `member`, `company` or `group`), and `seen` only `true`. LinkedIn post searches have their own route (`/linkedin/search/posts`).
+     *
+     */
+    public performPostsSearch<ThrowOnError extends boolean = false>(options: Options<PerformPostsSearchData, ThrowOnError>) {
+        return (options.client ?? this.client).post<PerformPostsSearchResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/search/posts',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * List Search Parameters
+     *
+     * Returns the cities, schools, companies or event categories whose name matches the given keywords, with the ID to give to the matching filter of the people, pages, posts and events searches.
+     * LIMITATIONS: Available on Facebook. Cities, schools and companies are Facebook's suggestions, 10 at most: give a full name (`HEC Paris` rather than `HEC`). A school or company can have several pages (campuses, duplicates), and a filter only finds the people who chose that page. Event categories are a fixed list, named in the account's language: all of them without `keywords`, or those whose name contains it.
+     *
+     */
+    public getSearchParameters<ThrowOnError extends boolean = false>(options: Options<GetSearchParametersData, ThrowOnError>) {
+        return (options.client ?? this.client).get<GetSearchParametersResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/search/parameters',
+            ...options
+        });
+    }
 }
 
 export class UnipileCalendar extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry5<UnipileCalendar>();
+    public static readonly __registry = new HeyApiRegistry9<UnipileCalendar>();
     
     constructor(args?: {
         client?: Client;
@@ -1922,7 +2852,7 @@ export class UnipileCalendar extends HeyApiClient {
     /**
      * List all calendar events
      *
-     * Returns a list of calendar events.
+     * Lists the events stored in the specified calendar, such as meetings and appointments.
      * - For Outlook, the attendee list of an invitation the connected account received is the one the organizer sent, and their responses are not refreshed on it. Only the response of the connected account is kept up to date.
      */
     public getCalendarEventList<ThrowOnError extends boolean = false>(options: Options<GetCalendarEventListData, ThrowOnError>) {
@@ -1936,7 +2866,7 @@ export class UnipileCalendar extends HeyApiClient {
     /**
      * Create a calendar event
      *
-     * Create a brand new calendar event.
+     * Creates an event in the specified calendar.
      */
     public createCalendarEvent<ThrowOnError extends boolean = false>(options: Options<CreateCalendarEventData, ThrowOnError>) {
         return (options.client ?? this.client).post<CreateCalendarEventResponses, unknown, ThrowOnError>({
@@ -2050,7 +2980,7 @@ export class UnipileCalendar extends HeyApiClient {
 }
 
 export class UnipileLinkedIn extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry6<UnipileLinkedIn>();
+    public static readonly __registry = new HeyApiRegistry10<UnipileLinkedIn>();
     
     constructor(args?: {
         client?: Client;
@@ -2121,6 +3051,8 @@ export class UnipileLinkedIn extends HeyApiClient {
      *
      * Returns a list of users who recently viewed your profile, along with a range of analytics data.
      * Non-premium users will only have access to a limited amount of data, and search filters will be ineffective.
+     * Offset and limit count provider result positions before anonymous or unavailable profiles are filtered out.
+     * Continue with offset + limit even after a short page. A short or empty entities list does not reliably indicate the end; this operation does not expose a continuation signal.
      */
     public getProfileViews<ThrowOnError extends boolean = false>(options: Options<GetProfileViewsData, ThrowOnError>) {
         return (options.client ?? this.client).get<GetProfileViewsResponses, unknown, ThrowOnError>({
@@ -2484,6 +3416,19 @@ export class UnipileLinkedIn extends HeyApiClient {
     }
     
     /**
+     * List Poll Votes
+     *
+     * Returns the voters of a poll and the option each one chose. Only available for a poll posted by the account or by a company page it administers.
+     */
+    public listPollVotes<ThrowOnError extends boolean = false>(options: Options<ListPollVotesData, ThrowOnError>) {
+        return (options.client ?? this.client).get<ListPollVotesResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/linkedin/posts/{post_id}/poll/votes',
+            ...options
+        });
+    }
+    
+    /**
      * List Projects
      *
      * Returns a list of hiring projects created in the current contract scope.
@@ -2552,6 +3497,23 @@ export class UnipileLinkedIn extends HeyApiClient {
         return (options.client ?? this.client).post<GetRecruiterTalentPoolApplicantsResponses, unknown, ThrowOnError>({
             security: [{ name: 'X-API-KEY', type: 'apiKey' }],
             url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/applicants',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * List Job Posting Apply Starters
+     *
+     * Returns Recruiter profiles of people who started applying to a job posting from the talent pool of a project.
+     */
+    public getRecruiterTalentPoolApplyStarters<ThrowOnError extends boolean = false>(options: Options<GetRecruiterTalentPoolApplyStartersData, ThrowOnError>) {
+        return (options.client ?? this.client).post<GetRecruiterTalentPoolApplyStartersResponses, unknown, ThrowOnError>({
+            security: [{ name: 'X-API-KEY', type: 'apiKey' }],
+            url: '/v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/apply-starters',
             ...options,
             headers: {
                 'Content-Type': 'application/json',
@@ -3058,7 +4020,7 @@ export class UnipileLinkedIn extends HeyApiClient {
 }
 
 export class UnipileInstagram extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry7<UnipileInstagram>();
+    public static readonly __registry = new HeyApiRegistry11<UnipileInstagram>();
     
     constructor(args?: {
         client?: Client;
@@ -3083,7 +4045,7 @@ export class UnipileInstagram extends HeyApiClient {
 }
 
 export class UnipileOutlook extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry8<UnipileOutlook>();
+    public static readonly __registry = new HeyApiRegistry12<UnipileOutlook>();
     
     constructor(args?: {
         client?: Client;
@@ -3151,7 +4113,7 @@ export class UnipileOutlook extends HeyApiClient {
 }
 
 export class UnipileDefault extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry9<UnipileDefault>();
+    public static readonly __registry = new HeyApiRegistry13<UnipileDefault>();
     
     constructor(args?: {
         client?: Client;
@@ -3171,7 +4133,7 @@ export class UnipileDefault extends HeyApiClient {
 }
 
 export class UnipileCustomAuth extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry10<UnipileCustomAuth>();
+    public static readonly __registry = new HeyApiRegistry14<UnipileCustomAuth>();
     
     constructor(args?: {
         client?: Client;
@@ -3251,7 +4213,7 @@ export class UnipileCustomAuth extends HeyApiClient {
 }
 
 export class UnipileHostedAuth extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry11<UnipileHostedAuth>();
+    public static readonly __registry = new HeyApiRegistry15<UnipileHostedAuth>();
     
     constructor(args?: {
         client?: Client;
@@ -3280,7 +4242,7 @@ export class UnipileHostedAuth extends HeyApiClient {
 }
 
 export class UnipileAccounts extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry12<UnipileAccounts>();
+    public static readonly __registry = new HeyApiRegistry16<UnipileAccounts>();
     
     constructor(args?: {
         client?: Client;
@@ -3361,7 +4323,7 @@ export class UnipileAccounts extends HeyApiClient {
 }
 
 export class UnipileApiKeys extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry13<UnipileApiKeys>();
+    public static readonly __registry = new HeyApiRegistry17<UnipileApiKeys>();
     
     constructor(args?: {
         client?: Client;
@@ -3416,7 +4378,7 @@ export class UnipileApiKeys extends HeyApiClient {
 }
 
 export class UnipileScopes extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry14<UnipileScopes>();
+    public static readonly __registry = new HeyApiRegistry18<UnipileScopes>();
     
     constructor(args?: {
         client?: Client;
@@ -3501,7 +4463,7 @@ export class UnipileScopes extends HeyApiClient {
 }
 
 export class UnipileWebhooks extends HeyApiClient {
-    public static readonly __registry = new HeyApiRegistry15<UnipileWebhooks>();
+    public static readonly __registry = new HeyApiRegistry19<UnipileWebhooks>();
     
     constructor(args?: {
         client?: Client;
